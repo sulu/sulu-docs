@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Sulu 2.0'
-copyright = '2014, Daniel Rotter'
+copyright = '2014, Sulu Team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -198,7 +198,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'Sulu20.tex', 'Sulu 2.0 Documentation',
-   'Daniel Rotter', 'manual'),
+   'Sulu Team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -228,7 +228,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'sulu20', 'Sulu 2.0 Documentation',
-     ['Daniel Rotter'], 1)
+     ['Sulu Team'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -242,7 +242,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'Sulu20', 'Sulu 2.0 Documentation',
-   'Daniel Rotter', 'Sulu20', 'One line description of project.',
+   'Sulu Team', 'Sulu20', 'One line description of project.',
    'Miscellaneous'),
 ]
 

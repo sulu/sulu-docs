@@ -1,0 +1,8 @@
+Configuration
+=============
+
+Webspaces
+---------
+
+Templates
+---------
