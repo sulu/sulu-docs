@@ -4,36 +4,41 @@ Installation
 Get the code
 ------------
 
-First of all you have to clone the `sulu-standard repository on GitHub <https://github.com/sulu-cmf/sulu-standard>`_ and change into the cloned directory.
+First of all you have to clone the `sulu-standard repository on GitHub
+<https://github.com/sulu-cmf/sulu-standard>`_ and change into the cloned
+directory.
 
 .. code-block:: bash
 
-    git clone git@github.com:sulu-cmf/sulu-standard.git
+    $ git clone git@github.com:sulu-cmf/sulu-standard.git
 
 After the clone has finished, you can change to the cloned directory, and
 checkout the desired version of Sulu:
 
 .. code-block:: bash
 
-    cd sulu-standard
-    git checkout 0.6.0
+    $ cd sulu-standard
+    $ git checkout 0.6.0
 
 Configure PHPCR
 ---------------
 
-Before executing any other commands, you should configure PHPCR. Therfore you
-have to decide where you want to store the content. You have the choice between 
-`Apache Jackrabbit <http://jackrabbit.apache.org/>`_ and a common relational 
-database. Depending on your decision you have to copy one of the two phpcr 
-configuration files.
+Before executing any other commands, you need to configure the PHPCR
+implementation. 
 
-Either you copy the file for Jackrabbit:
+You have to decide how you store the content - you have the choice
+between:
+
+- `Jackalope Jackrabbit`_: Uses `Apache Jackrabbit`_ as a storage backend.
+- `Jackalope Doctrine-Dbal`_: Uses the a relational database as a storage backend.
+
+To use Jackrabbit:
 
 .. code-block:: bash
 
-    cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
+    $ cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
 
-or the file for doctrine dbal:
+To use a relational database:
 
 .. code-block:: bash
 
@@ -43,10 +48,16 @@ The copied file contains some defaults, which will run out of the box. However,
 on a production system you should adjust the values ``phpcr_workspace``, 
 ``phpcr_user`` and ``phpcr_pass`` to some meaningful values.
 
+.. note::
+
+    Jackrabbit is the reference implementation of PHPCR and supports the whole
+    specification, whereas the doctrine-dbal implementation does not - it is
+    however more lightweight and does not have external dependencies.
+
 Install dependencies
 --------------------
 
-We use `composer <https://getcomposer.org/>`_ to load the correct versions of
+We use `composer`_ to install the correct versions of
 Sulu's dependencies:
 
 .. code-block:: bash
@@ -95,3 +106,7 @@ should be fine for simple installations.
       - The port which will be used for the content preview in the http polling
         mode
 
+.. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
+.. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal
+.. _Apache Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
+.. _Composer:  <https://getcomposer.org/>
