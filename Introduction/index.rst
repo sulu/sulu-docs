@@ -7,4 +7,4 @@ Introduction
     Content-Management-Framework
     Components
     Backend-Template
-    Content-Architekture
+    Content-Architecture
