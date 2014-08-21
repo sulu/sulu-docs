@@ -1,4 +1,4 @@
-Configuration
+Setup
 =============
 
 Webspaces
