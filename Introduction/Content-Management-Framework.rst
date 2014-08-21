@@ -1,4 +1,4 @@
-Introduction
+What is a Content Management Framework
 ============
 Let’s talk about the difference between a „Content Management Framework“ and a „Content Management System“ as we understand it first. This will prevent some irritations later.
 
