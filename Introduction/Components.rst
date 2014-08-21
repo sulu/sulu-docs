@@ -1,12 +1,18 @@
 Standard installation components
---------------------------------
+================================
+
 The standard installation of Sulu comes with a set of components (called „modules“) required for the content management process:
-Contacts 
+
+Contacts
+--------
 The Contact module as two main purposes: The first (and in many cases most important) is managing the users that have access to the administration backend of the website. The second is organising the user-data collected through the website (e.g. newsletter registrations etc.). In more complex environments this module can also be used to manage community members, online-shop customers or other contact based data.
 
 Assets
+------
 The Assets module let you upload and organize any type of documents such as pictures, text documents (PDF, Word, Excel etc.), videos or audio clips. Once uploaded an asset can be used in as many webpages as required remaining its single source in the Assets module. This means if you would like to change a document that it used in serval different webpages you would only have to replace it once in Assets. Pictures will be automatically transformed to web-compatible formats and resized to the required formats of the templates while the original file will be stored as well. All other document types remain in their original format.
- Webspaces
+
+Webspaces
+---------
 A Webspace is the place where the actual website structure and content will be created. Within a Webspace one single content-structure can be created but by using e.g. multiple languages and sub-domains an unlimited number of websites that share the same structure can be created. Furthermore an unlimited number of webspaces can be managed in one Sulu installation. 
 
 Confused? Maybe this example helps: 
@@ -19,9 +25,7 @@ Any of this scenarios can be created with Sulu using one Webspace.
 
 Got it? Great! 
 (Don’t worry if not, we go a lot deeper into this later.)
-Settings
-As the title implies this module gives you access to all internal adjustments of Sulu. One very important section is Permissions where you can create user roles with access right which then can be applied to a user in the Contacts module. This gives you complete control over the access rights of your website administrators. In addition you can manage meta information such as categories or tags that are used in other modules.
-Backend VS Templates
-As in any CMS Sulu completely separates content from design and allows template based content rendering. But due to the fact that usability, web standards and SEO are of such great importance the templates take a big role in the creation of a Sulu based web platform.
 
-To ensure that the templates make use of all the possibilities that the CMS delivers Sulu provides a set of functionalities and development guidelines. Many of these can be found in this documentation and we strongly recommend to carefully read through and use them as much as possible. By doing so your content will be much easier to mange, the performance of your system will be optimized and your website will be more accessible for users,  search engines or third party applications.
+Settings
+--------
+As the title implies this module gives you access to all internal adjustments of Sulu. One very important section is Permissions where you can create user roles with access right which then can be applied to a user in the Contacts module. This gives you complete control over the access rights of your website administrators. In addition you can manage meta information such as categories or tags that are used in other modules.
