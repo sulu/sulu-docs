@@ -1,3 +1,7 @@
+============
+Content Management Framework
+============
+
 Introduction
 ============
 Let’s talk about the difference between a „Content Management Framework“ and a „Content Management System“ as we understand it first. This will prevent some irritations later.
@@ -11,12 +15,14 @@ Sulu was created to manage the content of websites and fully support the 4-step 
 1. Content creation/collection
 2. Revision/approval
 3. Publishing
-3. Archiving
+4. Archiving
  
 The main publishing format is normally HTML but others such as e.g. XML can be easily applied. Sulu was designed to create webpages with high performance in the current state of the internet. This means a high focus on web standards (as described in the W3C standards http://www.w3.org/standards/) and search engine optimization. Furthermore it supports multi-language websites and multi-site platforms with shareable content.
 
 Although Sulu focuses on more complex websites it still provides an UI that is easy to understand, fast to learn and enjoyable to use. The software runs on modern browsers without the need of any plugins and will work on a standard state-of-the-art PC or tablet.
+
 Standard installation components
+--------------------------------
 The standard installation of Sulu comes with a set of components (called „modules“) required for the content management process:
 Contacts 
 The Contact module as two main purposes: The first (and in many cases most important) is managing the users that have access to the administration backend of the website. The second is organising the user-data collected through the website (e.g. newsletter registrations etc.). In more complex environments this module can also be used to manage community members, online-shop customers or other contact based data.
