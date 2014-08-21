@@ -4,6 +4,6 @@ Welcome to Sulu 2.0's documentation!
 .. toctree::
     :maxdepth: 2
 
-    Getting-Started/index
+    getting-started/index
     Introduction/index
 
