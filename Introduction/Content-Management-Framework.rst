@@ -1,5 +1,5 @@
 Introduction
-===
+============
 Let’s talk about the difference between a „Content Management Framework“ and a „Content Management System“ as we understand it first. This will prevent some irritations later.
 
 A „Content Management Framework“ (or CMF as cool and lazy people call it) is a set of components that can be used to build a data administration environment customized to the individual needs of the project or client and used for data driven systems, web-apps or large scale web platforms. A „Content Management System“ (or CMS as you might have guessed) is a more or less standardized software with a fixed set of functionalities mainly focused on the management of websites.
