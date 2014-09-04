@@ -1,0 +1,3 @@
+Using smart content
+===================
+
