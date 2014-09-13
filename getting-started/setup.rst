@@ -104,7 +104,21 @@ environments you also have to change the URLs in the other environment tags.
 
 Templates
 ---------
-TODO: Explain how to copy/edit dist-template xml.
+All created pages are based on templates, which have also to be configured.
+So you need some templates to add pages to the system. Therfore you have to add
+some XML-files to the specified folder. These files describe the structur of
+the pages, i.e. what kind of content the pages can consist of. For the start
+you can just copy some of the delivered files:
+
+.. code-block:: bash
+    
+    cp app/Resources/templates/default.xml.dist app/Resources/templates/default.xml
+    cp app/Resources/templates/overview.xml.dist app/Resources/templates/overview.xml
+
+With this configuration you will be able to create default pages, just
+containg the most basic content types (a title, an URL, links to other pages,
+images, and a text editor), and overview pages, which can aggregate multiple
+pages.
 
 Complete the installation
 -------------------------
@@ -131,4 +145,17 @@ configuration files) and loads the fixtures:
 .. code-block:: bash
     
     app/console sulu:build
+
+Create a new user
+-----------------
+In order to login into Sulu you need to create an user. Therefore you just have
+to enter the following command on the command line, which will guide you
+through the creation in an interactive manner:
+
+.. code-block:: bash 
+
+    app/console sulu:security:user:create
+
+Just follow the instructions. Afterwards you'll be able to login into the Sulu
+Backend, which is accessible by on one of your configured URLs on the site `/admin`.
 
