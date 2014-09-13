@@ -109,4 +109,5 @@ should be fine for simple installations.
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal
 .. _Apache Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
-.. _Composer:  <https://getcomposer.org/>
+.. _Composer:  https://getcomposer.org/
+.. _MassiveBuildBundle: http://github.com/massiveart/MassiveBuildBundle

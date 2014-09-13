@@ -6,5 +6,5 @@ Getting Started
 
     system-requirements
     installation
-    configuration
+    setup
 
