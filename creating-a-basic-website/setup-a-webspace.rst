@@ -67,3 +67,25 @@ be explained in the following paragraphs.
         </portals>
     </webspace>
 
+As you probably already have encountered, the root tag for our webspace
+definition is `webspace`. Afterwards you see a name, which is displayed in the
+administration interface. But even more important is the key, which is used
+internally to generate some files and define some paths. Therfore it is really
+important that the webspace key is unique across all webspaces in a single
+installation.
+
+In the `localizations`-tag you can list all the available localizations in this
+webspace. In the example we are simply adding the english language, for a more
+complete explanation you should have a look at :doc:`adding-localizations`.
+
+The `theme` is described by a key. This key leads to a certain theme,
+implemented by a developer in the system. Read more about themes in the section
+:doc:`adding-a-theme`.
+
+It's also possible to define some so called navigation contexts, which allows
+the user to add pages to different kind of navigations. The different contexts
+can be defined in the `navigation`-section, and this selection will be
+available to choose from in the administration interface. Afterwards the
+developer can retrieve the navigation for a given context by using some
+Twig-extensions delivered with Sulu.
+
