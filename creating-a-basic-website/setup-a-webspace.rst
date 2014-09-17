@@ -10,8 +10,6 @@ administration interface. Sulu allows you to create pages and sub pages in
 these trees and fill them with content. Have a closer look at
 :doc:`adding-a-template` for more details on the content management process.
 
-The configuration file
-----------------------
 The following file shows the simplest configuration possible. These lines will
 be explained in the following paragraphs.
 
@@ -75,7 +73,7 @@ important that the webspace key is unique across all webspaces in a single
 installation.
 
 Localizations
-~~~~~~~~~~~~~
+-------------
 In the `localizations`-tag you can list all the available localizations in this
 webspace. In the example we are simply adding the english language, but you can
 also define country specific language if you add a country attribute to the
@@ -90,13 +88,13 @@ For a more complete explanation you should have a look at
 :doc:`adding-localizations`.
 
 Themes
-~~~~~~
+------
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
 :doc:`adding-a-theme`.
 
 Navigation
-~~~~~~~~~~
+----------
 It's also possible to define some so called navigation contexts, which allows
 the user to add pages to different kind of navigations. The different contexts
 can be defined in the `navigation`-section, and this selection will be
@@ -105,7 +103,7 @@ developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu.
 
 Portals
-~~~~~~~
+-------
 A webspace can itself consist of multiple portals. In our simple configuration
 file we make use of only one portal. The idea is that the same content can be
 shared among different portals and URLs. The portals can then also define for
@@ -122,7 +120,7 @@ the design of the URLs for the content. Currently there is only the
 URL.
 
 URLs
-''''
+~~~~
 The most important part of the portal configuration are the environments,
 because they are including the URLs for the portal. A portal can have multiple
 environments, which have to match the environments defined in Symfony. Usually
