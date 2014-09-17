@@ -74,18 +74,101 @@ internally to generate some files and define some paths. Therfore it is really
 important that the webspace key is unique across all webspaces in a single
 installation.
 
+Localizations
+~~~~~~~~~~~~~
 In the `localizations`-tag you can list all the available localizations in this
-webspace. In the example we are simply adding the english language, for a more
-complete explanation you should have a look at :doc:`adding-localizations`.
+webspace. In the example we are simply adding the english language, but you can
+also define country specific language if you add a country attribute to the
+localization, so for instance the following tag would add austrian german to
+the available localizations:
 
+.. code-block:: xml
+
+    <localization language="de" country="at" />
+
+For a more complete explanation you should have a look at
+:doc:`adding-localizations`.
+
+Themes
+~~~~~~
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
 :doc:`adding-a-theme`.
 
+Navigation
+~~~~~~~~~~
 It's also possible to define some so called navigation contexts, which allows
 the user to add pages to different kind of navigations. The different contexts
 can be defined in the `navigation`-section, and this selection will be
 available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu.
+
+Portals
+~~~~~~~
+A webspace can itself consist of multiple portals. In our simple configuration
+file we make use of only one portal. The idea is that the same content can be
+shared among different portals and URLs. The portals can then also define for
+themeselve in which localization they publish the content, so that you can
+spread different localizations over different URLs.
+
+Our sample file defines just one portal, which includes a `name` and a `key`
+just as the webspace, wherby the key for the portal hast to be unique for the
+entire installation, not only within this webspace.
+
+Then the `strategy` for the `resource-locator` is defined, which influences
+the design of the URLs for the content. Currently there is only the
+`tree`-option available resulting in exposing the entire content tree in the
+URL.
+
+URLs
+''''
+The most important part of the portal configuration are the environments,
+because they are including the URLs for the portal. A portal can have multiple
+environments, which have to match the environments defined in Symfony. Usually
+`dev`, `stage` and `prod` are available. Each environment can define its own
+set of URLs. The URLs also have to include the localization somehow. You have
+two possibilities to do so:
+
+Fixing an URL to a specific localization
+........................................
+The above example shows this possiblity, where you fix one URL to exactly one
+localization. The following fragment shows again how to to this:
+
+.. code-block:: xml
+
+    <url language="de" country="at">www.example.org</url>
+
+Since it is possible to define localizations without a country, this attribute
+is also optional here. However, the combination of language and country here
+must result in an existing localization.
+
+Using placeholders in the URL definition
+........................................
+Another possibility is to create the URL with a placeholder. Have a look at the
+following line for an example:
+
+.. code-block:: xml
+
+    <url>www.example.org/{localization}</url>
+
+Placeholder are expressions in curly braces, which will be expanded to every
+possible value. For the above example that means, that an URL for every
+localization defined will be generated. So if you have a localization `de-at`
+and `en-gb`, the system will create URLs for `www.example.org/de-at` and 
+`www.example.org/en-us`.
+
+In the following table all the possible placeholders are listed, and explains
+the values of them by using the `de-at`-localization:
+
++----------------+----------------------------------------+--------------------+
+| Placeholder    | Description                            | Example for `de-at`|
++================+========================================+====================+
+| {localization} | The name of the entire localization    | `de-at`            |
++----------------+----------------------------------------+--------------------+
+| {language}     | The name of the language               | `de`               |
++----------------+----------------------------------------+--------------------+
+| {country}      | The name of the country, only makes    | `at`               |
+|                | sense in combination with `{language}` |                    |
++----------------+----------------------------------------+--------------------+
 
