@@ -144,7 +144,7 @@ configuration files) and loads the fixtures:
 
 .. code-block:: bash
     
-    app/console sulu:build
+    app/console sulu:build prod
 
 Create a new user
 -----------------
