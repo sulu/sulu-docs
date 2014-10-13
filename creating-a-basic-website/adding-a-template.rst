@@ -84,7 +84,6 @@ file for an example of a template definition:
                     <title lang="en">Title</title>
                 </meta>
 
-                <tag name="sulu.node.name"/>
                 <tag name="sulu.rlp.part"/>
             </property>
 
@@ -145,6 +144,10 @@ some more parameters, as for the `article`-property in the example above. The
 example is enabling the godMode, the icon for adding links and the icon for
 adding tables.
 
+.. note::
+
+   Every template has to define a property named `title`, because it is used
+   internally for generating URLs and storing.
 Build the HTML template
 -----------------------
 We recommend to build the HTML templates in a first draft with plain HTML and
