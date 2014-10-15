@@ -6,19 +6,23 @@ Get the code
 
 First of all you have to clone the `sulu-standard repository on GitHub
 <https://github.com/sulu-cmf/sulu-standard>`_ and change into the cloned
-directory.
+directory :behat:`Given I execute the following`:
 
 .. code-block:: bash
 
-    $ git clone git@github.com:sulu-cmf/sulu-standard.git
+    git clone git@github.com:sulu-cmf/sulu-standard.git
+
+:behat:`Then the command should not fail`
 
 After the clone has finished, you can change to the cloned directory, and
-checkout the desired version of Sulu:
+checkout the desired version of Sulu :behat:`And I execute the following`:
 
 .. code-block:: bash
 
-    $ cd sulu-standard
-    $ git checkout 0.6.0
+    cd sulu-standard
+    git checkout 0.6.0
+
+:behat:`Then the command should not fail`
 
 Configure PHPCR
 ---------------
@@ -38,11 +42,13 @@ To use Jackrabbit:
 
     $ cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
 
-To use a relational database:
+To use a relational database :behat:`Given I execute the following`:
 
 .. code-block:: bash
 
     cp app/config/phpcr_doctrine_dbal.yml.dist app/config/phpcr.yml
+
+:behat:`Then the command should not fail`
 
 The copied file contains some defaults, which will run out of the box. However,
 on a production system you should adjust the values ``phpcr_workspace``, 
@@ -60,9 +66,30 @@ Install dependencies
 We use `composer`_ to install the correct versions of
 Sulu's dependencies:
 
+You can install composer as follows :behat:`Given I execute the following`:
+
 .. code-block:: bash
 
-    composer install
+    curl -sS https://getcomposer.org/installer | php
+
+:behat:`Then the command should not fail`
+:behat:`And the file "composer.phar" should exist`
+
+Then install the dependencies :behat:`Given I execute the following`:
+
+.. code-block:: bash
+
+    php composer.phar install
+
+:behat:`Then the command should not fail`
+
+Now check that everything is working :behat:`Given I execute the following`:
+
+.. code-block:: bash
+
+    php app/console
+
+:behat:`Then the command should not fail`
 
 At the end of the installation you will be asked for some parameters. The
 following table describes these parameters, whereby most of the default values

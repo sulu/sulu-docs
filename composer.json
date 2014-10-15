@@ -1,0 +1,17 @@
+{
+    "name": "sulu-cmf/sulu-docs",
+    "description": "Sulu Documentation",
+    "require": {
+        "symfony/filesystem": "~2.5",
+        "behat/behat" : "2.4.*@stable",
+        "beberlei/assert": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
