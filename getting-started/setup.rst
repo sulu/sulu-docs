@@ -112,8 +112,8 @@ you can just copy some of the delivered files:
 
 .. code-block:: bash
     
-    cp app/Resources/templates/default.xml.dist app/Resources/templates/default.xml
-    cp app/Resources/templates/overview.xml.dist app/Resources/templates/overview.xml
+    cp app/Resources/pages/default.xml.dist app/Resources/pages/default.xml
+    cp app/Resources/pages/overview.xml.dist app/Resources/pages/overview.xml
 
 With this configuration you will be able to create default pages, just
 containg the most basic content types (a title, an URL, links to other pages,
@@ -131,8 +131,6 @@ set the appropriate permissions to the cache folders:
     rm -rf app/cache/*
     rm -rf app/logs/*
     mkdir app/data
-    mkdir uploads/media
-    mkdir web/uploads/media
     APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1`
     sudo chmod +a "$APACHEUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads/media app/data
     sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads/media app/data
