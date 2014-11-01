@@ -18,7 +18,7 @@ checkout the desired version of Sulu:
 .. code-block:: bash
 
     $ cd sulu-standard
-    $ git checkout 0.6.0
+    $ git checkout 0.9.0
 
 Configure PHPCR
 ---------------
