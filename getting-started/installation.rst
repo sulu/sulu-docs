@@ -20,40 +20,6 @@ checkout the desired version of Sulu:
     $ cd sulu-standard
     $ git checkout 0.9.0
 
-Configure PHPCR
----------------
-
-Before executing any other commands, you need to configure the PHPCR
-implementation. 
-
-You have to decide how you store the content - you have the choice
-between:
-
-- `Jackalope Jackrabbit`_: Uses `Apache Jackrabbit`_ as a storage backend.
-- `Jackalope Doctrine-Dbal`_: Uses the a relational database as a storage backend.
-
-To use Jackrabbit:
-
-.. code-block:: bash
-
-    $ cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
-
-To use a relational database:
-
-.. code-block:: bash
-
-    cp app/config/phpcr_doctrine_dbal.yml.dist app/config/phpcr.yml
-
-The copied file contains some defaults, which will run out of the box. However,
-on a production system you should adjust the values ``phpcr_workspace``, 
-``phpcr_user`` and ``phpcr_pass`` to some meaningful values.
-
-.. note::
-
-    Jackrabbit is the reference implementation of PHPCR and supports the whole
-    specification, whereas the doctrine-dbal implementation does not - it is
-    however more lightweight and does not have external dependencies.
-
 Install dependencies
 --------------------
 
@@ -105,6 +71,16 @@ should be fine for simple installations.
     * - content_preview_port
       - The port which will be used for the content preview in the http polling
         mode
+    * - phpcr_backend
+      - The PHPCR backend definition, defaults to the doctrine-dbal, check
+        http://doctrine-phpcr-odm.readthedocs.org/en/latest/reference/installation-configuration.html
+        for more configuration options
+    * - phpcr_workspace
+      - The PHPCR workspace which will be used
+    * - phpcr_user
+      - The user for phpcr
+    * - phpcr_pass
+      - The password for phpcr
 
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal
