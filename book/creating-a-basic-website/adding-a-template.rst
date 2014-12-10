@@ -1,5 +1,6 @@
 Adding a template
 =================
+
 In Sulu a template consists of multiple content types, whereby a content type
 describes the way the data is stored in the database and how to enter them in
 the administration interface. Pages in the Sulu content section will be based
@@ -12,6 +13,7 @@ the HTML template.
 
 Available content types
 -----------------------
+
 The following list shows the content types delivered by a standard sulu
 installation. The first column shows the key, which acts as an unique
 identifier. The second one describeds the appearance in the administration
@@ -148,8 +150,10 @@ adding tables.
 
    Every template has to define a property named `title`, because it is used
    internally for generating URLs and storing.
+
 Build the HTML template
 -----------------------
+
 We recommend to build the HTML templates in a first draft with plain HTML and
 some dummy texts. That means absolutely no placeholders for template engines.
 This ensures that your HTML is working across all browsers (at least if you
@@ -165,5 +169,5 @@ Create the data connection
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations
-    .. _`LiipThemeBundle`: https://github.com/liip/LiipThemeBundle#theme-cascading-order
+.. _`LiipThemeBundle`: https://github.com/liip/LiipThemeBundle#theme-cascading-order
 

@@ -156,4 +156,5 @@ through the creation in an interactive manner:
 
 Just follow the instructions. Afterwards you'll be able to login into the Sulu
 Backend, which is accessible by on one of your configured URLs on the site `/admin`.
-
+ 
+.. _`MassiveBuildBundle`: https://github.com/massiveart/MassiveBuildBundle

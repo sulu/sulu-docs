@@ -35,7 +35,7 @@ you to register your themes. You can do that in your application configuration
 located at `app/config/config.yml`. Add the name of your theme folder to the
 following list:
 
-.. code-block:: yml
+.. code-block:: yaml
 
     liip_theme:
         themes: ["default", "your-new-shiny-theme"]
