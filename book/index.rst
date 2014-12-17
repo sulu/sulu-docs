@@ -7,4 +7,3 @@ The Book
     introduction/index
     getting-started/index
     creating-a-basic-website/index
-    caching/caching
