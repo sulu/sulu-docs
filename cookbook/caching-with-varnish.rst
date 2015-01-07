@@ -98,7 +98,7 @@ Varnish Configuration
 
 The following will add full caching support for Sulu:
 
-.. code-block:: varnish
+.. code-block:: varnish4
 
     # /etc/varnish/default.vcl
     vcl 4.0;
