@@ -4,8 +4,13 @@ Caching with Varnish
 Varnish is a HTTP `caching proxy server`_ which can be used to radically
 improve the response time of your website.
 
-Sulu is bundled with a "soft" caching proxy, the `Symfony HttpCache`_, however
-this is not as fast or powerful as Varnish.
+Sulu is bundled with a "soft" `caching proxy`_, the Symfony `HttpCache`_, but
+using Varnish is a more optimal soution for large websites, especially if they
+have alot of traffic.
+
+In addition to being twice as fast as the default caching implementation it
+also supports better cache invalidation, which means that your website will
+appear more up-to-date.
 
 This tutorial will walk you through the process of setting up Varnish on 
 your own server and configuring it to work with Sulu.
@@ -34,13 +39,23 @@ Server Configurations
 Web Server
 ~~~~~~~~~~
 
-For a caching server to serve pages to your users, it will need to "pretend" to
-be the webserver. Webservers listen to requests on port 80, we need to change
-the port of the webserver to something else, and make Varnish listen on port 80
-instead.
+.. note::
 
-You need to configure your webserver to listen on a different port. Change the 
-``Listen`` directive to ``Listen 8090``:
+    You may skip this section if you intend to run varnish in a development
+    environment and do not want to change the default port of your webserver.
+
+For a caching server to serve pages to your users, it will need to "pretend"
+to be the webserver. Webservers listen to requests on port 80. We must make
+Varnish listen for conntections on port 80 and make the webserver listen on a
+different port.
+
+.. note::
+
+    We are going to make the webserver listen on port `8090` but there is
+    nothing special about this port and it can be anything as long as it does
+    not conflict with any existing services.
+
+Change the ``Listen`` directive in ``/etc/apache2/ports.conf`` to ``Listen 8090``:
 
 .. code-block:: apache
 
@@ -63,14 +78,22 @@ Now you will need to configure varnish.
 Varnish
 ~~~~~~~
 
-If Varnish is not listening on port 80 it isn't going to do anything useful, so
-check that it is listening on the correct port:
+.. note::
+
+    Skip this section if you are in a development environment and prefer to
+    access varnish via. its default port (explained later).
+
+By default Varnish will listen for connections on port ``6081`` (at least on
+Debian systems). If you are running a production system you will need to
+change this to the default HTTP port, port ``80``.
+
+Verify which port Varnish is listening to:
 
 .. code-block:: bash
 
     $ ps ax | grep varnish
-    6585 ?        SLs    0:00 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:8083
-    6609 ?        Sl     0:07 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:8083
+    6585 ?        SLs    0:00 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:6081
+    6609 ?        Sl     0:07 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:6081
 
 The ``-a`` option indicates where Varnish is listening - it is listening on port ``8083``, which is incorrect.
 
@@ -184,59 +207,103 @@ If you see the above ``Via`` header, then all is good and your are ready to go f
 Configuring Sulu Invalidation
 -----------------------------
 
-So. Now your pages will be cached, but they will not be invalidated - this means that
-content will only be updated when the cache expires. We need to configure invalidation.
+You will first need to ensure that the default "soft" cache has been disabled.
 
-First tell the ``FOSHttpCacheBundle`` about the new varnish server:
+Open the website front controller (``app/website.php`` in the `standard
+edition`_) and ensure that the following lines are commented out:
 
-.. code-block:: yaml
+.. code-block:: php
 
-    # app/config/config.yml
-    # ...
-    fos_http_cache: 
-        proxy_client: 
-            varnish: 
-                servers: localhost:8090
-                base_url: <your domain name>
+    // Uncomment this line if you want to use the "symfony" http
+    // caching strategy. See 
+    // if (APP_ENV != 'dev') {
+    //    require_once __DIR__ . '/../app/WebsiteCache.php';
+    //    $kernel = new WebsiteCache($kernel);
+    //}
 
-Replace ``<your domain name>`` with the corresponding value, e.g. ``www.mydomain.dom``.
+.. warning::
 
-Now ensure that the ``tags``` invalidator is enabled and change the ``max_age`` and ``max_shared_age``
-to sufficiently high values (we effectively want to cache things for a very long time, because we
-will manually tell Varnish to refresh them).
+    If you do not comment out the above lines caching will not work as you
+    will be using 2 caches.
+
+Now edit ``app/config.yml`` and change the proxy client from ``symfony`` to
+``varnish`` and set the address of your varnish server (assuming that your
+Varnish server is on localhost and listening on port ``80``):
 
 .. code-block:: yaml
 
     sulu_http_cache:
-        structure_cache_handlers:
-            aggregate:
-                handlers: [ standard, path, tags ]
-            standard:
-                max_age: 604800 # 1 week
-                shared_max_age: 604800 # 1 week
+        # ...
+        proxy_client:
+            varnish:
+                enabled: true
+                servers: [ 'localhost:80' ]
 
 Now have another look at the headers from your website:
 
 .. code-block:: bash
 
-    $ curl -I mywebsite.dom
+    $ curl -I sulu.lo
     HTTP/1.1 200 OK
-    Cache-Control: max-age=400, public, s-maxage=1000
-    X-Cache-Debug: 1
-    X-Reverse-Proxy-TTL: 2400
-    X-Cache-Tags: structure-4dfd5a3a-822e-4f21-b90e-b2ae93907dc1,structure-685c5542-0051-4ce9-a22e-9c4ca438447d,structure-aff47495-de8a-4b34-bfd3-c65e996959b0
-    X-Debug-Token: 7ebdde
-    X-Debug-Token-Link: /_profiler/7ebdde
+    Host: sulu.lo:6081
+    Cache-Control: max-age=1000, public, s-maxage=1000
+    Date: Fri, 16 Jan 2015 13:46:58 GMT
     Content-Type: text/html; charset=UTF-8
-    x-url: /de
-    x-host: sulu.lo:8090
-    X-Varnish: 65547 32782
-    Age: 1
+    X-Reverse-Proxy-TTL: 2400
+    X-Sulu-Handlers: public, debug
+    X-Sulu-Proxy-Client: varnish
+    X-Sulu-Structure-Type: AnimalsPageCache
+    X-Sulu-Structure-UUID: 26f73515-253b-4f98-a227-8811b830735d
+    X-Sulu-Page-TTL: 2400
+    X-Debug-Token: f05a02
+    X-Debug-Token-Link: /_profiler/f05a02
+    X-Varnish: 131202 32868
+    Age: 88
     Via: 1.1 varnish-v4
     X-Cache: HIT
-    Content-Length: 10453
+    Content-Length: 9240
     Connection: keep-alive
-    Proxy-Connection: keep-alive
 
-.. _Caching Proxy Server: https://en.wikipedia.org/wiki/Proxy_server
-.. _Symfony HttpCache: http://symfony.com/doc/current/book/http_cache.html
+.. note::
+
+    If you chose not to make Varnish listen on port 80, then use ``sulu.lo:6081`` instead.
+
+The meaning of all these headers will be explained in the
+:doc:`../reference/bundles/http_cache` document. But for now you should see
+(providing your are in `dev` mode) the ``X-Sulu-Proxy-Client`` has a value of
+``varnish``.
+
+Optimal configuration
+---------------------
+
+To get the most out of the Varnish cache you should enable the ``tags`` cache
+handler and disable the ``paths`` handler.  
+
+The ``tags`` handler will automatically ensure that any changes you make in the
+admin interface are immediately available on your website.
+
+See the :doc:`../reference/bundles/http_cache` document for more information.
+
+The following is a full configuration example:
+
+.. code-block:: yaml
+
+    sulu_http_cache:
+        handlers:
+            tags:
+                enabled: true
+            public:
+                max_age: 1000
+                shared_max_age: 1000
+                use_page_ttl: true
+                enabled: true
+            debug:
+                enabled: %kernel.debug%
+        proxy_client:
+            varnish:
+                enabled: true
+                servers: [ '127.0.0.1:6081' ]
+
+.. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
+.. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
+.. _standard edition: http://github.com/sulu-cmf/sulu-standard
