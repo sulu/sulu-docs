@@ -1,23 +1,30 @@
 Caching with Varnish
 ====================
 
-Varnish is a HTTP `caching proxy server`_ which can be used to radically
+Varnish is a HTTP `caching proxy`_  server which can be used to radically
 improve the response time of your website.
 
 Sulu is bundled with a "soft" `caching proxy`_, the Symfony `HttpCache`_, but
-using Varnish is a more optimal soution for large websites, especially if they
-have alot of traffic.
+using Varnish is a more optimal solution for a large website, especially if it 
+has lots of traffic.
 
 In addition to being twice as fast as the default caching implementation it
 also supports better cache invalidation, which means that your website will
 appear more up-to-date.
+
+.. note::
+
+    "Twice as fast" is relative. The default cache implementation can respond
+    in 0.02s compared to varnishes 0.01s - the difference here is
+    imperceptible - but varnish will scale better and supports better
+    invalidation.
 
 This tutorial will walk you through the process of setting up Varnish on 
 your own server and configuring it to work with Sulu.
 
 This tutorial assumes that:
 
-- You are using the Apache2 webserver
+- You are using the Apache2 web server
 - You are running Ubuntu or Debian
 
 The steps should apply equally to other variants.
@@ -42,16 +49,16 @@ Web Server
 .. note::
 
     You may skip this section if you intend to run varnish in a development
-    environment and do not want to change the default port of your webserver.
+    environment and do not want to change the default port of your web server.
 
 For a caching server to serve pages to your users, it will need to "pretend"
-to be the webserver. Webservers listen to requests on port 80. We must make
-Varnish listen for conntections on port 80 and make the webserver listen on a
-different port.
+to be the web server. Web servers listen to requests on port 80 by default. We
+must make Varnish listen for connections on port 80 and make the web server
+listen on a different port.
 
 .. note::
 
-    We are going to make the webserver listen on port `8090` but there is
+    We are going to make the web server listen on port `8090` but there is
     nothing special about this port and it can be anything as long as it does
     not conflict with any existing services.
 
@@ -97,7 +104,7 @@ Verify which port Varnish is listening to:
 
 The ``-a`` option indicates where Varnish is listening - it is listening on port ``8083``, which is incorrect.
 
-Under Debian/Ubunto we can change the initialization script:
+Under Debiae/Ubuntu we can change the initialization script:
 
 .. code-block:: bash
 
@@ -293,8 +300,8 @@ The following is a full configuration example:
             tags:
                 enabled: true
             public:
-                max_age: 1000
-                shared_max_age: 1000
+                max_age: 604800 # one week
+                shared_max_age: 604800 # one week
                 use_page_ttl: true
                 enabled: true
             debug:
@@ -302,7 +309,7 @@ The following is a full configuration example:
         proxy_client:
             varnish:
                 enabled: true
-                servers: [ '127.0.0.1:6081' ]
+                servers: [ '127.0.0.1:80' ]
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
