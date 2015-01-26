@@ -6,3 +6,4 @@ Welcome to Sulu 2.0's documentation!
 
     book/index
     reference/index
+    developer/index.rst
