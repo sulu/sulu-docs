@@ -146,13 +146,14 @@ configuration files) and loads the fixtures:
 
 Create a new user
 -----------------
-In order to login into Sulu you need to create an user. Before you can do that
+
+In order to login into Sulu you need to create a user. Before you can do that
 you have to create the administrator role. You can easily add this role with
 the following command:
 
 .. code-block:: bash
 
-    app/console sulu:security:role:create
+    $ app/console sulu:security:role:create
 
 Name the role and choose `Sulu` as the system. Afterwards you just have to
 enter the following command on the command line, which will guide you through
@@ -160,7 +161,7 @@ the creation in an interactive manner:
 
 .. code-block:: bash 
 
-    app/console sulu:security:user:create
+    $ app/console sulu:security:user:create
 
 Just follow the instructions. Afterwards you'll be able to login into the Sulu
 Backend, which is accessible by on one of your configured URLs on the site `/admin`.
