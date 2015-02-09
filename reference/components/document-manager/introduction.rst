@@ -12,7 +12,10 @@ The following is an example:
 
 .. code-block:: php
 
+<<<<<<< HEAD
     <?php
+=======
+>>>>>>> 263b832... Glossary
     // find a document in a specific locale and set a new title
     $document = $documentManager->find('/cmf/contents/foobar', 'de');
     $document->setTitle('Hello');
