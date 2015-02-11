@@ -223,7 +223,7 @@ edition`_) and ensure that the following lines are commented out:
 
     // Uncomment this line if you want to use the "symfony" http
     // caching strategy. See 
-    // if (APP_ENV != 'dev') {
+    // if (SYMFONY_ENV != 'dev') {
     //    require_once __DIR__ . '/../app/WebsiteCache.php';
     //    $kernel = new WebsiteCache($kernel);
     //}

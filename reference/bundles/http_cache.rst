@@ -129,7 +129,7 @@ It works by "wrapping" the kernel. You can find it in the website front controll
 
     // Comment this line if you want to use the "varnish" http
     // caching strategy. See http://sulu.readthedocs.org/en/latest/cookbook/caching-with-varnish.html
-     if (APP_ENV != 'dev') {
+     if (SYMFONY_ENV != 'dev') {
         require_once __DIR__ . '/../app/WebsiteCache.php';
         $kernel = new WebsiteCache($kernel);
     }
