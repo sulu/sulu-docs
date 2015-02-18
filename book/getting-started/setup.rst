@@ -126,6 +126,20 @@ Complete the installation
 After the installation you have to clear the caches, add some empty folders and
 set the appropriate permissions to the cache folders:
 
+Use the following commands for Linux:
+
+.. code-block:: bash
+
+    rm -rf app/cache/*
+    rm -rf app/logs/*
+    mkdir app/data
+    mkdir uploads && mkdir uploads/media/
+    mkdir web/uploads && mkdir web/uploads/media/*
+    sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
+    sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
+
+Or these commands for Mac OSX:
+
 .. code-block:: bash
     
     rm -rf app/cache/*
