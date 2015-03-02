@@ -3,7 +3,7 @@ Sulu Maintenance Mode
 
 When you need to deploy a new version of your project on a production environment
 it is often necessary to disable your sulu-application and inform your customers
- about it.
+about it.
 
 Sulu maintenance mode displays a simple error page which can be easily customized.
 
@@ -19,7 +19,7 @@ To create a maintenance page, you first need to create a maintenance.php file:
 Then you need to set the env variable SULU_MAINTENANCE to true. 
 E.g.: in your .htaccess file (for apache)
  
-.. code-block:: config
+.. code-block:: php
 
     SetEnv SULU_MAINTENANCE true
 
