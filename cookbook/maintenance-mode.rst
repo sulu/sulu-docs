@@ -1,5 +1,5 @@
 Sulu Maintenance Mode
-====================
+=====================
 
 When you need to deploy a new version of your project on a production environment
 it is often necessary to disable your sulu-application and inform your customers
@@ -27,7 +27,7 @@ Configure Maintenance Mode
 --------------------------
 
 IP-Addreses:
-~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 You may like to access your application while maintenance mode is active. Then you need to set $allowedIPs:
 
@@ -52,7 +52,7 @@ You can define translations for your template as follows:
     );
     
 Default locale:
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 By default, maintenance.php is automatically detecting your browsers language. If no translation for this language exists
 the default locale is being used. By default this is english:
