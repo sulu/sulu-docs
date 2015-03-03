@@ -26,8 +26,8 @@ For example, in your ``.htaccess`` file (for apache)
 Configure Maintenance Mode
 --------------------------
 
-IP-Addreses
-~~~~~~~~~~~
+Allowed IP addresses
+~~~~~~~~~~~~~~~~~~~~
 
 You may like to access your application while maintenance mode is active. Then you need to set the allowed IPs:
 
@@ -37,7 +37,6 @@ You may like to access your application while maintenance mode is active. Then y
     $allowedIPs = array(
         '127.0.0.1'
     );
-    ?>
 
 Translations
 ~~~~~~~~~~~~
@@ -54,8 +53,7 @@ You can define translations for your template as follows:
             'description' => 'Sorry for any inconvenience caused. Please try again shortly.',
         ),
     );
-    ?>
-    
+
 Default locale
 ~~~~~~~~~~~~~~
 
@@ -66,5 +64,3 @@ exists the default locale is being used. By default this is English:
 
     <?php
     define('DEFAULT_LOCALE', 'en');
-    ?>
-    
