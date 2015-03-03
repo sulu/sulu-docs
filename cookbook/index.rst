@@ -3,9 +3,6 @@ Cookbook
 
 Awesome recipies for lunch
 
-Caching
--------
-
 .. toctree::
     :maxdepth: 2
 

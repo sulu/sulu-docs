@@ -1,5 +1,5 @@
-Sulu Maintenance Mode
-=====================
+Maintenance Mode
+================
 
 When you need to deploy a new version of your project on a production environment
 it is often necessary to disable your sulu-application and inform your users
