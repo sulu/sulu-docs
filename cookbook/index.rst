@@ -10,4 +10,5 @@ Caching
     :maxdepth: 2
 
     caching-with-varnish
+    maintenance-mode
 
