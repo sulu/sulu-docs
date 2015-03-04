@@ -134,7 +134,7 @@ Use the following commands for Linux:
     rm -rf app/logs/*
     mkdir app/data
     mkdir uploads && mkdir uploads/media/
-    mkdir web/uploads && mkdir web/uploads/media/*
+    mkdir web/uploads && mkdir web/uploads/media/
     sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
     sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
 
