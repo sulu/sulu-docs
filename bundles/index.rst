@@ -1,5 +1,5 @@
-Sulu Bundle Reference
-=====================
+Bundles
+=======
 
 Sulu's functionality is integrated into the Symfony framework using several
 bundles.
