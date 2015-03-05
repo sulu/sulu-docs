@@ -47,10 +47,7 @@ This chapter will describe which types you can insert within the
 example ``property`` tag to clarify the usage.
 
 This documentation also specifies the available parameters and tags for each
-content type.
-
-List of content types
----------------------
+content type:
 
 .. toctree::
     :maxdepth: 1 
