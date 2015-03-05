@@ -2,6 +2,7 @@ Reference
 =========
 
 .. toctree::
+    :maxdepth: 1
 
-    twig/index
-    bundles/index
+    content-types/index
+    twig-extensions/index

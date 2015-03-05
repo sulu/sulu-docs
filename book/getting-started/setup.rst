@@ -14,8 +14,8 @@ localizations. For the start you can just copy the delivered file:
 Basically you can name the file however you want, as long as it is ending with
 `.xml`. After copying you should adjust the file according to you installation.
 Basically you have to change the `key`-tag to a unique value across all
-webspaces of this installation, the name and the URLs. These values are shown
-in bold in the following example:
+webspaces of this installation, the name and the URLs. These values are written
+in squared brackets in the following example:
 
 .. code-block:: xml
 

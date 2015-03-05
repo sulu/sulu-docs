@@ -1,5 +1,5 @@
-Twig
-====
+Twig Extensions
+===============
 
 Sulu provides its own Twig functions and filters In addition to the `standard set of Twig functions`_ which
 you can use in website templates.

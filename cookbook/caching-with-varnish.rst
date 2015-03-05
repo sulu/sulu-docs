@@ -276,7 +276,7 @@ Now have another look at the headers from your website:
     If you chose not to make Varnish listen on port 80, then use ``sulu.lo:6081`` instead.
 
 The meaning of all these headers will be explained in the
-:doc:`../reference/bundles/http_cache` document. But for now you should see
+:doc:`../bundles/http_cache` document. But for now you should see
 (providing your are in `dev` mode) the ``X-Sulu-Proxy-Client`` has a value of
 ``varnish``.
 
@@ -289,7 +289,7 @@ handler and disable the ``paths`` handler.
 The ``tags`` handler will automatically ensure that any changes you make in the
 admin interface are immediately available on your website.
 
-See the :doc:`../reference/bundles/http_cache` document for more information.
+See the :doc:`../bundles/http_cache` document for more information.
 
 The following is a full configuration example:
 
