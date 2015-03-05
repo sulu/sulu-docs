@@ -5,3 +5,5 @@ Reference
 
     twig/index
     bundles/index
+
+    glossary
