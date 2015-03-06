@@ -9,6 +9,14 @@ When creating a pull request:
   type is one of ``feature``, ``bugfix``, ``hotfix`` or ``enhancement``. For
   example: ``feature/what-my-pr-does``. Note that dashes should be used
   instead of spaces (not underscores).
+* Add a line in the format of "<type> <pr-number>
+  [<affected bundle or component>] <description>" to the ``CHANGELOG.md`` file
+  in the root directory
+* In case you have some changes breaking backwards compability you also have to
+  add a description to the ``UPGRADE.md`` file in the root directory
+
+If you are a member of the `Sulu organization`_ you should also:
+
 * Add a label for the type of the PR:
 
  * **feature**: provides a new feature
@@ -23,21 +31,22 @@ When creating a pull request:
  * **review**: when it is reviewable
  * **feedback**: if you have reviewed someone else's pr
 
-We recommend that you can also use the `Waffle board`_ to manage the state of your
-PRs and issues.
+We recommend that you use the `Waffle board`_ to manage the state of your PRs
+and issues.
 
 Template
 --------
 
-Template is divided in two parts: *tasks* (for developer) and *information* (for reviewer).
+Template is divided in two parts: *tasks* (for developer) and *information*
+(for reviewer).
 
 The information should include the following fields:
 
-* **Tests pass**: **yes or no**; If tests fail, add reason
 * **Fixed tickets**: **list of tickets**; Tickets to close after merge. These
   should be of the form ``fixes #123, fixes #321``.
-* **BC breaks**: **yes or no and description**; any compatibility breaking changes
-* **Doc PR**: **link to PR**; Link to the documentation PR (if applicable)
+* **BC breaks**: **none or description**; any compatibility breaking changes
+* **Documentation PR**: **link to PR**; Link to the documentation PR
+  (if applicable)
 
 .. note::
 
@@ -60,12 +69,11 @@ You can copy and paste the following template:
 
     __informations:__
 
-    | q             | a
-    | ------------- | ---
-    | tests pass?   | [yes|no => <why?>]
-    | fixed tickets | [<which?>|none]
-    | bc breaks     | [description]
-    | doc           | [url to commit|none]
+    | q                | a
+    | ---------------- | ---
+    | Fixed tickets    |
+    | BC breaks        |
+    | Documentation PR |
 
 Example
 -------
@@ -85,11 +93,11 @@ Create user command:
 
     __informations:__
 
-    | q             | a
-    | ------------- | ---
-    | Bug fix?      | no
-    | Tests pass?   | no => __dependency__ https://github.com/sulu-cmf/sulu/pull/86
-    | Fixed tickets | fixes #1 , fixes #2
-    | Doc PR u      | https://github.com/sulu-cmf/sulu-docs/pull/14
+    | q                | a
+    | ---------------- | ---
+    | Fixed tickets    | fixes #1 , fixes #2
+    | BC breaks        | none
+    | Documentation PR | https://github.com/sulu-cmf/sulu-docs/pull/14
 
+.. _Sulu organization: https://github.com/sulu-cmf
 .. _Waffle board: https://waffle.io/sulu-cmf/sulu
