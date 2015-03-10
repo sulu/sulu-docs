@@ -61,7 +61,7 @@ interface, and the last one how the content is returned to the HTML template.
 Add a template definition
 -------------------------
 To add a new template to your Sulu installation, you just create a new xml file
-in `app/Resources/templates` named by a unique template key. See the following
+in `app/Resources/pages` named by a unique template key. See the following
 file for an example of a template definition:
 
 .. code-block:: xml
