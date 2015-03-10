@@ -5,7 +5,7 @@ Description
 -----------
 
 Shows a list of pages, which depend on a configurable filter. You can define
-which which site's children should be included, what tags the filtered pages
+which site's children should be included, what tags the filtered pages
 must have, how they are sorted, and how many results you want to get.
 Additionally you can define some presentation types, so that the content 
 manager can decide if the pages should be displayed e.g. in one column or two
