@@ -36,7 +36,7 @@ Parameters
       - Set the max height for autogrow '0' is  infinitely
     * - enterMode
       - string P/BR/DIV
-      - Set what happens on enter allowed P or BR
+      - Set what happens on enter allowed P, BR or DIV
     * - pasteFromWord
       - boolean
       - Adds a button to paste content from word to the text editor. If you add
