@@ -22,6 +22,21 @@ Parameters
     * - links
       - boolean
       - Adds buttons for creating links to the text editor
+    * - scripts
+      - boolean
+      - Allow script tags in source code
+    * - iframes
+      - boolean
+      - Allow iframe tags in source code
+    * - height
+      - integer
+      - Set the text editor height
+    * - maxheight
+      - integer
+      - Set the max text editor height for autogrow '0' is  infinitely
+    * - enterMode
+      - string P/BR/DIV
+      - Set what happens on enter allowed P or BR
     * - pasteFromWord
       - boolean
       - Adds a button to paste content from word to the text editor. If you add
@@ -41,6 +56,11 @@ Example
         <params>
             <param name="tables" value="true"/>
             <param name="links" value="true"/>
+            <param name="scripts" value="true"/>
+            <param name="iframes" value="true"/>
+            <param name="height" value="true"/>
+            <param name="maxHeight" value="true"/>
+            <param name="enterMode" value="P"/>
             <param name="pasteFromWord" value="true"/>
         </params>
     </property>
