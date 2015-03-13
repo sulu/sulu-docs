@@ -31,9 +31,9 @@ Parameters
     * - height
       - integer
       - Set the text editor height
-    * - maxheight
+    * - maxHeight
       - integer
-      - Set the max text editor height for autogrow '0' is  infinitely
+      - Set the max height for autogrow '0' is  infinitely
     * - enterMode
       - string P/BR/DIV
       - Set what happens on enter allowed P or BR
@@ -58,8 +58,8 @@ Example
             <param name="links" value="true"/>
             <param name="scripts" value="true"/>
             <param name="iframes" value="true"/>
-            <param name="height" value="true"/>
-            <param name="maxHeight" value="true"/>
+            <param name="height" value="300"/>
+            <param name="maxHeight" value="500"/>
             <param name="enterMode" value="P"/>
             <param name="pasteFromWord" value="true"/>
         </params>
