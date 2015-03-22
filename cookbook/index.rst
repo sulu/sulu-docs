@@ -8,4 +8,5 @@ Awesome recipies for lunch
 
     caching-with-varnish
     maintenance-mode
+    running-sulu-on-heroku
 
