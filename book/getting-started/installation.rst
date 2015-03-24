@@ -5,12 +5,12 @@ Get the code
 ------------
 
 First of all you have to clone the `sulu-standard repository on GitHub
-<https://github.com/sulu-cmf/sulu-standard>`_ and change into the cloned
+<https://github.com/sulu-io/sulu-standard>`_ and change into the cloned
 directory.
 
 .. code-block:: bash
 
-    $ git clone git@github.com:sulu-cmf/sulu-standard.git
+    $ git clone git@github.com:sulu-io/sulu-standard.git
 
 After the clone has finished, you can change to the cloned directory, and
 checkout the desired version of Sulu:
