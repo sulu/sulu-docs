@@ -14,9 +14,8 @@ Content ??
     *structure*.
 
 Document
-    Document's represent the data which is mapped into structures. `Page` and
-    `Snippet` are examples of Documents. Often accompanied with "Structure
-    type"
+    Documents are the domain representation of nodes from the PHPCR content
+    repository. For example "PageDocument", or "SnippetDocument"
 
 Document type
     The short name for a class of document, for example "page" the name of the
@@ -52,20 +51,27 @@ Prefix
     The former part of a web facing URL which is defined by the portal, it is
     followed by the resource locator. The prefix may include the locale.
 
-Property
+Property == ??
     This term refers to the items in a Structure which relate to the
     configuration of Property Types
 
-Property Type
+Property Type == Content Typek
     Property types are the way Sulu represents different types of "content". For
     example, `email`, `text` and `smart_content` are three examples of Sulu
     Property Types
 
 Resource locator
     The later part of a web facing URL belonging to some document, excluding
-    the host and prefix. For example ``/articles/foo`` is a resource locator,
+    the host and prefix segment. For example ``/articles/foo`` is a resource locator,
     however ``/de/articles/foo`` and ``http://example.com/articles/foo`` are not. The
     resource locator will never include the locale.
+
+Segment
+    As applying to URLs and Paths - a section of a path or URL, preseumably
+    delimited by `/`.
+
+Workflow Stage
+    The stage of the workflow, for example "published" and "test" are stages.
 
 Snippet
     Snippets are like pages except that they are not accessible directly with
