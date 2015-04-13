@@ -8,6 +8,9 @@ A glossay is:
 This page aims to list all of the terminology used within Sulu both as a
 reference and as a guide to use when naming things in the code-base.
 
+Component
+    Of a Structure -- a named set of Properties. Used by blocks.
+
 Content ??
     In Sulu technical documentation, content refers to the data contained
     within a Document which is mapped to *content types* mapped by the
@@ -89,3 +92,6 @@ Structure type
 Webspace
     In Sulu a webspace encapsulates all of the data of one or more domains
     which use the same data.
+
+Webspace Document
+    The document at the root of the webspace tree -- the homepage.
