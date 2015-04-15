@@ -2,7 +2,7 @@ Securing your application
 =========================
 
 Sulu is delivered with two different possiblities to protect parts of your
-application. The first are the permissions based on security contexts, which
+application. The first is the permissions based on security contexts, which
 allow you to restrict access to entire parts of your application or Sulu. The
 permissions for this kind of security are managed on a roles level. In addition
 to that the localization for which these permissions are valid has to be
@@ -12,13 +12,13 @@ The second way is to protect the access on a per-object basis. These
 permissions are set on the specific object. The user still has to have the
 correct localizations assigned in order to gain access.
 
-This tutorial will show how to use Sulu's security functionality on your own
+This tutorial will show how to use Sulu's security functionality with your own
 application specific code.
 
 Protect content using a security context
 ----------------------------------------
 
-This chapter describes how to protect an entire part of your application (but
+This section describes how to protect an entire part of your application (but
 not a specific object).
 
 Define your security context
@@ -54,9 +54,9 @@ simple string. This is done in the ``Admin`` class of your Bundle:
     }
 
 This information is defined in the ``getSecurityContexts`` method, which should
-return an array. The first level describes the used system being either Sulu
-for stuff in the Sulu administration or another context you can define for your
-own applications.
+return an array. The first level describes the system to which the security
+context applies - this would either be Sulu (for stuff in the administration)
+or a different context that you have defined manually.
 
 The second level just defines the title for another separation used in the
 administration interface. The third and last level defines the name of the
@@ -66,9 +66,9 @@ previously used names.
 .. note::
     
     Since the ``Admin`` class is registered as a bundle, you can make use of
-    different services to define the available security contexts. E.g. the
-    SuluContentBundle uses a service to create an own security context for all
-    available webspaces in the system.
+    different services to define the available security contexts. For example
+    the SuluContentBundle uses a service to create an own security context for
+    all available webspaces in the system.
 
 Protect your controller
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,7 +118,8 @@ somehow by the request, and the ``getSecurityContext`` method defines which
 security context is required to access this type of resource.
 
 The ``SuluSecurityListener`` appends the information on which type of
-permission (view, add, edit, delete, ...) is required, and automatically takes
-care of the permission check and returns a page with a status code of 403 in
-case the permissions for the currently logged in user where not sufficient.
+permission (`view`, `add`, `edit`, `delete`, ...) is required, and
+automatically takes care of the permission check and returns a page with a
+status code of `403` in case the permissions for the currently logged in user
+where not sufficient.
 

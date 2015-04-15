@@ -10,4 +10,5 @@ Awesome recipies for lunch
     maintenance-mode
     running-sulu-on-heroku
     securing-your-application
+    using-tab-navigation
 
