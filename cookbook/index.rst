@@ -11,4 +11,4 @@ Awesome recipies for lunch
     running-sulu-on-heroku
     securing-your-application
     using-tab-navigation
-
+    custom-error-page
