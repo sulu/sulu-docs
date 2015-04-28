@@ -7,16 +7,21 @@ You can define for each http-status-code an own template.
 Configuration
 -------------
 
-The following code-block shows you the default configuration for the excption
+The following code-block shows a default configuration for the exception
 templates. If you want to add an own exception for example 400 you can simply
-add it to the list.
+add it to the list. You can specify that for each webspace.
 
-.. code-block:: twig
+.. code-block:: xml
 
-	sulu_website:
-	    error_templates:
-	        404: ClientWebsiteBundle:templates:error404.html.twig
-	        default: ClientWebsiteBundle:templates:error.html.twig
+    <theme>
+       <key>default</key>
+
+        <error-templates>
+            <error-template default="true">ClientWebsiteBundle:views:error.html.twig</error-template>
+            <error-template code="404">ClientWebsiteBundle:views:error404.html.twig</error-template>
+            <error-template code="500">ClientWebsiteBundle:views:error500.html.twig</error-template>
+        </error-templates>
+    </theme>
 
 The `ExceptionController` uses the status-code of the response to determine
 which template is responsible for the exception. If no special template is
@@ -48,9 +53,7 @@ style.
 Following variables are usable inside the exception template.
 
 * `statusCode`: http-status-code
-* `status_code`: same as `statusCode` but it is needed to be compatible to the symfony exception template
 * `statusText`: http-status-code message
-* `status_text`: same as `statusText` but it is needed to be compatible to the symfony exception template
 * `exception`: complete exception object
 * `currentContent`: repsonse content which were rendered bofore exception was thrown
 * `urls`: localized urls to start page (e.g. for language-switcher)
