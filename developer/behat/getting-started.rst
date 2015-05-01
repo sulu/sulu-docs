@@ -83,7 +83,7 @@ You can run all the tests as follows:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat -p<profile>
+    $ ./vendor/behat/behat/bin/behat -p <profile>
 
 Where ``<profile>`` is one of:
 
