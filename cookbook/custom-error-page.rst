@@ -1,15 +1,15 @@
 Custom error page
 =================
 
-With Sulu it is very easy to customize the error pages for you website users.
-You can define for each http-status-code an own template.
+With Sulu it is very easy to customize the error pages for your website users.
+You can define a template for each HTTP status code.
 
 Configuration
 -------------
 
 The following code-block shows a default configuration for the exception
 templates. If you want to add an own exception for example 400 you can simply
-add it to the list. You can specify that for each webspace.
+add it to the list. You can specify that for each theme.
 
 .. code-block:: xml
 
@@ -46,27 +46,30 @@ style.
 	    <p>{{ exception.message }}</p>
 	{% endblock %}
 
-.. note::
+.. warning::
 
-    Be carefully which variable you use in your `master.html.twig`.
+    Be careful which variable you use in your `master.html.twig`. If you use variables
+    which are not defined in the error-template, the error-page cannot be rendered.
 
 Following variables are usable inside the exception template.
 
-* `status_code`: http-status-code
-* `status_text`: http-status-code message
-* `exception`: complete exception object
-* `currentContent`: repsonse content which were rendered bofore exception was thrown
-* `urls`: localized urls to start page (e.g. for language-switcher)
-* `request`: 
-  * `webspaceKey`
-  * `defaultLocale`
-  * `locale`
-  * `portalUrl`
-  * `resourceLocatorPrefix`
-  * `resourcelocator
-  * `get`: array of get paramters
-  * `post`: array of post paramters
-  * `analyticsKey`
++---------+-------------+
+| Name | Description |
++---------+-------------+
+| `status_code` | http-status-code |
+| `status_text` | http-status-code message |
+| `exception` | complete exception object |
+| `currentContent` | repsonse content which were rendered bofore exception was thrown |
+| `urls` | localized urls to start page (e.g. for language-switcher) |
+| `request.webspaceKey` | key of the current webspace |
+| `request.defaultLocale` | default locale of current portal |
+| `request.locale` | current locale |
+| `request.portalUrl` | url of current portal |
+| `request.resourceLocatorPrefix` | prefix for resourcelocators of current portal |
+| `request.resourcelocator` | current resourcelocator |
+| `request.get` | array of get parameter |
+| `request.post` | array of post parameter |
+| `request.analyticsKey` | analytics key of current webspace |
 
 Test it
 -------
@@ -79,7 +82,7 @@ To test your error pages you can use following routes:
 
 .. note::
 
-    If your not sure about your portal config you can get the routes with this 
+    If you are not sure about your portal configuration you can get the routes with this 
     `app/webconsole router:debug | grep _error` command
 
 Examples:
@@ -91,5 +94,3 @@ Examples:
 	 sulu.lo/fr._twig_error_test       ANY    ANY    sulu.lo /fr/_error/{code}.{_format}
 	 sulu.lo/de._twig_error_test       ANY    ANY    sulu.lo /de/_error/{code}.{_format}
 	 sulu.lo._twig_error_test          ANY    ANY    sulu.lo /_error/{code}.{_format}
-
-
