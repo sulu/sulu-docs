@@ -53,23 +53,24 @@ style.
 
 Following variables are usable inside the exception template.
 
-+---------+-------------+
-| Name | Description |
-+---------+-------------+
-| `status_code` | http-status-code |
-| `status_text` | http-status-code message |
-| `exception` | complete exception object |
-| `currentContent` | repsonse content which were rendered bofore exception was thrown |
-| `urls` | localized urls to start page (e.g. for language-switcher) |
-| `request.webspaceKey` | key of the current webspace |
-| `request.defaultLocale` | default locale of current portal |
-| `request.locale` | current locale |
-| `request.portalUrl` | url of current portal |
-| `request.resourceLocatorPrefix` | prefix for resourcelocators of current portal |
-| `request.resourcelocator` | current resourcelocator |
-| `request.get` | array of get parameter |
-| `request.post` | array of post parameter |
-| `request.analyticsKey` | analytics key of current webspace |
++---------------------------------+------------------------------------------------------------------+
+| Name                            | Description                                                      |
++---------------------------------+------------------------------------------------------------------+
+| `status_code`                   | http-status-code                                                 |
+| `status_text`                   | http-status-code message                                         |
+| `exception`                     | complete exception object                                        |
+| `currentContent`                | repsonse content which were rendered bofore exception was thrown |
+| `urls`                          | localized urls to start page (e.g. for language-switcher)        |
+| `request.webspaceKey`           | key of the current webspace                                      |
+| `request.defaultLocale`         | default locale of current portal                                 |
+| `request.locale`                | current locale                                                   |
+| `request.portalUrl`             | url of current portal                                            |
+| `request.resourceLocatorPrefix` | prefix for resourcelocators of current portal                    |
+| `request.resourcelocator`       | current resourcelocator                                          |
+| `request.get`                   | array of get parameter                                           |
+| `request.post`                  | array of post parameter                                          |
+| `request.analyticsKey`          | analytics key of current webspace                                |
++---------------------------------+------------------------------------------------------------------+
 
 Test it
 -------
