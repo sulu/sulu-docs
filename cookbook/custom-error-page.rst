@@ -76,7 +76,7 @@ Test it
 
 To test your error pages you can use following routes:
 
-.. code-block::
+.. code-block:: bash
 
     {portal-prefix}/_error/{statusCode}
 
@@ -87,10 +87,10 @@ To test your error pages you can use following routes:
 
 Examples:
 
-.. code-block::
+.. code-block:: bash
 
-	 sulu.lo/ch._twig_error_test       ANY    ANY    sulu.lo /ch/_error/{code}.{_format}
-	 sulu.lo/en._twig_error_test       ANY    ANY    sulu.lo /en/_error/{code}.{_format}
-	 sulu.lo/fr._twig_error_test       ANY    ANY    sulu.lo /fr/_error/{code}.{_format}
-	 sulu.lo/de._twig_error_test       ANY    ANY    sulu.lo /de/_error/{code}.{_format}
-	 sulu.lo._twig_error_test          ANY    ANY    sulu.lo /_error/{code}.{_format}
+    sulu.lo/ch._twig_error_test       ANY    ANY    sulu.lo /ch/_error/{code}.{_format}
+    sulu.lo/en._twig_error_test       ANY    ANY    sulu.lo /en/_error/{code}.{_format}
+    sulu.lo/fr._twig_error_test       ANY    ANY    sulu.lo /fr/_error/{code}.{_format}
+    sulu.lo/de._twig_error_test       ANY    ANY    sulu.lo /de/_error/{code}.{_format}
+    sulu.lo._twig_error_test          ANY    ANY    sulu.lo /_error/{code}.{_format}
