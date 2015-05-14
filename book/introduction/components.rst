@@ -48,7 +48,7 @@ structure.
 Now lets assume that ACME Inc. wants to dedicate each language to its
 correspondent market by using top-level-domains. This would of course be more
 marketing oriented and search engine friendly. The English content would be
-published in www.acme.com, the German in www.acme.de and and the French in
+published in www.acme.com, the German in www.acme.de and the French in
 www.acme.fr. Let’s go even fufther and say each website's design should be a
 little different, maybe with a different header color. The user and the search
 engine would now have 3 separate websites, each with 1 language and individual
