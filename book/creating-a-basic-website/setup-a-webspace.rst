@@ -130,8 +130,8 @@ two possibilities to do so:
 
 Fixing an URL to a specific localization
 ........................................
-The above example shows this possiblity, where you fix one URL to exactly one
-localization. The following fragment shows again how to to this:
+The above example shows this possibility, where you fix one URL to exactly one
+localization. The following fragment shows again how to this:
 
 .. code-block:: xml
 
