@@ -105,8 +105,8 @@ environments you also have to change the URLs in the other environment tags.
 Templates
 ---------
 All created pages are based on templates, which have also to be configured.
-So you need some templates to add pages to the system. Therfore you have to add
-some XML-files to the specified folder. These files describe the structur of
+So you need some templates to add pages to the system. Therefore, you have to add
+some XML-files to the specified folder. These files describe the structure of
 the pages, i.e. what kind of content the pages can consist of. For the start
 you can just copy some of the delivered files:
 
