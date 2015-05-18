@@ -32,7 +32,7 @@ If no user identifier is available, no action will be taken.
 
 **Properties**:
 
-- ``$creator``: The identifier creator of the object.
+- ``$creator``: The identifier of the user that created the object.
 - ``$changer``: The identifier the last user to have changed the object.
 
 **Options**:
@@ -56,7 +56,7 @@ updated.
 Mapping
 -------
 
-Mapping subscribers map information to properties in the document.
+Mapping subscribers set and provide access to properties in the document.
 
 Children
 ~~~~~~~~
@@ -107,11 +107,12 @@ Map and assign the parent document through ``getParent`` and ``setParent``
 methods.
 
 Unmanaged parent documents with a UUID will be returned ``UnknownDocument``
-instances. Unmanaged parent documents with no UUID will **not be mapped**.
+instances. Unmanaged parent documents with no UUID will **not be hydrated**
+(they will be ``NULL``).
 
 .. warning::
 
-    This event currently inccurs a performance penalty as it needs to eagerly
+    This event currently incurs a performance penalty as it needs to eagerly
     load the parent PHPCR node. This could potentially have a noticable impact when
     loading a large number of nodes.
 
