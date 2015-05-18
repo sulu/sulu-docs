@@ -1,16 +1,15 @@
 Creating Documents
 ==================
 
-The Sulu Document Manager primarily uses interfaces to define mapping or
-behaviors, although because of its event based nature, it is equally possible
-to implement what is now the conventional mapping pattern using XML, YAML,
-annotations or whatever.
+The Sulu Document Manager uses interfaces to apply mapping or behaviors to
+documents (i.e. objects). These interfaces are known as *behaviors*. Behaviors
+acts upon documents.
 
-Things to note:
+.. note::
 
-- When you implement an interface which populates or persists properties of
-  your class, you will normally need to add specifically named properties. If
-  you do not, an error will be thrown.
+    It is equally possible to implement what is now the conventional mapping
+    pattern using XML, YAML, annotation, etc. But for now only behavioral
+    interfaces are supported.
 
 The File
 --------
@@ -55,17 +54,24 @@ configuration:
         }
     }
 
-The above document will the nodes path, UUID and node name populated.
+The above document will have the nodes path, UUID and node name populated. The
+properties are mandatory and the behaviors will expect them to be there, if
+they are not then an exception will be thrown explaining which properties need
+to be added.
+
+.. note::
+
+    The behaviors will often use Reflection to set the value of an objects
+    properties, bypassing any protection that property may have.
 
 
 Defining the alias and type
 ---------------------------
 
 In order for the document manager to recognize existing managed documents and
-persist new ones, you must define some mapping.
+persist new ones, you must add some mapping to your configuration.
 
-If you are using the Document Manager in the context of Sulu, this
-configuration can be done in you applications ``config.yml`` file:
+This configuration can be done in you applications ``config.yml`` file:
 
 .. code-block:: yaml
 
@@ -76,7 +82,7 @@ configuration can be done in you applications ``config.yml`` file:
                 phpcr_type: acme:somedocument
                 class: Acme\Bundle\FooBundle\Document\SomeDocument
 
-Above define three things:
+Above we define three things:
 
 1. The alias of the document as ``my_new_document``. This alias can
    be used instead of the long class name when managing the document.
