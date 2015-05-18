@@ -56,7 +56,7 @@ updated.
 Mapping
 -------
 
-Mapping subscibers map information to properties in the document.
+Mapping subscribers map information to properties in the document.
 
 Children
 ~~~~~~~~
@@ -179,7 +179,7 @@ the ``TitleBehavior``).
 Explicit
 ~~~~~~~~
 
-**Behavior**: None. This bevavior is depends entirely on options.
+**Behavior**: None. This behavior is depends entirely on options.
 
 This subscriber allows the path of the document to be set explicitly through
 the use of options. This subscriber requires no interfaces, it is available on
@@ -202,3 +202,116 @@ For example:
 - ``node_name``: Specify only the node name
 - ``auto_create``: If any "missing" parent nodes should be automatically
   created.
+
+Sulu Specific
+-------------
+
+The following behaviors are specific to Sulu.
+
+Content
+~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\ContentBehavior``
+
+Maps the structure content to the document. The content is mapped as a
+``ContentContainer`` instance.
+
+**Properties**:
+
+- ``$content``: The content container.
+
+Extension
+~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\ExtensionBehavior``
+
+Sets and provides access to the extension data.
+
+LocalizedContent
+~~~~~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\LocalizedContentBehavior``
+
+Allows the document to potentially have different structure type for each locale.
+
+NavigationContext
+~~~~~~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\NavigationContextBehavior``
+
+Enables the document to have navigation contexts assigned to it.
+
+Order
+~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\OrderBehavior``
+
+Documents implementing this behavior will have a ``sulu:order`` property added
+to the PHP node which will enable the document the order to remain constant in
+both the tree  and in query results.
+
+Page
+~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\PageBehavior``
+
+Documents implementing this behavior will be treated as "pages" - that is they
+are expected to represent a single webpage with an associated route.
+
+This behavior extends the Webspace behavior.
+
+RedirectType
+~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\RedirectTypeBehavior``
+
+Documents implementing this behavior are able to optionally redirect to either
+an internal or an external resource.
+
+ResourceSegmentBehavior
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\ResourceSegmentBehavior``
+
+Maps a resource segment which will be used when generating the URI for the
+document.
+
+Route
+~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\RouteBehavior``
+
+Documents implementing this behavior will act as routes. Routes are documents
+which are located at a path representing one of the URIs of a page document.
+The route contains a reference to the page.
+
+ShadowLocale
+~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\ShadowLocaleBehavior``
+
+The implementing document will have the possiblity to enable a "shadow
+locale" and load its content from a different locale within the same document.
+
+StructureTypeFiling
+~~~~~~~~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\StructureTypeFilingBehavior``
+
+Implementing documents will be stored at a path depending on their structure
+type. Snippets implement this behavior.
+
+Webspace
+~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\WebspaceBehavior``
+
+Provides access to the documents webspace name.
+
+WorkflowStage
+~~~~~~~~~~~~~
+
+**Behavior**: ``Sulu\Component\Content\Document\Behavior\WorkflowStageBehavior``
+
+Documents implementing this interface can have a workflow stage applied to
+them. For example "test" and "published" are workflow stages.
