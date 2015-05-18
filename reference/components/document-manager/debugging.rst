@@ -1,11 +1,12 @@
 Debugging
 =========
 
-One of the disadvantages of the event based system is that tracking what
-happends and when it happens can be tricky.
+One of the disadvantages of an event based system is that tracking what
+happends and when it happens can be tricky. The Document Manager provides some
+tools to ameliorate this problem.
 
-Subscriber priority
--------------------
+Subscriber Debug Command
+------------------------
 
 It is often useful to know which subscribers are being called and the order in
 which they are called. If you are using Sulu, then this can be achieved via
@@ -28,7 +29,6 @@ the following command:
 
 Here we list all of the subscribers which will be executed when a `remove`
 event is fired.
-
 
 A full list of events can be retrived if you ommit the argument:
 
@@ -69,14 +69,14 @@ executed, for example:
     0.000000 S\C\C\D\S\WebspaceSubscriber            handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.076923 S\C\C\D\S\ContentSubscriber             handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.000000 S\C\C\D\S\NavigationContextSubscriber   handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
-    1.000000 S\C\C\D\S\RedirectTypeSubscriber        handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
-    1.000000 S\C\C\D\S\WorkflowStageSubscriber       handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
+    0.000000 S\C\C\D\S\RedirectTypeSubscriber        handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
+    0.000000 S\C\C\D\S\WorkflowStageSubscriber       handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.000000 S\C\C\D\S\OrderSubscriber               handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.000000 S\C\C\D\S\RouteSubscriber               handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
-    1.000000 S\C\D\S\B\A\BlameSubscriber             handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
+    0.000000 S\C\D\S\B\A\BlameSubscriber             handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.000000 S\C\D\S\B\A\TimestampSubscriber         handlePersist        n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
-    1.000000 S\C\D\S\B\M\NodeNameSubscriber          handleNodeName       n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
-    1.000000 S\C\D\S\B\M\UuidSubscriber              handleUuid           n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
+    0.000000 S\C\D\S\B\M\NodeNameSubscriber          handleNodeName       n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
+    0.000000 S\C\D\S\B\M\UuidSubscriber              handleUuid           n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
     0.000000 S\C\D\S\B\M\ParentSubscriber            handleChangeParent   n:/cmf/sulu_io/contents/test1 d:0000000021b01e32000000005bcf8fba l:en p:/cmf/sulu_io/contents
 
 Have a closer look:
@@ -94,9 +94,9 @@ Have a closer look:
 
 The event details are context sensitive, the following lists all abbreviations:
 
-- `n`: Node path
-- `d`: Document (path or UUID)
-- `p`: Parent node
+- `n`: PHPCR Node path or UUID
+- `d`: Document path or UUID
+- `p`: Parent node path or UUID
 - `l`: Locale
 - `i`: Identifier (used for find events)
 - `did`: Destination ID (used in copy/move events)

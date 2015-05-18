@@ -1,9 +1,9 @@
 Creating Documents
 ==================
 
-The Sulu Document Manager uses interfaces to apply mapping or behaviors to
-documents (i.e. objects). These interfaces are known as *behaviors*. Behaviors
-acts upon documents.
+The Sulu Document Manager uses interfaces to determine how a document is
+handled. These interfaces are known as *behaviors*. Behaviors
+act upon documents.
 
 .. note::
 
@@ -11,12 +11,9 @@ acts upon documents.
     pattern using XML, YAML, annotation, etc. But for now only behavioral
     interfaces are supported.
 
-The File
---------
+The Document
+------------
 
-Because the Document Manager uses interfaces and does not depend on metadata
-mapping you can put your document anywhere you want without changing any
-configuration:
 
 .. code-block:: php
 
@@ -64,6 +61,11 @@ to be added.
     The behaviors will often use Reflection to set the value of an objects
     properties, bypassing any protection that property may have.
 
+.. note::
+
+    Because the Document Manager uses interfaces and does not depend on metadata
+    mapping you can put your document anywhere you want without changing any
+    configuration.
 
 Defining the alias and type
 ---------------------------
