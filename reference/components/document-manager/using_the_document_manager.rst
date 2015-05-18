@@ -58,4 +58,4 @@ given as an **option**. The ``path`` option comes from the
 ``ExplicitPathSubscriber`` subscriber. The amount of options available depends
 on which subscribers you have registered.
 
-See the Persistance Susribers section for more information.
+See the Persistance Subscribers section for more information.
