@@ -65,12 +65,15 @@ should be fine for simple installations.
       - An unique key needed by the symfony framework
     * - sulu_admin.name
       - A name, which will be shown in the administration interface
+    * - sulu_admin.email
+      - Administrator email address
     * - content_fallback_intervall
       - The intervall in milliseconds, between content preview update in the
         http polling mode
-    * - content_preview_port
-      - The port which will be used for the content preview in the http polling
-        mode
+    * - websocket_port
+      - The port which will be used for the content preview in the http polling mode
+    * - websocket_url
+      - The url which will be used for the content preview in the http polling mode        
     * - phpcr_backend
       - The PHPCR backend definition, defaults to the doctrine-dbal, check
         http://doctrine-phpcr-odm.readthedocs.org/en/latest/reference/installation-configuration.html
@@ -81,6 +84,8 @@ should be fine for simple installations.
       - The user for phpcr
     * - phpcr_pass
       - The password for phpcr
+    * - phpcr_cache
+      - PHPCR caching type
 
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal
