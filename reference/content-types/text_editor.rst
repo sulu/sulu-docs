@@ -51,6 +51,11 @@ Example
         <params>
             <param name="tables" value="true"/>
             <param name="links" value="true"/>
-            <param name="pasteFromWord" value="true"/>
+            <param name="paste_from_word" value="true"/>
+            <param name="height" value="100"/>
+            <param name="max_height" value="200"/>
+            <!-- CKEditor Parameters examples: -->
+            <param name="extra_allowed_content" value="img(*)[*]; span(*)[*]; div(*)[*]; iframe(*)[*]; script(*)[*]" />
+            <param name="ui_color" value="#ffcc00"/>
         </params>
     </property>
