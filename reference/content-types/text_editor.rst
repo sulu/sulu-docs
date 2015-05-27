@@ -16,10 +16,10 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - tables
+    * - table
       - boolean
       - Adds tools for creating tables to the text editor
-    * - links
+    * - link
       - boolean
       - Adds buttons for creating links to the text editor
     * - paste_from_word
@@ -49,8 +49,8 @@ Example
         </meta>
 
         <params>
-            <param name="tables" value="true"/>
-            <param name="links" value="true"/>
+            <param name="table" value="true"/>
+            <param name="link" value="true"/>
             <param name="paste_from_word" value="true"/>
             <param name="height" value="100"/>
             <param name="max_height" value="200"/>
