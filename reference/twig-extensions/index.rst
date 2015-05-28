@@ -43,9 +43,6 @@ SnippetBundle
 MediaBundle
 -----------
 
-Functions
-~~~~~~~~~
-
 .. toctree::
 
     functions/get_media_url
