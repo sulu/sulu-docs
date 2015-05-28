@@ -9,7 +9,7 @@ Following configuration means, that the default dispositionType is "attachment" 
 
 If the default dispositionType would be "inline" and some files should be "attachment", than the configuration of "mime_types_attachment" should be filled and "mime_types_inline" should be empty.
 
-.. code-block:: jinja
+.. code-block:: yaml
 
   sulu_media:
     disposition_type:
