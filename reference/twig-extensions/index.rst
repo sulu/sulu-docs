@@ -40,4 +40,11 @@ SnippetBundle
 
     functions/snippet_load
 
+MediaBundle
+-----------
+
+.. toctree::
+
+    functions/get_media_url
+
 .. _standard set of Twig functions: http://twig.sensiolabs.org/documentation

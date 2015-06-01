@@ -133,8 +133,6 @@ Use the following commands for Linux:
     rm -rf app/cache/*
     rm -rf app/logs/*
     mkdir app/data
-    mkdir uploads && mkdir uploads/media/
-    mkdir web/uploads && mkdir web/uploads/media/
     sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
     sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads/media app/data
 
@@ -148,6 +146,17 @@ Or these commands for Mac OSX:
     APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1`
     sudo chmod +a "$APACHEUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads/media app/data
     sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads/media app/data
+
+Or these commands for Windows (with IIS web server):
+
+.. code-block:: powershell
+
+    rd app\cache\* -Recurse -Force
+    rd app\logs\* -Recurse -Force
+    md app\data
+    $rule = New-Object System.Security.AccessControl.FileSystemAccessRule -ArgumentList @("IUSR","FullControl","ObjectInherit, ContainerInherit","None","Allow")
+    $folders = "app\cache", "app\logs", "app\data", "uploads\media", "web\uploads\media"
+    foreach ($f in $folders) { $acl = Get-Acl $f; $acl.SetAccessRule($rule); Set-Acl $f $acl; }
 
 Thanks to the `MassiveBuildBundle`_ we can complete the installation with
 another single command, which executes some build targets. These targets cover
