@@ -1,5 +1,5 @@
-Welcome to Sulu 2.0's documentation!
-====================================
+Welcome to Sulu's documentation!
+================================
 
 .. toctree::
     :maxdepth: 3

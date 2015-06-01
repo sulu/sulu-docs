@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Sulu 2.0'
+project = 'Sulu'
 copyright = '2015, Sulu Team'
 
 # The version info for the project you're documenting, acts as replacement for
