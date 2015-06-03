@@ -44,9 +44,9 @@ You can now execute your data fixture using the
 ``sulu:document:fixtures:load``
 command.
 
-````bash
-$ php app/console sulu:document:fixtures:load
-````
+.. code-block:: bash
+
+    $ php app/console sulu:document:fixtures:load
 
 By default this command will purge and re-initialize the workspace before
 loading all of the fixtures.
@@ -61,24 +61,24 @@ Advanced Usage
 You can specify directories instead of having the command automatically find
 the fixtures:
 
-````bash
-$ php app/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
-````
+.. code-block:: bash
+
+    $ php app/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
 
 You can also specify if fixturs should be *appended* (i.e. the repository will
 not be purged) and if the initializer should be executed.
 
 Append fixtures:
 
-````bash
-$ php app/console sulu:document:fixtures:load --append
-````
+.. code-block:: bash
+
+    $ php app/console sulu:document:fixtures:load --append
 
 Do not initialize:
 
-````bash
-$ php app/console sulu:document:fixtures:load --no-initialize
-````
+.. code-block:: bash
+
+    $ php app/console sulu:document:fixtures:load --no-initialize
 
 Using the Service Container
 ---------------------------
