@@ -33,7 +33,7 @@ Metadata
     such as field mappings which should be applied to a different data
     structure.
 
-    In the context of Sulu this applied to Structures and Documents.
+    In the context of Sulu this applied to Structures, Properties and Documents.
 
 Non-localized
     Of a Property - the state of not being localized, not capable of being
@@ -56,10 +56,8 @@ Prefix
     followed by the resource locator. The prefix may include the locale.
 
 Property
-    This term refers to the items in a Structure which relate to the
-    configuration of Property Types. (not to be confused with a PHPCR
-    property).
-
+    This term refers to the items in a Structure.
+    
 Property Type
     Property types are the way Sulu represents different types of "content". For
     example, `email`, `text` and `smart_content` are three examples of Sulu
