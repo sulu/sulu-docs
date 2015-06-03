@@ -71,7 +71,7 @@ break, as both the ``cmf`` and ``contents`` segments of this path are
 configurable.
 
 The path builder provides a way to elegantly compose content repository
-paths:
+paths by passing an array of path *segments*:
 
 .. code-block:: php
 
@@ -79,4 +79,9 @@ paths:
     $path = $pathBuilder->build(array('%base%', 'sulu_io', '%content%', 'path/to/article');
 
 The above code would produce the path
-``/cmf/sulu_io/contents/path/to/article`` using the default configuration.
+``/cmf/sulu_io/contents/path/to/article`` using the default configuration.k
+
+Path segments enclosed within `%` characters are resolved by the
+``PathSegmentRegistry``, which uses configuration to map path segment names to
+values. Other segments are interpreted literally.
+
