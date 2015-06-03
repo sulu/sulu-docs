@@ -61,3 +61,22 @@ given as an **option**. The ``path`` option comes from the
 on which subscribers you have registered.
 
 See the :doc:`subscribers` chapter for more information.
+
+The Path Builder
+----------------
+
+The structure of the Sulu content repository is configurable. This means
+that if you hard code a path ``/cmf/sulu_io/contents`` then your code could
+break, as both the ``cmf`` and ``contents`` segments of this path are
+configurable.
+
+The path builder provides a way to elegantly compose content repository
+paths:
+
+.. code-block:: php
+
+    $pathBuilder = $container->get('sulu_document_manager.path_builder');
+    $path = $pathBuilder->build(array('%base%', 'sulu_io', '%content%', 'path/to/article');
+
+The above code would produce the path
+``/cmf/sulu_io/contents/path/to/article`` using the default configuration.
