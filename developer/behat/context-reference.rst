@@ -53,9 +53,10 @@ The following is not a fully comprehensive list:
   icon (``selector + ' .fa-times'``)
 - ``I wait for the column navigation column :index``: Wait for the column 
   navigation column with given id.
-- ``I expect a data-navigation to appear``: Wait and assert that a 
+- ``I expect a data-navigation to appear`` or 
+  ``I expect wait for data-navigation to appear``: Wait and assert that a 
   data-navigation will appear.
-- ``I expect a overlay to appear``: Wait and assert that a overlay
+- ``I expect an overlay to appear``: Wait and assert that a overlay
   will appear.
 
 ContentContext
