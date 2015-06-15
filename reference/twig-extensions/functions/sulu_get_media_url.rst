@@ -1,7 +1,11 @@
-``get_media_url``
-=================
+``sulu_get_media_url``
+======================
 
 Returns relative URL to the given media.
+
+.. code-block:: jinja
+
+    {% set url = sulu_get_media_url(media, 'inline') %}
 
 **Configuration**:
 

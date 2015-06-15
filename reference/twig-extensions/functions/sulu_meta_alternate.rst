@@ -1,5 +1,5 @@
-``meta_alternate``
-==================
+``sulu_meta_alternate``
+=======================
 
 .. note::
 

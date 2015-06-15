@@ -1,5 +1,5 @@
-``navigation_tree``
-===================
+``sulu_navigation_root_tree``
+=============================
 
 Returns navigation Page from root in a tree data-structure.
 
@@ -12,4 +12,3 @@ Returns navigation Page from root in a tree data-structure.
 **Returns**:
 
 .. include:: _page_structure.inc
-
