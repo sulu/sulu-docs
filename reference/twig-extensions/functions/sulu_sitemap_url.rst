@@ -1,5 +1,5 @@
-``sitemap_url``
-===============
+``sulu_sitemap_url``
+====================
 
 Returns url for given Webspace and locale.
 

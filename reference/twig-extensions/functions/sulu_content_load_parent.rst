@@ -1,11 +1,11 @@
-``content_load_parent``
-=======================
+``sulu_content_load_parent``
+============================
 
 Return the parent of the Structure with the given UUID
 
 .. code-block:: jinja
 
-    {% set page = content_load_parent('1234-1234-1234-1234-1234') %}
+    {% set page = sulu_content_load_parent('1234-1234-1234-1234-1234') %}
 
 **Arguments**:
 

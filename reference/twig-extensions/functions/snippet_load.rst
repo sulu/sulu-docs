@@ -1,5 +1,5 @@
-``snippet_load``
-================
+``sulu_snippet_load``
+=====================
 
 Returns content array for given uuid.
 

@@ -12,19 +12,19 @@ Functions
 
 .. toctree::
 
-    functions/breadcrumb
-    functions/content_load
-    functions/content_load_parent
-    functions/content_path
-    functions/content_root_path
-    functions/meta_alternate
-    functions/meta_seo
-    functions/navigation_flat
-    functions/navigation_root_flat
-    functions/navigation_root_tree
-    functions/navigation_tree
-    functions/sitemap
-    functions/sitemap_url
+    functions/sulu_breadcrumb
+    functions/sulu_content_load
+    functions/sulu_content_load_parent
+    functions/sulu_content_path
+    functions/sulu_content_root_path
+    functions/sulu_meta_alternate
+    functions/sulu_meta_seo
+    functions/sulu_navigation_flat
+    functions/sulu_navigation_root_flat
+    functions/sulu_navigation_root_tree
+    functions/sulu_navigation_tree
+    functions/sulu_sitemap
+    functions/sulu_sitemap_url
 
 Filters
 ~~~~~~~
@@ -38,13 +38,13 @@ SnippetBundle
 
 .. toctree::
 
-    functions/snippet_load
+    functions/sulu_snippet_load
 
 MediaBundle
 -----------
 
 .. toctree::
 
-    functions/get_media_url
+    functions/sulu_get_media_url
 
 .. _standard set of Twig functions: http://twig.sensiolabs.org/documentation

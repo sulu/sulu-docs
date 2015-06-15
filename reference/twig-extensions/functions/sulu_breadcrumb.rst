@@ -1,11 +1,11 @@
-``breadcrumb``
-==============
+``sulu_breadcrumb``
+===================
 
 Returns the breadcrumb for a given node UUID
 
 .. code-block:: jinja
 
-    {{ breadcrumb(node.uuid) }}
+    {{ sulu_breadcrumb(node.uuid) }}
 
 **Arguments**:
 
