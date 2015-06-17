@@ -1,6 +1,6 @@
 System Requirements
 ===================
-For successfully running Sulu 2.0 you'll have to fulfill the following system requirements:
+For successfully running Sulu you'll have to fulfill the following system requirements:
 
 * Mac OSX, Linux or Windows
 * Webserver (`apache <http://httpd.apache.org/>`_ or `nginx <http://nginx.org/>`_ with enabled URL rewriting)
