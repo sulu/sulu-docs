@@ -91,12 +91,12 @@ Where ``<profile>`` is one of:
   above)
 - **sauce_labs**: Run the tests on Sauce Labs (see :doc:`sauce-labs`).
 
-.. note
+.. note::
 
-    If you want to run the tests on your local machine you have to make sure
-    that a Sulu instance is running on 127.0.0.1:8001. You can use the command
-    `env SYMFONY_ENV=dev ./app/console server:run 127.0.0.1:8001
-    --router=app/config/router_admin.php` for that.
+    If you want to run the tests on your local machine with the default
+    configuration you have to make sure that a Sulu instance is running on
+    `127.0.0.1:8001`. You can use the command `./app/console server:run
+    127.0.0.1:8001 --router=app/config/router_admin.php` for that.
 
 The tests are split up into a number of *suites*. There is one suite for each
 bundle, named after the bundle in lowercase, for example ``SuluContactBundle``
