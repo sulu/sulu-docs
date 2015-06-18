@@ -91,6 +91,13 @@ Where ``<profile>`` is one of:
   above)
 - **sauce_labs**: Run the tests on Sauce Labs (see :doc:`sauce-labs`).
 
+.. note
+
+    If you want to run the tests on your local machine you have to make sure
+    that a Sulu instance is running on 127.0.0.1:8001. You can use the command
+    `env SYMFONY_ENV=dev ./app/console server:run 127.0.0.1:8001
+    --router=app/config/router_admin.php` for that.
+
 The tests are split up into a number of *suites*. There is one suite for each
 bundle, named after the bundle in lowercase, for example ``SuluContactBundle``
 has the suite named ``contact``.
@@ -99,13 +106,13 @@ Run specific suites as follows:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat --suite=contact
+    $ ./vendor/behat/behat/bin/behat --suite=contact -p <profile>
 
 Further more you can filter for specific tests using the ``name`` option:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat --suite=contact --name="Create"
+    $ ./vendor/behat/behat/bin/behat --suite=contact --name="Create" -p <profile>
 
 The above will run all scenarios in the ``contact`` suite which contain the word
 ``Create``.
