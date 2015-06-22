@@ -48,6 +48,16 @@ The following is not a fully comprehensive list:
 - ``There should be errors``: Assert that there are errors on the page.
 - ``I wait for the ajax request``: Wait until all underlying AJAX requests
   have finished.
+- ``I click the close icon``: Click the close icon (``.fa-times``)
+- ``I click the close icon in container ":selector"``: Click the close 
+  icon (``selector + ' .fa-times'``)
+- ``I wait for the column navigation column :index``: Wait for the column 
+  navigation column with given id.
+- ``I expect a data-navigation to appear`` or 
+  ``I expect wait for data-navigation to appear``: Wait and assert that a 
+  data-navigation will appear.
+- ``I expect an overlay to appear``: Wait and assert that a overlay
+  will appear.
 
 ContentContext
 --------------
