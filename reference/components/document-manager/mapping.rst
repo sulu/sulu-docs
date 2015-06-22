@@ -66,6 +66,7 @@ Mapping options are as follows:
 - ``mapped``: If the value should be automatically mapped (in the case where
   you want to do this yourself).
 - ``encoding``: The encoding strategy to use, see above.
+- ``multiple``: Set to ``true`` if your field is an array.
 
 Field Types
 -----------
