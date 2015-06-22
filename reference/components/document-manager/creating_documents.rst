@@ -1,73 +1,44 @@
 Creating Documents
 ==================
 
-The Sulu Document Manager uses interfaces to determine how a document is
-handled. These interfaces are known as *behaviors*. Behaviors
-act upon documents.
-
-.. note::
-
-    It is equally possible to implement what is now the conventional mapping
-    pattern using XML, YAML, annotation, etc. But for now only behavioral
-    interfaces are supported.
+The Sulu Document Manager allows you to map any existing class to a PHPCR
+node.
 
 The Document
 ------------
 
+First, create a class with some fields you would like to map:
+
 .. code-block:: php
 
-    <?php
-
-    namespace Acme\Bundle\FooBundle\Document;
-
-    use Sulu\Component\DocumentManager\Behavior\Mapping\NodeNameBehavior;
-    use Sulu\Component\DocumentManager\Behavior\Mapping\PathBehavior;
-    use Sulu\Component\DocumentManager\Behavior\Mapping\UuidBehavior;
-
-    class SomeDocument implements
-        NodeNameBehavior,
-        PathBehavior,
-        UuidBehavior,
+    class SomeDocument
     {
-        private $nodeName;
-        private $path;
-        private $uuid;
-        private $targetDocument;
+        private $title;
+        private $date;
 
-        public function getNodeName() 
+        public function setTitle($title)
         {
-            return $this->nodeName;
+            $this->title = $title;
         }
 
-        public function getPath() 
+        public function setDate($date)
         {
-            return $this->path;
+            $this->date = $date;
         }
 
-        public function getUuid() 
+        public function getTitle()
         {
-            return $this->uuid;
+            return $this->title;
+        }
+
+        public function getDate()
+        {
+            return $this->date;
         }
     }
 
-The above document will have the nodes path, UUID and node name populated. The
-properties are mandatory and the behaviors will expect them to be there, if
-they are not then an exception will be thrown explaining which properties need
-to be added.
-
-.. note::
-
-    The behaviors will often use Reflection to set the value of an objects
-    properties, bypassing any protection that property may have.
-
-.. note::
-
-    Because the Document Manager uses interfaces and does not depend on metadata
-    mapping you can put your document anywhere you want without changing any
-    configuration.
-
-Defining the alias and type
----------------------------
+Defining the alias and type and field mapping
+---------------------------------------------
 
 In order for the document manager to recognize existing managed documents and
 persist new ones, you must add some mapping to your configuration.
@@ -81,9 +52,17 @@ This configuration can be done in you applications ``config.yml`` file:
             # ...
             my_new_document: 
                 phpcr_type: acme:somedocument
-                class: Acme\Bundle\FooBundle\Document\SomeDocument
+                class: Acme\Bundle\TitleBundle\Document\SomeDocument
+                mapping:
+                    title:
+                        encoding: content # optional
+                        type: string # optional
+                        property: title # optional
+                    date:
+                        encoding: content
+                        type: string
 
-Above we define three things:
+Above we define the following:
 
 1. The alias of the document as ``my_new_document``. This alias can
    be used instead of the long class name when managing the document.
@@ -92,3 +71,57 @@ Above we define three things:
    name.
 
 3. The class which should be managed.
+
+4. That ``title`` should be mapped to the ``title`` property in the PHPCR node,
+   encoded with the ``content`` strategy and its type should be ``string``.
+
+5. That ``date`` should be encoded  using the ``content`` encoding strategy
+   and its type should be ``date``.
+
+For more information about mapping (including encoding) see :doc:`mapping`.
+
+Adding Behaviors
+----------------
+
+Behaviors are interfaces that you can add to a document which add extra
+functionality.
+
+One such behavior is the ``TimestampBehavior``. You can add it as follows:
+
+.. code-block:: php
+
+    use Sulu\Component\DocumentManager\Behavior\Audit\TimestampBehavior;
+
+    class SomeDocument implements TimestampBehavior
+    {
+        // ...
+
+        private $changed;
+        private $created;
+
+        // ...
+
+        public function getChanged()
+        {
+            return $this->changed;
+        }
+
+        public function getCreated()
+        {
+            return $this->changed;
+        }
+    }
+
+Now, when you persist the document the ``created`` field will be set to a
+``DateTime`` object with the value of todays date. When you update an existing
+document only the ``changed`` field will be updated.
+
+.. note::
+
+    Some behaviors, such as the ``TimestampBehavior`` use reflection to set
+    object properties. This is because having setter methods would not be
+    appropriate.
+
+    The DocumentManager will expect these properties to be set, if they are
+    not it will throw an Exception explaining which properties need to be
+    added.
