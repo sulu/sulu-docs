@@ -67,6 +67,8 @@ Mapping options are as follows:
   you want to do this yourself).
 - ``encoding``: The encoding strategy to use, see above.
 - ``multiple``: Set to ``true`` if your field is an array.
+- ``default``: Default value to use in case that the PHPCR property does not
+  exist.
 
 Field Types
 -----------
@@ -80,4 +82,4 @@ Scalar types:
 
 Other types:
 
-- ``reference``: Store document references.
+- ``reference``: Document reference.
