@@ -6,3 +6,7 @@ Reference
 
     content-types/index
     twig-extensions/index
+    components/document-manager/index.rst
+    twig/index
+    bundles/index
+    glossary
