@@ -1,5 +1,5 @@
 Integrating custom filters
-================
+==========================
 
 When you want to enable custom filters for your bundle you have to follow the 
 following steps. It's important to know that the filter component work with 
