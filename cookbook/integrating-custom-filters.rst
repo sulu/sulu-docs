@@ -26,7 +26,7 @@ parameter below contexts is the context mentioned above. The fields parameter
 defines the url where the fields api can be found. The class parameter defines 
 the associated entity.In the features the filter has to be enabled.
 
-.. code-block:: yml
+.. code-block:: yaml
 
 	sulu_resource:
 	    contexts:
