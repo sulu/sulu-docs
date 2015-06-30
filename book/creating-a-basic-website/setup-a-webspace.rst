@@ -29,6 +29,10 @@ be explained in the following paragraphs.
 
         <theme>
             <key>default</key>
+            <default-templates>
+                <default-template type="page">example</default-template>
+                <default-template type="homepage">default</default-template>
+            </default-templates>    
         </theme>
 
         <navigation>
