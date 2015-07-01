@@ -2,22 +2,22 @@ Extend Entities
 ===============
 
 Sulu has a very easy way to extend and replace the internal entities. This feature is not
-implemented for each entity but it will be implemented soon for all.
+implemented for each entity but it will be implemented for all soon.
 
-This entities ready to extend:
+These entities are ready to extend:
 
 * User
 * Role
 * Contact
 
-All of them you can extend the same way. Therefor we explain it for `User` here.
+You can extend all of them in the same way. Therefor we explain it for `User` here.
 
 Create a Entity
 ---------------
 
-Create your own Entity for example in the `ClientWebsiteBundle`. You can for example use
-the `doctrine:generate:entity` command for that. Extend the generated Entity with the Sulu 
-`User` class.
+Create your own Entity for example in the `ClientWebsiteBundle`. You can use the 
+`doctrine:generate:entity` command for that. Extend the generated Entity with the
+Sulu `User` class.
 
 .. code-block:: php
 
@@ -69,14 +69,14 @@ the `doctrine:generate:entity` command for that. Extend the generated Entity wit
 
 .. warning::
 
-    Your Entity can have own properties but they should have at least default values.
+    Your Entity can have own properties, but they should have at least default values.
     Otherwise the normal features of Sulu could crash (like the 
     `sulu:security:user:create` command).
 
 Configuration
 -------------
 
-You can specify your new Entity and if exists your Repository in the `sulu_security` 
+You can specify your new Entity and if it exists your Repository in the `sulu_security` 
 configuration section.
 
 .. code-block:: yaml
@@ -109,5 +109,5 @@ For the `Contact` entity:
 
 .. warning::
 
-    If you override the entities you lose your old table and data. You should provide
+    If you override the entities you lose your old tables and data. You should provide
     a upgrade script.
