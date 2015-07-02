@@ -7,7 +7,7 @@ The standard installation of Sulu comes with a set of components (called
 Contacts
 --------
 
-The Contact module as two main purposes: The first (and in many cases most
+The Contact module has two main purposes: The first (and in many cases most
 important) is managing the users that have access to the administration
 backend of the website. The second is organising the user-data collected
 through the website (e.g. newsletter registrations etc.). In more complex
