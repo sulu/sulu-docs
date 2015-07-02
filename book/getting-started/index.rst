@@ -7,4 +7,5 @@ Getting Started
     system-requirements
     installation
     setup
+    vhost
 
