@@ -99,9 +99,16 @@ in squared brackets in the following example:
         </portals>
     </webspace>
 
-Insert the name of your webspace at `[name]`, the key at `[key]`, and the URL
-of your installation at `[url]`. If you want to run Sulu in different
-environments you also have to change the URLs in the other environment tags.
+.. note::
+
+    You have to insert the name of your webspace at `[name]`, the key at `[key]`,
+    and the URL of your installation at `[url]`. If you want to run Sulu in
+    different environments you also have to change the URLs in the other
+    environment tags.
+
+Sulu needs these URLs in order to match the given requests to a certain portal
+and webspace. Otherwise it would not be possible to know the content of which
+webspace should be loaded.
 
 Templates
 ---------
