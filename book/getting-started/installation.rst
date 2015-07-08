@@ -13,12 +13,12 @@ directory.
     $ git clone git@github.com:sulu-io/sulu-standard.git
 
 After the clone has finished, you can change to the cloned directory, and
-checkout the desired version of Sulu:
+checkout the latest version of Sulu:
 
 .. code-block:: bash
 
     $ cd sulu-standard
-    $ git checkout 1.0.0-RC1
+    $ git checkout master
 
 Install dependencies
 --------------------

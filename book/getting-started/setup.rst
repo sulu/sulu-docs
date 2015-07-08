@@ -38,9 +38,10 @@ in squared brackets in the following example:
 
         <theme>
             <key>default</key>
-            <excluded>
-                <template>overview</template>
-            </excluded>
+            <default-templates>
+                <default-template type="page">example</default-template>
+                <default-template type="homepage">default</default-template>
+            </default-templates>
         </theme>
 
         <navigation>
@@ -98,9 +99,16 @@ in squared brackets in the following example:
         </portals>
     </webspace>
 
-Insert the name of your webspace at `[name]`, the key at `[key]`, and the URL
-of your installation at `[url]`. If you want to run Sulu in different
-environments you also have to change the URLs in the other environment tags.
+.. note::
+
+    You have to insert the name of your webspace at `[name]`, the key at `[key]`,
+    and the URL of your installation at `[url]`. If you want to run Sulu in
+    different environments you also have to change the URLs in the other
+    environment tags.
+
+Sulu needs these URLs in order to match the given requests to a certain portal
+and webspace. Otherwise it would not be possible to know the content of which
+webspace should be loaded.
 
 Templates
 ---------
@@ -168,6 +176,23 @@ configuration files) and loads the fixtures:
 .. code-block:: bash
     
     app/console sulu:build prod
+
+If you want to also create a user with the credentials admin/admin you can also
+execute the following command:
+
+.. code-block:: bash
+    
+    app/console sulu:build dev
+
+.. note::
+
+    If you omit the build target as the last parameter you will see a list of 
+    all available build targets.
+
+.. warning::
+    The name of the build targets should not be confused with the symfony
+    environments, although they are most likely to be executed in the ones
+    named after them.
 
 Create a new user
 -----------------
