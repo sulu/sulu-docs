@@ -2,29 +2,31 @@ Integrating custom filters
 ==========================
 
 When you want to enable custom filters for your bundle you have to follow the 
-following steps. It's important to know that the filter component work with 
+following steps. It's important to know that the filter component works with 
 contexts. This means for example that the lists of contacts has the 
-```contacts``` context and everything concering the filters for the list will 
+`contacts` context and everything concering the filters for the list will 
 need this context. It should therefore be unique.
 
-1. Add the missing data types to the field descriptors
+Add the missing data types to the field descriptors
+---------------------------------------------------
 
 The custom filter feature uses the field descriptors you've already defined for 
 your lists. To work as expected you should define the type of each column. If
 not defined the filter component will asume it's a string. The available data 
 types are:
 
-- string
-- number / integer / float
-- date / datetime
-- boolean
+- `string`
+- `number` / `integer` / `float`
+- `date` / `datetime`
+- `boolean`
 
-2. Add a ontext and configuration for new filters 
+Add a context and configuration for new filters 
+-----------------------------------------------
 
 Add the filter configuration to e.g. app/config/admin/config.yml. The first
 parameter below contexts is the context mentioned above. The fields parameter 
-defines the url where the fields api can be found. The class parameter defines 
-the associated entity.In the features the filter has to be enabled.
+defines the url where the fields api can be found. In the features the filter
+has to be enabled.
 
 .. code-block:: yaml
 
@@ -32,11 +34,11 @@ the associated entity.In the features the filter has to be enabled.
 	    contexts:
 	        contact:
 	            fields: "/admin/api/contacts/fields"
-	            class: "Sulu\Bundle\ContactBundle\Entity\Contact"
 	            features:
 	                - "filters"
 
-3. Extend the js configuration in your bundle
+Extend the js configuration in your bundle
+------------------------------------------
 
 Extend the js configuration in your bundle with a config value for the bread-
 crumb and an url for the fields api. The last part of the setting key is the
@@ -52,7 +54,8 @@ context the filters component will use.
         fields: 'admin/api/contacts/fields'
     });
 
-5. Extend the list and toolbar initialization for the lists
+Extend the list and toolbar initialization for the lists
+--------------------------------------------------------
 
 The toolbar should have at least two groups and one of them should have the id 
 2 because the filter button will be added in the one with id 2. Two additional
@@ -109,9 +112,5 @@ above the filter div should be added in the html.
 
 .. code-block:: html
 
-	{% extends "SuluContactBundle:Template:base.list.html.twig" %}
-
-	{% block list %}
-	    <div id="people-list-info"></div>
-	    <div id="people-list"></div>
-	{% endblock %}
+    <div id="people-list-info"></div>
+    <div id="people-list"></div>
