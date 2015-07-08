@@ -49,7 +49,7 @@ context the filters component will use.
     Config.set('suluresource.filters.type.contacts', {
         breadCrumb: [
             {title: 'navigation.contacts'},
-            {title: 'contact.contacts.title'}
+            {title: 'contact.contacts.title', link: 'contacts/contacts'}
         ],
         fields: 'admin/api/contacts/fields'
     });
