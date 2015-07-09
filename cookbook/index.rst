@@ -13,4 +13,5 @@ Awesome recipies for lunch
     using-tab-navigation
     custom-error-page
     optimize-for-production-usage
+    integrating-custom-filters
     extend-entities
