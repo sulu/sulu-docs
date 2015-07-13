@@ -17,13 +17,13 @@ You can `download Selenium server from here`_, or install it as follows:
 
     $ mkdir ~/jars
     $ cd jars
-    $ wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+    $ wget http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar
 
 You can then run it:
 
 .. code-block:: bash
 
-    $ java -jar selenium-server-standalone-2.44.0.jar -browserSessionReuse -singleWindow
+    $ java -jar selenium-server-standalone-2.46.0.jar -browserSessionReuse -singleWindow
 
 The ``-browserSessionReuse`` tells selenium NOT to close the window after
 every test and ``-singleWindow`` will cause Selenium not to use more than one
