@@ -41,8 +41,8 @@ Extend the js configuration in your bundle
 ------------------------------------------
 
 Extend the js configuration in your bundle with a config value for the bread-
-crumb, an url for the fields api and the route back to the list. The last 
-part of the setting key is the context the filters component will use.
+crumb and the route back to the list. The last part of the setting key is the
+context the filters component will use.
 
 .. code-block:: js
 
@@ -51,7 +51,6 @@ part of the setting key is the context the filters component will use.
             {title: 'navigation.contacts'},
             {title: 'contact.contacts.title', link: 'contacts/contacts'}
         ],
-        fields: 'admin/api/contacts/fields',
         routeToList: 'contacts/contacts'
     });
 
