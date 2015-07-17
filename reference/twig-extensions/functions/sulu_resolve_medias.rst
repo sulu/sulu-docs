@@ -11,7 +11,7 @@ Or in combination with `sulu_resolve_user`:
 
 .. code-block:: jinja
 
-    {% for media in sulu_resolve_media(sulu_resolve_user(creator).medias[0], 'de') %}
+    {% for media in sulu_resolve_medias(sulu_resolve_user(creator).medias, 'de') %}
         <a href="{{ media.url }}"><img src="{{ media.thumbnails['170x170'] }}"/></a>
     {% endfor %}
 
