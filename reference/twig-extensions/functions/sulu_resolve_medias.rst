@@ -1,5 +1,5 @@
 ``sulu_resolve_medias``
-======================
+=======================
 
 Returns a full media for a ID or entity. The result contains the full URL and thumbnails.
 
