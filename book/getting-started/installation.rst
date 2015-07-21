@@ -10,7 +10,7 @@ directory.
 
 .. code-block:: bash
 
-    $ git clone git@github.com:sulu-io/sulu-standard.git
+    $ git clone https://github.com/sulu-io/sulu-standard.git
 
 After the clone has finished, you can change to the cloned directory, and
 checkout the latest version of Sulu:
