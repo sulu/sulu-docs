@@ -15,3 +15,4 @@ Awesome recipies for lunch
     optimize-for-production-usage
     integrating-custom-filters
     extend-entities
+    using-elasticsearch
