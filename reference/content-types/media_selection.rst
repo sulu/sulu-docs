@@ -20,7 +20,7 @@ Parameters
     * - types
       - string
       - A comma separated list of available asset types to assign. Each item in
-        the list must be one of ``image``, ``video`` or ``audio``.
+        the list must be one of ``document``, ``image``, ``video`` or ``audio``.
     * - displayOptions
       - collection
       - A collection of booleans, which defines to which positions the assets
@@ -40,7 +40,7 @@ Example
         </meta>
 
         <params>
-            <param name="types" value="images"/>
+            <param name="types" value="image,video"/>
             <param name="displayOptions" type="collection">
                 <param name="leftTop" value="true"/>
                 <param name="top" value="true"/>
