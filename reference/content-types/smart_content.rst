@@ -28,7 +28,11 @@ Parameters
       - Limits the results per page. Omit this parameter to disable pagination.
     * - page_parameter
       - string
-      - Defines the page number key to be used in the query string.
+      - Defines the page number key to be used in the website query string.
+    * - tags_parameter
+      - string
+      - Defines the tags key to be used in the website query string. This comma separated list of tag names will be
+        merged with the selected tags from the backend.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
