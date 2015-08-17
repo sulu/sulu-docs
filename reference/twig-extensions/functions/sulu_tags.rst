@@ -1,0 +1,15 @@
+``sulu_tags``
+=============
+
+Returns all tags.
+
+.. code-block:: jinja
+
+    <ul>
+        <li><a href="{{ sulu_tag_url_clear() }}">None</a></li>
+        {% for tag in sulu_tags() %}
+            <li><a href="{{ sulu_tag_url(tag) }}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+**Returns**: Tag[] - array of Tag instances
