@@ -41,10 +41,10 @@ Parameters
 
 .. note::
 
-    "properties" can include structure properties or extension Data:
+    "properties" can include structure properties or extension data:
 
-    * title - is a property of the template
-    * excerpt.title - is a property of the excerpt template extension with the name title
+    * title - is a property of the structure
+    * excerpt.title - is a property of the excerpt structure extension with the name title
 
 Return Value
 ------------
@@ -59,15 +59,15 @@ Return Value
     * - content
       - uuid
       - string
-      - Uuid of page.
+      - Uuid of page
     * -
       - title
       - string
-      - Title of page.
+      - Title of page
     * -
       - url
       - string
-      - URL of page.
+      - URL of page
     * -
       - path
       - int
@@ -75,43 +75,43 @@ Return Value
     * -
       - urls
       - string[]
-      - Array of localized URLs.
+      - Array of localized URLs
     * -
       - nodeType
       - string
-      - NodeType of page - content, internal or external.
+      - NodeType of page - content, internal or external
     * -
       - changed
       - DateTime
-      - Date and time of last change.
+      - Date and time of last change
     * -
       - changer
       - int
-      - Id of user which changed the page.
+      - Id of user which changed the page
     * -
       - created
       - DateTime
-      - Date and time of creation.
+      - Date and time of creation
     * -
       - creator
       - int
-      - Id of user which has created the page.
+      - Id of user which has created the page
     * -
       - template
       - string
-      - Name of page-template.
+      - Name of page-template
     * - view
       - dataSource
       - string
-      - Uuid of data-source.
+      - Uuid of data-source
     * -
       - includeSubFolders
       - bool
-      - Is TRUE if subfolders will be crawled.
+      - Is TRUE if subfolders will be crawled
     * -
       - category
       - string[]
-      - Selected categories.
+      - Selected categories
     * -
       - tags
       - string[]
@@ -119,27 +119,27 @@ Return Value
     * -
       - sortBy
       - string
-      - Selected sort column.
+      - Selected sort column
     * -
       - sortMethod
       - string
-      - Selected sort method - ASC or DESC.
+      - Selected sort method - ASC or DESC
     * -
       - presentAs
       - string
-      - selected present as value.
+      - selected present as value
     * -
       - limitResult
       - string
-      - Selected limit for result.
+      - Selected limit for result
     * -
       - page
       - int
-      - Current page number.
+      - Current page number
     * -
       - hasNextPage
       - bool
-      - Is TRUE if another page exists.
+      - Is TRUE if another page exists
 
 Example
 -------
