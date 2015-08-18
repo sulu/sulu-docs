@@ -125,7 +125,7 @@ the settings button is extended with a custom title.
     this.sandbox.sulu.buttons.add('my-settings-button', copyOfSettings);
 
 .. note::
-    Don't overuse the possibility to extend an existing and provide a new button.
+    Don't overuse the possibility to extend an existing button and provide a new one.
     Extending and providing your own button should only be done if the same button comes up in multiple places.
     If you just need to overwrite some properties of a default button in a single-place just use the ``sulu.buttons.get``
     method.

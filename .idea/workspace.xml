@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3b3f3d4-52d6-4339-99e2-cd3822f12604" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/javascript-hooks/header.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/javascript-hooks/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/javascript-hooks/layout.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/javascript-hooks/load-component-data.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/sulu-buttons.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bundles/admin/javascript-hooks/view.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf.py" afterPath="$PROJECT_DIR$/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bundles/index.rst" afterPath="$PROJECT_DIR$/bundles/index.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/book/getting-started/setup.rst" afterPath="$PROJECT_DIR$/book/getting-started/setup.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bundles/admin/sulu-buttons.rst" afterPath="$PROJECT_DIR$/bundles/admin/sulu-buttons.rst" />
     </list>
     <ignored path="sulu-docs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3709273" vertical-offset="1309" max-vertical-offset="4065">
-              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+            <state vertical-scroll-proportion="14.780488" vertical-offset="3267" max-vertical-offset="4065">
+              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sulu-buttons.rst" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sulu-buttons.rst" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bundles/admin/sulu-buttons.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.703703" vertical-offset="1202" max-vertical-offset="2055">
-              <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.8241501" vertical-offset="1202" max-vertical-offset="2055">
+              <caret line="127" column="84" selection-start-line="127" selection-start-column="84" selection-end-line="127" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -141,10 +131,10 @@
         <option value="$PROJECT_DIR$/bundles/admin/javascript-hooks/layout.rst" />
         <option value="$PROJECT_DIR$/bundles/admin/javascript-hooks/index.rst" />
         <option value="$PROJECT_DIR$/bundles/admin/index.rst" />
-        <option value="$PROJECT_DIR$/bundles/admin/sulu-buttons.rst" />
         <option value="$PROJECT_DIR$/bundles/admin/javascript-hooks/load-component-data.rst" />
         <option value="$PROJECT_DIR$/bundles/admin/javascript-hooks/header.rst" />
         <option value="$PROJECT_DIR$/conf.py" />
+        <option value="$PROJECT_DIR$/bundles/admin/sulu-buttons.rst" />
       </list>
     </option>
   </component>
@@ -603,12 +593,12 @@
       <option name="number" value="Default" />
       <updated>1439890248317</updated>
       <workItem from="1439890251530" duration="645000" />
-      <workItem from="1439890997976" duration="15270000" />
+      <workItem from="1439890997976" duration="15852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15915000" />
+    <option name="totallyTimeSpent" value="16497000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="23" width="1920" height="977" extended-state="6" />
@@ -783,14 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bundles/admin/javascript-hooks/index.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bundles/admin/javascript-hooks/load-component-data.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
@@ -803,14 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.814816" vertical-offset="887" max-vertical-offset="1740">
           <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bundles/admin/sulu-buttons.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.703703" vertical-offset="1202" max-vertical-offset="2055">
-          <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -833,13 +807,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3709273" vertical-offset="1309" max-vertical-offset="4065">
-          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        <state vertical-scroll-proportion="14.780488" vertical-offset="3267" max-vertical-offset="4065">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bundles/admin/javascript-hooks/index.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bundles/admin/sulu-buttons.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8241501" vertical-offset="1202" max-vertical-offset="2055">
+          <caret line="127" column="84" selection-start-line="127" selection-start-column="84" selection-end-line="127" selection-end-column="84" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
