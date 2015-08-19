@@ -6,6 +6,8 @@ javascript-components. The AdminBundle recognizes the hooks and does stuff, like
 a header with tabs or just manipulating the column-layout.
 
 .. toctree::
+    :maxdepth: 1
+
     layout
     view
     header
