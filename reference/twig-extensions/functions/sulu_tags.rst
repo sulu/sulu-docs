@@ -1,7 +1,7 @@
 ``sulu_tags``
 =============
 
-Returns all tags.
+Returns all tags in the system.
 
 .. code-block:: jinja
 
