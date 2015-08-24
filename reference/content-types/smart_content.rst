@@ -181,7 +181,6 @@ Alias: "contact"
 
 This provider filters the contacts.
 
-
 **Return Value**
 
 .. list-table::
@@ -247,6 +246,73 @@ This provider filters the contacts.
     * - categories
       - string[]
       - Property of the contact.
+
+Account - Organization
+~~~~~~~~~~~~~~~~~~~~~~
+
+Alias: "account"
+
+This provider filters the accounts.
+
+**Return Value**
+
+.. list-table::
+    :header-rows: 1
+
+    * - resource
+      - Account
+      - The full entity from the database.
+    * - number
+      - string
+      - Property of the account.
+    * - name
+      - string
+      - Property of the account.
+    * - registerNumber
+      - string
+      - Property of the account.
+    * - placeOfJurisdiction
+      - string
+      - Property of the account.
+    * - uid
+      - string
+      - Property of the account.
+    * - corporation
+      - string
+      - Property of the account.
+    * - created
+      - string
+      - Property of the account.
+    * - creator
+      - string
+      - Property of the account.
+    * - changed
+      - string
+      - Property of the account.
+    * - changer
+      - string
+      - Property of the account.
+    * - medias
+      - Media[]
+      - Medias of the account. Can be resolved via Twig-Function :doc:`/reference/twig-extensions/functions/sulu_resolve_medias`
+    * - emails
+      - string[]
+      - Property of the account.
+    * - phones
+      - string[]
+      - Property of the account.
+    * - faxes
+      - string[]
+      - Property of the account.
+    * - urls
+      - string[]
+      - Property of the account.
+    * - tags
+      - string[]
+      - Property of the account.
+    * - categories
+      - string[]
+      - Property of the account.
 
 .. _example:
 
