@@ -6,5 +6,6 @@ It provides various hooks which can be used by Javascript-components in various 
 to reuse code or to just deal with different tasks more easily.
 
 .. toctree::
+
     javascript-hooks/index
     sulu-buttons

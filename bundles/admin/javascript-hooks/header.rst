@@ -39,12 +39,12 @@ What this hook does is essentially the following:
   tabs component is handled automatically if the data returned by ``tabs.url`` has
   the right format.
 * It initializes the toolbar with the defined buttons. For information on how to configure buttons
-  and even how to create your own buttons have look :doc:`here </bundles/admin/sulu-buttons>`.
+  and even how to create your own buttons have look :doc:`/bundles/admin/sulu-buttons`.
 * It injects the title into every tab (or into your current component if no tabs specified)
 
 .. note::
     The header-hook can also be a function which returns the object seen in the example. Within this function
-    you have access on things like ``this.options``
+    you have access to things like ``this.options``
 
 
 List of all available options:
@@ -83,7 +83,7 @@ List of all available options:
       - contains configuration-properties about the toolbar
     * - toolbar.buttons
       - Object
-      - an object of sulu-buttons. For the documentation on sulu-buttons have a look :doc:`here </bundles/admin/sulu-buttons>`.
+      - an object of sulu-buttons. For the documentation on sulu-buttons have a look :doc:`/bundles/admin/sulu-buttons`.
     * - toolbar.options
       - Object
       - an object of options to pass to the husky-toolbar-component
@@ -97,14 +97,3 @@ List of all available options:
     * - toolbar.languageChanger.callback
       - Function
       - a callback function which gets executed when the language-changer-dropdown gets changed
-
-
-
-
-
-
-
-
-
-
-

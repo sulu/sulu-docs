@@ -7,7 +7,7 @@ of your component startup and continuing only after the data has been loaded.
 The load-component-data-hook simplifies this task. Within the return-object of a
 javascript-component, you can specify a ``loadComponentData`` method where you load your data. This method must
 return a promise or your desired data straight away. If such a method is specified
-the AdminBundle delays the startup of your component and sets ``this.data`` with your laoded data.
+the AdminBundle delays the startup of your component and sets ``this.data`` with your laoded data
 (where ``this`` is the context of your component). So when your components ``initialize`` method
 gets called you can conveniently access your data via ``this.data`` and don't have to worry
 about asynchronicity.

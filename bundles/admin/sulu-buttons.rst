@@ -1,13 +1,13 @@
 Sulu-Buttons
 ============
 
-The husky-toolbar-component needs to be passed data to which defines what buttons it should render or what happens
-when somebody clicks on a button. Essentially Sulu-buttons are simply about how do I pass buttons to the
-toolbar-component more easily and elegantly than just copying the same buttons all over the place.
+The husky-toolbar-component needs to be passed data, which defines what buttons it should render or what happens
+when somebody clicks on a button. Essentially Sulu-Buttons are about passing buttons to the toolbar-component in an
+easier and more elegant way than just copying the same buttons all over the place.
 With Sulu-buttons you can define buttons in a specific place, extend other buttons and override properties really easily.
 
-Where and what?
----------------
+Introduction
+------------
 
 The admin-bundle contains an aura-extension in which all default buttons are specified as well as methods to get buttons
 and add buttons to the pool of default buttons.
@@ -28,7 +28,7 @@ An example for such a button is:
         }
     }
 
-As you can see a button gets registered with a name and a template which is the actual button meeting the specifications
+As you can see a button gets registered with a name and a template, which is the actual button meeting the specifications
 of the husky-framework.
 
 The same holds for dropdown-items, for which also defaults are specified in the admin-bundle. For example:
@@ -45,8 +45,8 @@ The same holds for dropdown-items, for which also defaults are specified in the 
         }
     }
 
-How to get buttons?
--------------------
+Retrieve buttons
+----------------
 
 The aura-extension in the admin-bundle extends every sandbox of a javascript-component with the method
 ``sulu.buttons.get``. In your own component you can call this function like for example:
@@ -54,25 +54,25 @@ The aura-extension in the admin-bundle extends every sandbox of a javascript-com
 .. code-block:: javascript
 
     var generatedButtons = this.sandbox.sulu.buttons.get({
-                               edit: {},
-                               save: {
-                                   options: {
-                                       callback: function(){//do something//}
-                                   }
-                               },
-                               settings: {
-                                   options: {
-                                       dropdownItems: {
-                                           delete: {}
-                                       }
-                                   }
-                               }
-                            });
+       edit: {},
+       save: {
+           options: {
+               callback: function(){//do something//}
+           }
+       },
+       settings: {
+           options: {
+               dropdownItems: {
+                   delete: {}
+               }
+           }
+       }
+    });
 
 The ``sulu.buttons.get`` method returns an array of buttons which meet the specification of the husky-framework. In
-our example this return-array contains the template of the 'edit'-button, the template of the 'save'-button but with the
-callback-property replaced with our own one and the template of the 'settings'-button which has the template of the
-'delete'-dropdownItem as the only dropdown-item.
+our example this array contains the template of the ``edit``-button, the template of the ``save`-button but with the
+callback-property replaced with our own one and the template of the ``settings``-button which has the template of the
+``delete``-dropdownItem as the only dropdown-item.
 
 If you want the settings-button two times in the same toolbar with - let's say - different dropdown-items you can make
 use of the ``parent`` property;
@@ -80,33 +80,34 @@ use of the ``parent`` property;
 .. code-block:: javascript
 
     var generatedButtons = this.sandbox.sulu.buttons.get({
-                               settings1: {
-                                   parent: 'settings'
-                                   options: {
-                                       dropdownItems: {
-                                           delete: {}
-                                       }
-                                   }
-                               },
-                               settings2: {
-                                   parent: 'settings'
-                                   options: {
-                                       dropdownItems: {
-                                           table: {}
-                                       }
-                                   }
-                               }
-                            });
+       settings1: {
+           parent: 'settings'
+           options: {
+               dropdownItems: {
+                   delete: {}
+               }
+           }
+       },
+       settings2: {
+           parent: 'settings'
+           options: {
+               dropdownItems: {
+                   table: {}
+               }
+           }
+       }
+    });
 
-How to add your own buttons?
-----------------------------
+Add your own buttons
+--------------------
 
-Additionally to the ``sulu.buttons.get`` method the aura-extension provides the following methods
+Additionally to the ``sulu.buttons.get`` method the aura-extension provides the following methods:
 
-* ``sulu.buttons.add`` which takes a name and a button-template
-* ``sulu.buttons.dropdownItems.add`` which takes a name and a dropdownItem-template
-* ``sulu.buttons.push`` takes an array of objects which all must contain a name and a template property
-* ``sulu.buttons.dropdownItems.push`` takes an array of objects which all must contain a name and a template property
+* ``sulu.buttons.add``: takes a name and a button-template
+* ``sulu.buttons.dropdownItems.add``: takes a name and a dropdownItem-template
+* ``sulu.buttons.push``: takes an array of objects which all must contain a name and a template property
+* ``sulu.buttons.dropdownItems.push``: takes an array of objects which all must contain a name and a template property
+* ``sulu.buttons.getApiButton``: takes the name of a button-template and returns the actual template. Can be used to extend an existing button-template.
 
 So with this methods you can easily add your own buttons and dropdown-items to the pool. These buttons are then
 globally available via the ``sulu.buttons.get`` method.
