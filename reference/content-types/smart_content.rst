@@ -12,10 +12,10 @@ types, so that the content manager can decide if the items should be displayed
 e.g. in one column or two columns. The filter is saved as a JSON string in the
 database.
 
-The DataProvider are backend modules which handles the selected filtered values
-and returns the items which fits to this filters. There are some predefined
-ones but you can add your own DataProvider easily. How you can do this is
-described :doc:`here ... </cookbook/smart-content-data-provider>`
+The DataProviders are backend modules which handle the selected filters and
+return the items which fit to this filters. There are some predefined ones but
+you can add your own DataProvider easily. How you can do this is described in
+:doc:`/cookbook/smart-content-data-provider`
 
 Parameters
 ----------
@@ -106,8 +106,8 @@ Content Pages
 
 Alias: "content"
 
-This provider filters content pages. You can choose as datasource a parent page
-in which folder and (configurable) recursive subfolders will be searched.
+This provider filters content pages. You can choose a parent page as data
+source, whose child pages will be filtered by the DataProvider.
 
 **Parameters**
 
@@ -191,11 +191,10 @@ Alias: "contact"
 
 This provider filters the contacts.
 
-
 **Return Value**
 
 .. list-table::
-:header-rows: 1
+    :header-rows: 1
 
     * - resource
       - Contact
@@ -257,6 +256,73 @@ This provider filters the contacts.
     * - categories
       - string[]
       - Property of the contact.
+
+Account - Organization
+~~~~~~~~~~~~~~~~~~~~~~
+
+Alias: "account"
+
+This provider filters the accounts.
+
+**Return Value**
+
+.. list-table::
+    :header-rows: 1
+
+    * - resource
+      - Account
+      - The full entity from the database.
+    * - number
+      - string
+      - Property of the account.
+    * - name
+      - string
+      - Property of the account.
+    * - registerNumber
+      - string
+      - Property of the account.
+    * - placeOfJurisdiction
+      - string
+      - Property of the account.
+    * - uid
+      - string
+      - Property of the account.
+    * - corporation
+      - string
+      - Property of the account.
+    * - created
+      - string
+      - Property of the account.
+    * - creator
+      - string
+      - Property of the account.
+    * - changed
+      - string
+      - Property of the account.
+    * - changer
+      - string
+      - Property of the account.
+    * - medias
+      - Media[]
+      - Medias of the account. Can be resolved via Twig-Function :doc:`/reference/twig-extensions/functions/sulu_resolve_medias`
+    * - emails
+      - string[]
+      - Property of the account.
+    * - phones
+      - string[]
+      - Property of the account.
+    * - faxes
+      - string[]
+      - Property of the account.
+    * - urls
+      - string[]
+      - Property of the account.
+    * - tags
+      - string[]
+      - Property of the account.
+    * - categories
+      - string[]
+      - Property of the account.
 
 .. _example:
 
