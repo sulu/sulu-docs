@@ -49,7 +49,7 @@ List of all available options:
       - contains properties affecting the content-column
     * - content.width
       - String
-      - ``fixed`` to keep the column at a fixed width or ``max`` to make the column take the maximum of the available space
+      - ``fixed` to keep the column at a fixed width or ``max`` to make the column take the maximum of the available space
     * - content.leftSpace
       - Boolean
       - If false the content-column has no padding on the left
@@ -72,3 +72,23 @@ List of all available options:
 .. note::
     Either the sidebar-column or the content-column must have a ``fixed`` width. If the width
     of both columns is of type ``max`` the behaviour is not specified.
+
+The defaults of the layout-hook are:
+
+.. code-block:: javascript
+
+    layout: {
+        navigation: {
+            collapsed: false,
+            hidden: false
+        },
+        content: {
+            width: 'fixed',
+            leftSpace: true,
+            rightSpace: true,
+            topSpace: true
+        },
+        sidebar: false
+    }
+
+To get the default layout just write ``layout: {}``.

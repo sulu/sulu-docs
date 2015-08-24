@@ -8,6 +8,5 @@ a header with tabs or just manipulating the column-layout.
 .. toctree::
 
     layout
-    view
     header
     load-component-data
