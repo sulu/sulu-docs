@@ -16,3 +16,4 @@ Awesome recipies for lunch
     integrating-custom-filters
     extend-entities
     using-elasticsearch
+    smart-content-data-provider
