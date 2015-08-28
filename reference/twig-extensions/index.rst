@@ -23,6 +23,7 @@ Functions
     functions/sulu_navigation_root_flat
     functions/sulu_navigation_root_tree
     functions/sulu_navigation_tree
+    functions/sulu_seo
     functions/sulu_sitemap
     functions/sulu_sitemap_url
 
