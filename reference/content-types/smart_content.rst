@@ -184,7 +184,7 @@ This provider filters the contacts.
 **Return Value**
 
 .. list-table::
-:header-rows: 1
+    :header-rows: 1
 
     * - resource
       - Contact
