@@ -32,7 +32,10 @@ Parameters
     * - tags_parameter
       - string
       - Defines the tags key to be used in the website query string. This comma separated list of tag names will be
-        merged with the selected tags from the backend.
+        combined (AND) with the selected tags from the backend.
+    * - website_tags_operator
+      - string
+      - OR or AND to define how the tags will be combined in the query.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
