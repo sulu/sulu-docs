@@ -9,7 +9,15 @@ Shows a simple text line, the inserted content will be saved as simple string.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+:header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - headline
+      - boolean
+      - Makes the text line identifiable as the title of the content
 
 Example
 -------
@@ -20,4 +28,7 @@ Example
         <meta>
             <title lang="en">Title</title>
         </meta>
+        <params>
+            <param name="headline" value="true"/>
+        </params>
     </property>
