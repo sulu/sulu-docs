@@ -17,7 +17,7 @@ The header-hook in such a component could look something like:
            url: 'url/to/tabsData'
        },
        toolbar: {
-           languageChanger: true
+           languageChanger: true,
            buttons: {
                save: {},
                settings: {
@@ -28,8 +28,8 @@ The header-hook in such a component could look something like:
                    }
                }
            }
-       }
-       title: 'My title',
+       },
+       title: 'My title'
     }
 
 What this hook does is essentially the following:

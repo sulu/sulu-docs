@@ -68,6 +68,9 @@ List of all available options:
     * - sidebar.url
       - String
       - Url from which markup gets fetched and placed inside the sidebar
+    * - extendExisting
+      - Boolean
+      - If true the passed configurations for navigation, column and sidebar won't be merged with the defaults. So the existing layout stays the same and only the explicitly passed properties take effect.
 
 .. note::
     Either the sidebar-column or the content-column must have a ``fixed`` width. If the width
@@ -78,6 +81,7 @@ The defaults of the layout-hook are:
 .. code-block:: javascript
 
     layout: {
+        extendExisting: false,
         navigation: {
             collapsed: false,
             hidden: false
