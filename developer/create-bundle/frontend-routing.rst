@@ -7,7 +7,7 @@ the admin- and the login-page.
 
 For your own bundle you have to tell the frontend framework which route corresponds to which view. If a user then
 navigates to the route you have configured, the frontend framework grabs your view-component and renders it in
-the content-column. For defining routes we use backbone.js.
+the content-column. For defining routes we use `backbone.js <http://backbonejs.org/>`_.
 
 The whole registering process is done in your :doc:`bundle-extension file </developer/create-bundle/frontend-structure>`.
 
