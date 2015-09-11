@@ -6,3 +6,4 @@ Developer Guide
 
     behat/index
     contributing/index
+    create-bundle/index

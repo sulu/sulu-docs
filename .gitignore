@@ -3,3 +3,4 @@ _build/
 # IntelliJ IDEA
 *.iml
 .idea
+sulu-docs.iml
