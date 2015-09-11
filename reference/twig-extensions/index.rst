@@ -48,4 +48,14 @@ MediaBundle
 
     functions/sulu_get_media_url
 
+TagBundle
+---------
+
+.. toctree::
+
+    functions/sulu_tags
+    functions/sulu_tag_url
+    functions/sulu_tag_url_append
+    functions/sulu_tag_url_clear
+
 .. _standard set of Twig functions: http://twig.sensiolabs.org/documentation
