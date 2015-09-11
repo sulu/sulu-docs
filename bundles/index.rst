@@ -8,3 +8,4 @@ bundles.
 
      http_cache
      security
+     persistence

@@ -5,6 +5,10 @@
 
     This documentation is a incomplete.
 
+.. note::
+    
+    This method is deprecated, use :doc:`sulu_seo` instead
+
 Return alternate links for the given URLs
 
 **Arguments**:
