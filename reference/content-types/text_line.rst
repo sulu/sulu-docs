@@ -17,7 +17,7 @@ Parameters
       - Description
     * - headline
       - boolean
-      - Makes the text line identifiable as the title of the content
+      - If true the height and font size of the text line get increased.
 
 Example
 -------
