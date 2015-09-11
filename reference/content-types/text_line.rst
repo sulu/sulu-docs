@@ -10,7 +10,7 @@ Parameters
 ----------
 
 .. list-table::
-:header-rows: 1
+    :header-rows: 1
 
     * - Parameter
       - Type
