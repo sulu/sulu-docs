@@ -7,4 +7,5 @@ bundles.
 .. toctree::
 
      http_cache
+     security
      persistence
