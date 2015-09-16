@@ -60,6 +60,7 @@ content type:
     internal_links
     location
     media_selection
+    contact_selection
     password
     phone
     resource_locator
