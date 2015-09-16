@@ -1,5 +1,10 @@
-What is a Content Management Platform
-=====================================
+What is a Content Management Platform?
+======================================
+
+When it comes to Content Management a lot of terms are in the wild. CMS, CMF, 
+CMP... What else could you imagine? We see Sulu more as a
+"Content Management Platform" as it isn't made for websites only and we want
+to keep it highly customizable.
 
 A "Content Management Platform" is a set of components and modules that can be
 used to build a content administration and publishing environment customized to
@@ -33,4 +38,8 @@ Although Sulu focuses on more complex websites it still provides an UI that is
 easy to understand, fast to learn and enjoyable to use. The software runs on
 modern browsers without the need of any plugins and will work on a standard
 state-of-the-art PC or tablet.
+
+
+We already covered some of Sulu's strength. The next chapter will stake out
+the main focus.
 

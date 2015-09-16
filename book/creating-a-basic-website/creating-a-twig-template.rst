@@ -1,0 +1,144 @@
+Creating a Twig Template
+========================
+
+Twig is an awesome option for rendering HTML. It got some nice features like
+blocks and inheritance. That's why we use and love Twig.
+
+.. note::
+	It is also possible to use plain PHP or any other template lannguage like Smarty,
+	but we strongly recommend Twig.
+
+
+Build the HTML template
+-----------------------
+
+We recommend to build the HTML templates in a first draft with plain HTML and
+some dummy texts. That means absolutely no placeholders for template engines.
+This ensures that your HTML is working across all browsers (at least if you
+test it correctly), and it is easier to test, since there are guaranteed no
+errors caused by the some wrong template variables.
+
+Please make also sure that your HTML is valid, and use HTML tags in a semantic
+way, so that your website will achieve the best results in terms of search
+engine optimization.
+
+
+Which Twig-Template is used?
+----------------------------
+
+In :doc:`adding-a-template` we learned how to define a template.
+
+.. code-block:: xml
+	:linenos:
+
+	<?xml version="1.0" ?>
+	<template xmlns="http://schemas.sulu.io/template/template"
+    		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    		xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+		<key>default</key>
+
+		<view>ClientWebsiteBundle:templates:default</view>
+		<controller>SuluWebsiteBundle:Default:index</controller>
+		...
+	</template>
+
+
+In the page template the view could be set.
+
+
+Rendering the Content
+---------------------
+
+If you don't use your custom controller and modify the output the Sulu
+Controller renders, Sulu passes some default variables to Twig.
+
+
+Content
+^^^^^^^
+
+In the content everything you defined in your template is saved.
+If you got a title you could easily optain it from the content-var.
+
+.. code-block:: html
+
+	<title/>{{ content.title }}</title>
+	...
+	<h1>{{ content.title }}</title>
+
+
+Extension
+^^^^^^^^^
+
+In the extension var Sulu writes content from Sulu extensions. Typically stuff
+that is defined in separate Tabs in the Sulu content section.
+At the moment there is the SEO and the excerpt extension, that could be used.
+
+Here is an example how it could look like in the backend. Notice the `Excerpt &
+Categories` tab next to the SEO tab.
+
+.. figure:: ../../img/admin-extension-seo.png
+	:align: center
+
+You could include the SEO meta tags like this:
+
+.. code-block:: html
+
+	{{ sulu_meta_seo(extension, content) }}
+
+The excerpt is availaible in:
+
+.. code-block:: html
+
+	{{ extension.excerpt }}
+
+
+Navigation
+----------
+
+There is a Twig function that optains the menue.
+
+.. code-block:: html
+	:linenos:
+
+	<ul>
+		{% for item in sulu_navigation_root_tree('main') %}
+		<li>
+			<a href="{{ sulu_content_path(item.url) }}" title="{{ item.title }}">{{ item.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+
+Images
+^^^^^^
+
+If there are images defined in your template you could render them by using this code:
+
+.. code-block:: html
+	:linenos:
+
+	{% for image in content.images %}
+	<div>
+		<img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.name }}"/>
+		<p>{{ image.title }}</p>
+	</div>
+	{% endfor %}
+
+
+More examples
+-------------
+
+You could find more examples of how content could be accessed in our `example file`_.
+
+
+Default Template
+----------------
+
+Just have a look at our `default theme`_, that ships with our standard installation as long with our
+`default page templates`_ over at github.
+
+
+.. _default theme: https://github.com/sulu-io/sulu-standard/tree/develop/src/Client/Bundle/WebsiteBundle/Resources/themes/default
+.. _default page templates: https://github.com/sulu-io/sulu-standard/tree/develop/app/Resources/pages
+.. _example file: https://github.com/sulu-io/sulu-standard/blob/develop/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig

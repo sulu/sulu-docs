@@ -104,4 +104,6 @@ which builds the final URL with all the additional information required.
 For more and deeper information about twig there is the excellent `twig
 documentation`_.
 
+The next step is how to add localization to Sulu.
+
 .. _`twig documentation`: http://twig.sensiolabs.org/documentation

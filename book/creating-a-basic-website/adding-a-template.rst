@@ -1,6 +1,10 @@
 Adding a template
 =================
 
+After defining a webspace creating a template file is the next step towards
+a Sulu website. We'll learn about Content types and how a template definition
+should look like.
+
 In Sulu a template consists of multiple content types, whereby a content type
 describes the way the data is stored in the database and how to enter them in
 the administration interface. Pages in the Sulu content section will be based
@@ -10,6 +14,7 @@ On this page there are the available content types described, how to define
 these values in our template configuration file, what you should consider when
 creating the HTML templates, and finally how to connect the data from Sulu to
 the HTML template.
+
 
 Available content types
 -----------------------
@@ -58,8 +63,10 @@ interface, and the last one how the content is returned to the HTML template.
 |                      | to the page                                 | urls for every format                   |
 +----------------------+---------------------------------------------+-----------------------------------------+
 
+
 Add a template definition
 -------------------------
+
 To add a new template to your Sulu installation, you just create a new xml file
 in `app/Resources/pages` named by a unique template key. See the following
 file for an example of a template definition:
@@ -151,21 +158,7 @@ adding tables.
    Every template has to define a property named `title`, because it is used
    internally for generating URLs and storing.
 
-Build the HTML template
------------------------
-
-We recommend to build the HTML templates in a first draft with plain HTML and
-some dummy texts. That means absolutely no placeholders for template engines.
-This ensures that your HTML is working across all browsers (at least if you
-test it correctly), and it is easier to test, since there are guaranteed no
-errors caused by the some wrong template variables.
-
-Please make also sure that your HTML is valid, and use HTML tags in a semantic
-way, so that your website will achieve the best results in terms of search
-engine optimization.
-
-Create the data connection
---------------------------
+We've learned how to define the template. The next step is to write corresponding theme.
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations

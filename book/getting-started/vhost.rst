@@ -1,11 +1,19 @@
-Adding a vhost
-==============
+Configure your local Webserver
+==============================
 
-You need to configure a virtual host for your webserver in order to run Sulu.
+You need to configure a virtual host for your webserver in order to run a clean Sulu instance.
+If you've already done so, skip this section.
+
+.. note::
+  It is a good decision to create a virtual host for each of your Sulu projects.
+  They are separated by domain and you'll got full control on what you expose.
+
 Here is an example for Apache and Nginx.
 
 Apache 2.2
 ----------
+
+In your virtual hosts file you should configure something like:
 
 .. code-block:: apache
 
@@ -44,6 +52,8 @@ Apache 2.2
 
 Nginx
 -----
+
+The Nginx configuration could look something like.
 
 .. code-block:: nginx
 
@@ -98,4 +108,10 @@ Nginx
           fastcgi_param  HTTPS off;
       }
   }
+
+
+.. warning::
+  Be sure to also configure your local host-file.
+
+Now, your Sulu instance is ready.
 
