@@ -52,7 +52,7 @@ categories, tags and the cache.
 User Roles
 ^^^^^^^^^^
 
-There are several pre configured roles. The admin interface looks like this:
+You could define several roles. The admin interface looks like this:
 
 .. figure:: ../../img/admin-settings-userroles.png
 	:align: center
@@ -61,7 +61,7 @@ There are several pre configured roles. The admin interface looks like this:
 Categories
 ^^^^^^^^^^
 
-Content could be added to categories.
+You could categorize stuff with categories.
 
 .. figure:: ../../img/admin-settings-categories.png
 	:align: center
@@ -79,7 +79,7 @@ Sulu also got a tagging system.
 Snippets
 ^^^^^^^^
 
-A Snippet is a global piece of contant, that could be used in every webspace.
+A Snippet is a global piece of content, that could be used in every webspace.
 
 .. figure:: ../../img/admin-snippets.png
 	:align: center

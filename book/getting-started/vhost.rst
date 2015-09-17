@@ -1,12 +1,12 @@
 Configure your local Webserver
 ==============================
 
-You need to configure a virtual host for your webserver in order to run a clean Sulu instance.
-If you've already done so, skip this section.
+You need to configure a virtual host for your webserver in order to run a clean
+Sulu instance. If you've already done so, skip this section.
 
 .. note::
-  It is a good decision to create a virtual host for each of your Sulu projects.
-  They are separated by domain and you'll got full control on what you expose.
+    It is a good decision to create a virtual host for each of your Sulu projects.
+    They are separated by domain and you'll got full control on what you expose.
 
 Here is an example for Apache and Nginx.
 
@@ -111,7 +111,7 @@ The Nginx configuration could look something like.
 
 
 .. warning::
-  Be sure to also configure your local host-file.
+  Be sure to also configure your local host-file, if running Sulu locally.
 
 Now, your Sulu instance is ready.
 

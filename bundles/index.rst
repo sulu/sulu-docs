@@ -8,7 +8,7 @@ The Sulu code is structured in Symfony Bundles. Some of them are more important 
 .. toctree::
      :maxdepth: 2
 
-     admin/index.rst
+     admin/index
      http_cache
      security
      persistence

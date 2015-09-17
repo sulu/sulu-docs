@@ -4,10 +4,6 @@ Creating a Twig Template
 Twig is an awesome option for rendering HTML. It got some nice features like
 blocks and inheritance. That's why we use and love Twig.
 
-.. note::
-	It is also possible to use plain PHP or any other template lannguage like Smarty,
-	but we strongly recommend Twig.
-
 
 Build the HTML template
 -----------------------
@@ -29,19 +25,19 @@ Which Twig-Template is used?
 In :doc:`adding-a-template` we learned how to define a template.
 
 .. code-block:: xml
-	:linenos:
+    :linenos:
 
-	<?xml version="1.0" ?>
-	<template xmlns="http://schemas.sulu.io/template/template"
-    		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    		xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-		<key>default</key>
+        <key>default</key>
 
-		<view>ClientWebsiteBundle:templates:default</view>
-		<controller>SuluWebsiteBundle:Default:index</controller>
-		...
-	</template>
+        <view>ClientWebsiteBundle:templates:default</view>
+        <controller>SuluWebsiteBundle:Default:index</controller>
+        ...
+    </template>
 
 
 In the page template the view could be set.
@@ -62,9 +58,7 @@ If you got a title you could easily optain it from the content-var.
 
 .. code-block:: html
 
-	<title/>{{ content.title }}</title>
-	...
-	<h1>{{ content.title }}</title>
+    <h1>{{ content.title }}</title>
 
 
 Extension
@@ -73,72 +67,91 @@ Extension
 In the extension var Sulu writes content from Sulu extensions. Typically stuff
 that is defined in separate Tabs in the Sulu content section.
 At the moment there is the SEO and the excerpt extension, that could be used.
+This extensions are available on every page no matter which template you chose.
 
-Here is an example how it could look like in the backend. Notice the `Excerpt &
-Categories` tab next to the SEO tab.
+Here is an example how it could look like in the backend. Notice the 
+`Excerpt & Categories` tab next to the SEO tab.
 
 .. figure:: ../../img/admin-extension-seo.png
-	:align: center
+    :align: center
 
 You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-	{{ sulu_meta_seo(extension, content) }}
+    {{ sulu_seo(extension, content) }}
 
 The excerpt is availaible in:
 
 .. code-block:: html
 
-	{{ extension.excerpt }}
+    {{ extension.excerpt }}
 
 
 Navigation
 ----------
 
-There is a Twig function that optains the menue.
+There is a Twig function that optains the menue. You need to pass the key of the
+navigation context you defined in your webspace (:doc:`setup-a-webspace`).
+While etiting a page the navigation context coul be defined in 
+*settings > Navigation conext*. Here we'll render the main navigation.
 
 .. code-block:: html
-	:linenos:
+    :linenos:
 
-	<ul>
-		{% for item in sulu_navigation_root_tree('main') %}
-		<li>
-			<a href="{{ sulu_content_path(item.url) }}" title="{{ item.title }}">{{ item.title }}</a>
-		</li>
-		{% endfor %}
-	</ul>
+    <ul>
+        {% for item in sulu_navigation_root_tree('main') %}
+        <li>
+            <a href="{{ sulu_content_path(item.url) }}" 
+                title="{{ item.title }}">{{ item.title }}</a>
+            {% if item.children|length > 0 %}
+                <ul>
+                {% for child in item.children %}
+                    <li><a href="{{ sulu_content_path(child.url) }}"
+                            title="{{ child.title }}">
+                        {{ child.title }}
+                    </a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
 
 
 Images
 ^^^^^^
 
-If there are images defined in your template you could render them by using this code:
+If there are images defined in your template you could render them by using this
+code:
 
 .. code-block:: html
-	:linenos:
+    :linenos:
 
-	{% for image in content.images %}
-	<div>
-		<img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.name }}"/>
-		<p>{{ image.title }}</p>
-	</div>
-	{% endfor %}
+    {% for image in content.images %}
+    <div>
+        <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.name }}"/>
+        <p>{{ image.title }}</p>
+    </div>
+    {% endfor %}
 
+Image formats need to be defined in the `image_formats.xml`_ in your config.
 
 More examples
 -------------
 
-You could find more examples of how content could be accessed in our `example file`_.
+You could find more examples of how content could be accessed in our 
+`example file`_.
 
 
 Default Template
 ----------------
 
-Just have a look at our `default theme`_, that ships with our standard installation as long with our
-`default page templates`_ over at github.
+Just have a look at our `default theme`_, that ships with our standard 
+installation as long with our `default page templates`_ over at github.
 
 
-.. _default theme: https://github.com/sulu-io/sulu-standard/tree/develop/src/Client/Bundle/WebsiteBundle/Resources/themes/default
-.. _default page templates: https://github.com/sulu-io/sulu-standard/tree/develop/app/Resources/pages
-.. _example file: https://github.com/sulu-io/sulu-standard/blob/develop/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
+.. _default theme: https://github.com/sulu-io/sulu-standard/tree/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default
+.. _default page templates: https://github.com/sulu-io/sulu-standard/tree/master/app/Resources/pages
+.. _example file: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
+.. _image_formats.xml: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml

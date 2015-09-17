@@ -1,8 +1,8 @@
 Setup a website!
 ================
 
-On this page you'll learn how to configure your website. You'll define spaces and languages,
-create templates, set the correct permissions and create a user. 
+On this page you'll learn how to configure your website. You'll define webspaces
+and languages, create templates, set the correct permissions and create a user. 
 
 
 Webspaces

@@ -18,4 +18,4 @@ write twig templates and get a little bit into smart content and localization.
     adding-localizations
 
 At first we'll have another look at the content architecture on a technical level
-and afterwards will create stuff.
+and afterwards we will create stuff.

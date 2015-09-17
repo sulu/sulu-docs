@@ -18,7 +18,8 @@ be used as a CMS. In this documentation we will focus mainly on the usage as a
 Content Management System.
 
 Sulu is capable of managing the content of websites and fully support the
-4-step "Content Life Cycle" (http://en.wikipedia.org/wiki/Web_content_lifecycle):
+4-step "Content Life Cycle" 
+(http://en.wikipedia.org/wiki/Web_content_lifecycle):
 
 1. Content creation/collection
 2. Revision/approval

@@ -4,14 +4,14 @@ How is Sulu structured?
 This graphic shows how the core of Sulu is setup.
 
 .. image:: ../../img/system-architecture.png
-	:align: center
-	:alt: Sulu System Architecture
+    :align: center
+    :alt: Sulu System Architecture
 
 
 Data
 ----
 
-Symfony uses PHPCR, Doctrine and MySQL, MariaDB or Jackrabbitt.
+Symfony uses PHPCR, Doctrine and MySQL, MariaDB or Jackrabbit.
 
 
 Basic Frameworks

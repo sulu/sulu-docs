@@ -100,5 +100,3 @@ should load the Sulu backend. More information on how to configure your local we
 .. _Apache Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Composer:  https://getcomposer.org/
 .. _MassiveBuildBundle: http://github.com/massiveart/MassiveBuildBundle
-
-
