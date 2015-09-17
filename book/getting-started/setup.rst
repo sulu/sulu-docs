@@ -9,7 +9,7 @@ localizations. For the start you can just copy the delivered file:
 
 .. code-block:: bash
 
-    cp app/Resources/webspaces/sulu.io.xml.dist app/Resources/webspaces/sulu.io.xmlre
+    cp app/Resources/webspaces/sulu.io.xml.dist app/Resources/webspaces/sulu.io.xml
 
 Basically you can name the file however you want, as long as it is ending with
 `.xml`. After copying you should adjust the file according to you installation.
