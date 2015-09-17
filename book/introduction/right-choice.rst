@@ -12,7 +12,7 @@ with yes.
 	layer?
 * Do you need a clean, solid development setup?
 * Default solutions won't fit the requirements?
-* You want to create a mondern website based on modern technology?
+* You want to create a modern website based on modern technology?
 * Do you need total freedom over your frontend code?
 * Does your project require multiple languages?
 * Should there be several portals?

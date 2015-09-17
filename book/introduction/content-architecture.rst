@@ -33,7 +33,7 @@ Page
 ----
 
 As already heard in :doc:`backend-template` pages are configured in templates. 
-They are created in webspaces and represent an entry in a certain menue. These 
+They are created in webspaces and represent an entry in a certain menu. These 
 pages are contained within your webspace. Once you got your 
 :doc:`../getting-started/setup` right, you could easily explore the Sulu default
 structure in the backend.
@@ -72,7 +72,7 @@ be shown on several pages in several webspaces.
 Contacts
 --------
 
-Contacts reperesent personal information. They are also used to manage Sulu 
+Contacts represent personal information. They are also used to manage Sulu 
 Users itself.
 
 
@@ -86,5 +86,5 @@ you've already coded. Integrate them.
 A more detailled documentation could be found in the section 
 :doc:`../creating-a-basic-website/about-the-sulu-content-architecture`.
 
-Now you are really deep into the concepts of Sulu. So the next steop is to get 
+Now you are really deep into the concepts of Sulu. So the next step is to get 
 started. :doc:`../getting-started/index`

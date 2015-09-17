@@ -90,9 +90,9 @@ should be fine for simple installations.
     * - phpcr_cache
       - PHPCR caching type
 
-Now `sulu.local/admin <sulu.local/admin>`_ - or whatever url your webserver is running on - 
-should load the Sulu backend. More information on how to configure your local webserver: 
-:doc:`vhost`. Congratulations.
+Now `sulu.local/admin <sulu.local/admin>`_ - or whatever url your webserver
+is running on - should load the Sulu backend. More information on how to 
+configure your local webserver: :doc:`vhost`. Congratulations.
 
 
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit

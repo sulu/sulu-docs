@@ -76,7 +76,7 @@ be explained in the following paragraphs.
 As you probably already have encountered, the root tag for our webspace
 definition is `webspace`. Afterwards you see a name, which is displayed in the
 administration interface. But even more important is the key, which is used
-internally to generate some files and define some paths. Therfore it is really
+internally to generate some files and define some paths. Therefore it is really
 important that the webspace key is unique across all webspaces in a single
 installation.
 
@@ -85,9 +85,9 @@ Localizations
 -------------
 
 In the `localizations`-tag you can list all the available localizations in this
-webspace. In the example we are simply adding the english language, but you can
+webspace. In the example we are simply adding the English language, but you can
 also define country specific language if you add a country attribute to the
-localization, so for instance the following tag would add austrian german to
+localization, so for instance the following tag would add Austrian German to
 the available localizations:
 
 .. code-block:: xml
@@ -123,11 +123,11 @@ Portals
 A webspace can itself consist of multiple portals. In our simple configuration
 file we make use of only one portal. The idea is that the same content can be
 shared among different portals and URLs. The portals can then also define for
-themeselve in which localization they publish the content, so that you can
+themselves in which localization they publish the content, so that you can
 spread different localizations over different URLs.
 
 Our sample file defines just one portal, which includes a `name` and a `key`
-just as the webspace, wherby the key for the portal hast to be unique for the
+just as the webspace, whereby the key for the portal hast to be unique for the
 entire installation, not only within this webspace.
 
 Then the `strategy` for the `resource-locator` is defined, which influences

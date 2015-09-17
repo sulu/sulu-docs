@@ -54,7 +54,7 @@ Content
 ^^^^^^^
 
 In the content everything you defined in your template is saved.
-If you got a title you could easily optain it from the content-var.
+If you got a title you could easily obtain it from the content-var.
 
 .. code-block:: html
 
@@ -81,7 +81,7 @@ You could include the SEO meta tags like this:
 
     {{ sulu_seo(extension, content) }}
 
-The excerpt is availaible in:
+The excerpt is available in:
 
 .. code-block:: html
 
@@ -91,10 +91,10 @@ The excerpt is availaible in:
 Navigation
 ----------
 
-There is a Twig function that optains the menue. You need to pass the key of the
+There is a Twig function that obtains the menu. You need to pass the key of the
 navigation context you defined in your webspace (:doc:`setup-a-webspace`).
-While etiting a page the navigation context coul be defined in 
-*settings > Navigation conext*. Here we'll render the main navigation.
+While editing a page the navigation context could be defined in 
+*settings > Navigation context*. Here we'll render the main navigation.
 
 .. code-block:: html
     :linenos:

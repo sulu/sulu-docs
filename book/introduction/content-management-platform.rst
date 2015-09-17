@@ -32,7 +32,7 @@ strengths are the support of multi-languages and multi-site structures with
 shareable content.
 
 Sulu was designed to create webpages with high performance in the current state
-of the internet. This means a high focus on web standards (as described in the
+of the Internet. This means a high focus on web standards (as described in the
 W3C standards http://www.w3.org/standards/) and search engine optimization.
 
 Although Sulu focuses on more complex websites it still provides an UI that is

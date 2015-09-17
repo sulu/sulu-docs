@@ -134,8 +134,8 @@ idea on how they look and what they might do for you.
     cp app/Resources/pages/overview.xml.dist app/Resources/pages/overview.xml
     cp app/Resources/snippets/default.xml.dist app/Resources/snippets/default.xml
 
-With this configuration you will be able to create default pages, just
-containg the most basic content types (a title, an URL, links to other pages,
+With this configuration you will be able to create default pages, which just
+contain the most basic content types (a title, an URL, links to other pages,
 images, and a text editor), and overview pages, which can aggregate multiple
 pages. We also copied a default snippet. Feel free to create your own custom
 templates.
@@ -201,7 +201,7 @@ execute the following command:
     all available build targets.
 
 .. warning::
-    The name of the build targets should not be confused with the symfony
+    The name of the build targets should not be confused with the Symfony
     environments, although they are most likely to be executed in the ones
     named after them.
 
@@ -226,8 +226,10 @@ the creation in an interactive manner:
     $ app/console sulu:security:user:create
 
 Just follow the instructions. Afterwards you'll be able to login into the Sulu
-Backend, which is accessible by on one of your configured URLs on the site `/admin`.
+Backend, which is accessible by on one of your configured URLs on the site 
+`/admin`.
  
 .. _`MassiveBuildBundle`: https://github.com/massiveart/MassiveBuildBundle
 
-So your basic setup is almost ready. Next we'll take a quick tour through the admin interface.
+So your basic setup is almost ready. Next we'll take a quick tour through the 
+admin interface.

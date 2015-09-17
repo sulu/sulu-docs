@@ -19,9 +19,9 @@ the HTML template.
 Available content types
 -----------------------
 
-The following list shows the content types delivered by a standard sulu
+The following list shows the content types delivered by a standard Sulu
 installation. The first column shows the key, which acts as an unique
-identifier. The second one describeds the appearance in the administration
+identifier. The second one describes the appearance in the administration
 interface, and the last one how the content is returned to the HTML template.
 
 +----------------------+---------------------------------------------+-----------------------------------------+
@@ -31,7 +31,7 @@ interface, and the last one how the content is returned to the HTML template.
 +----------------------+---------------------------------------------+-----------------------------------------+
 | text_area            | text area                                   | text                                    |
 +----------------------+---------------------------------------------+-----------------------------------------+
-| text_editor          | text editor with formatting capabalities    | formatted text                          |
+| text_editor          | text editor with formatting capabilities    | formatted text                          |
 +----------------------+---------------------------------------------+-----------------------------------------+
 | color                | color picker                                | text                                    |
 +----------------------+---------------------------------------------+-----------------------------------------+
@@ -158,7 +158,8 @@ adding tables.
    Every template has to define a property named `title`, because it is used
    internally for generating URLs and storing.
 
-We've learned how to define the template. The next step is to write corresponding theme.
+We've learned how to define the template. The next step is to write 
+corresponding theme.
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations

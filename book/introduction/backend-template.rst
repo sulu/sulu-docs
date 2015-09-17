@@ -15,7 +15,7 @@ content will be much easier to mange, the performance of your system will be
 optimized and your website will be more accessible for users,  search engines
 or third party applications.
 
-Here are some of the spearations we did.
+Here are some of the separations we did.
 
 Template vs. Theme
 ------------------
@@ -25,5 +25,5 @@ The Template defines how the administration interface of the page looks and
 how the data is passed to the theme. The **Theme** itself is - by default -
 a set of **Twig Templates**.
 
-We already heard some content sepcific terms on this page. On the next page
-we'll have detailled look on the :doc:`content-architecture`.
+We already heard some content specific terms on this page. On the next page
+we'll have detailed look on the :doc:`content-architecture`.
