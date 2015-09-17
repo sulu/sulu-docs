@@ -21,7 +21,7 @@ Configure a smart content
 The smart content is configured in the template definition. The template
 definition is already described in :doc:`adding-a-template`. All that has to be
 done is to add another property for the smart content. This configuration can
-look something like the following typical xml fragment:
+look something like the following typical XML fragment:
 
 .. code-block:: xml
 
@@ -50,7 +50,7 @@ look something like the following typical xml fragment:
         </params>
     </property>
 
-In this xml fragment a ``smart_content`` property named ``pages`` is defined.
+In this XML fragment a ``smart_content`` property named ``pages`` is defined.
 For pages there is also the possibility to define a ``properties`` parameter,
 as you can see in the previous fragment. In this collection property can be
 defined which properties of the page should be returned in the array passed to
@@ -94,7 +94,7 @@ The ``pages`` in ``content.pages`` refers to the name of the property in the
 template definition. Every page being returned by the filter described in the
 smart content has its own array in this variable, so that we can iterate over
 it. In the ``view`` variable the configuration of the smart content is
-accessible, which can be used e.g. as a css class in this example. This way the
+accessible, which can be used e.g. as a CSS class in this example. This way the
 one or two column layout can be created by using CSS.
 
 The ``page`` loop variable can then be used to access the actual content from
@@ -103,5 +103,7 @@ which builds the final URL with all the additional information required.
 
 For more and deeper information about twig there is the excellent `twig
 documentation`_.
+
+The next step is how to add localization to Sulu.
 
 .. _`twig documentation`: http://twig.sensiolabs.org/documentation

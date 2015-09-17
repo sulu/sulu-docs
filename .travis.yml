@@ -6,4 +6,3 @@ python:
 install: "pip install -q --use-mirrors Sphinx==1.1.3"
 
 script: sphinx-build -nW -b html -d _build/doctrees . _build/html
-
