@@ -1,7 +1,9 @@
 Cookbook
 ========
 
-Awesome recipies for lunch
+Here are some awesome recepies for lunch. The Cookbook covers some advanced topics which each covers a very special problem. Create your very own menu with our recepies.
+
+**Our recepies**
 
 .. toctree::
     :maxdepth: 1
@@ -16,3 +18,5 @@ Awesome recipies for lunch
     integrating-custom-filters
     extend-entities
     using-elasticsearch
+
+It is possible to work through the recepies, altought most of the people will pick the ones, which are most similar to their own tasks. We're open to `suggestions <http://sulu.io/en/contact>`_.

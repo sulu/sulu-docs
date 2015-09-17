@@ -1,8 +1,13 @@
 About the Sulu Content Architecture
 ===================================
 
+We already heard something about :doc:`../introduction/content-architecture`
+in the introduction. 
+Now we are starting to code will dig a little bit deeper.
+
+
 Sulu uses `PHPCR`_ as a persistence layer, and therefore follows its structure.
-Additionally Sulu adds another layer called Webspaces, which have already been
+Additionally Sulu adds another layer called webspaces, which have already been
 explained in the section about the :doc:`../introduction/components`. These
 webspaces contain an arbitrary number of pages, which are ordered in a tree in
 a hierarchical way. Each of these pages can contain content in many different
@@ -34,3 +39,4 @@ for each country, but the rest of the page should be exactly the same.
 
 .. _PHPCR: http://phpcr.github.io/
 
+With the content architecture on our mind we'll create a webspace.

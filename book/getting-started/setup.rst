@@ -1,10 +1,15 @@
-Setup
-=====
+Setup a website!
+================
+
+On this page you'll learn how to configure your website. You'll define webspaces
+and languages, create templates, set the correct permissions and create a user. 
+
 
 Webspaces
 ---------
+
 The content management part of Sulu is built upon Webspaces. Each of these
-webspaces configure a content tree, which can be managed in different
+webspaces configure a content tree, which can be managed with different
 localizations. For the start you can just copy the delivered file:
 
 .. code-block:: bash
@@ -110,14 +115,18 @@ Sulu needs these URLs in order to match the given requests to a certain portal
 and webspace. Otherwise it would not be possible to know the content of which
 webspace should be loaded.
 
+
 Templates
 ---------
-All created pages are based on templates, which have also to be configured.
+
+All created pages are based on templates, which need to be configured.
 
 So you need some templates to add pages to the system. Therefore, you have to add
 some XML-files to the specified folder. These files describe the structure of
 the pages, i.e. what kind of content the pages can consist of. For the start
-you can just copy some of the delivered files:
+you can just copy some of the delivered files. If you want to learn more
+about the templates browsing through the copied file might give you a good 
+idea on how they look and what they might do for you.
 
 .. code-block:: bash
     
@@ -125,10 +134,12 @@ you can just copy some of the delivered files:
     cp app/Resources/pages/overview.xml.dist app/Resources/pages/overview.xml
     cp app/Resources/snippets/default.xml.dist app/Resources/snippets/default.xml
 
-With this configuration you will be able to create default pages, just
-containg the most basic content types (a title, an URL, links to other pages,
+With this configuration you will be able to create default pages, which just
+contain the most basic content types (a title, an URL, links to other pages,
 images, and a text editor), and overview pages, which can aggregate multiple
-pages.
+pages. We also copied a default snippet. Feel free to create your own custom
+templates.
+
 
 Complete the installation
 -------------------------
@@ -190,9 +201,10 @@ execute the following command:
     all available build targets.
 
 .. warning::
-    The name of the build targets should not be confused with the symfony
+    The name of the build targets should not be confused with the Symfony
     environments, although they are most likely to be executed in the ones
     named after them.
+
 
 Create a new user
 -----------------
@@ -214,6 +226,10 @@ the creation in an interactive manner:
     $ app/console sulu:security:user:create
 
 Just follow the instructions. Afterwards you'll be able to login into the Sulu
-Backend, which is accessible by on one of your configured URLs on the site `/admin`.
+Backend, which is accessible by on one of your configured URLs on the site 
+`/admin`.
  
 .. _`MassiveBuildBundle`: https://github.com/massiveart/MassiveBuildBundle
+
+So your basic setup is almost ready. Next we'll take a quick tour through the 
+admin interface.

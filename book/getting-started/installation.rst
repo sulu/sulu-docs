@@ -1,6 +1,9 @@
 Installation
 ============
 
+After working through this page you'll have a running Sulu instance. At first we'll
+load Sulu and afterwards dependent packages.
+
 Get the code
 ------------
 
@@ -86,6 +89,11 @@ should be fine for simple installations.
       - The password for phpcr
     * - phpcr_cache
       - PHPCR caching type
+
+Now `sulu.local/admin <sulu.local/admin>`_ - or whatever url your webserver
+is running on - should load the Sulu backend. More information on how to 
+configure your local webserver: :doc:`vhost`. Congratulations.
+
 
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal
