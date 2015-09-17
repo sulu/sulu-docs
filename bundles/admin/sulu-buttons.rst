@@ -54,19 +54,20 @@ The aura-extension in the admin-bundle extends every sandbox of a javascript-com
 .. code-block:: javascript
 
     var generatedButtons = this.sandbox.sulu.buttons.get({
-       edit: {},
-       save: {
-           options: {
-               callback: function(){//do something//}
-           }
-       },
-       settings: {
-           options: {
-               dropdownItems: {
-                   delete: {}
-               }
-           }
-       }
+        edit: {},
+        save: {
+            options: {
+                callback: function() {//do something//}
+                }
+            },
+            settings: {
+                options: {
+                    dropdownItems: {
+                        delete: {}
+                    }
+                }
+            }
+        }
     });
 
 The ``sulu.buttons.get`` method returns an array of buttons which meet the specification of the husky-framework. In
@@ -80,22 +81,22 @@ use of the ``parent`` property;
 .. code-block:: javascript
 
     var generatedButtons = this.sandbox.sulu.buttons.get({
-       settings1: {
-           parent: 'settings'
-           options: {
-               dropdownItems: {
-                   delete: {}
-               }
-           }
-       },
-       settings2: {
-           parent: 'settings'
-           options: {
-               dropdownItems: {
-                   table: {}
-               }
-           }
-       }
+        settings1: {
+            parent: 'settings',
+            options: {
+                dropdownItems: {
+                    delete: {}
+                }
+            }
+        },
+        settings2: {
+            parent: 'settings',
+            options: {
+                dropdownItems: {
+                    table: {}
+                }
+            }
+        }
     });
 
 Add your own buttons
