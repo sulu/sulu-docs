@@ -123,3 +123,144 @@ automatically takes care of the permission check and returns a page with a
 status code of `403` in case the permissions for the currently logged in user
 where not sufficient.
 
+Protecting specific objects
+---------------------------
+
+For some parts of your application you might want to protect specific objects.
+This section will describe how this is done with the possibilities Sulu offers.
+
+Adding the permission tab to your form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First of all you have to add the permission tab to your form to enable the user
+to set up the permissions accordingly. The permission tab presents a list of
+the available user roles and a few permission icons, which can be activated.
+
+Therefore the probably already existing `ContentNavigationProvider` has to be
+extended by the permission tab:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Sulu\Bundle\MediaBundle\Admin;
+
+    use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationItem;
+    use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationProviderInterface;
+    use Sulu\Bundle\MediaBundle\Api\Collection;
+    use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
+
+    class ContentNavigationProvider implements ContentNavigationProviderInterface
+    {
+        private $securityChecker;
+
+        public function __construct(SecurityCheckerInterface $securityChecker)
+        {
+            $this->securityChecker = $securityChecker;
+        }
+
+        public function getNavigationItems(array $options = [])
+        {
+            // also add your other ContentNavigationItems here
+
+            $navigation = [];
+
+            $securityContext = 'sulu.acme.example';
+
+            if ($this->securityChecker->hasPermission($securityContext, 'security')) {
+                $permissions = new ContentNavigationItem('Permissions');
+                $permissions->setAction('permissions');
+                $permissions->setDisplay(['edit']);
+                $permissions->setComponent('permission-tab@sulusecurity');
+                $permissions->setComponentOptions(
+                    [
+                        'display' => 'form',
+                        'type' => Example::class,
+                        'securityContext' => $securityContext,
+                    ]
+                );
+
+                $navigation[] = $permissions;
+            }
+
+            return $navigation;
+        }
+    }
+
+The :doc:`using-tab-navigation` explains this code in more detail. The only
+important method call here is `setComponentOptions`, the rest can stay widely
+the same over all bundles (of course you can change the other configuration as
+well as described in :doc:`using-tab-navigation`).
+
+In `setComponentOptions` the `type` of the object to secure and the required
+security context are passed. For the type it is a good idea to use the class
+name of the entity as shown in the example. The security context is required to
+check if the current user has the permission to change the security settings in
+the given context.
+
+After this addition the permission tab should already be visible in the edit
+form.
+
+Configure the controller
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The second part is to implement the `SecuredObjectControllerInterface` in the
+Controller handling the specific type of entities:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Acme\Bundle\ExampleBundle\Controller;
+
+    use FOS\RestBundle\Routing\ClassResourceInterface;
+    use Sulu\Component\Security\Authorization\AccessControl\SecuredObjectControllerInterface;
+    use Sulu\Component\Security\SecuredControllerInterface;
+    use Symfony\Component\HttpFoundation\Request;
+
+    class ExampleController
+        implements ClassResourceInterface, SecuredControllerInterface, SecuredObjectControllerInterface
+    {
+        public function cgetAction()
+        {
+            // code for your get action
+        }
+
+        public function postAction()
+        {
+            // code for your post action
+        }
+
+        // ...
+
+        public function getLocale(Request $request)
+        {
+            return $request->get('locale');
+        }
+
+        public function getSecurityContext()
+        {
+            return 'sulu.acme.example';
+        }
+
+        public function getSecuredClass()
+        {
+            return Example::class;
+        }
+
+        public function getSecuredObjectId(Request $request)
+        {
+            return $request->get('id');
+        }
+    }
+
+The `SecuredObjectControllerInterface` required three different methods. The
+`getLocale` method is the same as in the `SecuredControllerInterface`, and the
+implementation can be shared. The `getSecuredClass` method has to return the
+same identifier for the type of object as used in the
+`ContentNavigationProvider`. Finally the `getSecuredObjectId` receives the
+request object, and has to return the id of the object from it.
+
+The rest of the work will be done by the `SuluSecurityListener` in the same way
+as for the check of the security contexts.
+

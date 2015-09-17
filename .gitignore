@@ -1,3 +1,6 @@
 _build/
-.idea/
+
+# IntelliJ IDEA
+*.iml
+.idea
 sulu-docs.iml
