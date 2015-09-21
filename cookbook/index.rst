@@ -3,6 +3,9 @@ Cookbook
 
 Here are some awesome recepies for lunch. The Cookbook covers some advanced topics which each covers a very special problem. Create your very own menu with our recepies.
 
+.. figure:: ../img/mrsulu-cooks.jpg
+    :align: center
+
 **Our recepies**
 
 .. toctree::

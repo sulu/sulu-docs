@@ -8,8 +8,8 @@ Sulu is the right choice when you can answer **some** of the following questions
 with yes.
 
 * Do you want to work with the Symfony stack?
-* You got a running app based on Symfony and want to add a content management
-	layer?
+* You got a running app based on Symfony and want to add a content management 
+  layer?
 * Do you need a clean, solid development setup?
 * Default solutions won't fit the requirements?
 * You want to create a modern website based on modern technology?

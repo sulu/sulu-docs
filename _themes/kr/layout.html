@@ -1,0 +1,41 @@
+{%- extends "basic/layout.html" %}
+{%- block extrahead %}
+  {{ super() }}
+  {% if theme_touch_icon %}
+    <link rel="apple-touch-icon" href="{{ pathto('_static/' ~ theme_touch_icon, 1) }}" />
+  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/b2e46ddf-f8ef-4539-8184-92a17cb0fb5e.css">
+{% endblock %}
+
+{% block sidebartoc %}
+  {% set toctree = toctree(maxdepth=4, collapse=true, includehidden=false, titles_only=true) %}
+  <div id="logo"><a href="http://docs.sulu.io"><img src="{{ pathto('_static/sulu-logo.png', 1) }}" class="logo" /></a></div> 
+  <h3>Table of Contents</h3>
+  {% if toctree %}
+      {{ toctree }}
+  {% else %}
+      <!-- Local TOC -->
+      <div class="local-toc">{{ toc }}</div>
+  {% endif %}
+{% endblock %}
+{%- block footer %}
+    <div class="footer">
+    </div>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-46229871-4']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga2.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script> 
+{%- endblock %}

@@ -10,19 +10,21 @@ Be sure to visit our `website`_. There's a lot of information about Sulu and how
 
 Sulu aims to manage **business content** in a **beautiful interface** based on **solid, extendable state of the art technology**.
 
+.. figure:: img/mrsulu-presents.jpg
+	:align: center
+
 
 What's in our documentation?
 ============================
 
-+-----------------------+---------------------------+
-|.. toctree::           |.. toctree::               |
-|   :maxdepth: 2        |   :maxdepth: 1            |
-|                       |                           |
-|   book/index          |   cookbook/index          |
-|                       |   reference/index         |
-|                       |   bundles/index           |
-|                       |   developer/index         |
-+-----------------------+---------------------------+
+.. toctree::
+   :maxdepth: 2
+
+   book/index
+   cookbook/index
+   reference/index
+   bundles/index
+   developer/index
 
 If you got any questions, feel free to `contact us`_. We are more than happy to help.
 
