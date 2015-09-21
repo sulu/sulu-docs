@@ -1,4 +1,4 @@
-How is Sulu structured?
+How Sulu is structured?
 =======================
 
 This graphic shows how the core of Sulu is setup.

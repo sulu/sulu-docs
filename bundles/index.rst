@@ -3,6 +3,9 @@ Bundles
 
 The Sulu code is structured in Symfony Bundles. Some of them are more important to developers who work with Sulu than others. In this documentation we documented the most important ones.
 
+.. figure:: ../img/mrsulu-train.jpg
+	:align: center
+
 **We documented the following bundles**
 
 .. toctree::
