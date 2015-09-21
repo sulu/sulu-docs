@@ -382,9 +382,14 @@ a:hover tt {
     background: #EEE;
 }
 
+@media screen and (min-width: 871px) {
+    div.body h1:first-child {
+        font-size: 39px;
+        padding-top: 134px;
+    }
+}
 
 @media screen and (max-width: 870px) {
-
     div.sphinxsidebar {
         display: none;
     }
