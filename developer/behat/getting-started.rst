@@ -69,13 +69,6 @@ add the ``wd_host`` option as follows:
                         selenium2:
                             wd_host: "http://localhost:8643/wd/hub"
 
-Sauce Labs
-~~~~~~~~~~
-
-Our continuous integration system will run the tests on the Sauce Labs
-service. See :doc:`sauce-labs` to find out how to run them yourself or for
-more information.
-
 Running the tests
 -----------------
 
@@ -89,14 +82,14 @@ Where ``<profile>`` is one of:
 
 - **selenium**: Tests on your local machine via Selenium using a real browser
   above)
-- **sauce_labs**: Run the tests on Sauce Labs (see :doc:`sauce-labs`).
+- **travis**: Run configuration for travis
 
 .. note::
 
     If you want to run the tests on your local machine with the default
     configuration you have to make sure that a Sulu instance is running on
     `127.0.0.1:8001`. You can use the command `./app/console server:run
-    127.0.0.1:8001 --router=app/config/router_admin.php` for that.
+    -r app/config/router_admin.php 127.0.0.1:8001` for that.
 
 The tests are split up into a number of *suites*. There is one suite for each
 bundle, named after the bundle in lowercase, for example ``SuluContactBundle``
