@@ -47,6 +47,8 @@ MediaBundle
 .. toctree::
 
     functions/sulu_get_media_url
+    functions/sulu_resolve_media
+    functions/sulu_resolve_medias
 
 TagBundle
 ---------
