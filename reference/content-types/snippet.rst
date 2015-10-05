@@ -19,7 +19,7 @@ Example
 
 .. code-block:: xml
 
-    <property name="snippets" type="snippet"/>
+    <property name="snippets" type="snippet">
         <meta>
             <title lang="en">Snippets</title>
         </meta>

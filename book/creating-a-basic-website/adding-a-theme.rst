@@ -1,8 +1,13 @@
 Adding a theme
 ==============
 
+In the theme we'll define how things look to the user. You know HTML, CSS, JS
+and such stuff.
+
+
 What is a theme
 ---------------
+
 A theme defines the way the content from Sulu is presented on the website. In
 general it's not more than a simple folder containing all the required twig
 templates, images, scripts, fonts and all the other assets you want to use in
@@ -13,13 +18,14 @@ decide which theme to use, by a simple key in the webspace configuration file
 already described in :doc:`setup-a-webspace`. This means that it is also very
 easy to switch between different themes.
 
+
 Create a theme
 --------------
+
 Creating a theme is as easy as creating a new folder in the `Resources/themes/`
 folder of your bundle with the name of the new theme. Afterwards you have to
 fill this folder with all the used templates in the webspace. These templates
 go into another subfolder in your theme, which you have to reference later. We
-a
 recommend to name this folder `templates`. It is also recommended to create
 a folder `views` for more general templates, like the master template, an
 error page, etc., and a folder `blocks` for reusable templates, like the seo
@@ -28,8 +34,10 @@ information.
 For more concrete information about the structure of these templates you should
 check the :doc:`adding-a-template`.
 
+
 Enable the theme
 ----------------
+
 For resolving the templates we are using the `LiipThemeBundle`_, which requires
 you to register your themes. You can do that in your application configuration
 located at `app/config/config.yml`. Add the name of your theme folder to the
@@ -40,8 +48,10 @@ following list:
     liip_theme:
         themes: ["default", "your-new-shiny-theme"]
 
+
 Configure image formats
 -----------------------
+
 If you are using images, you probably also care about the available image
 formats. Sulu also supports you with that issue. You can define different image
 formats, which Sulu will then create for every uploaded image. This generation
@@ -94,6 +104,10 @@ The next table shows the standard commands available with its parameters.
 |         |                                   |
 |         | h: the height of the new image    |
 +---------+-----------------------------------+
+
+
+With the theme we got the container for our Twig-templates. That's what we'll
+do next: Writing awesome Twig files.
 
 .. _LiipThemeBundle: https://github.com/liip/LiipThemeBundle
 

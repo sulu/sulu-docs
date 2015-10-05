@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Sulu 2.0'
+project = 'Sulu'
 copyright = '2015, Sulu Team'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -263,3 +263,14 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# import os
+# on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+# if not on_rtd:  # only import and set the theme if we're building docs locally
+#     import sphinx_rtd_theme
+#     html_theme = 'sphinx_rtd_theme'
+#     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+sys.path.append(os.path.abspath('_themes'))
+html_theme_path = ['_themes']
+html_theme = 'kr'

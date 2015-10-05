@@ -16,10 +16,10 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - tables
+    * - table
       - boolean
       - Adds tools for creating tables to the text editor
-    * - links
+    * - link
       - boolean
       - Adds buttons for creating links to the text editor
     * - scripts
@@ -37,11 +37,21 @@ Parameters
     * - enterMode
       - string
       - Set what happens on enter allowed ``P``, ``BR`` or ``DIV``
-    * - pasteFromWord
+    * - paste_from_word
       - boolean
       - Adds a button to paste content from word to the text editor. If you add
         text via this button, some characters which could cause troubles are
         removed.
+    * - height
+      - integer
+      - Sets the initialize height of the texteditor.
+    * - max_height
+      - integer
+      - Sets the maximum height to which the texteditor can grow.
+      
+Texteditor supports also all `ckeditor config`_ parameters in snakecase.
+
+.. _ckeditor config: http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg
 
 Example
 -------
@@ -54,6 +64,7 @@ Example
         </meta>
 
         <params>
+<<<<<<< HEAD
             <param name="tables" value="true"/>
             <param name="links" value="true"/>
             <param name="scripts" value="true"/>
@@ -62,5 +73,15 @@ Example
             <param name="maxHeight" value="500"/>
             <param name="enterMode" value="P"/>
             <param name="pasteFromWord" value="true"/>
+=======
+            <param name="table" value="true"/>
+            <param name="link" value="true"/>
+            <param name="paste_from_word" value="true"/>
+            <param name="height" value="100"/>
+            <param name="max_height" value="200"/>
+            <!-- CKEditor Parameters examples: -->
+            <param name="extra_allowed_content" value="img(*)[*]; span(*)[*]; div(*)[*]; iframe(*)[*]; script(*)[*]" />
+            <param name="ui_color" value="#ffcc00"/>
+>>>>>>> de19f01dcf2adcda362437584a9dd163541dd243
         </params>
     </property>

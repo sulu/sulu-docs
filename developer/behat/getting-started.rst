@@ -17,13 +17,13 @@ You can `download Selenium server from here`_, or install it as follows:
 
     $ mkdir ~/jars
     $ cd jars
-    $ wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+    $ wget http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar
 
 You can then run it:
 
 .. code-block:: bash
 
-    $ java -jar selenium-server-standalone-2.44.0.jar -browserSessionReuse -singleWindow
+    $ java -jar selenium-server-standalone-2.46.0.jar -browserSessionReuse -singleWindow
 
 The ``-browserSessionReuse`` tells selenium NOT to close the window after
 every test and ``-singleWindow`` will cause Selenium not to use more than one
@@ -83,13 +83,20 @@ You can run all the tests as follows:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat -p<profile>
+    $ ./vendor/behat/behat/bin/behat -p <profile>
 
 Where ``<profile>`` is one of:
 
 - **selenium**: Tests on your local machine via Selenium using a real browser
   above)
 - **sauce_labs**: Run the tests on Sauce Labs (see :doc:`sauce-labs`).
+
+.. note::
+
+    If you want to run the tests on your local machine with the default
+    configuration you have to make sure that a Sulu instance is running on
+    `127.0.0.1:8001`. You can use the command `./app/console server:run
+    127.0.0.1:8001 --router=app/config/router_admin.php` for that.
 
 The tests are split up into a number of *suites*. There is one suite for each
 bundle, named after the bundle in lowercase, for example ``SuluContactBundle``
@@ -99,13 +106,13 @@ Run specific suites as follows:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat --suite=contact
+    $ ./vendor/behat/behat/bin/behat --suite=contact -p <profile>
 
 Further more you can filter for specific tests using the ``name`` option:
 
 .. code-block:: bash
 
-    $ ./vendor/behat/behat/bin/behat --suite=contact --name="Create"
+    $ ./vendor/behat/behat/bin/behat --suite=contact --name="Create" -p <profile>
 
 The above will run all scenarios in the ``contact`` suite which contain the word
 ``Create``.
