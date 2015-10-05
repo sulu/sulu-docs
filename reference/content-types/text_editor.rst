@@ -22,19 +22,7 @@ Parameters
     * - link
       - boolean
       - Adds buttons for creating links to the text editor
-    * - scripts
-      - boolean
-      - Allow script tags in source code
-    * - iframes
-      - boolean
-      - Allow iframe tags in source code
-    * - height
-      - integer
-      - Set the text editor height
-    * - maxHeight
-      - integer
-      - Set the max height for autogrow '0' is  infinitely
-    * - enterMode
+    * - enter_mode
       - string
       - Set what happens on enter allowed ``P``, ``BR`` or ``DIV``
     * - paste_from_word
@@ -64,16 +52,6 @@ Example
         </meta>
 
         <params>
-<<<<<<< HEAD
-            <param name="tables" value="true"/>
-            <param name="links" value="true"/>
-            <param name="scripts" value="true"/>
-            <param name="iframes" value="true"/>
-            <param name="height" value="300"/>
-            <param name="maxHeight" value="500"/>
-            <param name="enterMode" value="P"/>
-            <param name="pasteFromWord" value="true"/>
-=======
             <param name="table" value="true"/>
             <param name="link" value="true"/>
             <param name="paste_from_word" value="true"/>
@@ -82,6 +60,5 @@ Example
             <!-- CKEditor Parameters examples: -->
             <param name="extra_allowed_content" value="img(*)[*]; span(*)[*]; div(*)[*]; iframe(*)[*]; script(*)[*]" />
             <param name="ui_color" value="#ffcc00"/>
->>>>>>> de19f01dcf2adcda362437584a9dd163541dd243
         </params>
     </property>
