@@ -12,4 +12,4 @@ Returns all tags in the system.
         {% endfor %}
     </ul>
 
-**Returns**: Tag[] - array of Tag instances
+**Returns**: array - array of serialized Tag instances
