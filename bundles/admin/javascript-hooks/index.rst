@@ -11,3 +11,5 @@ a header with tabs or just manipulating the column-layout.
     layout
     header
     load-component-data
+    defaults
+    events
