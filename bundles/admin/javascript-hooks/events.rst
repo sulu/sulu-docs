@@ -2,9 +2,9 @@ Events
 ======
 
 The event-hook manages events and creates callable functions to throw or catch
-aura events. It capsules the createEventName function to build event-names with
-the `this.events.namespace`, `this.options.instanceName` and `postFix` of the
-given events.
+aura events. It encapsulate the ' createEventName' function to build event-names
+with the `this.events.namespace`, `this.options.instanceName` and `postFix` of
+the given events.
 
 .. code-block:: javascript
 

@@ -2,8 +2,8 @@ Defaults
 ========
 
 The default-hook merges and prepares the options, translations and templates
-automatically. This normalizes and centralize the need functionality of this
-needs.
+automatically. This normalizes and centralize the functionality for default
+values in component.
 
 .. code-block:: javascript
 

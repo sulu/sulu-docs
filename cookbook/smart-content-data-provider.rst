@@ -53,7 +53,7 @@ standardized objects and for the website with array and entity access.
 Additionally the DataProvider returns a configuration object to enable or
 disable features.
 
-For ORM DataProvider there exists some abstraction layer. This layer provides the
+There exists an abstraction layer for ORM DataProviders. This layer provides the
 implementation of basic DataProvider functionality and Database query.
 
 If you want to create a DataProvider for the ExampleEntity you have todo
@@ -62,10 +62,10 @@ following steps.
 1. Repository
 ~~~~~~~~~~~~~
 
-Implement Interface `DataProviderRepositoryInterface` to provide needed function
-findByFilters. If the default implementation is enough for you you can include
-the trait `DataProviderRepositoryTrait` which needs the functions
-`createQueryBuilder` (is default in repositories) and `appendJoins` there you
+The repository has to implement the DataProviderRepositoryInterface and provide
+the findByFilters function. If the default implementation is good enough, you
+can include the trait `DataProviderRepositoryTrait`, which, needs the functions
+`createQueryBuilder` (is default in repositories) and `appendJoins` where you
 are able to configure eager loading for the entity.
 
 The rest of the functionality and Query generation is done in the Trait.
@@ -171,8 +171,8 @@ class implements the Interface `ItemInterface`.
 ~~~~~~~~~~~~~~~
 
 Also the DataProvider is mostly abstracted by the SmartContent Component. The
-optimize the configuration you can disable or enable the form-elements to avoid
-filtering for that values.
+optimize in the configuration you can disable or enable the form-elements to
+avoid filtering for that values.
 
 .. code-block:: php
 
