@@ -37,11 +37,20 @@ Parameters
       - Defines the page number key to be used in the website query string.
     * - tags_parameter
       - string
-      - Defines the tags key to be used in the website query string. This comma separated list of tag names will be
-        combined (AND) with the selected tags from the backend.
+      - Defines the tags key to be used in the website query string. This comma
+        separated list of tag names will be combined (AND) with the selected
+        tags from the backend.
+    * - categories_parameter
+      - string
+      - Defines the categories key to be used in the website query string. This
+        comma separated list of category ids will be combined (AND) with the
+        selected tags from the backend.
     * - website_tags_operator
       - string
       - OR or AND to define how the tags will be combined in the query.
+    * - website_categories_operator
+      - string
+      - OR or AND to define how the categories will be combined in the query.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
@@ -51,6 +60,13 @@ Parameters
         presentation modes. If more than one element is given, the user can
         choose between the elements in this collection. The selected value is
         also passed to the HTML template.
+    * - category_root
+      - string
+      - Root category (key) to display category-tree.
+    * - display_options
+      - collection
+      - Hide form-elements (tags, categories, sorting, limit, presentAs)
+        can hide available elements for DataProvider.
 
 Return Value
 ------------
@@ -69,12 +85,30 @@ This values are available in the *view* variable in the twig templates.
     * - includeSubFolders
       - bool
       - Is TRUE if subfolders will be crawled
-    * - category
+    * - categories
       - string[]
       - Selected categories
+    * - categoryOperator
+      - string
+      - Operator which combines selected categories
     * - tags
       - string[]
-      - Selected tags.
+      - Selected tags
+    * - tagOperator
+      - string
+      - Operator which combines selected tags
+    * - websiteCategories
+      - string[]
+      - Selected categories over GET parameter
+    * - websiteCategoryOperator
+      - string
+      - Operator which combines GET parameter categories
+    * - websiteTags
+      - string[]
+      - Selected tags over GET parameter
+    * - websiteTagOperator
+      - string
+      - Operator which combines GET parameter tags
     * - sortBy
       - string
       - Selected sort column
@@ -94,7 +128,13 @@ This values are available in the *view* variable in the twig templates.
       - bool
       - Is TRUE if another page exists
 
-The "content" values depends on the DataProvider and will be described in the next section.
+The "content" values depends on the DataProvider and will be described in the
+next section.
+
+.. note::
+
+    You can determine additional (or deeper) properties with the ``dump`` twig
+    function.
 
 DataProvider
 ------------
@@ -181,8 +221,7 @@ source, whose child pages will be filtered by the DataProvider.
 
 .. note::
 
-    Additional values which are configured in "properties" will be
-    available to.
+    Additional values which are configured in "properties" will be available to.
 
 Contact - People
 ~~~~~~~~~~~~~~~~
@@ -236,25 +275,25 @@ This provider filters the contacts.
       - string
       - Property of the contact.
     * - medias
-      - Media[]
-      - Medias of the contact. Can be resolved via Twig-Function :doc:`/reference/twig-extensions/functions/sulu_resolve_medias`
+      - array
+      - Medias of the contact.
     * - emails
-      - string[]
+      - array
       - Property of the contact.
     * - phones
-      - string[]
+      - array
       - Property of the contact.
     * - faxes
-      - string[]
+      - array
       - Property of the contact.
     * - urls
-      - string[]
+      - array
       - Property of the contact.
     * - tags
-      - string[]
+      - array
       - Property of the contact.
     * - categories
-      - string[]
+      - array
       - Property of the contact.
 
 Account - Organization
@@ -303,25 +342,25 @@ This provider filters the accounts.
       - string
       - Property of the account.
     * - medias
-      - Media[]
-      - Medias of the account. Can be resolved via Twig-Function :doc:`/reference/twig-extensions/functions/sulu_resolve_medias`
+      - array
+      - Medias of the account.
     * - emails
-      - string[]
+      - array
       - Property of the account.
     * - phones
-      - string[]
+      - array
       - Property of the account.
     * - faxes
-      - string[]
+      - array
       - Property of the account.
     * - urls
-      - string[]
+      - array
       - Property of the account.
     * - tags
-      - string[]
+      - array
       - Property of the account.
     * - categories
-      - string[]
+      - array
       - Property of the account.
 
 .. _example:

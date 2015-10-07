@@ -1,5 +1,5 @@
-``sulu_resolve_media.rst``
-==========================
+``sulu_resolve_media``
+======================
 
 Returns resolved media with needed properties for a given media object.
 
@@ -13,4 +13,5 @@ Returns resolved media with needed properties for a given media object.
 - **media**: *object* - The media object.
 - **locale**: *string* - Locale to resolve metadata.
 
-**Returns**: *object* - Object with all needed properties, like `thumbnails`, `title`, `description` and `url`.
+**Returns**: *object* - Object with all needed properties, like `thumbnails`,
+                        `title`, `description` and `url`.

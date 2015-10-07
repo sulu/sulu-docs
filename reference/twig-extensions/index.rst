@@ -1,8 +1,8 @@
 Twig Extensions
 ===============
 
-Sulu provides its own Twig functions and filters In addition to the `standard set of Twig functions`_ which
-you can use in website templates.
+Sulu provides its own Twig functions and filters In addition to the
+`standard set of Twig functions`_ which you can use in website templates.
 
 CoreBundle
 ----------
@@ -59,5 +59,15 @@ TagBundle
     functions/sulu_tag_url
     functions/sulu_tag_url_append
     functions/sulu_tag_url_clear
+
+CategoryBundle
+--------------
+
+.. toctree::
+
+    functions/sulu_categories
+    functions/sulu_category_url
+    functions/sulu_category_url_append
+    functions/sulu_category_url_clear
 
 .. _standard set of Twig functions: http://twig.sensiolabs.org/documentation
