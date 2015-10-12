@@ -10,7 +10,18 @@ and saved as a simple string.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - defaults
+      - collection
+      - Default values for input (scheme and specificPart).
+    * - schemes
+      - collection
+      - List of available schemes in dropdown and validation.
 
 Example
 -------
@@ -21,4 +32,16 @@ Example
         <meta>
             <title lang="en">URL</title>
         </meta>
+
+        <params>
+            <param name="defaults" type="collection">
+                <param name="scheme" value="http://"/>
+                <param name="specific_part" value="www.google.at"/>
+            </param>
+            <param name="schemes" type="collection">
+                <param name="http://"/>
+                <param name="https://"/>
+                <param name="//"/>
+            </param>
+        </params>
     </property>
