@@ -12,7 +12,15 @@ references.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - snippetType
+      - string
+      - The type of snippet to assign.
 
 Example
 -------
@@ -23,4 +31,8 @@ Example
         <meta>
             <title lang="en">Snippets</title>
         </meta>
+        
+        <params>
+            <param name="snippetType" value="animal"/>
+        </params>
     </property>
