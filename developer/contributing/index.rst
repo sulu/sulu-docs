@@ -1,12 +1,6 @@
 Contributing
 ============
 
-.. toctree::
-    :hidden:
-    :maxdepth: 1
-
-    pull-requests
-
 All contributions are welcome!
 
 We try and stand on the shoulders of giants, this means that we generally copy the
@@ -29,6 +23,14 @@ Contributing documentation
 
 Again see the `Symfony documentation standard`_ as a guide, but when in doubt
 just submit the PR and we will review it.
+
+**What you can find in the Developer Guide:**
+
+.. toctree::
+    :maxdepth: 1
+
+    pull-requests
+    test-your-code
 
 .. _Symfony coding standards: http://symfony.com/doc/current/contributing/code/standards.html
 .. _pull request: hhttps://help.github.com/articles/using-pull-requests
