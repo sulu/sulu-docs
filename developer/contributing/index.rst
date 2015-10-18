@@ -24,10 +24,9 @@ Contributing documentation
 Again see the `Symfony documentation standard`_ as a guide, but when in doubt
 just submit the PR and we will review it.
 
-**What you can find in the Developer Guide:**
-
 .. toctree::
-    :maxdepth: 1
+    :hidden:
+    :maxdepth: 2
 
     pull-requests
     test-your-code
