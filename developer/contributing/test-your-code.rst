@@ -25,7 +25,7 @@ to let Symfony override default parameters:
 
     $ SYMFONY__PHPCR_BACKEND_URL=http://localhost:8888/server/ ./bin/runtests.sh
 
-More information in the `Symfony docs`_. For a list of available parameters take a look into the ``parameter.yml``.
+More information in the `Symfony docs`_. For a list of available parameters take a look into the `parameter.yml`_.
 
 .. _Symfony docs: http://symfony.com/doc/current/cookbook/configuration/external_parameters.html
 .. _parameter.yml: https://github.com/sulu-io/sulu/tree/develop/src/Sulu/Bundle/TestBundle/Resources/dist/parameter.yml
