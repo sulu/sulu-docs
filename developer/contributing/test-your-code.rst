@@ -11,8 +11,9 @@ For running the tests, follow these steps:
 
 3. Run the tests with ``./bin/runtests.sh``. This command has two possible options:
 
-   * ``-i``: Initialize the database and run all tests.
+   * ``-i``: Initialize the test setup (e.g. creating database).
    * ``-t [Bundle]``: Run the tests only for the specific bundle.
+   * ``-a``: Run all tests.
 
 Configure tests
 -----------------------
