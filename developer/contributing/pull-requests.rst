@@ -8,7 +8,7 @@ When creating a pull request:
   type is one of ``feature``, ``bugfix``, ``hotfix`` or ``enhancement``. For
   example: ``feature/what-my-pr-does``. Note that dashes should be used
   instead of spaces (not underscores).
-* Add your feature/bugfix/enhancment.
+* Add your feature/bugfix/enhancement.
 * Write tests.
 * :doc:`test-your-code`.
 * Add a line in the format of "<type> <pr-number>
