@@ -15,10 +15,11 @@ documented the most important ones.
 
      admin/index
      content
-     media
      http_cache
-     security
+     media
      persistence
+     search
+     security
 
 When you get in touch with another bundle of Sulu, which is not documented in
 this place. Tell us. We'll provide the documentation.
