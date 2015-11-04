@@ -3,17 +3,21 @@ Creating a Pull Request
 
 When creating a pull request:
 
-* Use a meaningfull name for the pull request.
-* Create the pull request as soon as possible.  
-* Name the branch after the following format: ``<type>/<description>``, where
+* Clone the Sulu repository from git.
+* Add a branch and name it after the following format: ``<type>/<description>``, where
   type is one of ``feature``, ``bugfix``, ``hotfix`` or ``enhancement``. For
   example: ``feature/what-my-pr-does``. Note that dashes should be used
   instead of spaces (not underscores).
+* Add your feature/bugfix/enhancement.
+* Write tests.
+* :doc:`test-your-code`.
 * Add a line in the format of "<type> <pr-number>
   [<affected bundle or component>] <description>" to the ``CHANGELOG.md`` file
-  in the root directory
+  in the root directory.
 * In case you have some changes breaking backwards compability you also have to
-  add a description to the ``UPGRADE.md`` file in the root directory
+  add a description to the ``UPGRADE.md`` file in the root directory.
+* Use a meaningful name for the pull request.
+* Create the pull request as soon as possible.
 
 If you are a member of the `Sulu organization`_ you should also:
 
