@@ -1,7 +1,7 @@
 Adding localizations
 ====================
 
-Sulu is built for small and medium enterprises with an international focus,
+Sulu is built for companies with an international focus,
 translating pages into multiple different languages is a very important task
 for a content editor using Sulu. Sulu also considers the different variations
 of a language among different countries. The combination of these two factors
