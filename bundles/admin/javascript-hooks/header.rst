@@ -94,6 +94,9 @@ List of all available options:
     * - toolbar.languageChanger.url
       - String
       - An url to load the items for the language-changer dropdown
+    * - toolbar.languageChanger.preSelected
+      - String
+      - the preselected language id
     * - toolbar.languageChanger.callback
       - Function
       - a callback function which gets executed when the language-changer-dropdown gets changed
