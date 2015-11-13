@@ -128,13 +128,11 @@ This values are available in the *view* variable in the twig templates.
       - bool
       - Is TRUE if another page exists
 
-The "content" values depends on the DataProvider and will be described in the
-next section.
+The "content" values depends on the DataProvider.
 
 .. note::
 
-    You can determine additional (or deeper) properties with the ``dump`` twig
-    function.
+    You can determine content properties with the twig function ``dump``.
 
 DataProvider
 ------------
@@ -171,130 +169,12 @@ source, whose child pages will be filtered by the DataProvider.
 
     For an example see :ref:`example`
 
-**Return Value**
-
-.. list-table::
-    :header-rows: 1
-
-    * - Name
-      - Type
-      - Description
-    * - resource
-      - Document
-      - The full page document from the database.
-    * - uuid
-      - string
-      - Uuid of page
-    * - title
-      - string
-      - Title of page
-    * - url
-      - string
-      - URL of page
-    * - path
-      - int
-      - path of page
-    * - fullQualifiedTitle
-      - string
-      - same as path with trailing '/'
-    * - urls
-      - string[]
-      - Array of localized URLs
-    * - nodeType
-      - string
-      - NodeType of page - content, internal or external
-    * - changed
-      - DateTime
-      - Date and time of last change
-    * - changer
-      - int
-      - Id of user which changed the page
-    * - created
-      - DateTime
-      - Date and time of creation
-    * - creator
-      - int
-      - Id of user which has created the page
-    * - template
-      - string
-      - Name of page-template
-
-.. note::
-
-    Additional values which are configured in "properties" will be available to.
-
 Contact - People
 ~~~~~~~~~~~~~~~~
 
 Alias: "contact"
 
 This provider filters the contacts.
-
-**Return Value**
-
-.. list-table::
-    :header-rows: 1
-
-    * - resource
-      - Contact
-      - The full entity from the database.
-    * - formOfAddress
-      - string
-      - Property of the contact.
-    * - title
-      - string
-      - Property of the contact.
-    * - salutation
-      - string
-      - Property of the contact.
-    * - fullName
-      - string
-      - Property of the contact.
-    * - firstName
-      - string
-      - Property of the contact.
-    * - lastName
-      - string
-      - Property of the contact.
-    * - middleName
-      - string
-      - Property of the contact.
-    * - birthday
-      - string
-      - Property of the contact.
-    * - created
-      - string
-      - Property of the contact.
-    * - creator
-      - string
-      - Property of the contact.
-    * - changed
-      - string
-      - Property of the contact.
-    * - changer
-      - string
-      - Property of the contact.
-    * - medias
-      - array
-      - Medias of the contact.
-    * - emails
-      - array
-      - Property of the contact.
-    * - phones
-      - array
-      - Property of the contact.
-    * - faxes
-      - array
-      - Property of the contact.
-    * - urls
-      - array
-      - Property of the contact.
-    * - tags
-      - array
-      - Property of the contact.
-    * - categories
-      - array
-      - Property of the contact.
 
 Account - Organization
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -303,65 +183,37 @@ Alias: "account"
 
 This provider filters the accounts.
 
-**Return Value**
+Media
+~~~~~
+
+Alias: "media"
+
+This provider filters the media.
+
+
+**Parameters**
 
 .. list-table::
     :header-rows: 1
 
-    * - resource
-      - Account
-      - The full entity from the database.
-    * - number
+    * - Parameter
+      - Type
+      - Description
+    * - mimetype_parameter
       - string
-      - Property of the account.
-    * - name
+      - name of mime-type GET parameter (default: `mimetype`)
+    * - type_parameter
       - string
-      - Property of the account.
-    * - registerNumber
-      - string
-      - Property of the account.
-    * - placeOfJurisdiction
-      - string
-      - Property of the account.
-    * - uid
-      - string
-      - Property of the account.
-    * - corporation
-      - string
-      - Property of the account.
-    * - created
-      - string
-      - Property of the account.
-    * - creator
-      - string
-      - Property of the account.
-    * - changed
-      - string
-      - Property of the account.
-    * - changer
-      - string
-      - Property of the account.
-    * - medias
-      - array
-      - Medias of the account.
-    * - emails
-      - array
-      - Property of the account.
-    * - phones
-      - array
-      - Property of the account.
-    * - faxes
-      - array
-      - Property of the account.
-    * - urls
-      - array
-      - Property of the account.
-    * - tags
-      - array
-      - Property of the account.
-    * - categories
-      - array
-      - Property of the account.
+      - name of media-type GET parameter (default: `type`)
+
+
+Additionally the provider provides some additional filter for the website. With
+the PropertyParameter `mimetype_parameter` and `type_parameter` the name of the
+GET parameter can be specified.
+
+For example the MimeType can be filtered by adding `?mimetype=application/pdf`
+to the content URL. Same takes effect for `?type=image` with the media type
+(which is basically a group of mime-types).
 
 .. _example:
 
