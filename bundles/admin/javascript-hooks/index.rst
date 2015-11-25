@@ -13,3 +13,4 @@ a header with tabs or just manipulating the column-layout.
     load-component-data
     defaults
     events
+    sticky-toolbar
