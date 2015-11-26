@@ -1,7 +1,9 @@
 Cookbook
 ========
 
-Here are some awesome recepies for lunch. The Cookbook covers some advanced topics which each covers a very special problem. Create your very own menu with our recepies.
+Here are some awesome recepies for lunch. The Cookbook covers some advanced
+topics which each covers a very special problem. Create your very own menu with
+our recipes.
 
 .. figure:: ../img/mrsulu-cooks.jpg
     :align: center
@@ -21,5 +23,10 @@ Here are some awesome recepies for lunch. The Cookbook covers some advanced topi
     integrating-custom-filters
     extend-entities
     using-elasticsearch
+    smart-content-data-provider
+    system-collections
+    create-new-webspace
 
-It is possible to work through the recepies, altought most of the people will pick the ones, which are most similar to their own tasks. We're open to `suggestions <http://sulu.io/en/contact>`_.
+It is possible to work through the recepies, altought most of the people will
+pick the ones, which are most similar to their own tasks. We're open to
+`suggestions <http://sulu.io/en/contact>`_.

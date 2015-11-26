@@ -90,10 +90,8 @@ should be fine for simple installations.
     * - phpcr_cache
       - PHPCR caching type
 
-Now `sulu.local/admin <sulu.local/admin>`_ - or whatever url your webserver
-is running on - should load the Sulu backend. More information on how to 
-configure your local webserver: :doc:`vhost`. Congratulations.
-
+Congratulations! You have just installed Sulu. Continue with :doc:`setup` to
+setup your first Sulu website.
 
 .. _Jackalope Jackrabbit: https://github.com/jackalope/jackalope-jackrabbit
 .. _Jackalope Doctrine-Dbal: https://github.com/jackalope/jackalope-doctrine-dbal

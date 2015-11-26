@@ -1,7 +1,7 @@
 ``sulu_tag_url_clear``
 ======================
 
-Returns current URL and clear the tags GET parameter.
+Returns current URL and clear the given GET parameter.
 
 **Arguments**:
 

@@ -4,12 +4,18 @@ Smart content
 Description
 -----------
 
-Shows a list of pages, which depend on a configurable filter. You can define
-which site's children should be included, what tags the filtered pages
-must have, how they are sorted, and how many results you want to get.
-Additionally you can define some presentation types, so that the content 
-manager can decide if the pages should be displayed e.g. in one column or two
-columns. The filter is saved as a JSON string in the database.
+Shows a list of items, which depend on a configurable filter. Depending on
+the DataProvider you can define where the items come from (Datasource),
+what tags the filtered items must have, how they are sorted, and how many
+results you want to get. Additionally you can define some presentation
+types, so that the content manager can decide if the items should be displayed
+e.g. in one column or two columns. The filter is saved as a JSON string in the
+database.
+
+The DataProviders are backend modules which handle the selected filters and
+return the items which fit to this filters. There are some predefined ones but
+you can add your own DataProvider easily. How you can do this is described in
+:doc:`/cookbook/smart-content-data-provider`
 
 Parameters
 ----------
@@ -31,11 +37,20 @@ Parameters
       - Defines the page number key to be used in the website query string.
     * - tags_parameter
       - string
-      - Defines the tags key to be used in the website query string. This comma separated list of tag names will be
-        combined (AND) with the selected tags from the backend.
+      - Defines the tags key to be used in the website query string. This comma
+        separated list of tag names will be combined (AND) with the selected
+        tags from the backend.
+    * - categories_parameter
+      - string
+      - Defines the categories key to be used in the website query string. This
+        comma separated list of category ids will be combined (AND) with the
+        selected tags from the backend.
     * - website_tags_operator
       - string
       - OR or AND to define how the tags will be combined in the query.
+    * - website_categories_operator
+      - string
+      - OR or AND to define how the categories will be combined in the query.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
@@ -45,111 +60,165 @@ Parameters
         presentation modes. If more than one element is given, the user can
         choose between the elements in this collection. The selected value is
         also passed to the HTML template.
+    * - category_root
+      - string
+      - Root category (key) to display category-tree.
+    * - display_options
+      - collection
+      - Hide form-elements (tags, categories, sorting, limit, presentAs)
+        can hide available elements for DataProvider.
+
+Return Value
+------------
+
+This values are available in the *view* variable in the twig templates.
+
+.. list-table::
+    :header-rows: 1
+
+    * - Name
+      - Type
+      - Description
+    * - dataSource
+      - string
+      - Uuid of data-source
+    * - includeSubFolders
+      - bool
+      - Is TRUE if subfolders will be crawled
+    * - categories
+      - string[]
+      - Selected categories
+    * - categoryOperator
+      - string
+      - Operator which combines selected categories
+    * - tags
+      - string[]
+      - Selected tags
+    * - tagOperator
+      - string
+      - Operator which combines selected tags
+    * - websiteCategories
+      - string[]
+      - Selected categories over GET parameter
+    * - websiteCategoryOperator
+      - string
+      - Operator which combines GET parameter categories
+    * - websiteTags
+      - string[]
+      - Selected tags over GET parameter
+    * - websiteTagOperator
+      - string
+      - Operator which combines GET parameter tags
+    * - sortBy
+      - string
+      - Selected sort column
+    * - sortMethod
+      - string
+      - Selected sort method - ASC or DESC
+    * - presentAs
+      - string
+      - selected present as value
+    * - limitResult
+      - string
+      - Selected limit for result
+    * - page
+      - int
+      - Current page number
+    * - hasNextPage
+      - bool
+      - Is TRUE if another page exists
+
+The "content" values depends on the DataProvider.
+
+.. note::
+
+    You can determine content properties with the twig function ``dump``.
+
+DataProvider
+------------
+
+These providers are predefined for Sulu-Entities.
+
+Content Pages
+~~~~~~~~~~~~~
+
+Alias: "content"
+
+This provider filters content pages. You can choose a parent page as data
+source, whose child pages will be filtered by the DataProvider.
+
+**Parameters**
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - properties
+      - collection
+      - Defines the property names which will be exposed in the HTML template.
 
 .. note::
 
     "properties" can include structure properties or extension data:
 
     * title - is a property of the structure
-    * excerpt.title - is a property of the excerpt structure extension with the name title
+    * excerpt.title - is a property of the excerpt structure extension with
+      the name title
 
-Return Value
-------------
+    For an example see :ref:`example`
+
+Contact - People
+~~~~~~~~~~~~~~~~
+
+Alias: "contact"
+
+This provider filters the contacts.
+
+Account - Organization
+~~~~~~~~~~~~~~~~~~~~~~
+
+Alias: "account"
+
+This provider filters the accounts.
+
+Media
+~~~~~
+
+Alias: "media"
+
+This provider filters the media.
+
+
+**Parameters**
 
 .. list-table::
     :header-rows: 1
 
-    * -
-      - Name
+    * - Parameter
       - Type
       - Description
-    * - content
-      - uuid
+    * - mimetype_parameter
       - string
-      - Uuid of page
-    * -
-      - title
+      - name of mime-type GET parameter (default: `mimetype`)
+    * - type_parameter
       - string
-      - Title of page
-    * -
-      - url
-      - string
-      - URL of page
-    * -
-      - path
-      - int
-      - path of page
-    * -
-      - urls
-      - string[]
-      - Array of localized URLs
-    * -
-      - nodeType
-      - string
-      - NodeType of page - content, internal or external
-    * -
-      - changed
-      - DateTime
-      - Date and time of last change
-    * -
-      - changer
-      - int
-      - Id of user which changed the page
-    * -
-      - created
-      - DateTime
-      - Date and time of creation
-    * -
-      - creator
-      - int
-      - Id of user which has created the page
-    * -
-      - template
-      - string
-      - Name of page-template
-    * - view
-      - dataSource
-      - string
-      - Uuid of data-source
-    * -
-      - includeSubFolders
-      - bool
-      - Is TRUE if subfolders will be crawled
-    * -
-      - category
-      - string[]
-      - Selected categories
-    * -
-      - tags
-      - string[]
-      - Selected tags.
-    * -
-      - sortBy
-      - string
-      - Selected sort column
-    * -
-      - sortMethod
-      - string
-      - Selected sort method - ASC or DESC
-    * -
-      - presentAs
-      - string
-      - selected present as value
-    * -
-      - limitResult
-      - string
-      - Selected limit for result
-    * -
-      - page
-      - int
-      - Current page number
-    * -
-      - hasNextPage
-      - bool
-      - Is TRUE if another page exists
+      - name of media-type GET parameter (default: `type`)
 
-Example
--------
+
+Additionally the provider provides some additional filter for the website. With
+the PropertyParameter `mimetype_parameter` and `type_parameter` the name of the
+GET parameter can be specified.
+
+For example the MimeType can be filtered by adding `?mimetype=application/pdf`
+to the content URL. Same takes effect for `?type=image` with the media type
+(which is basically a group of mime-types).
+
+.. _example:
+
+Example for "content" DataProvider
+----------------------------------
 
 Page template
 ~~~~~~~~~~~~~

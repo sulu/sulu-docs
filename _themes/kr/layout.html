@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block sidebartoc %}
-  {% set toctree = toctree(maxdepth=4, collapse=true, includehidden=false, titles_only=true) %}
+  {% set toctree = toctree(maxdepth=4, collapse=true, includehidden=true, titles_only=true) %}
   <div id="logo"><a href="http://docs.sulu.io"><img src="{{ pathto('_static/sulu-logo.png', 1) }}" class="logo" /></a></div> 
   <h3>Table of Contents</h3>
   {% if toctree %}
