@@ -29,15 +29,6 @@ If you are a member of the `Sulu organization`_ you should also:
  * **hotfix**: the PR is a bugfix that should be made against a stable branch
    (e.g. ``master``)
 
-* Add a label for the state of the PR:
-
- * **in progress**: if you are still working on the PR
- * **review**: when it is reviewable
- * **feedback**: if you have reviewed someone else's pr
-
-We recommend that you use the `Waffle board`_ to manage the state of your PRs
-and issues.
-
 Template
 --------
 
@@ -48,6 +39,7 @@ The information should include the following fields:
 
 * **Fixed tickets**: **list of tickets**; Tickets to close after merge. These
   should be of the form ``fixes #123, fixes #321``.
+* **Related PRs**: **link to PRs`**, PRs that are required for the current one
 * **BC breaks**: **none or description**; any compatibility breaking changes
 * **Documentation PR**: **link to PR**; Link to the documentation PR
   (if applicable)
@@ -66,7 +58,6 @@ You can copy and paste the following template:
     __tasks:__
 
     - [ ] test coverage
-    - [ ] gather feedback for my changes
     - [ ] submit changes to the documentation
     - [ ] ... <add your own tasks>
 
@@ -76,6 +67,7 @@ You can copy and paste the following template:
     | q                | a
     | ---------------- | ---
     | Fixed tickets    |
+    | Related PRs      |
     | BC breaks        |
     | Documentation PR |
 
@@ -89,7 +81,6 @@ Create user command:
     __tasks:__
 
     - [ ] test coverage
-    - [ ] gather feedback for my changes
     - [ ] submit changes to the documentation
     - [ ] remove request defaults
     - [ ] fix #1
@@ -100,8 +91,8 @@ Create user command:
     | q                | a
     | ---------------- | ---
     | Fixed tickets    | fixes #1 , fixes #2
+    | Related PRs      | #3, #4
     | BC breaks        | none
     | Documentation PR | https://github.com/sulu-cmf/sulu-docs/pull/14
 
 .. _Sulu organization: https://github.com/sulu-cmf
-.. _Waffle board: https://waffle.io/sulu-cmf/sulu
