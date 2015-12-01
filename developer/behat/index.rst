@@ -6,4 +6,4 @@ Behat (Functional) Testing
 
     getting-started
     context-reference
-    sauce-labs
+
