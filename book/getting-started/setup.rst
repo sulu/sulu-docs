@@ -76,7 +76,7 @@ in squared brackets in the following example:
 
                 <localizations>
                     <localization language="en" default="true"/>
-                    <localization language="de"/>
+                    <localization language="de" x-default="true"/>
                 </localizations>
 
                 <environments>
@@ -114,6 +114,12 @@ in squared brackets in the following example:
 Sulu needs these URLs in order to match the given requests to a certain portal
 and webspace. Otherwise it would not be possible to know the content of which
 webspace should be loaded.
+
+In the portal localization configuration you can define a `default` and a
+`x-default` localization. The `default` will be used to determine the locale if
+no locale was specified in a requested url. The `x-default` will be used to
+generate the hreflang tags for seo optimization. This locale will be used as a
+kind of fallback for search-engines.
 
 
 Templates
