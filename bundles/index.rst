@@ -22,4 +22,3 @@ documented the most important ones.
 
 When you get in touch with another bundle of Sulu, which is not documented in
 this place. Tell us. We'll provide the documentation.
-

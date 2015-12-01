@@ -1,11 +1,5 @@
-ContentBundle
-=============
-
-The SuluContentBundle is one of the most central parts of Sulu. It offers the
-content management functionality of Sulu, which is its most important part.
-
 Security
---------
+========
 
 Every page has its own permission tab, which is integrated like described in
 :doc:`../cookbook/securing-your-application`. The settings placed in this tab
