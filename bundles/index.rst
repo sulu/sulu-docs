@@ -14,7 +14,7 @@ documented the most important ones.
      :maxdepth: 2
 
      admin/index
-     content
+     content/index
      http_cache
      media
      persistence
