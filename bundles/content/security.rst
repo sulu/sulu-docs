@@ -2,7 +2,7 @@ Security
 ========
 
 Every page has its own permission tab, which is integrated like described in
-:doc:`../cookbook/securing-your-application`. The settings placed in this tab
+:doc:`../../cookbook/securing-your-application`. The settings placed in this tab
 has an influence on the UI of Sulu. The UI might also be adapted due to the
 permissions defined in Security Contexts (see the documentation at
 :doc:`security` for more details).
