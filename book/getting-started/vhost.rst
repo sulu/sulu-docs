@@ -110,7 +110,7 @@ The Nginx configuration could look something like.
   }
 
 .. warning::
-Be sure to also configure your local host-file, if running Sulu locally.
+    Be sure to also configure your local host-file, if running Sulu locally.
 
 MAMP Pro
 -----
