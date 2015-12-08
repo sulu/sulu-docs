@@ -113,7 +113,7 @@ The Nginx configuration could look something like.
     Be sure to also configure your local host-file, if running Sulu locally.
 
 MAMP Pro
------
+--------
 
 In general you should configure your vHost like the `Apache 2.2`_ paragraph above describes it.
 
