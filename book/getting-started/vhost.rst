@@ -117,16 +117,11 @@ MAMP Pro
 
 In general you should configure your vHost like the `Apache 2.2`_ paragraph above describes it.
 
-If you want to enable the dev-mode(*including the dev-toolbar*) you have to be sure that the
-vHost development parameter(*SetEnv SYMFONY_ENV dev*) is set properly
+If you want to enable the dev-environment (*including the debug toolbar*) you have to be sure that the
+vHost development parameter (*SetEnv SYMFONY_ENV dev*) is set properly
 and you configured a DEV-domain within your  `webspace.xml <setup.rst#webspaces>`_.
 
 .. figure:: ../../img/sulu-mamp-pro-screen.jpg
 	:align: center
 
-
-
-
-
 Now, your Sulu instance is ready.
-
