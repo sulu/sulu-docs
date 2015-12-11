@@ -89,12 +89,33 @@ The excerpt is available in:
 
 
 Navigation
-----------
+^^^^^^^^^^
 
 There is a Twig function that obtains the menu. You need to pass the key of the
 navigation context you defined in your webspace (:doc:`setup-a-webspace`).
 While editing a page the navigation context could be defined in 
-*settings > Navigation context*. Here we'll render the main navigation.
+*settings > Navigation context*. For many projects one or two navigation
+contexts might be enough:
+
+* The main navigation usually is the main entry point for the user of the
+  website.
+* A footer navigation can be useful for imprints and similar pages.
+
+The following screenshot shows the `Sulu homepage`_ with the main navigation on
+the right and the footer navigation on the bottom. As you can see the
+navigations returned for the navigation contexts are not necessarily flat, but
+can also contain sub pages.
+
+.. figure:: ../../img/website-navigation-contexts.png
+    :align: center
+
+The navigation contexts can also be used in any other combination you want. The
+separation into main and footer navigation is only a quite common example.
+
+The advantage of this method is that the content manager can decide on his own
+which pages to show in the navigation. This code show an example for creating a
+nested navigation using all the pages marked to be shown in the main navigation
+context.
 
 .. code-block:: html
     :linenos:
@@ -118,12 +139,11 @@ While editing a page the navigation context could be defined in
         {% endfor %}
     </ul>
 
-
 Images
 ^^^^^^
 
-If there are images defined in your template you could render them by using this
-code:
+If there are images defined in your template you could render them by using
+this code:
 
 .. code-block:: html
     :linenos:
@@ -155,3 +175,4 @@ installation as long with our `default page templates`_ over at github.
 .. _default page templates: https://github.com/sulu-io/sulu-standard/tree/master/app/Resources/pages
 .. _example file: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
 .. _image_formats.xml: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml
+.. _Sulu Homepage: http://www.sulu.io
