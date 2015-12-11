@@ -111,7 +111,8 @@ the user to add pages to different kind of navigations. The different contexts
 can be defined in the `navigation`-section, and this selection will be
 available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
-Twig-extensions delivered with Sulu.
+Twig-extensions delivered with Sulu, whereby it is not only possible to
+retrieve a flat list of pages, but also to retrieve entire navigation trees.
 
 Portals
 -------
