@@ -83,12 +83,14 @@ This way it is really simple to display this information using a twig template:
 
 .. code-block:: jinja
 
+    <div property="pages">
     {% for page in content.pages %}
         <div class="{{ view.pages.present_as }}">
             <h2><a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a></h2>
             <p>{{ page.description }}</p>
         </div>
     {% endfor %}
+    </div>
 
 The ``pages`` in ``content.pages`` refers to the name of the property in the
 template definition. Every page being returned by the filter described in the
@@ -107,3 +109,44 @@ documentation`_.
 The next step is how to add localization to Sulu.
 
 .. _`twig documentation`: http://twig.sensiolabs.org/documentation
+
+Pagination
+----------
+
+The smart content supports pagination, which can be activated with the param
+``max_per_page`` described in the content-type reference
+:doc:`../../reference/content-types/smart_content`.
+
+.. code-block:: jinja
+
+    <ul class="pagination">
+        {% set page = view.pages.page %}
+
+        {% if page-1 >= 1 %}
+            <li><a href="{{ sulu_content_path(content.url) }}?p={{ page-1 }}">&laquo;</a></li>
+        {% endif %}
+        {% if view.smartcontent.hasNextPage %}
+            <li><a href="{{ sulu_content_path(content.url) }}?p={{ page+1 }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+
+    <div property="pages">
+    {% for page in content.pages %}
+        <div class="{{ view.pages.present_as }}">
+            <h2><a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a></h2>
+            <p>{{ page.description }}</p>
+        </div>
+    {% endfor %}
+    </div>
+
+The view variable ``page`` contains the current page number (default: 1) and
+``hasNextPage`` is a flag which is true if another page exists.
+
+.. warning::
+    To avoid performance issues it is not possible to get a number of maximum
+    page because the system would have to load the whole content of each page
+    to determine how many pages would fit to the filters.
+
+If you want to use different parameters for different smart content on the same
+page you can define the GET-parameter with the property param
+``page_parameter``.
