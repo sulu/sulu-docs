@@ -16,6 +16,7 @@ Shown below is the simple data fixtures:
 
     namespace YourBundle\DataFixtures\Document;
 
+    use Sulu\Component\DocumentManager\DocumentManager;
     use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
 
     class SomeFixture implements DocumentFixtureInterface
