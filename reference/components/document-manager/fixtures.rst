@@ -29,8 +29,31 @@ Shown below is the simple data fixtures:
         public function load(DocumentManager $documentManager)
         {
             $document = $documentManager->create('page');
-            // ...
-            $documentManager->persist($document);
+                
+            /** @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document */
+            $document = $documentManager->create('page');
+            $document->setLocale('en');
+            $document->setTitle('foo bar page');
+            $document->setStructureType('default');
+            $document->setResourceSegment('/foo-bar-page');
+            $document->setWorkflowStage(WorkflowStage::PUBLISHED);
+            $document->getStructure()->bind(array(
+                'title' => 'foo bar page'
+            ));
+
+            $document->setExtension(
+                'excerpt',
+                [
+                    'title' => 'foo title',
+                    'description' => 'bar description',
+                    'categories' => [],
+                    'tags' => []
+                ]
+            );
+
+            $documentManager->persist($document, 'en', array(
+                'parent_path' => '/cmf/sulu_io/contents',
+            ));
             $documentManager->flush();
         }
     }
