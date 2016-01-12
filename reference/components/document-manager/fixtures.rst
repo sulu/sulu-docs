@@ -18,7 +18,8 @@ Shown below is the simple data fixtures:
 
     use Sulu\Component\DocumentManager\DocumentManager;
     use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
-
+    use Sulu\Component\Content\Document\WorkflowStage;
+    
     class SomeFixture implements DocumentFixtureInterface
     {
         public function getOrder()
