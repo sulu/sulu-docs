@@ -12,6 +12,7 @@ Here's how we work at the Sulu team. We are really open to Pull Requests. It is 
     :maxdepth: 2
 
     contributing/index
+    bc-promise
     create-bundle/index
     behat/index
 
