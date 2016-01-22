@@ -76,6 +76,11 @@ following file for an example:
                     </parameters>
                 </command>
             </commands>
+            <!-- optional compression for this format -->
+            <options>
+                <option name="jpeg_quality">80</option>
+                <option name="png_compression_level">6</option>
+            </options>
         </format>
     </formats>
 
@@ -105,6 +110,22 @@ The next table shows the standard commands available with its parameters.
 |         | h: the height of the new image    |
 +---------+-----------------------------------+
 
+Global Image Compression
+------------------------
+Images will not get compressed by default, if you upload them. You can set the
+compression for images globally in the sulu.yml or seperat for each image
+format like in the example above.
+
+To set the compression for all images you have to add following lines to your
+``config.yml``:
+
+.. code-block:: yaml
+
+    sulu_media:
+        format_manager:
+            default_imagine_options:
+                jpeg_quality: 80
+                png_compression_level: 6
 
 With the theme we got the container for our Twig-templates. That's what we'll
 do next: Writing awesome Twig files.
