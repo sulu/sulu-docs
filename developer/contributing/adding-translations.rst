@@ -1,0 +1,41 @@
+Adding translations
+===================
+
+For many developer adding translations is the first step in becoming an open
+source contributor. Apart from that, it also adds value to the project, so we
+are explaining the steps here, to make the work for translators as easy as
+possible.
+
+Understanding the translation process
+-------------------------------------
+
+First of all it is important to actually understand the translation process of
+Sulu.
+
+Every bundle requiring translations stores them in their
+`Resources/translations/sulu` folder using the xliff format. These files are
+named after the scheme ``backend.[language].xlf`` and look something like this:
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+        <file source-language="en" datatype="plaintext" original="file.ext">
+            <body>
+                <trans-unit id="a50af522ac181350142c0b4720e29a3f" resname="translation.code">
+                    <source>translation.code</source>
+                    <target>Some translation</target>
+                </trans-unit>
+            </body>
+        </file>
+    </xliff>
+
+If the ``SuluTranslateBundle`` is registered in the Kernel, there are two
+commands available to manage Sulu's translations. ``sulu:translate:import``
+takes a language code (e.g. ``en`` or ``de``) and imports all the translation
+files in the given language into the system. Corresponding to that, the command
+``sulu:translate:export`` also takes a language code, and exports the
+translations from all bundles into a single json file located in
+`web/admin/translations`. From there the Sulu-Admin loads the translations
+for the required localization.
+
