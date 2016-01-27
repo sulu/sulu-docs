@@ -3,12 +3,12 @@ Frontend structure
 
 A lot of the folder structure on the backend's side of Sulu is determined by Symfony2. In the frontend however,
 it leaves most things open. So here's introduction on how to arrange your frontend files and best-practice concepts
-For the frontend everything takes place in your bundles Resources/public folder.
+for the frontend everything takes place in your bundles Resources/public folder.
 
 Resources/public folder
 -----------------------
 
-* **css** - holding the builded css files
+* **css** - holding the built css files
 * **dist** - holding the minified/uglified javascript files
 * **img** - for putting image files
 * **js** - here goes all of your javascript-code
