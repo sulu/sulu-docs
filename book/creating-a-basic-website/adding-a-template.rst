@@ -161,6 +161,12 @@ adding tables.
 We've learned how to define the template. The next step is to write 
 corresponding theme.
 
+.. warning::
+
+    The template does not appear in the dropdown of the page form, unless there
+    is also a HTML twig template available. This will be explained in
+    :doc:`creating-a-twig-template`.
+
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations
 .. _`LiipThemeBundle`: https://github.com/liip/LiipThemeBundle#theme-cascading-order

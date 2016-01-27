@@ -80,7 +80,6 @@ internally to generate some files and define some paths. Therefore it is really
 important that the webspace key is unique across all webspaces in a single
 installation.
 
-
 Localizations
 -------------
 
@@ -97,14 +96,12 @@ the available localizations:
 For a more complete explanation you should have a look at
 :doc:`adding-localizations`.
 
-
 Themes
 ------
 
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
 :doc:`adding-a-theme`.
-
 
 Navigation
 ----------
@@ -114,8 +111,8 @@ the user to add pages to different kind of navigations. The different contexts
 can be defined in the `navigation`-section, and this selection will be
 available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
-Twig-extensions delivered with Sulu.
-
+Twig-extensions delivered with Sulu, whereby it is not only possible to
+retrieve a flat list of pages, but also to retrieve entire navigation trees.
 
 Portals
 -------
@@ -135,7 +132,6 @@ the design of the URLs for the content. Currently there is only the
 `tree`-option available resulting in exposing the entire content tree in the
 URL.
 
-
 URLs
 ~~~~
 
@@ -143,9 +139,16 @@ The most important part of the portal configuration are the environments,
 because they are including the URLs for the portal. A portal can have multiple
 environments, which have to match the environments defined in Symfony. Usually
 `dev`, `stage` and `prod` are available. Each environment can define its own
-set of URLs. The URLs also have to include the localization somehow. You have
-two possibilities to do so:
+set of URLs.
 
+.. note::
+    
+    Please consider that you have to omit the port in the configuration. The
+    system will work with any port, so you don't have to name it in the
+    configuration.
+
+The URLs also have to include the localization somehow. You have two
+possibilities to do so:
 
 Fixing an URL to a specific localization
 ........................................
@@ -160,7 +163,6 @@ localization. The following fragment shows again how to this:
 Since it is possible to define localizations without a country, this attribute
 is also optional here. However, the combination of language and country here
 must result in an existing localization.
-
 
 Using placeholders in the URL definition
 ........................................

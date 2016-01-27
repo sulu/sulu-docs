@@ -260,6 +260,18 @@ Twig template
 
 .. code-block:: twig
 
+    <ul class="pagination">
+        {% set page = view.pages.page %}
+
+        {% if page-1 >= 1 %}
+            <li><a href="{{ sulu_content_path(content.url) }}?p={{ page-1 }}">&laquo;</a></li>
+        {% endif %}
+        {% if view.smartcontent.hasNextPage %}
+            <li><a href="{{ sulu_content_path(content.url) }}?p={{ page+1 }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+
+    <div property="pages">
     {% for page in content.pages %}
         <div class="col-lg-{{ view.pages.presentAs == 'two' ? '6' : '12' }}">
             <h2>
@@ -276,3 +288,9 @@ Twig template
             {% endautoescape %}
         </div>
     {% endfor %}
+    </div>
+
+.. note::
+
+    If you have not defined the parameter ``max_per_page`` you can omit the
+    pagination.
