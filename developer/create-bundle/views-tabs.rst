@@ -10,14 +10,14 @@ Main-views
 Essentially you're free to render and do whatever you want in a view-component. Yet you'll most often
 find yourself doing the following things with a view-component.
 
-#. Using the :doc:`header-hook </bundles/admin/javascript-hooks/header>` the get a neat little header rendered into your view component
+#. Using the :doc:`header-hook </bundles/admin/javascript-hooks/header>` to get a neat little header rendered into your view component
 #. Writing methods which implements behaviour which stays the same over all tabs
 #. Communicating with your tab-components via events.
 
 Tab-views
 ---------
 
-When using the Using the :doc:`header-hook </bundles/admin/javascript-hooks/header>` you'll also have the
+When using the :doc:`header-hook </bundles/admin/javascript-hooks/header>` you'll also have the
 possibility to register tabs. Tabs are nothing more and nothing less than again javascript-components. The files
 for the tab-components get created in sub-folders of the main-view. So lets say we have a main view under
 Resources/public/js/components/list. After adding a details-tab and a settings tab, the structure in the list folder
