@@ -18,6 +18,16 @@ correspond to different applications handled by Sulu. So by default there is
 only the ``Sulu`` system. A user is only enabled to login into Sulu, if he has
 at least one role with the ``Sulu`` system assigned.
 
+The users provide two different flags. The ``locked`` flag signalizes that a
+user has been locked by an administrator for some reason. As soon as this flag
+is set, the user can't login to the system anymore. The second flag is called
+``enabled``, and will be set to true by default. This flag is only important if
+you have implemented your own registration process. In the case you want to use
+a double opt-in mechanism you can set this flag to false on the registration,
+and toggle it, e.g. when the user clicks on a link in an email. As long as the
+``enabled`` flag is set to false, the Sulu-Admin offers you a button to enable
+the user.
+
 Security contexts
 -----------------
 
