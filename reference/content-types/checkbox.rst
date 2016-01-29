@@ -9,7 +9,15 @@ Shows a simple checkbox, the state of the checkbox will be saved as a boolean.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - type
+      - string
+      - Defines the look of the checkbox, can either be "checkbox" or "toggler"
 
 Example
 -------

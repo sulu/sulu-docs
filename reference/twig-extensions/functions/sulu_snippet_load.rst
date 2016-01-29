@@ -1,13 +1,13 @@
 ``sulu_snippet_load``
 =====================
 
-Returns content array for given uuid.
+Returns content array for given snippet uuid.
 
 **Arguments**:
 
-- **uuid**: *string* - The uuid of requested content
-- **locale**: *string* - optional: Locale to load snippet
+- **uuid**: *string* - The uuid of requested content.
+- **locale**: *string* - optional: Locale to load snippet.
 
 **Returns**:
 
-.. include:: _page_structure.inc
+.. include:: _snippet_structure.inc
