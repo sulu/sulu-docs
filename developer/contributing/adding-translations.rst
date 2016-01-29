@@ -39,3 +39,38 @@ translations from all bundles into a single json file located in
 `web/admin/translations`. From there the Sulu-Admin loads the translations
 for the required localization.
 
+Add a new translation
+---------------------
+
+The following guide explains how to add a complete new translation for the
+Sulu-Admin.
+
+These steps have to be executed for every single bundle:
+
+#. Copy the file `Resources/translations/sulu/backend.en.xlf` (or any other
+   language you might be more comfortable with) into
+   `Resources/translations/sulu/backend.[language].xlf` (replace
+   ``[language]`` with the 2-letter ISO code of the new language).
+
+#. Replace the translations in all ``target`` xml tags with the translation for
+   the new language.
+
+Afterwards the next steps have to be executed once for introducing the language
+in the standard edition of Sulu:
+
+#. Add the language in the file `app/config/sulu.yml` to
+   ``sulu_core.locales``, with the 2-letter code as the key, and the name of
+   the new language (in this language) as the value.
+
+#. Add the 2-letter code to the array ``sulu_core.translations``
+
+#. Build the new language using
+   ``app/console sulu:translate:import [language]`` and
+   ``app/console sulu:translate:export [language]``. If you have updated
+   multiple languages at once, you can also use the
+   ``app/console sulu:build translations`` command, which builds all available
+   languages.
+
+Afterwards commit all the changes and create Pull Requests as described in
+:doc:`pull-requests`.
+
