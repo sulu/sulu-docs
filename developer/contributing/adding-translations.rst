@@ -1,7 +1,7 @@
 Adding translations
 ===================
 
-For many developer adding translations is the first step in becoming an open
+For many developers adding translations is the first step in becoming an open
 source contributor. Apart from that, it also adds value to the project, so we
 are explaining the steps here, to make the work for translators as easy as
 possible.
@@ -13,8 +13,8 @@ First of all it is important to actually understand the translation process of
 Sulu.
 
 Every bundle requiring translations stores them in their
-`Resources/translations/sulu` folder using the xliff format. These files are
-named after the scheme ``backend.[language].xlf`` and look something like this:
+`Resources/translations/sulu` folder using the xliff_ format. These files are
+named using the scheme ``backend.[language].xlf`` and look something like this:
 
 .. code-block:: xml
 
@@ -35,7 +35,7 @@ commands available to manage Sulu's translations. ``sulu:translate:import``
 takes a language code (e.g. ``en`` or ``de``) and imports all the translation
 files in the given language into the system. Corresponding to that, the command
 ``sulu:translate:export`` also takes a language code, and exports the
-translations from all bundles into a single json file located in
+translations from all bundles into a single JSON file located in
 `web/admin/translations`. From there the Sulu-Admin loads the translations
 for the required localization.
 
@@ -50,7 +50,7 @@ These steps have to be executed for every single bundle:
 #. Copy the file `Resources/translations/sulu/backend.en.xlf` (or any other
    language you might be more comfortable with) into
    `Resources/translations/sulu/backend.[language].xlf` (replace
-   ``[language]`` with the 2-letter ISO code of the new language).
+   ``[language]`` with the `two-letter ISO code`_ of the new language).
 
 #. Replace the translations in all ``target`` xml tags with the translation for
    the new language.
@@ -74,3 +74,5 @@ in the standard edition of Sulu:
 Afterwards commit all the changes and create Pull Requests as described in
 :doc:`pull-requests`.
 
+.. _xliff: https://en.wikipedia.org/wiki/XLIFF
+.. _two-letter ISO code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
