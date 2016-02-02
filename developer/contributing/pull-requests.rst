@@ -93,6 +93,6 @@ Create user command:
     | Fixed tickets    | fixes #1 , fixes #2
     | Related PRs      | #3, #4
     | BC breaks        | none
-    | Documentation PR | https://github.com/sulu-cmf/sulu-docs/pull/14
+    | Documentation PR | https://github.com/sulu-io/sulu-docs/pull/14
 
-.. _Sulu organization: https://github.com/sulu-cmf
+.. _Sulu organization: https://github.com/sulu-io

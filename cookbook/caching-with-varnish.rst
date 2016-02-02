@@ -313,4 +313,4 @@ The following is a full configuration example:
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
-.. _standard edition: http://github.com/sulu-cmf/sulu-standard
+.. _standard edition: http://github.com/sulu-io/sulu-standard
