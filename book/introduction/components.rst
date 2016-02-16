@@ -23,7 +23,7 @@ The Assets module let you upload and organize any type of documents such as
 pictures, text documents (PDF, Word, Excel etc.), videos or audio clips. Once
 uploaded an asset can be used in as many webpages as required remaining its
 single source in the Assets module. This means if you would like to change a
-document that it used in several different webpages you would only have to
+document that is used in several different webpages you would only have to
 replace it once in Assets. Pictures will be automatically transformed to
 web-compatible formats and resized to the required formats of the templates
 while the original file will be stored as well. All other document types
@@ -33,44 +33,42 @@ remain in their original format.
 Webspaces
 ---------
 
-A Webspace is the place where the actual website structure and content will be
-created. Within a Webspace one single content-structure will be defined but by
-using e.g. multiple languages and sub-domains an unlimited number of websites
-that share the same structure may be available. Furthermore an unlimited number
-of webspaces can be managed in one Sulu installation. 
+A webspace is the place where the actual website structure and content will be
+created. Within a webspace, one single content-structure will be defined, but by
+using e.g. multiple languages and sub-domains, an unlimited number of websites
+that share the same structure may be available. Furthermore, an unlimited number
+of webspaces can be managed in one Sulu installation.
 
-Confused? Maybe this example helps: 
+Confused? Maybe this example helps:
 
 ACME Inc. has a website www.acme.com that needs to be published in English,
 German and French. The easy way to do this is to let the user choose their
 desired language and stay on the same domain displaying the required content
-using sub-domains such as e.g. www.acme.com/de. For the user or a search
-engine this would mean 1 website with 3 languages sharing the same content
+using sub-domains, such as e.g. www.acme.com/de. For the user or a search
+engine, this would mean 1 website with 3 languages sharing the same content
 structure.
 
-Now lets assume that ACME Inc. wants to dedicate each language to its
+Next, let's assume that ACME Inc. wants to dedicate each language to its
 correspondent market by using top-level-domains. This would of course be more
 marketing oriented and search engine friendly. The English content would be
-published in www.acme.com, the German in www.acme.de and the French in
-www.acme.fr. Let's go even further and say each website's design should be a
-little different, maybe with a different header color. The user and the search
-engine would now have 3 separate websites, each with 1 language and individual
-design but all with the same content-structure.
+published in www.acme.com, the German content in www.acme.de and the French
+content in www.acme.fr. Let's go even further and say that each website's design
+should be a little different, maybe with a different header color. The user and
+the search engine would now have 3 separate websites, each with 1 language and
+individual design but all with the same content-structure.
 
-Any of this scenarios can be implemented with Sulu using one webspace.
-
-Got it? Great!  (Don't worry if not, we go a lot deeper into this later.)
+Any of these scenarios can be implemented with Sulu using one single webspace.
 
 
 Settings
 --------
 
 As the title implies this module gives you access to all internal adjustments
-of Sulu. One very important section is Permissions where you can create user
-roles with access right which then can be applied to a user in the Contacts
+of Sulu. One very important section is "Permissions", where you can create user
+roles with access rights which then can be applied to a user in the Contacts
 module. This gives you complete control over the access rights of your website
-administrators. In addition you can manage meta information such as categories
+administrators. In addition, you can manage meta information such as categories
 or tags that are used in other modules.
 
-So now that you know all the components of Sulu we'll have a closer look to one
-of the paradigms we committed ourselves to. The separation of concerns.
+Now that you know all the components of Sulu, we'll have a closer look at one
+of the paradigms we committed ourselves to: Separation of concerns.
