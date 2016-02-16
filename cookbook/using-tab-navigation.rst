@@ -36,7 +36,7 @@ it first. A provider is just a simple service implementing the
 
     class AcmeContentNavigationProvider implements ContentNavigationProviderInterface
     {
-        pubilc function getNavigationItems(array $options = array())
+        public function getNavigationItems(array $options = array())
         {
             $item = new ContentNavigationItem('Item');
             $item->setAction('item');
