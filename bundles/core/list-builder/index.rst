@@ -8,4 +8,5 @@ own metadata.
 .. toctree::
     :maxdepth: 1
 
-    basic_metadata
+    basic-metadata
+    filter-metadata
