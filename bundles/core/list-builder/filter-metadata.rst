@@ -10,23 +10,23 @@ Example
 
 .. code-block:: xml
 
-    <identity-property name="titleId" filter:input-type="auto-complete">
+    <identity-property name="titleId" filter-type="auto-complete">
         <orm:field-name>title</orm:field-name>
         <orm:entity-name>%sulu.model.contact.class%</orm:entity-name>
 
-        <filter:parameters>
+        <filter-type-parameters>
             <filter:parameter key="prefetchUrl">
                 <![CDATA[http://sulu.lo/admin/api/contact/titles]]>
             </filter:parameter>
             <filter:parameter key="resultKey">contactTitles</filter:parameter>
             <filter:parameter key="valueKey">title</filter:parameter>
-        </filter:parameters>
+        </filter-type-parameters>
     </identity-property>
 
 This Example creates a input where the user can select a title from the given
 api endpoint. The selected title will be saved as an id.
 
-Input types
+Filter type
 -----------
 
 .. list-table::
@@ -46,7 +46,8 @@ Input types
     * - **auto-complete**
       - Could be any value which has an API End-point with search support
 
-**Parameters**
+Parameters
+----------
 
 Currently only the "auto-complete" input-type can be customized via parameters.
 

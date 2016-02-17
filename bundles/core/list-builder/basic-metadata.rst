@@ -20,6 +20,7 @@ Example
 .. code-block:: xml
 
     <class xmlns="http://schemas.sulu.io/class/general"
+       xmlns:list="http://schemas.sulu.io/class/list"
        xmlns:orm="http://schemas.sulu.io/class/doctrine">
         <properties>
             <property name="id" translation="public.id" type="integer">
@@ -66,22 +67,25 @@ A property is a simple doctrine-field.
 .. list-table::
 
     * - **name**
-      - **name of the field**
-    * - **translation** [optional]
-      - key to translate the name of the property
+      - Name of the field
     * - **display** [optional - default no]
-      - Defines the visibility in the datagrid
-    * - **type** [optional - default string]
+      - Defines the visibility of the field
+    * - **filter-type** [optional - default no]
+      - Defines the filter type which is used to determine supported operators
+        (see :doc:`filter-metadata` for more information)
+    * - **list:translation** [optional]
+      - key to translate the name of the property
+    * - **list:type** [optional - default string]
       - Defines the type of data - infects the display-format in the table
-    * - **sortable** [optional - default true]
+    * - **list:sortable** [optional - default true]
       - If true the field can be sorted ASC or DESC
-    * - **editable** [optional - default false]
+    * - **list:editable** [optional - default false]
       - If true the field can be edited in the table
-    * - **width** [optional]
+    * - **list:width** [optional]
       - The width of the table column
-    * - **min-width** [optional]
+    * - **list:min-width** [optional]
       - The min-width of the table column for responsive design
-    * - **css-class** [optional]
+    * - **list:css-class** [optional]
       - Custom css-class for column
 
 For the display there are for possible values:
@@ -108,6 +112,9 @@ For the display there are for possible values:
 
 .. list-table::
 
+    * - **fiter-type-parameters**
+      - Parameter which can be used to customize the input in the filter-form
+        (see :doc:`filter-metadata` for more information)
     * - **orm:field-name**
       - Defines the doctrine field-name
     * - **orm:entity-name**
