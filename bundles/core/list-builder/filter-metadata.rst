@@ -59,6 +59,9 @@ Currently only the "auto-complete" input-type can be customized via parameters.
       - Url which will be used to load all possible values
     * - **remoteUrl**
       - This url will be used to search for filled in value
+    * - **singleUrl**
+      - This url will be used to load the selected value
+        (e.g. ``/admin/api/accounts/{id}``)
     * - **resultKey**
       - Key which contains result in the ``_embedded``
     * - **valueKey**
