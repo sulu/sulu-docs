@@ -12,6 +12,7 @@ The Reference aims to developers who already worked through the introdcution and
 .. toctree::
     :maxdepth: 1
 
+    parameters
     content-types/index
     twig-extensions/index
     components/document-manager/index.rst
