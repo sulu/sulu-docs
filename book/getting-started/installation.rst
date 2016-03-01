@@ -26,69 +26,15 @@ checkout the latest version of Sulu:
 Install dependencies
 --------------------
 
-We use `composer`_ to install the correct versions of
-Sulu's dependencies:
+Use `Composer`_ to install Sulu's dependencies:
 
 .. code-block:: bash
 
     composer install
 
-At the end of the installation you will be asked for some parameters. The
-following table describes these parameters, whereby most of the default values
-should be fine for simple installations.
-
-.. list-table::
-    :header-rows: 1
-
-    * - Parameter
-      - Description
-    * - database_driver
-      - Defines which database driver will be used
-    * - database_host
-      - The address of the server, on whch the database is running
-    * - database_port
-      - The port number to access the database on that server
-    * - database_name
-      - The name of the database
-    * - database_user
-      - The name of the database user
-    * - database_password
-      - The password of the database user
-    * - mailer_transport
-      - The protocol to send mails (currently not used)
-    * - mailer_host
-      - The server from which the mails will be sent (currently not used)
-    * - mailer_user
-      - The username for sending mails (currently not used)
-    * - mailer_password
-      - The password for sending mails (currently not used)
-    * - locale
-      - The default locale for the system
-    * - secret
-      - An unique key needed by the symfony framework
-    * - sulu_admin.name
-      - A name, which will be shown in the administration interface
-    * - sulu_admin.email
-      - Administrator email address
-    * - content_fallback_intervall
-      - The intervall in milliseconds, between content preview update in the
-        http polling mode
-    * - websocket_port
-      - The port which will be used for the content preview in the http polling mode
-    * - websocket_url
-      - The url which will be used for the content preview in the http polling mode        
-    * - phpcr_backend
-      - The PHPCR backend definition, defaults to the doctrine-dbal, check
-        http://doctrine-phpcr-odm.readthedocs.org/en/latest/reference/installation-configuration.html
-        for more configuration options
-    * - phpcr_workspace
-      - The PHPCR workspace which will be used
-    * - phpcr_user
-      - The user for phpcr
-    * - phpcr_pass
-      - The password for phpcr
-    * - phpcr_cache
-      - PHPCR caching type
+At the end of the installation, Composer asks you to submit values of different
+parameters. For now, just press "Enter" to keep their default values. You can
+learn more about each parameter in the :doc:`../../reference/parameters`.
 
 Congratulations! You have just installed Sulu. Continue with :doc:`setup` to
 setup your first Sulu website.
