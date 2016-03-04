@@ -90,25 +90,29 @@ the uploaded image to the size defined with the two parameters.
 
 The next table shows the standard commands available with its parameters.
 
-+---------+-----------------------------------+
-| Command | Parameters                        |
-+=========+===================================+
-| Resize  | x: the new width                  |
-|         |                                   |
-|         | y: the new height                 |
-+---------+-----------------------------------+
-| Scale   | x: the new width                  |
-|         |                                   |
-|         | y: the new height                 |
-+---------+-----------------------------------+
-| Crop    | x: x-coordinate of the startpoint |
-|         |                                   |
-|         | y: y-coordinate of the startpoint |
-|         |                                   |
-|         | w: the with of the new image      |
-|         |                                   |
-|         | h: the height of the new image    |
-+---------+-----------------------------------+
++---------+------------------------------------+
+| Command | Parameters                         |
++=========+====================================+
+| Resize  | x: the new width                   |
+|         |                                    |
+|         | y: the new height                  |
++---------+------------------------------------+
+| Scale   | x: the new width                   |
+|         |                                    |
+|         | y: the new height                  |
+|         |                                    |
+|         | forceRatio: true/false             |
+|         |                                    |
+|         | mode: 'inset' or 'outbound'        |
++---------+------------------------------------+
+| Crop    | x: x-coordinate of the startpoint  |
+|         |                                    |
+|         | y: y-coordinate of the startpoint  |
+|         |                                    |
+|         | w: the with of the new image       |
+|         |                                    |
+|         | h: the height of the new image     |
++---------+------------------------------------+
 
 Global Image Compression
 ------------------------
