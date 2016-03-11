@@ -44,6 +44,7 @@ The above will initialize the database(`i`) and run all the tests (`a`)
    * ``-i``: Initialize the test setup (e.g. creating database).
    * ``-t [Bundle]``: Run the tests only for the specific bundle.
    * ``-a``: Run all tests.
+   * ``-r``: Restart jackrabbit between each bundle when running all tests.
 
 Subsequently you will only need to run the tests, so you can ommit the `-i`
 option.
