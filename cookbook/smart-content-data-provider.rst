@@ -232,6 +232,7 @@ avoid filtering for that values.
                 ->enableLimit()
                 ->enablePagination()
                 ->enablePresentAs()
+                ->setDeepLink('examples/example/{webspace}/{locale}/{id}')
                 ->getConfiguration();
         }
 
@@ -270,6 +271,11 @@ avoid filtering for that values.
             return array_filter($result);
         }
     }
+
+.. note::
+
+    The deep-link will be used to generate a the link to the Sulu-Admin form of
+    a single item, when the user click on it.
 
 4. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
