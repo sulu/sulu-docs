@@ -12,24 +12,29 @@ The header-hook in such a component could look something like:
 
 .. code-block:: javascript
 
-    header: {
-       tabs: {
-           url: 'url/to/tabsData'
-       },
-       toolbar: {
-           languageChanger: true,
-           buttons: {
-               save: {},
-               settings: {
-                   options: {
-                       dropdownItems: {
-                           delete: {}
+    header: function() {
+        return {
+            tabs: {
+                url: 'url/to/tabsData',
+                componentOptions: {
+                    values: this.data
+                }
+            },
+            toolbar: {
+                languageChanger: true,
+                    buttons: {
+                    save: {},
+                    settings: {
+                       options: {
+                           dropdownItems: {
+                               delete: {}
+                           }
                        }
-                   }
-               }
-           }
-       },
-       title: 'My title'
+                    }
+                }
+            },
+            title: 'My title'
+        };
     }
 
 What this hook does is essentially the following:
@@ -43,9 +48,20 @@ What this hook does is essentially the following:
 * It injects the title into every tab (or into your current component if no tabs specified)
 
 .. note::
-    The header-hook can also be a function which returns the object seen in the example. Within this function
-    you have access to things like ``this.options``
+    The header-hook can also be a function which returns the object seen in the
+    example. Within this function you have access to things like
+    ``this.options``.
 
+Tab Conditions
+--------------
+
+To enable tab-conditions in the header you have to do following steps:
+
+1. Set the option `tabs.componentOptions.values`. This object will be
+   used to evaluate the conditions.
+2. Emit the event `this.sandbox.emit('sulu.header.saved', savedData)` with the
+   newly saved data. This will update the tabs and reevaluate the conditions
+   with given data.
 
 List of all available options:
 ------------------------------
@@ -75,6 +91,12 @@ List of all available options:
     * - tabs.options
       - Object
       - an object which gets merged into the component-options of every tab-component
+    * - tabs.componentOptions
+      - Object
+      - an object which gets merged into the component-option of the husky-tab component
+    * - tabs.componentOptions.values
+      - Object
+      - which will be used to evaluate the tab display condition
     * - tabs.container
       - String|Object
       - a selector or a dom-object into which the tabs-components get rendered
