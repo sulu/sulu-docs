@@ -25,6 +25,7 @@ In your virtual hosts file you should configure something like:
           AllowOverride All
           Order allow,deny
           Allow from all
+          SetEnv SYMFONY_ENV dev
           
           <IfModule mod_expires.c>
               ExpiresActive On
