@@ -109,7 +109,8 @@ in squared brackets in the following example:
     You have to insert the name of your webspace at `[name]`, the key at `[key]`,
     and the URL of your installation at `[url]`. If you want to run Sulu in
     different environments you also have to change the URLs in the other
-    environment tags.
+    environment tags. Set the correct environment in your Webserver
+    configuration. For this have a look at :doc:`vhost` documentation.
 
 Sulu needs these URLs in order to match the given requests to a certain portal
 and webspace. Otherwise it would not be possible to know the content of which
