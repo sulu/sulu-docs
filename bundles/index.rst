@@ -15,6 +15,7 @@ documented the most important ones.
 
      admin/index
      content/index
+     hash
      http_cache
      media
      persistence
