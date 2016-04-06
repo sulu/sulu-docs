@@ -21,8 +21,8 @@ Parameters
     * - snippetType
       - string
       - The type of snippet to assign.
-    * - fallback
-      - boolean
+    * - default
+      - boolean - false
       - If this parameter is true and enabled in config the content-type will
         load the default snippets which can be specified by the content-manager
         in the webspace settings.
