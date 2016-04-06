@@ -27,7 +27,6 @@ our recipes.
     system-collections
     create-new-webspace
     manage-analytics
-    override-analytics-template
     change-default-locale-provider
 
 It is possible to work through the recepies, altought most of the people will
