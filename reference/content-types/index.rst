@@ -52,6 +52,7 @@ content type:
 .. toctree::
     :maxdepth: 1 
 
+    block
     category_list
     checkbox
     color
