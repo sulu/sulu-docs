@@ -159,7 +159,6 @@ Use the following commands for Linux:
 
     rm -rf app/cache/*
     rm -rf app/logs/*
-    mkdir app/data
     sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads app/data
     sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs uploads/media web/uploads app/data
 
@@ -169,7 +168,6 @@ Or these commands for Mac OSX:
     
     rm -rf app/cache/*
     rm -rf app/logs/*
-    mkdir app/data
     APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1`
     sudo chmod +a "$APACHEUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads app/data
     sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads/media web/uploads app/data
@@ -180,7 +178,6 @@ Or these commands for Windows (with IIS web server):
 
     rd app\cache\* -Recurse -Force
     rd app\logs\* -Recurse -Force
-    md app\data
     $rule = New-Object System.Security.AccessControl.FileSystemAccessRule -ArgumentList @("IUSR","FullControl","ObjectInherit, ContainerInherit","None","Allow")
     $folders = "app\cache", "app\logs", "app\data", "uploads\media", "web\uploads"
     foreach ($f in $folders) { $acl = Get-Acl $f; $acl.SetAccessRule($rule); Set-Acl $f $acl; }
