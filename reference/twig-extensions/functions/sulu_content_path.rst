@@ -1,7 +1,7 @@
 ``sulu_content_path``
 =====================
 
-Returns the absolute URL for the content at the given path
+Returns the absolute URL for the content at the given path. The domain is taken from ``app/Resources/webspaces/*.io.xml`` and your current environment. In case you have multiple URLs in one environment, you can prioritize one by giving it ``<url main="true">``.
 
 .. code-block:: jinja
 
