@@ -1,13 +1,18 @@
 ``sulu_snippet_load``
 =====================
 
-Returns content array for given uuid.
+Returns content array for given snippet uuid.
+
+.. code-block:: jinja
+
+    {% set snippet = sulu_snippet_load('1234-1234-1234-1234-1234') %}
+    {{ snippet.title }}
 
 **Arguments**:
 
-- **uuid**: *string* - The uuid of requested content
-- **locale**: *string* - optional: Locale to load snippet
+- **uuid**: *string* - The uuid of requested content.
+- **locale**: *string* - optional: Locale to load snippet.
 
 **Returns**:
 
-.. include:: _page_structure.inc
+.. include:: _snippet_structure.inc

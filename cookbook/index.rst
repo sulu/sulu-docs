@@ -26,6 +26,12 @@ our recipes.
     smart-content-data-provider
     system-collections
     create-new-webspace
+    manage-analytics
+    change-default-locale-provider
+    default-snippets
+    custom-urls
+    websocket
+    live-preview
 
 It is possible to work through the recepies, altought most of the people will
 pick the ones, which are most similar to their own tasks. We're open to

@@ -34,6 +34,7 @@ simple string. This is done in the ``Admin`` class of your Bundle:
     namespace Acme\Bundle\ExampleBundle\Admin;
 
     use Sulu\Bundle\AdminBundle\Admin\Admin;
+    use Sulu\Component\Security\Authorization\PermissionTypes;
 
     class AcmeExampleAdmin extends Admin
     {
@@ -41,13 +42,18 @@ simple string. This is done in the ``Admin`` class of your Bundle:
 
         public function getSecurityContexts()
         {
-            return array(
-                'Sulu' => array(
-                    'Acme' => array(
-                        'sulu.acme.example'
-                    )
-                );
-            );
+            return [
+                'Sulu' => [
+                    'Acme' => [
+                        'sulu.acme.example' => [
+                            PermissionTypes::VIEW,
+                            PermissionTypes::ADD,
+                            PermissionTypes::EDIT,
+                            PermissionTypes::DELETE,
+                        ],
+                    ],
+                ],
+            ];
         }
 
         // ...
@@ -59,9 +65,10 @@ context applies - this would either be Sulu (for stuff in the administration)
 or a different context that you have defined manually.
 
 The second level just defines the title for another separation used in the
-administration interface. The third and last level defines the name of the
-permissions themselves. This name follows a namespacing scheme based on the
-previously used names.
+administration interface. The third level defines the name of the permissions
+themselves. This name follows a namespacing scheme based on the previously used
+names. This value is the key for an array containing all the available
+permission types for this security context.
 
 .. note::
     
@@ -148,6 +155,7 @@ extended by the permission tab:
     use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationItem;
     use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationProviderInterface;
     use Sulu\Bundle\MediaBundle\Api\Collection;
+    use Sulu\Component\Security\Authorization\PermissionTypes;
     use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
 
     class ContentNavigationProvider implements ContentNavigationProviderInterface
@@ -167,7 +175,7 @@ extended by the permission tab:
 
             $securityContext = 'sulu.acme.example';
 
-            if ($this->securityChecker->hasPermission($securityContext, 'security')) {
+            if ($this->securityChecker->hasPermission($securityContext, PermissionTypes::SECURITY)) {
                 $permissions = new ContentNavigationItem('Permissions');
                 $permissions->setAction('permissions');
                 $permissions->setDisplay(['edit']);

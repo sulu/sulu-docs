@@ -76,6 +76,11 @@ following file for an example:
                     </parameters>
                 </command>
             </commands>
+            <!-- optional compression for this format -->
+            <options>
+                <option name="jpeg_quality">80</option>
+                <option name="png_compression_level">6</option>
+            </options>
         </format>
     </formats>
 
@@ -85,26 +90,46 @@ the uploaded image to the size defined with the two parameters.
 
 The next table shows the standard commands available with its parameters.
 
-+---------+-----------------------------------+
-| Command | Parameters                        |
-+=========+===================================+
-| Resize  | x: the new width                  |
-|         |                                   |
-|         | y: the new height                 |
-+---------+-----------------------------------+
-| Scale   | x: the new width                  |
-|         |                                   |
-|         | y: the new height                 |
-+---------+-----------------------------------+
-| Crop    | x: x-coordinate of the startpoint |
-|         |                                   |
-|         | y: y-coordinate of the startpoint |
-|         |                                   |
-|         | w: the with of the new image      |
-|         |                                   |
-|         | h: the height of the new image    |
-+---------+-----------------------------------+
++---------+------------------------------------+
+| Command | Parameters                         |
++=========+====================================+
+| Resize  | x: the new width                   |
+|         |                                    |
+|         | y: the new height                  |
++---------+------------------------------------+
+| Scale   | x: the new width                   |
+|         |                                    |
+|         | y: the new height                  |
+|         |                                    |
+|         | forceRatio: true/false             |
+|         |                                    |
+|         | mode: 'inset' or 'outbound'        |
++---------+------------------------------------+
+| Crop    | x: x-coordinate of the startpoint  |
+|         |                                    |
+|         | y: y-coordinate of the startpoint  |
+|         |                                    |
+|         | w: the with of the new image       |
+|         |                                    |
+|         | h: the height of the new image     |
++---------+------------------------------------+
 
+Global Image Compression
+------------------------
+Images will not get compressed by default, if you upload them. You can set the
+compression for images globally in the sulu.yml or seperat for each image
+format like in the example above.
+
+To set the compression for all images you have to add following lines to your
+``config.yml``:
+
+.. code-block:: yaml
+
+    sulu_media:
+        format_manager:
+            default_imagine_options:
+                jpeg_quality: 80
+                png_compression_level: 6
 
 With the theme we got the container for our Twig-templates. That's what we'll
 do next: Writing awesome Twig files.

@@ -52,6 +52,7 @@ content type:
 .. toctree::
     :maxdepth: 1 
 
+    block
     category_list
     checkbox
     color
@@ -60,11 +61,13 @@ content type:
     internal_links
     location
     media_selection
+    multiple_select
     contact_selection
     password
     phone
     resource_locator
     single_internal_link
+    single_select
     smart_content
     snippet
     tag_list

@@ -1,7 +1,7 @@
 ``sulu_navigation_root_tree``
 =============================
 
-Returns navigation Page from root in a tree data-structure.
+Returns navigation from root in a tree data-structure.
 
 **Arguments**:
 

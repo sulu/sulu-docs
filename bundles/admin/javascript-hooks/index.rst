@@ -14,3 +14,4 @@ a header with tabs or just manipulating the column-layout.
     defaults
     events
     sticky-toolbar
+    collaboration

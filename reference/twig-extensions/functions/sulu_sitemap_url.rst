@@ -11,4 +11,4 @@ Returns url for given Webspace and locale.
 
 **Returns**:
 
-Url for a gievn webspace and locale
+Url for a given webspace and locale

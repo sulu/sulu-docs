@@ -1,5 +1,5 @@
-``sulu_resolve_medias.rst``
-===========================
+``sulu_resolve_medias``
+=======================
 
 Returns resolved medias with needed properties for a given media array.
 

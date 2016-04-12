@@ -40,6 +40,7 @@ SnippetBundle
 .. toctree::
 
     functions/sulu_snippet_load
+    functions/sulu_snippet_load_default
 
 MediaBundle
 -----------
@@ -69,5 +70,19 @@ CategoryBundle
     functions/sulu_category_url
     functions/sulu_category_url_append
     functions/sulu_category_url_clear
+
+ContactBundle
+-------------
+
+.. toctree::
+
+    functions/sulu_resolve_contact
+
+SecurityBundle
+--------------
+
+.. toctree::
+
+    functions/sulu_resolve_user
 
 .. _standard set of Twig functions: http://twig.sensiolabs.org/documentation

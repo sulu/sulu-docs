@@ -14,7 +14,9 @@ documented the most important ones.
      :maxdepth: 2
 
      admin/index
+     collaboration
      content/index
+     hash
      http_cache
      media
      persistence

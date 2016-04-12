@@ -43,6 +43,11 @@ it first. A provider is just a simple service implementing the
             $item->setDisplay(array('edit'));
             $item->setComponent('item-tab@acmeexample');
             $item->setComponentOptions(array());
+            $item->setDisplayConditions(
+                [
+                    new DisplayCondition('template', DisplayCondition::OPERATOR_EQUAL, 'overview'),
+                ]
+            );
 
             return array($item);
         }
@@ -67,6 +72,11 @@ cases the tab is appearing (available options are ``new`` for forms creating a
 new entry and ``edit`` for forms editing already existing entries). Component
 sets the name of the aura component which should be started and
 ``ComponentOptions`` are the options which will be passed to this component.
+
+The ``displayConditions`` will be used to determine whether the tab should be
+displayed for the item or not.
+See :doc:`../bundles/admin/javascript-hooks/header` how to initialize this
+feature.
 
 Register the content provider as a service
 ------------------------------------------

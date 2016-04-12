@@ -73,6 +73,11 @@ be explained in the following paragraphs.
         </portals>
     </webspace>
 
+.. note::
+
+    If you want to match all hosts you can use the ``{host}`` placeholder.
+    Example: ``<url>{host}/{localization}</url>``
+
 As you probably already have encountered, the root tag for our webspace
 definition is `webspace`. Afterwards you see a name, which is displayed in the
 administration interface. But even more important is the key, which is used

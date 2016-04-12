@@ -21,6 +21,16 @@ Parameters
     * - snippetType
       - string
       - The type of snippet to assign.
+    * - default
+      - boolean - false
+      - If this parameter is true and enabled in config the content-type will
+        load the default snippets which can be specified by the content-manager
+        in the webspace settings.
+
+.. note::
+
+    The fallback mechanism has to be enabled in the config:
+    `sulu_snippet.types.snippet.fallback_enabled`.
 
 Example
 -------
