@@ -7,8 +7,8 @@ this Bundle in more detail. This documentation is also valid for using it with
 Sulu, although there are some extensions made by the SuluSearchBundle. It
 offers a controller to provide a web API to search through the system, adds
 more fields - like creator and changer - to the search documents and also
-handles the security provided by Sulu. But the most important thing is, that it
-also contains the UI for the administration interface.
+handles the security provided by Sulu. But the most important thing is that it
+also contains the administration user interface.
 
 Configuration
 -------------
@@ -49,7 +49,7 @@ the ``sulu.contacts.people`` security context to see result from the
 That would be enough for the user to retrieve some search results, but a click
 on these results would not lead to the corresponding form. So the last missing
 step is to tell the system how to load this form when clicking on a search
-result. This has to be done in the main javascript entry point of the bundle,
+result. This has to be done in the main Javascript entry point of the bundle,
 which is located at ``Resources/public/js/main.js``. A line like the following
 has to be added to the ``initialize`` method:
 
@@ -91,7 +91,7 @@ function, which are shown in the next example.
     );
 
 The first argument is again the name of the index, the second one a function,
-returning a string for the javascript template engine. The third is a handler
+returning a string for the Javascript template engine. The third is a handler
 returning a new object from the given data, which will passed to the template
 engine in combination with the string being returned from the second argument.
 Finally, the fourth argument is the key modifier, which takes the name of the
@@ -99,10 +99,49 @@ index, and can modify it, before it is compared with the first argument from
 all ``setUrl`` calls. This is especially useful if the `ExpressionLanguage`_
 is used for the generation of the index name.
 
+Reindexing
+----------
+
+Re-indexing is the process of reading all of the documents in the system and
+regenerating their search records. This is necessary when changes are made to
+the metadata and it is desirable to propagate these changes over all of the
+indexed documents / entities in the system -- or when you import new data
+(e.g. from a backup) and need to index that data.
+
+To re-index all entities (Contacts, Media, etc.) and documents (Pages, Snippets)
+simply run the following:
+
+.. code-block:: bash
+
+    $ ./app/console massive:search:reindex --env=prod
+
+This may take anywhere between a minute and several hours depending on how
+much data you have in your system.
+
+To increase speed and reduce memory consumption:
+
+- Use the ``--env=prod`` (see note below) switch to force the production settings: This will
+  reduce logging and increase speed and lead to lower memory consumption.
+- Ensure that the document manager has the ``debug: false`` option. This
+  reduces logging dramatically.
+- Use `PHP 7`_: This will increase indexing speed up to 10 times.
+
+To recover if the process is interrupted:
+
+- You may *resume* the task simply by running it again.
+- Use the ``--provider`` option to limit the reindexing to a certain reindex provider,
+  for example ``--provider=doctrine_orm``.
+
+.. important::
+
+    In recomending the ``prod`` environment we assume that you have not
+    changed the default environment configuration. The important point is that
+    logging increases memory consumption and should be disabled.
+
 .. _MassiveSearchBundle: https://github.com/massiveart/MassiveSearchBundle
 .. _MassiveSearchBundle Documentation: http://massivesearchbundle.readthedocs.org/en/latest/
 .. _mapping configuration: http://massivesearchbundle.readthedocs.org/en/latest/mapping.html
 .. _PrependExtensions: http://symfony.com/doc/current/cookbook/bundles/prepend_extension.html
 .. _CompilerPass: http://symfony.com/doc/current/cookbook/service_container/compiler_passes.html
 .. _ExpressionLanguage: http://massivesearchbundle.readthedocs.org/en/latest/mapping.html#expression-language
-
+.. _PHP 7: https://php.net
