@@ -1,10 +1,11 @@
-``sulu_navigation_root_flat``
-=============================
+``sulu_navigation_flat``
+========================
 
-Returns navigation Page from root in a flat list data-structure.
+Returns navigation from the given page in a flat list data-structure.
 
 **Arguments**:
 
+- **uuid**: *string* The uuid for which the navigation should be loaded
 - **context**: *string* - optional: context to filter navigation
 - **depth**: *integer* - optional: depth to load (1 - childs, 2 - childs and child of childs, ...)
 - **loadExcerpt**: *boolean* - optional: load data from excerpt tab

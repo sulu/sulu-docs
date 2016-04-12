@@ -1,7 +1,7 @@
 ``sulu_navigation_root_flat``
 =============================
 
-Returns navigation Page from root in a flat list data-structure.
+Returns navigation from root in a flat list data-structure.
 
 **Arguments**:
 
