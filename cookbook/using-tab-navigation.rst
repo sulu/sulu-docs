@@ -36,7 +36,7 @@ it first. A provider is just a simple service implementing the
 
     class AcmeContentNavigationProvider implements ContentNavigationProviderInterface
     {
-        pubilc function getNavigationItems(array $options = array())
+        public function getNavigationItems(array $options = array())
         {
             $item = new ContentNavigationItem('Item');
             $item->setAction('item');
@@ -100,6 +100,6 @@ request sent from the javascript component.
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
         <service id="acme_example.content_navigation" class="Acme\Bundle\Example\Admin\AcmeContentNavigation">
-            <tag name="sulu.admin.content_navigation" alias="acme"/>
+            <tag name="sulu_admin.content_navigation" alias="acme"/>
         </service>
     </container>
