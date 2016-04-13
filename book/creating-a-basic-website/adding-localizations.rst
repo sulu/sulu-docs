@@ -56,3 +56,39 @@ the content. In case there is a ghost page - which means that the page is not
 translated into the current localization - this tree will be used to determine
 the "closest" language available.
 
+Localizing Strings
+------------------
+
+One typical use case are strings on the webpage that need to be localized
+without using the CMF. This can be done by enabling a setting in
+``app/config/config.yml``:
+
+.. code-block:: yml
+
+    framework:
+        translator: {{ fallbacks: ['en'] }}
+  
+After that you can use the following extension in Twig:
+
+.. code-block:: xml
+
+    {{ 'Read More'|trans }}
+
+Which will look up the string ``Read More``, for example in German in
+``WebsiteBundle/Resources/translations/messages.de.xliff``. The file
+should look like this for the example to work:
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+        <file source-language="en" datatype="plaintext" original="file.ext">
+            <body>
+                <trans-unit id="1">
+                    <source>Show All Industries</source>
+                    <target>Alle Branchen Anzeigen</target>
+                </trans-unit>
+            </body>
+        </file>
+    </xliff>
+
