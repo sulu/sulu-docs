@@ -34,7 +34,7 @@ be updated by sulu.
     <!DOCTYPE html>
     <html>
         <head>
-            <title>{{ content.title }}
+            <title>{{ content.title }}</title>
         </head>
         <body>
             {% block content %}{% endblock %}
@@ -145,6 +145,24 @@ Therefore you only have to set the upper property.
             <h2>{{ snippet.title }}</h2>
         {% endfor %}
     </div>
+
+Smart-Content
+*************
+
+Smart-Content will be handled like other properties. You only have to define the
+property name (in this example `similar_pages`).
+
+.. code-block:: twig
+
+    <ul property="similar_pages">
+    {% for link in content.similar_pages %}
+        <li>
+            <a href="{{ sulu_content_path(link.url) }}">
+                {{ link.title|default('No Title') }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
 
 Blocks
 ******
