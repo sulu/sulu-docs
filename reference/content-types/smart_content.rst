@@ -236,9 +236,10 @@ Page template
             <param name="page_parameter" value="p"/>
             <param name="properties" type="collection">
                 <param name="article" value="article"/>
-                <param name="excerpt.title" value="excerptTitle"/>
-                <param name="excerpt.tags" value="excerptTags"/>
-                <param name="excerpt.images" value="excerptImages"/>
+                <param name="excerptTitle" value="excerpt.title"/>
+                <param name="excerptTags" value="excerpt.tags"/>
+                <param name="excerptImages" value="excerpt.images"/>
+                <param name="excerptDescription" value="excerpt.description"/>
             </param>
             <param name="present_as" type="collection">
                 <param name="two">
