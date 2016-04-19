@@ -231,7 +231,14 @@ Controller handling the specific type of entities:
     {
         public function cgetAction()
         {
-            // code for your get action
+            $listBuilder = $factory->create($this->container->getParameter('sulu.model.example.class'));
+            $this->get('sulu_core.doctrine_rest_helper)->initializeListBuilder($listBuilder, $this->getFieldDescriptors());
+            
+            $listBuilder->setPermissionCheck($this->getUser(), PermissionTypes::VIEW);
+
+            $listResponse = $listBuilder->execute();
+
+            // Do something with $listResponse
         }
 
         public function postAction()
@@ -271,4 +278,9 @@ request object, and has to return the id of the object from it.
 
 The rest of the work will be done by the `SuluSecurityListener` in the same way
 as for the check of the security contexts.
+
+Note that the `cgetAction` needs some special handling when the `ListBuilder`
+is used. The `ListBuilder` contains a `setPermissionCheck` method, which takes
+a user and a permission. If you pass these two, you will only receive rows for
+which the given user has the given permission granted.
 
