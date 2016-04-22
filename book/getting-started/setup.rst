@@ -210,6 +210,10 @@ execute the following command:
     environments, although they are most likely to be executed in the ones
     named after them.
 
+.. note::
+
+    To use the example website in production mode you have to build the
+    javascript and css files with ``app/console assetic:dump -e prod``.
 
 Create a new user
 -----------------

@@ -29,5 +29,5 @@ For more details about working with Heroku you should check out the `Heroku Dev
 Center`_.
 
 .. _Heroku: http://www.heroku.com
-.. _Sulu cloud edition: https://github.com/sulu-io/sulu-cloud
+.. _Sulu cloud edition: https://github.com/sulu/sulu-cloud
 .. _Heroku Dev Center: https://devcenter.heroku.com/

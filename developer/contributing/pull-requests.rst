@@ -66,7 +66,7 @@ An example submission could now look as follows:
     | Fixed tickets      | fixes #1243, fixes #1443
     | Related issues/PRs | -
     | License            | MIT
-    | Documentation PR   | sulu-io/sulu-docs#153
+    | Documentation PR   | sulu/sulu-docs#153
 
 Some answers to the questions trigger some more requirements:
 
@@ -141,5 +141,5 @@ because you want early feedback on your work, add an item to to-do list:
 
 Remove this section if not needed.
 
-.. _documentation repository: https://github.com/sulu-io/sulu-docs
-.. _Sulu organization: https://github.com/sulu-io
+.. _documentation repository: https://github.com/sulu/sulu-docs
+.. _Sulu organization: https://github.com/sulu
