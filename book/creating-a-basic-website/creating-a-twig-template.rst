@@ -171,8 +171,8 @@ Just have a look at our `default theme`_, that ships with our standard
 installation as long with our `default page templates`_ over at github.
 
 
-.. _default theme: https://github.com/sulu-io/sulu-standard/tree/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default
-.. _default page templates: https://github.com/sulu-io/sulu-standard/tree/master/app/Resources/pages
-.. _example file: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
-.. _image_formats.xml: https://github.com/sulu-io/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml
-.. _Sulu Homepage: http://www.sulu.io
+.. _default theme: https://github.com/sulu/sulu-standard/tree/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default
+.. _default page templates: https://github.com/sulu/sulu-standard/tree/master/app/Resources/pages
+.. _example file: https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
+.. _image_formats.xml: https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml
+.. _Sulu Homepage: http://sulu.io

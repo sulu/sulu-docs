@@ -96,4 +96,4 @@ to let Symfony override default parameters:
 More information in the `Symfony docs`_. For a list of available parameters take a look into the `parameter.yml`_.
 
 .. _Symfony docs: http://symfony.com/doc/current/cookbook/configuration/external_parameters.html
-.. _parameter.yml: https://github.com/sulu-io/sulu/tree/develop/src/Sulu/Bundle/TestBundle/Resources/dist/parameter.yml
+.. _parameter.yml: https://github.com/sulu/sulu/tree/develop/src/Sulu/Bundle/TestBundle/Resources/dist/parameter.yml
