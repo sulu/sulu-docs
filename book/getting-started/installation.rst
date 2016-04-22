@@ -8,12 +8,12 @@ Get the code
 ------------
 
 First of all you have to clone the `sulu-standard repository on GitHub
-<https://github.com/sulu-io/sulu-standard>`_ and change into the cloned
+<https://github.com/sulu/sulu-standard>`_ and change into the cloned
 directory.
 
 .. code-block:: bash
 
-    $ git clone https://github.com/sulu-io/sulu-standard.git
+    $ git clone https://github.com/sulu/sulu-standard.git
 
 After the clone has finished, you can change to the cloned directory, and
 checkout the latest version of Sulu:

@@ -11,7 +11,7 @@ Configuration
 -------------
 
 If you use the config layout of `sulu-standard
-<https://github.com/sulu-io/sulu-standard>`_ you only have to set following
+<https://github.com/sulu/sulu-standard>`_ you only have to set following
 parameters in the ``parameters.yml`` file.
 
 .. list-table::
