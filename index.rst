@@ -32,7 +32,7 @@ We are also on `Github`_. Pull requests and contributions are very welcome.
 
 Have fun with Sulu.
 
-.. _Sulu: http://www.sulu.io
-.. _website: http://www.sulu.io
+.. _Sulu: http://sulu.io
+.. _website: http://sulu.io
 .. _contact us: http://sulu.io/en/contact
-.. _github: https://github.com/sulu-io/sulu-docs
+.. _github: https://github.com/sulu/sulu-docs
