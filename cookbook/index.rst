@@ -32,6 +32,7 @@ our recipes.
     custom-urls
     websocket
     live-preview
+    deactivate-request-analyzer
 
 It is possible to work through the recepies, altought most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
