@@ -1,16 +1,16 @@
 MarkupBundle
 ============
 
-The MarkupBundle provides the feature of declaring different "relations" as
-html-tag. This tags will be automatically parsed before the response will be
-send.
+The MarkupBundle provides the feature of extending output formats as with
+different so called tags. These tags will be automatically parsed and replaced
+before the response will be sent.
 
 Example
 -------
 
 This example contains a sulu-related example. The tag ``sulu:link`` represents
-a link to another page. This tag will be replaces via a valid anchor where the
-href links to the page with given UUID.
+a link to another page. This tag will be replaced via a valid anchor where the
+`href` attribute contains the UUID of the page.
 
 .. code-block:: html
 
@@ -30,10 +30,18 @@ href links to the page with given UUID.
         </body>
     </html>
 
+Core Tags
+---------
+
+.. toctree::
+    :maxdepth: 1
+
+    link
+
 Extending
 ---------
 
-To enable replacement of your "custom" tags you can define a service which
+To enable replacement of your custom tags you can define a service which
 implements the ``TagInterface``.
 
 .. code-block:: php
@@ -53,7 +61,7 @@ implements the ``TagInterface``.
                 $url = ; // load url via uuid from document-manager
                 $pageTitle = ...; // load page-title via uuid from document-manager
 
-                $result[$tag] = sprintf('<a href="%s" title="%s">%s</a>', $url, $$pageTitle, $attributes['content']);
+                $result[$tag] = sprintf('<a href="%s" title="%s">%s</a>', $url, $pageTitle, $attributes['content']);
             }
 
             return $result;

@@ -164,6 +164,17 @@ property name (in this example `similar_pages`).
     {% endfor %}
     </ul>
 
+Single-Internal-Link
+********************
+
+For rendering single-internal links you can use the
+:doc:`../bundles/markup/index`. This example will place the title of the page
+in the content of the anchor tag.
+
+.. code-block:: twig
+
+    <sulu:link property="similar_pages" href="{{ content.singleInternalLink }}" title="My-Title"/>
+
 Blocks
 ******
 
