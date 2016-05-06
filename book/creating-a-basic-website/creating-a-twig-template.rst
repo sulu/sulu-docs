@@ -121,7 +121,7 @@ context.
     :linenos:
 
     <ul>
-        {% for item in sulu_navigation_root_tree('main') %}
+        {% for item in sulu_navigation_root_tree('main', 2) %}
         <li>
             <a href="{{ sulu_content_path(item.url) }}" 
                 title="{{ item.title }}">{{ item.title }}</a>
