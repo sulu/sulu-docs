@@ -14,50 +14,45 @@ Functional Tests
 
 To run the tests, follow these steps:
 
-1. Install Composer dependences with ``composer install``.
+1. Install Composer dependencies with ``composer install``.
 
-2. Run ``./bin/jackrabbit.sh``. This will install a local copy of Jackrabbit into the ``./bin`` directory and start the
-   server. If you already have a running server on your machine, you can skip this step. Also if you want the tests to run on
-   different port than the default `8080`, you need to install Jackrabbit on your own.
-
-3. Run the tests in one of the following ways.
+2. Run the tests in one of the following ways.
 
 Bundle Testing
 ~~~~~~~~~~~~~~
 
-The test runner script is a bash script which automates the execution of
+The test runner script is a php script which automates the execution of
 **Bundle** tests. It is used by the continuous integration server and can be
 useful to quickly get the tests running.
 
-.. note::
-
-    This script is only used for the bundles (located in the ``Sulu\\\\Bundle`` namespace). If you are programming a component see below.
-
 .. code-block:: bash
 
-    $ ./bin/runtests.sh -ia
+    $ ./bin/runtests -i -C
 
-The above will initialize the database(`i`) and run all the tests (`a`)
+The above will initialize the database(``i``) and run all the tests excluding
+the component tests (``C``).
 
-`runtests.sh` has the following options:
+`runtests` has the following options:
 
    * ``-i``: Initialize the test setup (e.g. creating database).
    * ``-t [Bundle]``: Run the tests only for the specific bundle.
    * ``-a``: Run all tests.
+   * ``-B``: Don't run the bundle tests
+   * ``-C``: Don't run the component tests
    * ``-r``: Restart jackrabbit between each bundle when running all tests.
 
-Subsequently you will only need to run the tests, so you can ommit the `-i`
+Subsequently you will only need to run the tests, so you can omit the ``-i``
 option.
 
 .. code-block:: bash
 
-    $ ./bin/runtests.sh -a
+    $ ./bin/runtests -a
 
 You may also specify a specific bundle for which to run the tests:
 
 .. code-block:: bash
 
-    $ ./bin/runtests.sh SuluSearchBundle
+    $ ./bin/runtests -C -t SuluSearchBundle
 
 After the bundles have been initialized you may also simply change to the
 bundle root directory and use ``phpunit`` as normal:
@@ -70,17 +65,49 @@ bundle root directory and use ``phpunit`` as normal:
 Component Testing
 -----------------
 
-The component tests may be executed using PHPUnit from the root directory:
+The component tests may be executed using the runtests script or PHPUnit from
+the root directory:
 
-.. code-block:: php
+.. code-block:: bash
 
+    $ ./bin/runtests -B
     $ phpunit
 
-You can specify a specific component by specifying the path:
+You can test a specific component with PHPUnit by specifying the path:
 
-.. code-block:: php
+.. code-block:: bash
 
     $ phpunit src/Sulu/Component/Content
+
+Jackrabbit installation
+-----------------------
+
+By default Sulu uses the Doctrine DBAL implementation for PHPCR in your local
+test environment. If you need to test against the Jackrabbit backend, you can
+install it with the following bash snippet:
+
+.. code-block:: bash
+
+    JACKRABBIT_VERSION=2.12.0
+    if [ ! -f downloads/jackrabbit-standalone-$JACKRABBIT_VERSION.jar ]; then
+        cd downloads
+        wget http://archive.apache.org/dist/jackrabbit/$JACKRABBIT_VERSION/jackrabbit-standalone-$JACKRABBIT_VERSION.jar
+        cd -
+    fi
+
+To start your jackrabbit installation run
+
+.. code-block:: bash
+
+    java -jar downloads/jackrabbit-standalone-2.12.0.jar > /dev/null &
+
+Now you have to run your tests with the ``jackrabbit`` backend enabled (omit the
+initialization step [``-i``] after the first run):
+
+.. code-block:: bash
+
+    $ SYMFONY__PHPCR__TRANSPORT=jackrabbit ./bin/runtests -i -a
+
 
 Test Environment Configuration
 ------------------------------
@@ -91,7 +118,7 @@ to let Symfony override default parameters:
 
 .. code-block:: bash
 
-    $ SYMFONY__PHPCR_BACKEND_URL=http://localhost:8888/server/ ./bin/runtests.sh
+    $ SYMFONY__PHPCR__TRANSPORT=jackrabbit SYMFONY__PHPCR__BACKEND_URL=http://localhost:8888/server/ ./bin/runtests -a
 
 More information in the `Symfony docs`_. For a list of available parameters take a look into the `parameter.yml`_.
 
