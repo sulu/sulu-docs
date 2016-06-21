@@ -9,6 +9,7 @@ These entities are ready to extend:
 * User
 * Role
 * Contact
+* Media
 
 You can extend all of them in the same way. Therefor we explain it for `User` here.
 
