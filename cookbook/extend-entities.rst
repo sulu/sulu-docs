@@ -108,6 +108,16 @@ For the `Contact` entity:
                 model:                Sulu\Bundle\ContactBundle\Entity\Contact
                 repository:           Sulu\Bundle\ContactBundle\Entity\ContactRepository
 
+For the `Media` entity:
+
+.. code-block:: yaml
+
+    sulu_media:
+        objects:
+            media:
+                model:                Sulu\Bundle\MediaBundle\Entity\Media
+                repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
+
 .. warning::
 
     If you override the entities you lose your old tables and data. You should provide
