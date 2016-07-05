@@ -24,28 +24,16 @@ parameters in the ``parameters.yml`` file.
 If you have multiple installations of sulu on a single server be sure that you
 use unique ports per installation.
 
-To enable the websocket you have to place following lines into your
-configuration:
-
-.. code-block:: yaml
-
-    sulu_content:
-        preview:
-            websocket: true
-
-If you have your own application, you can configure the url and port in your
-configuration.
+If you have your own application, you can enable the websocket and configure its url and port
+by placing the following lines into your configuration:
 
 .. code-block:: yaml
 
     sulu_websocket:
+        enabled: true
         server:
             http_host: %websocket_url%
             port: %websocket_port%
-
-    sulu_content:
-        preview:
-            websocket: true
 
 Execution
 ---------
