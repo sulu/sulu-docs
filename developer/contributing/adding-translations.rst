@@ -65,11 +65,8 @@ in the standard edition of Sulu:
 #. Add the 2-letter code to the array ``sulu_core.translations``
 
 #. Build the new language using
-   ``app/console sulu:translate:import [language]`` and
-   ``app/console sulu:translate:export [language]``. If you have updated
-   multiple languages at once, you can also use the
-   ``app/console sulu:build translations`` command, which builds all available
-   languages.
+   ``app/console sulu:translate:export [language]``. If you updated
+   multiple languages at once, you can leave off the `language` part.
 
 Afterwards commit all the changes and create Pull Requests as described in
 :doc:`pull-requests`.
