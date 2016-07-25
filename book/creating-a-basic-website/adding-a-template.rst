@@ -135,9 +135,8 @@ includes the `view`, which is the reference to the twig template, and the
 template. For standard templates you don't have to define your own controllers,
 because you can use the `index`-action of the `DefaultController` in the
 `SuluwebsiteBundle`. Both the template and controller have to be referenced
-as described in the `Template Naming and Locations`_ (with the addition of the
-`LiipThemeBundle`_) and `Controller Naming Pattern`_ in the Symfony
-documentation.
+as described in the `Template Naming and Locations`_ and
+`Controller Naming Pattern`_ in the Symfony documentation.
 
 The `meta`-tag consists of another `title`-tag for each available language,
 which will be displayed in the template selection of the Sulu administration
@@ -169,5 +168,4 @@ corresponding theme.
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations
-.. _`LiipThemeBundle`: https://github.com/liip/LiipThemeBundle#theme-cascading-order
 

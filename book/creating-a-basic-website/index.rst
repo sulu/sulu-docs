@@ -13,10 +13,11 @@ into smart content and localization.
     about-the-sulu-content-architecture
     setup-a-webspace
     adding-a-template
-    adding-a-theme
+    configuring-image-formats
     creating-a-twig-template
     using-smart-content
     adding-localizations
+    adding-a-theme
 
 At first we'll have another look at the content architecture on a technical level
 and afterwards we will create stuff.

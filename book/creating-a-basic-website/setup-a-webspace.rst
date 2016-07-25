@@ -22,7 +22,7 @@ be explained in the following paragraphs.
     <?xml version="1.0" encoding="utf-8"?>
     <webspace xmlns="http://schemas.sulu.io/webspace/webspace"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.0.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
 
         <name>Example</name>
         <key>example</key>
@@ -31,13 +31,10 @@ be explained in the following paragraphs.
             <localization language="en"/>
         </localizations>
 
-        <theme>
-            <key>default</key>
-            <default-templates>
-                <default-template type="page">example</default-template>
-                <default-template type="homepage">default</default-template>
-            </default-templates>    
-        </theme>
+        <default-templates>
+            <default-template type="page">example</default-template>
+            <default-template type="homepage">default</default-template>
+        </default-templates>
 
         <navigation>
             <contexts>
@@ -101,12 +98,14 @@ the available localizations:
 For a more complete explanation you should have a look at
 :doc:`adding-localizations`.
 
-Themes
-------
+Themes (optional)
+-----------------
 
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
-:doc:`adding-a-theme`.
+:doc:`adding-a-theme`. This feature is default deactivated and therefore in the
+example not used. If you have multiple webspaces which should look different,
+you can use this feature to easily do this.
 
 Navigation
 ----------
