@@ -96,9 +96,8 @@ in squared brackets in the following example:
                     </environment>
                 </environments>
             </portal>
-    </portals>
-</webspace>
-
+        </portals>
+    </webspace>
 
 .. note::
 
