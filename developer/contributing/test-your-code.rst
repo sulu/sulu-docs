@@ -37,6 +37,7 @@ the component tests (``C``).
    * ``-i``: Initialize the test setup (e.g. creating database).
    * ``-t [Bundle]``: Run the tests only for the specific bundle.
    * ``-a``: Run all tests.
+   * ``-p``: Run tests on the postgres db. Needs to be installed with role "postgres" and password "postgres".
    * ``-B``: Don't run the bundle tests
    * ``-C``: Don't run the component tests
    * ``-r``: Restart jackrabbit between each bundle when running all tests.
