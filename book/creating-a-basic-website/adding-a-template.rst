@@ -176,6 +176,10 @@ You can even add a part of another xml file or another template using an xpointe
 
     <xi:include href='other-template.xml' xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:template/sulu:properties)"/>
 
+.. warning::
+
+   XInclude currently does not work on Windows.
+
 .. note::
 
    Every template has to define a property named `title`, because it is used
