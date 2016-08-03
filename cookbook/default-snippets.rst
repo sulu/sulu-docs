@@ -10,6 +10,7 @@ the form and can have a big impact on the page.
 
     This feature is disabled by default and can be activated by setting the
     config value `sulu_snippet.types.snippet.default_enabled` to true.
+    After that you need to activate the rights to access the default snippets in the user role section.
 
 Configuration
 -------------
