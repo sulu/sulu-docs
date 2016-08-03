@@ -65,9 +65,6 @@ in squared brackets in the following example:
             <portal>
                 <name>sulu.io</name>
                 <key>sulu_io</key>
-                <resource-locator>
-                    <strategy>tree</strategy>
-                </resource-locator>
 
                 <localizations>
                     <localization language="en" default="true"/>

@@ -46,13 +46,14 @@ be explained in the following paragraphs.
             </contexts>
         </navigation>
 
+        <resource-locator>
+            <strategy>tree</strategy>
+        </resource-locator>
+
         <portals>
             <portal>
                 <name>example</name>
                 <key>example</key>
-                <resource-locator>
-                    <strategy>tree</strategy>
-                </resource-locator>
 
                 <environments>
                     <environment type="prod">
@@ -118,6 +119,13 @@ developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu, whereby it is not only possible to
 retrieve a flat list of pages, but also to retrieve entire navigation trees.
 
+Resource-Locator
+----------------
+
+The `strategy` for the `resource-locator` influences the design of the URLs for
+the content. Currently there is only the `tree`-option available resulting in
+exposing the entire content tree in the URL.
+
 Portals
 -------
 
@@ -130,11 +138,6 @@ spread different localizations over different URLs.
 Our sample file defines just one portal, which includes a `name` and a `key`
 just as the webspace, whereby the key for the portal hast to be unique for the
 entire installation, not only within this webspace.
-
-Then the `strategy` for the `resource-locator` is defined, which influences
-the design of the URLs for the content. Currently there is only the
-`tree`-option available resulting in exposing the entire content tree in the
-URL.
 
 URLs
 ~~~~
