@@ -75,6 +75,12 @@ be explained in the following paragraphs.
     If you want to match all hosts you can use the ``{host}`` placeholder.
     Example: ``<url>{host}/{localization}</url>``
 
+.. note::
+
+    If you add a webspace to an existing installation you also have to set the
+    correct permissions for existing users, otherwise they won't be able to see
+    it.
+
 As you probably already have encountered, the root tag for our webspace
 definition is `webspace`. Afterwards you see a name, which is displayed in the
 administration interface. But even more important is the key, which is used
