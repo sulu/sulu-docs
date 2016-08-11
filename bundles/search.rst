@@ -32,12 +32,15 @@ So a sample configuration would look like this:
         indexes:
             contact:
                 security_context: sulu.contacts.people
+                contexts: []
 
 The values under ``indexes``, namely ``contact`` in this example, result from
 the index tag in the `mapping configuration`_. The value of
 ``security_context`` indicates that the user has to have the permission to view
 the ``sulu.contacts.people`` security context to see result from the
-``contact`` index.
+``contact`` index. The ``contexts`` configuration is optional, and can be used
+to filter the indexes in an application. This is used e.g. for the search in
+the admin.
 
 .. note::
 
@@ -114,6 +117,12 @@ simply run the following:
 .. code-block:: bash
 
     $ ./app/console massive:search:reindex --env=prod
+
+.. warning::
+
+    At the moment it is required to also execute
+    `./app/webconsole massive:search:reindex --env=prod` to reindex the pages
+    also for the website.
 
 This may take anywhere between a minute and several hours depending on how
 much data you have in your system.
