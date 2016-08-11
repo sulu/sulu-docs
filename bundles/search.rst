@@ -102,6 +102,22 @@ index, and can modify it, before it is compared with the first argument from
 all ``setUrl`` calls. This is especially useful if the `ExpressionLanguage`_
 is used for the generation of the index name.
 
+Templating
+----------
+
+The SuluSearchBundle has a `WebsiteSearchController`, which loads the template
+from the currently loaded webspace. It therefore uses the `RequestAnalyzer`,
+and asks the webspace for its template of type ``search``. This template can
+then be defined for every webspace in its XML configuration:
+
+.. code-block:: xml
+
+    <templates>
+        <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
+    </templates>
+
+See :doc:`../book/creating-a-basic-website/setup-a-webspace` for more details.
+
 Reindexing
 ----------
 
