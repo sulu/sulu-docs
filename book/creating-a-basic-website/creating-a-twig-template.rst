@@ -40,7 +40,12 @@ In :doc:`adding-a-template` we learned how to define a template.
     </template>
 
 
-In the page template the view could be set.
+In the page template the view could be set. Internally Sulu appends the format
+of the request to find the correct template to render the response. As an
+example sulu uses for a html request the template
+`ClientWebsiteBundle:templates:default.html.twig` or
+`ClientWebsiteBundle:templates:default.xml.twig` for a xml request. With this
+feature you are able to define different output format for a single page.
 
 
 Rendering the Content
@@ -121,7 +126,7 @@ context.
     :linenos:
 
     <ul>
-        {% for item in sulu_navigation_root_tree('main') %}
+        {% for item in sulu_navigation_root_tree('main', 2) %}
         <li>
             <a href="{{ sulu_content_path(item.url) }}" 
                 title="{{ item.title }}">{{ item.title }}</a>

@@ -9,6 +9,7 @@ These entities are ready to extend:
 * User
 * Role
 * Contact
+* Media
 
 You can extend all of them in the same way. Therefor we explain it for `User` here.
 
@@ -106,6 +107,16 @@ For the `Contact` entity:
             contact:
                 model:                Sulu\Bundle\ContactBundle\Entity\Contact
                 repository:           Sulu\Bundle\ContactBundle\Entity\ContactRepository
+
+For the `Media` entity:
+
+.. code-block:: yaml
+
+    sulu_media:
+        objects:
+            media:
+                model:                Sulu\Bundle\MediaBundle\Entity\Media
+                repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
 
 .. warning::
 

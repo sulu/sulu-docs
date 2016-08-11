@@ -32,12 +32,15 @@ So a sample configuration would look like this:
         indexes:
             contact:
                 security_context: sulu.contacts.people
+                contexts: []
 
 The values under ``indexes``, namely ``contact`` in this example, result from
 the index tag in the `mapping configuration`_. The value of
 ``security_context`` indicates that the user has to have the permission to view
 the ``sulu.contacts.people`` security context to see result from the
-``contact`` index.
+``contact`` index. The ``contexts`` configuration is optional, and can be used
+to filter the indexes in an application. This is used e.g. for the search in
+the admin.
 
 .. note::
 
@@ -99,6 +102,22 @@ index, and can modify it, before it is compared with the first argument from
 all ``setUrl`` calls. This is especially useful if the `ExpressionLanguage`_
 is used for the generation of the index name.
 
+Templating
+----------
+
+The SuluSearchBundle has a `WebsiteSearchController`, which loads the template
+from the currently loaded webspace. It therefore uses the `RequestAnalyzer`,
+and asks the webspace for its template of type ``search``. This template can
+then be defined for every webspace in its XML configuration:
+
+.. code-block:: xml
+
+    <templates>
+        <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
+    </templates>
+
+See :doc:`../book/creating-a-basic-website/setup-a-webspace` for more details.
+
 Reindexing
 ----------
 
@@ -114,6 +133,12 @@ simply run the following:
 .. code-block:: bash
 
     $ ./app/console massive:search:reindex --env=prod
+
+.. warning::
+
+    At the moment it is required to also execute
+    `./app/webconsole massive:search:reindex --env=prod` to reindex the pages
+    also for the website.
 
 This may take anywhere between a minute and several hours depending on how
 much data you have in your system.

@@ -30,7 +30,7 @@ Parameters
 .. note::
 
     The fallback mechanism has to be enabled in the config:
-    `sulu_snippet.types.snippet.fallback_enabled`.
+    `sulu_snippet.types.snippet.default_enabled`.
 
 Example
 -------

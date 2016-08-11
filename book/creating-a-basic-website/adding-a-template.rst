@@ -135,9 +135,8 @@ includes the `view`, which is the reference to the twig template, and the
 template. For standard templates you don't have to define your own controllers,
 because you can use the `index`-action of the `DefaultController` in the
 `SuluwebsiteBundle`. Both the template and controller have to be referenced
-as described in the `Template Naming and Locations`_ (with the addition of the
-`LiipThemeBundle`_) and `Controller Naming Pattern`_ in the Symfony
-documentation.
+as described in the `Template Naming and Locations`_ and
+`Controller Naming Pattern`_ in the Symfony documentation.
 
 The `meta`-tag consists of another `title`-tag for each available language,
 which will be displayed in the template selection of the Sulu administration
@@ -152,6 +151,34 @@ form in the Sulu administration. Depending on the content type you can/must add
 some more parameters, as for the `article`-property in the example above. The
 example is enabling the godMode, the icon for adding links and the icon for
 adding tables.
+
+Using XInclude
+-----------------
+A template can be composed of various components using `XInclude`_. To use Xinclude you first have to add the proper namespace (xmlns:xi="http://www.w3.org/2001/XInclude"-attribute).
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:xi="http://www.w3.org/2001/XInclude"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+Now you can add a part of the template including another file. The path in the href-attribute is relative to the template file.
+
+.. code-block:: xml
+
+    <xi:include href='blocks/main-block.xml'/>
+
+You can even add a part of another xml file or another template using an xpointer.
+
+.. code-block:: xml
+
+    <xi:include href='other-template.xml' xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:template/sulu:properties)"/>
+
+.. warning::
+
+   XInclude currently does not work on Windows.
 
 .. note::
 
@@ -169,5 +196,5 @@ corresponding theme.
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations
-.. _`LiipThemeBundle`: https://github.com/liip/LiipThemeBundle#theme-cascading-order
+.. _`XInclude`: https://en.wikipedia.org/wiki/XInclude
 

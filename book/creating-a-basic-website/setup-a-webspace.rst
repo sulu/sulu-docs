@@ -14,15 +14,15 @@ these trees and fill them with content. Have a closer look at
 Normally you'll create a webspace for a new website, a landingpage or a portal, 
 that should run on your Sulu instance.
 
-The following file shows the simplest configuration possible. These lines will
-be explained in the following paragraphs.
+The following file shows a configuration. These lines will be explained in the
+following paragraphs.
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="utf-8"?>
     <webspace xmlns="http://schemas.sulu.io/webspace/webspace"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.0.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
 
         <name>Example</name>
         <key>example</key>
@@ -31,13 +31,16 @@ be explained in the following paragraphs.
             <localization language="en"/>
         </localizations>
 
-        <theme>
-            <key>default</key>
-            <default-templates>
-                <default-template type="page">example</default-template>
-                <default-template type="homepage">default</default-template>
-            </default-templates>    
-        </theme>
+        <default-templates>
+            <default-template type="page">example</default-template>
+            <default-template type="homepage">default</default-template>
+        </default-templates>
+
+        <templates>
+            <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
+            <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
+            <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
+        </templates>
 
         <navigation>
             <contexts>
@@ -49,13 +52,14 @@ be explained in the following paragraphs.
             </contexts>
         </navigation>
 
+        <resource-locator>
+            <strategy>tree</strategy>
+        </resource-locator>
+
         <portals>
             <portal>
                 <name>example</name>
                 <key>example</key>
-                <resource-locator>
-                    <strategy>tree</strategy>
-                </resource-locator>
 
                 <environments>
                     <environment type="prod">
@@ -77,6 +81,12 @@ be explained in the following paragraphs.
 
     If you want to match all hosts you can use the ``{host}`` placeholder.
     Example: ``<url>{host}/{localization}</url>``
+
+.. note::
+
+    If you add a webspace to an existing installation you also have to set the
+    correct permissions for existing users, otherwise they won't be able to see
+    it.
 
 As you probably already have encountered, the root tag for our webspace
 definition is `webspace`. Afterwards you see a name, which is displayed in the
@@ -101,12 +111,25 @@ the available localizations:
 For a more complete explanation you should have a look at
 :doc:`adding-localizations`.
 
-Themes
-------
+Themes (optional)
+-----------------
 
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
-:doc:`adding-a-theme`.
+:doc:`adding-a-theme`. This feature is default deactivated and therefore in the
+example not used. If you have multiple webspaces which should look different,
+you can use this feature to easily do this.
+
+Templates
+---------
+
+The webspace can also define certain templates in combination with a type.
+These template can then be retrieved from the webspace. E.g. Sulu uses them to
+retrieve the correct templates for errors. Therefore it makes use of the 
+template with type ``error-<http-code>`` respectively it uses the template with
+the type  ``error`` as a fallback. The other use case is the search. Sulu will
+use the template with the type ``search`` from the webspace to display search
+results.
 
 Navigation
 ----------
@@ -118,6 +141,13 @@ available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu, whereby it is not only possible to
 retrieve a flat list of pages, but also to retrieve entire navigation trees.
+
+Resource-Locator
+----------------
+
+The `strategy` for the `resource-locator` influences the design of the URLs for
+the content. Currently there is only the `tree`-option available resulting in
+exposing the entire content tree in the URL.
 
 Portals
 -------
@@ -131,11 +161,6 @@ spread different localizations over different URLs.
 Our sample file defines just one portal, which includes a `name` and a `key`
 just as the webspace, whereby the key for the portal hast to be unique for the
 entire installation, not only within this webspace.
-
-Then the `strategy` for the `resource-locator` is defined, which influences
-the design of the URLs for the content. Currently there is only the
-`tree`-option available resulting in exposing the entire content tree in the
-URL.
 
 URLs
 ~~~~
