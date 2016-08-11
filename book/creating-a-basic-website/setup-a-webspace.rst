@@ -14,8 +14,8 @@ these trees and fill them with content. Have a closer look at
 Normally you'll create a webspace for a new website, a landingpage or a portal, 
 that should run on your Sulu instance.
 
-The following file shows the simplest configuration possible. These lines will
-be explained in the following paragraphs.
+The following file shows a configuration. These lines will be explained in the
+following paragraphs.
 
 .. code-block:: xml
 
@@ -35,6 +35,12 @@ be explained in the following paragraphs.
             <default-template type="page">example</default-template>
             <default-template type="homepage">default</default-template>
         </default-templates>
+
+        <templates>
+            <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
+            <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
+            <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
+        </templates>
 
         <navigation>
             <contexts>
@@ -113,6 +119,17 @@ implemented by a developer in the system. Read more about themes in the section
 :doc:`adding-a-theme`. This feature is default deactivated and therefore in the
 example not used. If you have multiple webspaces which should look different,
 you can use this feature to easily do this.
+
+Templates
+---------
+
+The webspace can also define certain templates in combination with a type.
+These template can then be retrieved from the webspace. E.g. Sulu uses them to
+retrieve the correct templates for errors. Therefore it makes use of the 
+template with type ``error-<http-code>`` respectively it uses the template with
+the type  ``error`` as a fallback. The other use case is the search. Sulu will
+use the template with the type ``search`` from the webspace to display search
+results.
 
 Navigation
 ----------
