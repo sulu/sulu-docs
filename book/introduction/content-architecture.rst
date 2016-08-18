@@ -87,4 +87,4 @@ A more detailled documentation could be found in the section
 :doc:`../creating-a-basic-website/about-the-sulu-content-architecture`.
 
 Now you are really deep into the concepts of Sulu. So the next step is to get
-started. :doc:`../getting-started/index`
+started. :doc:`../getting-started`

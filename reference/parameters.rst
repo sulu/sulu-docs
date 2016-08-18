@@ -1,15 +1,9 @@
 Parameter Reference
 ===================
 
-You can customize your Sulu installation by changing parameter values of two files:
-
-* |app/config/parameters.yml|_
-* |app/config/phpcr.yml|_
-
-This guide documents each of the keys in these files.
-
-app/config/parameters.yml
--------------------------
+You can customize your Sulu installation by changing parameter values of
+the ``app/config/parameters.yml`` file. This guide documents each of the keys in
+this file.
 
 =================== ============================================================
 Parameter           Description
@@ -32,14 +26,6 @@ websocket_port      The port which will be used for the content preview in the
                     HTTP polling mode
 websocket_url       The URL which will be used for the content preview in the
                     HTTP polling mode
-=================== ============================================================
-
-app/config/phpcr.yml
---------------------
-
-=================== ============================================================
-Parameter           Description
-=================== ============================================================
 phpcr_backend       The PHPCR backend definition, defaults to the doctrine-dbal,
                     check `the PHPCR documentation`_ for more configuration
                     options
@@ -49,6 +35,4 @@ phpcr_pass          The password for phpcr
 phpcr_cache         PHPCR caching type
 =================== ============================================================
 
-.. |app/config/parameters.yml| replace:: ``app/config/parameters.yml``
-.. |app/config/phpcr.yml| replace:: ``app/config/phpcr.yml``
 .. _the PHPCR documentation: http://doctrine-phpcr-odm.readthedocs.org/en/latest/reference/installation-configuration.html

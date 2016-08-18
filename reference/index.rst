@@ -13,6 +13,7 @@ The Reference aims to developers who already worked through the introdcution and
     :maxdepth: 1
 
     parameters
+    requirements
     content-types/index
     twig-extensions/index
     components/document-manager/index.rst
