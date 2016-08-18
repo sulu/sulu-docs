@@ -35,7 +35,7 @@ Page
 As already heard in :doc:`backend-template` pages are configured in templates.
 They are created in webspaces and represent an entry in a certain menu. These
 pages are contained within your webspace. Once you got your
-:doc:`../getting-started/setup` right, you can start exploring the Sulu default
+:doc:`setup <../getting-started>` right, you can start exploring the Sulu default
 structure in the backend.
 
 
@@ -52,7 +52,7 @@ consist of the following content types:
 * List of Tags (*Tags*)
 
 A detailed list of all the content types is covered in
-:doc:`../creating-a-basic-website/adding-a-template`.
+:doc:`../templates`.
 
 
 Assets
@@ -84,7 +84,7 @@ DBAL? Do it. An API that delivers content? Integrate it. Other Symfony bundles
 you've already coded. Integrate them.
 
 A more detailled documentation could be found in the section
-:doc:`../creating-a-basic-website/about-the-sulu-content-architecture`.
+:doc:`../content-architecture`.
 
 Now you are really deep into the concepts of Sulu. So the next step is to get
 started. :doc:`../getting-started`

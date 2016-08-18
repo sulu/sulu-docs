@@ -61,7 +61,7 @@ to the name of your project:
     recommend to decide what key to use before you build the database in the
     next step.
 
-We'll return to webspaces later in this book.
+We'll :doc:`return to webspaces <webspaces>` later in this book.
 
 Setup the Database
 ------------------
@@ -132,7 +132,9 @@ Next Steps
 Your Sulu website is ready now! Check out the administration, create pages and
 play around.
 
+When you're ready to learn more, continue with :doc:`templates`.
+
 .. _Sulu Minimal Edition: https://github.com/sulu/sulu-minimal
 .. _Composer:  https://getcomposer.org
 .. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
-.. _Apache Jackrabbit:
+.. _Apache Jackrabbit: http://jackrabbit.apache.org

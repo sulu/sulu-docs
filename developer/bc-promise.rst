@@ -20,7 +20,7 @@ Twig
 The most important extension point is twig as its templates are used in any
 project using Sulu for content management. We guarantee that the variables
 passed to the twig template as described in
-:doc:`../book/creating-a-basic-website/creating-a-twig-template` will keep their
+:doc:`../book/twig` will keep their
 structure and that all the twig extensions as described in
 :doc:`../reference/twig-extensions/index` will continue to work using the same
 calls.
@@ -31,9 +31,9 @@ Configuration
 There are several configuration files responsible for Sulu's behaviour for which
 backwards compatibility is promised:
 
-* Webspace (see :doc:`../book/creating-a-basic-website/setup-a-webspace`)
-* Template (see :doc:`../book/creating-a-basic-website/adding-a-template`)
-* Image formats (see :doc:`../book/creating-a-basic-website/adding-a-theme`)
+* Webspace (see :doc:`../book/webspaces`)
+* Template (see :doc:`../book/templates`)
+* Image formats (see :doc:`../book/themes`)
 * MassiveSearch (see the `MassiveSearchBundle Mapping`_)
 * Bundle configurations
 

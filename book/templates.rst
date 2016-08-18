@@ -140,7 +140,7 @@ as described in the `Template Naming and Locations`_ and
 
 The `meta`-tag consists of another `title`-tag for each available language,
 which will be displayed in the template selection of the Sulu administration
-interface. 
+interface.
 
 The next tag is for all the `properties` in this template. A property is the
 instance of one of the previous listed content types. The property's type
@@ -185,14 +185,14 @@ You can even add a part of another xml file or another template using an xpointe
    Every template has to define a property named `title`, because it is used
    internally for generating URLs and storing.
 
-We've learned how to define the template. The next step is to write 
+We've learned how to define the template. The next step is to write
 corresponding theme.
 
 .. warning::
 
     The template does not appear in the dropdown of the page form, unless there
     is also a HTML twig template available. This will be explained in
-    :doc:`creating-a-twig-template`.
+    :doc:`twig`.
 
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations

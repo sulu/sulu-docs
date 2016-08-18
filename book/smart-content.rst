@@ -19,7 +19,7 @@ Configure a smart content
 -------------------------
 
 The smart content is configured in the template definition. The template
-definition is already described in :doc:`adding-a-template`. All that has to be
+definition is already described in :doc:`templates`. All that has to be
 done is to add another property for the smart content. This configuration can
 look something like the following typical XML fragment:
 
@@ -101,7 +101,7 @@ one or two column layout can be created by using CSS.
 
 The ``page`` loop variable can then be used to access the actual content from
 the page. A Sulu twig extension provides the ``sulu_content_path`` method,
-which builds the final URL with all the additional information required. 
+which builds the final URL with all the additional information required.
 
 For more and deeper information about twig there is the excellent `twig
 documentation`_.
