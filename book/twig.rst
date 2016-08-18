@@ -1,5 +1,5 @@
-Creating a Twig Template
-========================
+Rendering Pages with Twig
+=========================
 
 Twig is an awesome option for rendering HTML. It got some nice features like
 blocks and inheritance. That's why we use and love Twig.

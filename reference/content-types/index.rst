@@ -1,5 +1,5 @@
-Content types
-=============
+Content Type Reference
+======================
 
 As already described in :doc:`/book/templates`
 a template consists of multiple content types, which enable the user to manage
