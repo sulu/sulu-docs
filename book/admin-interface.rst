@@ -102,8 +102,3 @@ You could edit the personal information of your user in this section.
 
 .. figure:: ../img/admin-profile.png
 	:align: center
-
-
-Now you should have an overview on what Sulu could provides and how it looks. There's one
-last step to get started: :doc:`vhost` and then we are ready to create a basic website.
-
