@@ -1,7 +1,7 @@
 Content types
 =============
 
-As already described in :doc:`/book/creating-a-basic-website/adding-a-template`
+As already described in :doc:`/book/templates`
 a template consists of multiple content types, which enable the user to manage
 content in a semantic way.
 
@@ -50,7 +50,7 @@ This documentation also specifies the available parameters and tags for each
 content type:
 
 .. toctree::
-    :maxdepth: 1 
+    :maxdepth: 1
 
     block
     category_list

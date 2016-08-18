@@ -5,13 +5,13 @@ Sulu is built for companies with an international focus,
 translating pages into multiple different languages is a very important task
 for a content editor using Sulu. Sulu also considers the different variations
 of a language among different countries. The combination of these two factors
-is called a localization. 
+is called a localization.
 
 Configuring localizations
 -------------------------
 
 Localizations for the content are configured in the webspaces, as already
-described in :doc:`setup-a-webspace`. Adding another localization is as easy as
+described in :doc:`webspaces`. Adding another localization is as easy as
 adding another ``localization`` tag to the webspace configuration file.
 Localizations can also be nested, which has no impact on the representation in
 all the dropdowns, but it will help the system to find better fallbacks.
