@@ -91,32 +91,5 @@ and you configured a DEV-domain within your  `webspace.xml <setup.rst#webspaces>
 .. figure:: ../../img/sulu-mamp-pro-screen.jpg
 	:align: center
 
-File Permissions
-----------------
+.. include:: file-permissions.inc.rst
 
-Finally, we need to fix the permissions of our project so that Apache is able to
-read and write them.
-
-Run the following commands on Linux:
-
-.. code-block:: bash
-
-    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-    sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs uploads uploads/* web/uploads web/uploads/* app/data
-    sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs uploads uploads/* web/uploads web/uploads/* app/data
-
-Or these commands for Mac OSX:
-
-.. code-block:: bash
-
-    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-    sudo chmod +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads uploads/* web/uploads web/uploads/* app/data
-    sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs uploads uploads/* web/uploads web/uploads/* app/data
-
-Or these commands for Windows (with IIS web server):
-
-.. code-block:: powershell
-
-    $rule = New-Object System.Security.AccessControl.FileSystemAccessRule -ArgumentList @("IUSR","FullControl","ObjectInherit, ContainerInherit","None","Allow")
-    $folders = "app\cache", "app\logs", "app\data", "uploads", "uploads\*", "web\uploads", "web\uploads\*"
-    foreach ($f in $folders) { $acl = Get-Acl $f; $acl.SetAccessRule($rule); Set-Acl $f $acl; }
