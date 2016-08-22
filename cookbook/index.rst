@@ -22,6 +22,7 @@ our recipes.
     optimize-for-production-usage
     integrating-custom-filters
     extend-entities
+    implement-entity-extensible
     using-elasticsearch
     smart-content-data-provider
     system-collections
