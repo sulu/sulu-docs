@@ -27,7 +27,7 @@ both of them could be omitted:
 So a sample configuration would look like this:
 
 .. code-block:: yaml
-    
+
     sulu_search:
         indexes:
             contact:
@@ -116,7 +116,7 @@ then be defined for every webspace in its XML configuration:
         <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
     </templates>
 
-See :doc:`../book/creating-a-basic-website/setup-a-webspace` for more details.
+See :doc:`../book/webspaces` for more details.
 
 Reindexing
 ----------

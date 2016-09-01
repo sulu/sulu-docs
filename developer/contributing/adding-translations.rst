@@ -30,11 +30,8 @@ named using the scheme ``backend.[language].xlf`` and look something like this:
         </file>
     </xliff>
 
-If the ``SuluTranslateBundle`` is registered in the Kernel, there are two
-commands available to manage Sulu's translations. ``sulu:translate:import``
-takes a language code (e.g. ``en`` or ``de``) and imports all the translation
-files in the given language into the system. Corresponding to that, the command
-``sulu:translate:export`` also takes a language code, and exports the
+If the ``SuluTranslateBundle`` is registered in the Kernel, there is the
+command ``sulu:translate:export`` available, which exports the
 translations from all bundles into a single JSON file located in
 `web/admin/translations`. From there the Sulu-Admin loads the translations
 for the required localization.
