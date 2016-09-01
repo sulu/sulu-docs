@@ -7,8 +7,8 @@ for a content editor using Sulu. Sulu also considers the different variations
 of a language among different countries. The combination of these two factors
 is called a localization.
 
-Configuring localizations
--------------------------
+Configuring webspace localizations
+----------------------------------
 
 Localizations for the content are configured in the webspaces, as already
 described in :doc:`webspaces`. Adding another localization is as easy as
@@ -37,6 +37,12 @@ With this configuration the system will contain seven different content
 localizations: ``en``, ``en-us``, ``en-gb``, ``de``, ``de-de``, ``de-at``,
 ``de-ch``, whereby ``en-us`` and ``en-gb`` are falling back to ``en``, and
 ``de-de``, ``de-at`` and ``de-ch`` are falling back to ``de``.
+
+Adding custom localizations
+---------------------------
+
+There is another possibility for adding non webspace related localizations. More details can be found in
+:doc:`../cookbook/localization-provider`
 
 Usage of localizations
 ----------------------
