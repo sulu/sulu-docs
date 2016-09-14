@@ -35,6 +35,7 @@ our recipes.
     deactivate-request-analyzer
     use-request-analyzer-with-esi
     web-server/index
+    localization-provider
 
 It is possible to work through the recepies, altought most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
