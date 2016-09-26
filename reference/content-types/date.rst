@@ -32,8 +32,8 @@ Example
 
         <params>
             <param name="display_options" type="collection">
-                <param name="format" value="yyyy-mm-dd">
-                <param name="startDate" value="2000-01-01">
+                <param name="format" value="yyyy-mm-dd"/>
+                <param name="startDate" value="2000-01-01"/>
             </param>
         </params>
     </property>
