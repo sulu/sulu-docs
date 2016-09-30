@@ -1,11 +1,12 @@
 Provider for Teaser-Selection
 =============================
 
-TeaserProvider are used to load data for Teaser-Selection. It returns an array
-of Teaser instances by an array of ids. This array can be configured by a
+`TeaserProvider` are used to load data for Teaser-Selection. It returns an array
+of Teaser instances, identified by ids which will be passed to the
+`TeaserProviderInterface::find` function. This array can be configured by a
 content-type in the Sulu-Admin.
 
-The Teaser-Object consists of following properties:
+The Teaser-Object consists of the following properties:
 
 * id
 * type (e.g. content or article)
@@ -19,9 +20,9 @@ The Teaser-Object consists of following properties:
 Example
 -------
 
-This example assumes that the entities will be select by a datagrid.
-For this we already build a abstract implementation which can be
-configured wil the `TeaserConfiguration`.
+This example assumes that the entities will be selected by a datagrid.
+For this we already build an abstract implementation which can be
+configured with the `TeaserConfiguration`.
 
 .. code-block:: php
 
@@ -68,7 +69,7 @@ configured wil the `TeaserConfiguration`.
     }
 
 Now you can create a service for this class and add the tag
-`<tag name="sulu.teaser.provider" alias="<your teaser-type>"/>`.
+`<tag name="sulu.teaser.provider" alias="{your teaser-type}"/>`.
 
 How to create a custom teaser-select component?
 -----------------------------------------------

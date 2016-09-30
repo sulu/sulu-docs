@@ -4,7 +4,7 @@ Teaser Selection
 Description
 -----------
 
-Shows a orderable list of various items with the possibility to add
+Shows an orderable list of various items with the possibility to add
 different types of items. Each of them returns an object named
 `Teaser` which can be used to create a list of different items on
 the website.
@@ -29,7 +29,6 @@ Provider
 
 This content-type is expandable via a provider pattern. A cookbook entry
 shows you how to create an own :doc:`/cookbook/teaser-provider`.
-
 
 Parameters
 ----------
