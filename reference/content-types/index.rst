@@ -76,4 +76,4 @@ content type:
     text_line
     time
     url
-
+    teaser_selection
