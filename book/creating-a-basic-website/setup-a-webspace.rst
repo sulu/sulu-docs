@@ -53,7 +53,7 @@ following paragraphs.
         </navigation>
 
         <resource-locator>
-            <strategy>tree</strategy>
+            <strategy>tree_leaf_edit</strategy>
         </resource-locator>
 
         <portals>
@@ -142,12 +142,20 @@ developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu, whereby it is not only possible to
 retrieve a flat list of pages, but also to retrieve entire navigation trees.
 
-Resource-Locator
-----------------
+Resource-Locator (optional)
+---------------------------
 
 The `strategy` for the `resource-locator` influences the design of the URLs for
-the content. Currently there is only the `tree`-option available resulting in
-exposing the entire content tree in the URL.
+the content. Default value is `tree_leaf_edit`, which means that the
+`resource-locator` will be generated for the whole tree, but only the last part
+will be editable.
+
+Currently there is only one alternative `tree_full_edit`, which also generates
+the whole tree, but lets you edit the whole `resource-locator` afterwards.
+
+The `strategy` also influences the behavior when renaming or moving a page.
+The `tree_leaf_edit` (in opposite `tree_full_edit`) will also update the
+`resource-locator` of the children.
 
 Portals
 -------
