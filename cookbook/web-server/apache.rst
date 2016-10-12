@@ -56,6 +56,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
               ExpiresDefault "access plus 1 month"
               ExpiresByType image/gif "access plus 1 month"
               ExpiresByType image/png "access plus 1 month"
+              ExpiresByType image/svg+xml "access plus 1 month"
               ExpiresByType image/jpeg "access plus 1 month"
               ExpiresByType image/jpg "access plus 1 month"
               ExpiresByType text/javascript "access plus 1 month"
