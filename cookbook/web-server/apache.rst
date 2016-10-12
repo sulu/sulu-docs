@@ -13,8 +13,8 @@ Host Name Configuration
 Add the domain of your site to the `hosts` file. Depending on your operating
 system, this file can be found in different places:
 
-* Unix: `/etc/hosts`
-* Windows: `%SystemRoot%\System32\drivers\etc\hosts`
+* Unix: ``/etc/hosts``
+* Windows: ``%SystemRoot%\System32\drivers\etc\hosts``
 
 On a development machine, we could use the domain `sulu.lo` ("lo" stands for
 "local"). Add that domain to the end of the `hosts` file:
