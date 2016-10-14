@@ -32,7 +32,7 @@ The Nginx configuration could look something like.
       }
 
       # expire
-      location ~* \.(?:ico|css|js|gif|jpe?g|png)$ {
+      location ~* \.(?:ico|css|js|gif|jpe?g|png|svg)$ {
           try_files $uri /website.php/$1;
           access_log off;
           expires 30d;
