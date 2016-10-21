@@ -81,7 +81,7 @@ file for an example of a template definition:
 
         <view>ClientWebsiteBundle:templates:default</view>
         <controller>SuluWebsiteBundle:Default:index</controller>
-        <cacheLifetime>2400</cacheLifetime>
+        <cacheLifetime type="seconds">2400</cacheLifetime>
 
         <meta>
             <title lang="en">Default</title>
@@ -138,6 +138,22 @@ because you can use the `index`-action of the `DefaultController` in the
 as described in the `Template Naming and Locations`_ and
 `Controller Naming Pattern`_ in the Symfony documentation.
 
+The cache-lifetime defines the `max-age` of the response which will be set
+automatically after generation of the content. This value has default the
+type seconds therefor you can define that the page will be invalidated
+after x-seconds. There is a second-type which enhances the developer to
+define on which hours/days (whatever) the cache should be invalidated.
+This type is named `expression` and expects a cron-expression which is
+extremely powerful in defining "run-times" (see `CronExpression`_).
+As an example if you know your homepage changes its content each day at
+08:00 because a third-party library releases each day at this time new
+content you can define following expression to invalidate the page each
+day at 08:00.
+
+.. code-block:: xml
+
+    <cacheLifetime type="expression">0 8 * * *</cacheLifetime>
+
 The `meta`-tag consists of another `title`-tag for each available language,
 which will be displayed in the template selection of the Sulu administration
 interface. 
@@ -153,7 +169,7 @@ example is enabling the godMode, the icon for adding links and the icon for
 adding tables.
 
 Using XInclude
------------------
+--------------
 A template can be composed of various components using `XInclude`_. To use Xinclude you first have to add the proper namespace (xmlns:xi="http://www.w3.org/2001/XInclude"-attribute).
 
 .. code-block:: xml
@@ -197,4 +213,5 @@ corresponding theme.
 .. _`Controller Naming Pattern`: http://symfony.com/doc/current/book/routing.html#controller-string-syntax
 .. _`Template Naming and Locations`: http://symfony.com/doc/current/book/templating.html#template-naming-locations
 .. _`XInclude`: https://en.wikipedia.org/wiki/XInclude
+.. _`CronExpression`: https://github.com/mtdowling/cron-expression
 
