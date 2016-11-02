@@ -3,10 +3,10 @@ Provider for XML-Sitemap
 
 `SitemapProvider` are used to load data for the XML-Sitemap. It returns
 an array of `SitemapUrl` instances. This Api has to be paginated because
-Google only allows `SitemapProviderInterface::PAGE_SIZE = 50000` urls in
-a single Sitemap. The `SitemapController` takes care of generating a
-`sitemapindex` if more than one Provider or more than one pages are
-available. Otherwise it will deliver a the Sitemap of the first Provider.
+Google only allows 50000 urls in a single Sitemap. The `SitemapController`
+takes care of generating a `sitemapindex` if more than one Provider or
+more than one pages are available. Otherwise it will deliver a the Sitemap
+of the first Provider.
 
 The `SitemapUrl` consists of the following properties:
 
@@ -21,7 +21,6 @@ The `SitemapUrl` consists of the following properties:
 The Sulu core provides a single Provider for pages (including homepage).
 Custom modules can provide their own Providers that this URLs also will
 be published over the `sitemap.xml`.
-
 
 Example
 -------
@@ -82,7 +81,6 @@ implemented in the Respository.
             return ceil($this->repository->countForSitemap() / self::PAGE_SIZE);
         }
     }
-
 
 Now you can create a service for this class and add the tag
 `<tag name="sulu.sitemap.provider" alias="{your link-type}"/>`.
