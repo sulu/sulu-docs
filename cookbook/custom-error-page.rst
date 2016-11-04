@@ -7,25 +7,22 @@ You can define a template for each HTTP status code.
 Configuration
 -------------
 
-The following code-block shows a default configuration for the exception
-templates. If you want to add an own exception for example 400 you can simply
-add it to the list. You can specify that for each theme.
+The following code-block from the webspace configuration file shows a default
+configuration for the exception templates. If you want to add an own exception
+for example 400 you can simply add it to the list. You can specify that for
+each theme.
 
 .. code-block:: xml
 
-    <theme>
-       <key>default</key>
-
-        <error-templates>
-            <error-template default="true">ClientWebsiteBundle:views:error.html.twig</error-template>
-            <error-template code="404">ClientWebsiteBundle:views:error404.html.twig</error-template>
-            <error-template code="500">ClientWebsiteBundle:views:error500.html.twig</error-template>
-        </error-templates>
-    </theme>
+    <templates>
+        <template type="error">ClientWebsiteBundle:views:error.html.twig</error-template>
+        <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</error-template>
+        <template type="error-500">ClientWebsiteBundle:views:error500.html.twig</error-template>
+    </templates>
 
 The `ExceptionController` uses the status-code of the response to determine
 which template is responsible for the exception. If no special template is
-defined it uses the `default` template.
+defined it uses the template without an error code.
 
 Twig-Template
 -------------
