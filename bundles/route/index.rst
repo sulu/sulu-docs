@@ -26,6 +26,26 @@ available on the website with an own route.
 Entity
 ******
 
+First extend your entity with the propertie's `id`, `locale` and a new many-to-one relation `route`:
+
+reciepe.orm.xml:
+
+.. code-block:: xml
+
+    ...
+
+    <field name="id" type="int"/>
+    <field name="locale" type="string" length="5"/>
+
+    <many-to-one field="route" target-entity="Sulu\Bundle\RouteBundle\Entity\Route">
+        <cascade>
+            <cascade-all/>
+        </cascade>
+        <join-column name="idRoutes" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+    </many-to-one>
+
+Reciepe.php:
+
 .. code-block:: php
 
     namespace AppBundle\Entity;
@@ -49,8 +69,24 @@ Entity
 
         public function setTitle() { ... }
 
+        /**
+         * {@inheritdoc}
+         */
+        public function getId() { ... }
+
+        /**
+         * {@inheritdoc}
+         */
+        public function getLocale() { ... }
+
+        /**
+         * {@inheritdoc}
+         */
         public function setRoute(RouteInterface $route) { ... }
 
+        /**
+         * {@inheritdoc}
+         */
         public function getRoute() { ... }
     }
 
@@ -64,7 +100,9 @@ Configure the route-schema in the file `app/config/config.yml`:
     sulu_route:
         mappings:
             AppBundle\Entity\Recipe:
-                route_schema: /{translator.trans('recipe')}/{object.getTitle()}
+                generator: schema
+                options:
+                    route_schema: /{translator.trans('recipe')}/{object.getTitle()}
 
 .. note::
 
@@ -135,5 +173,5 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
 .. note::
 
     To update already existing entities you can run the command
-    `app/console sulu:route:update AppBundle\Entity\Recipe` which updates or creates
+    `bin/console sulu:route:update AppBundle:Recipe` which updates or creates
     the route for all the entities of this type.
