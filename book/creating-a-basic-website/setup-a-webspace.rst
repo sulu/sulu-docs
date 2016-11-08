@@ -171,12 +171,6 @@ environments, which have to match the environments defined in Symfony. Usually
 `dev`, `stage` and `prod` are available. Each environment can define its own
 set of URLs.
 
-.. note::
-    
-    Please consider that you have to omit the port in the configuration. The
-    system will work with any port, so you don't have to name it in the
-    configuration.
-
 The URLs also have to include the localization somehow. You have two
 possibilities to do so:
 
