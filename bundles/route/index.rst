@@ -17,6 +17,14 @@ To resolve the route on request you have to provide a
 `RouteDefaultsProvider` which defines the controller and attributes
 of the route.
 
+Further Topics
+--------------
+
+.. toctree::
+    :maxdepth: 1
+
+    custom_route_generator
+
 Example
 -------
 
@@ -64,7 +72,9 @@ Configure the route-schema in the file `app/config/config.yml`:
     sulu_route:
         mappings:
             AppBundle\Entity\Recipe:
-                route_schema: /{translator.trans('recipe')}/{object.getTitle()}
+                generator: schema
+                options:
+                    route_schema: /{translator.trans('recipe')}/{object.getTitle()}
 
 .. note::
 
