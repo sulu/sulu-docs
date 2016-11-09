@@ -15,9 +15,9 @@ each theme.
 .. code-block:: xml
 
     <templates>
-        <template type="error">ClientWebsiteBundle:views:error.html.twig</error-template>
-        <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</error-template>
-        <template type="error-500">ClientWebsiteBundle:views:error500.html.twig</error-template>
+        <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
+        <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
+        <template type="error-500">ClientWebsiteBundle:views:error500.html.twig</template>
     </templates>
 
 The `ExceptionController` uses the status-code of the response to determine
