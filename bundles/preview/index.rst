@@ -27,11 +27,14 @@ Sulu-Admin form
 
             header: { ... },
 
-            layout: {
-                content: {
-                    width: 'fixed',
-                    leftSpace: true,
-                    rightSpace: true
+            layout: function() {
+                return {
+                    content: {
+                        width: 'fixed',
+                        leftSpace: true,
+                        rightSpace: true
+                    },
+                    sidebar: (!!this.options.id) ? 'max' : false
                 }
             },
 
@@ -54,7 +57,7 @@ Sulu-Admin form
                 return this.sandbox.util.load(this.options.url).done(function(data) {
                     this.preview = Preview.initialize({});
                     this.preview.start(
-                        'AppBundle\Entity\News', // your entity-class
+                        'AppBundle\\Entity\\News', // your entity-class
                         this.options.id,
                         this.options.locale,
                         data
@@ -64,6 +67,9 @@ Sulu-Admin form
                 });
             }
         };
+
+When binding DOM Events by calling `this.preview.bindDomeEvents(this.$el)`
+you need to add the class `preview-update` to your elements.
 
 PreviewObjectProvider
 *********************
