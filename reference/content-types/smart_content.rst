@@ -276,7 +276,7 @@ Twig template
     {% for page in content.pages %}
         <div class="col-lg-{{ view.pages.presentAs == 'two' ? '6' : '12' }}">
             <h2>
-                <a href="{{ content_path(page.url) }}">{{ page.title }}</a>
+                <a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a>
             </h2>
             <p>
                 <i>{{ page.excerptTitle }}</i> | <i>{{ page.excerptTags|join(', ') }}</i>

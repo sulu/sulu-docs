@@ -1,14 +1,14 @@
 About the Sulu Content Architecture
 ===================================
 
-We already heard something about :doc:`../introduction/content-architecture`
-in the introduction. 
+We already heard something about :doc:`introduction/content-architecture`
+in the introduction.
 Now we are starting to code will dig a little bit deeper.
 
 
 Sulu uses `PHPCR`_ as a persistence layer, and therefore follows its structure.
 Additionally Sulu adds another layer called webspaces, which have already been
-explained in the section about the :doc:`../introduction/components`. These
+explained in the section about the :doc:`introduction/components`. These
 webspaces contain an arbitrary number of pages, which are ordered in a tree in
 a hierarchical way. Each of these pages can contain content in many different
 localizations.
@@ -22,7 +22,7 @@ properties the page will have, whereby each of these properties are further
 specified by a content type. The content type will have a direct impact on the
 possible values and configuration possibilities of the property it is applied
 to. There is also a further reference of all the available
-:doc:`../../reference/content-types/index`.
+:doc:`../reference/content-types/index`.
 
 There are also some advanced features regarding the pages in Sulu. Besides the
 content management using the properties and content types already described
