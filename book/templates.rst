@@ -43,7 +43,7 @@ The template of a page can be selected in the admin interface:
 .. Caution::
 
     A template is shown in the dropdown only if both the XML and the Twig file
-    exist! If it is not, double-check the directories
+    exist! If you can't see your template, double-check the directories
     ``app/Resources/templates/pages`` and ``app/Resources/views/templates``.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
@@ -735,6 +735,62 @@ You can also match multiple elements of different types. Use the wildcard
         </properties>
     </template>
 
+Caching
+-------
+
+Eventually you will start tweaking your pages for performance. Caching pages
+on the client is one of the easiest performance improvements you can do.
+
+You can configure a different caching strategy for each template. Add a
+``<cacheLifetime>`` element with the number of seconds that your page should be
+cached on the client:
+
+.. code-block:: xml
+
+    <!-- app/Resources/templates/pages/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <cacheLifetime type="seconds">2400</view>
+
+        <!-- ... -->
+    </template>
+
+The cache lifetime will be sent to the client in the ``max-age`` field of the
+``Cache-Control`` header. After the specified time, the cache will be
+invalidated on the client. The next time the page is requested, the client will
+send a new request to your server to update its cache.
+
+.. caution::
+
+    When you use client-side caching, be aware that there is no way to
+    invalidate the client-side cache on demand. Prepare for having to wait
+    for the given cache lifetime until all clients receive an updated version
+    of your website. To shorten this time, it's generally a good idea not to set
+    the cache lifetime too high.
+
+There is a second ``type`` that you can use to specify the cache lifetime:
+``expression``. With that type, you can pass the lifetime as `cron expression`_.
+For example, if you know that your homepage changes its content each day at
+8:00 AM, set the value to ``0 8 * * *``:
+
+.. code-block:: xml
+
+    <!-- app/Resources/templates/pages/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <cacheLifetime type="expression">0 8 * * *</view>
+
+        <!-- ... -->
+    </template>
+
 Next Steps
 ----------
 
@@ -746,6 +802,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XInclude: https://en.wikipedia.org/wiki/XInclude
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
+.. _cron expression: https://github.com/mtdowling/cron-expression
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
 .. |text_area| replace:: :doc:`text_area <../reference/content-types/text_area>`
