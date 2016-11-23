@@ -35,6 +35,8 @@ our recipes.
     live-preview
     deactivate-request-analyzer
     use-request-analyzer-with-esi
+    web-server/index
+    localization-provider
     link-provider
     sitemap-provider
     dump-sitemap

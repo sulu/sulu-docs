@@ -9,9 +9,9 @@ As already described in the section before, a webspace also creates a new
 content tree. These trees are accessible by the navigation in the Sulu
 administration interface. Sulu allows you to create pages and sub pages in
 these trees and fill them with content. Have a closer look at
-:doc:`adding-a-template` for more details on the content management process.
+:doc:`templates` for more details on the content management process.
 
-Normally you'll create a webspace for a new website, a landingpage or a portal, 
+Normally you'll create a webspace for a new website, a landingpage or a portal,
 that should run on your Sulu instance.
 
 The following file shows a configuration. These lines will be explained in the
@@ -109,14 +109,14 @@ the available localizations:
     <localization language="de" country="at" />
 
 For a more complete explanation you should have a look at
-:doc:`adding-localizations`.
+:doc:`localization`.
 
 Themes (optional)
 -----------------
 
 The `theme` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
-:doc:`adding-a-theme`. This feature is default deactivated and therefore in the
+:doc:`themes`. This feature is default deactivated and therefore in the
 example not used. If you have multiple webspaces which should look different,
 you can use this feature to easily do this.
 
@@ -125,7 +125,7 @@ Templates
 
 The webspace can also define certain templates in combination with a type.
 These template can then be retrieved from the webspace. E.g. Sulu uses them to
-retrieve the correct templates for errors. Therefore it makes use of the 
+retrieve the correct templates for errors. Therefore it makes use of the
 template with type ``error-<http-code>`` respectively it uses the template with
 the type  ``error`` as a fallback. The other use case is the search. Sulu will
 use the template with the type ``search`` from the webspace to display search
@@ -179,6 +179,12 @@ environments, which have to match the environments defined in Symfony. Usually
 `dev`, `stage` and `prod` are available. Each environment can define its own
 set of URLs.
 
+.. note::
+
+    Please consider that you have to omit the port in the configuration. The
+    system will work with any port, so you don't have to name it in the
+    configuration.
+
 The URLs also have to include the localization somehow. You have two
 possibilities to do so:
 
@@ -209,7 +215,7 @@ following line for an example:
 Placeholder are expressions in curly braces, which will be expanded to every
 possible value. For the above example that means, that an URL for every
 localization defined will be generated. So if you have a localization `de-at`
-and `en-gb`, the system will create URLs for `www.example.org/de-at` and 
+and `en-gb`, the system will create URLs for `www.example.org/de-at` and
 `www.example.org/en-us`.
 
 In the following table all the possible placeholders are listed, and explains
