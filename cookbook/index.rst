@@ -41,7 +41,6 @@ our recipes.
     sitemap-provider
     dump-sitemap
     enable-adobe-creative-suite
-    teaser-provider
 
 It is possible to work through the recepies, altought most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
