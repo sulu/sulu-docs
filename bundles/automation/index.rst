@@ -3,7 +3,7 @@ AutomationBundle
 
 The AutomationBundle provides the functionality for managing automated tasks.
 This tasks can be used for example to publish or unpublish pages at a
-specific timestamp. This Handlers (like publish) can be implemented by the
+specific timestamp. This handlers (like publish) can be implemented by the
 application or any bundle.
 
 .. figure:: ../../img/automation-tab.png
@@ -12,10 +12,10 @@ application or any bundle.
 Basic Ideas
 -----------
 
-The basic idea behind this bundle was to enhance the content-manager with the
+The basic idea behind this bundle was to enhance the content manager with the
 possibility to plan when a page will be online. But also other tasks should
-be possible. Envisaged scenario could be to send an E-Mail after 6 months to
-check the content of the page and many other scenarios.
+be possible. One of many scenarios could be to send a mail after 6 months to
+check the content of the page
 
 As basic implementation for task scheduling and running the
 `PHP-Task Library`_ and the `Bundle`_  was used.

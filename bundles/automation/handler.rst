@@ -1,9 +1,9 @@
 Custom Handler
 ==============
 
-Custom handler provides functionality which can be scheduled with the
-``automation-tab`` (see :doc:`tab`). The handler can implement custom-logic
-which publishes or remove the entity on which is was created.
+A custom handler provides functionality which can be scheduled with the
+``automation-tab`` (see :doc:`tab`). The handler can implement custom logic
+based on the connected entity (e.g. publish or remove page).
 
 To use a handler in the automation tab it has to implement the interface
 ``AutomationTaskHandlerInterface`` which extends the ``TaskHandlerInterface``
