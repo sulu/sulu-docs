@@ -29,7 +29,7 @@ As basic implementation for task scheduling and running the
 
 As recommended run-mode (beside the ``kernel.terminate`` Listener) you should
 use the ``task:run`` command inside a cron-job. For the interval of
-the cron-job you have to decide how precise the task shoud run at the
+the cron-job you have to decide how precise the task should run at the
 given timestamp. For example if you choose an interval of 1 hour the tasks
 will only run each hour.
 
