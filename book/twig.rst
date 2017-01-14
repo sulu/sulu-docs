@@ -84,14 +84,23 @@ You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-    {{ sulu_seo(extension, content) }}
+    {%- include 'SuluWebsiteBundle:Extension:seo.html.twig' 
+        seo: extension.seo,
+        content: content,
+        urls: urls,
+        shadowBaseLocale: shadowBaseLocale,
+        defaultLocale: request.defaultLocale
+    } -%}
 
 The excerpt is available in:
 
 .. code-block:: html
 
-    {{ extension.excerpt }}
-
+    {{ extension.excerpt.title }}
+    {{ extension.excerpt.description }}
+    {{ extension.excerpt.more }}
+    {{ extension.excerpt.icon[0].thumbnails['50x50'] }}
+    {{ extension.excerpt.images[0].thumbnails['300x300'] }}
 
 Navigation
 ^^^^^^^^^^
