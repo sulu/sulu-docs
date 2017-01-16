@@ -12,4 +12,4 @@ Returns navigation from the given page in a flat list data-structure.
 
 **Returns**:
 
-.. include:: _page_structure.inc
+.. include:: _navigation_structure.inc

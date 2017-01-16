@@ -1,12 +1,14 @@
 - `array`
-     - **uuid**: UUID of page
-     - **title**: Title of page
-     - **url**: URL for page
-     - **template**: Template name of page
-     - **changed**: Changed date of page
-     - **changer**: User ID of changer
-     - **created**: Date of creation
-     - **creator**: User ID of creator
-     - **nodeType**: Type of node
-     - **path**: Path of page
-     - **excerpt**: Excerpt (if load-excerpt is true)
+    - **content**: Content of page
+    - **view**: View of page
+    - **extension**: Extensions of page
+    - **uuid**: UUID of page
+    - **template**: Template name of page
+    - **changed**: Changed date of page
+    - **changer**: User ID of changer
+    - **created**: Date of creation
+    - **creator**: User ID of creator
+    - **path**: Path of page
+    - **urls**: Urls of page
+    - **published**: Publish date of page
+    - **shadowBaseLocale**: Shadow locale of page
