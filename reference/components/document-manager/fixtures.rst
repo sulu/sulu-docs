@@ -55,6 +55,7 @@ Shown below is the simple data fixtures:
             $documentManager->persist($document, 'en', array(
                 'parent_path' => '/cmf/sulu_io/contents',
             ));
+            $documentManager->publish($document,'de');
             $documentManager->flush();
         }
     }
