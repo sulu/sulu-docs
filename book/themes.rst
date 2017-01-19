@@ -15,7 +15,7 @@ this specific theme.
 
 You can have multiple themes in one Sulu installation. Every webspace can
 decide which theme to use, by a simple key in the webspace configuration file
-already described in :doc:`setup-a-webspace`. This means that it is also very
+already described in :doc:`webspaces`. This means that it is also very
 easy to switch between different themes.
 
 This feature is not shipped with a minimal sulu-installation. But can be easily
@@ -86,7 +86,7 @@ error page, etc., and a folder `blocks` for reusable templates, like the seo
 information.
 
 For more concrete information about the structure of these templates you should
-check the :doc:`adding-a-template`.
+check the :doc:`templates`.
 
 
 Enable the theme

@@ -22,6 +22,7 @@ our recipes.
     optimize-for-production-usage
     integrating-custom-filters
     extend-entities
+    implement-entity-extensible
     using-elasticsearch
     smart-content-data-provider
     system-collections
@@ -34,6 +35,12 @@ our recipes.
     live-preview
     deactivate-request-analyzer
     use-request-analyzer-with-esi
+    web-server/index
+    localization-provider
+    link-provider
+    sitemap-provider
+    dump-sitemap
+    enable-adobe-creative-suite
 
 It is possible to work through the recepies, altought most of the people will
 pick the ones, which are most similar to their own tasks. We're open to

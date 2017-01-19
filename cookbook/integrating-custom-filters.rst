@@ -32,7 +32,7 @@ has to be enabled.
 
 	sulu_resource:
 	    contexts:
-	        contact:
+	        contacts:
 	            fields: "/admin/api/contacts/fields"
 	            features:
 	                - "filters"

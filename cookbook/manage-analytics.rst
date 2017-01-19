@@ -17,7 +17,7 @@ The analytics consist of:
     * - All Domains
       - Should it appended to all domains.
     * - Type
-      - The type (google, piwik, custom).
+      - The type (google, google_tag_manager, piwik, custom).
     * - Content
       - The code or key of the analytic.
 
@@ -40,6 +40,7 @@ You are able to override the analytics template with the
 There are three relevant templates:
 
 * ``SuluWebsiteBundle:Analytics/type/google.html.twig``
+* ``SuluWebsiteBundle:Analytics/type/google_tag_manager.html.twig``
 * ``SuluWebsiteBundle:Analytics/type/piwik.html.twig``
 * ``SuluWebsiteBundle:Analytics/type/custom.html.twig``
 
@@ -65,13 +66,13 @@ You can access the following information in the twig variable ``analytics``.
       - Differs for the type.
     * - type
       - string
-      - google / piwik / custom
+      - google / google_tag_manager / piwik / custom
     * - domains
       - array
       - Array of associated domains.
 
 .. note::
 
-    The ``content`` property contains for type google the key, for piwik an
-    associated array of ``url`` and ``siteId`` and for the custom type the whole
-    script (except the ``<script>`` tag).
+    The ``content`` property contains for type google / google_tag_manager the key,
+    for piwik an associated array of ``url`` and ``siteId`` and for the custom type
+    the whole script (except the ``<script>`` tag).

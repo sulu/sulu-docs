@@ -16,8 +16,13 @@ Returns the absolute URL for the content root at the given path
 **Arguments**:
 
 - **url**: *string* - Url to get path
-- **webspaceKey** *string* - If item is not in the same webspace as current content (**optional**)
+- **webspaceKey** *string* - If item is not in the same webspace as current
+  content (**optional**)
+- **locale** *string* - If item is not in the same locale as current
+  content (**optional**)
+- **domain** *string* - If a specific domain should be used to generate the url
+  (**optional**)
+- **scheme** *string* - If a different scheme (as the current scheme) should be
+  used to generate the url (**optional**)
 
 **Returns**: *string* - Absolute URL
-
-

@@ -1,5 +1,5 @@
-Creating a Twig Template
-========================
+Rendering Pages with Twig
+=========================
 
 Twig is an awesome option for rendering HTML. It got some nice features like
 blocks and inheritance. That's why we use and love Twig.
@@ -22,7 +22,7 @@ engine optimization.
 Which Twig-Template is used?
 ----------------------------
 
-In :doc:`adding-a-template` we learned how to define a template.
+In :doc:`templates` we learned how to define a template.
 
 .. code-block:: xml
     :linenos:
@@ -74,31 +74,40 @@ that is defined in separate Tabs in the Sulu content section.
 At the moment there is the SEO and the excerpt extension, that could be used.
 This extensions are available on every page no matter which template you chose.
 
-Here is an example how it could look like in the backend. Notice the 
+Here is an example how it could look like in the backend. Notice the
 `Excerpt & Categories` tab next to the SEO tab.
 
-.. figure:: ../../img/admin-extension-seo.png
+.. figure:: ../img/admin-extension-seo.png
     :align: center
 
 You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-    {{ sulu_seo(extension, content) }}
+    {%- include 'SuluWebsiteBundle:Extension:seo.html.twig' 
+        seo: extension.seo,
+        content: content,
+        urls: urls,
+        shadowBaseLocale: shadowBaseLocale,
+        defaultLocale: request.defaultLocale
+    } -%}
 
 The excerpt is available in:
 
 .. code-block:: html
 
-    {{ extension.excerpt }}
-
+    {{ extension.excerpt.title }}
+    {{ extension.excerpt.description }}
+    {{ extension.excerpt.more }}
+    {{ extension.excerpt.icon[0].thumbnails['50x50'] }}
+    {{ extension.excerpt.images[0].thumbnails['300x300'] }}
 
 Navigation
 ^^^^^^^^^^
 
 There is a Twig function that obtains the menu. You need to pass the key of the
-navigation context you defined in your webspace (:doc:`setup-a-webspace`).
-While editing a page the navigation context could be defined in 
+navigation context you defined in your webspace (:doc:`webspaces`).
+While editing a page the navigation context could be defined in
 *settings > Navigation context*. For many projects one or two navigation
 contexts might be enough:
 
@@ -111,7 +120,7 @@ the right and the footer navigation on the bottom. As you can see the
 navigations returned for the navigation contexts are not necessarily flat, but
 can also contain sub pages.
 
-.. figure:: ../../img/website-navigation-contexts.png
+.. figure:: ../img/website-navigation-contexts.png
     :align: center
 
 The navigation contexts can also be used in any other combination you want. The
@@ -128,7 +137,7 @@ context.
     <ul>
         {% for item in sulu_navigation_root_tree('main', 2) %}
         <li>
-            <a href="{{ sulu_content_path(item.url) }}" 
+            <a href="{{ sulu_content_path(item.url) }}"
                 title="{{ item.title }}">{{ item.title }}</a>
             {% if item.children|length > 0 %}
                 <ul>
@@ -165,14 +174,14 @@ Image formats need to be defined in the `image_formats.xml`_ in your config.
 More examples
 -------------
 
-You could find more examples of how content could be accessed in our 
+You could find more examples of how content could be accessed in our
 `example file`_.
 
 
 Default Template
 ----------------
 
-Just have a look at our `default theme`_, that ships with our standard 
+Just have a look at our `default theme`_, that ships with our standard
 installation as long with our `default page templates`_ over at github.
 
 

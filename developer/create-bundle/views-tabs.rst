@@ -18,7 +18,7 @@ Tab-views
 ---------
 
 When using the :doc:`header-hook </bundles/admin/javascript-hooks/header>` you'll also have the
-possibility to register tabs. Tabs are nothing more and nothing less than again javascript-components. The files
+possibility to register tabs. :doc:`Tabs </cookbook/using-tab-navigation>` are nothing more and nothing less than again javascript-components. The files
 for the tab-components get created in sub-folders of the main-view. So lets say we have a main view under
 Resources/public/js/components/list. After adding a details-tab and a settings tab, the structure in the list folder
 looks the following

@@ -7,5 +7,6 @@ content management functionality of Sulu, which is its most important part.
 .. toctree::
     :maxdepth: 2
 
-    security
+    drafting
     content-repository
+    security
