@@ -20,5 +20,7 @@ Example
 -------
 
 Export all Snippets from language en to file `snippet_export_en.xliff`.
+
 .. code-block:: bash
+
     app/console sulu:webspace:export webspace_export.xliff sulu_io en

@@ -26,5 +26,7 @@ Example
 -------
 
 Import all Snippets from `snippet_export_en.xliff`.
+
 .. code-block:: bash
+
     app/console sulu:snippet:import snippet_export_en.xliff en
