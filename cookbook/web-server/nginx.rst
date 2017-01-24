@@ -6,7 +6,7 @@ The Nginx configuration could look something like.
 .. code-block:: nginx
 
   server {
-      listen 8081;
+      listen 80;
 
       server_name sulu.lo;
       root /var/www/sulu.lo/web;
