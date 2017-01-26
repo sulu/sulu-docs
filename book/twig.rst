@@ -92,7 +92,7 @@ You could include the SEO meta tags like this:
         defaultLocale: request.defaultLocale
     } -%}
 
-The excerpt is available in:
+The excerpt data is available from:
 
 .. code-block:: html
 
@@ -101,6 +101,34 @@ The excerpt is available in:
     {{ extension.excerpt.more }}
     {{ extension.excerpt.icon[0].thumbnails['50x50'] }}
     {{ extension.excerpt.images[0].thumbnails['300x300'] }}
+
+View
+^^^^
+
+In the ``view`` variable Sulu writes the view data of the defined properties 
+in your template. As an example the ``media_selection`` stores the 
+``displayOption`` there.
+
+.. code-block:: html
+
+    {{ view.media[0].displayOption }}
+
+Other Variables
+^^^^^^^^^^^^^^^
+
+ - `request.webspaceKey`: Contains the key for the current webspace 
+ - `request.locale`: Contains the locale for the current request
+ - `request.portalUrl`: Contains the root URL to the current portal
+ - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
+ - `request.resourceLocator`: Contains the resourceLocator to the current page
+ - `uuid`: Contains the uuid of the current page
+ - `template`: Contains the template key of the current page
+ - `creator`: Contains the id of the creator of the current page
+ - `changer`: Contains the id of the changer of the current page
+ - `created`: Contains the timestamp of the creation of the current page
+ - `changed`: Contains the timestamp of the latest change of the current page
+ - `published`: Contains the timestamp of the publishing of the current page
+ - `urls`: Contains urls of all locales
 
 Navigation
 ^^^^^^^^^^
