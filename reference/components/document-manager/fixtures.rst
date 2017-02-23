@@ -121,7 +121,7 @@ If you need the service container you can implement the `Symfony\Component\Depen
     use Symfony\Component\DependencyInjection\ContainerAwareInterface;
     use Symfony\Component\DependencyInjection\ContainerInterface;
 
-    class SomeFixture implements DocumentFixtureInterface implements ContainerAwareInterface
+    class SomeFixture implements DocumentFixtureInterface, ContainerAwareInterface
     {
         private $container;
 
