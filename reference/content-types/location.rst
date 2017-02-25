@@ -39,4 +39,11 @@ Example
         <meta>
             <title lang="en">Location</title>
         </meta>
+        <params>
+          <param name="countries" type="collection">
+            <param name="AT" value="Austria"/>
+            <param name="FR" value="France"/>
+            <param name="GB" value="Great Britain"/>
+          </param>
+        </params>
     </property>
