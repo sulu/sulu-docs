@@ -55,7 +55,10 @@ Shown below is the simple data fixtures:
             $documentManager->persist($document, 'en', array(
                 'parent_path' => '/cmf/sulu_io/contents',
             ));
+            
+            # Optional: If you don't want your document to be published, remove this line
             $documentManager->publish($document, 'en');
+            
             $documentManager->flush();
         }
     }
