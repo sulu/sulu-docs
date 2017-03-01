@@ -81,8 +81,8 @@ Namespaces
 ----------
 
 Namespaces will be used to find tags with a special behavior. The default
-namespace is ``sulu`` but you can register your own namespace by adding a new
-service and register you ``TagInterface`` implementations with this new
+namespace is ``sulu``, but you can register your own namespace by adding a new
+service and register your ``TagInterface`` implementations with this new
 namespace.
 
 .. code-block:: xml
