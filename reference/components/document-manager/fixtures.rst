@@ -19,7 +19,7 @@ Shown below is the simple data fixtures:
     use Sulu\Component\DocumentManager\DocumentManager;
     use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
     use Sulu\Component\Content\Document\WorkflowStage;
-    
+
     class SomeFixture implements DocumentFixtureInterface
     {
         public function getOrder()
@@ -30,7 +30,7 @@ Shown below is the simple data fixtures:
         public function load(DocumentManager $documentManager)
         {
             $document = $documentManager->create('page');
-                
+
             /** @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document */
             $document = $documentManager->create('page');
             $document->setLocale('en');
@@ -55,10 +55,9 @@ Shown below is the simple data fixtures:
             $documentManager->persist($document, 'en', array(
                 'parent_path' => '/cmf/sulu_io/contents',
             ));
-            
+
             # Optional: If you don't want your document to be published, remove this line
             $documentManager->publish($document, 'en');
-            
             $documentManager->flush();
         }
     }

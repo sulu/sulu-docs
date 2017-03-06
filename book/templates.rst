@@ -794,6 +794,47 @@ For example, if you know that your homepage changes its content each day at
         <!-- ... -->
     </template>
 
+Search
+------
+
+That a property is indexed in the search the property need to be tagged.
+
+.. code-block:: xml
+
+    <property name="title" type="text_line">
+        <meta>
+            <title lang="en">Title</title>
+        </meta>
+        <tag name="sulu.search.field" role="title" />
+    </property>
+
+    <property name="images" type="media_selection">
+        <meta>
+            <title lang="en">Images</title>
+        </meta>
+        <tag name="sulu.search.field" role="image" index="false" />
+    </property>
+
+The tag can have specific attributes:
+
+ - `role`: The role for the property 
+ - `type`: Type how the data need to be stored
+ - `index`: Is indexed need only to be set to deactivate index
+
+**Roles**:
+
+ - `title`: The main title of the document
+ - `description`: The main description of the document
+ - `image`: The main image of the document
+
+**Types**:
+
+ - `string`: For simple fields 
+ - `array`: For multiple fields such as the `category_list` content type
+ - `tags`: Special typ for `tag_list` content type
+ - `date`: For indexing the `date` content type
+ - `json`: For indexing raw data in the search 
+
 Next Steps
 ----------
 

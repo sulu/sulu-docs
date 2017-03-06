@@ -76,3 +76,28 @@ When registering your service simple add the tag
 
     In combination with the plugin-system of the :doc:`../admin/ckeditor` you
     can easily provide a user-interface to manage your custom tag.
+
+Namespaces
+----------
+
+Namespaces will be used to find tags with a special behavior. The default
+namespace is ``sulu``, but you can register your own namespace by adding a new
+service and register your ``TagInterface`` implementations with this new
+namespace.
+
+.. code-block:: xml
+
+    <service id="app.html_extractor"
+             class="Sulu\Bundle\MarkupBundle\Markup\HtmlTagExtractor">
+        <argument type="string">custom-namespace</argument>
+
+        <tag name="sulu_markup.parser.html_extractor"/>
+    </service>
+
+    <service id="app.tag" class="AppBundle\CustomTag">
+        <tag name="sulu_markup.tag" namespace="custom-namespace"
+             tag="custom-tag"/>
+    </service>
+
+With this definitions you can use ``<custom-namespace:custom-tag/>`` in your
+response.
