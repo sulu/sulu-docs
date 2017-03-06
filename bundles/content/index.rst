@@ -8,5 +8,6 @@ content management functionality of Sulu, which is its most important part.
     :maxdepth: 2
 
     drafting
+    versioning
     content-repository
     security
