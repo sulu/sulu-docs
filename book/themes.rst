@@ -66,6 +66,36 @@ To enable it add the following lines into the `app/AbstractKernel.php` and
         load_controllers: false
         assetic_integration: true
 
+Make sure that the AsseticBundle is active, if not add
+
+.. code-block:: xml
+
+    abstract class AbstractKernel extends SuluKernel
+    {
+        /**
+         * {@inheritdoc}
+         */
+        public function registerBundles()
+        {
+            $bundles = [
+                ...
+                new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
+                ...
+            ];
+
+            ...
+
+            return $bundles;
+        }
+    }
+
+and run
+
+.. code-block:: xml
+
+    composer require symfony/assetic-bundle:~2.3
+
 This will configure a default theme which can be enabled in the
 `app/Resources/webspaces/<webspace>.xml` file by adding:
 
