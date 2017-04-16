@@ -22,6 +22,9 @@ Parameters
     * - link
       - boolean
       - Adds buttons for creating links to the text editor
+    * - enter_mode
+      - string
+      - Set what happens on enter allowed ``P``, ``BR`` or ``DIV``
     * - paste_from_word
       - boolean
       - Adds a button to paste content from word to the text editor. If you add
