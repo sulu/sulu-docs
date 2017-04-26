@@ -5,7 +5,9 @@ Returns the breadcrumb for a given node UUID
 
 .. code-block:: jinja
 
-    {{ sulu_breadcrumb(node.uuid) }}
+    {% for item in sulu_breadcrumb(uuid) %}
+        <a  href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
+    {% endfor %}
 
 **Arguments**:
 
