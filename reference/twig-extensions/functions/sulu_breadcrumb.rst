@@ -3,6 +3,8 @@
 
 Returns the breadcrumb for a given node UUID
 
+**Example**:
+
 .. code-block:: jinja
 
     {% for item in sulu_breadcrumb(uuid) %}
@@ -12,3 +14,7 @@ Returns the breadcrumb for a given node UUID
 **Arguments**:
 
 - **uuid**: *string* - UUID of page node for which to show the breadcrumb
+
+**Returns**:
+
+.. include:: _page_structure.inc
