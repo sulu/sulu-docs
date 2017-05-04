@@ -14,6 +14,7 @@ documented the most important ones.
     :maxdepth: 2
 
     admin/index
+    audience_targeting
     automation/index
     collaboration
     content/index
