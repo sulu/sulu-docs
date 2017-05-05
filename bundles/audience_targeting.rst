@@ -69,24 +69,27 @@ second parameter:
     $kernel = new WebsiteCache($kernel, true);
 
 If you want to use the more powerful `Varnish`_ instead, you have to install it
-on your machine and configure it using a VCL. You can use the following
-example for that:
+on your machine and configure it using a VCL. The following example can be used
+for that, however, it requires the header module, which comes with the
+`varnish-modules`_ package.
 
 .. code-block:: c
 
     vcl 4.0;
 
-    # Default backend definition. Set this to point to your content server.
+    import header;
+
     backend default {
         .host = "127.0.0.1";
         .port = "8001";
     }
 
     sub vcl_recv {
-        if (req.http.Cookie ~ "user-context") {
+        if (req.http.Cookie ~ "user-context" && req.http.Cookie ~ "user-context-session") {
             set req.http.X-User-Context = regsub(req.http.Cookie, ".*user-context=([^;]+).*", "\1");
         } elseif (req.restarts == 0) {
             set req.http.X-Sulu-Original-Url = req.url;
+            set req.http.X-User-Context = regsub(req.http.Cookie, ".*user-context=([^;]+).*", "\1");
             set req.url = "/_user_context";
         } elseif (req.restarts > 0) {
             set req.url = req.http.X-Sulu-Original-Url;
@@ -106,8 +109,10 @@ example for that:
 
         if (req.http.Set-Cookie) {
             set resp.http.Set-Cookie = req.http.Set-Cookie;
+            header.append(resp.http.Set-Cookie, "user-context-session=" + now + "; path=/;");
         }
     }
 
 .. _Symfony Cache: http://symfony.com/doc/current/http_cache.html
 .. _Varnish: https://www.varnish-cache.org/
+.. _varnish-modules: https://github.com/varnish/varnish-modules
