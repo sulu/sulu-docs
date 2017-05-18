@@ -107,6 +107,11 @@ for that, however, it requires the header module, which comes with the
             return (restart);
         }
 
+        if (resp.http.Vary ~ "X-Sulu-Target-Group") {
+            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "max-age=(\d+)", "max-age=0");
+            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "s-maxage=(\d+)", "s-maxage=0");
+        }
+
         if (req.http.Set-Cookie) {
             set resp.http.Set-Cookie = req.http.Set-Cookie;
             header.append(resp.http.Set-Cookie, "sulu-visitor-session=" + now + "; path=/;");
