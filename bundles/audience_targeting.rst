@@ -69,25 +69,28 @@ second parameter:
     $kernel = new WebsiteCache($kernel, true);
 
 If you want to use the more powerful `Varnish`_ instead, you have to install it
-on your machine and configure it using a VCL. You can use the following
-example for that:
+on your machine and configure it using a VCL. The following example can be used
+for that, however, it requires the header module, which comes with the
+`varnish-modules`_ package.
 
 .. code-block:: c
 
     vcl 4.0;
 
-    # Default backend definition. Set this to point to your content server.
+    import header;
+
     backend default {
         .host = "127.0.0.1";
         .port = "8001";
     }
 
     sub vcl_recv {
-        if (req.http.Cookie ~ "user-context") {
-            set req.http.X-User-Context = regsub(req.http.Cookie, ".*user-context=([^;]+).*", "\1");
+        if (req.http.Cookie ~ "sulu-visitor-target-group" && req.http.Cookie ~ "sulu-visitor-session") {
+            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*sulu-visitor-target-group=([^;]+).*", "\1");
         } elseif (req.restarts == 0) {
             set req.http.X-Sulu-Original-Url = req.url;
-            set req.url = "/_user_context";
+            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*sulu-visitor-target-group=([^;]+).*", "\1");
+            set req.url = "/_sulu_target_group";
         } elseif (req.restarts > 0) {
             set req.url = req.http.X-Sulu-Original-Url;
             unset req.http.X-Sulu-Original-Url;
@@ -97,17 +100,24 @@ example for that:
     }
 
     sub vcl_deliver {
-        if (resp.http.X-User-Context) {
-            set req.http.X-User-Context = resp.http.X-User-Context;
-            set req.http.Set-Cookie = "user-context=" + resp.http.X-User-Context + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/;";
+        if (resp.http.X-Sulu-Target-Group) {
+            set req.http.X-Sulu-Target-Group = resp.http.X-Sulu-Target-Group;
+            set req.http.Set-Cookie = "sulu-visitor-target-group=" + resp.http.X-Sulu-Target-Group + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/;";
 
             return (restart);
         }
 
+        if (resp.http.Vary ~ "X-Sulu-Target-Group") {
+            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "max-age=(\d+)", "max-age=0");
+            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "s-maxage=(\d+)", "s-maxage=0");
+        }
+
         if (req.http.Set-Cookie) {
             set resp.http.Set-Cookie = req.http.Set-Cookie;
+            header.append(resp.http.Set-Cookie, "sulu-visitor-session=" + now + "; path=/;");
         }
     }
 
 .. _Symfony Cache: http://symfony.com/doc/current/http_cache.html
 .. _Varnish: https://www.varnish-cache.org/
+.. _varnish-modules: https://github.com/varnish/varnish-modules
