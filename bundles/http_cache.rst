@@ -111,7 +111,7 @@ Example header sent by the tags handler (which will be removed by varnish):
     X-Cache-Tags: 22a92d46-74ab-46cc-b47c-486b4b8a06a7,cf4a07fe-91d0-41be-aed8-b1c9ee1eb72a
 
 This header will be written at the end of the response by using the
-:doc:`content/reference-store`. This service collects the
+:doc:`website/reference-store`. This service collects the
 entities/documents which was used to render the page.
 
 Proxy Clients
