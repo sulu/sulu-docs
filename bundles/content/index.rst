@@ -11,3 +11,4 @@ content management functionality of Sulu, which is its most important part.
     versioning
     content-repository
     security
+    reference-store

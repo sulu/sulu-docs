@@ -67,7 +67,7 @@ URLs will be purged in the cache, and their contents will be updated when they a
 .. note::
 
     When using the paths handler you need to be aware that pages which reference the structure being invalidated
-    will **not be updated** - for exmaple pages which aggregate the subject structure in a SmartContent content type.
+    will **not be updated** - for example pages which aggregate the subject structure in a SmartContent content type.
 
 Public Handler
 """"""""""""""
@@ -108,8 +108,11 @@ Example header sent by the tags handler (which will be removed by varnish):
 
 .. code-block:: bash
 
-    X-Cache-Tags: structure-22a92d46-74ab-46cc-b47c-486b4b8a06a7
+    X-Cache-Tags: 22a92d46-74ab-46cc-b47c-486b4b8a06a7,cf4a07fe-91d0-41be-aed8-b1c9ee1eb72a
 
+This header will be written at the end of the response by using the
+:doc:`content/reference-store`. This service collects the
+entities/documents which was used to render the page.
 
 Proxy Clients
 -------------
