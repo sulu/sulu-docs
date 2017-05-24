@@ -85,11 +85,11 @@ for that, however, it requires the header module, which comes with the
     }
 
     sub vcl_recv {
-        if (req.http.Cookie ~ "sulu-visitor-target-group" && req.http.Cookie ~ "sulu-visitor-session") {
-            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*sulu-visitor-target-group=([^;]+).*", "\1");
+        if (req.http.Cookie ~ "_svtg" && req.http.Cookie ~ "_svs") {
+            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*_svtg=([^;]+).*", "\1");
         } elseif (req.restarts == 0) {
             set req.http.X-Sulu-Original-Url = req.url;
-            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*sulu-visitor-target-group=([^;]+).*", "\1");
+            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*_svtg=([^;]+).*", "\1");
             set req.url = "/_sulu_target_group";
         } elseif (req.restarts > 0) {
             set req.url = req.http.X-Sulu-Original-Url;
@@ -102,7 +102,7 @@ for that, however, it requires the header module, which comes with the
     sub vcl_deliver {
         if (resp.http.X-Sulu-Target-Group) {
             set req.http.X-Sulu-Target-Group = resp.http.X-Sulu-Target-Group;
-            set req.http.Set-Cookie = "sulu-visitor-target-group=" + resp.http.X-Sulu-Target-Group + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/;";
+            set req.http.Set-Cookie = "_svtg=" + resp.http.X-Sulu-Target-Group + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/;";
 
             return (restart);
         }
@@ -114,7 +114,7 @@ for that, however, it requires the header module, which comes with the
 
         if (req.http.Set-Cookie) {
             set resp.http.Set-Cookie = req.http.Set-Cookie;
-            header.append(resp.http.Set-Cookie, "sulu-visitor-session=" + now + "; path=/;");
+            header.append(resp.http.Set-Cookie, "_svs=" + now + "; path=/;");
         }
     }
 
