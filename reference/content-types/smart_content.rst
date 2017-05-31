@@ -17,6 +17,11 @@ return the items which fit to this filters. There are some predefined ones but
 you can add your own DataProvider easily. How you can do this is described in
 :doc:`/cookbook/smart-content-data-provider`
 
+A very important feature is the ``exclude_duplicates`` parameter which offers
+the possibility to filter already used items on a website. If this parameter
+is set to true the smart-content uses the :doc:`/bundles/website/reference-store`
+to detect already used items and filters them.
+
 Parameters
 ----------
 
@@ -67,6 +72,10 @@ Parameters
       - collection
       - Hide form-elements (tags, categories, sorting, limit, presentAs)
         can hide available elements for DataProvider.
+    * - exclude_duplicates
+      - bool
+      - If the provider is able to detect duplicates the content-type filters
+        already loaded records.
 
 Return Value
 ------------
