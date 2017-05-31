@@ -138,17 +138,17 @@ and the website. Each application is optimized for its purpose. The applications
 can be managed with the command line tools ``bin/adminconsole`` (for the
 administration) and ``bin/website`` (for the website).
 
-We'll run one server for each application:
+However, we will run one server for both applications, and our front controller
+will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    bin/adminconsole server:start
-    bin/websiteconsole server:start
+    bin/console server:start
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".
 
-The web frontend can be found under http://127.0.0.1:8001.
+The web frontend can be found under http://127.0.0.1:8000.
 
 .. tip::
 
