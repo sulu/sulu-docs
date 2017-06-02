@@ -178,6 +178,28 @@ source, whose child pages will be filtered by the DataProvider.
 
     For an example see :ref:`example`
 
+Snippet
+~~~~~~~
+
+Alias: "snippet"
+
+This provider filters snippets.
+
+**Parameters**
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - type
+      - string
+      - If defined only snippets from this type will be returned
+    * - properties
+      - collection
+      - Defines the property names which will be exposed in the HTML template.
+
 Contact - People
 ~~~~~~~~~~~~~~~~
 
