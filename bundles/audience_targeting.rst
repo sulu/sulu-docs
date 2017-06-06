@@ -128,6 +128,39 @@ Symfony. This includes the following steps:
 * Make sure that the users the feature should be enabled for have the correct
   permissions
 
+Manually set target group
+-------------------------
+
+Sulu will try to determine a matching target group based on the rules the
+content manager defines. But it is also possible to set a target group
+manually. That might be useful if you want to divide visitors into separate
+target groups based on some behavior, e.g. filling out a form, starting a
+download, etc.
+
+Therefore we have introduced the `TargetGroupStore`. You can simply call its
+`updateTargetGroupId` method and Sulu will do the rest for you. This would like
+this in an action of a Controller:
+
+.. code-block:: php
+
+    <?php
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+    class DefaultController extends Controller {
+        public function indexAction() {
+            // determine the desired target group based on form values, etc.
+            $targetGroupId = 0;
+            $this->get('sulu_audience_targeting.target_group_store')
+                ->updateTargetGroupId($targetGroupId);
+        }
+    }
+
+.. note::
+
+    The target group that will be set manually should have quite a high
+    priority, otherwise another higher prioritized target group might override
+    that based on its defined rule.
+
 .. _Symfony Cache: http://symfony.com/doc/current/http_cache.html
 .. _Varnish: https://www.varnish-cache.org/
 .. _varnish-modules: https://github.com/varnish/varnish-modules
