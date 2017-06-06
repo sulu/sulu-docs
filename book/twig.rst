@@ -34,7 +34,7 @@ In :doc:`templates` we learned how to define a template.
 
         <key>default</key>
 
-        <view>ClientWebsiteBundle:templates:default</view>
+        <view>templates/default</view>
         <controller>SuluWebsiteBundle:Default:index</controller>
         ...
     </template>
@@ -43,8 +43,8 @@ In :doc:`templates` we learned how to define a template.
 In the page template the view could be set. Internally Sulu appends the format
 of the request to find the correct template to render the response. As an
 example sulu uses for a html request the template
-`ClientWebsiteBundle:templates:default.html.twig` or
-`ClientWebsiteBundle:templates:default.xml.twig` for a xml request. With this
+`app/Resources/views/templates/default.html.twig` or
+`app/Resources/views/templates/default.xml.twig` for a xml request. With this
 feature you are able to define different output format for a single page.
 
 
