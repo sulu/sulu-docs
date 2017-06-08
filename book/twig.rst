@@ -71,7 +71,8 @@ Extension
 
 In the extension var Sulu writes content from Sulu extensions. Typically stuff
 that is defined in separate Tabs in the Sulu content section.
-At the moment there is the SEO and the excerpt extension, that could be used.
+At the moment there is the 
+and the excerpt extension, that could be used.
 This extensions are available on every page no matter which template you chose.
 
 Here is an example how it could look like in the backend. Notice the
@@ -84,7 +85,7 @@ You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-    {%- include 'SuluWebsiteBundle:Extension:seo.html.twig' 
+    {%- include 'SuluWebsiteBundle:Extension:seo.html.twig' with {
         seo: extension.seo,
         content: content,
         urls: urls,
