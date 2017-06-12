@@ -38,19 +38,22 @@ localizations: ``en``, ``en-us``, ``en-gb``, ``de``, ``de-de``, ``de-at``,
 ``de-ch``, whereby ``en-us`` and ``en-gb`` are falling back to ``en``, and
 ``de-de``, ``de-at`` and ``de-ch`` are falling back to ``de``.
 
-After adding localizations in the webspace, note that you need to run 
+After adding localizations in the webspace, note that you need to run
 
 .. code-block:: bash
-    
+
     php bin/adminconsole sulu:document:initialize
-    
-This will re-initialize the PHPCR content tree, setting up the new locale for accepting new content.
-                                        
+
+This will re-initialize the PHPCR content tree, setting up the new locale for
+accepting new content. Afterwards nobody will have any permissions on this
+locale, so make sure that you add this permission in the permissions tab of
+the contacts.
+
 Adding custom localizations
 ---------------------------
 
-There is another possibility for adding non webspace related localizations. More details can be found in
-:doc:`../cookbook/localization-provider`
+There is another possibility for adding non webspace related localizations.
+More details can be found in :doc:`../cookbook/localization-provider`
 
 Usage of localizations
 ----------------------
