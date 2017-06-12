@@ -14,6 +14,7 @@ The following requirements *must* be met to run Sulu:
   :doc:`Nginx <../cookbook/web-server/nginx>` with enabled URL rewriting
 * `PHP`_ 5.5 or higher
 * the `intl extension`_ for PHP
+* the `fileinfo` extension for PHP
 * the `gd`_ or `imagick extension`_ for PHP
 * a `database management system supported by Doctrine`_
 * `Composer`_
