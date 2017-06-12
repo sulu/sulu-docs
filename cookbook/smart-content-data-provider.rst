@@ -302,6 +302,13 @@ definition.
 Afterwards you can use your new DataProvider within a normal SmartContent
 property.
 
+.. note::
+
+    Mind that the `class` property should set to a sensible value, but it has
+    no influence in the actual result (see the `Factory service documentation`_
+    of Symfony for more details). So it is very important to set the repository
+    class correct in the `doctrine metadata`_ for this to work.
+
 How to create a custom Datasource component?
 --------------------------------------------
 
@@ -439,3 +446,6 @@ To activate these datasource-component it has to be enabled in the DataProvider.
 
 The component name and options will be used to initialize the component.
 Therefor you can use the url wil `this.options.url`.
+
+.. _Factory service documentation: http://symfony.com/doc/current/service_container/factories.html
+.. _doctrine metadata: https://symfony.com/doc/current/doctrine/repository.html
