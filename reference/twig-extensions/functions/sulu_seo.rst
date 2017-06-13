@@ -1,6 +1,11 @@
 ``sulu_seo``
 ============
 
+.. note::
+
+    This method is deprecated. Use the predefined template as described in
+    :doc:`../../../book/twig`.
+
 Returns all the SEO related HTML tags as one string, including:
 
 - Title
