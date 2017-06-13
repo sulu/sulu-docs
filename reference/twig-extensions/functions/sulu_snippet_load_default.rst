@@ -1,12 +1,16 @@
 ``sulu_snippet_load_default``
 =============================
 
+.. note::
+
+    This method is deprecated, use :doc:`sulu_snippet_load_by_area` instead.
+
 Returns content array of selected default snippet for given snippet type.
 
 .. code-block:: jinja
 
     {% set snippets = sulu_snippet_load_default('default') %}
-    {{ snippets[0].title }}
+    {{ snippets[0].content.title }}
 
 .. note::
 
