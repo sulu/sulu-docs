@@ -55,7 +55,7 @@ implemented in the Respository.
         /**
          * {@inheritdoc}
          */
-        public function build($page, $portalKey, $locale)
+        public function build($page, $portalKey)
         {
             $result = [];
             foreach ($this->repository->findAllForSitemap($page, self::PAGE_SIZE) as $item) {
