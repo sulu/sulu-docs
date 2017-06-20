@@ -22,15 +22,15 @@ Parameters
       - string
       - The type of snippet to assign.
     * - default
-      - boolean - false
-      - If this parameter is true and enabled in config the content-type will
-        load the default snippets which can be specified by the content-manager
-        in the webspace settings.
+      - string - false
+      - If this parameter is true or a specified area and enabled in config the 
+        content-type will load the snippet which can be specified by the
+        content-manager in the webspace settings.
 
 .. note::
 
     The fallback mechanism has to be enabled in the config:
-    `sulu_snippet.types.snippet.default_enabled`.
+    `sulu_snippet.types.snippet.default_enabled`. (default activated since 1.4)
 
 Example
 -------
@@ -43,6 +43,7 @@ Example
         </meta>
         
         <params>
-            <param name="snippetType" value="animal"/>
+            <param name="snippetType" value="sidebar"/>
+            <param name="default" value="sidebar_overview"/>
         </params>
     </property>
