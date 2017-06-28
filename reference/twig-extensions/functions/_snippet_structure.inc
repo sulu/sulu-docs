@@ -4,4 +4,5 @@
      - **changer**: User ID of changer
      - **created**: Date of creation
      - **creator**: User ID of creator
-     - **content**: Snippet data
+     - **content**: Snippet content data
+     - **view**: Snippet view data
