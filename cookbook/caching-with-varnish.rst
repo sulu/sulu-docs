@@ -133,6 +133,10 @@ The following will add full caching support for Sulu:
     # /etc/varnish/default.vcl
     vcl 4.0;
 
+    C{
+        #include <stdlib.h>
+    }C
+
     acl invalidators {
         "localhost";
     }
@@ -177,6 +181,32 @@ The following will add full caching support for Sulu:
         # Set ban-lurker friendly custom headers
         set beresp.http.x-url = bereq.url;
         set beresp.http.x-host = bereq.http.host;
+
+        // Check for ESI acknowledgement and remove Surrogate-Control header
+        if (beresp.http.Surrogate-Control ~ "ESI/1.0") {
+            unset beresp.http.Surrogate-Control;
+            set beresp.do_esi = true;
+        }
+
+        if (beresp.http.X-Reverse-Proxy-TTL) {
+            /*
+             * Note that there is a ``beresp.ttl`` field in VCL but unfortunately
+             * it can only be set to absolute values and not dynamically. Thus we
+             * have to resort to an inline C code fragment.
+             *
+             * As of Varnish 4.0, inline C is disabled by default. To use this
+             * feature, you need to add `-p vcc_allow_inline_c=on` to your Varnish
+             * startup command.
+             */
+            C{
+                const char *ttl;
+                const struct gethdr_s hdr = { HDR_BERESP, "\024X-Reverse-Proxy-TTL:" };
+                ttl = VRT_GetHdr(ctx, &hdr);
+                VRT_l_beresp_ttl(ctx, atoi(ttl));
+            }C
+
+            unset beresp.http.X-Reverse-Proxy-TTL;
+        }
     }
 
     sub vcl_deliver {
@@ -300,8 +330,8 @@ The following is a full configuration example:
             tags:
                 enabled: true
             public:
-                max_age: 604800 # one week
-                shared_max_age: 604800 # one week
+                max_age: 240 # 4 minutes
+                shared_max_age: 480 # 8 minutes
                 use_page_ttl: true
                 enabled: true
             debug:
