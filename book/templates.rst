@@ -106,17 +106,19 @@ the Twig file that is used to render the template:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <view>ClientWebsiteBundle:templates:event</view>
+        <view>templates/event</view>
 
         <!-- ... -->
     </template>
 
 .. Note::
 
-    The notation ``bundle:directory:filename`` is `Symfony's naming convention`_
-    for Twig templates. Sulu automatically adds the ``.<format>.twig`` suffix
-    to this string, depending on the format requested by the client
-    (HTML, JSON, XML, ...).
+    Sulu automatically adds the ``.<format>.twig`` suffix to the view string,
+    depending on the format requested by the client (HTML, JSON, XML, ...).
+
+    Instead of the folder notation with the ``/`` you can use the
+    `Symfony's naming convention`_ without the file extension for Twig
+    templates.
 
 We'll talk more about the Twig file itself in :doc:`twig`. Let's continue with
 adding properties to our page template.
