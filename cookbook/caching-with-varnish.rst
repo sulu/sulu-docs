@@ -133,9 +133,7 @@ The following will add full caching support for Sulu:
     # /etc/varnish/default.vcl
     vcl 4.0;
 
-    C{
-        #include <stdlib.h>
-    }C
+    include "<PATH-TO-SULU>/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
 
     acl invalidators {
         "localhost";
@@ -147,80 +145,19 @@ The following will add full caching support for Sulu:
     }
 
     sub vcl_recv {
-        if (req.method == "PURGE") {
-            if (!client.ip ~ invalidators) {
-                return (synth(405, "Not allowed"));
-            }
-            return (purge);
-        }
+        call sulu_recv;
 
-        if (req.method == "BAN") {
-            if (!client.ip ~ invalidators) {
-                return (synth(405, "Not allowed"));
-            }
-
-
-            if (req.http.x-cache-tags) {
-                ban("obj.http.x-host ~ " + req.http.x-host
-                    + " && obj.http.x-url ~ " + req.http.x-url
-                    + " && obj.http.content-type ~ " + req.http.x-content-type
-                    + " && obj.http.x-cache-tags ~ " + req.http.x-cache-tags
-                );
-            } else {
-                ban("obj.http.x-host ~ " + req.http.x-host
-                    + " && obj.http.x-url ~ " + req.http.x-url
-                    + " && obj.http.content-type ~ " + req.http.x-content-type
-                );
-            }
-
-            return (synth(200, "Banned"));
-        }
+        # Force the lookup, the backend must tell not to cache or vary on all
+        # headers that are used to build the hash.
+        return (hash);
     }
 
     sub vcl_backend_response {
-        # Set ban-lurker friendly custom headers
-        set beresp.http.x-url = bereq.url;
-        set beresp.http.x-host = bereq.http.host;
-
-        // Check for ESI acknowledgement and remove Surrogate-Control header
-        if (beresp.http.Surrogate-Control ~ "ESI/1.0") {
-            unset beresp.http.Surrogate-Control;
-            set beresp.do_esi = true;
-        }
-
-        if (beresp.http.X-Reverse-Proxy-TTL) {
-            /*
-             * Note that there is a ``beresp.ttl`` field in VCL but unfortunately
-             * it can only be set to absolute values and not dynamically. Thus we
-             * have to resort to an inline C code fragment.
-             *
-             * As of Varnish 4.0, inline C is disabled by default. To use this
-             * feature, you need to add `-p vcc_allow_inline_c=on` to your Varnish
-             * startup command.
-             */
-            C{
-                const char *ttl;
-                const struct gethdr_s hdr = { HDR_BERESP, "\024X-Reverse-Proxy-TTL:" };
-                ttl = VRT_GetHdr(ctx, &hdr);
-                VRT_l_beresp_ttl(ctx, atoi(ttl));
-            }C
-
-            unset beresp.http.X-Reverse-Proxy-TTL;
-        }
+        call sulu_backend_response;
     }
 
     sub vcl_deliver {
-
-        if (!resp.http.x-cache-debug) {
-            unset resp.http.x-url;
-            unset resp.http.x-host;
-        }
-
-        if (obj.hits > 0) {
-            set resp.http.X-Cache = "HIT";
-        } else {
-            set resp.http.X-Cache = "MISS";
-        }
+        call sulu_deliver;
     }
 
 Restart Varnish:
@@ -282,23 +219,18 @@ Now have another look at the headers from your website:
 
     $ curl -I sulu.lo
     HTTP/1.1 200 OK
-    Host: sulu.lo:6081
-    Cache-Control: max-age=1000, public, s-maxage=1000
-    Date: Fri, 16 Jan 2015 13:46:58 GMT
+    Date: Tue, 08 Aug 2017 13:28:35 GMT
+    Server: Apache/2.4.25 (Unix) PHP/7.1.4 LibreSSL/2.2.7
+    X-Powered-By: PHP/7.1.4
+    Cache-Control: max-age=240, public, s-maxage=240
+    X-Generator: Sulu/dev-enhancement/cache-header
     Content-Type: text/html; charset=UTF-8
-    X-Reverse-Proxy-TTL: 2400
-    X-Sulu-Handlers: public, debug
-    X-Sulu-Proxy-Client: varnish
-    X-Sulu-Structure-Type: AnimalsPageCache
-    X-Sulu-Structure-UUID: 26f73515-253b-4f98-a227-8811b830735d
-    X-Sulu-Page-TTL: 2400
-    X-Debug-Token: f05a02
-    X-Debug-Token-Link: /_profiler/f05a02
-    X-Varnish: 131202 32868
-    Age: 88
-    Via: 1.1 varnish-v4
-    X-Cache: HIT
-    Content-Length: 9240
+    x-url: /
+    x-host: sulu.lo
+    X-Varnish: 5 3
+    Age: 5
+    Via: 1.1 varnish (Varnish/5.1)
+    Accept-Ranges: bytes
     Connection: keep-alive
 
 .. note::
@@ -313,10 +245,17 @@ The meaning of all these headers will be explained in the
 Optimal configuration
 ---------------------
 
-To get the most out of the Varnish cache you should enable the ``tags`` cache
-handler and disable the ``paths`` handler.  
+To get the most out of the Varnish cache you should enable the ``tags`` option in the configuration.
 
-The ``tags`` handler will automatically ensure that any changes you make in the
+.. code-block:: yaml
+
+sulu_http_cache:
+    ...
+    tags:
+        enabled: true
+    ...
+
+The ``tags`` option will automatically ensure that any changes you make in the
 admin interface are immediately available on your website.
 
 See the :doc:`../bundles/http_cache` document for more information.
@@ -325,21 +264,15 @@ The following is a full configuration example:
 
 .. code-block:: yaml
 
-    sulu_http_cache:
-        handlers:
-            tags:
-                enabled: true
-            public:
-                max_age: 240 # 4 minutes
-                shared_max_age: 480 # 8 minutes
-                use_page_ttl: true
-                enabled: true
-            debug:
-                enabled: %kernel.debug%
-        proxy_client:
-            varnish:
-                enabled: true
-                servers: [ '127.0.0.1:80' ]
+sulu_http_cache:
+    tags:
+        enabled: true
+    cache:
+        max_age: 240
+        shared_max_age: 480
+    proxy_client:
+        varnish:
+            enabled: true
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html

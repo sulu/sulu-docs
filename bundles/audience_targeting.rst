@@ -58,64 +58,56 @@ And the routes for the website in the corresponding configuration file
 Finally the cache has to be correctly configured. You have the choice between
 the Symfony Cache and Varnish.
 
-For the `Symfony cache`_ the front controller for the website at
-`web/website.php` has to be told to make use of the user context feature. You
-do that by uncommenting the line with the `WebsiteCache` and adding `true` as a
-second parameter:
+For the `Symfony cache`_ the audience targeting cache listener needs to be added.
+This is possible in the constructor of the `WebsiteCache` in `app/WebsiteCache.php`:
 
 .. code-block:: php
 
-    <?php
-    $kernel = new WebsiteCache($kernel, true);
+    public function __construct(HttpKernelInterface $kernel, $cacheDir = null)
+    {
+        parent::__construct($kernel, $cacheDir);
+
+        $this->addSubscriber(new AudienceTargetingCacheListener());
+    }
 
 If you want to use the more powerful `Varnish`_ instead, you have to install it
-on your machine and configure it using a VCL. The following example can be used
-for that, however, it requires the header module, which comes with the
-`varnish-modules`_ package.
+on your machine and configure it using a VCL.
 
-.. code-block:: c
+The following will add full caching support inclusive audience targeting for Sulu:
 
+.. code-block:: varnish4
+
+    # /etc/varnish/default.vcl
     vcl 4.0;
 
-    import header;
+    include "<PATH-TO-SULU>/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
+    include "<PATH-TO-SULU>/src/Sulu/Bundle/AudienceTargetingBundle/Resources/varnish/sulu.vcl";
+
+    acl invalidators {
+        "localhost";
+    }
 
     backend default {
         .host = "127.0.0.1";
-        .port = "8001";
+        .port = "8090";
     }
 
     sub vcl_recv {
-        if (req.http.Cookie ~ "_svtg" && req.http.Cookie ~ "_svs") {
-            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*_svtg=([^;]+).*", "\1");
-        } elseif (req.restarts == 0) {
-            set req.http.X-Sulu-Original-Url = req.url;
-            set req.http.X-Sulu-Target-Group = regsub(req.http.Cookie, ".*_svtg=([^;]+).*", "\1");
-            set req.url = "/_sulu_target_group";
-        } elseif (req.restarts > 0) {
-            set req.url = req.http.X-Sulu-Original-Url;
-            unset req.http.X-Sulu-Original-Url;
-        }
+        call sulu_recv;
+        call sulu_audience_targeting_recv;
 
-        unset req.http.Cookie;
+        # Force the lookup, the backend must tell not to cache or vary on all
+        # headers that are used to build the hash.
+        return (hash);
+    }
+
+    sub vcl_backend_response {
+        call sulu_backend_response;
     }
 
     sub vcl_deliver {
-        if (resp.http.X-Sulu-Target-Group) {
-            set req.http.X-Sulu-Target-Group = resp.http.X-Sulu-Target-Group;
-            set req.http.Set-Cookie = "_svtg=" + resp.http.X-Sulu-Target-Group + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/;";
-
-            return (restart);
-        }
-
-        if (resp.http.Vary ~ "X-Sulu-Target-Group") {
-            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "max-age=(\d+)", "max-age=0");
-            set resp.http.Cache-Control = regsub(resp.http.Cache-Control, "s-maxage=(\d+)", "s-maxage=0");
-        }
-
-        if (req.http.Set-Cookie) {
-            set resp.http.Set-Cookie = req.http.Set-Cookie;
-            header.append(resp.http.Set-Cookie, "_svs=" + now + "; path=/;");
-        }
+        call sulu_audience_targeting_deliver;
+        call sulu_deliver;
     }
 
 Finally you have to make sure that the bundle is correctly recognized by
