@@ -73,15 +73,15 @@ This is possible in the constructor of the `WebsiteCache` in `app/WebsiteCache.p
 If you want to use the more powerful `Varnish`_ instead, you have to install it
 on your machine and configure it using a VCL.
 
-The following will add full caching support inclusive audience targeting for Sulu:
+The following will add full caching support including audience targeting for Sulu:
 
 .. code-block:: varnish4
 
     # /etc/varnish/default.vcl
     vcl 4.0;
 
-    include "<PATH-TO-SULU>/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
-    include "<PATH-TO-SULU>/src/Sulu/Bundle/AudienceTargetingBundle/Resources/varnish/sulu.vcl";
+    include "<PATH-TO-SULU-MINIMAL>/vendor/sulu/sulu/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
+    include "<PATH-TO-SULU-MINIMAL>/vendor/sulu/sulu/src/Sulu/Bundle/AudienceTargetingBundle/Resources/varnish/sulu.vcl";
 
     acl invalidators {
         "localhost";

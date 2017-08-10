@@ -133,7 +133,7 @@ The following will add full caching support for Sulu:
     # /etc/varnish/default.vcl
     vcl 4.0;
 
-    include "<PATH-TO-SULU>/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
+    include "<PATH-TO-SULU-MINIMAL>/vendor/sulu/sulu/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
 
     acl invalidators {
         "localhost";

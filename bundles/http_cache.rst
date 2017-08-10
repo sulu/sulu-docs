@@ -1,7 +1,7 @@
 HttpCacheBundle
 ===============
 
-The SuluHttpCache bundle provides integration between Sulu <--> FOSHttpCacheBundle <--> HTTP caching proxies.
+The SuluHttpCache bundle provides integration between Sulu and HTTP caching proxies using the `FOSHttpCacheBundle`_.
 
 CacheManager
 ------------
@@ -184,5 +184,5 @@ Default configuration
             enabled:              true
 
 
+.. _FOSHttpCacheBundle: https://github.com/friendsofsymfony/FOSHttpCacheBundle
 .. _FOSHttpCache: https://github.com/friendsofsymfony/FOSHttpCache
-.. _time to live: http://en.wikipedia.org/wiki/Time_to_live
