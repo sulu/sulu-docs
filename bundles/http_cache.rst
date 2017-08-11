@@ -65,10 +65,8 @@ Enable this feature via configuration:
 .. code-block:: yaml
 
 sulu_http_cache:
-    # ...
     debug:
         enabled: true
-    # ...
 
 Tags
 """"
@@ -101,10 +99,8 @@ Enable this feature via configuration:
 .. code-block:: yaml
 
 sulu_http_cache:
-    # ...
     tags:
         enabled: true
-    # ...
 
 Proxy Clients
 -------------
