@@ -250,10 +250,8 @@ To get the most out of the Varnish cache you should enable the ``tags`` option i
 .. code-block:: yaml
 
 sulu_http_cache:
-    ...
     tags:
         enabled: true
-    ...
 
 The ``tags`` option will automatically ensure that any changes you make in the
 admin interface are immediately available on your website.
