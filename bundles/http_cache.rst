@@ -55,18 +55,18 @@ For example:
     x-sulu-structure-uuid: 22a92d46-74ab-46cc-b47c-486b4b8a06a7
     x-sulu-page-ttl: 2400
 
-Paths Handler
+Url Handler
 """""""""""""
 
 Implements: **flush**, **invalidate** and **update response**.
 
-The paths handler will invalidate all the URLs associated with the subject Structure when it is updated. For
+The url handler will invalidate all the URLs associated with the subject Structure when it is updated. For
 example, if a page is located at ``http://sulu.lo/de/my/page`` and ``http://sulu.lo/en/my/page`` then these two
 URLs will be purged in the cache, and their contents will be updated when they are next requested.
 
 .. note::
 
-    When using the paths handler you need to be aware that pages which reference the structure being invalidated
+    When using the url handler you need to be aware that pages which reference the structure being invalidated
     will **not be updated** - for example pages which aggregate the subject structure in a SmartContent content type.
 
 Public Handler
@@ -171,7 +171,7 @@ Default configuration
 
                 # Use the dynamic pages cache lifetime for reverse proxy server
                 use_page_ttl:         true
-            paths:
+            url:
                 enabled:              false
             tags:
                 enabled:              false
