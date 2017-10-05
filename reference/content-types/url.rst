@@ -41,7 +41,6 @@ Example
             <param name="schemes" type="collection">
                 <param name="http://"/>
                 <param name="https://"/>
-                <param name="//"/>
             </param>
         </params>
     </property>
