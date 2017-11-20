@@ -54,7 +54,7 @@ The next table shows the standard commands available with its parameters.
 |         |                                    |
 |         | y: y-coordinate of the startpoint  |
 |         |                                    |
-|         | w: the with of the new image       |
+|         | w: the width of the new image      |
 |         |                                    |
 |         | h: the height of the new image     |
 +---------+------------------------------------+
