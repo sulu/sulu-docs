@@ -59,7 +59,7 @@ Finally the cache has to be correctly configured. You have the choice between
 the Symfony Cache and Varnish.
 
 For the `Symfony cache`_ the audience targeting cache listener needs to be added.
-This is possible in the constructor of the `WebsiteCache` in `app/WebsiteCache.php`:
+This is possible by adding the constructor to `WebsiteCache` in `app/WebsiteCache.php`:
 
 .. code-block:: php
 
