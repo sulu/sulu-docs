@@ -35,7 +35,6 @@ For example:
     ...
     if ($this->has('sulu_http_cache.cache_lifetime.enhancer')) {
         $cacheLifetimeEnhancer = $this->get('sulu_http_cache.cache_lifetime.enhancer');
-
         $cacheLifetimeEnhancer->enhance($response, $structure);
     }
     ...
@@ -48,9 +47,6 @@ and returns an absolute cache lifetime in seconds.
 
 Configuration
 -------------
-
-Debug
-"""""
 
 The debug feature simply adds debug information to your response:
 

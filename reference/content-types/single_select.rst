@@ -18,6 +18,9 @@ Parameters
     * - values
       - collection
       - A collection of values to choose from.
+    * - default_value
+      - string
+      - The name of the param which should be set as default.
 
 Example
 -------
@@ -29,6 +32,7 @@ Example
             <title lang="en">Single Select</title>
         </meta>
         <params>
+            <param name="default_value" value="option1"/>
             <param name="values" type="collection">
                 <param name="option1">
                     <meta>
