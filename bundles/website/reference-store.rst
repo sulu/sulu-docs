@@ -26,7 +26,7 @@ Example
 .. code-block:: xml
 
     <service id="app.reference_store.example"
-             class="Sulu\Bundle\ContentBundle\ReferenceStore\ReferenceStore">
+             class="Sulu\Bundle\WebsiteBundle\ReferenceStore\ReferenceStore">
         <tag name="sulu_website.reference_store" alias="example"/>
     </service>
 
