@@ -88,8 +88,8 @@ Where ``<profile>`` is one of:
 
     If you want to run the tests on your local machine with the default
     configuration you have to make sure that a Sulu instance is running on
-    `127.0.0.1:8001`. You can use the command `./app/console server:run
-    -r app/config/router_admin.php 127.0.0.1:8001` for that.
+    `127.0.0.1:8000`. You can use the command `./app/console server:run`
+    for that.
 
 The tests are split up into a number of *suites*. There is one suite for each
 bundle, named after the bundle in lowercase, for example ``SuluContactBundle``

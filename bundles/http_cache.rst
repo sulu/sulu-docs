@@ -36,43 +36,35 @@ Debug Handler
 
 Implements: **update response**.
 
-The debug handler simply adds debug information to your response:
+Note: This service is only available when a proxy client is correctly configured.
 
-- ``x-sulu-handler``: The handlers which are enabled
-- ``x-sulu-proxy-client``: The  name of the proxy client being used
-- ``x-sulu-structure-type``: The structure type for which the response is being returned
-- ``x-sulu-structure-uuid``: The UUID of the Structure
-- ``x-sulu-page-ttl``: Send the TTL (`time to live`_) to the proxy client with the header `X-Reverse-Proxy-TTL`
-  (which is defined as a constant in the ``Sulu\Component\HttpCache`` class).
+For example:
+
+.. code-block:: php
+
+    ...
+    if ($this->has('sulu_http_cache.cache_lifetime.enhancer')) {
+        $cacheLifetimeEnhancer = $this->get('sulu_http_cache.cache_lifetime.enhancer');
+        $cacheLifetimeEnhancer->enhance($response, $structure);
+    }
+    ...
+
+CacheLifetimeResolver
+"""""""""""""""""""""
+
+The cache lifetime resolver resolves the given cache lifetime metadata based on the type
+and returns an absolute cache lifetime in seconds.
+
+Configuration
+-------------
+
+The debug feature simply adds debug information to your response:
 
 For example:
 
 .. code-block:: bash
 
-    x-sulu-handlers: paths, public, debug
-    x-sulu-proxy-client: symfony
-    x-sulu-structure-type: OverviewPageCache
-    x-sulu-structure-uuid: 22a92d46-74ab-46cc-b47c-486b4b8a06a7
-    x-sulu-page-ttl: 2400
-
-Paths Handler
-"""""""""""""
-
-Implements: **flush**, **invalidate** and **update response**.
-
-The paths handler will invalidate all the URLs associated with the subject Structure when it is updated. For
-example, if a page is located at ``http://sulu.lo/de/my/page`` and ``http://sulu.lo/en/my/page`` then these two
-URLs will be purged in the cache, and their contents will be updated when they are next requested.
-
-.. note::
-
-    When using the paths handler you need to be aware that pages which reference the structure being invalidated
-    will **not be updated** - for example pages which aggregate the subject structure in a SmartContent content type.
-
-Public Handler
-""""""""""""""
-
-Implements: **update response**.
+    X-Cache: HIT/MISS
 
 The public handler adds generic caching information to the response which will be consumed by the users
 web browser. For example a ``max-age`` time of 3600 will instruct the users browser to locally cache the page
