@@ -16,7 +16,7 @@ A custom-url consists of following properties:
     * - Parameter
       - Description
     * - Title
-      - This title will be displayed in the list and should identify the usecase
+      - This title will be displayed in the list and should identify the use case
         of this url.
     * - Activated
       - This flag indicates if the custom-url is shown on the website.

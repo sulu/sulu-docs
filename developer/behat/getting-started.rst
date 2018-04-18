@@ -110,5 +110,5 @@ Further more you can filter for specific tests using the ``name`` option:
 The above will run all scenarios in the ``contact`` suite which contain the word
 ``Create``.
 
-.. _Selenium: htto://www.seleniumhq.org
+.. _Selenium: http://www.seleniumhq.org
 .. _download selenium server from here: http://www.seleniumhq.org/download/

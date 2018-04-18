@@ -1,7 +1,7 @@
 Test your Code
 ==============
 
-Sulu has three types of tests: Unit, Functional and Sceneario (i.e. "Behat").
+Sulu has three types of tests: Unit, Functional and Scenario (i.e. "Behat").
 
 If your tests require external dependencies (e.g. a database connection) then
 they are Functional tests, otherwise they will be a Unit Test.

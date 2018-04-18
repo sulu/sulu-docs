@@ -18,6 +18,6 @@ to do things the way we do them.
     backend-template
     content-architecture
 
-It is important to understand the underlaying concepts of Sulu,
+It is important to understand the underlying concepts of Sulu,
 but if you want to skip this part and start coding, head over
 to :doc:`../getting-started`.

@@ -26,7 +26,7 @@ Example
 -------
 
 This is a simple example which assumes that the logic to load entities is
-implemented in the Respository.
+implemented in the Repository.
 
 .. code-block:: php
 

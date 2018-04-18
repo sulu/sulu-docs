@@ -33,5 +33,5 @@ just submit the PR and we will review it.
     adding-translations
 
 .. _Symfony coding standards: http://symfony.com/doc/current/contributing/code/standards.html
-.. _pull request: hhttps://help.github.com/articles/using-pull-requests
+.. _pull request: https://help.github.com/articles/using-pull-requests
 .. _Symfony documentation standard: http://symfony.com/doc/current/contributing/documentation/standards.html

@@ -42,7 +42,7 @@ The debug handler simply adds debug information to your response:
 - ``x-sulu-proxy-client``: The  name of the proxy client being used
 - ``x-sulu-structure-type``: The structure type for which the response is being returned
 - ``x-sulu-structure-uuid``: The UUID of the Structure
-- ``x-sulu-page-ttl``: Send the TTL (`time to live`_) to the proxy client with the header `X-Resverse-Proxy-TTL`
+- ``x-sulu-page-ttl``: Send the TTL (`time to live`_) to the proxy client with the header `X-Reverse-Proxy-TTL`
   (which is defined as a constant in the ``Sulu\Component\HttpCache`` class).
 
 For example:
@@ -67,7 +67,7 @@ URLs will be purged in the cache, and their contents will be updated when they a
 .. note::
 
     When using the paths handler you need to be aware that pages which reference the structure being invalidated
-    will **not be updated** - for exmaple pages which aggregate the subject structure in a SmartContent content type.
+    will **not be updated** - for example pages which aggregate the subject structure in a SmartContent content type.
 
 Public Handler
 """"""""""""""
