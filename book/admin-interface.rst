@@ -20,7 +20,7 @@ implemented search. Just enter whatever you want to work on and it will give you
 Contacts
 --------
 
-Contacts on the one hand cover the handling of personal informations on the other hand they are also
+Contacts on the one hand cover the handling of personal information on the other hand they are also
 the user provider for Sulu Users.
 
 .. figure:: ../img/admin-contact-people.png
