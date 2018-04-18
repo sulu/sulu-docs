@@ -1,40 +1,30 @@
 HttpCacheBundle
 ===============
 
-The SuluHttpCache bundle provides tight integration between Sulu and HTTP caching proxies.
+The SuluHttpCache bundle provides integration between Sulu and HTTP caching proxies using the `FOSHttpCacheBundle`_.
 
-Handlers
---------
+CacheManager
+------------
 
-All of the functionality of the Sulu HTTP cache implementation is encapsulated
-in "handlers". Handlers are responsible primarily for handling the caching of
-Sulu ``Structure`` objects (e.g. ``Page`` and ``Snippet`` classes).
+The CacheManager can be used to invalidate the cache.
 
-Most handlers will need to talk to a HTTP proxy cache implementation. The cache
-implementations are provided by the `FOSHttpCache`_ component. Examples of
-handlers which do not need to talk to a cache implementation are the
-``DebugHandler`` and the ``PublicHandler``.
+For example:
 
-Handler classes implement the ``HandlerInterface`` and are further specialized with three further interfaces:
+.. code-block:: php
 
-- ``HandlerFlushInterface``: This handler is capable of being "flushed" - this will normally be a proxy for ``ProxyClient#flush``.
-- ``HandlerInvalidateInterface``: This handler can invalidate the cache.
-- ``HandlerUpdateResponseInterface``: This handler can update the response.
+    ...
+    $cacheManager = $this->get('sulu_http_cache.cache_manager');
+    $cacheManager->invalidatePath($path, $headers);
+    ...
 
-Aggregate Handler
-"""""""""""""""""
+CacheLifetime
+-------------
 
-Implements: **flush**, **invalidate** and **update response**.
+CacheLifetimeEnhancer
+"""""""""""""""""""""
 
-The aggregate handler is special as it aggregates other handlers so that you can
-apply multiple handlers at the same time.
-
-This is the default handler and by default it will aggregate all enabled handlers.
-
-Debug Handler
-"""""""""""""
-
-Implements: **update response**.
+Use this service to set the cache lifetime from a Sulu structure to the response.
+The structure needs to be an instance of `PageInterface`.
 
 Note: This service is only available when a proxy client is correctly configured.
 
@@ -66,31 +56,25 @@ For example:
 
     X-Cache: HIT/MISS
 
-The public handler adds generic caching information to the response which will be consumed by the users
-web browser. For example a ``max-age`` time of 3600 will instruct the users browser to locally cache the page
-for one hour before requesting it from the server again.
+Enable this feature via configuration:
 
-The following are example headers added by the public handler (the
-``X-Reverse-Proxy`` header will normally be removed by the cache
-implementation):
+.. code-block:: yaml
 
-.. code-block:: bash
+sulu_http_cache:
+    debug:
+        enabled: true
 
-    Cache-Control: max-age=240, public, s-maxage=240
-    X-Reverse-Proxy-TTL: 2400
+Tags
+""""
 
-Tags Handler
-""""""""""""
-
-The tags handler is the most comprehensive cache invalidation strategy, it will
+The tags feature is the most comprehensive cache invalidation strategy, it will
 invalidate both the URLs of the structure and the URLs of the pages which
-display references to the structure. . It must be used in conjunction with a
-proxy client which supports Banning. Currently **this handler can only be used
-with Varnish**.
+display references to the structure. It must be used in conjunction with a
+proxy client which supports Banning. Currently **this is only possible with Varnish**.
 
-This handler works by sending all of the UUIDs of the structures which are
+This works by sending all of the UUIDs of the structures which are
 contained in a page response to the proxy client. The proxy client can then
-store this information along with the cached HTML response. 
+store this information along with the cached HTML response.
 
 When you update any structure in the admin interface it will instruct the HTTP proxy
 to purge all the caches which have a reference to the UUID of the structure you
@@ -100,17 +84,29 @@ Example header sent by the tags handler (which will be removed by varnish):
 
 .. code-block:: bash
 
-    X-Cache-Tags: structure-22a92d46-74ab-46cc-b47c-486b4b8a06a7
+    X-Cache-Tags: 22a92d46-74ab-46cc-b47c-486b4b8a06a7,cf4a07fe-91d0-41be-aed8-b1c9ee1eb72a
 
+This header will be written at the end of the response by using the
+:doc:`website/reference-store`. This service collects the
+entities/documents which were used to render the page.
+
+Enable this feature via configuration:
+
+.. code-block:: yaml
+
+sulu_http_cache:
+    tags:
+        enabled: true
 
 Proxy Clients
 -------------
 
+At the moment Sulu works with following proxy clients:
+
 Symfony Http Cache
 """"""""""""""""""
 
-The Symfony HTTP cache is the default caching client for Sulu CMF. It is integrated
-directly into Sulu.
+The Symfony HTTP cache is the default caching client for Sulu. It is integrated directly into Sulu.
 
 It works by "wrapping" the kernel. You can find it in the website front controller ``web/website.php``:
 
@@ -121,15 +117,18 @@ It works by "wrapping" the kernel. You can find it in the website front controll
 
     // Comment this line if you want to use the "varnish" http
     // caching strategy. See http://sulu.readthedocs.org/en/latest/cookbook/caching-with-varnish.html
-     if (SYMFONY_ENV != 'dev') {
-        require_once __DIR__ . '/../app/WebsiteCache.php';
+    if (SYMFONY_ENV !== 'dev') {
         $kernel = new WebsiteCache($kernel);
+
+        // When using the HttpCache, you need to call the method in your front controller
+        // instead of relying on the configuration parameter
+        Request::enableHttpMethodParameterOverride();
     }
 
 It will need to be disabled when using varnish.
 
 Varnish
--------
+"""""""
 
 The varnish proxy client is provided by the `FOSHttpCache`_ component.
 
@@ -143,44 +142,39 @@ Default configuration
 
     # Default configuration for extension with alias: "sulu_http_cache"
     sulu_http_cache:
-
-        default_handler:      aggregate
-
-        # Configuration for structure cache handlers
-        handlers:
-            aggregate:
-                enabled:              true
-
-                # Handlers to aggregate, e.g. all or any of tags, path, public
-                handlers:             []
-            public:
-                enabled:              false
-                max_age:              300
-                shared_max_age:       300
-
-                # Use the dynamic pages cache lifetime for reverse proxy server
-                use_page_ttl:         true
-            paths:
-                enabled:              false
-            tags:
-                enabled:              false
-            debug:
-                enabled:              false
+        tags:
+            enabled:              false
+        cache:
+            max_age:              240
+            shared_max_age:       240
         proxy_client:
             symfony:
                 enabled:              false
-            varnish:
-                enabled:              false
 
-                # Addresses of the hosts Varnish is running on. May be hostname or ip, and with :port if not the default port 80.
-                servers:              # Required
+                # Addresses of the hosts Symfony is running on. May be hostname or ip, and with :port if not the default port 80.
+                servers:
 
                     # Prototype
                     name:                 ~
 
                 # Default host name and optional path for path based invalidation.
                 base_url:             null
+            varnish:
+                enabled:              false
+
+                # Addresses of the hosts Varnish is running on. May be hostname or ip, and with :port if not the default port 80.
+                servers:
+
+                    # Prototype
+                    name:                 ~
+
+                # Default host name and optional path for path based invalidation.
+                base_url:             null
+        debug:
+
+            # Whether to send a debug header with the response to trigger a caching proxy to send debug information. If not set, defaults to kernel.debug.
+            enabled:              true
 
 
+.. _FOSHttpCacheBundle: https://github.com/friendsofsymfony/FOSHttpCacheBundle
 .. _FOSHttpCache: https://github.com/friendsofsymfony/FOSHttpCache
-.. _time to live: http://en.wikipedia.org/wiki/Time_to_live
