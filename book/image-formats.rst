@@ -14,18 +14,13 @@ Take a look at the following file for an example:
     <?xml version="1.0" encoding="UTF-8"?>
     <formats xmlns="http://schemas.sulu.io/media/formats"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://schemas.sulu.io/media/formats http://schemas.sulu.io/media/formats-1.0.xsd">
-        <format>
-            <name>640x480</name>
-            <commands>
-                <command>
-                    <action>resize</action>
-                    <parameters>
-                        <parameter name="x">640</parameter>
-                        <parameter name="y">480</parameter>
-                    </parameters>
-                </command>
-            </commands>
+             xsi:schemaLocation="http://schemas.sulu.io/media/formats http://schemas.sulu.io/media/formats-1.1.xsd">
+        <format key="640x480">
+            <meta>
+                <title lang="de">640x480</title>
+                <title lang="en">640x480</title>
+            </meta>
+            <scale x="640" y="480"/>
             <!-- optional compression for this format -->
             <options>
                 <option name="jpeg_quality">80</option>
