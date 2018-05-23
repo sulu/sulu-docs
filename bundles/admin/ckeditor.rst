@@ -134,8 +134,8 @@ http://docs.ckeditor.com/#!/guide/plugin_sdk_sample_1.
 2. Register your new plugin
 ***************************
 
-In the main.js file of your bundle you can require the newly created plugin and
-register it through the ``initialize`` function.
+In the main.js file of your bundle you can require the newly created plugin and register it through the ``initialize``
+function.
 
 .. code-block:: javascript
 
@@ -150,7 +150,6 @@ You can now use your plugin in all Ckeditor instances.
 
 .. note::
 
-    To create your overlays or other plugins in our aura-system you can also
-    use the sandbox to start your own component. But you have to
-    be sure that you did stop all your components to reduce the memory-usage and
-    calls to the event-system.
+    To create your overlays or other plugins in our aura-system you can also use the sandbox to start your own
+    component. But you have to be sure that you did stop all your components to reduce the memory-usage and calls to the
+    event-system.
