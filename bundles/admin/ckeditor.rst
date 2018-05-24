@@ -1,9 +1,9 @@
 CKEditor
 ========
 
-The build in editor CKEditor has a quite powerfull plugin system. This can be
+The build in editor CKEditor has a quite powerful plugin system. It can be
 used to create additional toolbar-buttons and dialogs. Sulu gives you the
-ability to add this plugins in your bundle.
+ability to add these as plugins to your bundle.
 
 Example
 -------
@@ -131,11 +131,11 @@ http://docs.ckeditor.com/#!/guide/plugin_sdk_sample_1.
         };
     });
 
-2. Register plugin
-******************
+2. Register your new plugin
+***************************
 
-In you main.js file of your bundle you can require the before created plugin and
-register it in the ``initialize`` function.
+In the main.js file of your bundle you can require the newly created plugin and register it through the ``initialize``
+function.
 
 .. code-block:: javascript
 
@@ -146,11 +146,10 @@ register it in the ``initialize`` function.
         new Abbr(app.sandboxes.create('plugin-abbr'))
     );
 
-You can now use you plugin in all ckeditors.
+You can now use your plugin in all Ckeditor instances.
 
 .. note::
 
-    To create your overlays or other plugins in our aura-system you can also
-    use the sandbox to start your own component. But be aware that you have to
-    be sure that you stop all your components to reduce the memory-usage and
-    usage of the event-system.
+    To create your overlays or other plugins in our aura-system you can also use the sandbox to start your own
+    component. But you have to be sure that you did stop all your components to reduce the memory-usage and calls to the
+    event-system.

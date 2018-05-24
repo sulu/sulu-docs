@@ -145,7 +145,7 @@ contexts might be enough:
 
 The following screenshot shows the `Sulu homepage`_ with the main navigation on
 the right and the footer navigation on the bottom. As you can see the
-navigations returned for the navigation contexts are not necessarily flat, but
+navigation returned for the navigation contexts are not necessarily flat, but
 can also contain sub pages.
 
 .. figure:: ../img/website-navigation-contexts.png

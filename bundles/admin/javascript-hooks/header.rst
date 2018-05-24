@@ -111,7 +111,7 @@ List of all available options:
       - an object of options to pass to the husky-toolbar-component
     * - toolbar.languageChanger
       - Object|Boolean
-      - contains configuration-properties for the language-changer dropdown. If just set to ``true`` renderes
+      - contains configuration-properties for the language-changer dropdown. If just set to ``true`` renders
         a dropdown with the system-locales and emits events as a callback
     * - toolbar.languageChanger.url
       - String

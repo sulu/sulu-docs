@@ -1,7 +1,7 @@
 Improve Sitemap Speed
 =====================
 
-The sitemap of Sulu is based on small pieces, wich are generated
+The sitemap of Sulu is based on small pieces, which are generated
 by so called `SitemapProvider` (see :doc:`sitemap-provider`).
 Each provider returns mostly 50000 links which can return many
 links, which would take a bigger amount of time. The Google bot
