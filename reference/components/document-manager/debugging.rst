@@ -2,7 +2,7 @@ Debugging
 =========
 
 One of the disadvantages of an event based system is that tracking what
-happends and when it happens can be tricky. The Document Manager provides some
+happens and when it happens can be tricky. The Document Manager provides some
 tools to ameliorate this problem.
 
 Subscriber Debug Command
@@ -30,7 +30,7 @@ the following command:
 Here we list all of the subscribers which will be executed when a `remove`
 event is fired.
 
-A full list of events can be retrived if you ommit the argument:
+A full list of events can be retrieved if you omit the argument:
 
 .. code-block:: bash
 

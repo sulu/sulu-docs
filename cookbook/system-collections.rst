@@ -31,7 +31,7 @@ This structure will be used to create a Collection Structure like this:
     System
      |--> Sulu contact
      |     |--> People
-     |     |--> Orginizations
+     |     |--> Organizations
      |--> Client Website
            |--> My own System-Collection
 

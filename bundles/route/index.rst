@@ -34,7 +34,7 @@ available on the website with an own route.
 Entity
 ******
 
-First extend your entity with the propertie's `id`, `locale` and a new many-to-one relation `route`:
+First extend your entity with the properties `id`, `locale` and a new many-to-one relation `route`:
 
 reciepe.orm.xml:
 

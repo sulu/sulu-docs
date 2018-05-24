@@ -93,7 +93,7 @@ the fixtures:
 
     $ php app/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
 
-You can also specify if fixturs should be *appended* (i.e. the repository will
+You can also specify if fixtures should be *appended* (i.e. the repository will
 not be purged) and if the initializer should be executed.
 
 Append fixtures:

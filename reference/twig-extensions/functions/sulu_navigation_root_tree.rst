@@ -6,7 +6,7 @@ Returns navigation from root in a tree data-structure.
 **Arguments**:
 
 - **context**: *string* - optional: context to filter navigation
-- **depth**: *integer* - optional: depth to load (1 - childs, 2 - childs and child of childs, ...)
+- **depth**: *integer* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...)
 - **loadExcerpt**: *boolean* - optional: load data from excerpt tab
 
 **Returns**:
