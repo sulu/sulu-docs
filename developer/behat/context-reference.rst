@@ -39,7 +39,7 @@ The following is not a fully comprehensive list:
   a husky drop-down selector as identified by selector.
 - ``I fill in husky field ":name" with ":value"``: Fill in a husky field (husky
   fields do not have ``name`` elements preventing us from using the default
-  mechanisim).
+  mechanism).
 - ``I click the button ":text"``: Click the button containing the text ``:text``
 - ``I click toolbar item ":id"``: Click on the toolbar item with given id (also dropdown)
 - ``I expect the ":event" event``: Wait for the named aura event

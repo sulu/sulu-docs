@@ -96,7 +96,7 @@ namespace.
 
     <service id="app.tag" class="AppBundle\CustomTag">
         <tag name="sulu_markup.tag" namespace="custom-namespace"
-             tag="custom-tag"/>
+             tag="custom-tag" type="html" />
     </service>
 
 With this definitions you can use ``<custom-namespace:custom-tag/>`` in your

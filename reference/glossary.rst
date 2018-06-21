@@ -1,7 +1,7 @@
 Glossary
 ========
 
-A glossay is:
+A glossary is:
 
      A list of terms in a particular domain of knowledge with their definitions.
 
@@ -29,7 +29,7 @@ Localized
     Of a Property - the state of being localized, or capable of being translated.
 
 Metadata
-    Literalaly data about data. Typically a data structure with information
+    Literally data about data. Typically a data structure with information
     such as field mappings which should be applied to a different data
     structure.
 
@@ -70,7 +70,7 @@ Resource locator
     resource locator will never include the locale.
 
 Segment
-    As applying to URLs and Paths - a section of a path or URL, preseumably
+    As applying to URLs and Paths - a section of a path or URL, presumably
     delimited by `/`.
 
 Shadow

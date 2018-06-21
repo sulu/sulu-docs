@@ -36,7 +36,7 @@ Parameters
       
 Texteditor supports also all `ckeditor config`_ parameters in snakecase.
 
-.. _ckeditor config: http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg
+.. _ckeditor config: https://docs.ckeditor.com/ckeditor4/latest/api/CKEDITOR_config.html
 
 Example
 -------

@@ -1,7 +1,7 @@
 Securing your application
 =========================
 
-Sulu is delivered with two different possiblities to protect parts of your
+Sulu is delivered with two different possibilities to protect parts of your
 application. The first is the permissions based on security contexts, which
 allow you to restrict access to entire parts of your application or Sulu. The
 permissions for this kind of security are managed on a roles level. In addition
@@ -82,7 +82,7 @@ Protect your controller
 
 After defining a security context, you can use it to easily protect the actions
 of one of your controllers. All you have to do is to implement the
-``SecuredControllerInterface`` telling the ``SuluSecuriyListener`` which
+``SecuredControllerInterface`` telling the ``SuluSecurityListener`` which
 security context and locale to use for the permission check:
 
 .. code-block:: php

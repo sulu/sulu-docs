@@ -24,7 +24,7 @@ The following is an example:
 If you are familiar with Doctrine this will seem very familiar. There are some
 differences however:
 
-- Persist commits the chagnes to the *node* immediately, changes made to the
+- Persist commits the changes to the *node* immediately, changes made to the
   document later on will not be taken into account on `flush()`. It is better
   to think of `persist()` as a function which prepares a `snapshot` of the
   current state of the document to be persisted.

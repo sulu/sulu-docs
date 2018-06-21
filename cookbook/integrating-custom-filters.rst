@@ -4,7 +4,7 @@ Integrating custom filters
 When you want to enable custom filters for your bundle you have to follow the 
 following steps. It's important to know that the filter component works with 
 contexts. This means for example that the lists of contacts has the 
-`contacts` context and everything concering the filters for the list will 
+`contacts` context and everything concerning the filters for the list will
 need this context. It should therefore be unique.
 
 Add the missing data types to the field descriptors
@@ -12,7 +12,7 @@ Add the missing data types to the field descriptors
 
 The custom filter feature uses the field descriptors you've already defined for 
 your lists. To work as expected you should define the type of each column. If
-not defined the filter component will asume it's a string. The available data 
+not defined the filter component will assume it's a string. The available data
 types are:
 
 - `string`
