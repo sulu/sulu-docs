@@ -32,7 +32,7 @@ Sulu `User` class.
     /**
      * User
      *
-     * @ORM\Table()
+     * @ORM\Table(name="se_users")
      * @ORM\Entity
      */
     class User extends SuluUser
@@ -78,7 +78,7 @@ Configuration
 -------------
 
 You can specify your new Entity and if it exists your Repository in the `sulu_security` 
-configuration section.
+configuration section in the file app/config/config.yml.
 
 .. code-block:: yaml
 
