@@ -11,7 +11,7 @@ Or when you use the SuluThemeBundle you can define the formats in your theme fol
 
  - `path/to/<theme>/config/image-formats.xml`
 
-The following example show you different ways how you can define image formats:
+The following example shows you different ways to define image formats:
 
 .. code-block:: xml
 
@@ -44,8 +44,7 @@ The following example show you different ways how you can define image formats:
 Defining meta title
 -------------------
 
-Content manager can crop an image in the backend you should add a meta title to every image format
-to make a hint where a specific image format is used:
+You should define a meta title for every image format, since these titles are shown to the content manager in the administration interface when cropping the images.
 
 .. code-block:: xml
 
@@ -93,7 +92,7 @@ To set the compression for all images you have to add following lines to your
                 jpeg_quality: 80
                 png_compression_level: 6
 
-Its recommended to have `jpeg_quality` between 70-90 as there the result is the best between quality and image size.
+Its recommended to have `jpeg_quality` between 70-90 as this is the best compromise between quality and image size.
 
 Specific image compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -258,7 +257,7 @@ The given image can be positioned by adding `x`, `y`, `w` `h` parameter:
             <scale x="300" y="300"/>
 
             <transformations>
-                <!-- Sharpen effect -->
+                <!-- Paste effect -->
                 <transformation>
                     <effect>paste</effect>
                     <parameters>
