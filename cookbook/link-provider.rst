@@ -35,7 +35,7 @@ configured with the `LinkConfiguration`.
     use Sulu\Bundle\ContentBundle\Markup\Link\LinkItem;
     use Sulu\Bundle\ContentBundle\Markup\Link\LinkProviderInterface;
 
-    class LinkProvider implements TeaserProviderInterface
+    class LinkProvider implements LinkProviderInterface
     {
         /**
          * {@inheritdoc}
