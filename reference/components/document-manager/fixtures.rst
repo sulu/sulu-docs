@@ -9,8 +9,8 @@ Getting Started
 
 Shown below is and example that creates a simple data fixture.
 
-.. Note::
-- The class name MUST end with `Fixture` for it to be recognized
+**Note**
+    - The class name MUST end with `Fixture` for it to be recognized
     - The class MUST be placed in `<your bundle>/DataFixtures/Document` in order
       for it to be loaded automatically.
 
