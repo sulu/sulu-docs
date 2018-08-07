@@ -7,13 +7,16 @@ you to load static data into your content repository.
 Getting Started
 ---------------
 
-Shown below is the simple data fixtures:
+Shown below is and example that creates a simple data fixture.
+
+.. Note::
+- The class name MUST end with `Fixture` for it to be recognized
+    - The class MUST be placed in `<your bundle>/DataFixtures/Document` in order
+      for it to be loaded automatically.
 
 .. code-block:: php
 
     <?php
-    // YourBundle/DataFixtures/Document/SomeFixture.php
-
     namespace YourBundle\DataFixtures\Document;
 
     use Sulu\Component\DocumentManager\DocumentManager;
@@ -22,22 +25,18 @@ Shown below is the simple data fixtures:
 
     class SomeFixture implements DocumentFixtureInterface
     {
-        public function getOrder()
-        {
-            return 10;
-        }
+
+        const LOCALE = 'en';
 
         public function load(DocumentManager $documentManager)
         {
-            $document = $documentManager->create('page');
-
             /** @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document */
             $document = $documentManager->create('page');
-            $document->setLocale('en');
+            $document->setLocale(static::LOCALE);
             $document->setTitle('foo bar page');
+            // setStructureType is the name of the page template.
             $document->setStructureType('default');
             $document->setResourceSegment('/foo-bar-page');
-            $document->setWorkflowStage(WorkflowStage::PUBLISHED);
             $document->getStructure()->bind(array(
                 'title' => 'foo bar page'
             ));
@@ -52,21 +51,18 @@ Shown below is the simple data fixtures:
                 ]
             );
 
-            $documentManager->persist($document, 'en', array(
+            // parent_path uses your webspace name. In this case "sulu_io"
+            $documentManager->persist($document, static::LOCALE, array(
                 'parent_path' => '/cmf/sulu_io/contents',
             ));
 
-            # Optional: If you don't want your document to be published, remove this line
-            $documentManager->publish($document, 'en');
+            // Optional: If you don't want your document to be published, remove this line
+            $documentManager->publish($document, static::LOCALE);
             $documentManager->flush();
         }
     }
 
-Note that:
 
-- The class name MUST end with `Fixture` for it to be recognized
-- The class MUST be placed in `<your bundle>/DataFixtures/Document` in order
-  for it to be loaded automatically.
 
 You can now execute your data fixture using the
 ``sulu:document:fixtures:load``
@@ -74,7 +70,7 @@ command.
 
 .. code-block:: bash
 
-    $ php app/console sulu:document:fixtures:load
+    $ php bin/console sulu:document:fixtures:load
 
 By default this command will purge and re-initialize the workspace before
 loading all of the fixtures.
@@ -116,7 +112,6 @@ If you need the service container you can implement the `Symfony\Component\Depen
 .. code-block:: php
 
     <?php
-    // YourBundle/DataFixtures/Document/SomeFixture.php
 
     namespace YourBundle\DataFixtures\Document;
 
