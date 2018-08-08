@@ -7,7 +7,7 @@ you to load static data into your content repository.
 Getting Started
 ---------------
 
-Shown below is and example that creates a simple data fixture.
+Shown below is an example that creates a simple data fixture.
 
 **Note**
     - The class name MUST end with `Fixture` for it to be recognized
