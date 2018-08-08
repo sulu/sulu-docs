@@ -34,7 +34,7 @@ Shown below is an example that creates a simple data fixture.
             $document = $documentManager->create('page');
             $document->setLocale(static::LOCALE);
             $document->setTitle('foo bar page');
-            // setStructureType is the name of the page template.
+            // Use setStructureType to set the name of the page template.
             $document->setStructureType('default');
             $document->setResourceSegment('/foo-bar-page');
             $document->getStructure()->bind(array(
