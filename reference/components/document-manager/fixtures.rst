@@ -21,47 +21,99 @@ Shown below is an example that creates a simple data fixture.
 
     use Sulu\Component\DocumentManager\DocumentManager;
     use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
-    use Sulu\Component\Content\Document\WorkflowStage;
+    use Sulu\Component\DocumentManager\Exception\MetadataNotFoundException;
 
     class SomeFixture implements DocumentFixtureInterface
     {
-
+        /**
+         * Simple local string with two chars.
+         */
         const LOCALE = 'en';
 
+        /**
+         * All fixtures will be sorted in regards of the returned integer. This
+         * "weight" will let a fixture run later if the integer is higher.
+         *
+         * @return int
+         */
+        public function getOrder()
+        {
+            return 10;
+        }
+
+        /**
+         * Load fixtures.
+         *
+         * Use the document manager to create and save fixtures.
+         * Be sure to call DocumentManager#save() when you are done.
+         *
+         * @param DocumentManager $documentManager
+         *
+         * @throws MetadataNotFoundException
+         */
         public function load(DocumentManager $documentManager)
         {
-            /** @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document */
+            /**
+             * "page" is the base content of sulu. "article" for example would be used be the Article bundle.
+             *
+             * @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document
+             */
             $document = $documentManager->create('page');
+
+            // Set the local. Keep in mind that you have to save every local version extra.
             $document->setLocale(static::LOCALE);
-            $document->setTitle('foo bar page');
+
+            // The title of the page set in the template XML. Can not be set by getStructure()->bind();
+            $document->setTitle('foo bar page title');
+
             // Use setStructureType to set the name of the page template.
             $document->setStructureType('default');
-            $document->setResourceSegment('/foo-bar-page');
-            $document->getStructure()->bind(array(
-                'title' => 'foo bar page'
-            ));
 
+            // URL of the content with out any language prefix.
+            $document->setResourceSegment('/foo-bar-page');
+
+            // Data for all content types that this template uses.
+            $document->getStructure()->bind(
+                    [
+                            'article' => '<strong>Lore Ipsum Dolor</strong>',
+                    ]
+            );
+
+            // Data for the "Excerpt & Taxonomies" tab when editing content.
             $document->setExtension(
-                'excerpt',
-                [
-                    'title' => 'foo title',
-                    'description' => 'bar description',
-                    'categories' => [],
-                    'tags' => []
-                ]
+                    'excerpt',
+                    [
+                            'title' => 'foo title',
+                            'description' => 'bar description',
+                            'categories' => [],
+                            'tags' => [],
+                    ]
+            );
+
+            // Data for the "SEO" tab when editing content.
+            $document->setExtension(
+                    'seo',
+                    [
+                            'title' => 'foo title',
+                    ]
             );
 
             // parent_path uses your webspace name. In this case "sulu_io"
-            $documentManager->persist($document, static::LOCALE, array(
-                'parent_path' => '/cmf/sulu_io/contents',
-            ));
+            $documentManager->persist(
+                    $document,
+                    static::LOCALE,
+                    [
+                            'parent_path' => '/cmf/sulu_io/contents',
+                    ]
+            );
 
             // Optional: If you don't want your document to be published, remove this line
             $documentManager->publish($document, static::LOCALE);
+
+            // Persist immediately to database.
             $documentManager->flush();
         }
     }
-
 
 
 You can now execute your data fixture using the
