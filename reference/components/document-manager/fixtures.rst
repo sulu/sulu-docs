@@ -45,7 +45,7 @@ Shown below is an example that creates a simple data fixture.
          * Load fixtures.
          *
          * Use the document manager to create and save fixtures.
-         * Be sure to call DocumentManager#save() when you are done.
+         * Be sure to call DocumentManager#flush() when you are done.
          *
          * @param DocumentManager $documentManager
          *
@@ -74,37 +74,37 @@ Shown below is an example that creates a simple data fixture.
 
             // Data for all content types that this template uses.
             $document->getStructure()->bind(
-                    [
-                            'article' => '<strong>Lore Ipsum Dolor</strong>',
-                    ]
+                [
+                    'article' => '<strong>Lore Ipsum Dolor</strong>',
+                ]
             );
 
             // Data for the "Excerpt & Taxonomies" tab when editing content.
             $document->setExtension(
-                    'excerpt',
-                    [
-                            'title' => 'foo title',
-                            'description' => 'bar description',
-                            'categories' => [],
-                            'tags' => [],
-                    ]
+                'excerpt',
+                [
+                    'title' => 'foo title',
+                    'description' => 'bar description',
+                    'categories' => [],
+                    'tags' => [],
+                ]
             );
 
             // Data for the "SEO" tab when editing content.
             $document->setExtension(
-                    'seo',
-                    [
-                            'title' => 'foo title',
-                    ]
+                'seo',
+                [
+                    'title' => 'foo title',
+                ]
             );
 
             // parent_path uses your webspace name. In this case "sulu_io"
             $documentManager->persist(
-                    $document,
-                    static::LOCALE,
-                    [
-                            'parent_path' => '/cmf/sulu_io/contents',
-                    ]
+                $document,
+                static::LOCALE,
+                [
+                    'parent_path' => '/cmf/sulu_io/contents',
+                ]
             );
 
             // Optional: If you don't want your document to be published, remove this line
@@ -114,7 +114,6 @@ Shown below is an example that creates a simple data fixture.
             $documentManager->flush();
         }
     }
-
 
 You can now execute your data fixture using the
 ``sulu:document:fixtures:load``
