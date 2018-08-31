@@ -111,7 +111,7 @@ in your template. As an example the ``media_selection`` stores the
 
 .. code-block:: html
 
-    {{ view.media[0].displayOption }}
+    {{ view.media.displayOption }}
 
 Other Variables
 ^^^^^^^^^^^^^^^
