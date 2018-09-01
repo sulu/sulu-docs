@@ -232,7 +232,7 @@ Controller handling the specific type of entities:
         public function cgetAction()
         {
             $listBuilder = $factory->create($this->container->getParameter('sulu.model.example.class'));
-            $this->get('sulu_core.doctrine_rest_helper)->initializeListBuilder($listBuilder, $this->getFieldDescriptors());
+            $this->get('sulu_core.doctrine_rest_helper')->initializeListBuilder($listBuilder, $this->getFieldDescriptors());
             
             $listBuilder->setPermissionCheck($this->getUser(), PermissionTypes::VIEW);
 
