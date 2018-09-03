@@ -336,7 +336,7 @@ The following is a full configuration example:
                 use_page_ttl: true
                 enabled: true
             debug:
-                enabled: %kernel.debug%
+                enabled: "%kernel.debug%"
         proxy_client:
             varnish:
                 enabled: true
