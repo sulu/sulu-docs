@@ -20,7 +20,7 @@ Parameters
       - Defines the look of the checkbox, can either be "checkbox" or "toggler". Be aware of the difference between property type and parameter type.
 
 Examples
--------
+-----------
 
 .. code-block:: xml
 
