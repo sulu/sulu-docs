@@ -17,7 +17,7 @@ Parameters
       - Description
     * - type
       - string
-      - Defines the look of the checkbox, can either be "checkbox" or "toggler"
+      - Defines the look of the checkbox, can either be "checkbox" or "toggler". Be aware of the difference between property type and parameter type.
 
 Example
 -------
@@ -28,4 +28,7 @@ Example
         <meta>
             <title lang="en">Available</title>
         </meta>
+        <params>
+            <param name="type" value="toggler"/>
+        </params>
     </property>
