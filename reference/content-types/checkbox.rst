@@ -19,7 +19,7 @@ Parameters
       - string
       - Defines the look of the checkbox, can either be "checkbox" or "toggler". Be aware of the difference between property type and parameter type.
 
-Example
+Examples
 -------
 
 .. code-block:: xml
@@ -27,6 +27,14 @@ Example
     <property name="available" type="checkbox">
         <meta>
             <title lang="en">Available</title>
+        </meta>
+    </property>
+
+.. code-block:: xml
+
+    <property name="available" type="checkbox">
+        <meta>
+            <title lang="en">Show Author</title>
         </meta>
         <params>
             <param name="type" value="toggler"/>
