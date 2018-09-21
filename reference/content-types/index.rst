@@ -77,3 +77,4 @@ content type:
     time
     url
     teaser_selection
+    single_contact_selection
