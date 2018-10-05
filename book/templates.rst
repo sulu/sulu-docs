@@ -810,6 +810,13 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" role="title" />
     </property>
 
+    <property name="description" type="text_editor">
+        <meta>
+            <title lang="en">Description</title>
+        </meta>
+        <tag name="sulu.search.field" role="description" />
+    </property>
+
     <property name="images" type="media_selection">
         <meta>
             <title lang="en">Images</title>
@@ -817,9 +824,16 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" role="image" index="false" />
     </property>
 
+    <property name="article" type="text_editor">
+        <meta>
+            <title lang="en">Article</title>
+        </meta>
+        <tag name="sulu.search.field" />
+    </property>
+
 The tag can have specific attributes:
 
- - `role`: The role for the property 
+ - `role`: The role for the property
  - `type`: Type how the data need to be stored
  - `index`: Is indexed need only to be set to deactivate index
 
@@ -828,6 +842,8 @@ The tag can have specific attributes:
  - `title`: The main title of the document
  - `description`: The main description of the document
  - `image`: The main image of the document
+
+.. note:: Roles are not possible on properties inside a block
 
 **Types**:
 
