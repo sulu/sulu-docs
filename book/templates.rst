@@ -159,61 +159,63 @@ A property has three essential attributes:
 
 Here is a table with the content types shipped in Sulu core:
 
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| Key                     | Appearance in the administration            | Value                                   |
-+=========================+=============================================+=========================================+
-| |text_line|             | simple text input                           | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |text_area|             | text area                                   | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |text_editor|           | text editor with formatting capabilities    | HTML string                             |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |checkbox|              | checkbox                                    | boolean                                 |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |single_select|         | list of radio buttons                       | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |multiple_select|       | list of checkboxes                          | array of strings                        |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |color|                 | color picker                                | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |date|                  | date picker                                 | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |time|                  | text input with time validation             | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |url|                   | text input with URL validation              | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |email|                 | text input with email validation            | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |password|              | password input                              | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |phone|                 | text input for a phone number               | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |internal_links|        | widget for selecting links to other pages   | resolved pages as defined in parameters |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |single_internal_link|  | widget for selecting a single page          | resolved page as defined in parameters  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |smart_content|         | widget for configuring a data source        | resolved pages as defined in parameters |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |resource_locator|      | widget for entering the URL of a page       | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |tag_list|              | autocomplete input for entering and adding  | array of strings                        |
-|                         | tags                                        |                                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |category_list|         | autocomplete input for entering and adding  | array of strings                        |
-|                         | tags                                        |                                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |media_selection|       | widget for selecting media (images,         | array containing arrays with            |
-|                         | documents)                                  | urls for every format                   |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |contact_selection|     | widget for selecting contacts               | array containing array representations  |
-|                         |                                             | of the contact objects                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |teaser_selection|      | widget for displaying content teasers       | array containing array representations  |
-|                         |                                             | of the teasers                          |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |snippet|               | widget for selecting snippets               | array containing array representations  |
-|                         |                                             | of the snippets                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
++------------------------------+---------------------------------------------+-----------------------------------------+
+| Key                          | Appearance in the administration            | Value                                   |
++==============================+=============================================+=========================================+
+| |text_line|                  | simple text input                           | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |text_area|                  | text area                                   | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |text_editor|                | text editor with formatting capabilities    | HTML string                             |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |checkbox|                   | checkbox                                    | boolean                                 |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_select|              | list of radio buttons                       | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |multiple_select|            | list of checkboxes                          | array of strings                        |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |color|                      | color picker                                | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |date|                       | date picker                                 | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |time|                       | text input with time validation             | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |url|                        | text input with URL validation              | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |email|                      | text input with email validation            | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |password|                   | password input                              | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |phone|                      | text input for a phone number               | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |internal_links|             | widget for selecting links to other pages   | resolved pages as defined in parameters |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_internal_link|       | widget for selecting a single page          | resolved page as defined in parameters  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |smart_content|              | widget for configuring a data source        | resolved pages as defined in parameters |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |resource_locator|           | widget for entering the URL of a page       | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |tag_list|                   | autocomplete input for entering and adding  | array of strings                        |
+|                              | tags                                        |                                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |category_list|              | autocomplete input for entering and adding  | array of strings                        |
+|                              | tags                                        |                                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
+|                              | documents)                                  | urls for every format                   |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |contact_selection|          | widget for selecting contacts               | array containing array representations  |
+|                              |                                             | of the contact objects                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
+|                              |                                             | of the teasers                          |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |snippet|                    | widget for selecting snippets               | array containing array representations  |
+|                              |                                             | of the snippets                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_contact_selection|   | widget for selecting a single contact       | ContactInterface                        |
++------------------------------+---------------------------------------------+-----------------------------------------+
 
 .. tip::
 
@@ -873,3 +875,4 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |multiple_select| replace:: :doc:`multiple_select <../reference/content-types/multiple_select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
 .. |snippet| replace:: :doc:`snippet <../reference/content-types/snippet>`
+.. |single_contact_selection| replace:: :doc:`snippet <../reference/content-types/single_contact_selection>`
