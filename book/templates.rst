@@ -379,15 +379,17 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
+        <properties>
+        <!-- ... -->
+            <block name="eventDetails">
+                <meta>
+                    <title lang="en">Event Details</title>
+                </meta>
 
-        <block name="eventDetails">
-            <meta>
-                <title lang="en">Event Details</title>
-            </meta>
-
-            <!-- ... -->
-        </block>
-
+                <!-- ... -->
+            </block>
+        <!-- ... -->
+        </properties>
         <!-- ... -->
     </template>
 
