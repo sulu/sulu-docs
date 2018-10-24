@@ -1,11 +1,11 @@
-How to configure Websocket?
+How to configure WebSocket?
 ===========================
 
-Sulu comes with a sulu-wide websocket application. This application is optional
-but comes with a few feature which can only be used if the websocket is running.
+Sulu comes with a sulu-wide WebSocket application. This application is optional
+but comes with a few feature which can only be used if the WebSocket is running.
 
 For example the real-time notification for :doc:`../bundles/collaboration`
-can only be displayed when the websocket is running.
+can only be displayed when the WebSocket is running.
 
 Configuration
 -------------
@@ -17,14 +17,14 @@ parameters in the ``parameters.yml`` file.
 .. list-table::
 
     * - websocket_url
-      - The url on which the websocket should listen.
+      - The url on which the WebSocket should listen.
     * - websocket_port
-      - The port on which the websocket should listen.
+      - The port on which the WebSocket should listen.
 
 If you have multiple installations of sulu on a single server be sure that you
 use unique ports per installation.
 
-If you have your own application, you can enable the websocket and configure its url and port
+If you have your own application, you can enable the WebSocket and configure its url and port
 by placing the following lines into your configuration:
 
 .. code-block:: yaml
@@ -38,11 +38,11 @@ by placing the following lines into your configuration:
 Execution
 ---------
 
-To execute the websocket you have to run the command
+To execute the WebSocket you have to run the command
 ``app/console sulu:websocket:run -e prod``. This command starts the server and
 listens to the configured port.
 
-We recommend to run the websocket with `supervisor <http://supervisord.org/>`_.
+We recommend to run the WebSocket with `supervisor <http://supervisord.org/>`_.
 You can use the example configuration for supervisord.
 
 **/etc/supervisor/conf.d/sulu_websocket.conf**
