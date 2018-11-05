@@ -885,7 +885,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |tag_list| replace:: :doc:`tag_list <../reference/content-types/tag_list>`
 .. |category_list| replace:: :doc:`category_list <../reference/content-types/category_list>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
-.. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
+.. |contact| replace:: :doc:`contact <../reference/content-types/contact>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
 .. |multiple_select| replace:: :doc:`multiple_select <../reference/content-types/multiple_select>`
