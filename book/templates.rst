@@ -205,7 +205,7 @@ Here is a table with the content types shipped in Sulu core:
 | |media_selection|       | widget for selecting media (images,         | array containing arrays with            |
 |                         | documents)                                  | urls for every format                   |
 +-------------------------+---------------------------------------------+-----------------------------------------+
-| |contact_selection|     | widget for selecting contacts               | array containing array representations  |
+| |contact|               | widget for selecting contacts               | array containing array representations  |
 |                         |                                             | of the contact objects                  |
 +-------------------------+---------------------------------------------+-----------------------------------------+
 | |teaser_selection|      | widget for displaying content teasers       | array containing array representations  |
