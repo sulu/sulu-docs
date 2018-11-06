@@ -62,7 +62,7 @@ content type:
     location
     media_selection
     multiple_select
-    contact_selection
+    contact
     password
     phone
     resource_locator
