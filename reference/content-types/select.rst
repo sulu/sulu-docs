@@ -1,10 +1,10 @@
-Single Select
-=============
+Select
+======
 
 Description
 -----------
 
-Adds the possibility to choose a single value from a given list of values.
+Adds the possibility to choose multiple values from a given list of values.
 
 Parameters
 ----------
@@ -18,22 +18,25 @@ Parameters
     * - values
       - collection
       - A collection of values to choose from.
-    * - default_value
-      - string
-      - The name of the param which should be set as default.
+    * - default_values
+      - collection
+      - A collection of default values which are activated by default.
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="single" type="single_select">
+    <property name="list" type="select">
         <meta>
-            <title lang="en">Single Select</title>
+            <title lang="en">Select</title>
         </meta>
 
         <params>
-            <param name="default_value" value="option1"/>
+            <param name="default_values" type="collection">
+                <param name="option1"/>
+                <param name="option2"/>
+            </param>
 
             <param name="values" type="collection">
                 <param name="option1">
@@ -47,6 +50,12 @@ Example
                         <title lang="en">Option 2</title>
                     </meta>
                 </param>
+
+                <param name="option3">
+                    <meta>
+                        <title lang="en">Option 3</title>
+                    </meta>
+                </param>
             </param>
         </params>
     </property>
@@ -55,9 +64,9 @@ You can use symfony expression language to access values from a service.
 
 .. code-block:: xml
 
-    <property name="single" type="single_select">
+    <property name="list" type="select">
         <meta>
-            <title lang="en">Single Select</title>
+            <title lang="en">Select</title>
         </meta>
 
         <params>

@@ -170,9 +170,9 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |checkbox|                   | checkbox                                    | boolean                                 |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_select|              | list of radio buttons                       | string                                  |
+| |single_select|              | dropdown with options                       | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |multiple_select|            | list of checkboxes                          | array of strings                        |
+| |select|                     | dropdown with multiple options              | array of strings or numbers             |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |color|                      | color picker                                | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
@@ -872,7 +872,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
-.. |multiple_select| replace:: :doc:`multiple_select <../reference/content-types/multiple_select>`
+.. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
 .. |snippet| replace:: :doc:`snippet <../reference/content-types/snippet>`
 .. |single_contact_selection| replace:: :doc:`snippet <../reference/content-types/single_contact_selection>`
