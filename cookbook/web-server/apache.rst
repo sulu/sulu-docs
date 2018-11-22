@@ -47,7 +47,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
       <Directory "/var/www/sulu.lo/web">
           Options Indexes FollowSymLinks
           AllowOverride All
-          Required all granted
+          Require all granted
           # For Apache 2.2 instead of 'Required all granted' the following is needed:
           # Order allow,deny
           # Allow from all
