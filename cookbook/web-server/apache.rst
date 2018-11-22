@@ -1,5 +1,5 @@
-Apache 2.2
-==========
+Apache
+======
 
 The Apache HTTP Server is the world's most used web server (according to
 Wikipedia). It is open source, mature and reliable.
@@ -47,8 +47,11 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
       <Directory "/var/www/sulu.lo/web">
           Options Indexes FollowSymLinks
           AllowOverride All
-          Order allow,deny
-          Allow from all
+          Required all granted
+          # For Apache 2.2 instead of 'Required all granted' the following is needed:
+          # Order allow,deny
+          # Allow from all
+
           SetEnv SYMFONY_ENV dev
 
           <IfModule mod_expires.c>
@@ -87,7 +90,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
 MAMP Pro
 --------
 
-In general you should configure your vHost like the `Apache 2.2`_ paragraph above describes it.
+In general you should configure your vHost like the `Apache`_ paragraph above describes it.
 
 If you want to enable the dev-environment (*including the debug toolbar*) you have to be sure that the
 vHost environment variable (``SetEnv SYMFONY_ENV dev``) is set properly
