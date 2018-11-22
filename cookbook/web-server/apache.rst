@@ -48,7 +48,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
           Options Indexes FollowSymLinks
           AllowOverride All
           Require all granted
-          # For Apache 2.2 instead of 'Required all granted' the following is needed:
+          # For Apache 2.2 instead of 'Require all granted' the following is needed:
           # Order allow,deny
           # Allow from all
 
