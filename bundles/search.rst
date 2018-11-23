@@ -132,12 +132,12 @@ simply run the following:
 
 .. code-block:: bash
 
-    $ ./app/console massive:search:reindex --env=prod
+    $ php bin/console massive:search:reindex --env=prod
 
 .. warning::
 
     At the moment it is required to also execute
-    `./app/webconsole massive:search:reindex --env=prod` to reindex the pages
+    `php bin/websiteconsole massive:search:reindex --env=prod` to reindex the pages
     also for the website.
 
 This may take anywhere between a minute and several hours depending on how

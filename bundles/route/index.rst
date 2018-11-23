@@ -181,5 +181,5 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
 .. note::
 
     To update already existing entities you can run the command
-    `bin/console sulu:route:update AppBundle:Recipe` which updates or creates
+    `php bin/console sulu:route:update AppBundle:Recipe` which updates or creates
     the route for all the entities of this type.
