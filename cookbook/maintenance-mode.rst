@@ -7,21 +7,24 @@ about it.
 
 Sulu maintenance mode displays a simple holding page which can be easily customized.
 
-Create Maintenance Mode
------------------------
+Activate Maintenance Mode
+-------------------------
 
-To create a maintenance page, you first need to create a ``maintenance.php`` file:
+Sulu is shipped with a simple maintenance page stored in `app/maintenance.php`_
+file which can be changed for your needs.
 
-.. code-block:: bash
-
-    $ cp app/maintenance.php.dist app/maintenance.php
-
-Then you need to set the environment variable SULU_MAINTENANCE to true.
-For example, in your ``.htaccess`` file (for apache)
+To activate the maintenance mode you need to  set the environment variable SULU_MAINTENANCE to true.
+For example, in your ``.htaccess`` file or vhost file for apache:
  
 .. code-block:: apache
 
     SetEnv SULU_MAINTENANCE true
+
+For nginx you can configure the maintenance mode in the php part of your vhost by adding:
+
+.. code-block:: nginx
+
+    fastcgi_param SULU_MAINTENANCE true;
 
 Configure Maintenance Mode
 --------------------------
@@ -64,3 +67,5 @@ exists the default locale is being used. By default this is English:
 
     <?php
     define('DEFAULT_LOCALE', 'en');
+
+.. _app/maintenance.php: https://github.com/sulu/sulu-minimal/blob/1.6.22/app/maintenance.php
