@@ -93,7 +93,7 @@ The database connection information is stored as an environment variable called 
 For development, you can find and customize this inside ``.env``:
 Here is an example for using Sulu with MySQL:
 
-.. code:: env
+.. code:: bash
 
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 
