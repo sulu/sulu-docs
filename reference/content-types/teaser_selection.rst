@@ -23,7 +23,7 @@ Add a field of type "teaser_selection" to your page template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/overview.xml -->
+    <!-- config/templates/pages/overview.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -126,7 +126,7 @@ Use the ``present_as`` option to configure the rendering variants:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/overview.xml -->
+    <!-- config/templates/pages/overview.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
