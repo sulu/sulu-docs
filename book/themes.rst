@@ -66,7 +66,7 @@ To enable it add the following lines into the `app/AbstractKernel.php` and
         load_controllers: false
 
 This will configure a default theme which can be enabled in the
-`app/Resources/webspaces/<webspace>.xml` file by adding:
+`config/webspaces/<webspace>.xml` file by adding:
 
 .. code-block:: xml
 

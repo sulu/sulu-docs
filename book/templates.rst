@@ -24,8 +24,8 @@ Each page template is defined by two files:
 * a **Twig file** that contains the HTML code
 
 For example, the default template -- named "default" -- is defined by the files
-``app/Resources/templates/pages/default.xml`` and
-``app/Resources/views/templates/default.html.twig``. The Sulu Minimal Edition
+``config/templates/pages/default.xml`` and
+``templates/pages/default.html.twig``. The Sulu Minimal Edition
 also contains a second template named "homepage", which you can find in the
 same directories.
 
@@ -44,14 +44,14 @@ The template of a page can be selected in the admin interface:
 
     A template is shown in the dropdown only if both the XML and the Twig file
     exist! If you can't see your template, double-check the directories
-    ``app/Resources/templates/pages`` and ``app/Resources/views/templates``.
+    ``config/templates/pages`` and ``templates/pages``.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
 the XML:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/default.xml -->
+    <!-- config/templates/pages/default.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -78,7 +78,7 @@ identifier of the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -99,14 +99,14 @@ the Twig file that is used to render the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <view>templates/event</view>
+        <view>pages/event</view>
 
         <!-- ... -->
     </template>
@@ -131,7 +131,7 @@ Properties make up the structure of a page. They are defined in the element
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -232,7 +232,7 @@ choices:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -277,7 +277,7 @@ property, set the attribute ``mandatory`` to ``true``:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -310,7 +310,7 @@ As for properties, the label of the section goes into its ``<meta>`` tag:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -333,7 +333,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -375,7 +375,7 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -410,7 +410,7 @@ the ``default-type`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -454,7 +454,7 @@ type:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -502,7 +502,7 @@ The width of a property is configured in the ``colspan`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -534,7 +534,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -574,7 +574,7 @@ To enable XInclude, we'll first add the namespace
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -590,7 +590,7 @@ element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -613,7 +613,7 @@ as root. In this example, we'll use a ``<properties>`` container:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/fragments/event-properties.xml -->
+    <!-- config/templates/pages/fragments/event-properties.xml -->
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -639,7 +639,7 @@ Let's look at the "Event" template first:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -665,7 +665,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -693,7 +693,7 @@ possible:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -722,7 +722,7 @@ You can also match multiple elements of different types. Use the wildcard
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -754,7 +754,7 @@ cached on the client:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -786,7 +786,7 @@ For example, if you know that your homepage changes its content each day at
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
