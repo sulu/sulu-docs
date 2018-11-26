@@ -12,7 +12,6 @@ The Reference aims to developers who already worked through the introduction and
 .. toctree::
     :maxdepth: 1
 
-    parameters
     requirements
     content-types/index
     twig-extensions/index
