@@ -45,14 +45,14 @@ The Nginx configuration could look something like.
       }
 
       # pass the PHP scripts to FastCGI server from upstream phpfcgi
-      location ~ ^/(website|admin|app|app_dev|config)\.php(/|$) {
-          include fastcgi_params;
-          fastcgi_pass unix:/var/run/php5-fpm.sock;
-          fastcgi_buffers 16 16k;
-          fastcgi_buffer_size 32k;
+      location ~ ^/(website|admin|app|config)\.php(/|$) {
+          fastcgi_pass unix:/var/run/php7.1-fpm.sock;
           fastcgi_split_path_info ^(.+\.php)(/.*)$;
-          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          include fastcgi_params;
+          fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+          fastcgi_param DOCUMENT_ROOT $realpath_root;
           fastcgi_param SYMFONY_ENV dev;
+          internal;
       }
   }
 
