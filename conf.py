@@ -20,6 +20,7 @@ from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 from pygments.lexers.compiled import CLexer
 
+lexers['php'] = PhpLexer(startinline=True, linenos=1)
 lexers['varnish4'] = CLexer()
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -184,7 +185,6 @@ html_favicon = "img/favicon.ico"
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Sulu20doc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
