@@ -42,9 +42,9 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
 .. code-block:: apache
 
   <VirtualHost *:80>
-      DocumentRoot "/var/www/sulu.lo/web"
+      DocumentRoot "/var/www/sulu.lo/public"
       ServerName sulu.lo
-      <Directory "/var/www/sulu.lo/web">
+      <Directory "/var/www/sulu.lo/public">
           Options Indexes FollowSymLinks
           AllowOverride All
           Order allow,deny
