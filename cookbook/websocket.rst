@@ -38,9 +38,13 @@ by placing the following lines into your configuration:
 Execution
 ---------
 
-To execute the websocket you have to run the command
-``app/console sulu:websocket:run -e prod``. This command starts the server and
-listens to the configured port.
+To execute the websocket you have to run the command the following command:
+
+.. code-block:: bash
+
+    php bin/console sulu:websocket:run -e prod`
+
+This command starts the server and listens to the configured port.
 
 We recommend to run the websocket with `supervisor <http://supervisord.org/>`_.
 You can use the example configuration for supervisord.
@@ -50,7 +54,7 @@ You can use the example configuration for supervisord.
 .. code-block:: ini
 
     [program:sulu_websocket]
-    command=/var/www/sulu.io/app/console sulu:websocket:run --env prod
+    command=/var/www/sulu.io/bin/console sulu:websocket:run --env prod
     process_name=sulu_websocket
     user=www-data
     numprocs=1
