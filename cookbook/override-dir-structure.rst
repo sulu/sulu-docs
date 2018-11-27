@@ -32,6 +32,6 @@ Also you need to tell framework bundle where it will find the new ``manifest.jso
         assets:
             packages:
                 sulu_admin:
-                    json_manifest_path: "%kernel.project_dir%/public/your/new/path/manifest.json
+                    json_manifest_path: "%kernel.project_dir%/public/your/new/path/manifest.json"
 
 .. _symfony documentation: https://symfony.com/doc/current/configuration/override_dir_structure.html
