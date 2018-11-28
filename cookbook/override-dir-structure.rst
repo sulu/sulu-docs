@@ -24,7 +24,7 @@ you need to change the following in your webpack configuration:
         return webpackConfig(env, argv);
     };
 
-Also you need to tell framework bundle where it will find the new ``manifest.json`` after you did
+Also you need to tell the framework bundle where it will find the new ``manifest.json`` after you did
 generate it with ``npm install`` and ``npm run build`` into your new directory.
 
 .. code-block:: yaml
