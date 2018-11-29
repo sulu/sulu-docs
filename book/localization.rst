@@ -73,3 +73,13 @@ the content. In case there is a ghost page - which means that the page is not
 translated into the current localization - this tree will be used to determine
 the "closest" language available.
 
+Language independent properties
+-------------------------------
+
+Some content like article numbers or other metadata might be the same for every
+language. In that case, you can mark properties as not multilingual using
+``multilingual="false"``:
+
+.. code-block:: xml
+
+    <property name="article_number" type="text_line" multilingual="false"/>
