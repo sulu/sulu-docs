@@ -9,7 +9,7 @@ The Nginx configuration could look something like.
       listen 80;
 
       server_name sulu.lo;
-      root /var/www/sulu.lo/web;
+      root /var/www/sulu.lo/public;
 
       error_log /var/log/nginx/sulu.lo.error.log;
       access_log /var/log/nginx/sulu.lo.at.access.log;
