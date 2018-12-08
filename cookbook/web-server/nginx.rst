@@ -21,6 +21,8 @@ The Nginx configuration could look something like.
 
       # expire
       location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff|woff2|eot|ttf)$ {
+          # try to serve file directly, fallback to index.php
+          try_files $uri /index.php$is_args$args;
           access_log off;
           expires 30d;
           add_header Pragma public;
