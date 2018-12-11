@@ -30,6 +30,7 @@ our recipes.
     manage-analytics
     change-default-locale-provider
     default-snippets
+    override-dir-structure
     custom-urls
     websocket
     live-preview
