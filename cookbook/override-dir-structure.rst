@@ -37,4 +37,4 @@ generated it with ``npm install`` and ``npm run build`` into your new directory.
                     json_manifest_path: "%kernel.project_dir%/public/your/new/path/manifest.json"
 
 .. _Symfony documentation: https://symfony.com/doc/current/configuration/override_dir_structure.html
-.. _public_dir: https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-public-directory
+.. _public-dir: https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-public-directory
