@@ -115,7 +115,7 @@ Under Debiae/Ubuntu we can change the initialization script:
                  -T localhost:6082 \             
                  -f /etc/varnish/default.vcl \   
                  -S /etc/varnish/secret \        
-                 -s malloc,256m 
+                 -s malloc,256m \
                  -p "vcc_allow_inline_c=on"
 
 Now restart the daemon:
