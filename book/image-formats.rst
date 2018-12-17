@@ -300,3 +300,14 @@ Transformation effect can also be combined the following way:
             </transformations>
         </format>
     </formats>
+
+Editing exist image formats
+---------------------------
+
+If you edit exist image formats you need to run the following command to purge the image format cache:
+
+.. code-block:: bash
+
+    php bin/websiteconsole sulu:media:format:cache:clear
+
+This will delete all generated images. The new image will be generated on first request of the image format.
