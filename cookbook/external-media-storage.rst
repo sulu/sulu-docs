@@ -1,19 +1,13 @@
 Store Media in an external Storage
 ==================================
 
-Sulu is able to upload newly created media files directly to external storage provider (such as google cloud-storage).
-
-Currently available storages:
-
-* Google Cloud-Storage
+Sulu is able to upload newly created media files directly to an external storage provider (such as
+Google Cloud Storage).
 
 Google Cloud-Storage
 --------------------
 
-First follow this google-cloud documentation https://cloud.google.com/video-intelligence/docs/common/auth#set_up_a_service_account
-to setup a system-account and download a json-key.
-
-This file should look like this:
+First follow this the `Google Cloud Documentation`_ to setup a System-Account and download the json-key.
 
 .. code-block:: json
 
@@ -41,4 +35,6 @@ Dump this file to a readable folder on your machine and configure the storage wi
         storages:
             google_cloud:
                 key_file_path: '/path/to/key.json'
-                bucket: 'sulu-bucket'
+                bucket_name: 'sulu-bucket'
+
+.. _Google Cloud Documentation: https://cloud.google.com/video-intelligence/docs/common/auth#set_up_a_service_account
