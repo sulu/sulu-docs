@@ -565,10 +565,6 @@ Including Other Templates
 If you want to reuse a portion of a template in a different template, you can
 move the portion to a separate file and include it using `XInclude`_.
 
-.. warning::
-
-   XInclude currently does not work on Windows.
-
 To enable XInclude, we'll first add the namespace
 ``xmlns:xi="http://www.w3.org/2001/XInclude"`` to our document:
 
