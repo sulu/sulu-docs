@@ -196,7 +196,7 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |resource_locator|           | widget for entering the URL of a page       | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |tag_list|                   | autocomplete input for entering and adding  | array of strings                        |
+| |tag_selection|              | autocomplete input for entering and adding  | array of strings                        |
 |                              | tags                                        |                                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |category_list|              | autocomplete input for entering and adding  | array of strings                        |
@@ -831,7 +831,7 @@ The tag can have specific attributes:
 
  - `string`: For simple fields 
  - `array`: For multiple fields such as the `category_list` content type
- - `tags`: Special typ for `tag_list` content type
+ - `tags`: Special typ for `tag_selection` content type
  - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search 
 
@@ -862,7 +862,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_internal_link| replace:: :doc:`single_internal_link <../reference/content-types/single_internal_link>`
 .. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
 .. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
-.. |tag_list| replace:: :doc:`tag_list <../reference/content-types/tag_list>`
+.. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
 .. |category_list| replace:: :doc:`category_list <../reference/content-types/category_list>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
