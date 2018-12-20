@@ -199,7 +199,7 @@ Here is a table with the content types shipped in Sulu core:
 | |tag_selection|              | autocomplete input for entering and adding  | array of strings                        |
 |                              | tags                                        |                                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |category_list|              | autocomplete input for entering and adding  | array of strings                        |
+| |category_selection|         | autocomplete input for entering and adding  | array of strings                        |
 |                              | tags                                        |                                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
@@ -830,7 +830,7 @@ The tag can have specific attributes:
 **Types**:
 
  - `string`: For simple fields 
- - `array`: For multiple fields such as the `category_list` content type
+ - `array`: For multiple fields such as the `category_selection` content type
  - `tags`: Special typ for `tag_selection` content type
  - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search 
@@ -863,7 +863,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
 .. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
-.. |category_list| replace:: :doc:`category_list <../reference/content-types/category_list>`
+.. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
