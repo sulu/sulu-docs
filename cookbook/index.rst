@@ -32,8 +32,6 @@ our recipes.
     default-snippets
     override-dir-structure
     custom-urls
-    websocket
-    live-preview
     deactivate-request-analyzer
     use-request-analyzer-with-esi
     web-server/index
