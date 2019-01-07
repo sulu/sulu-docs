@@ -9,7 +9,7 @@ The Nginx configuration could look something like.
       listen 80;
 
       server_name sulu.lo;
-      root /var/www/sulu.lo/web;
+      root /var/www/sulu.lo/public;
 
       error_log /var/log/nginx/sulu.lo.error.log;
       access_log /var/log/nginx/sulu.lo.at.access.log;
@@ -21,6 +21,8 @@ The Nginx configuration could look something like.
 
       # expire
       location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff|woff2|eot|ttf)$ {
+          # try to serve file directly, fallback to index.php
+          try_files $uri /index.php$is_args$args;
           access_log off;
           expires 30d;
           add_header Pragma public;
