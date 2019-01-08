@@ -1,5 +1,5 @@
-Category list
-=============
+Category selection
+==================
 
 Description
 -----------

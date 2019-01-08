@@ -53,7 +53,7 @@ content type:
     :maxdepth: 1
 
     block
-    category_list
+    category_selection
     checkbox
     color
     date
