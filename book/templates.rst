@@ -323,8 +323,8 @@ language. In that case, you can mark properties as not multilingual using
 
 .. note::
 
-    If you change an existing attribute from a multilingual to a non multilingual version,
-    it is necessary to migrate the values from one language to the new attribute,
+    If you change an existing property from a multilingual to a non multilingual version,
+    it is necessary to migrate the values in PHPCR from one language to the new property,
     e.g. from ``i18n:de-article_number`` to ``article_number``.
 
 Sections
