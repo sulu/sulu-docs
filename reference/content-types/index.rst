@@ -53,7 +53,7 @@ content type:
     :maxdepth: 1
 
     block
-    category_list
+    category_selection
     checkbox
     color
     date
@@ -70,7 +70,7 @@ content type:
     single_select
     smart_content
     snippet
-    tag_list
+    tag_selection
     text_area
     text_editor
     text_line

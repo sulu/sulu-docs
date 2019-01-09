@@ -24,8 +24,8 @@ Each page template is defined by two files:
 * a **Twig file** that contains the HTML code
 
 For example, the default template -- named "default" -- is defined by the files
-``app/Resources/templates/pages/default.xml`` and
-``app/Resources/views/templates/default.html.twig``. The Sulu Minimal Edition
+``config/templates/pages/default.xml`` and
+``templates/pages/default.html.twig``. The Sulu Minimal Edition
 also contains a second template named "homepage", which you can find in the
 same directories.
 
@@ -44,14 +44,14 @@ The template of a page can be selected in the admin interface:
 
     A template is shown in the dropdown only if both the XML and the Twig file
     exist! If you can't see your template, double-check the directories
-    ``app/Resources/templates/pages`` and ``app/Resources/views/templates``.
+    ``config/templates/pages`` and ``templates/pages``.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
 the XML:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/default.xml -->
+    <!-- config/templates/pages/default.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -78,7 +78,7 @@ identifier of the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -99,14 +99,14 @@ the Twig file that is used to render the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <view>templates/event</view>
+        <view>pages/event</view>
 
         <!-- ... -->
     </template>
@@ -131,7 +131,7 @@ Properties make up the structure of a page. They are defined in the element
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -196,10 +196,10 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |resource_locator|           | widget for entering the URL of a page       | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |tag_list|                   | autocomplete input for entering and adding  | array of strings                        |
+| |tag_selection|              | autocomplete input for entering and adding  | array of strings                        |
 |                              | tags                                        |                                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |category_list|              | autocomplete input for entering and adding  | array of strings                        |
+| |category_selection|         | autocomplete input for entering and adding  | array of strings                        |
 |                              | tags                                        |                                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
@@ -232,7 +232,7 @@ choices:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -277,7 +277,7 @@ property, set the attribute ``mandatory`` to ``true``:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -310,7 +310,7 @@ As for properties, the label of the section goes into its ``<meta>`` tag:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -333,7 +333,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -375,7 +375,7 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -410,7 +410,7 @@ the ``default-type`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -454,7 +454,7 @@ type:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -502,7 +502,7 @@ The width of a property is configured in the ``colspan`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -534,7 +534,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -565,16 +565,12 @@ Including Other Templates
 If you want to reuse a portion of a template in a different template, you can
 move the portion to a separate file and include it using `XInclude`_.
 
-.. warning::
-
-   XInclude currently does not work on Windows.
-
 To enable XInclude, we'll first add the namespace
 ``xmlns:xi="http://www.w3.org/2001/XInclude"`` to our document:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -590,7 +586,7 @@ element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -613,7 +609,7 @@ as root. In this example, we'll use a ``<properties>`` container:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/fragments/event-properties.xml -->
+    <!-- config/templates/pages/fragments/event-properties.xml -->
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -639,7 +635,7 @@ Let's look at the "Event" template first:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -665,7 +661,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -693,7 +689,7 @@ possible:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -722,7 +718,7 @@ You can also match multiple elements of different types. Use the wildcard
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -754,7 +750,7 @@ cached on the client:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -786,7 +782,7 @@ For example, if you know that your homepage changes its content each day at
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -834,8 +830,8 @@ The tag can have specific attributes:
 **Types**:
 
  - `string`: For simple fields 
- - `array`: For multiple fields such as the `category_list` content type
- - `tags`: Special typ for `tag_list` content type
+ - `array`: For multiple fields such as the `category_selection` content type
+ - `tags`: Special typ for `tag_selection` content type
  - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search 
 
@@ -866,8 +862,8 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_internal_link| replace:: :doc:`single_internal_link <../reference/content-types/single_internal_link>`
 .. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
 .. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
-.. |tag_list| replace:: :doc:`tag_list <../reference/content-types/tag_list>`
-.. |category_list| replace:: :doc:`category_list <../reference/content-types/category_list>`
+.. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
+.. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`

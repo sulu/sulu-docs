@@ -2,8 +2,8 @@ Adding new Webspace
 ===================
 
 To create a new webspace you have to create a new file within the
-`app/Resources/webspaces` directory. The content of the file should be quite
-similar to the `sulu_io.xml.dist` file in this folder.
+`config/webspaces` directory. The content of the file should be quite
+similar to the `example.xml`_ file in this folder.
 
 .. note::
 
@@ -28,3 +28,5 @@ After this few steps you are able to administrate and view your new webspace.
 If you have any error you can use the following command to validate your webspace:
 
     $ php bin/adminconsole sulu:content:validate:webspaces
+
+.. _example.xml: https://github.com/sulu/sulu-minimal/blob/develop/config/webspaces/example.xml

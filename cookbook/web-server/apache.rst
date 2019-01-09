@@ -42,14 +42,13 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
 .. code-block:: apache
 
   <VirtualHost *:80>
-      DocumentRoot "/var/www/sulu.lo/web"
+      DocumentRoot "/var/www/sulu.lo/public"
       ServerName sulu.lo
-      <Directory "/var/www/sulu.lo/web">
+      <Directory "/var/www/sulu.lo/public">
           Options Indexes FollowSymLinks
           AllowOverride All
           Order allow,deny
           Allow from all
-          SetEnv SYMFONY_ENV dev
 
           <IfModule mod_expires.c>
               ExpiresActive On
@@ -88,10 +87,6 @@ MAMP Pro
 --------
 
 In general you should configure your vHost like the `Apache 2.2`_ paragraph above describes it.
-
-If you want to enable the dev-environment (*including the debug toolbar*) you have to be sure that the
-vHost environment variable (``SetEnv SYMFONY_ENV dev``) is set properly
-and you configured a DEV-domain within your  `webspace.xml <setup.rst#webspaces>`_.
 
 .. figure:: ../../img/sulu-mamp-pro-screen.jpg
 	:align: center
