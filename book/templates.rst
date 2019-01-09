@@ -295,6 +295,38 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+Language Independent Properties
+-------------------------------
+
+Some content like article numbers or other metadata might be the same for every
+language. In that case, you can mark properties as not multilingual using
+``multilingual="false"``:
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <properties>
+            <!-- ... -->
+
+            <property name="article_number" type="text_line" multilingual="false">
+                <!-- ... -->
+            </property>
+
+            <!-- ... -->
+        </properties>
+    </template>
+
+.. note::
+
+    If you change an existing property from a multilingual to a non multilingual version,
+    it is necessary to migrate the values in PHPCR from one language to the new property,
+    e.g. from ``i18n:de-article_number`` to ``article_number``.
+
 Sections
 --------
 
