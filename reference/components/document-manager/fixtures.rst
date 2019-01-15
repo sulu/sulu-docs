@@ -56,7 +56,7 @@ Shown below is an example that creates a simple data fixture.
             /**
              * "page" is the base content of sulu. "article" for example would be used be the Article bundle.
              *
-             * @var \Sulu\Bundle\ContentBundle\Document\PageDocument $document
+             * @var \Sulu\Bundle\PageBundle\Document\PageDocument $document
              */
             $document = $documentManager->create('page');
 

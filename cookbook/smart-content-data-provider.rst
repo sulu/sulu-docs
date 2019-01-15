@@ -320,7 +320,7 @@ be used as the parent of result set.
 
 The following example is a simple (and not complete) example of a datasource
 component. If you need a full example please take a look at the components
-`media-datasource@sulumedia` or `content-datasource@sulucontent`.
+`media-datasource@sulumedia` or `content-datasource@sulupage`.
 
 .. code-block:: javascript
 
