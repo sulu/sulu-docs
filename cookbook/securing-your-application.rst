@@ -74,7 +74,7 @@ permission types for this security context.
     
     Since the ``Admin`` class is registered as a bundle, you can make use of
     different services to define the available security contexts. For example
-    the SuluContentBundle uses a service to create an own security context for
+    the SuluPageBundle uses a service to create an own security context for
     all available webspaces in the system.
 
 Protect your controller
