@@ -81,7 +81,7 @@ To test your error pages you can use following routes:
 .. note::
 
     If you are not sure about your portal configuration you can get the routes with this 
-    `app/webconsole router:debug | grep _error` command
+    `bin/websiteconsole debug:router | grep _error` command
 
 Examples:
 
