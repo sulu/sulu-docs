@@ -22,4 +22,4 @@ properly configured the ``default_host`` parameter.
 
 .. code-block:: bash
 
-    `bin/websiteconsole sulu:website:dump-sitemap`
+    bin/websiteconsole sulu:website:dump-sitemap
