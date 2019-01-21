@@ -1,8 +1,33 @@
 Store Media in an external Storage
 ==================================
 
-Sulu is able to upload newly created media files directly to an external storage provider (such as
+Sulu is able to upload newly created media files directly to an external storage provider (such as AWS S3 or
 Google Cloud Storage).
+
+AWS-S3
+------
+
+First install dependencies.
+
+.. code-block:: bash
+
+    composer require league/flysystem league/flysystem-aws-s3-v3
+
+Configure the storage with following yaml-snippet:
+
+.. code-block:: yaml
+
+    sulu_media:
+        storage: s3
+        storages:
+            s3:
+                key: 'your aws s3 key'
+                secret: 'your aws s3 secret'
+                bucket_name: 'your aws s3 bucket name'
+                region: 'eu-west-1'
+
+If you use s3 compatible services (e.g. minio) you can pass additional ``arguments`` and ``endpoint`` to the
+configuration.
 
 Google Cloud-Storage
 --------------------
@@ -25,6 +50,11 @@ First follow this the `Google Cloud Documentation`_ to setup a System-Account an
         "client_x509_cert_url": "https://www.googleapis.com/...<api-name>api%40project-id.iam.gserviceaccount.com"
     }
 
+Install the dependencies:
+
+.. code-block:: bash
+
+    composer require league/flysystem superbalist/flysystem-google-storage
 
 Dump this file to a readable folder on your machine and configure the storage with following yaml-snippet:
 
