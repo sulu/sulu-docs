@@ -7,6 +7,7 @@ The Nginx configuration could look something like.
 
   server {
       listen 80;
+      listen [::]:80;
 
       server_name sulu.lo;
       root /var/www/sulu.lo/web;
