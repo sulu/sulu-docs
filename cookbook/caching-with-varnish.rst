@@ -215,6 +215,7 @@ The following will add full caching support for Sulu:
         if (!resp.http.x-cache-debug) {
             unset resp.http.x-url;
             unset resp.http.x-host;
+            unset resp.http.x-cache-tags;
         }
 
         if (obj.hits > 0) {
