@@ -63,7 +63,7 @@ The Nginx configuration could look something like.
 File upload
 -----------
 
-By default the nginx has a file limit of 2M when uploading files.
+By default nginx has a file limit of 2MB when uploading files.
 To increase this add the following to your ``nginx.conf``:
 
 .. code-block:: xml
