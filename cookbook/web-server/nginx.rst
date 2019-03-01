@@ -60,5 +60,23 @@ The Nginx configuration could look something like.
 .. warning::
     Be sure to also configure your local host-file, if running Sulu locally.
 
-.. include:: file-permissions.inc.rst
+File upload
+-----------
 
+By default nginx has a file limit of 2MB when uploading files.
+To increase this add the following to your ``nginx.conf``:
+
+.. code-block:: xml
+
+    # ...
+
+    http {
+        client_max_body_size 512m;
+
+        # ...
+    }
+
+Don't forget to also increase the ``post_max_size`` and ``upload_max_filesize`` in
+your ``php.ini``.
+
+.. include:: file-permissions.inc.rst
