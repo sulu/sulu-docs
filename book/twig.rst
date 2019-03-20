@@ -116,7 +116,10 @@ in your template. As an example the ``media_selection`` stores the
 Other Variables
 ^^^^^^^^^^^^^^^
 
- - `request.webspaceKey`: Contains the key for the current webspace 
+ - `request.webspaceKey`: Contains the key for the current webspace
+ - `request.webspaceName`: Contains the name for the current webspace
+ - `request.portalKey`: Contains the key for the current portal
+ - `request.portalName`: Contains the name for the current portal
  - `request.locale`: Contains the locale for the current request
  - `request.portalUrl`: Contains the root URL to the current portal
  - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
