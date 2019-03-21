@@ -61,6 +61,7 @@ content type:
     internal_links
     location
     media_selection
+    single_media_selection
     contact_selection
     password
     phone
