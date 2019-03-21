@@ -120,7 +120,6 @@ Other Variables
  - `request.webspaceName`: Contains the name for the current webspace
  - `request.portalKey`: Contains the key for the current portal
  - `request.portalName`: Contains the name for the current portal
- - `request.locale`: Contains the locale for the current request
  - `request.portalUrl`: Contains the root URL to the current portal
  - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
  - `request.resourceLocator`: Contains the resourceLocator to the current page
