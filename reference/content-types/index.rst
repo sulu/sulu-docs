@@ -78,3 +78,4 @@ content type:
     url
     teaser_selection
     single_contact_selection
+    single_account_selection
