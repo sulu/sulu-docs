@@ -1,4 +1,4 @@
-Internal links
+Page Selection
 ==============
 
 Description
@@ -27,7 +27,7 @@ Example
 
 .. code-block:: xml
 
-    <property name="links" type="internal_links">
+    <property name="links" type="page_selection">
         <meta>
             <title lang="en">Links</title>
         </meta>

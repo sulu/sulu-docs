@@ -58,7 +58,7 @@ content type:
     color
     date
     email
-    internal_links
+    page_selection
     location
     media_selection
     single_media_selection
@@ -66,7 +66,7 @@ content type:
     password
     phone
     resource_locator
-    single_internal_link
+    single_page_selection
     select
     single_select
     smart_content

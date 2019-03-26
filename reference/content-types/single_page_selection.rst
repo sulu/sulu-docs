@@ -1,5 +1,5 @@
-Single internal link
-====================
+Single page selection
+=====================
 
 Description
 -----------
@@ -16,7 +16,7 @@ Example
 
 .. code-block:: xml
 
-    <property name="link" type="single_internal_link">
+    <property name="link" type="single_page_selection">
         <meta>
             <title lang="en">Link</title>
         </meta>
