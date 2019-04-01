@@ -188,9 +188,9 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |phone|                      | text input for a phone number               | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |internal_links|             | widget for selecting links to other pages   | resolved pages as defined in parameters |
+| |page_selection|             | widget for selecting pages                  | resolved pages as defined in parameters |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_internal_link|       | widget for selecting a single page          | resolved page as defined in parameters  |
+| |single_page_selection|      | widget for selecting a single page          | resolved page as defined in parameters  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |smart_content|              | widget for configuring a data source        | resolved pages as defined in parameters |
 +------------------------------+---------------------------------------------+-----------------------------------------+
@@ -890,8 +890,8 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |email| replace:: :doc:`email <../reference/content-types/email>`
 .. |password| replace:: :doc:`password <../reference/content-types/password>`
 .. |phone| replace:: :doc:`phone <../reference/content-types/phone>`
-.. |internal_links| replace:: :doc:`internal_links <../reference/content-types/internal_links>`
-.. |single_internal_link| replace:: :doc:`single_internal_link <../reference/content-types/single_internal_link>`
+.. |page_selection| replace:: :doc:`page_selection <../reference/content-types/page_selection>`
+.. |single_page_selection| replace:: :doc:`single_page_selection <../reference/content-types/single_page_selection>`
 .. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
 .. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
