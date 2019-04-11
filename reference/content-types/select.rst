@@ -70,6 +70,6 @@ You can use symfony expression language to access values from a service.
         </meta>
 
         <params>
-            <param name="values" expression="service('your_service').getValues()"/>
+            <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
