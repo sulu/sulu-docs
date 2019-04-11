@@ -1,5 +1,5 @@
-Apache 2.2
-==========
+Apache
+======
 
 The Apache HTTP Server is the world's most used web server (according to
 Wikipedia). It is open source, mature and reliable.
@@ -47,8 +47,10 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
       <Directory "/var/www/sulu.lo/public">
           Options Indexes FollowSymLinks
           AllowOverride All
-          Order allow,deny
-          Allow from all
+          Require all granted
+          # For Apache 2.2 instead of 'Require all granted' the following is needed:
+          # Order allow,deny
+          # Allow from all
 
           <IfModule mod_expires.c>
               ExpiresActive On
@@ -86,7 +88,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
 MAMP Pro
 --------
 
-In general you should configure your vHost like the `Apache 2.2`_ paragraph above describes it.
+In general you should configure your vHost like the `Apache`_ paragraph above describes it.
 
 .. figure:: ../../img/sulu-mamp-pro-screen.jpg
 	:align: center

@@ -69,7 +69,7 @@ if you want to start e.g. the `PHPCR Shell`_:
 
 .. code-block:: bash
 
-    app/console doctrine:phpcr:shell --session=live
+    php bin/console doctrine:phpcr:shell --session=live
 
 If you want to start the `PHPCR Shell`_ with the ``default_session`` you can
 simply omit the ``--session`` parameter.
@@ -83,8 +83,8 @@ You do so by using two different console commands:
 
 .. code-block:: bash
 
-    app/console massive:search:reindex # Reindex the default session
-    app/webconsole massive:search:reindex # Reindex the live session
+    php bin/console massive:search:reindex # Reindex the default session
+    php bin/websiteconsole massive:search:reindex # Reindex the live session
 
 .. _PHPCR: http://phpcr.github.io/
 .. _PHPCR Shell: http://phpcr.readthedocs.io/en/latest/phpcr-shell/

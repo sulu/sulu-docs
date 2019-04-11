@@ -205,7 +205,7 @@ Here is a table with the content types shipped in Sulu core:
 | |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
 |                              | documents)                                  | urls for every format                   |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |contact_selection|          | widget for selecting contacts               | array containing array representations  |
+| |contact|                    | widget for selecting contacts               | array containing array representations  |
 |                              |                                             | of the contact objects                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
@@ -413,15 +413,17 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
+        <properties>
+        <!-- ... -->
+            <block name="eventDetails">
+                <meta>
+                    <title lang="en">Event Details</title>
+                </meta>
 
-        <block name="eventDetails">
-            <meta>
-                <title lang="en">Event Details</title>
-            </meta>
-
-            <!-- ... -->
-        </block>
-
+                <!-- ... -->
+            </block>
+        <!-- ... -->
+        </properties>
         <!-- ... -->
     </template>
 
@@ -840,6 +842,13 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" role="title" />
     </property>
 
+    <property name="description" type="text_editor">
+        <meta>
+            <title lang="en">Description</title>
+        </meta>
+        <tag name="sulu.search.field" role="description" />
+    </property>
+
     <property name="images" type="media_selection">
         <meta>
             <title lang="en">Images</title>
@@ -847,9 +856,16 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" role="image" index="false" />
     </property>
 
+    <property name="article" type="text_editor">
+        <meta>
+            <title lang="en">Article</title>
+        </meta>
+        <tag name="sulu.search.field" />
+    </property>
+
 The tag can have specific attributes:
 
- - `role`: The role for the property 
+ - `role`: The role for the property
  - `type`: Type how the data need to be stored
  - `index`: Is indexed need only to be set to deactivate index
 
@@ -858,6 +874,8 @@ The tag can have specific attributes:
  - `title`: The main title of the document
  - `description`: The main description of the document
  - `image`: The main image of the document
+
+.. note:: Roles are not possible on properties inside a block
 
 **Types**:
 
@@ -897,7 +915,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
 .. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
-.. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
+.. |contact| replace:: :doc:`contact <../reference/content-types/contact>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`

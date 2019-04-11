@@ -131,7 +131,7 @@ will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    bin/console server:start
+    SYMFONY_ENV=dev bin/console server:start
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".

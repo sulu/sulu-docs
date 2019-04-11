@@ -13,10 +13,14 @@ similar to the `example.xml`_ file in this folder.
 To activate the webspace within sulu with a `prod` or `stage` environment
 you have to clear the cache with the command:
 
+.. code-block:: bash
+
     $ php bin/adminconsole cache:clear -e <environment>
 
 Afterwards you will need to initialize the new webspace, to do so run the
 following command:
+
+.. code-block:: bash
 
     $ php bin/adminconsole sulu:document:initialize
 

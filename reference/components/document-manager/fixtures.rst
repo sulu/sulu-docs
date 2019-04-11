@@ -138,7 +138,7 @@ the fixtures:
 
 .. code-block:: bash
 
-    $ php app/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
+    $ php bin/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
 
 You can also specify if fixtures should be *appended* (i.e. the repository will
 not be purged) and if the initializer should be executed.
@@ -147,13 +147,13 @@ Append fixtures:
 
 .. code-block:: bash
 
-    $ php app/console sulu:document:fixtures:load --append
+    $ php bin/console sulu:document:fixtures:load --append
 
 Do not initialize:
 
 .. code-block:: bash
 
-    $ php app/console sulu:document:fixtures:load --no-initialize
+    $ php bin/console sulu:document:fixtures:load --no-initialize
 
 Using the Service Container
 ---------------------------

@@ -14,7 +14,7 @@ the following command:
 
 .. code-block:: bash
 
-    $ ./app/console sulu:document:subscriber:debug remove
+    $ php bin/console sulu:document:subscriber:debug remove
     +--------------------------------------------------------------------------+------------------+----------+
     | Class                                                                    | Method           | Priority |
     +--------------------------------------------------------------------------+------------------+----------+
@@ -34,7 +34,7 @@ A full list of events can be retrieved if you omit the argument:
 
 .. code-block:: bash
 
-    $ ./app/console sulu:document:subscriber:debug
+    $ php bin/console sulu:document:subscriber:debug
     +----------------------+
     | Event                |
     +----------------------+

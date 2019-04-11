@@ -115,7 +115,7 @@ Under Debiae/Ubuntu we can change the initialization script:
                  -T localhost:6082 \             
                  -f /etc/varnish/default.vcl \   
                  -S /etc/varnish/secret \        
-                 -s malloc,256m 
+                 -s malloc,256m \
                  -p "vcc_allow_inline_c=on"
 
 Now restart the daemon:
@@ -263,6 +263,7 @@ The following is a full configuration example:
 
 .. code-block:: yaml
 
+<<<<<<< HEAD
 sulu_http_cache:
     tags:
         enabled: true
@@ -272,6 +273,23 @@ sulu_http_cache:
     proxy_client:
         varnish:
             enabled: true
+=======
+    sulu_http_cache:
+        handlers:
+            tags:
+                enabled: true
+            public:
+                max_age: 240 # 4 minutes
+                shared_max_age: 480 # 8 minutes
+                use_page_ttl: true
+                enabled: true
+            debug:
+                enabled: "%kernel.debug%"
+        proxy_client:
+            varnish:
+                enabled: true
+                servers: [ '127.0.0.1:80' ]
+>>>>>>> 5672950da769e2ced25927884cafb410f08b2d7b
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
