@@ -263,33 +263,20 @@ The following is a full configuration example:
 
 .. code-block:: yaml
 
-<<<<<<< HEAD
-sulu_http_cache:
-    tags:
-        enabled: true
-    cache:
-        max_age: 240
-        shared_max_age: 480
-    proxy_client:
-        varnish:
-            enabled: true
-=======
     sulu_http_cache:
-        handlers:
-            tags:
-                enabled: true
-            public:
-                max_age: 240 # 4 minutes
-                shared_max_age: 480 # 8 minutes
-                use_page_ttl: true
-                enabled: true
-            debug:
-                enabled: "%kernel.debug%"
+        debug:
+            enabled: true
+        tags:
+            enabled: true
+        cache:
+            max_age: 240 # 4 minutes
+            shared_max_age: 480 # 8 minutes
         proxy_client:
+            symfony:
+                enabled: false
             varnish:
                 enabled: true
                 servers: [ '127.0.0.1:80' ]
->>>>>>> 5672950da769e2ced25927884cafb410f08b2d7b
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
