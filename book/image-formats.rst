@@ -311,3 +311,13 @@ If you edit exist image formats you need to run the following command to purge t
     php bin/websiteconsole sulu:media:format:cache:clear
 
 This will delete all generated images. The new image will be generated on first request of the image format.
+
+Remove old images
+-----------------
+
+In a multi server setup the image formats are only removed on one server.
+To remove generated images which media not longer exist in the database run the following command:
+
+.. code-block:: bash
+
+   php bin/websiteconsole sulu:media:format:cache:cleanup
