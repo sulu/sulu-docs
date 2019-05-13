@@ -72,7 +72,7 @@ content type:
     single_account_selection
     single_media_selection
     smart_content
-    snippet
+    snippet_selection
     tag_selection
     teaser_selection
     text_area
