@@ -205,8 +205,8 @@ Here is a table with the content types shipped in Sulu core:
 | |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
 |                              | documents)                                  | urls for every format                   |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |contact|                    | widget for selecting contacts               | array containing array representations  |
-|                              |                                             | of the contact objects                  |
+| |contact_account_selection|  | widget for selecting contacts and accounts  | array containing array representations  |
+|                              |                                             | of the contact or account objects       |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
 |                              |                                             | of the teasers                          |
@@ -506,7 +506,7 @@ type:
 
                     <properties>
                         <property name="text" type="text_area"/>
-                        <property name="author" type="contact"/>
+                        <property name="author" type="contact_account_selection"/>
                     </properties>
                 </type>
             </types>
@@ -915,7 +915,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
 .. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
-.. |contact| replace:: :doc:`contact <../reference/content-types/contact>`
+.. |contact_account_selection| replace:: :doc:`contact_account_selection <../reference/content-types/contact_account_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`

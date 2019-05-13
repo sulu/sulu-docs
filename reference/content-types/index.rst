@@ -56,7 +56,7 @@ content type:
     category_selection
     checkbox
     color
-    contact
+    contact_account_selection
     date
     email
     location
