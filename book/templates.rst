@@ -211,7 +211,7 @@ Here is a table with the content types shipped in Sulu core:
 | |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
 |                              |                                             | of the teasers                          |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |snippet|                    | widget for selecting snippets               | array containing array representations  |
+| |snippet_selection|          | widget for selecting snippets               | array containing array representations  |
 |                              |                                             | of the snippets                         |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       | ContactInterface                        |
@@ -920,5 +920,5 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
-.. |snippet| replace:: :doc:`snippet <../reference/content-types/snippet>`
-.. |single_contact_selection| replace:: :doc:`snippet <../reference/content-types/single_contact_selection>`
+.. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
+.. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`

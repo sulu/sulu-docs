@@ -1,5 +1,5 @@
-Snippet
-=======
+Snippet Selection
+=================
 
 Description
 -----------
@@ -37,7 +37,7 @@ Example
 
 .. code-block:: xml
 
-    <property name="snippets" type="snippet">
+    <property name="snippets" type="snippet_selection">
         <meta>
             <title lang="en">Snippets</title>
         </meta>
