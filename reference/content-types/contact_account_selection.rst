@@ -1,5 +1,5 @@
-Contact selection
-=================
+Contact account selection
+=========================
 
 Description
 -----------
