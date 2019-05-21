@@ -26,6 +26,10 @@ Parameters
       - If this parameter is true or a specified area and enabled in config the 
         content-type will load the snippet which can be specified by the
         content-manager in the webspace settings.
+    * - loadExcerpt
+      - boolean
+      - If this parameter is set to true, then the taxonomies information for
+        this snippet is loaded in a "taxonomies" property
 
 .. note::
 
@@ -45,5 +49,6 @@ Example
         <params>
             <param name="snippetType" value="sidebar"/>
             <param name="default" value="sidebar_overview"/>
+            <param name="loadExcerpt" value="true"/>
         </params>
     </property>
