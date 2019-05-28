@@ -181,7 +181,7 @@ source, whose child pages will be filtered by the DataProvider.
 Snippet
 ~~~~~~~
 
-Alias: "snippet"
+Alias: "snippets"
 
 This provider filters snippets.
 
