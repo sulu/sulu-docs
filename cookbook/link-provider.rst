@@ -10,7 +10,7 @@ chapter :doc:`../bundles/markup/index`).
 
 .. code-block:: html
 
-    <sulu:link provider="page" href="123-123-123"/>
+    <sulu-link provider="page" href="123-123-123"/>
 
 
 The LinkItem consists of the following properties:

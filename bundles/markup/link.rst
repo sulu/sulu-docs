@@ -1,4 +1,4 @@
-sulu:link
+sulu-link
 =========
 
 The link tag provides the possibility to link to other pages by uuid. This uuid
@@ -9,8 +9,8 @@ Example
 
 .. code-block:: html
 
-    <sulu:link href="123-123-123" title="test-title" />
-    <sulu:link href="123-123-123" target="_blank">Link Text</sulu:link>
+    <sulu-link href="123-123-123" title="test-title" />
+    <sulu-link href="123-123-123" target="_blank">Link Text</sulu-link>
 
 **Results into:**
 
