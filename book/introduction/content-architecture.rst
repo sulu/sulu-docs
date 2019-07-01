@@ -83,7 +83,7 @@ Sulu is very extensible. You got existing content you want to integrate through
 DBAL? Do it. An API that delivers content? Integrate it. Other Symfony bundles
 you've already coded. Integrate them.
 
-A more detailled documentation could be found in the section
+A more detailed documentation could be found in the section
 :doc:`../content-architecture`.
 
 Now you are really deep into the concepts of Sulu. So the next step is to get

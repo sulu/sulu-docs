@@ -10,14 +10,14 @@ Architecture
 
 Each type of content register its own service which implements
 ``ReferenceStoreInterface`` or with the default implementation
-``Sulu\Bundle\ContentBundle\ReferenceStore\ReferenceStore``.
+``Sulu\Bundle\PageBundle\ReferenceStore\ReferenceStore``.
 
 The service ``sulu_website.reference_store_pool`` collects the services with the
 tag ``sulu_website.reference_store`` and use the ``alias`` attribute to
 identify them.
 
 To register a loaded entity use the concrete store (e.g.
-``sulu_content.reference_store.content`` or your own service) and call the
+``sulu_page.reference_store.content`` or your own service) and call the
 method ``add`` to append the id of the entity.
 
 Example
@@ -26,7 +26,7 @@ Example
 .. code-block:: xml
 
     <service id="app.reference_store.example"
-             class="Sulu\Bundle\ContentBundle\ReferenceStore\ReferenceStore">
+             class="Sulu\Bundle\WebsiteBundle\ReferenceStore\ReferenceStore">
         <tag name="sulu_website.reference_store" alias="example"/>
     </service>
 

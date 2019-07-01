@@ -56,7 +56,7 @@ Following variables are usable inside the exception template.
 | `status_code`                   | http-status-code                                                 |
 | `status_text`                   | http-status-code message                                         |
 | `exception`                     | complete exception object                                        |
-| `currentContent`                | repsonse content which were rendered bofore exception was thrown |
+| `currentContent`                | response content which were rendered before exception was thrown |
 | `urls`                          | localized urls to start page (e.g. for language-switcher)        |
 | `request.webspaceKey`           | key of the current webspace                                      |
 | `request.defaultLocale`         | default locale of current portal                                 |
@@ -81,7 +81,7 @@ To test your error pages you can use following routes:
 .. note::
 
     If you are not sure about your portal configuration you can get the routes with this 
-    `app/webconsole router:debug | grep _error` command
+    `bin/websiteconsole debug:router | grep _error` command
 
 Examples:
 

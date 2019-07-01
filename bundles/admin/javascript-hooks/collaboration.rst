@@ -1,7 +1,7 @@
 Collaboration
 =============
 
-The collaboration-hook initializes collabation-component. This component is able
+The collaboration-hook initializes collaboration-component. This component is able
 to communicate with the server and determine which user is currently working on
 the same record.
 

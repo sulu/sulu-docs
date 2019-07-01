@@ -72,4 +72,3 @@ The nesting of the localizations is very important for the column navigation of
 the content. In case there is a ghost page - which means that the page is not
 translated into the current localization - this tree will be used to determine
 the "closest" language available.
-

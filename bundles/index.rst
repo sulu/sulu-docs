@@ -17,7 +17,7 @@ documented the most important ones.
     audience_targeting
     automation/index
     collaboration
-    content/index
+    page/index
     hash
     http_cache
     markup/index

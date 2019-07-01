@@ -8,7 +8,7 @@ before the response will be sent.
 Example
 -------
 
-This example contains a sulu-related example. The tag ``sulu:link`` represents
+This example contains a sulu-related example. The tag ``sulu-link`` represents
 a link to another page. This tag will be replaced via a valid anchor where the
 `href` attribute contains the UUID of the page.
 
@@ -16,7 +16,7 @@ a link to another page. This tag will be replaced via a valid anchor where the
 
     <html>
         <body>
-            <sulu:link href="123-123-123" title="test-title" />
+            <sulu-link href="123-123-123" title="test-title" />
         </body>
     </html>
 
@@ -96,8 +96,8 @@ namespace.
 
     <service id="app.tag" class="AppBundle\CustomTag">
         <tag name="sulu_markup.tag" namespace="custom-namespace"
-             tag="custom-tag"/>
+             tag="custom-tag" type="html" />
     </service>
 
-With this definitions you can use ``<custom-namespace:custom-tag/>`` in your
+With this definitions you can use ``<custom-namespace-custom-tag/>`` in your
 response.

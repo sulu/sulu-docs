@@ -1,7 +1,7 @@
 Securing your application
 =========================
 
-Sulu is delivered with two different possiblities to protect parts of your
+Sulu is delivered with two different possibilities to protect parts of your
 application. The first is the permissions based on security contexts, which
 allow you to restrict access to entire parts of your application or Sulu. The
 permissions for this kind of security are managed on a roles level. In addition
@@ -74,7 +74,7 @@ permission types for this security context.
     
     Since the ``Admin`` class is registered as a bundle, you can make use of
     different services to define the available security contexts. For example
-    the SuluContentBundle uses a service to create an own security context for
+    the SuluPageBundle uses a service to create an own security context for
     all available webspaces in the system.
 
 Protect your controller
@@ -82,7 +82,7 @@ Protect your controller
 
 After defining a security context, you can use it to easily protect the actions
 of one of your controllers. All you have to do is to implement the
-``SecuredControllerInterface`` telling the ``SuluSecuriyListener`` which
+``SecuredControllerInterface`` telling the ``SuluSecurityListener`` which
 security context and locale to use for the permission check:
 
 .. code-block:: php
@@ -232,7 +232,7 @@ Controller handling the specific type of entities:
         public function cgetAction()
         {
             $listBuilder = $factory->create($this->container->getParameter('sulu.model.example.class'));
-            $this->get('sulu_core.doctrine_rest_helper)->initializeListBuilder($listBuilder, $this->getFieldDescriptors());
+            $this->get('sulu_core.doctrine_rest_helper')->initializeListBuilder($listBuilder, $this->getFieldDescriptors());
             
             $listBuilder->setPermissionCheck($this->getUser(), PermissionTypes::VIEW);
 

@@ -34,7 +34,7 @@ available on the website with an own route.
 Entity
 ******
 
-First extend your entity with the propertie's `id`, `locale` and a new many-to-one relation `route`:
+First extend your entity with the properties `id`, `locale` and a new many-to-one relation `route`:
 
 reciepe.orm.xml:
 
@@ -181,5 +181,5 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
 .. note::
 
     To update already existing entities you can run the command
-    `bin/console sulu:route:update AppBundle:Recipe` which updates or creates
+    `php bin/console sulu:route:update AppBundle:Recipe` which updates or creates
     the route for all the entities of this type.

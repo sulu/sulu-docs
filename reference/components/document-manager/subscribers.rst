@@ -291,7 +291,7 @@ ShadowLocale
 
 **Behavior**: ``Sulu\Component\Content\Document\Behavior\ShadowLocaleBehavior``
 
-The implementing document will have the possiblity to enable a "shadow
+The implementing document will have the possibility to enable a "shadow
 locale" and load its content from a different locale within the same document.
 
 StructureTypeFiling

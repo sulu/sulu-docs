@@ -64,10 +64,9 @@ To enable it add the following lines into the `app/AbstractKernel.php` and
         themes: ["default"]
         active_theme: "default"
         load_controllers: false
-        assetic_integration: true
 
 This will configure a default theme which can be enabled in the
-`app/Resources/webspaces/<webspace>.xml` file by adding:
+`config/webspaces/<webspace>.xml` file by adding:
 
 .. code-block:: xml
 

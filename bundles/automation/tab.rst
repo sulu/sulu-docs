@@ -26,7 +26,7 @@ Create a new NavigationProvider and register it in the ``services.xml`` file
     use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationItem;
     use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationProviderInterface;
     use Sulu\Bundle\ArticleBundle\Document\ArticleDocument;
-    use Sulu\Bundle\ContentBundle\Document\PageDocument;
+    use Sulu\Bundle\PageBundle\Document\PageDocument;
 
     class ArticleAutomationContentNavigationProvider implements ContentNavigationProviderInterface
     {

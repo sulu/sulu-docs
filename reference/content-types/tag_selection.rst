@@ -1,5 +1,5 @@
-Tag list
-========
+Tag Selection
+=============
 
 Description
 -----------
@@ -22,7 +22,7 @@ Example
 
 .. code-block:: xml
 
-    <property name="tags" type="tag_list">
+    <property name="tags" type="tag_selection">
         <meta>
             <title lang="en">Tags</title>
         </meta>

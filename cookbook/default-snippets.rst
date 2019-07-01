@@ -50,7 +50,7 @@ The default snippets will be used if the following conditions are fulfilled.
 
 1. The feature has to be activated (`sulu_snippet.types.snippet.default_enabled`) (default activated since 1.4)
 2. The snippet-selection parameter ``default`` has to be
-   defined. See :doc:`../reference/content-types/snippet`.
+   defined. See :doc:`../reference/content-types/snippet_selection`.
 3. The snippet for the configured area has to be selected in the
    webspace settings.
 

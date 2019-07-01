@@ -53,27 +53,30 @@ content type:
     :maxdepth: 1
 
     block
-    category_list
+    category_selection
     checkbox
     color
+    contact_account_selection
     date
     email
-    internal_links
     location
     media_selection
-    multiple_select
-    contact_selection
     password
+    page_selection
     phone
     resource_locator
-    single_internal_link
+    select
     single_select
+    single_page_selection
+    single_contact_selection
+    single_account_selection
+    single_media_selection
     smart_content
-    snippet
-    tag_list
+    snippet_selection
+    tag_selection
+    teaser_selection
     text_area
     text_editor
     text_line
     time
     url
-    teaser_selection

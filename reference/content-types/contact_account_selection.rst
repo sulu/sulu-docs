@@ -1,5 +1,5 @@
-Contact selection
-=================
+Contact account selection
+=========================
 
 Description
 -----------
@@ -20,7 +20,7 @@ Parameters
     * - contact
       - boolean
       - Person tab should be visible or not.
-    * - accounts
+    * - account
       - boolean
       - Organizations tab should be visible or not.
 

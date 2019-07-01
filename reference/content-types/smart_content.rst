@@ -151,7 +151,7 @@ These providers are predefined for Sulu-Entities.
 Content Pages
 ~~~~~~~~~~~~~
 
-Alias: "content"
+Alias: "pages"
 
 This provider filters content pages. You can choose a parent page as data
 source, whose child pages will be filtered by the DataProvider.
@@ -181,7 +181,7 @@ source, whose child pages will be filtered by the DataProvider.
 Snippet
 ~~~~~~~
 
-Alias: "snippet"
+Alias: "snippets"
 
 This provider filters snippets.
 
@@ -203,14 +203,14 @@ This provider filters snippets.
 Contact - People
 ~~~~~~~~~~~~~~~~
 
-Alias: "contact"
+Alias: "contacts"
 
 This provider filters the contacts.
 
 Account - Organization
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Alias: "account"
+Alias: "accounts"
 
 This provider filters the accounts.
 
@@ -262,7 +262,7 @@ Page template
         </meta>
 
         <params>
-            <param name="provider" value="content"/>
+            <param name="provider" value="pages"/>
             <param name="max_per_page" value="5"/>
             <param name="page_parameter" value="p"/>
             <param name="properties" type="collection">

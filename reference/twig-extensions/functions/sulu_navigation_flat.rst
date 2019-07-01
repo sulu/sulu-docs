@@ -7,7 +7,7 @@ Returns navigation from the given page in a flat list data-structure.
 
 - **uuid**: *string* The uuid for which the navigation should be loaded
 - **context**: *string* - optional: context to filter navigation
-- **depth**: *integer* - optional: depth to load (1 - childs, 2 - childs and child of childs, ...)
+- **depth**: *integer* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...)
 - **loadExcerpt**: *boolean* - optional: load data from excerpt tab
 
 **Returns**:

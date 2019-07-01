@@ -13,7 +13,7 @@ SuluContactBundle. In addition to that a user can have some roles and groups
 assigned, whereby a group can consist of multiple other groups and roles.
 
 Every role has to be part of a certain system. Different systems can be
-registrated via the security contexts, which are explained later. These systems
+registered via the security contexts, which are explained later. These systems
 correspond to different applications handled by Sulu. So by default there is
 only the ``Sulu`` system. A user is only enabled to login into Sulu, if he has
 at least one role with the ``Sulu`` system assigned.
@@ -66,7 +66,7 @@ grants access.
 Access Control Manager
 ----------------------
 
-The ``AccessControlManager`` is reponsible to set permissions on specific
+The ``AccessControlManager`` is responsible to set permissions on specific
 objects. Since this is not totally decoupled from the entity being protected,
 there is the possibility to register multiple ``AccessControlProvider``. This
 is simply a service implementing the ``AccessControlProviderInterface`` tagged
@@ -103,7 +103,7 @@ the ``SecurityContextVoter``.
 This voter will check if the user is allowed to perform the given action (the
 permissions already listed above) in the given context in the given locale. If
 the object type and id are also passed the permissions of the security contexts
-from the role might be overriden by the permissions from this specific object
+from the role might be overridden by the permissions from this specific object
 (which are handled by the previously mentioned ``AccessControlManager``).
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
