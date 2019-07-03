@@ -192,7 +192,7 @@ Fixing an URL to a specific localization
 ........................................
 
 The above example shows this possibility, where you fix one URL to exactly one
-localization. The following fragment shows again how to this:
+localization. The following fragment shows again how to do this:
 
 .. code-block:: xml
 
