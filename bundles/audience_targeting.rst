@@ -26,6 +26,7 @@ file (`config/routes/sulu_admin.yaml`):
 
     # ...
     sulu_audience_targeting_api:
+        type: rest
         resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.yml"
         prefix: /admin/api
 
