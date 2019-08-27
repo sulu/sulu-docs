@@ -26,7 +26,7 @@ file (`config/routes/sulu_admin.yaml`):
 
     # ...
     sulu_audience_targeting_api:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.xml"
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.yml"
         prefix: /admin/api
 
 And the routes for the website in the corresponding configuration file
@@ -36,7 +36,7 @@ And the routes for the website in the corresponding configuration file
 
     # ...
     sulu_audience_targeting:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.xml"
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.yml"
 
 Finally the cache has to be correctly configured. You have the choice between
 the Symfony Cache and Varnish.
