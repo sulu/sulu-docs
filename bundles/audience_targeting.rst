@@ -12,62 +12,49 @@ target group of the visitor.
 Installation
 ------------
 
-Enable the bundle in `app/AbstractKernel.php`:
+Enable the bundle in `config/bundles.php`:
 
 .. code-block:: php
 
     <?php
-    abstract class AbstractKernel extends SuluKernel
-    {
-        // ...
-
-        public function reigsterBundles()
-        {
-            $bundles = [
-                // ...
-                new Sulu\Bundle\AudienceTargetingBundle\SuluAudienceTargetingBundle(),
-            ];
-
-            return $bundles;
-        }
-    }
+    Sulu\Bundle\AudienceTargetingBundle\SuluAudienceTargetingBundle::class => ['all' => true],
 
 Add the routes for the administration interface to the routing configuration
-file (`app/config/admin/routing.yml`):
+file (`config/routes/sulu_admin.yaml`):
 
 .. code-block:: yaml
 
     # ...
-    sulu_audience_targeting:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing.xml"
-        prefix: /admin/target-groups
-
     sulu_audience_targeting_api:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.xml"
+        type: rest
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.yml"
         prefix: /admin/api
 
 And the routes for the website in the corresponding configuration file
-(`app/config/website/routing.yml`):
+(`config/routes/sulu_website.yaml`):
 
 .. code-block:: yaml
 
     # ...
     sulu_audience_targeting:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.xml"
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.yml"
 
 Finally the cache has to be correctly configured. You have the choice between
 the Symfony Cache and Varnish.
 
 For the `Symfony cache`_ the audience targeting cache listener needs to be added.
-This is possible by adding the constructor to `WebsiteCache` in `app/WebsiteCache.php`:
+This is possible by adding a subscriber in the `getHttpCache()` method of the `src/Kernel.php`:
 
 .. code-block:: php
 
-    public function __construct(HttpKernelInterface $kernel, $cacheDir = null)
+    public function getHttpCache()
     {
-        parent::__construct($kernel, $cacheDir);
+        if (!$this->httpCache) {
+            $this->httpCache = new SuluHttpCache($this);
+            $this->httpCache->addSubscriber(new AudienceTargetingCacheListener());
+        }
 
-        $this->addSubscriber(new AudienceTargetingCacheListener());
+        return $this->httpCache;
     }
 
 If you want to use the more powerful `Varnish`_ instead, you have to install it
