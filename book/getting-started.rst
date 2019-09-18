@@ -7,12 +7,12 @@ and... go!
 Bootstrap a Project
 -------------------
 
-We'll bootstrap a new project based on the `Sulu Minimal Edition`_ with
+We'll bootstrap a new project based on the `Sulu Skeleton`_ with
 Composer_:
 
 .. code-block:: bash
 
-    composer create-project sulu/sulu-minimal my-project -n
+    composer create-project sulu/skeleton my-project -n
 
 This command will bootstrap a new project in the directory ``my-project``.
 
@@ -151,7 +151,7 @@ play around.
 
 When you're ready to learn more, continue with :doc:`templates`.
 
-.. _Sulu Minimal Edition: https://github.com/sulu/sulu-minimal
-.. _Composer:  https://getcomposer.org
+.. _Sulu Skeleton: https://github.com/sulu/skeleton
+.. _Composer: https://getcomposer.org
 .. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Apache Jackrabbit: http://jackrabbit.apache.org

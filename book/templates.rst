@@ -25,7 +25,7 @@ Each page template is defined by two files:
 
 For example, the default template -- named "default" -- is defined by the files
 ``config/templates/pages/default.xml`` and
-``templates/pages/default.html.twig``. The Sulu Minimal Edition
+``templates/pages/default.html.twig``. The Sulu Skeleton
 also contains a second template named "homepage", which you can find in the
 same directories.
 
@@ -879,11 +879,11 @@ The tag can have specific attributes:
 
 **Types**:
 
- - `string`: For simple fields 
+ - `string`: For simple fields
  - `array`: For multiple fields such as the `category_selection` content type
  - `tags`: Special typ for `tag_selection` content type
  - `date`: For indexing the `date` content type
- - `json`: For indexing raw data in the search 
+ - `json`: For indexing raw data in the search
 
 Next Steps
 ----------
