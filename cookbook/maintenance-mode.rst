@@ -10,12 +10,12 @@ Sulu maintenance mode displays a simple holding page which can be easily customi
 Activate Maintenance Mode
 -------------------------
 
-Sulu is shipped with a simple maintenance page stored in `app/maintenance.php`_
+Sulu is shipped with a simple maintenance page stored in `public/maintenance.php`_
 file which can be changed for your needs.
 
 To activate the maintenance mode you need to  set the environment variable SULU_MAINTENANCE to true.
 For example, in your ``.htaccess`` file or vhost file for apache:
- 
+
 .. code-block:: apache
 
     SetEnv SULU_MAINTENANCE true
@@ -60,7 +60,7 @@ You can define translations for your template as follows:
 Default locale
 ~~~~~~~~~~~~~~
 
-By default, ``maintenance.php`` is automatically detecting your browsers language. If no translation for this language 
+By default, ``maintenance.php`` is automatically detecting your browsers language. If no translation for this language
 exists the default locale is being used. By default this is English:
 
 .. code-block:: php
@@ -68,4 +68,4 @@ exists the default locale is being used. By default this is English:
     <?php
     define('DEFAULT_LOCALE', 'en');
 
-.. _app/maintenance.php: https://github.com/sulu/sulu-minimal/blob/1.6.22/app/maintenance.php
+.. _public/maintenance.php: https://github.com/sulu/skeleton/blob/master/public/maintenance.php
