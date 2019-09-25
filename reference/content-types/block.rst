@@ -44,7 +44,7 @@ editor as described in the description.
 
 .. code-block:: xml
 
-    <block name="blocks" default-type="editor" minOccurs="0">
+    <block name="blocks" default-type="editor_image" minOccurs="0">
         <meta>
             <title lang="de">Inhalte</title>
             <title lang="en">Content</title>
