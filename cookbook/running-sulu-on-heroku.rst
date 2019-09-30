@@ -14,9 +14,9 @@ a region, whatever is closer to your actual destination. This choice will also
 influence the performance of your website.
 
 Unless you really want to, you should leave the ``SYMFONY_ENV`` environment
-variable to ``prod``. Otherwise the buid process will fail, because Heroku
+variable to ``prod``. Otherwise the build process will fail, because Heroku
 installs the dependencies with ``composer install --no-dev``. If you change the
-environment to ``dev`` or ``test`` Sulu wil try to load some Symfony bundles,
+environment to ``dev`` or ``test`` Sulu will try to load some Symfony bundles,
 which are not installed, and therefore lead to an error during the build
 procedure.
 
