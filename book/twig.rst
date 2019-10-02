@@ -43,8 +43,8 @@ In :doc:`templates` we learned how to define a template.
 In the page template the view could be set. Internally Sulu appends the format
 of the request to find the correct template to render the response. As an
 example sulu uses for a html request the template
-`app/Resources/views/templates/default.html.twig` or
-`app/Resources/views/templates/default.xml.twig` for a xml request. With this
+`templates/pages/default.html.twig` or
+`templates/pages/default.xml.twig` for a xml request. With this
 feature you are able to define different output format for a single page.
 
 
@@ -116,8 +116,10 @@ in your template. As an example the ``media_selection`` stores the
 Other Variables
 ^^^^^^^^^^^^^^^
 
- - `request.webspaceKey`: Contains the key for the current webspace 
- - `request.locale`: Contains the locale for the current request
+ - `request.webspaceKey`: Contains the key for the current webspace
+ - `request.webspaceName`: Contains the name for the current webspace
+ - `request.portalKey`: Contains the key for the current portal
+ - `request.portalName`: Contains the name for the current portal
  - `request.portalUrl`: Contains the root URL to the current portal
  - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
  - `request.resourceLocator`: Contains the resourceLocator to the current page

@@ -30,9 +30,8 @@ our recipes.
     manage-analytics
     change-default-locale-provider
     default-snippets
+    override-dir-structure
     custom-urls
-    websocket
-    live-preview
     deactivate-request-analyzer
     use-request-analyzer-with-esi
     web-server/index
@@ -42,6 +41,7 @@ our recipes.
     dump-sitemap
     enable-adobe-creative-suite
     video-preview-images
+    external-media-storage
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to

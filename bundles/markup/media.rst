@@ -1,4 +1,4 @@
-sulu:media
+sulu-media
 ==========
 
 The media tag provides the possibility to create download links for medias.
@@ -8,9 +8,9 @@ Example
 
 .. code-block:: html
 
-    <sulu:media id="1" title="Title"/>
-    <sulu:media id="1" title="Title">Link-Text</sulu:media>
-    <sulu:media id="1">Link-Text</sulu:media>
+    <sulu-media id="1" title="Title"/>
+    <sulu-media id="1" title="Title">Link-Text</sulu-media>
+    <sulu-media id="1">Link-Text</sulu-media>
 
 **Results into:**
 

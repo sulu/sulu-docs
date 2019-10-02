@@ -24,8 +24,8 @@ Each page template is defined by two files:
 * a **Twig file** that contains the HTML code
 
 For example, the default template -- named "default" -- is defined by the files
-``app/Resources/templates/pages/default.xml`` and
-``app/Resources/views/templates/default.html.twig``. The Sulu Minimal Edition
+``config/templates/pages/default.xml`` and
+``templates/pages/default.html.twig``. The Sulu Skeleton
 also contains a second template named "homepage", which you can find in the
 same directories.
 
@@ -44,14 +44,14 @@ The template of a page can be selected in the admin interface:
 
     A template is shown in the dropdown only if both the XML and the Twig file
     exist! If you can't see your template, double-check the directories
-    ``app/Resources/templates/pages`` and ``app/Resources/views/templates``.
+    ``config/templates/pages`` and ``templates/pages``.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
 the XML:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/default.xml -->
+    <!-- config/templates/pages/default.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -78,7 +78,7 @@ identifier of the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -99,14 +99,14 @@ the Twig file that is used to render the template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <view>templates/event</view>
+        <view>pages/event</view>
 
         <!-- ... -->
     </template>
@@ -131,7 +131,7 @@ Properties make up the structure of a page. They are defined in the element
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -159,61 +159,63 @@ A property has three essential attributes:
 
 Here is a table with the content types shipped in Sulu core:
 
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| Key                     | Appearance in the administration            | Value                                   |
-+=========================+=============================================+=========================================+
-| |text_line|             | simple text input                           | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |text_area|             | text area                                   | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |text_editor|           | text editor with formatting capabilities    | HTML string                             |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |checkbox|              | checkbox                                    | boolean                                 |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |single_select|         | list of radio buttons                       | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |multiple_select|       | list of checkboxes                          | array of strings                        |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |color|                 | color picker                                | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |date|                  | date picker                                 | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |time|                  | text input with time validation             | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |url|                   | text input with URL validation              | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |email|                 | text input with email validation            | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |password|              | password input                              | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |phone|                 | text input for a phone number               | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |internal_links|        | widget for selecting links to other pages   | resolved pages as defined in parameters |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |single_internal_link|  | widget for selecting a single page          | resolved page as defined in parameters  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |smart_content|         | widget for configuring a data source        | resolved pages as defined in parameters |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |resource_locator|      | widget for entering the URL of a page       | string                                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |tag_list|              | autocomplete input for entering and adding  | array of strings                        |
-|                         | tags                                        |                                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |category_list|         | autocomplete input for entering and adding  | array of strings                        |
-|                         | tags                                        |                                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |media_selection|       | widget for selecting media (images,         | array containing arrays with            |
-|                         | documents)                                  | urls for every format                   |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |contact|               | widget for selecting contacts               | array containing array representations  |
-|                         |                                             | of the contact objects                  |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |teaser_selection|      | widget for displaying content teasers       | array containing array representations  |
-|                         |                                             | of the teasers                          |
-+-------------------------+---------------------------------------------+-----------------------------------------+
-| |snippet|               | widget for selecting snippets               | array containing array representations  |
-|                         |                                             | of the snippets                         |
-+-------------------------+---------------------------------------------+-----------------------------------------+
++------------------------------+---------------------------------------------+-----------------------------------------+
+| Key                          | Appearance in the administration            | Value                                   |
++==============================+=============================================+=========================================+
+| |text_line|                  | simple text input                           | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |text_area|                  | text area                                   | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |text_editor|                | text editor with formatting capabilities    | HTML string                             |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |checkbox|                   | checkbox                                    | boolean                                 |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_select|              | dropdown with options                       | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |select|                     | dropdown with multiple options              | array of strings or numbers             |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |color|                      | color picker                                | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |date|                       | date picker                                 | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |time|                       | text input with time validation             | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |url|                        | text input with URL validation              | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |email|                      | text input with email validation            | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |password|                   | password input                              | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |phone|                      | text input for a phone number               | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |page_selection|             | widget for selecting pages                  | resolved pages as defined in parameters |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_page_selection|      | widget for selecting a single page          | resolved page as defined in parameters  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |smart_content|              | widget for configuring a data source        | resolved pages as defined in parameters |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |resource_locator|           | widget for entering the URL of a page       | string                                  |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |tag_selection|              | autocomplete input for entering and adding  | array of strings                        |
+|                              | tags                                        |                                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |category_selection|         | autocomplete input for entering and adding  | array of strings                        |
+|                              | tags                                        |                                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
+|                              | documents)                                  | urls for every format                   |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |contact_account_selection|  | widget for selecting contacts and accounts  | array containing array representations  |
+|                              |                                             | of the contact or account objects       |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
+|                              |                                             | of the teasers                          |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |snippet_selection|          | widget for selecting snippets               | array containing array representations  |
+|                              |                                             | of the snippets                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_contact_selection|   | widget for selecting a single contact       | ContactInterface                        |
++------------------------------+---------------------------------------------+-----------------------------------------+
 
 .. tip::
 
@@ -230,7 +232,7 @@ choices:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -275,7 +277,7 @@ property, set the attribute ``mandatory`` to ``true``:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -293,6 +295,38 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+Language Independent Properties
+-------------------------------
+
+Some content like article numbers or other metadata might be the same for every
+language. In that case, you can mark properties as not multilingual using
+``multilingual="false"``:
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <properties>
+            <!-- ... -->
+
+            <property name="article_number" type="text_line" multilingual="false">
+                <!-- ... -->
+            </property>
+
+            <!-- ... -->
+        </properties>
+    </template>
+
+.. note::
+
+    If you change an existing property from a multilingual to a non multilingual version,
+    it is necessary to migrate the values in PHPCR from one language to the new property,
+    e.g. from ``i18n:de-article_number`` to ``article_number``.
+
 Sections
 --------
 
@@ -308,7 +342,7 @@ As for properties, the label of the section goes into its ``<meta>`` tag:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -331,7 +365,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -373,7 +407,7 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -410,7 +444,7 @@ the ``default-type`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -454,7 +488,7 @@ type:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -472,7 +506,7 @@ type:
 
                     <properties>
                         <property name="text" type="text_area"/>
-                        <property name="author" type="contact"/>
+                        <property name="author" type="contact_account_selection"/>
                     </properties>
                 </type>
             </types>
@@ -502,7 +536,7 @@ The width of a property is configured in the ``colspan`` attribute:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -534,7 +568,7 @@ section:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -570,7 +604,7 @@ To enable XInclude, we'll first add the namespace
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -586,7 +620,7 @@ element:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -609,7 +643,7 @@ as root. In this example, we'll use a ``<properties>`` container:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/fragments/event-properties.xml -->
+    <!-- config/templates/pages/fragments/event-properties.xml -->
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -635,7 +669,7 @@ Let's look at the "Event" template first:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -661,7 +695,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -689,7 +723,7 @@ possible:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -718,7 +752,7 @@ You can also match multiple elements of different types. Use the wildcard
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/concert.xml -->
+    <!-- config/templates/pages/concert.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -750,7 +784,7 @@ cached on the client:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -782,7 +816,7 @@ For example, if you know that your homepage changes its content each day at
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/event.xml -->
+    <!-- config/templates/pages/event.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -845,11 +879,11 @@ The tag can have specific attributes:
 
 **Types**:
 
- - `string`: For simple fields 
- - `array`: For multiple fields such as the `category_list` content type
- - `tags`: Special typ for `tag_list` content type
+ - `string`: For simple fields
+ - `array`: For multiple fields such as the `category_selection` content type
+ - `tags`: Special typ for `tag_selection` content type
  - `date`: For indexing the `date` content type
- - `json`: For indexing raw data in the search 
+ - `json`: For indexing raw data in the search
 
 Next Steps
 ----------
@@ -874,16 +908,17 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |email| replace:: :doc:`email <../reference/content-types/email>`
 .. |password| replace:: :doc:`password <../reference/content-types/password>`
 .. |phone| replace:: :doc:`phone <../reference/content-types/phone>`
-.. |internal_links| replace:: :doc:`internal_links <../reference/content-types/internal_links>`
-.. |single_internal_link| replace:: :doc:`single_internal_link <../reference/content-types/single_internal_link>`
+.. |page_selection| replace:: :doc:`page_selection <../reference/content-types/page_selection>`
+.. |single_page_selection| replace:: :doc:`single_page_selection <../reference/content-types/single_page_selection>`
 .. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
 .. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
-.. |tag_list| replace:: :doc:`tag_list <../reference/content-types/tag_list>`
-.. |category_list| replace:: :doc:`category_list <../reference/content-types/category_list>`
+.. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
+.. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
-.. |contact| replace:: :doc:`contact <../reference/content-types/contact>`
+.. |contact_account_selection| replace:: :doc:`contact_account_selection <../reference/content-types/contact_account_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
-.. |multiple_select| replace:: :doc:`multiple_select <../reference/content-types/multiple_select>`
+.. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
-.. |snippet| replace:: :doc:`snippet <../reference/content-types/snippet>`
+.. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
+.. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`

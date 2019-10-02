@@ -62,7 +62,7 @@ The following is not a fully comprehensive list:
 ContentContext
 --------------
 
-**Bundle**: SuluContentBundle
+**Bundle**: SuluPageBundle
 
 You will use the content context frequently when testing content types.
 

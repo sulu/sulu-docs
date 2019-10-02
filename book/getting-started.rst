@@ -7,12 +7,12 @@ and... go!
 Bootstrap a Project
 -------------------
 
-We'll bootstrap a new project based on the `Sulu Minimal Edition`_ with
+We'll bootstrap a new project based on the `Sulu Skeleton`_ with
 Composer_:
 
 .. code-block:: bash
 
-    composer create-project sulu/sulu-minimal my-project -n
+    composer create-project sulu/skeleton my-project -n
 
 This command will bootstrap a new project in the directory ``my-project``.
 
@@ -36,7 +36,7 @@ webspaces configure a content tree. Each content tree may contain translations
 for different locales.
 
 The default webspace configuration is located in
-``app/Resources/webspaces/example.com.xml``. Rename this file so that it matches
+``config/webspaces/example.xml``. Rename this file so that it matches
 the name of your project.
 
 To get started, change the ``<name>`` and the ``<key>`` of the webspace to the
@@ -89,25 +89,13 @@ untested:
 | Drizzle                      | untested                              |
 +------------------------------+---------------------------------------+
 
-Once you created a database, user and password, adapt the ``database_*``
-keys of your ``app/config/parameters.yml`` file. Here is an example for using
-Sulu with MySQL:
+The database connection information is stored as an environment variable called ``DATABASE_URL``.
+For development, you can find and customize this inside ``.env``:
+Here is an example for using Sulu with MySQL:
 
-.. code:: yaml
+.. code:: bash
 
-    parameters:
-        database_driver: pdo_mysql
-        database_host: 127.0.0.1
-        database_port: null
-        database_name: hellosulu
-        database_user: hellosulu
-        database_password: averystrongpassword
-        database_version: 5.6
-
-.. tip::
-
-    The :doc:`parameter reference <../reference/parameters>` contains more
-    information about each of the parameters in this file.
+    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 
 When you're done with the configuration, populate the database with Sulu's
 default data:
@@ -136,7 +124,7 @@ Now that the database is ready, we'll fire up a server to try Sulu in the browse
 Sulu is made up of two separate applications for the administration interface
 and the website. Each application is optimized for its purpose. The applications
 can be managed with the command line tools ``bin/adminconsole`` (for the
-administration) and ``bin/website`` (for the website).
+administration) and ``bin/websiteconsole`` (for the website).
 
 However, we will run one server for both applications, and our front controller
 will make sure the correct application is loaded.
@@ -163,7 +151,7 @@ play around.
 
 When you're ready to learn more, continue with :doc:`templates`.
 
-.. _Sulu Minimal Edition: https://github.com/sulu/sulu-minimal
-.. _Composer:  https://getcomposer.org
+.. _Sulu Skeleton: https://github.com/sulu/skeleton
+.. _Composer: https://getcomposer.org
 .. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Apache Jackrabbit: http://jackrabbit.apache.org

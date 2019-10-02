@@ -23,7 +23,7 @@ Add a field of type "teaser_selection" to your page template:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/overview.xml -->
+    <!-- config/templates/pages/overview.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -126,7 +126,7 @@ Use the ``present_as`` option to configure the rendering variants:
 
 .. code-block:: xml
 
-    <!-- app/Resources/templates/pages/overview.xml -->
+    <!-- config/templates/pages/overview.xml -->
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -192,9 +192,9 @@ from a list of recipes:
 
     namespace AppBundle\Teaser;
 
-    use Sulu\Bundle\ContentBundle\Teaser\Configuration\TeaserConfiguration;
-    use Sulu\Bundle\ContentBundle\Teaser\Provider\TeaserProviderInterface;
-    use Sulu\Bundle\ContentBundle\Teaser\Teaser;
+    use Sulu\Bundle\PageBundle\Teaser\Configuration\TeaserConfiguration;
+    use Sulu\Bundle\PageBundle\Teaser\Provider\TeaserProviderInterface;
+    use Sulu\Bundle\PageBundle\Teaser\Teaser;
 
     class RecipeTeaserProvider implements TeaserProviderInterface
     {
@@ -211,7 +211,7 @@ from a list of recipes:
                 'Recipe',
                 // The JavaScript component started for selecting the content
                 // In this case, we use the generic list component
-                'teaser-selection/list@sulucontent',
+                'teaser-selection/list@sulupage',
                 [                                 // Options of the JavaScript component
                     'url' => '/admin/api/recipe', // The API URL
                     'resultKey' => 'recipes',     // The key in the JSON returned by the API
@@ -267,8 +267,8 @@ A teaser selection component is an AuraJS component that provides functionality
 to select and deselect items.
 
 The following is a simple (and incomplete) example. If you want to see a full
-example, take a look at the components ``teaser-selection/content@sulucontent``
-and ``teaser-selection/list@sulucontent``.
+example, take a look at the components ``teaser-selection/content@sulupage``
+and ``teaser-selection/list@sulupage``.
 
 .. code-block:: javascript
 

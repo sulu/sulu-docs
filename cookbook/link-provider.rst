@@ -10,7 +10,7 @@ chapter :doc:`../bundles/markup/index`).
 
 .. code-block:: html
 
-    <sulu:link provider="page" href="123-123-123"/>
+    <sulu-link provider="page" href="123-123-123"/>
 
 
 The LinkItem consists of the following properties:
@@ -31,9 +31,9 @@ configured with the `LinkConfiguration`.
 
     namespace AppBundle\Link;
 
-    use Sulu\Bundle\ContentBundle\Markup\Link\LinkConfiguration;
-    use Sulu\Bundle\ContentBundle\Markup\Link\LinkItem;
-    use Sulu\Bundle\ContentBundle\Markup\Link\LinkProviderInterface;
+    use Sulu\Bundle\PageBundle\Markup\Link\LinkConfiguration;
+    use Sulu\Bundle\PageBundle\Markup\Link\LinkItem;
+    use Sulu\Bundle\PageBundle\Markup\Link\LinkProviderInterface;
 
     class LinkProvider implements LinkProviderInterface
     {
@@ -44,7 +44,7 @@ configured with the `LinkConfiguration`.
         {
             return new LinkConfiguration(
                 'app.link',
-                'ckeditor/link/list@sulucontent',
+                'ckeditor/link/list@sulupage',
                 [
                     'url' => '...', // your api url to load list
                     'hrefUrl' => '...<%=link.href%>', // your api url to load single item
@@ -105,8 +105,8 @@ A link-select aura-component, which provides the ability to select or deselect
 items.
 
 The following example is a simple (and not complete) example. If you need a full
-example please take a look at the components `ckeditor/link/list@sulucontent`
-or `ckeditor/link/page@sulucontent` or `ckeditor/link/article@suluarticle`.
+example please take a look at the components `ckeditor/link/list@sulupage`
+or `ckeditor/link/page@sulupage` or `ckeditor/link/article@suluarticle`.
 
 .. code-block:: javascript
 

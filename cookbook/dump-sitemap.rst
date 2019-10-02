@@ -10,6 +10,16 @@ Therefore Sulu is able to pre-generate the whole sitemap and
 cache it on the filesystem. This can be triggered by calling the
 following command. This can also be done by a cron-job.
 
+Before you start generating the sitemap, make sure that you have
+properly configured the ``default_host`` parameter.
+
+.. code-block:: yaml
+
+    sulu_website:
+        sitemap:
+            default_host: http://example.com
+
+
 .. code-block:: bash
 
-    app/websiteconsole sulu:website:dump-sitemap
+    bin/websiteconsole sulu:website:dump-sitemap
