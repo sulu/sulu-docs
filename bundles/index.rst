@@ -13,7 +13,6 @@ documented the most important ones.
 .. toctree::
     :maxdepth: 2
 
-    admin/index
     audience_targeting
     automation/index
     collaboration

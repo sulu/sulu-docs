@@ -72,11 +72,6 @@ implements the ``TagInterface``.
 When registering your service simple add the tag
 ``<tag name="sulu_markup.tag" tag="link"/>``.
 
-.. note::
-
-    In combination with the plugin-system of the :doc:`../admin/ckeditor` you
-    can easily provide a user-interface to manage your custom tag.
-
 Namespaces
 ----------
 

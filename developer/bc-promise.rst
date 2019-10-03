@@ -91,13 +91,5 @@ The main entry point will continue to exist at the same location
 this file will be continuing to work the same way. We will also continue to use
 `RequireJS`_ and the components model including the ``sandbox``.
 
-Hooks
-~~~~~
-
-We have introduced different hooks
-(see :doc:`../bundles/admin/javascript-hooks/index`) in our JavaScript
-environment. The hooks for events, defaults, loadComponentData and the header
-will keep backwards compatibility.
-
 .. _MassiveSearchBundle Mapping: http://massivesearchbundle.readthedocs.org/en/latest/mapping.html
 .. _RequireJS: http://requirejs.org/
