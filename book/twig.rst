@@ -4,7 +4,6 @@ Rendering Pages with Twig
 Twig is an awesome option for rendering HTML. It got some nice features like
 blocks and inheritance. That's why we use and love Twig.
 
-
 Build the HTML template
 -----------------------
 
@@ -18,14 +17,12 @@ Please make also sure that your HTML is valid, and use HTML tags in a semantic
 way, so that your website will achieve the best results in terms of search
 engine optimization.
 
-
 Which Twig-Template is used?
 ----------------------------
 
 In :doc:`templates` we learned how to define a template.
 
 .. code-block:: xml
-    :linenos:
 
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
@@ -47,13 +44,11 @@ example sulu uses for a html request the template
 `templates/pages/default.xml.twig` for a xml request. With this
 feature you are able to define different output format for a single page.
 
-
 Rendering the Content
 ---------------------
 
 If you don't use your custom controller and modify the output the Sulu
 Controller renders, Sulu passes some default variables to Twig.
-
 
 Content
 ^^^^^^^
@@ -65,17 +60,16 @@ If you got a title you could easily obtain it from the content-var.
 
     <h1>{{ content.title }}</h1>
 
-
 Extension
 ^^^^^^^^^
 
 In the extension var Sulu writes content from Sulu extensions. Typically stuff
-that is defined in separate Tabs in the Sulu content section.
+that is defined in separate tabs in the Sulu content section.
 At the moment there is the SEO and the excerpt extension, that could be used.
 This extensions are available on every page no matter which template you chose.
 
 Here is an example how it could look like in the backend. Notice the
-`Excerpt & Categories` tab next to the SEO tab.
+"Excerpt & Categories" tab next to the SEO tab.
 
 .. figure:: ../img/admin-extension-seo.png
     :align: center
@@ -84,13 +78,13 @@ You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-    {%- include 'SuluWebsiteBundle:Extension:seo.html.twig' with {
-        seo: extension.seo,
-        content: content,
-        urls: urls,
-        shadowBaseLocale: shadowBaseLocale,
-        defaultLocale: request.defaultLocale
-    } -%}
+    {% include "SuluWebsiteBundle:Extension:seo.html.twig" with {
+        "seo": extension.seo|default([]),
+        "content": content|default([]),
+        "urls": urls|default([]),
+        "shadowBaseLocale": shadowBaseLocale|default(),
+        "defaultLocale": app.request.locale
+    } %}
 
 The excerpt data is available from:
 
@@ -132,6 +126,10 @@ Other Variables
  - `published`: Contains the timestamp of the publishing of the current page
  - `urls`: Contains urls of all locales
 
+.. tip::
+    
+    You can also use ``{{ dump() }}`` in the template to see all available variables if you are in dev mode.
+
 Navigation
 ^^^^^^^^^^
 
@@ -146,9 +144,8 @@ contexts might be enough:
 * A footer navigation can be useful for imprints and similar pages.
 
 The following screenshot shows the `Sulu homepage`_ with the main navigation on
-the right and the footer navigation on the bottom. As you can see the
-navigation returned for the navigation contexts are not necessarily flat, but
-can also contain sub pages.
+the top. As you can see the navigation returned for the navigation contexts are
+not necessarily flat, but can also contain sub pages.
 
 .. figure:: ../img/website-navigation-contexts.png
     :align: center
@@ -162,7 +159,6 @@ nested navigation using all the pages marked to be shown in the main navigation
 context.
 
 .. code-block:: html
-    :linenos:
 
     <ul>
         {% for item in sulu_navigation_root_tree('main', 2) %}
@@ -190,7 +186,6 @@ If there are images defined in your template you could render them by using
 this code:
 
 .. code-block:: html
-    :linenos:
 
     {% for image in content.images %}
     <div>
@@ -201,22 +196,5 @@ this code:
 
 Image formats need to be defined in the `image_formats.xml`_ in your config.
 
-More examples
--------------
-
-You could find more examples of how content could be accessed in our
-`example file`_.
-
-
-Default Template
-----------------
-
-Just have a look at our `default theme`_, that ships with our standard
-installation as long with our `default page templates`_ over at github.
-
-
-.. _default theme: https://github.com/sulu/sulu-standard/tree/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default
-.. _default page templates: https://github.com/sulu/sulu-standard/tree/master/app/Resources/pages
-.. _example file: https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig
 .. _image_formats.xml: https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml
 .. _Sulu Homepage: http://sulu.io

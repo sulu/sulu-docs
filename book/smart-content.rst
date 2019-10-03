@@ -57,13 +57,13 @@ defined which properties of the page should be returned in the array passed to
 the twig template. The ``name`` of the parameter describes how the property
 will be accessible in the twig template, and the value is the name of the
 property on the page. Additionally there is the excerpt extension, which can be
-used as well, there has just ``excerpt.`` to be prefixed. This extension is
-available for all pages, so it is a safe bet. The problem with other properties
-is that you have to make sure or at least check in the twig template if the
-property exists.
+used as well, there has ``excerpt.`` to be prefixed. This extension is available
+for all pages, so it is a safe bet. The problem with other properties is that
+you have to make sure or at least check in the twig template if the property
+exists.
 
 The value of the ``present_as`` property is injected into a dropdown, where the
-content editor can choose between different styles, which of course have to be
+content editor can choose between different styles, which have to be
 implemented by the creator of the twig template. Popular options here are one
 or two columns with variations like with or without images.
 
@@ -85,9 +85,9 @@ This way it is really simple to display this information using a twig template:
 
     <div property="pages">
     {% for page in content.pages %}
-        <div class="{{ view.pages.present_as }}">
+        <div class="{{ view.pages.presentAs }}">
             <h2><a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a></h2>
-            <p>{{ page.description }}</p>
+            <p>{{ page.description|raw }}</p>
         </div>
     {% endfor %}
     </div>
@@ -125,14 +125,14 @@ The smart content supports pagination, which can be activated with the param
         {% if page-1 >= 1 %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page-1 }}">&laquo;</a></li>
         {% endif %}
-        {% if view.smartcontent.hasNextPage %}
+        {% if view.pages.hasNextPage %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page+1 }}">&raquo;</a></li>
         {% endif %}
     </ul>
 
     <div property="pages">
     {% for page in content.pages %}
-        <div class="{{ view.pages.present_as }}">
+        <div class="{{ view.pages.presentAs }}">
             <h2><a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a></h2>
             <p>{{ page.description }}</p>
         </div>

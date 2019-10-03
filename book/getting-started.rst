@@ -86,11 +86,9 @@ untested:
 +------------------------------+---------------------------------------+
 | SQLite                       | no                                    |
 +------------------------------+---------------------------------------+
-| Drizzle                      | untested                              |
-+------------------------------+---------------------------------------+
 
 The database connection information is stored as an environment variable called ``DATABASE_URL``.
-For development, you can find and customize this inside ``.env``:
+For development, you can find and customize this inside ``.env.local``:
 Here is an example for using Sulu with MySQL:
 
 .. code:: bash
@@ -131,7 +129,7 @@ will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    SYMFONY_ENV=dev bin/console server:start
+    bin/console server:start
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".

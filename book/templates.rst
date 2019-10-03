@@ -396,14 +396,14 @@ Content Blocks
 --------------
 
 Similar to sections, content blocks contain a list of fields. In content blocks,
-however, the content managers themselves can add fields of different types and
+however, the content managers themselves can add blocks of different types and
 order them as they want:
 
 .. figure:: ../img/templates-content-blocks.png
 
 Content blocks are defined with the ``<block>`` element. Like properties, they
 have a name that is used to access their content in Twig. The label of the
-content block is -- you guessed it -- set in the ``<meta>`` element:
+content block is set in the ``<meta>`` element:
 
 .. code-block:: xml
 
@@ -415,13 +415,13 @@ content block is -- you guessed it -- set in the ``<meta>`` element:
         <!-- ... -->
         <properties>
         <!-- ... -->
-            <block name="eventDetails">
-                <meta>
-                    <title lang="en">Event Details</title>
-                </meta>
+         <block name="eventDetails">
+             <meta>
+                 <title lang="en">Event Details</title>
+             </meta>
 
-                <!-- ... -->
-            </block>
+             <!-- ... -->
+         </block>
         <!-- ... -->
         </properties>
         <!-- ... -->
@@ -505,8 +505,16 @@ type:
                     <!-- ... -->
 
                     <properties>
-                        <property name="text" type="text_area"/>
-                        <property name="author" type="contact_account_selection"/>
+                        <property name="text" type="text_area">
+                            <meta>
+                                <title lang="en">Text</title>
+                            </meta>
+                        </property>
+                        <property name="author" type="contact_account_selection">
+                            <meta>
+                                <title lang="en">Author</title>
+                            </meta>
+                        </property>
                     </properties>
                 </type>
             </types>
