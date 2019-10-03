@@ -40,8 +40,8 @@ configuration.
 
     sulu_websocket:
         server:
-            http_host: %websocket_url%
-            port: %websocket_port%
+            http_host: '%websocket_url%'
+            port: '%websocket_port%'
 
     sulu_content:
         preview:
