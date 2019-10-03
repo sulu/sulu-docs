@@ -63,7 +63,7 @@ If you got a title you could easily obtain it from the content-var.
 
 .. code-block:: html
 
-    <h1>{{ content.title }}</title>
+    <h1>{{ content.title }}</h1>
 
 
 Extension
