@@ -22,7 +22,7 @@ the given events.
         return {
 
             defaults: {
-                options: {instanceName: 'example}
+                options: {instanceName: 'example'}
             },
 
             events: {

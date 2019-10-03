@@ -1,4 +1,5 @@
 {%- extends "basic/layout.html" %}
+
 {%- block extrahead %}
   {{ super() }}
   {% if theme_touch_icon %}
@@ -10,7 +11,6 @@
 
 {% block sidebartoc %}
   {% set toctree = toctree(maxdepth=4, collapse=true, includehidden=true, titles_only=true) %}
-  <div id="logo"><a href="http://docs.sulu.io"><img src="{{ pathto('_static/sulu-logo.png', 1) }}" class="logo" /></a></div> 
   <h3>Table of Contents</h3>
   {% if toctree %}
       {{ toctree }}
@@ -19,6 +19,7 @@
       <div class="local-toc">{{ toc }}</div>
   {% endif %}
 {% endblock %}
+
 {%- block footer %}
     <div class="footer">
     </div>
