@@ -33,7 +33,7 @@ by placing the following lines into your configuration:
         enabled: true
         server:
             http_host: "%websocket_url%"
-            port: "%websocket_port%
+            port: "%websocket_port%"
 
 Execution
 ---------

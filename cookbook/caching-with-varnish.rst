@@ -5,7 +5,7 @@ Varnish is a HTTP `caching proxy`_  server which can be used to radically
 improve the response time of your website.
 
 Sulu is bundled with a "soft" `caching proxy`_, the Symfony `HttpCache`_, but
-using Varnish is a more optimal solution for a large website, especially if it 
+using Varnish is a more optimal solution for a large website, especially if it
 has lots of traffic.
 
 In addition to being twice as fast as the default caching implementation it
@@ -19,7 +19,7 @@ appear more up-to-date.
     imperceptible - but varnish will scale better and supports better
     invalidation.
 
-This tutorial will walk you through the process of setting up Varnish on 
+This tutorial will walk you through the process of setting up Varnish on
 your own server and configuring it to work with Sulu.
 
 This tutorial assumes that:
@@ -254,7 +254,7 @@ edition`_) and ensure that the following lines are commented out:
 .. code-block:: php
 
     // Uncomment this line if you want to use the "symfony" http
-    // caching strategy. See 
+    // caching strategy. See
     // if (SYMFONY_ENV != 'dev') {
     //    require_once __DIR__ . '/../app/WebsiteCache.php';
     //    $kernel = new WebsiteCache($kernel);
@@ -316,7 +316,7 @@ Optimal configuration
 ---------------------
 
 To get the most out of the Varnish cache you should enable the ``tags`` cache
-handler and disable the ``paths`` handler.  
+handler and disable the ``paths`` handler.
 
 The ``tags`` handler will automatically ensure that any changes you make in the
 admin interface are immediately available on your website.
