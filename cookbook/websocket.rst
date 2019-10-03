@@ -32,8 +32,8 @@ by placing the following lines into your configuration:
     sulu_websocket:
         enabled: true
         server:
-            http_host: %websocket_url%
-            port: %websocket_port%
+            http_host: '%websocket_url%'
+            port: '%websocket_port%'
 
 Execution
 ---------
