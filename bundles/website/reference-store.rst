@@ -8,7 +8,7 @@ caching component :doc:`../http_cache`.
 Architecture
 ------------
 
-Each type of content register its own service which implements
+Each type of content registers its own service which implements the
 ``ReferenceStoreInterface`` or with the default implementation
 ``Sulu\Bundle\PageBundle\ReferenceStore\ReferenceStore``.
 

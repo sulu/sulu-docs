@@ -60,9 +60,9 @@ Enable this feature via configuration:
 
 .. code-block:: yaml
 
-sulu_http_cache:
-    debug:
-        enabled: true
+    sulu_http_cache:
+        debug:
+            enabled: true
 
 Tags
 """"
@@ -70,7 +70,7 @@ Tags
 The tags feature is the most comprehensive cache invalidation strategy, it will
 invalidate both the URLs of the structure and the URLs of the pages which
 display references to the structure. It must be used in conjunction with a
-proxy client which supports Banning. Currently **this is only possible with Varnish**.
+proxy client which supports Banning.
 
 This works by sending all of the UUIDs of the structures which are
 contained in a page response to the proxy client. The proxy client can then
@@ -94,9 +94,9 @@ Enable this feature via configuration:
 
 .. code-block:: yaml
 
-sulu_http_cache:
-    tags:
-        enabled: true
+    sulu_http_cache:
+        tags:
+            enabled: true
 
 Proxy Clients
 -------------
@@ -108,24 +108,17 @@ Symfony Http Cache
 
 The Symfony HTTP cache is the default caching client for Sulu. It is integrated directly into Sulu.
 
-It works by "wrapping" the kernel. You can find it in the website front controller ``web/website.php``:
+It works by "wrapping" the kernel. This is done by the kernel itself, but in the front controller
+at ``public/index.php`` the cache kernel has to be used:
 
 .. code-block:: php
 
-    // web/website.php
     // ...
-
-    // Comment this line if you want to use the "varnish" http
-    // caching strategy. See http://sulu.readthedocs.org/en/latest/cookbook/caching-with-varnish.html
-    if (SYMFONY_ENV !== 'dev') {
-        $kernel = new WebsiteCache($kernel);
-
-        // When using the HttpCache, you need to call the method in your front controller
-        // instead of relying on the configuration parameter
-        Request::enableHttpMethodParameterOverride();
+    if ('dev' !== $_SERVER['APP_ENV'] && SuluKernel::CONTEXT_WEBSITE === $suluContext) {
+        $kernel = $kernel->getHttpCache();
     }
 
-It will need to be disabled when using varnish.
+It will need to be disabled (i.e. the lines need to be removed) when using varnish.
 
 Varnish
 """""""

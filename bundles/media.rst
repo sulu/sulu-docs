@@ -19,4 +19,3 @@ to a collection. With the `edit` permission the user is allowed to edit the
 title and other attributes of the collections and its containing assets, and
 finally the `delete` permission is required to delete assets and entire
 collections.
-

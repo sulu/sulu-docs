@@ -64,8 +64,10 @@ for example) and use this alias in the configuration:
                 generator: schema
                 options:
                     route_schema: /{translator.trans('recipe')}/{object.getTitle()}
+                resource_key: recipes
             AppBundle\Entity\Example:
                 generator: custom
                 options:
                     type1: /example/{object.getName()}
                     type2: /example/{object.getTitle()}
+                resource_key: examples

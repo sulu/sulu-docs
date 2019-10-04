@@ -29,36 +29,24 @@ Configuration
 -------------
 
 The sessions are configured in the ``sulu_document_manager.sessions`` option.
-Sessions can have names, which can be used to reference them in the
-``sulu_document_manager.default_session`` and
-``sulu_document_manager.live_session``. This configuration will tell the system
-where to save the content for the drafts and live documents. See the following
-configuration for an example:
+This configuration will tell the system where to save the content for the drafts
+and live documents. See the following configuration for an example:
 
 .. code-block:: yaml
 
+    parameters:
+        env(PHPCR_WORKSPACE): 'default'
+
     sulu_document_manager:
-        default_session: default
-        live_session: live
         sessions:
             default:
-                backend: "%phpcr_backend%"
-                workspace: "%phpcr_workspace%"
-                username: "%phpcr_user%"
-                password: "%phpcr_pass%"
+                backend:
+                    type: doctrinedbal
+                workspace: "%env(PHPCR_WORKSPACE)%"
             live:
-                backend: "%phpcr_backend%"
-                workspace: "%phpcr_workspace%_live"
-                username: "%phpcr_user%"
-                password: "%phpcr_pass%"
-
-.. note::
-
-    Remember to set the default session differently for both Kernels. The 
-    AdminKernel should have the ``default`` session configured as
-    ``default_session``, whereby the `WebsiteKernel` should have the
-    ``live`` session configured as ``default_session``. So the documents are
-    read from the correct workspace for both Kernels.
+                backend:
+                    type: doctrinedbal
+                workspace: "%env(PHPCR_WORKSPACE)%_live"
 
 Session handling
 ----------------

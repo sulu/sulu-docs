@@ -15,7 +15,6 @@ documented the most important ones.
 
     admin/index
     audience_targeting
-    automation/index
     collaboration
     page/index
     hash

@@ -17,7 +17,7 @@ a backend service.
 API
 ...
 
-The URL of the API is `/admin/api/nodes` or `/admin/api/nodes/<uuid>`.
+The URL of the API is `/admin/api/pages` or `/admin/api/pages/<uuid>`.
 
 The mandatory parameters are:
 
@@ -61,9 +61,6 @@ repository (for example: 'title,order,article').
 The list endpoint also accepts a `parent` parameter. If this parameter is set
 the given page will be used to query for children else the webspace root is
 default.
-
-The single endpoint also accepts a `tree` flag. If it is true all parents and
-siblings are returned else only the requested page will be returned.
 
 Service
 .......

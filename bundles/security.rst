@@ -107,4 +107,3 @@ from the role might be overridden by the permissions from this specific object
 (which are handled by the previously mentioned ``AccessControlManager``).
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
-
