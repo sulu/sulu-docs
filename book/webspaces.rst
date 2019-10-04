@@ -37,9 +37,8 @@ following paragraphs.
         </default-templates>
 
         <templates>
-            <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
-            <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
-            <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
+            <template type="search">search/search</template>
+            <template type="error">error/error</template>
         </templates>
 
         <navigation>
