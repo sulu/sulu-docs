@@ -9,15 +9,14 @@ Configuration
 
 The following code-block from the webspace configuration file shows a default
 configuration for the exception templates. If you want to add an own exception
-for example 400 you can simply add it to the list. You can specify that for
+for example 404 you can simply add it to the list. You can specify that for
 each theme.
 
 .. code-block:: xml
 
     <templates>
-        <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
-        <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
-        <template type="error-500">ClientWebsiteBundle:views:error500.html.twig</template>
+        <template type="error">error/error</template>
+        <template type="error-404">error/error-404</template>
     </templates>
 
 The `ExceptionController` uses the status-code of the response to determine
@@ -32,7 +31,7 @@ style.
 
 .. code-block:: html
 
-	{% extends "ClientWebsiteBundle:views:master.html.twig" %}
+	{% extends "base.html.twig" %}
 
 	{% block title %}Error {{ status_code }}{% endblock %}
 

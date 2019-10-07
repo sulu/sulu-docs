@@ -72,7 +72,7 @@ permission types for this security context.
 
 .. note::
     
-    Since the ``Admin`` class is registered as a bundle, you can make use of
+    Since the ``Admin`` class is registered as a service, you can make use of
     different services to define the available security contexts. For example
     the SuluPageBundle uses a service to create an own security context for
     all available webspaces in the system.
@@ -80,7 +80,7 @@ permission types for this security context.
 Protect your controller
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-After defining a security context, you can use it to easily protect the actions
+After defining a security context, you can use it to  protect the actions
 of one of your controllers. All you have to do is to implement the
 ``SecuredControllerInterface`` telling the ``SuluSecurityListener`` which
 security context and locale to use for the permission check:
@@ -149,62 +149,58 @@ extended by the permission tab:
 .. code-block:: php
 
     <?php
-
-    namespace Sulu\Bundle\MediaBundle\Admin;
-
-    use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationItem;
-    use Sulu\Bundle\AdminBundle\Navigation\ContentNavigationProviderInterface;
-    use Sulu\Bundle\MediaBundle\Api\Collection;
-    use Sulu\Component\Security\Authorization\PermissionTypes;
-    use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
-
-    class ContentNavigationProvider implements ContentNavigationProviderInterface
+    
+    namespace Sulu\Bundle\ExampleBundle\Admin;
+    
+    use Sulu\Bundle\AdminBundle\Admin\Admin;
+    use Sulu\Bundle\AdminBundle\Admin\View\ToolbarAction;
+    use Sulu\Bundle\AdminBundle\Admin\View\ViewBuilderFactoryInterface;
+    use Sulu\Bundle\AdminBundle\Admin\View\ViewCollection;
+    
+    class ExampleAdmin extends Admin
     {
-        private $securityChecker;
-
-        public function __construct(SecurityCheckerInterface $securityChecker)
-        {
-            $this->securityChecker = $securityChecker;
+        /**
+         * @var ViewBuilderFactoryInterface
+         */
+        private $viewBuilderFactory;
+    
+        public function __construct(
+            ViewBuilderFactoryInterface $viewBuilderFactory,
+        ) {
+            $this->viewBuilderFactory = $viewBuilderFactory;
         }
-
-        public function getNavigationItems(array $options = [])
+    
+        public function configureViews(ViewCollection $viewCollection): void
         {
-            // also add your other ContentNavigationItems here
-
-            $navigation = [];
-
-            $securityContext = 'sulu.acme.example';
-
-            if ($this->securityChecker->hasPermission($securityContext, PermissionTypes::SECURITY)) {
-                $permissions = new ContentNavigationItem('Permissions');
-                $permissions->setAction('permissions');
-                $permissions->setDisplay(['edit']);
-                $permissions->setComponent('permission-tab@sulusecurity');
-                $permissions->setComponentOptions(
-                    [
-                        'display' => 'form',
-                        'type' => Example::class,
-                        'securityContext' => $securityContext,
-                    ]
-                );
-
-                $navigation[] = $permissions;
-            }
-
-            return $navigation;
+            // ...
+            $viewCollection->add(
+                $this->viewBuilderFactory
+                    ->createFormViewBuilder('sulu_example.edit_form.permissions', '/permissions')
+                    ->setResourceKey('permissions')
+                    ->setFormKey('permission_details')
+                    ->setRequestParameters(['resourceKey' => 'example'])
+                    ->setTabCondition('_permissions.security')
+                    ->setTabTitle('sulu_security.permissions')
+                    ->addToolbarActions([new ToolbarAction('sulu_admin.save')])
+                    ->setParent(static::EDIT_FORM_VIEW)
+            );
         }
     }
 
-The :doc:`using-tab-navigation` explains this code in more detail. The only
-important method call here is `setComponentOptions`, the rest can stay widely
-the same over all bundles (of course you can change the other configuration as
-well as described in :doc:`using-tab-navigation`).
+The important option here is set in the ``setRequestParameters`` call, which
+defines for which resource this permission form is used. In order for that to
+work the relation between the ``resourceKey`` and the security context and the
+security class has to be configured:
 
-In `setComponentOptions` the `type` of the object to secure and the required
-security context are passed. For the type it is a good idea to use the class
-name of the entity as shown in the example. The security context is required to
-check if the current user has the permission to change the security settings in
-the given context.
+.. code-block: yaml
+
+    resources:
+        example:
+            routes:
+                list: 'get_examples'
+                detail: 'get_example'
+            security_context: 'sulu_admin.example'
+            security_class: 'App\\Entity\\Example'
 
 After this addition the permission tab should already be visible in the edit
 form.
@@ -269,12 +265,12 @@ Controller handling the specific type of entities:
         }
     }
 
-The `SecuredObjectControllerInterface` required three different methods. The
+The `SecuredObjectControllerInterface` requires three different methods. The
 `getLocale` method is the same as in the `SecuredControllerInterface`, and the
 implementation can be shared. The `getSecuredClass` method has to return the
-same identifier for the type of object as used in the
-`ContentNavigationProvider`. Finally the `getSecuredObjectId` receives the
-request object, and has to return the id of the object from it.
+same identifier for the type of object as used in the resources configuration.
+Finally the `getSecuredObjectId` receives the request object, and has to return
+the id of the object from it.
 
 The rest of the work will be done by the `SuluSecurityListener` in the same way
 as for the check of the security contexts.

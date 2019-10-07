@@ -3,7 +3,7 @@ How to manage analytics?
 
 Sulu gives the content-manger an easy way to manage analytic-codes and appends
 them automatically to the website output without any changes in the
-twig-template. You can find the list of analytics under the webspace-settings.
+twig-template. You can find the list of analytics under the webspace section.
 
 The analytics consist of:
 
@@ -29,7 +29,7 @@ the code into the textarea.
 .. warning::
 
     Be aware that custom analytics will not be evaluated and appended without
-    validation - therefor it could break the website directly after saving.
+    validation - therefore it could break the website directly after saving.
 
 Override analytics template
 ---------------------------
@@ -37,12 +37,20 @@ Override analytics template
 You are able to override the analytics template with the
 `symfony template overriding mechanism <http://symfony.com/doc/current/book/templating.html#overriding-bundle-templates>`_.
 
-There are three relevant templates:
+There are three relevant templates folders:
 
-* ``SuluWebsiteBundle:Analytics/type/google.html.twig``
-* ``SuluWebsiteBundle:Analytics/type/google_tag_manager.html.twig``
-* ``SuluWebsiteBundle:Analytics/type/piwik.html.twig``
-* ``SuluWebsiteBundle:Analytics/type/custom.html.twig``
+* ``SuluWebsiteBundle:Analytics/type/google``
+* ``SuluWebsiteBundle:Analytics/type/google_tag_manager``
+* ``SuluWebsiteBundle:Analytics/type/piwik``
+* ``SuluWebsiteBundle:Analytics/type/custom``
+
+Each of these folders can contain multiple templates according to the desired
+position of its content:
+
+* ``body-open.html.twig``
+* ``body-close.html.twig``
+* ``head-open.html.twig``
+* ``head-close.html.twig``
 
 You can access the following information in the twig variable ``analytics``.
 
@@ -60,7 +68,7 @@ You can access the following information in the twig variable ``analytics``.
       - The title of the analytics.
     * - allDomains
       - boolean
-      - Indicates whether the analytics is on all domains of specific.
+      - Indicates whether the analytics is on all domains or only a specific one.
     * - content
       - mixed
       - Differs for the type.

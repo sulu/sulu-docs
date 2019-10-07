@@ -1,7 +1,7 @@
 How to deactivate the RequestAnalyzer?
 ======================================
 
-The ``RequestAnalyzer`` has the very important task of recognizing e.g.  at
+The ``RequestAnalyzer`` has the very important task of recognizing e.g. at
 which webspace and locale the current request is targeted. It also recognizes
 if the current request is not valid based on some rules, e.g. if there is no 
 webspace available at the requested URL. In this case the ``RequestAnalyzer``
