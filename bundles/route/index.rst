@@ -36,7 +36,7 @@ Entity
 
 First extend your entity with the properties `id`, `locale` and a new many-to-one relation `route`:
 
-reciepe.orm.xml:
+recipe.orm.xml:
 
 .. code-block:: xml
 
@@ -52,7 +52,7 @@ reciepe.orm.xml:
         <join-column name="idRoutes" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
     </many-to-one>
 
-Reciepe.php:
+Recipe.php:
 
 .. code-block:: php
 
@@ -111,6 +111,7 @@ Configure the route-schema in the file `app/config/config.yml`:
                 generator: schema
                 options:
                     route_schema: /{translator.trans('recipe')}/{object.getTitle()}
+                resource_key: recipes
 
 .. note::
 

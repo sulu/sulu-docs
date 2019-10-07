@@ -6,8 +6,10 @@ been published. Sulu will also show a table in the settings tab of each page,
 showing the already created version. From this table old versions can be
 restored, which will result in a new draft.
 
-Mind that this feature is only available for Jackrabbit, because Jackalope does
-currently not support versioning for its Doctrine DBAL transportation layer.
+.. note::
+
+   Mind that this feature is only available for Jackrabbit, because Jackalope does
+   currently not support versioning for its Doctrine DBAL transportation layer.
 
 Configuration
 -------------

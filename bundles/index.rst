@@ -14,7 +14,6 @@ documented the most important ones.
     :maxdepth: 2
 
     audience_targeting
-    automation/index
     collaboration
     page/index
     hash
