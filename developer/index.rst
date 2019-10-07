@@ -13,7 +13,6 @@ Here's how we work at the Sulu team. We are really open to Pull Requests. It is 
 
     contributing/index
     bc-promise
-    create-bundle/index
     behat/index
 
 No matter what, we love every contribution and will honor it.

@@ -5,7 +5,7 @@ To show images on your website you should define different image formats for opt
 
 Image formats can be defined in:
 
- - `app/config/image-formats.xml`
+ - `config/image-formats.xml`
 
 Or when you use the SuluThemeBundle you can define the formats in your theme folder:
 
@@ -44,7 +44,9 @@ The following example shows you different ways to define image formats:
 Defining meta title
 -------------------
 
-You should define a meta title for every image format, since these titles are shown to the content manager in the administration interface when cropping the images.
+You should define a meta title for every image format, since these titles are
+shown to the content manager in the administration interface when cropping the
+images.
 
 .. code-block:: xml
 
@@ -77,12 +79,9 @@ Image Compression
 Global image compression
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Images will not get compressed by default, if you upload them. You can set the
-compression for images globally in the `app/config/config.yml`.
-
-To set the compression for all images you have to add following lines to your
-
-``config.yml``:
+Images will not get compressed by default when you upload them. You can set the
+compression for images globally e.g. in the `config/packages/sulu_media.yml`.
+This file does not exist by default and must be created on your own.
 
 .. code-block:: yaml
 

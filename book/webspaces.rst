@@ -37,9 +37,8 @@ following paragraphs.
         </default-templates>
 
         <templates>
-            <template type="search">ClientWebsiteBundle:views:search.html.twig</template>
-            <template type="error">ClientWebsiteBundle:views:error.html.twig</template>
-            <template type="error-404">ClientWebsiteBundle:views:error404.html.twig</template>
+            <template type="search">search/search</template>
+            <template type="error">error/error</template>
         </templates>
 
         <navigation>
@@ -89,7 +88,7 @@ following paragraphs.
     it.
 
 As you probably already have encountered, the root tag for our webspace
-definition is `webspace`. Afterwards you see a name, which is displayed in the
+definition is ``webspace``. Afterwards you see a name, which is displayed in the
 administration interface. But even more important is the key, which is used
 internally to generate some files and define some paths. Therefore it is really
 important that the webspace key is unique across all webspaces in a single
@@ -98,7 +97,7 @@ installation.
 Localizations
 -------------
 
-In the `localizations`-tag you can list all the available localizations in this
+In the ``localizations``-tag you can list all the available localizations in this
 webspace. In the example we are simply adding the English language, but you can
 also define country specific language if you add a country attribute to the
 localization, so for instance the following tag would add Austrian German to
@@ -114,17 +113,17 @@ For a more complete explanation you should have a look at
 Themes (optional)
 -----------------
 
-The `theme` is described by a key. This key leads to a certain theme,
+The ``theme`` is described by a key. This key leads to a certain theme,
 implemented by a developer in the system. Read more about themes in the section
 :doc:`themes`. This feature is default deactivated and therefore in the
 example not used. If you have multiple webspaces which should look different,
-you can use this feature to easily do this.
+you can use this feature to do this.
 
 Templates
 ---------
 
 The webspace can also define certain templates in combination with a type.
-These template can then be retrieved from the webspace. E.g. Sulu uses them to
+These templates can then be retrieved from the webspace. E.g. Sulu uses them to
 retrieve the correct templates for errors. Therefore it makes use of the
 template with type ``error-<http-code>`` respectively it uses the template with
 the type  ``error`` as a fallback. The other use case is the search. Sulu will
@@ -136,7 +135,7 @@ Navigation
 
 It's also possible to define some so called navigation contexts, which allows
 the user to add pages to different kind of navigations. The different contexts
-can be defined in the `navigation`-section, and this selection will be
+can be defined in the ``navigation``-section, and this selection will be
 available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu, whereby it is not only possible to
@@ -145,17 +144,17 @@ retrieve a flat list of pages, but also to retrieve entire navigation trees.
 Resource-Locator (optional)
 ---------------------------
 
-The `strategy` for the `resource-locator` influences the design of the URLs for
-the content. Default value is `tree_leaf_edit`, which means that the
-`resource-locator` will be generated for the whole tree, but only the last part
+The ``strategy`` for the ``resource-locator`` influences the design of the URLs for
+the content. Default value is ``tree_leaf_edit``, which means that the
+``resource-locator`` will be generated for the whole tree, but only the last part
 will be editable.
 
-Currently there is only one alternative `tree_full_edit`, which also generates
-the whole tree, but lets you edit the whole `resource-locator` afterwards.
+Currently there is only one alternative ``tree_full_edit``, which also generates
+the whole tree, but lets you edit the whole ``resource-locator`` afterwards.
 
-The `strategy` also influences the behavior when renaming or moving a page.
-The `tree_leaf_edit` (in opposite `tree_full_edit`) will also update the
-`resource-locator` of the children.
+The ``strategy`` also influences the behavior when renaming or moving a page.
+The ``tree_leaf_edit`` (in opposite ``tree_full_edit``) will also update the
+``resource-locator`` of the children.
 
 Portals
 -------
@@ -166,9 +165,9 @@ shared among different portals and URLs. The portals can then also define for
 themselves in which localization they publish the content, so that you can
 spread different localizations over different URLs.
 
-Our sample file defines just one portal, which includes a `name` and a `key`
-just as the webspace, whereby the key for the portal hast to be unique for the
-entire installation, not only within this webspace.
+Our sample file defines just one portal, which includes a ``name`` and a
+``key`` just as the webspace, whereby the key for the portal hast to be unique
+for the entire installation, not only within this webspace.
 
 URLs
 ~~~~
@@ -176,8 +175,8 @@ URLs
 The most important part of the portal configuration are the environments,
 because they are including the URLs for the portal. A portal can have multiple
 environments, which have to match the environments defined in Symfony. Usually
-`dev`, `stage` and `prod` are available. Each environment can define its own
-set of URLs.
+``dev``, ``stage`` and ``prod`` are available. Each environment can define its
+own set of URLs.
 
 .. note::
 
@@ -214,12 +213,12 @@ following line for an example:
 
 Placeholder are expressions in curly braces, which will be expanded to every
 possible value. For the above example that means, that an URL for every
-localization defined will be generated. So if you have a localization `de-at`
-and `en-gb`, the system will create URLs for `www.example.org/de-at` and
-`www.example.org/en-us`.
+localization defined will be generated. So if you have a localization ``de-at``
+and ``en-gb``, the system will create URLs for ``www.example.org/de-at`` and
+``www.example.org/en-us``.
 
 In the following table all the possible placeholders are listed, and explains
-the values of them by using the `de-at`-localization:
+the values of them by using the ``de-at``-localization:
 
 +----------------+----------------------------------------+--------------------+
 | Placeholder    | Description                            | Example for `de-at`|

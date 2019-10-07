@@ -30,32 +30,17 @@ First add the dependency to the `SuluThemeBundle`_ in your `composer.json` file.
 
     composer require sulu/theme-bundle
 
-To enable it add the following lines into the `app/AbstractKernel.php` and
-`app/config/config.yml`.
+To enable it add the following line into the `config/bundles.php` file:
 
 .. code-block:: xml
 
-    abstract class AbstractKernel extends SuluKernel
-    {
-        /**
-         * {@inheritdoc}
-         */
-        public function registerBundles()
-        {
-            $bundles = [
-                ...
+    return [
+        ...
 
-                new Sulu\Bundle\ThemeBundle\SuluThemeBundle(),
-                new Liip\ThemeBundle\LiipThemeBundle(),
+        Sulu\Bundle\ThemeBundle\SuluThemeBundle::class => ['all' => true],
+    ];
 
-                ...
-            ];
-
-            ...
-
-            return $bundles;
-        }
-    }
+Add the following configuration in the file `config/packages/liip_theme.yaml`, which you have to create on your own:
 
 .. code-block:: yaml
 
@@ -64,6 +49,9 @@ To enable it add the following lines into the `app/AbstractKernel.php` and
         themes: ["default"]
         active_theme: "default"
         load_controllers: false
+        path_patterns:
+            app_resource:
+                - '%kernel.project_dir%/templates/themes/%%current_theme%%/%%template%%'
 
 This will configure a default theme which can be enabled in the
 `config/webspaces/<webspace>.xml` file by adding:
@@ -75,14 +63,10 @@ This will configure a default theme which can be enabled in the
 Create a theme
 --------------
 
-Creating a theme is as easy as creating a new folder in the `Resources/themes/`
-folder of your bundle with the name of the new theme. Afterwards you have to
-fill this folder with all the used templates in the webspace. These templates
-go into another subfolder in your theme, which you have to reference later. We
-recommend to name this folder `templates`. It is also recommended to create
-a folder `views` for more general templates, like the master template, an
-error page, etc., and a folder `blocks` for reusable templates, like the seo
-information.
+To create a theme you have to create a new folder in the `templates/themes`
+folder of your application with the name of the new theme. Afterwards you have
+to fill this folder with all the used templates in the webspace. These templates
+go into another subfolder in your theme, which you have to reference later. 
 
 For more concrete information about the structure of these templates you should
 check the :doc:`templates`.
@@ -92,9 +76,9 @@ Enable the theme
 ----------------
 
 For resolving the templates we are using the `LiipThemeBundle`_, which requires
-you to register your themes. You can do that in your application configuration
-located at `app/config/config.yml`. Add the name of your theme folder to the
-following list:
+you to register your themes. You can do that in your LiipThemeBundle
+configuration located at `config/packages/liip_theme.yml`. Add the name of your
+theme folder to the following list:
 
 .. code-block:: yaml
 

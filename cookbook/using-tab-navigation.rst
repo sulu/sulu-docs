@@ -75,8 +75,6 @@ sets the name of the aura component which should be started and
 
 The ``displayConditions`` will be used to determine whether the tab should be
 displayed for the item or not.
-See :doc:`../bundles/admin/javascript-hooks/header` how to initialize this
-feature.
 
 Register the content provider as a service
 ------------------------------------------
