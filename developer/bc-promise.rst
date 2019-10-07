@@ -80,16 +80,4 @@ compatibility:
 * ``Category``
 * ``Tag``
 
-JavaScript
-----------
-
-Structure
-~~~~~~~~~
-
-The main entry point will continue to exist at the same location
-(``Resources/public/js/main.js`` of the bundle). Adding routes to the system via
-this file will be continuing to work the same way. We will also continue to use
-`RequireJS`_ and the components model including the ``sandbox``.
-
 .. _MassiveSearchBundle Mapping: http://massivesearchbundle.readthedocs.org/en/latest/mapping.html
-.. _RequireJS: http://requirejs.org/
