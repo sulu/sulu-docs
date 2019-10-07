@@ -14,9 +14,6 @@ When creating a pull request:
 * Write good commit messages (see the tip below).
 * Write tests.
 * :doc:`test-your-code`.
-* Add a line in the format of "<type> <pr-number>
-  [<affected bundle or component>] <description>" to the ``CHANGELOG.md`` file
-  in the root directory.
 * In case you do changes that break backwards compatibility you also have to
   add a description to the ``UPGRADE.md`` file in the root directory.
 * Use a meaningful name for the pull request (see the tip below).
@@ -105,7 +102,7 @@ does the PR fix?
 Example usage
 `````````````
 
-If you add a new feature or make breaking changes, please give us a example
+If you add a new feature or make breaking changes, please give us an example
 usage (code examples, screenshots, etc.), so we understand what you try to
 solve.
 

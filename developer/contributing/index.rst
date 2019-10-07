@@ -30,7 +30,6 @@ just submit the PR and we will review it.
 
     pull-requests
     test-your-code
-    adding-translations
 
 .. _Symfony coding standards: http://symfony.com/doc/current/contributing/code/standards.html
 .. _pull request: https://help.github.com/articles/using-pull-requests
