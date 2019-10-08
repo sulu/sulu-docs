@@ -5,9 +5,6 @@ When you work through the book you'll build a website based on Sulu from the scr
 
 Be sure to know a thing or two about `Symfony`_. Sulu is based on Symfony and structured according to the Symfony standards. If you don't know how to work within the Symfony framework you might encounter some problems when using Sulu.
 
-.. figure:: ../img/mrsulu-reads.jpg
-	:align: center
-
 **What's in the book?**
 
 .. toctree::
