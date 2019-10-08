@@ -71,7 +71,7 @@ After configuration, the PersistenceBundle will automatically set the following 
 ``DependencyInjection/Configuration.php``
 """""""""""""""""""""""""""""""""""""""""
 
-In the `Configuration.php` file we set our default entity and repository implementation. Theses implementations are used
+In the `Configuration.php` file we set our default entity and repository implementation. These implementations are used
 if no other bundle replaces or extends our entity.
 We implemented the class `Book` as our default entity and the class `BookRepository` as our default repository,
 therefore our configuration looks something like the following code block.
@@ -128,6 +128,7 @@ Therefore our `SuluBookExtension.php` will look something like this:
         public function load(array $configs, ContainerBuilder $container)
         {
             $configuration = new Configuration();
+            $config = $this->processConfiguration($configuration, $configs);
             (...)
             $this->configurePersistence($config['objects'], $container);
         }

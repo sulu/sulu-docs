@@ -11,43 +11,27 @@ handled later in the template.
 Parameters
 ----------
 
-.. list-table::
-    :header-rows: 1
-
-    * - Parameter
-      - Type
-      - Description
-    * - contact
-      - boolean
-      - Person tab should be visible or not.
-    * - account
-      - boolean
-      - Organizations tab should be visible or not.
+No parameters available
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="contacts" type="contact">
+    <property name="contacts" type="contact_account_selection">
         <meta>
-            <title lang="en">Contacts</title>
+            <title lang="en">Contacts / Accounts</title>
         </meta>
-
-        <params>
-            <param name="contact" value="true"/>
-            <param name="account" value="true"/>
-        </params>
     </property>
 
 .. code-block:: twig
 
-    <ul property="contacts">
+    <ul>
         {% for contact in content.contacts %}
             <li>
-                {{ contact.type == 'contact' ? contact.fullName : contact.name }}
+                {{ contact.fullName is defined ? contact.fullName : contact.name }}
                 (
-                {% for email in contact.emails %}
+                {% for email in contact.contactDetails.emails %}
                     <a href="mailto:{{ email.email }}">{{ email.email }}</a>
                     {% if not loop.last %}&nbsp;|&nbsp;{% endif %}
                 {% endfor %}

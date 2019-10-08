@@ -1,8 +1,6 @@
 Test your Code
 ==============
 
-Sulu has three types of tests: Unit, Functional and Scenario (i.e. "Behat").
-
 If your tests require external dependencies (e.g. a database connection) then
 they are Functional tests, otherwise they will be a Unit Test.
 
@@ -39,7 +37,6 @@ the component tests (``C``).
    * ``-a``: Run all tests.
    * ``-B``: Don't run the bundle tests
    * ``-C``: Don't run the component tests
-   * ``-r``: Restart jackrabbit between each bundle when running all tests.
 
 Subsequently you will only need to run the tests, so you can omit the ``-i``
 option.
@@ -106,21 +103,4 @@ initialization step [``-i``] after the first run):
 
 .. code-block:: bash
 
-    $ SYMFONY__PHPCR__TRANSPORT=jackrabbit ./bin/runtests -i -a
-
-
-Test Environment Configuration
-------------------------------
-
-Sulu uses the ``SuluTestBundle`` to simplify testing. This bundle also takes care of configuration for your test
-environment. For example, if you changed the port for your Jackrabbit server to ``8888``, you can use environment variables
-to let Symfony override default parameters:
-
-.. code-block:: bash
-
-    $ SYMFONY__PHPCR__TRANSPORT=jackrabbit SYMFONY__PHPCR__BACKEND_URL=http://localhost:8888/server/ ./bin/runtests -a
-
-More information in the `Symfony docs`_. For a list of available parameters take a look into the `parameter.yml`_.
-
-.. _Symfony docs: http://symfony.com/doc/current/cookbook/configuration/external_parameters.html
-.. _parameter.yml: https://github.com/sulu/sulu/tree/develop/src/Sulu/Bundle/TestBundle/Resources/dist/parameter.yml
+    $ PHPCR_TRANSPORT=jackrabbit ./bin/runtests -i -a

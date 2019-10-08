@@ -40,8 +40,7 @@ the twig extension. The areas can be defined in the xml template of the snippets
 
 .. note::
 
-    When no areas are defined sulu automatically define an area per snippet template.
-
+    When no areas are defined sulu automatically defines an area per snippet template.
 
 Configuration
 -------------

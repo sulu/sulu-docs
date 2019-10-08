@@ -48,8 +48,7 @@ Sulu-Admin
 ~~~~~~~~~~
 
 Using the ``Admin`` class together with its navigation is guaranteed not to
-break. The same is valid for extending some forms with custom tabs as described
-in :doc:`../cookbook/using-tab-navigation`.
+break.
 
 Content Types
 ~~~~~~~~~~~~~

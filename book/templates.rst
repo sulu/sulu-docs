@@ -184,8 +184,6 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |email|                      | text input with email validation            | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
-| |password|                   | password input                              | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
 | |phone|                      | text input for a phone number               | string                                  |
 +------------------------------+---------------------------------------------+-----------------------------------------+
 | |page_selection|             | widget for selecting pages                  | resolved pages as defined in parameters |
@@ -914,7 +912,6 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |time| replace:: :doc:`time <../reference/content-types/time>`
 .. |url| replace:: :doc:`url <../reference/content-types/url>`
 .. |email| replace:: :doc:`email <../reference/content-types/email>`
-.. |password| replace:: :doc:`password <../reference/content-types/password>`
 .. |phone| replace:: :doc:`phone <../reference/content-types/phone>`
 .. |page_selection| replace:: :doc:`page_selection <../reference/content-types/page_selection>`
 .. |single_page_selection| replace:: :doc:`single_page_selection <../reference/content-types/single_page_selection>`

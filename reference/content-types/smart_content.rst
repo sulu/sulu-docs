@@ -256,7 +256,7 @@ Page template
 
 .. code-block:: xml
 
-    <property name="smart_content" type="smart_content">
+    <property name="pages" type="smart_content">
         <meta>
             <title lang="en">Smart Content</title>
         </meta>
@@ -298,7 +298,7 @@ Twig template
         {% if page-1 >= 1 %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page-1 }}">&laquo;</a></li>
         {% endif %}
-        {% if view.smartcontent.hasNextPage %}
+        {% if view.pages.hasNextPage %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page+1 }}">&raquo;</a></li>
         {% endif %}
     </ul>

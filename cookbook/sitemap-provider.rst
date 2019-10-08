@@ -2,7 +2,7 @@ Provider for XML-Sitemap
 ========================
 
 `SitemapProvider` are used to load data for the XML-Sitemap. It returns
-an array of `SitemapUrl` instances. This Api has to be paginated because
+an array of `SitemapUrl` instances. This API has to be paginated because
 Google only allows 50000 urls in a single Sitemap. The `SitemapController`
 takes care of generating a `sitemapindex` if more than one Provider or
 more than one pages are available. Otherwise it will deliver a the Sitemap
@@ -29,6 +29,8 @@ This is a simple example which assumes that the logic to load entities is
 implemented in the Repository.
 
 .. code-block:: php
+
+    <?php
 
     namespace AppBundle\Sitemap;
 
@@ -83,4 +85,4 @@ implemented in the Repository.
     }
 
 Now you can create a service for this class and add the tag
-`<tag name="sulu.sitemap.provider" alias="{your link-type}"/>`.
+`<tag name="sulu.sitemap.provider" alias="{your type}"/>`.

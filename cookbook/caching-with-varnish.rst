@@ -102,9 +102,9 @@ Verify which port Varnish is listening to:
     6585 ?        SLs    0:00 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:6081
     6609 ?        Sl     0:07 varnishd -f /home/daniel/.varnish/sulu.vcl -s malloc,1G -T 127.0.0.1:2000 -a 0.0.0.0:6081
 
-The ``-a`` option indicates where Varnish is listening - it is listening on port ``8083``, which is incorrect.
+The ``-a`` option indicates where Varnish is listening - it is listening on port ``6081``, which is incorrect.
 
-Under Debiae/Ubuntu we can change the initialization script:
+Under Debian/Ubuntu we can change the initialization script:
 
 .. code-block:: bash
 
@@ -184,26 +184,23 @@ Configuring Sulu Invalidation
 
 You will first need to ensure that the default "soft" cache has been disabled.
 
-Open the website front controller (``app/website.php`` in the `standard
-edition`_) and ensure that the following lines are commented out:
+Open the website front controller (``public/index.php`` in the `skeleton`_) and
+ensure that the following lines are commented out:
 
 .. code-block:: php
 
-    // Uncomment this line if you want to use the "symfony" http
-    // caching strategy. See 
-    // if (SYMFONY_ENV != 'dev') {
-    //    require_once __DIR__ . '/../app/WebsiteCache.php';
-    //    $kernel = new WebsiteCache($kernel);
-    //}
+    // if ('dev' !== $_SERVER['APP_ENV'] && SuluKernel::CONTEXT_WEBSITE === $suluContext) {
+    //     $kernel = $kernel->getHttpCache();
+    // }
 
 .. warning::
 
-    If you do not comment out the above lines caching will not work as you
+    If you do not comment out the above lines caching will not work correctly as you
     will be using 2 caches.
 
-Now edit ``app/config.yml`` and change the proxy client from ``symfony`` to
-``varnish`` and set the address of your varnish server (assuming that your
-Varnish server is on localhost and listening on port ``80``):
+Now edit ``config/packages/sulu_http_cache.yml`` and change the proxy client
+from ``symfony`` to ``varnish`` and set the address of your varnish server
+(assuming that your Varnish server is on localhost and listening on port ``80``):
 
 .. code-block:: yaml
 
@@ -212,36 +209,7 @@ Varnish server is on localhost and listening on port ``80``):
         proxy_client:
             varnish:
                 enabled: true
-                servers: [ 'localhost:80' ]
-
-Now have another look at the headers from your website:
-
-.. code-block:: bash
-
-    $ curl -I sulu.lo
-    HTTP/1.1 200 OK
-    Date: Tue, 08 Aug 2017 13:28:35 GMT
-    Server: Apache/2.4.25 (Unix) PHP/7.1.4 LibreSSL/2.2.7
-    X-Powered-By: PHP/7.1.4
-    Cache-Control: max-age=240, public, s-maxage=240
-    X-Generator: Sulu/dev-enhancement/cache-header
-    Content-Type: text/html; charset=UTF-8
-    x-url: /
-    x-host: sulu.lo
-    X-Varnish: 5 3
-    Age: 5
-    Via: 1.1 varnish (Varnish/5.1)
-    Accept-Ranges: bytes
-    Connection: keep-alive
-
-.. note::
-
-    If you chose not to make Varnish listen on port 80, then use ``sulu.lo:6081`` instead.
-
-The meaning of all these headers will be explained in the
-:doc:`../bundles/http_cache` document. But for now you should see
-(providing your are in `dev` mode) the ``X-Sulu-Proxy-Client`` has a value of
-``varnish``.
+                servers: ['localhost:80']
 
 Optimal configuration
 ---------------------
@@ -280,4 +248,4 @@ The following is a full configuration example:
 
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
-.. _standard edition: http://github.com/sulu/sulu-standard
+.. _skeleton: http://github.com/sulu/skeleton

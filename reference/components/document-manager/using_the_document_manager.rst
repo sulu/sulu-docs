@@ -84,4 +84,3 @@ The above code would produce the path
 Path segments enclosed within `%` characters are resolved by the
 ``PathSegmentRegistry``, which uses configuration to map path segment names to
 values. Other segments are interpreted literally.
-

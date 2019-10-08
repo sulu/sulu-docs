@@ -46,7 +46,7 @@ Additional features, which can be provided with a DataProvider:
 How to create a custom DataProvider?
 ------------------------------------
 
-To create a custom data provider you simply have to create a service which
+To create a custom data provider you have to create a service which
 implements the Interface `DataProviderInterface`. This Interface provides
 functions to resolve the configured filters for the backend API with
 standardized objects and for the website with array and entity access.
@@ -64,7 +64,7 @@ following steps.
 
 The repository has to implement the DataProviderRepositoryInterface and provide
 the findByFilters function. If the default implementation is good enough, you
-can include the trait `DataProviderRepositoryTrait`, which, needs the functions
+can include the trait `DataProviderRepositoryTrait`, which needs the functions
 `createQueryBuilder` (is default in repositories) and `appendJoins` where you
 are able to configure eager loading for the entity.
 
@@ -98,8 +98,8 @@ The rest of the functionality and Query generation is done in the Trait.
     Be sure that the returned entities has valid serialization configuration for
     JMS\Serializer.
 
-There are following hooks to influence the query generation. These are functions
-which are optional to override in the repository.
+There are the following hooks to influence the query generation. These are
+functions which are optional to override in the repository.
 
 .. list-table::
     :header-rows: 1
@@ -232,7 +232,6 @@ avoid filtering for that values.
                 ->enableLimit()
                 ->enablePagination()
                 ->enablePresentAs()
-                ->setDeepLink('examples/example/{webspace}/{locale}/{id}')
                 ->getConfiguration();
         }
 
@@ -274,8 +273,10 @@ avoid filtering for that values.
 
 .. note::
 
-    The deep-link will be used to generate a the link to the Sulu-Admin form of
-    a single item, when the user click on it.
+    The ``ConfigurationBuilder`` also has a ``enableDatasource`` function, which
+    allows to choose a source for the request. This is very useful in tree
+    structures, because it allows to filter e.g. only for pages below a certain
+    page.
 
 4. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
@@ -308,144 +309,6 @@ property.
     no influence in the actual result (see the `Factory service documentation`_
     of Symfony for more details). So it is very important to set the repository
     class correct in the `doctrine metadata`_ for this to work.
-
-How to create a custom Datasource component?
---------------------------------------------
-
-A Datasource component is a simple aura-component which returns some data. These
-data can be used in the `DataProviderRepository::appendDatasource` method.
-
-For example returns the Content-DataProvider the UUID of the page which should
-be used as the parent of result set.
-
-The following example is a simple (and not complete) example of a datasource
-component. If you need a full example please take a look at the components
-`media-datasource@sulumedia` or `content-datasource@sulupage`.
-
-.. code-block:: javascript
-
-    define(function() {
-
-        'use strict';
-
-        var defaults = {
-            options: {
-                url: null,
-                resultKey: null,
-                selected: null,
-                selectCallback: function(item) {
-                }
-            },
-            templates: {
-                skeleton: '' // TODO html skeleton to render component
-            }
-        },
-
-        /**
-         * namespace for events
-         * @type {string}
-         */
-        eventNamespace = 'smart-content.datasource.';
-
-        return {
-
-            defaults: defaults,
-
-            events: {
-                names: {
-                    setSelected: {
-                        postFix: 'set-selected',
-                        type: 'on'
-                    }
-                },
-                namespace: eventNamespace
-            },
-
-            /**
-             * Initialize component
-             */
-            initialize: function() {
-                // merge options with defaults
-                this.options = this.sandbox.util.extend(true, {}, defaults, this.options);
-
-                // current selected datasource
-                this.selected = this.options.selected;
-
-                // render skeleton and start subcomponents
-                this.render();
-            },
-
-            /**
-             * Bind events to call select callback
-             */
-            bindCustomEvents: function() {
-                // setter for selected
-                this.events.setSelected(this.setSelected.bind(this));
-            },
-
-            /**
-             * Set new selected and update UI.
-             *
-             * @param {String} selected can also be null.
-             */
-            setSelected: function(selected) {
-                this.selected = selected;
-
-                // TODO update component with new selected datasource
-            },
-
-            /**
-             * These function should be called to propagate the result to smart-content component.
-             *
-             * @param {String} selected can also be null.
-             */
-            emitSelected: function(item) {
-                this.selected = item.id; // identifier of item
-                this.options.selectCallback(
-                    this.selected,  // will be saved and used to generate the query
-                    item.path       // will be displayed on the first slide
-                );
-            },
-
-            /**
-             * Render container for column-navigation
-             */
-            render: function() {
-                this.$container = this.sandbox.dom.createElement(
-                    this.templates.skeleton()
-                );
-                this.html(this.$container);
-            }
-        };
-    });
-
-To activate these datasource-component it has to be enabled in the DataProvider.
-
-.. code-block:: php
-
-    <?php
-
-    public function __construct(DataProviderRepositoryInterface $repository, SerializerInterface $serializer)
-    {
-        parent::__construct($repository, $serializer);
-
-        $this->configuration = self::createConfigurationBuilder()
-            ->enableTags()
-            ->enableLimit()
-            ->enablePagination()
-            ->enablePresentAs()
-            ->enableDatasource(
-                'example@suludoc',
-                [
-                    'url' => '/admin/api/example',
-                    'resultKey' => 'examples',
-                ]
-            )
-            ->getConfiguration();
-    }
-
-The component name and options will be used to initialize the component.
-Therefor you can use the url wil `this.options.url`.
 
 .. _Factory service documentation: http://symfony.com/doc/current/service_container/factories.html
 .. _doctrine metadata: https://symfony.com/doc/current/doctrine/repository.html

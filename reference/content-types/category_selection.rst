@@ -18,8 +18,8 @@ Example
 
 .. code-block:: xml
 
-    <property name="categories" type="category_list">
+    <property name="categories" type="category_selection">
         <meta>
-            <title lang="en">Category List</title>
+            <title lang="en">Category Selection</title>
         </meta>
     </property>

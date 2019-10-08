@@ -37,9 +37,7 @@ You may like to access your application while maintenance mode is active. Then y
 .. code-block:: php
 
     <?php
-    $allowedIPs = array(
-        '127.0.0.1'
-    );
+    $allowedIPs = ['127.0.0.1'];
 
 Translations
 ~~~~~~~~~~~~
@@ -49,13 +47,13 @@ You can define translations for your template as follows:
 .. code-block:: php
 
     <?php
-    $translations = array(
-        'en' => array(
-            'title' => 'Maintenance',
-            'heading' => 'The page is currently down for maintenance',
-            'description' => 'Sorry for any inconvenience caused. Please try again shortly.',
-        ),
-    );
+    $translations = [
+       'en' => [
+          'title' => 'Maintenance',
+          'heading' => 'The page is currently down for maintenance',
+          'description' => 'Sorry for any inconvenience caused. Please try again shortly.',
+       ],
+    ];
 
 Default locale
 ~~~~~~~~~~~~~~

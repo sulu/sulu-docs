@@ -8,34 +8,13 @@ to generate thumbnail images for video files.
 
 .. code-block:: bash
 
-    composer require pulse00/ffmpeg-bundle
+    composer require php-ffmpeg/php-ffmpeg
 
-2. Add bundle to `app/AbstractKernel.php`:
-
-.. code-block:: php
-
-     abstract class AbstractKernel extends SuluKernel
-     {
-         public function registerBundles()
-         {
-             $bundles = [
-                 ...
-
-                 new Dubture\FFmpegBundle\DubtureFFmpegBundle(),
-             ];
-
-             return $bundles;
-        }
-
-        ...
-    }
-
-3. Add configuration `app/config/config.yml`:
+2. Add configuration `config/packages/sulu_media.yml`:
 
 .. code-block:: yaml
 
-    dubture_f_fmpeg:
-        ffmpeg_binary: /usr/local/bin/ffmpeg # path to ffmpeg
-        ffprobe_binary: /usr/local/bin/ffprobe # path to ffprobe
-        binary_timeout: 300 # Use 0 for infinite
-        threads_count: 4
+    sulu_media:
+        ffmpeg:
+            ffmpeg_binary: /usr/local/bin/ffmpeg # path to ffmpeg
+            ffprobe_binary: /usr/local/bin/ffprobe # path to ffprobe

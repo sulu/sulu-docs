@@ -29,4 +29,3 @@ Returns all the SEO related HTML tags as one string, including:
 **Returns**:
 
 All HTML strings as a simple string
-

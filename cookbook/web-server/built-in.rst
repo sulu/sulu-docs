@@ -17,7 +17,8 @@ The server can be started with the ``server:start`` command.
 
     bin/console server:start
 
-These commands will start a server listening on http://127.0.0.1:8000.
+These commands will start a server listening on http://127.0.0.1:8000, resp.
+the first free port after 8000.
 
 You can change the IP and port of the web servers by passing them as argument:
 

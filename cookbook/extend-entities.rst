@@ -11,20 +11,19 @@ These entities are ready to extend:
 * Contact
 * Media
 
-You can extend all of them in the same way. Therefor we explain it for `User` here.
+You can extend all of them in the same way. Therefore we explain it for `User` here.
 
 Create a Entity
 ---------------
 
-Create your own Entity for example in the `ClientWebsiteBundle`. You can use the 
-`doctrine:generate:entity` command for that. Extend the generated Entity with the
-Sulu `User` class.
+Create your own Entity for example in the `src` folder and extends the Entity with the Sulu
+`User` class.
 
 .. code-block:: php
 
     <?php
 
-    namespace Client\Bundle\WebsiteBundle\Entity;
+    namespace App\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
     use Sulu\Bundle\SecurityBundle\Entity\User as SuluUser;
@@ -77,7 +76,7 @@ Sulu `User` class.
 Configuration
 -------------
 
-You can specify your new Entity and if it exists your Repository in the `sulu_security` 
+You can specify your new entity and if it exists your repository in the `sulu_security` 
 configuration section in the file app/config/config.yml.
 
 .. code-block:: yaml
@@ -85,7 +84,7 @@ configuration section in the file app/config/config.yml.
     sulu_security:
         objects:
             user:
-                model: Client\Bundle\WebsiteBundle\Entity\User
+                model: App\Entity\User
                 repository: Sulu\Bundle\SecurityBundle\Entity\UserRepository
 
 For the `Role` entity:

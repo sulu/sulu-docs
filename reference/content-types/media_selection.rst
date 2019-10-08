@@ -28,10 +28,6 @@ Parameters
     * - defaultDisplayOption
       - string
       - Defines which of the displayOptions is the default one
-    * - formats
-      - collection
-      - A collection of image formats, which will be available when opening the
-        cropping overlay in the page form. Contains all image formats by default.
 
 Example
 -------
@@ -57,8 +53,5 @@ Example
                 <param name="rightBottom" value="true"/>
             </param>
             <param name="defaultDisplayOption" value="left"/>
-            <param name="formats" type="collection">
-                <param name="640x960" />
-            </param>
         </params>
     </property>

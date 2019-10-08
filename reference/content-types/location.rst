@@ -10,25 +10,7 @@ either with Google Maps and Open Street Maps.
 Parameters
 ----------
 
-.. list-table::
-    :header-rows: 1
-
-    * - Parameter
-      - Type
-      - Description
-    * - countries
-      - collection
-      - A collection of countries represented as string assigned to unique
-        keys (usually the ISO code of the country)
-    * - mapProviders
-      - collection
-      - Defines the available map providers
-    * - defaultProvider
-      - string
-      - The preselected provider in the dropdown
-    * - geolocatorName
-      - string
-      - The alias of the service, which should be used for geolocation
+No parameters available
 
 Example
 -------
@@ -39,11 +21,4 @@ Example
         <meta>
             <title lang="en">Location</title>
         </meta>
-        <params>
-          <param name="countries" type="collection">
-            <param name="AT" value="Austria"/>
-            <param name="FR" value="France"/>
-            <param name="GB" value="Great Britain"/>
-          </param>
-        </params>
     </property>

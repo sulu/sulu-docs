@@ -207,26 +207,11 @@ from a list of recipes:
         public function getConfiguration()
         {
             return new TeaserConfiguration(
-                // The title in the dropdown of the administration interface
-                'Recipe',
-                // The JavaScript component started for selecting the content
-                // In this case, we use the generic list component
-                'teaser-selection/list@sulupage',
-                [                                 // Options of the JavaScript component
-                    'url' => '/admin/api/recipe', // The API URL
-                    'resultKey' => 'recipes',     // The key in the JSON returned by the API
-                    'searchFields' => ['title'],  // The fields passed to the API when filtering for content
-                    'matchings' => [              // The columns shown in the list
-                        [
-                            'content' => 'Title', // The column title
-                            'name' => 'title',    // The field shown in the column
-                        ],
-                        [
-                            'content' => 'Rating',
-                            'name' => 'rating',
-                        ],
-                    ],
-                ]
+                'Recipe', // The title in the dropdown of the administration interface
+                'recipes', // The resourceKey of the entities to load for this type of teaser
+                'table', // The list adapter in which the entities should be shown
+                ['title'], // The properties which should be shown
+                'Recipe' // The title of the overlay that shows when this entity is assigned
             );
         }
 
@@ -259,54 +244,3 @@ Register the provider in Symfony's service container and tag it with
     <service id="recipe_teaser_provider" class="AppBundle\Teaser\RecipeTeaserProvider">
         <tag name="sulu.teaser.provider" alias="{your teaser-type}"/>
     </service>
-
-Custom JavaScript Components
-----------------------------
-
-A teaser selection component is an AuraJS component that provides functionality
-to select and deselect items.
-
-The following is a simple (and incomplete) example. If you want to see a full
-example, take a look at the components ``teaser-selection/content@sulupage``
-and ``teaser-selection/list@sulupage``.
-
-.. code-block:: javascript
-
-    define(function() {
-
-        'use strict';
-
-        return {
-            initialize: function() {
-                var $container = $('<div/>');
-                this.$el.append($container);
-
-                this.sandbox.start(
-                    [
-                        {
-                            name: 'column-navigation@husky',
-                            options: {
-                                el: $container,
-                                url: ..., // your api url
-                                instanceName: this.options.instanceName,
-                                actionIcon: 'fa-plus-circle',
-                                resultKey: ..., // your api result-key
-                                showOptions: false,
-                                responsive: false,
-                                markable: true,
-                                sortable: false,
-                                premarkedIds: _.map(this.options.data, function(item) {
-                                    return item.id;
-                                }),
-                                actionCallback: function(item) {
-                                    this.options.selectCallback({type: '...', id: item.id}); // your teaser-type
-                                }.bind(this)
-                            }
-                        }
-                    ]
-                );
-            }
-        };
-    });
-
-
