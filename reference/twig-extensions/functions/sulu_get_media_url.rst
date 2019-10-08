@@ -9,9 +9,13 @@ Returns relative URL to the given media.
 
 **Configuration**:
 
-Following configuration is optional and means, that the default dispositionType is "attachment" for each file and only if the mimeTypes of a file match "application/pdf" or "image/jpeg" it's the "inline" dispositionType. 
+Following configuration is optional and means, that the default dispositionType
+is "attachment" for each file and only if the mimeTypes of a file match
+"application/pdf" or "image/jpeg" it's the "inline" dispositionType. 
 
-If the default dispositionType would be "inline" and some files should be "attachment", than the configuration of "mime_types_attachment" should be filled and "mime_types_inline" should be empty.
+If the default dispositionType would be "inline" and some files should be
+"attachment", than the configuration of "mime_types_attachment" should be
+filled and "mime_types_inline" should be empty.
 
 .. code-block:: yaml
 

@@ -4,8 +4,7 @@ Phone
 Description
 -----------
 
-Shows a text line, the inserted content will be validated against a phone
-number regex and saved as a simple string.
+Shows a text line, the inserted content will be saved as a simple string.
 
 Parameters
 ----------

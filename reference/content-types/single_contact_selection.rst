@@ -36,6 +36,6 @@ Example
         {% set image = sulu_resolve_media(contact.avatar, app.request.locale) %}
 
         <img src="{{ image.thumbnails['80x80'] }}" alt="{{ contact.fullName }}">
-    {% endif
+    {% endif %}
 
 .. _ContactInterface: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php

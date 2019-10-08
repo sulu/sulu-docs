@@ -7,7 +7,7 @@ accessible via. the Symfony `PropertyAccessor`_ path(s).
 .. code-block:: jinja
 
      {% for content in content.smartcontent|sulu_util_multisort('[title]', 'asc') %}
-        {# ... #}
+         {# ... #}
      {% endfor %}
 
 You can specify an array of paths to enable cascading sorting, for example
@@ -15,6 +15,8 @@ You can specify an array of paths to enable cascading sorting, for example
 .. code-block:: jinja
 
      {% for content in content.smartcontent|sulu_util_multisort(['[title]', '[description]'], 'asc') %}
+         {# ... #}
+     {% endfor %}
 
 Arguments:
 

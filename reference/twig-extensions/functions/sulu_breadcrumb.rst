@@ -17,4 +17,9 @@ Returns the breadcrumb for a given node UUID
 
 **Returns**:
 
-.. include:: _page_structure.inc
+- `array`
+     - **id**: ID of page
+     - **title**: Title of page
+     - **url**: URL for page
+     - **nodeType**: Type of node
+     - **excerpt**: Excerpt

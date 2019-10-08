@@ -12,7 +12,7 @@ The following requirements *must* be met to run Sulu:
 * Mac OSX, Linux or Windows
 * :doc:`Apache <../cookbook/web-server/apache>` or
   :doc:`Nginx <../cookbook/web-server/nginx>` with enabled URL rewriting
-* `PHP`_ 5.5 or higher
+* `PHP`_ 7.2 or higher
 * the `intl extension`_ for PHP
 * the `fileinfo` extension for PHP
 * the `gd`_ or `imagick extension`_ for PHP
@@ -33,9 +33,7 @@ Development Requirements
 If you want to build parts of the system on your own, you will additionally need:
 
 * `Node.js`_
-* `Grunt`_
-* `Ruby`_
-* `Compass`_
+* `npm`_ 5 or higher
 
 .. _PHP: http://php.net
 .. _intl extension: http://php.net/manual/en/book.intl.php
@@ -45,6 +43,4 @@ If you want to build parts of the system on your own, you will additionally need
 .. _Composer: https://getcomposer.org
 .. _Apache Jackrabbit: http://jackrabbit.apache.org
 .. _Node.js: http://nodejs.org
-.. _Grunt: http://gruntjs.com
-.. _Ruby: https://www.ruby-lang.org/en/
-.. _Compass: http://compass-style.org
+.. _npm: https://www.npmjs.com

@@ -6,7 +6,7 @@ Returns content array for given snippet uuid.
 .. code-block:: jinja
 
     {% set snippet = sulu_snippet_load('1234-1234-1234-1234-1234') %}
-    {{ snippet.title }}
+    {{ snippet.content.title }}
 
 **Arguments**:
 

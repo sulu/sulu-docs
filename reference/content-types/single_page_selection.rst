@@ -30,7 +30,7 @@ order to construct a link to the page use:
 
 .. code-block:: html
 
-    {% set target = sulu_content_load(content.myLink) %}
+    {% set target = sulu_content_load(content.link) %}
 
 Then ``target.content`` will give you access to the URL and other properties
 of the target page.

@@ -3,7 +3,7 @@
 
 .. note::
 
-    This documentation is a incomplete.
+    This documentation is incomplete.
 
 .. note::
     
