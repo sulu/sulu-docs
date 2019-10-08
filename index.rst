@@ -10,10 +10,6 @@ Be sure to visit our `website`_. There's a lot of information about Sulu and how
 
 Sulu aims to manage **business content** in a **beautiful interface** based on **solid, extendable state of the art technology**.
 
-.. figure:: img/mrsulu-presents.jpg
-	:align: center
-
-
 What's in our documentation?
 ============================
 
