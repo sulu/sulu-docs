@@ -95,6 +95,16 @@ Here is an example for using Sulu with MySQL:
 
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 
+You might need to adjust your ``config/packages/doctrine.yaml`` file to add a mapping for enums:
+
+.. code-block:: yaml
+
+   doctrine:
+    dbal:
+        # ... 
+        mapping_types:
+            enum: string
+
 When you're done with the configuration, populate the database with Sulu's
 default data:
 
