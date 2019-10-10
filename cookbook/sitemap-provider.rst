@@ -11,6 +11,8 @@ of the first Provider.
 The `SitemapUrl` consists of the following properties:
 
 * loc - Url to page.
+* locale - Locale of the page
+* defaultLocale - Default locale of the page
 * lastmod (optional) - Latest modification datetime.
 * changefreq (optional) - Frequency of change (see
   `SitemapUrl::CHANGE_FREQUENCY_*` constants)
@@ -54,35 +56,40 @@ implemented in the Repository.
             $this->repository = $repository;
         }
 
-        /**
-         * {@inheritdoc}
-         */
-        public function build($page, $portalKey)
+        public function build($page, $scheme, $host)
         {
             $result = [];
             foreach ($this->repository->findAllForSitemap($page, self::PAGE_SIZE) as $item) {
-                $result[] = new SitemapUrl($item->getRoute()->getPath(), $item->getChanged());
+                $result[] = new SitemapUrl(
+                    $scheme . '://' . $host . $item->getUrl(),
+                    $item->getLocale(),
+                    $item->getDefaultLocale(),
+                    $item->getChanged()
+                );
             }
 
             return $result;
         }
 
-        /**
-         * {@inheritdoc}
-         */
-        public function createSitemap($alias)
+        public function getAlias()
         {
-            return new Sitemap($alias, $this->getMaxPage());
+            return 'myalias';
         }
 
-        /**
-         * {@inheritdoc}
-         */
-        public function getMaxPage()
+        public function createSitemap($scheme, $host)
         {
+            return new Sitemap($this->getAlias(), $this->getMaxPage($scheme, $host));
+        }
+
+        public function getMaxPage($scheme, $host)
+        {
+            if ($host !== 'example.org') {
+                // If the pages are only for a specific
+                return 0;
+            }
+
             return ceil($this->repository->countForSitemap() / self::PAGE_SIZE);
         }
     }
 
-Now you can create a service for this class and add the tag
-`<tag name="sulu.sitemap.provider" alias="{your type}"/>`.
+If you are not using autowiring you need to tag the service with `sulu.sitemap.provider`.
