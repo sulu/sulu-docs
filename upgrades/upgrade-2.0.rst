@@ -28,7 +28,7 @@ steps describe this upgrade process.
 
    The `UPGRADE.md`_ file in our ``sulu/sulu`` repository contains all changes breaking backwards compatibility. It
    might be that none of the changes described in this file break your application, depending on which parts of Sulu
-   you have used. However, if somethings goes south, this file should contain an explanation what to change.
+   you have used. However, if something goes south, this file should contain an explanation what to change.
 
 **4. Update the JavaScript build for the administration interface**
 
@@ -49,8 +49,8 @@ steps describe this upgrade process.
 
 .. note::
 
-    This is the only option you have to update the administration interface if you have implemented some custom
-    JavaScript code for it.
+    This is the only option to update the administration interface if you have implemented some custom JavaScript code
+    for it.
 
 **b. Download the build from the `Skeleton repository`_**
 
