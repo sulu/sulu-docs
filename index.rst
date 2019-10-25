@@ -21,6 +21,7 @@ What's in our documentation?
    reference/index
    bundles/index
    developer/index
+   upgrades/index
 
 If you got any questions, feel free to `contact us`_. We are more than happy to help.
 
