@@ -301,7 +301,7 @@ a few of them predefined. These predefined views can be configured via certain o
 different contexts. Such a view takes most of the space of the screen, the only things being excluded from it being the
 toolbar on the very top of the screen and the navigation on the left.
 
-TODO: Add image further explaining the arrangement of screen space
+.. figure:: ../img/extend-admin-screen-adjustment.jpg
 
 Navigation items allow to add an item to the navigation on the left. Therefore they have to describe the title of this
 item and where to navigate when the user clicks on the item.
@@ -421,9 +421,10 @@ Finally the ``View`` object has to be added to the ``ViewCollection``, which is 
 ``configureViews`` method. This has been implemented like this to allow other bundles to further manipulate views that
 have already been added by bundles registered previously.
 
-After that an empty list should appear on ``/admin/#/events``.
+After that an empty list should appear on ``/admin/#/events``. But if you add some data to the ``event`` table it
+should be listed:
 
-TODO: Add image of events list
+.. figure:: ../img/extend-admin-list.jpg
 
 Configure navigation
 --------------------
@@ -683,7 +684,10 @@ the same ``parent``. The main use cases for this are splitting a single resource
 ``resourceKey`` but different ``formKey``) or if a resource has some sub resources (there is e.g. also the
 ``FormOverlayList`` view which suits that use case very well).
 
-TODO: Add screenshot of form
+After successfully finishing the above steps you should be able to see the form you have configured when clicking the
+edit icon in the list or if you click the add button in the toolbar:
+
+.. figure:: ../img/extend-admin-form.jpg
 
 Selection field type
 --------------------
@@ -766,7 +770,7 @@ in the header of the field type and ``overlay_title`` is the translation for the
 variant you have an ``empty_text`` instead of a ``label``, which is only displayed if nothing has been selected. This
 is necessary because the element looks a bit different.
 
-TODO: Add screenshots of field types
+.. figure:: ../img/extend-admin-field-types.jpg
 
 The ``auto_complete`` section has a ``display_property`` configuration (mind the singular naming) defining which
 property of the selected resource is shown. The ``search_properties`` describe which of the properties from the
