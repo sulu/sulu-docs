@@ -4,19 +4,6 @@ Rendering Pages with Twig
 Twig is an awesome option for rendering HTML. It got some nice features like
 blocks and inheritance. That's why we use and love Twig.
 
-Build the HTML template
------------------------
-
-We recommend to build the HTML templates in a first draft with plain HTML and
-some dummy texts. That means absolutely no placeholders for template engines.
-This ensures that your HTML is working across all browsers (at least if you
-test it correctly), and it is easier to test, since there are guaranteed no
-errors caused by the some wrong template variables.
-
-Please make also sure that your HTML is valid, and use HTML tags in a semantic
-way, so that your website will achieve the best results in terms of search
-engine optimization.
-
 Which Twig-Template is used?
 ----------------------------
 
