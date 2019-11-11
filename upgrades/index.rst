@@ -8,3 +8,4 @@ different major releases.
     :maxdepth: 1
 
     upgrade-2.0.rst
+    upgrade-1.6-2.0.rst
