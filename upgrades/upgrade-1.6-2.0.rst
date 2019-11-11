@@ -1,18 +1,19 @@
 Upgrading from Sulu 1.6 to 2.0
 ==============================
 
-We have a very extensive `UPGRADE.md file`_ in our repository, which contains almost every breaking change we made
-during the development of Sulu 2.0. However, this is a huge list and most projects won't be affected by the majority of
-these breaking changes. Therefore we are going through the most important changes in this guide, and by following these
-steps you can probably upgrade most of the projects, if you have not overridden some internal mechanisms.
+We provide a very extensive `UPGRADE.md file`_ in the ``sulu/sulu`` repository containing almost every breaking change
+we made during the development of Sulu 2.0. However, this is a huge list and most projects won't be affected by the
+majority of these breaking changes. Therefore thi sguide provides a list of the most important changes. By following
+the steps of this guide you should be able to update most Sulu 1.6 projects to Sulu 2.0. Please be aware that this
+guide does not contain any steps needed if your project overrides Sulu's internal mechanisms.
 
 **1. Create a new** `sulu/skeleton`_ **project and import your projects** ``.git`` **folder**
 
-In our experience it makes more sense and will save you future headache if you start over with a new project, because
-`sulu/skeleton`_ is the new way starting a Sulu 2.0 project and running a `sulu/sulu-minimal`_ or `sulu/sulu-standard`_
-project using Sulu 2.0 is not supported. You could also take your existing `sulu/sulu-minimal`_ project and restructure
-it to match the `sulu/skeleton`_ repository, but that is probably going to be more work than doing it the other way
-around.
+In our experience it makes more sense and will save you future headache if you start over with a new project based on
+`sulu/skeleton`_ which is the preferred project template for starting a Sulu 2.0 project. The old `sulu/sulu-minimal`_
+and the deprecated `sulu/sulu-standard`_ project templates are not recommended for running a Sulu 2.0 project. You
+could also take your existing `sulu/sulu-minimal`_ project and restructure it to match the `sulu/skeleton`_ repository,
+but that is probably going to be more work than doing it the other way around.
 
 The recommended way to achieve this, is to create a new project using ``composer create-project`` and copy the old
 ``.git`` folder to the root of the new project.
@@ -26,8 +27,8 @@ Afterwards a ``git status`` in the new folder should reveal all the changes from
 `sulu/skeleton`_ installation, since ``git`` is doing a very good job on recognizing the file changes here.
 
 .. note::
-    Theoretically these changes could already be commited now, but it is at the end of this guide, so that you have a
-    single commit containing this upgrade.
+    Theoretically these changes could already be commited now, but we recommend to do this at the end of this guide.
+    That will create a single commit containing the whole upgrade.
 
 **2. Copy over your old project files to the new project**
 
@@ -45,7 +46,7 @@ these files:
       - Note
     * - ``src``
       - ``src``
-      - Namespace of this folder changed from empty to ``App``, has to be considered in all classes.
+      - This folder changed from the empty to the ``App`` namespace. Consider that in all classes.
     * - ``app/config``
       - ``config``
       - Content changed because of Symfony Flex as well. Instead of ``admin`` and ``website`` sub folders files are now
@@ -63,14 +64,14 @@ these files:
 .. note::
 
     Mind that we have also updated a few dependencies, which might include some BC breaks. If your code is not working
-    anymore it might be related to these BC breaks.
+    anymore it might be related to the BC breaks inside these dependencies.
 
 .. note::
 
     When copying over the config files make sure you also copy over the configuration values for ``security.encoders``.
     If the new installation has a different value than the old one you have to change them, because otherwise you
-    won't be able to login later. You will find this configuration in ``config/packages/security_admin.yaml`` in the new
-    project resp. in ``app/config/admin/security.yml`` in the old project.
+    won't be able to login later. You will find this configuration in ``config/packages/security_admin.yaml`` in the
+    new project resp. in ``app/config/admin/security.yml`` in the old project.
 
 **3. Upgrade your existing templates to use the new content types**
 
@@ -102,11 +103,11 @@ located in ``config/templates``. The following table shows how the names changed
 .. note::
 
     At this point you should absolutely make a backup of your database, in case something goes wrong when executing
-    the below commands.
+    the commands below.
 
 The following commands only change the charset to ``utf8mb4`` for tables that come with Sulu. If you have added your
-own entities resp. tables you have to add more steps. There is an excellent guide on `switching to utf8mb4`_ available
-online explaining what is required.
+own entities resp. tables you have to add additional statements for these tables. There is an excellent guide on
+`switching to utf8mb4`_ available online explaining what is required.
 
 .. note::
 
@@ -213,7 +214,8 @@ online explaining what is required.
     ALTER TABLE me_file_version_meta CHANGE title title VARCHAR(191) NOT NULL;
     ALTER TABLE me_file_versions CHANGE name name VARCHAR(191) NOT NULL;
 
-If you are using jackalope with doctrine-dbal instead of jackrabbit you also have to execute the following queries:
+If you are using jackalope with doctrine-dbal instead of jackrabbit you also have to execute the following statements
+to update the jackalope tables:
 
 .. code-block:: sql
 
@@ -238,6 +240,9 @@ If you are using jackalope with doctrine-dbal instead of jackrabbit you also hav
     ALTER TABLE phpcr_type_props CHANGE name name VARCHAR(191) NOT NULL;
 
 **5. Execute the following SQL statements to migrate your data**
+
+In Sulu 2.0 we slightly adjusted our database schema. Therefore you have to execute the following statements to get
+your database schema in sync:
 
 .. code-block:: sql
 
