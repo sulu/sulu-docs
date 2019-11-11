@@ -35,8 +35,8 @@ Afterwards a ``git status`` in the new folder should reveal all the changes from
 This is probably the trickiest part of the upgrade. You have to move all of your project specific files from the old
 project folder to the new one.
 
-These files are not always located in the same place as previously. Use the below table to get an idea how to move
-these files:
+These files are not always located in the same place as previously, because we adapted to the new folder structure
+Symfony has introduced with `Symfony Flex`_. Use the below table to get an idea how to move these files:
 
 .. list-table::
     :header-rows: 1
@@ -293,4 +293,5 @@ necessary should be to execute the migrations we have written:
 .. _sulu/skeleton: https://github.com/sulu/skeleton
 .. _sulu/sulu-minimal: https://github.com/sulu/sulu-minimal
 .. _sulu/sulu-standard: https://github.com/sulu/sulu-standard
+.. _Symfony Flex: https://symfony.com/doc/current/setup/flex.html
 .. _switching to utf8mb4: https://mathiasbynens.be/notes/mysql-utf8mb4
