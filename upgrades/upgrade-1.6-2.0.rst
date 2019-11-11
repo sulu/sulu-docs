@@ -3,7 +3,7 @@ Upgrading from Sulu 1.6 to 2.0
 
 We provide a very extensive `UPGRADE.md file`_ in the ``sulu/sulu`` repository containing almost every breaking change
 we made during the development of Sulu 2.0. However, this is a huge list and most projects won't be affected by the
-majority of these breaking changes. Therefore thi sguide provides a list of the most important changes. By following
+majority of these breaking changes. Therefore this guide provides a list of the most important changes. By following
 the steps of this guide you should be able to update most Sulu 1.6 projects to Sulu 2.0. Please be aware that this
 guide does not contain any steps needed if your project overrides Sulu's internal mechanisms.
 
