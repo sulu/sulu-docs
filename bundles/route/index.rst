@@ -25,8 +25,8 @@ Further Topics
 
     custom_route_generator
 
-Example
--------
+Example with RoutableEntity
+---------------------------
 
 This example will create a simple example-entity which will be
 available on the website with an own route.
@@ -184,3 +184,20 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
     To update already existing entities you can run the command
     `php bin/console sulu:route:update AppBundle:Recipe` which updates or creates
     the route for all the entities of this type.
+
+Example without RoutableEntity
+------------------------------
+
+If it is not possible to implement the `RoutableInterface` you can call the method
+`createOrUpdateByAttributes($entityClass, $id, $locale, $path)` of the service
+`sulu_route.manager.route_manager`.
+
+This method does not handle route generation - for this reason you can also omit the
+generator and the `options` in the mapping configuration.
+
+.. code-block:: yaml
+
+    sulu_route:
+        mappings:
+            AppBundle\Entity\Recipe:
+                resource_key: recipes
