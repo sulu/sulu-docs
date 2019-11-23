@@ -1,23 +1,33 @@
 Extend Admin UI
 ===============
 
-The final section of the book has a deeper look at how to integrate your own entities and views into the Sulu 
-administration interface. This includes introducing new navigation items, as well as configuring new list and form
-views. All of the listed things can be done without writing a single line of JS, if your APIs follow some rules and you
-do not have very special requirements on the lists and forms. Sulu comes with a various components, that can already
-cover a lot of different use cases. Once you have reached the limits of their possibilities, the system allows you to
-hook into different extension points using JS.
+The final section of the book has a deeper look at how to integrate your own entities and respective views into the
+Sulu administration interface. This includes adding new items to the navigation and configuring list views and form
+views for your entity. Sulu is built with extensibility as a core value and allows the integration of a custom entity
+without writing any Javascript code in most cases.
 
-Your APIs delivering the data for the administration interface have to follow a certain standard, otherwise the lists
-and forms can't handle them. We use the `FOSRestBundle`_ to build REST APIs, but the code in the controllers handling
-these requests is architecture agnostic. So you can try to keep your code as simple as possible by following the
+In order to provide this extensibility in a simple way, Sulu requires that the APIs that will be used to manage the
+entities follow some rules and best practices. If you provide such an API, Sulu comes with a variety of existing
+frontend views and components that cover a lot of different use cases.
+Furthermore, once you have reached the limits of the existing components, Sulu provides various extension points of
+different granularity that allow you to hook into most areas of the system using custom Javascript code.
+
+As stated above, the frontend components that come with Sulu expect that your APIs deliver the data for the
+administration interface to match a certain standard. This includes the data that is expected by the lists view
+and the form view that will be used to manage your entity. Sulu uses the `FOSRestBundle`_ internally to build the REST
+APIs for the preexisting entities, but the data format expected by the frontend components is completely
+architecture agnostic and library independent. This means that Sulu does not enforce how you actually implement
+the API for your entity - you can try to keep your code as simple as possible by following the
 `Symfony Best Practices`_, go full `DDD`_ or anything between.
 
-First of all these controllers have to define standard REST actions. For a controller e.g. handling events, this means
-there has to be a ``POST`` action for creating events, a ``PUT`` action for modifying events, a ``DELETE`` action for
-deleting events and finally a ``GET`` action for retrieving information about an event. The ``POST``, ``PUT`` and
-``GET`` actions accept resp. return a JSON serialization of the entity it is handling, in our case an event. This
-serialization could e.g. look something like this:
+The following sections will list the requirements for your API to be compatible with the Sulu frontend components.
+To keep things practical, the sections will provide a custom Event entity as an example.
+
+First of all, Sulu expects that your API exposes the standard REST actions. In the case of our event controller this
+means there has to be a ``POST`` action for creating events, a ``PUT`` action for modifying events, a ``DELETE`` action
+for deleting events and finally a ``GET`` action for retrieving information about an event. The ``POST``, ``PUT`` and
+``GET`` actions accept/return a JSON serialization of the event entity. This serialization could look something like
+this:
 
 .. code-block:: json
 
@@ -28,13 +38,14 @@ serialization could e.g. look something like this:
         "endDate": "2020-10-25T18:00:00"
     }
 
-A JSON object like the one above can be sent to the ``POST`` action (without the ID) to create a new event or to the
-``PUT`` action to update an existing event. Both of the previous actions have the same response as the ``GET`` action,
-which returns the same kind of data.
+A JSON object like this can be sent to the ``POST`` action (without the ID) to create a new event or to the ``PUT``
+action to update an existing event. Both of the previous actions must return a response in the same format as the
+``GET`` action.
 
-The URLs also have to follow certain rules. All these actions are encapsulated behind the same URL, in the event case
-e.g. ``/admin/api/events``. This endpoint returns a paginated list of available entities when it receives a ``GET``
-request and creates a new event when it receives a ``POST`` request with a JSON object like shown above.
+Furthermore, Sulu expects that the URLs of your API follows certain rules. All these actions are encapsulated behind
+the same URL, in the event case e.g. ``/admin/api/events``. This endpoint returns a paginated list of available entities
+when it receives a ``GET`` request and creates a new event when it receives a ``POST`` request with a JSON object like
+shown above.
 
 There has to be a sub URL including the ID for single events as well. E.g. the URL ``/admin/api/events/5`` represents
 the event with the ID 5. This endpoint will accept a ``GET`` request to return a JSON object like above, a ``PUT``
@@ -66,11 +77,11 @@ Let's assume that we have this very simplified entity enriched with `doctrine an
 .. code-block:: php
 
     <?php
- 
+
     namespace App\Entity;
- 
+
     use Doctrine\ORM\Mapping as ORM;
- 
+
     /**
      * @ORM\Entity
      */
@@ -84,17 +95,17 @@ Let's assume that we have this very simplified entity enriched with `doctrine an
          * @ORM\Column(type="integer")
          */
         private $id;
- 
+
         /**
          * @ORM\Column(type="string")
          */
         private $name;
- 
+
         /**
          * @ORM\Column(type="datetime_immutable")
          */
         private $startDate;
- 
+
         /**
          * @ORM\Column(type="datetime_immutable")
          */
@@ -119,23 +130,23 @@ XML files are used to define this metadata. See an example for such a file below
     <?xml version="1.0" ?>
     <list xmlns="http://schemas.sulu.io/list-builder/list">
         <key>events</key>
-    
+
         <properties>
             <property name="id" visibility="no" translation="sulu_admin.id">
                 <field-name>id</field-name>
                 <entity-name>App\Entity\Event</entity-name>
             </property>
-    
+
             <property name="name" visibility="always" searchability="yes" translation="sulu_admin.name">
                 <field-name>name</field-name>
                 <entity-name>App\Entity\Event</entity-name>
             </property>
-    
+
             <property name="startDate" visibility="yes" translation="app.start_date" type="datetime">
                 <field-name>startDate</field-name>
                 <entity-name>App\Entity\Event</entity-name>
             </property>
-    
+
             <property name="endDate" visibility="yes" translation="app.end_date" type="datetime">
                 <field-name>endDate</field-name>
                 <entity-name>App\Entity\Event</entity-name>
@@ -253,10 +264,10 @@ as well, then you should be able to see these actions when using the ``debug:rou
 .. code-block:: bash
 
     $ bin/adminconsole debug:router | grep event
-      app.get_events     GET      ANY      ANY    /admin/api/events.{_format}                                        
-      app.post_event     POST     ANY      ANY    /admin/api/events.{_format}                                        
-      app.get_event      GET      ANY      ANY    /admin/api/events/{id}.{_format}                                   
-      app.put_event      PUT      ANY      ANY    /admin/api/events/{id}.{_format}                                   
+      app.get_events     GET      ANY      ANY    /admin/api/events.{_format}
+      app.post_event     POST     ANY      ANY    /admin/api/events.{_format}
+      app.get_event      GET      ANY      ANY    /admin/api/events/{id}.{_format}
+      app.put_event      PUT      ANY      ANY    /admin/api/events/{id}.{_format}
       app.delete_event   DELETE   ANY      ANY    /admin/api/events/{id}.{_format}
 
 These routes are spread over two different URLs, one without the ID (``/admin/api/events``) and one with the ID
@@ -315,13 +326,13 @@ because of the autoconfigure feature of Symfony:
 .. code-block:: php
 
     <?php
-    
+
     namespace App\Admin;
-    
+
     use Sulu\Bundle\AdminBundle\Admin\Admin;
     use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItemCollection;
     use Sulu\Bundle\AdminBundle\Admin\View\ViewCollection;
-    
+
     class EventAdmin extends Admin
     {
         /**
@@ -338,7 +349,7 @@ because of the autoconfigure feature of Symfony:
         {
             // add navigation items
         }
-    
+
         public function configureViews(ViewCollection $viewCollection): void
         {
             // add views
@@ -376,37 +387,37 @@ items looks like this:
 .. code-block:: php
 
     <?php
-    
+
     namespace App\Admin;
-    
+
     use App\Entity\Event;
     use Sulu\Bundle\AdminBundle\Admin\Admin;
     use Sulu\Bundle\AdminBundle\Admin\View\ViewBuilderFactoryInterface;
     use Sulu\Bundle\AdminBundle\Admin\View\ViewCollection;
-    
+
     class EventAdmin extends Admin
     {
         const EVENT_LIST_VIEW = 'app.events_list';
-    
+
         /**
          * @var ViewBuilderFactoryInterface
          */
         private $viewBuilderFactory;
-    
+
         public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
         {
             $this->viewBuilderFactory = $viewBuilderFactory;
         }
-    
+
         // ...
-    
+
         public function configureViews(ViewCollection $viewCollection): void
         {
             $listView = $this->viewBuilderFactory->createListViewBuilder(static::EVENT_LIST_VIEW, '/events')
                 ->setResourceKey(Event::RESOURCE_KEY)
                 ->setListKey('events')
                 ->addListAdapters(['table']);
-    
+
             $viewCollection->add($listView);
         }
     }
@@ -415,7 +426,7 @@ The ``createListViewBuilder`` method returns a ``ListViewBuilder``, which alread
 Therefore we only need to name the view (``app.events_list`` in this example), and tell Sulu on which URL it should be
 rendered (``/events``). Then the previously defined resource key from the `Configure resources`_ section and the list
 key from the XML in the `List configuration and controller`_ section are defined. The list adapters define how the list
-shows the content it has loaded. This is another JS extension point, but for now we use the ``table`` adapter, which 
+shows the content it has loaded. This is another JS extension point, but for now we use the ``table`` adapter, which
 makes use of an HTML table element.
 
 Finally the ``View`` object has to be added to the ``ViewCollection``, which is passed as the first parameter to the
@@ -445,26 +456,26 @@ used to choose an icon from the `Font Awesome icon font`_. Finally ``setPosition
 .. code-block:: php
 
     <?php
-    
+
     namespace App\Admin;
-    
+
     use Sulu\Bundle\AdminBundle\Admin\Admin;
     use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItem;
     use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItemCollection;
-    
+
     class EventAdmin extends Admin
     {
         const EVENT_LIST_VIEW = 'app.events_list';
 
         // ...
-    
+
         public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
         {
             $eventNavigationItem = new NavigationItem('app.events');
             $eventNavigationItem->setView(static::EVENT_LIST_VIEW);
             $eventNavigationItem->setIcon('su-calendar');
             $eventNavigationItem->setPosition(30);
-    
+
             $navigationItemCollection->add($eventNavigationItem);
         }
 
@@ -789,16 +800,16 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
     >
         <key>event_details</key>
-    
+
         <properties>
             <!-- ... -->
-    
+
             <property name="similar_events" type="event_selection">
                 <meta>
                     <title>app.similar_events</title>
                 </meta>
             </property>
-    
+
             <property name="parent_event" type="single_event_selection">
                 <meta>
                     <title>app.parent_event</title>
