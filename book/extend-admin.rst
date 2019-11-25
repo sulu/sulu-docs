@@ -1,9 +1,10 @@
 Extend Admin UI
 ===============
 
-The final section of the book has a deeper look at how to introduce your own navigation items, lists, forms and field
-types. All of the listed things can be done without writing a single line of JS, if your APIs follow some rules and you
-do not have very special requirements on the lists and forms. Sulu comes with a quite some components, that can already
+The final section of the book has a deeper look at how to integrate your own entities and views into the Sulu 
+administration interface. This includes introducing new navigation items, as well as configuring new list and form
+views. All of the listed things can be done without writing a single line of JS, if your APIs follow some rules and you
+do not have very special requirements on the lists and forms. Sulu comes with a various components, that can already
 cover a lot of different use cases. Once you have reached the limits of their possibilities, the system allows you to
 hook into different extension points using JS.
 
