@@ -1,33 +1,32 @@
 Extend Admin UI
 ===============
 
-The final section of the book has a deeper look at how to integrate your own entities and respective views into the
+The final section of the book has a deeper look at how to integrate your own entities and corresponding views into the
 Sulu administration interface. This includes adding new items to the navigation and configuring list views and form
 views for your entity. Sulu is built with extensibility as a core value and allows the integration of a custom entity
-without writing any Javascript code in most cases.
+without writing any JavaScript code in most cases.
 
-In order to provide this extensibility in a simple way, Sulu requires that the APIs that will be used to manage the
-entities follow some rules and best practices. If you provide such an API, Sulu comes with a variety of existing
-frontend views and components that cover a lot of different use cases.
-Furthermore, once you have reached the limits of the existing components, Sulu provides various extension points of
-different granularity that allow you to hook into most areas of the system using custom Javascript code.
+In order to provide this extensibility in a simple way, Sulu requires the APIs used for managing the entities follow
+some rules. If you provide such an API, Sulu comes with a variety of existing frontend views and
+components that cover a lot of different use cases. Furthermore, once you have reached the limits of the existing
+components, Sulu provides various extension points of different granularity allowing you to hook into most areas of the
+system using custom JavaScript code.
 
-As stated above, the frontend components that come with Sulu expect that your APIs deliver the data for the
-administration interface to match a certain standard. This includes the data that is expected by the lists view
-and the form view that will be used to manage your entity. Sulu uses the `FOSRestBundle`_ internally to build the REST
-APIs for the preexisting entities, but the data format expected by the frontend components is completely
-architecture agnostic and library independent. This means that Sulu does not enforce how you actually implement
-the API for your entity - you can try to keep your code as simple as possible by following the
-`Symfony Best Practices`_, go full `DDD`_ or anything between.
+As stated above, the frontend components coming with Sulu expect that your APIs deliver the data for the administration
+interface to match a certain standard. These standards affect the data for the list and form views that will be used to
+manage your entity. Sulu uses the `FOSRestBundle`_ internally to build the REST APIs for the preexisting entities, but
+the data format expected by the frontend components is completely architecture agnostic and library independent.
+Therefore Sulu does not enforce how to actually implement the API for your entity - you can try to keep your code as
+simple as possible by following the `Symfony Best Practices`_, go full `DDD`_ or anything between.
 
 The following sections will list the requirements for your API to be compatible with the Sulu frontend components.
-To keep things practical, the sections will provide a custom Event entity as an example.
+To keep things practical, the sections will use a custom Event entity as an example.
 
-First of all, Sulu expects that your API exposes the standard REST actions. In the case of our event controller this
+First of all, Sulu expects your API to expose the standard REST actions. In the case of our ``EventController`` this
 means there has to be a ``POST`` action for creating events, a ``PUT`` action for modifying events, a ``DELETE`` action
 for deleting events and finally a ``GET`` action for retrieving information about an event. The ``POST``, ``PUT`` and
-``GET`` actions accept/return a JSON serialization of the event entity. This serialization could look something like
-this:
+``GET`` actions accept and return a JSON serialization of the event entity. The serialization could look something
+like this:
 
 .. code-block:: json
 
@@ -42,8 +41,8 @@ A JSON object like this can be sent to the ``POST`` action (without the ID) to c
 action to update an existing event. Both of the previous actions must return a response in the same format as the
 ``GET`` action.
 
-Furthermore, Sulu expects that the URLs of your API follows certain rules. All these actions are encapsulated behind
-the same URL, in the event case e.g. ``/admin/api/events``. This endpoint returns a paginated list of available entities
+Furthermore, Sulu expects the URLs of your API to follows certain rules. All these actions are encapsulated behind the
+same URL, in the event case e.g. ``/admin/api/events``. This endpoint returns a paginated list of available entities
 when it receives a ``GET`` request and creates a new event when it receives a ``POST`` request with a JSON object like
 shown above.
 
