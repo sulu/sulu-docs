@@ -11,15 +11,16 @@ Be sure to know a thing or two about `Symfony`_. Sulu is based on Symfony and st
     :maxdepth: 2
 
     introduction/index
-    Getting Started <getting-started>
-    Templates <templates>
-    Twig <twig>
-    Content Architecture <content-architecture>
-    Webspaces <webspaces>
-    Image Formats <image-formats>
-    Localization <localization>
-    Smart Content <smart-content>
-    Themes <themes>
+    getting-started
+    templates
+    twig
+    content-architecture
+    webspaces
+    image-formats
+    localization
+    smart-content
+    themes
+    extend-admin
 
 Lots of fun with Sulu. We hope you'll find the love we put in it while creating it.
 
