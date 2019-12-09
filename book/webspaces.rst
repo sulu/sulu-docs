@@ -41,7 +41,7 @@ following paragraphs.
             <template type="error">error/error</template>
         </templates>
 
-        <exluded-templates>
+        <excluded-templates>
             <excluded-template>overview</excluded-template>
         </excluded-templates>
 
