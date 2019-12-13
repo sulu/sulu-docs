@@ -59,7 +59,7 @@ List configuration and controller
 ---------------------------------
 
 This section assumes that you have a ``RestController`` with some actions already located at
-``src/Controller/EventController`` and will add a ``cgetAction``. After finishing the action will be tied to the
+``src/Controller/Admin/EventController`` and will add a ``cgetAction``. After finishing the action will be tied to the
 ``/admin/api/events`` endpoint, and should return a paginated list.
 
 The list integrated in Sulu comes already with quite some features, including pagination, search, sorting and so on.
