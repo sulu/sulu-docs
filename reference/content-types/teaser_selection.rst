@@ -63,8 +63,8 @@ the teasers as you like:
                  {% set teaserImage = sulu_resolve_media(teaser.mediaId, app.request.locale) %}
 
                  {% if teaserImage %}
-                     <img src="{{ teaserImage.formats['320'] }}" alt="{{ teaserImage.title }}">
-                 {% endif }
+                     <img src="{{ teaserImage.formats['300x'] }}" alt="{{ teaserImage.title }}">
+                 {% endif %}
 
                  <div>
                       {{ teaser.description|raw }}
