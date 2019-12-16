@@ -193,7 +193,7 @@ shows a controller doing what has just been described.
     namespace App\Controller\Admin;
 
     use App\Entity\Event;
-    use FOS\RestBundle\Routing\ClassResourceInterface;
+    use FOS\RestBundle\Controller\Annotations as Rest;
     use FOS\RestBundle\View\View;
     use FOS\RestBundle\View\ViewHandlerInterface;
     use Sulu\Component\Rest\ListBuilder\Doctrine\DoctrineListBuilderFactoryInterface;
@@ -202,7 +202,7 @@ shows a controller doing what has just been described.
     use Sulu\Component\Rest\RestHelperInterface;
     use Symfony\Component\HttpFoundation\Response;
 
-    class EventController implements ClassResourceInterface
+    class EventController
     {
         /**
          * @var ViewHandlerInterface
@@ -236,6 +236,9 @@ shows a controller doing what has just been described.
             $this->restHelper = $restHelper;
         }
 
+        /**
+         * @Rest\Get("/admin/api/events", name="app.get_events")
+         */
         public function cgetAction(): Response
         {
             $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(Event::RESOURCE_KEY);
@@ -262,7 +265,7 @@ as well, then you should be able to see these actions when using the ``debug:rou
 
 .. code-block:: bash
 
-    $ bin/adminconsole debug:router | grep event
+    $ bin/adminconsole debug:router
       app.get_events     GET      ANY      ANY    /admin/api/events.{_format}
       app.post_event     POST     ANY      ANY    /admin/api/events.{_format}
       app.get_event      GET      ANY      ANY    /admin/api/events/{id}.{_format}
