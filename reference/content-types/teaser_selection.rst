@@ -53,11 +53,29 @@ the teasers as you like:
 
 .. code-block:: html+jinja
 
-    <ul property="teasers">
+    <div>
         {% for teaser in content.teasers %}
-            <li><a href="{{ sulu_content_path(teaser.url) }}">{{ teaser.title }}</a></li>
+            <article>
+                 <h3>
+                     {{ teaser.title }}
+                 </h3>
+
+                 {% set teaserImage = sulu_resolve_media(teaser.mediaId, app.request.locale) %}
+
+                 {% if teaserImage %}
+                     <img src="{{ teaserImage.formats['320'] }}" alt="{{ teaserImage.title }}">
+                 {% endif }
+
+                 <div>
+                      {{ teaser.description|raw }}
+                 </div>
+
+                 <a href="{{ sulu_content_path(teaser.url) }}">
+                     {{ teaser.moreText|default('Read more') }}
+                 </a>
+            </article>
         {% endfor %}
-    </ul>
+    </div>
 
 Each teaser is an object with the following properties:
 
