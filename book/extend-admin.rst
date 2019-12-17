@@ -254,6 +254,16 @@ shows a controller doing what has just been described.
         }
     }
 
+Register your new Controller in the ``config/routes_admin.yaml`` file the following way:
+
+.. code-block:: yaml
+
+    app_events_api:
+        type: rest
+        prefix: /admin/api
+        resource: App\Controller\Admin\EventController
+        name_prefix: app.
+
 Configure resources
 -------------------
 
