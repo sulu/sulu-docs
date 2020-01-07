@@ -31,13 +31,20 @@ other content types.
 
 Instead of a ``property``-tag a ``block``-tag is used. The
 ``default-type``-attribute is mandatory and describes which of the types are
-use by default.
+used by default.
 
 The other essential attribute is the ``types``-tag, which contains multiple
 ``type``-tags. A type defines some titles and its containing ``properties``,
 whereby all the available :doc:`index` (except the block itself, since we do
 not support nesting) can be used. These types are offered to the content
 manager via dropdown.
+
+If collapsed the system will show the content of three properties in the block
+by default, in order to give the content manager an idea which block they are
+seeing. The ``sulu.block_preview`` tag can be used to manually choose which
+properties should be shown as a preview in collapsed blocks. These tags
+additionally take a ``priority`` attribute, which can alter the order of the
+property previews.
 
 The example only shows a single type, combining a media selection with a text
 editor as described in the description.
@@ -61,20 +68,7 @@ editor as described in the description.
                             <title lang="de">Bilder</title>
                             <title lang="en">Images</title>
                         </meta>
-                        <params>
-                            <param name="type" value="image"/>
-                            <param name="displayOptions" type="collection">
-                                <param name="leftTop" value="false"/>
-                                <param name="top" value="true"/>
-                                <param name="rightTop" value="false"/>
-                                <param name="left" value="true"/>
-                                <param name="middle" value="false"/>
-                                <param name="right" value="true"/>
-                                <param name="leftBottom" value="false"/>
-                                <param name="bottom" value="true"/>
-                                <param name="rightBottom" value="false"/>
-                            </param>
-                        </params>
+                        <tag name="sulu.block_preview" priority="512"/>
                     </property>
 
                     <property name="article" type="text_editor" colspan="9">
@@ -82,6 +76,7 @@ editor as described in the description.
                             <title lang="de">Artikel</title>
                             <title lang="en">Article</title>
                         </meta>
+                        <tag name="sulu.block_preview" priority="1024"/>
                     </property>
                 </properties>
             </type>
