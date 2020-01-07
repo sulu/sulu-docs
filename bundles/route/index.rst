@@ -184,3 +184,23 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
     To update already existing entities you can run the command
     `php bin/console sulu:route:update AppBundle:Recipe` which updates or creates
     the route for all the entities of this type.
+
+Example without RoutableEntity
+------------------------------
+
+If it is not possible to implement the `RoutableInterface` you can call the method
+`createOrUpdateByAttributes($entityClass, $id, $locale, $path)` of the service
+`sulu_route.manager.route_manager`.
+
+This method does not handle route generation - for this reason you can also omit the
+generator and the `options` in the mapping configuration.
+
+.. code-block:: yaml
+
+    sulu_route:
+        mappings:
+            AppBundle\Entity\Recipe:
+                resource_key: recipes
+
+As there is no cascading on database layer you have to call the `remove` method on the
+service `sulu.repository.route` when you remove your entity.
