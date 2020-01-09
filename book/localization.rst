@@ -49,6 +49,11 @@ accepting new content. Afterwards nobody will have any permissions on this
 locale, so make sure that you add this permission in the permissions tab of
 the contacts.
 
+.. note::
+
+    When adding new localizations check the configuration of the ``urls`` in the 
+    environment part of the webspace which is described in :doc:`webspaces`.
+
 Adding custom localizations
 ---------------------------
 
