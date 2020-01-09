@@ -41,6 +41,19 @@ This command will bootstrap a new project in the directory ``my-project``.
     Available languages are shown on `Crowdin`_ and you have to replace
     <language> with the two letter code shown there.
 
+    Afterwards the language has to be activated in the configuration file
+    ``config/packages/sulu_admin.yaml``:
+
+    .. code-block:: yaml
+
+        sulu_core:
+            locales:
+                en: English
+                de: Deutsch
+            translations:
+                - en
+                - de
+
 Webspaces
 ---------
 
