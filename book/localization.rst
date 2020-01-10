@@ -51,8 +51,11 @@ the contacts.
 
 .. note::
 
-    When adding new localizations check the configuration of the ``urls`` in the 
-    environment part of the webspace which is described in :doc:`webspaces`.
+    When adding a new localization you have to make sure that the localization
+    is also covered by one of the webspaces URLs. This can either happen by using
+    the `language` and `country` attributes of the `url` tag, or by specifying
+    e.g. the `{localization}` placeholder. For more information see
+    `Setup a Webspace <webspaces.html#urls>`_.
 
 Adding custom localizations
 ---------------------------
