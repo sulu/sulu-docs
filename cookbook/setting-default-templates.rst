@@ -1,5 +1,5 @@
 Setting the default templates
-===================
+=============================
 
 Default templates are managed within your webspace. 
 You can specify the template that should be used when creating a page for a specific parent.
