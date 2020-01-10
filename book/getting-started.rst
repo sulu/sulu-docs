@@ -28,6 +28,32 @@ This command will bootstrap a new project in the directory ``my-project``.
         git add .
         git commit -m "Initial commit"
 
+.. note::
+
+    If you want to use other languages than english or german for the
+    administration interface of Sulu you can install them using the following
+    command:
+
+    .. code-block:: bash
+
+        bin/console sulu:admin:download-language <language>
+
+    Available languages are shown on `Crowdin`_ and you have to replace
+    <language> with the two letter code shown there.
+
+    Afterwards the language has to be activated in the configuration file
+    ``config/packages/sulu_admin.yaml``:
+
+    .. code-block:: yaml
+
+        sulu_core:
+            locales:
+                en: English
+                de: Deutsch
+            translations:
+                - en
+                - de
+
 Webspaces
 ---------
 
@@ -153,3 +179,4 @@ When you're ready to learn more, continue with :doc:`templates`.
 .. _Composer: https://getcomposer.org
 .. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Apache Jackrabbit: http://jackrabbit.apache.org
+.. _Crowdin: https://sulu.crowdin.com/sulusulu
