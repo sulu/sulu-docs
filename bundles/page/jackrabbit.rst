@@ -1,24 +1,28 @@
 Jackrabbit
 ==========
 
-If you want to have the `versioning`_ feature or want to improve the performance you
-maybe come to the time to change from ``doctrinedbal`` phpcr implementation to ``jackrabbit``.
+If you maintain a bigger website, it might make sense to use Jackrabbit instead of
+the ``doctrine-dbal`` implementation of Jackalope. Jackrabbit performs better in many
+cases, and as a bonus it also supports `versioning`_ of content.
 
 Installation
 ------------
 
-To have the ``jackrabbit`` adapter available you need to install the implementation
-using the following command:
+Use the following command to install the ``jackrabbit`` adapter:
 
 .. code-block:: bash
 
    composer require jackalope/jackalope-jackrabbit
 
+In addition to the previous command you also have to make sure that Jackrabbit is running
+on your server.
+
 Configuration
 -------------
 
-You need to change the following in ``config/packages/sulu_document_manager.yaml`` file
-its recommended to have the url as an environment variable in your .env file.
+Change the ``config/packages/sulu_document_manager.yaml`` file to something similar as
+below. Mind that it is recommended to pass the URL via an environment variable, which
+can e.g. be set in your ``.env`` file.
 
 .. code-block:: yaml
 
@@ -41,8 +45,8 @@ its recommended to have the url as an environment variable in your .env file.
 Migration
 ---------
 
-If you want to migrate from ``docrinedbal`` to ``jackrabbit`` phpcr implementation before
-switching export the data the following way:
+In order to migrate from ``doctrinedbal`` to ``jackrabbit`` you have to export your
+data before changing the configuration:
 
 .. code-block:: bash
 
@@ -50,8 +54,9 @@ switching export the data the following way:
     bin/websiteconsole doctrine:phpcr:workspace:export -p /cmf cmf_live.xml
     bin/adminconsole doctrine:phpcr:workspace:export -p /jcr:versions jcr.xml
 
-Then switch the configuration to jackrabbit as documented above and then first remove
-maybe exist old data in your jackrabbit workspace by running the following commands:
+Then change the configuration as explained in the above Configuration section, and
+executed these commands to clear any previously existing data (first you should make
+sure that you really don't need this data anymore).
 
 .. code-block:: bash
 
