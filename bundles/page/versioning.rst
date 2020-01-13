@@ -8,7 +8,7 @@ restored, which will result in a new draft.
 
 .. note::
 
-   Mind that this feature is only available for Jackrabbit, because Jackalope does
+   Mind that this feature is only available for :doc:`../../cookbook/jackrabbit`, because Jackalope does
    currently not support versioning for its Doctrine DBAL transportation layer.
 
 Configuration

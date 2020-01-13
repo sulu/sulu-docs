@@ -9,6 +9,5 @@ content management functionality of Sulu, which is its most important part.
 
     drafting
     versioning
-    jackrabbit
     content-repository
     security

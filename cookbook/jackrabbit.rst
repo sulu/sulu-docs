@@ -1,9 +1,9 @@
-Jackrabbit
-==========
+Using Jackrabbit
+================
 
 If you maintain a bigger website, it might make sense to use Jackrabbit instead of
 the ``doctrine-dbal`` implementation of Jackalope. Jackrabbit performs better in many
-cases, and as a bonus it also supports `versioning`_ of content.
+cases, and as a bonus it also supports :doc:`../bundles/page/versioning` of content.
 
 Installation
 ------------
@@ -72,5 +72,3 @@ by running the following commands:
     bin/adminconsole doctrine:phpcr:workspace:import -p / cmf.xml
     bin/websiteconsole doctrine:phpcr:workspace:import -p / cmf_live.xml
     bin/adminconsole doctrine:phpcr:workspace:import -p / jcr.xml
-
-.. _versioning: versioning.rst
