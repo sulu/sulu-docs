@@ -14,14 +14,14 @@ Use the following command to install the ``jackrabbit`` adapter:
 
    composer require jackalope/jackalope-jackrabbit
 
-In addition to the previous command you also have to make sure that Jackrabbit is running
+In addition to the previous command you also have to make sure that `Jackrabbit`_ is running
 on your server.
 
 Configuration
 -------------
 
 Change the ``config/packages/sulu_document_manager.yaml`` file to something similar as
-below. Mind that it is recommended to pass the URL via an environment variable, which
+below. Mind that it is recommended to pass the URL via an `environment variable`_, which
 can e.g. be set in your ``.env`` file.
 
 .. code-block:: yaml
@@ -72,3 +72,6 @@ by running the following commands:
     bin/adminconsole doctrine:phpcr:workspace:import -p / cmf.xml
     bin/websiteconsole doctrine:phpcr:workspace:import -p / cmf_live.xml
     bin/adminconsole doctrine:phpcr:workspace:import -p / jcr.xml
+
+.. _`Jackrabbit`: https://jackrabbit.apache.org/jcr/index.html
+.. _`environment variable`: https://symfony.com/doc/4.4/configuration.html#config-env-vars
