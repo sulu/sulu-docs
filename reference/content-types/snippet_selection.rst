@@ -18,7 +18,7 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - snippetType
+    * - types
       - string
       - The type of snippet to assign.
     * - default
@@ -47,7 +47,7 @@ Example
         </meta>
         
         <params>
-            <param name="snippetType" value="sidebar"/>
+            <param name="types" value="sidebar"/>
             <param name="default" value="sidebar_overview"/>
             <param name="loadExcerpt" value="true"/>
         </params>

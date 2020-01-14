@@ -16,6 +16,7 @@ our recipes.
     custom-error-page
     extend-entities
     implement-entity-extensible
+    jackrabbit
     using-elasticsearch
     smart-content-data-provider
     system-collections

@@ -25,8 +25,8 @@ Further Topics
 
     custom_route_generator
 
-Example
--------
+Example with RoutableEntity
+---------------------------
 
 This example will create a simple example-entity which will be
 available on the website with an own route.
