@@ -33,7 +33,7 @@ Parameters
       - Description
     * - provider
       - string
-      - DataProvider alias for content of SmartContent - Default 'content'.
+      - DataProvider alias for content of SmartContent - Default 'pages'.
     * - max_per_page
       - integer
       - Limits the results per page. Omit this parameter to disable pagination.
