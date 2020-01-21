@@ -65,7 +65,7 @@ default.
 Service
 .......
 
-The id of the service is `sulu_content.content_repository`. The methods can be
+The id of the service is `sulu_page.content_repository`. The methods can be
 used as described in the phpdocs.
 
 The mapping variable contains information for the mapping process.
