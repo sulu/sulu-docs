@@ -29,6 +29,11 @@ Parameters
       - string
       - Defines which of the displayOptions is the default one
 
+Return value
+------------
+
+See the Media_ object for available variables and functions.
+
 Example
 -------
 
@@ -68,3 +73,5 @@ Extended Example
             <param name="defaultDisplayOption" value="left"/>
         </params>
     </property>
+
+.. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
