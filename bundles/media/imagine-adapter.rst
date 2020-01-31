@@ -23,14 +23,14 @@ This extension uses imagemagick to render the images.
 
 To install it use following commands:
 
-__Mac:__
+**Mac:**
 
 .. code-block:: bash
 
     brew install imagemagick
     pecl install imagick
 
-__Linux:__
+**Linux:**
 
 .. code-block:: bash
 
@@ -44,7 +44,7 @@ This extension uses vips to render the images.
 
 To install it use following commands:
 
-__Mac:__
+**Mac:**
 
 .. code-block:: bash
 
@@ -53,7 +53,7 @@ __Mac:__
     pecl install vips
     composer require rokka/imagine-vips
 
-__Linux:__
+**Linux:**
 
 .. code-block:: bash
 
