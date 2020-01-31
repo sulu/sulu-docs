@@ -203,6 +203,9 @@ Here is a table with the content types shipped in Sulu core:
 | |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
 |                              | documents)                                  | urls for every format                   |
 +------------------------------+---------------------------------------------+-----------------------------------------+
+| |single_media_selection|     | widget for a single media item (image,      | Media_ Object                           |
+|                              | document)                                   |                                         |
++------------------------------+---------------------------------------------+-----------------------------------------+
 | |contact_account_selection|  | widget for selecting contacts and accounts  | array containing array representations  |
 |                              |                                             | of the contact or account objects       |
 +------------------------------+---------------------------------------------+-----------------------------------------+
@@ -903,6 +906,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
 .. _cron expression: https://github.com/mtdowling/cron-expression
+.. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
 .. |text_area| replace:: :doc:`text_area <../reference/content-types/text_area>`
@@ -920,6 +924,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
 .. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
+.. |single_media_selection| replace:: :doc:`single_media_selection <../reference/content-types/single_media_selection>`
 .. |contact_account_selection| replace:: :doc:`contact_account_selection <../reference/content-types/contact_account_selection>`
 .. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
 .. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
