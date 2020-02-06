@@ -23,7 +23,7 @@ Parameters
         populated to the HTML template.
     * - item_disabled_condition
       - string
-      - Allows to set a jexl expression that evaluates if an item should be displayed as disabled.
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
         Disabled items cannot be selected.
     * - allow_deselect_for_disabled_items
       - bool
@@ -53,3 +53,5 @@ Example
             </param>
         </params>
     </property>
+
+.. _jexl: https://github.com/TomFrost/jexl

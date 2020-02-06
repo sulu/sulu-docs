@@ -17,7 +17,7 @@ Parameters
       - Description
     * - item_disabled_condition
       - string
-      - Allows to set a jexl expression that evaluates if an item should be displayed as disabled.
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
         Disabled items cannot be selected.
     * - allow_deselect_for_disabled_items
       - bool
@@ -53,3 +53,5 @@ order to construct a link to the page use:
 
 Then ``target.content`` will give you access to the URL and other properties
 of the target page.
+
+.. _jexl: https://github.com/TomFrost/jexl

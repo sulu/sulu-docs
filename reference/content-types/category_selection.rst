@@ -19,7 +19,7 @@ Parameters
       - Description
     * - item_disabled_condition
       - string
-      - Allows to set a jexl expression that evaluates if an item should be displayed as disabled.
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
         Disabled items cannot be selected.
     * - request_parameters
       - collection
@@ -40,3 +40,5 @@ Example
             <title lang="en">Category Selection</title>
         </meta>
     </property>
+
+.. _jexl: https://github.com/TomFrost/jexl

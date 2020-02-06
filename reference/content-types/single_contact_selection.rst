@@ -17,7 +17,7 @@ Parameters
       - Description
     * - item_disabled_condition
       - string
-      - Allows to set a jexl expression that evaluates if an item should be displayed as disabled.
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
         Disabled items cannot be selected.
     * - allow_deselect_for_disabled_items
       - bool
@@ -58,3 +58,4 @@ Example
     {% endif %}
 
 .. _ContactInterface: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _jexl: https://github.com/TomFrost/jexl
