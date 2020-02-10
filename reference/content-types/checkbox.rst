@@ -19,7 +19,7 @@ Parameters
       - string
       - Defines the look of the checkbox, can either be "checkbox" or "toggler". Be aware of the difference between property type and parameter type.
     * - default_value
-      - string
+      - bool
       - Defines the default value of the checkbox. When not set the initial value of the checkbox is null.
     * - label
       - 
