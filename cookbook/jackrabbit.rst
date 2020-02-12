@@ -40,7 +40,7 @@ can e.g. be set in your ``.env`` file.
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
-                workspace: "%env(PHPCR_WORKSPACE)%"
+                workspace: "%env(PHPCR_WORKSPACE)%"_live
 
 Migration
 ---------
