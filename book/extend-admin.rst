@@ -3,14 +3,16 @@ Extend Admin UI
 
 The final section of the book has a deeper look at how to integrate your own entities and corresponding views into the
 Sulu administration interface. This includes adding new items to the navigation and configuring list views and form
-views for your entity. Sulu is built with extensibility as a core value and allows the integration of a custom entity
-without writing any JavaScript code in most cases.
+views for your entity. Supplementary to this document, you could have a look at the code of the
+`Sulu workshop at the Symfony Live Berlin 2019`_. The workshop consists of 12 assignments that guide you through
+creating a small website that integrates two simple custom entities.
 
-In order to provide this extensibility in a simple way, Sulu requires the APIs used for managing the entities follow
-some rules. If you provide such an API, Sulu comes with a variety of existing frontend views and
-components that cover a lot of different use cases. Furthermore, once you have reached the limits of the existing
-components, Sulu provides various extension points of different granularity allowing you to hook into most areas of the
-system using custom JavaScript code.
+Sulu is built with extensibility as a core value and allows the integration of a custom entity without writing any
+JavaScript code in most cases.  In order to provide this extensibility in a simple way, Sulu requires the APIs used for
+managing the entities follow some rules. If you provide such an API, Sulu comes with a variety of existing frontend
+views and components that cover a lot of different use cases. Furthermore, once you have reached the limits of the
+existing components, Sulu provides various extension points of different granularity allowing you to hook into most
+areas of the system using custom JavaScript code.
 
 As stated above, the frontend components coming with Sulu expect that your APIs deliver the data for the administration
 interface to match a certain standard. These standards affect the data for the list and form views that will be used to
@@ -845,3 +847,4 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Builder pattern: https://en.wikipedia.org/wiki/Builder_pattern
 .. _Font Awesome icon font: https://fontawesome.com/
 .. _Symfony Configuration: https://symfony.com/doc/current/configuration.html
+.. _Sulu workshop at the Symfony Live Berlin 2019: https://github.com/sulu/sulu-workshop-symfony-live-berlin-2019
