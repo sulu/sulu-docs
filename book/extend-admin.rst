@@ -553,6 +553,12 @@ has a few attributes:
 - ``colspan`` allows to define the width of the field. A value of ``12`` means that the entire available width is used,
   using smaller numbers result in an accordingly smaller field.
 
+.. note::
+
+    To display current values, the JSON returned from the server must provide the value with a key that matches the ``name`` of the field.
+    The format of the value of a field depends on the ``type`` of the field.
+    In general, the values returned by the server should be in the same format as the values which are sent to the server when the form is saved.
+
 The ``property`` tag also has some sub tags: The ``meta`` tag contains the ``title`` tag, which takes a translation key
 and uses the `Symfony Translations component`_ to get the texts for the ``Form`` component.
 
