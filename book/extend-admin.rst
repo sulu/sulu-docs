@@ -3,9 +3,13 @@ Extend Admin UI
 
 The final section of the book has a deeper look at how to integrate your own entities and corresponding views into the
 Sulu administration interface. This includes adding new items to the navigation and configuring list views and form
-views for your entity. Supplementary to this document, you could have a look at the code of the
-`Sulu workshop at the Symfony Live Berlin 2019`_. The workshop consists of 12 assignments that guide you through
-creating a small website that integrates two simple custom entities.
+views for your entity.
+
+.. note::
+
+    The `Sulu workshop at the Symfony Live Berlin 2019`_ is a great supplementary resource to this document.
+    It consists of 12 assignments that guide you through creating a small website that integrates two simple custom
+    entities.
 
 Sulu is built with extensibility as a core value and allows the integration of a custom entity without writing any
 JavaScript code in most cases.  In order to provide this extensibility in a simple way, Sulu requires the APIs used for
