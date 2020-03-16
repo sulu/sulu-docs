@@ -54,6 +54,7 @@ content type:
 
     block
     category_selection
+    single_category_selection
     checkbox
     color
     contact_account_selection
