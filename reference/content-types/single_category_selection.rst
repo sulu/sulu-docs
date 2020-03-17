@@ -21,13 +21,11 @@ Parameters
       - Collection of parameters that are appended to the requests sent by the selection.
     * - item_disabled_condition
       - string
-      - This condition is evaluated foreach record in the list and is used to determine if the record is selectable.
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
+        Disabled items cannot be selected.
     * - allow_deselect_for_disabled_items
-      - boolean
-      - Defines if the user can deselect a selected item if `item_disabled_condition` is true.
-    * - form_options_to_list_options
-      - string
-      - Defines from options which will be passed to the list options.
+      - bool
+      - Defines if the user should be able to deselect an item that is disabled. Default value is true.
 
 Example
 -------
@@ -58,3 +56,5 @@ Following example defines an entry category for the selection tree.
             </param>
         </params>
     </property>
+
+.. _jexl: https://github.com/TomFrost/jexl
