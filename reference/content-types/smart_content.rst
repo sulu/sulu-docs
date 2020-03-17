@@ -33,29 +33,29 @@ Parameters
       - Description
     * - provider
       - string
-      - DataProvider alias for content of SmartContent - Default 'pages'.
+      - DataProvider alias for content of SmartContent. Default: `pages`
     * - max_per_page
       - integer
       - Limits the results per page. Omit this parameter to disable pagination.
     * - page_parameter
       - string
-      - Defines the page number key to be used in the website query string.
+      - Defines the page number key to be used in the website query string. Default: `p`
     * - tags_parameter
       - string
       - Defines the tags key to be used in the website query string. This comma
         separated list of tag names will be combined (AND) with the selected
-        tags from the backend.
+        tags from the backend. Default: `tags`
     * - categories_parameter
       - string
       - Defines the categories key to be used in the website query string. This
         comma separated list of category ids will be combined (AND) with the
-        selected tags from the backend.
+        selected tags from the backend. Default: `categories`
     * - website_tags_operator
       - string
-      - OR or AND to define how the tags will be combined in the query.
+      - OR or AND to define how the tags will be combined in the query. Default: `OR`
     * - website_categories_operator
       - string
-      - OR or AND to define how the categories will be combined in the query.
+      - OR or AND to define how the categories will be combined in the query. Default: `OR`
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
@@ -75,7 +75,7 @@ Parameters
     * - exclude_duplicates
       - bool
       - If the provider is able to detect duplicates the content-type filters
-        already loaded records.
+        already loaded records. Default: `false`
 
 Return Value
 ------------

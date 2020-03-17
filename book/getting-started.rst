@@ -31,19 +31,9 @@ This command will bootstrap a new project in the directory ``my-project``.
 .. note::
 
     If you want to use other languages than english or german for the
-    administration interface of Sulu you can install them using the following
-    command:
-
-    .. code-block:: bash
-
-        bin/console sulu:admin:download-language <language>
-
-    Available languages are shown on `Crowdin`_ and you have to replace
-    <language> with the two letter code shown there.
-
-    Afterwards the language has to be activated in the configuration file
-    ``config/packages/sulu_admin.yaml``:
-
+    administration interface of Sulu you need to configure them in the
+    ``config/packages/sulu_admin.yaml`` file:
+    
     .. code-block:: yaml
 
         sulu_core:
@@ -53,6 +43,13 @@ This command will bootstrap a new project in the directory ``my-project``.
             translations:
                 - en
                 - de
+
+    Available languages are shown on `Crowdin`_.
+    Afterwards the languages have to be downloaded by running the following command:
+
+    .. code-block:: bash
+
+        bin/console sulu:admin:download-language
 
 Webspaces
 ---------

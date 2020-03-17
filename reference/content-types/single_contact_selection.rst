@@ -9,7 +9,19 @@ Let you assign one contact from the contact section to the page.
 Parameters
 ----------
 
-No parameters available.
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - item_disabled_condition
+      - string
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
+        Disabled items cannot be selected.
+    * - allow_deselect_for_disabled_items
+      - bool
+      - Defines if the user should be able to deselect an item that is disabled. Default value is true.
 
 Return value
 ------------
@@ -39,3 +51,4 @@ Example
     {% endif %}
 
 .. _ContactInterface: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _jexl: https://github.com/TomFrost/jexl

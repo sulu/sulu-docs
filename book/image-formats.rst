@@ -89,6 +89,7 @@ This file does not exist by default and must be created on your own.
         format_manager:
             default_imagine_options:
                 jpeg_quality: 80
+                webp_quality: 80
                 png_compression_level: 6
 
 Its recommended to have `jpeg_quality` between 70-90 as this is the best compromise between quality and image size.
@@ -109,6 +110,7 @@ A image compression can also be set on a specific image format the following way
 
             <options>
                 <option name="jpeg_quality">80</option>
+                <option name="webp_quality">80</option>
                 <option name="png_compression_level">6</option>
             </options>
         </format>

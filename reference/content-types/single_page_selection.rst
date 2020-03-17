@@ -9,8 +9,20 @@ Shows a field, on which exactly one link to another page can be assigned.
 Parameters
 ----------
 
-No parameters available
- 
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - item_disabled_condition
+      - string
+      - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
+        Disabled items cannot be selected.
+    * - allow_deselect_for_disabled_items
+      - bool
+      - Defines if the user should be able to deselect an item that is disabled. Default value is true.
+
 Example
 -------
 
@@ -34,3 +46,5 @@ order to construct a link to the page use:
 
 Then ``target.content`` will give you access to the URL and other properties
 of the target page.
+
+.. _jexl: https://github.com/TomFrost/jexl
