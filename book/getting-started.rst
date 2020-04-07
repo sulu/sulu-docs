@@ -152,7 +152,7 @@ will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t public/
+    php -S localhost:8000 -t public/ config/router.php
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".
