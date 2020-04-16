@@ -73,7 +73,7 @@ Dump this file to a readable folder on your machine and configure the storage wi
 
 
 Azure Blob Storage
-------
+------------------
 
 First install dependencies.
 
