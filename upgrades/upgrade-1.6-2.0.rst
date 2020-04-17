@@ -270,7 +270,7 @@ your database schema in sync:
     UPDATE co_fax_types SET name="sulu_contact.work" WHERE name="fax.work";
     UPDATE co_fax_types SET name="sulu_contact.private" WHERE name="fax.home";
     UPDATE we_analytics SET type="matomo" WHERE type="piwik";
-    ALTER TABLE se_roles CHANGE system securitySystem VARCHAR(60) NOT NULL;
+    ALTER TABLE `se_roles` CHANGE `system` `securitySystem` VARCHAR(60) NOT NULL;
     UPDATE `se_users` SET `locale` = 'en' WHERE `locale` NOT IN ('en', 'de');
     ALTER TABLE co_addresses ADD countryCode VARCHAR(5) DEFAULT NULL;
     UPDATE co_addresses INNER JOIN co_countries ON co_addresses.idCountries = co_countries.id SET co_addresses.countryCode = co_countries.code, co_addresses.idCountries = NULL WHERE co_addresses.idCountries IS NOT NULL;
