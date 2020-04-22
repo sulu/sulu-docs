@@ -24,8 +24,10 @@ following command:
 
     $ php bin/adminconsole sulu:document:initialize
 
-To allow users to see the new webspace you also have to set the permissions in
-the roles for the new webspace.
+.. note::
+
+    To allow users to see the new webspace you also have to add the permissions for the
+    webspace to the respective roles.
 
 After this few steps you are able to administrate and view your new webspace.
 
