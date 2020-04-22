@@ -746,6 +746,10 @@ how to register two field types, one for selecting a single and one for selectin
                 event_selection:
                     default_type: 'list_overlay'
                     resource_key: 'events'
+                    view:
+                        name: 'app.event_edit_form'
+                        result_to_view:
+                            id: 'id'
                     types:
                         list_overlay:
                             adapter: 'table'
@@ -794,6 +798,12 @@ load some resource. This is again the string that has already be defined e.g. in
 
 The ``default_type`` you see in both configuration sections defines which of the configured types (you can configure
 multiple types and use a param in the form XML to switch between them) is used if not specified otherwise.
+
+Optionally a `view` configuration can be set. This configuration allows to define a deep link to the resulting UI. There
+are two differnent configuration values for the the `view` option: `name` describes the name of the view to link to,
+which needs to be the same as defined in the `Admin` class. The `result_to_view` configuration describes how to
+translate the properties from the result to the parameters of the route of the view. In many cases the `id` of the
+property should be mapped to the `id` parameter of the route, as it is done in the above example.
 
 Some of the other properties in the above ``list_overlay`` configuration have already been explained in different parts
 of this guide. The ``adapter`` describes how to display the list and the ``list_key`` defines which list XML
