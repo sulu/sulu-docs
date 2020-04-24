@@ -763,6 +763,10 @@ how to register two field types, one for selecting a single and one for selectin
                 single_event_selection:
                     default_type: 'list_overlay'
                     resource_key: 'events'
+                    view:
+                        name: 'app.event_edit_form'
+                        result_to_view:
+                            id: 'id'
                     types:
                         list_overlay:
                             adapter: 'table'
