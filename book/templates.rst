@@ -905,7 +905,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XInclude: https://en.wikipedia.org/wiki/XInclude
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
-.. _cron expression: https://github.com/mtdowling/cron-expression
+.. _cron expression: https://github.com/dragonmantank/cron-expression
 .. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
