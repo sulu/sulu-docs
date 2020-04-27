@@ -757,7 +757,7 @@ cached on the client:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <cacheLifetime type="seconds">2400</view>
+        <cacheLifetime type="seconds">2400</cacheLifetime>
 
         <!-- ... -->
     </template>
@@ -789,7 +789,7 @@ For example, if you know that your homepage changes its content each day at
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <cacheLifetime type="expression">0 8 * * *</view>
+        <cacheLifetime type="expression">0 8 * * *</cacheLifetime>
 
         <!-- ... -->
     </template>
