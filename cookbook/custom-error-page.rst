@@ -58,8 +58,6 @@ Following variables are usable inside the exception template.
 +---------------------------------+------------------------------------------------------------------+
 | `exception`                     | complete exception object                                        |
 +---------------------------------+------------------------------------------------------------------+
-| `currentContent`                | response content which were rendered before exception was thrown |
-+---------------------------------+------------------------------------------------------------------+
 | `urls`                          | localized urls to start page (e.g. for language-switcher)        |
 +---------------------------------+------------------------------------------------------------------+
 | `request.webspaceKey`           | key of the current webspace                                      |
