@@ -229,7 +229,9 @@ from a list of recipes:
                 'recipes', // The resourceKey of the entities to load for this type of teaser
                 'table', // The list adapter in which the entities should be shown
                 ['title'], // The properties which should be shown
-                'Recipe' // The title of the overlay that shows when this entity is assigned
+                'Recipe', // The title of the overlay that shows when this entity is assigned
+                'app.recipe_edit_form', // The view to which a click on an item in the Admin UI will navigate (optional)
+                ['id' => 'id'], // The mapping of the teaserItem to the path parameters of the above view (optional)
             );
         }
 
