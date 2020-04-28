@@ -52,20 +52,33 @@ Following variables are usable inside the exception template.
 
 +---------------------------------+------------------------------------------------------------------+
 | Name                            | Description                                                      |
-+---------------------------------+------------------------------------------------------------------+
++=================================+==================================================================+
 | `status_code`                   | http-status-code                                                 |
++---------------------------------+------------------------------------------------------------------+
 | `status_text`                   | http-status-code message                                         |
++---------------------------------+------------------------------------------------------------------+
 | `exception`                     | complete exception object                                        |
++---------------------------------+------------------------------------------------------------------+
 | `currentContent`                | response content which were rendered before exception was thrown |
++---------------------------------+------------------------------------------------------------------+
 | `urls`                          | localized urls to start page (e.g. for language-switcher)        |
++---------------------------------+------------------------------------------------------------------+
 | `request.webspaceKey`           | key of the current webspace                                      |
++---------------------------------+------------------------------------------------------------------+
 | `request.defaultLocale`         | default locale of current portal                                 |
++---------------------------------+------------------------------------------------------------------+
 | `request.locale`                | current locale                                                   |
++---------------------------------+------------------------------------------------------------------+
 | `request.portalUrl`             | url of current portal                                            |
++---------------------------------+------------------------------------------------------------------+
 | `request.resourceLocatorPrefix` | prefix for resourcelocators of current portal                    |
++---------------------------------+------------------------------------------------------------------+
 | `request.resourcelocator`       | current resourcelocator                                          |
++---------------------------------+------------------------------------------------------------------+
 | `request.get`                   | array of get parameter                                           |
++---------------------------------+------------------------------------------------------------------+
 | `request.post`                  | array of post parameter                                          |
++---------------------------------+------------------------------------------------------------------+
 | `request.analyticsKey`          | analytics key of current webspace                                |
 +---------------------------------+------------------------------------------------------------------+
 
@@ -80,7 +93,7 @@ To test your error pages you can use following routes:
 
 .. note::
 
-    If you are not sure about your portal configuration you can get the routes with this 
+    If you are not sure about your portal configuration you can get the routes with this
     `app/webconsole router:debug | grep _error` command
 
 Examples:
