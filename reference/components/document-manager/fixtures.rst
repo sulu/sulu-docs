@@ -133,12 +133,37 @@ loading all of the fixtures.
 Advanced Usage
 --------------
 
-You can specify directories instead of having the command automatically find
-the fixtures:
+You can define groups to run only specific fixtures:
+
+.. code-block:: php
+
+    <?php
+    namespace YourBundle\DataFixtures\Document;
+
+    use Sulu\Component\DocumentManager\DocumentManager;
+    use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
+    use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureGroupInterface;
+    use Sulu\Component\DocumentManager\Exception\MetadataNotFoundException;
+
+    class SomeFixture implements DocumentFixtureInterface, DocumentFixtureGroupInterface
+    {
+        // ...
+
+        public function getGroups(): array
+        {
+            return ['Group1'];
+        }
+    }
 
 .. code-block:: bash
 
-    $ php bin/console sulu:document:fixtures:load --fixtures=CLASS_FCQN --fixtures=CLASS_FCQN
+    $ php bin/console sulu:document:fixtures:load --group=Group1
+
+To load only a specific class you can use its classname as group:
+
+.. code-block:: bash
+
+    $ php bin/console sulu:document:fixtures:load --group=SomeFixture
 
 You can also specify if fixtures should be *appended* (i.e. the repository will
 not be purged) and if the initializer should be executed.
