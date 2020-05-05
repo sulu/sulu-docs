@@ -76,11 +76,14 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
 Configuration
 -------------
 
-You can specify your new entity and if it exists your repository in the `sulu_security` 
-configuration section in the file app/config/config.yml.
+You can specify your new entity and if it exists your repository the
+configuration section in the file ``config/packages/*``.
+
+For the `User` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_security.yaml
     sulu_security:
         objects:
             user:
@@ -91,6 +94,7 @@ For the `Role` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_security.yaml
     sulu_security:
         objects:
             role:
@@ -101,16 +105,29 @@ For the `Contact` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_contact.yaml
     sulu_contact:
         objects:
             contact:
                 model:                Sulu\Bundle\ContactBundle\Entity\Contact
                 repository:           Sulu\Bundle\ContactBundle\Entity\ContactRepository
 
+For the `Account` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_contact.yaml
+    sulu_contact:
+        objects:
+            account:
+                model:                Sulu\Bundle\ContactBundle\Entity\Account
+                repository:           Sulu\Bundle\ContactBundle\Entity\AccountRepository
+
 For the `Media` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_media.yaml
     sulu_media:
         objects:
             media:
