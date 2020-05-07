@@ -53,6 +53,12 @@ Example
 
 You can use symfony expression language to access values from a service.
 
+.. note::
+
+    Be aware the the provided expression is only evaluated during the initial request to the administration interface.
+    If you want to provide a selection for your custom entity, you should configure the ``single_selection`` field-type
+    as described in :doc:`../../book/extend-admin`.
+
 .. code-block:: xml
 
     <property name="single" type="single_select">
