@@ -59,7 +59,7 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
         /**
          * Get myProperty
          *
-         * @return string 
+         * @return string
          */
         public function getMyProperty()
         {
@@ -70,14 +70,15 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
 .. warning::
 
     Your Entity can have own properties, but they should have at least default values.
-    Otherwise the normal features of Sulu could crash (like the 
+    Otherwise the normal features of Sulu could crash (like the
     `sulu:security:user:create` command).
 
 Configuration
 -------------
 
-You can specify your new entity and if it exists your repository the
-configuration section in the file ``config/packages/*``.
+You can specify your new entity and if it exists your repository
+in the configuration section of the file ``config/packages/*``.
+If the file does not exist you need to create it.
 
 For the `User` entity:
 
