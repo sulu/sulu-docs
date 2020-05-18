@@ -12,6 +12,7 @@ These entities are ready to extend:
 * Account
 * Category
 * Media
+* Tag
 
 You can extend all of them in the same way. Therefore we explain it for `User` here.
 
@@ -156,6 +157,17 @@ For the `Media` entity:
             media:
                 model:                Sulu\Bundle\MediaBundle\Entity\Media
                 repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
+
+For the `Tag` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_tag.yaml
+    sulu_tag:
+        objects:
+            tag:
+                model:                Sulu\Bundle\TagBundle\Entity\Tag
+                repository:           Sulu\Bundle\TagBundle\Entity\TagRepository
 
 .. warning::
 
