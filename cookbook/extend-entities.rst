@@ -9,7 +9,10 @@ These entities are ready to extend:
 * User
 * Role
 * Contact
+* Account
+* Category
 * Media
+* Tag
 
 You can extend all of them in the same way. Therefore we explain it for `User` here.
 
@@ -124,6 +127,26 @@ For the `Account` entity:
                 model:                Sulu\Bundle\ContactBundle\Entity\Account
                 repository:           Sulu\Bundle\ContactBundle\Entity\AccountRepository
 
+For the `Category` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_category.yaml
+    sulu_category:
+        objects:
+            category:
+                model:                Sulu\Bundle\CategoryBundle\Entity\Category
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryRepository
+            category_meta:
+                model:                Sulu\Bundle\CategoryBundle\Entity\CategoryMeta
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryMetaRepository
+            category_translation:
+                model:                Sulu\Bundle\CategoryBundle\Entity\CategoryTranslation
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryTranslationRepository
+            keyword:
+                model:                Sulu\Bundle\CategoryBundle\Entity\Keyword
+                repository:           Sulu\Bundle\CategoryBundle\Entity\KeywordRepository
+
 For the `Media` entity:
 
 .. code-block:: yaml
@@ -134,6 +157,17 @@ For the `Media` entity:
             media:
                 model:                Sulu\Bundle\MediaBundle\Entity\Media
                 repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
+
+For the `Tag` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_tag.yaml
+    sulu_tag:
+        objects:
+            tag:
+                model:                Sulu\Bundle\TagBundle\Entity\Tag
+                repository:           Sulu\Bundle\TagBundle\Entity\TagRepository
 
 .. warning::
 
