@@ -38,29 +38,25 @@ steps describe this upgrade process.
 
    This can happen in two different ways:
 
-**a. Make the build yourself**
+**a. Download the build from the `Skeleton repository`_**
 
-   Run the following two npm commands (requires npm version 5 or higher) in the `assets/admin` folder of your project:
-
-.. code-block:: bash
-
-    $ npm install
-    $ npm run build
-
-.. note::
-
-    This is the only option to update the administration interface if you have implemented some custom JavaScript code
-    for it.
-
-**b. Download the build from the `Skeleton repository`_**
-
-   In case you have not added any custom JavaScript to our administration interface you can alternatively also use the
+   In case you have not added any custom JavaScript to our administration interface you can use the
    pre-built JavaScript in our `Skeleton repository`_. We have implemented a Symfony command, that automatically checks
    which Sulu version you are using and downloads the correct version of the JavaScript build.
 
 .. code-block:: bash
 
     $ bin/console sulu:admin:download-build
+
+**b. Make the build yourself**
+
+    In case you have added custom JavaScript to our administration interface, you need to make the build by yourself.
+    Run the following two npm commands (requires npm version 5 or higher) in the `assets/admin` folder of your project:
+
+.. code-block:: bash
+
+    $ npm install
+    $ npm run build
 
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _Skeleton repository: https://github.com/sulu/skeleton
