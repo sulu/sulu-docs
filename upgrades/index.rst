@@ -7,5 +7,5 @@ different major releases.
 .. toctree::
     :maxdepth: 1
 
-    upgrade-2.0.rst
+    upgrade-2.x.rst
     upgrade-1.6-2.0.rst

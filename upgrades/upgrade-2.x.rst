@@ -1,4 +1,4 @@
-Upgrading Sulu 2.0
+Upgrading Sulu 2.x
 ==================
 
 This upgrade guide is valid for any update from any Sulu 2.0 to any version below 3.0. These updates should be less
@@ -60,4 +60,4 @@ steps describe this upgrade process.
 
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _Skeleton repository: https://github.com/sulu/skeleton
-.. _UPGRADE.md: https://github.com/sulu/sulu/blob/release/2.0/UPGRADE.md
+.. _UPGRADE.md: https://github.com/sulu/sulu/blob/master/UPGRADE.md
