@@ -9,7 +9,6 @@ Available adapters are:
 * `gd`_
 * `imagick_extension`_
 * `vips_extension`_
-* `contao/imagine-svg`_
 
 GD
 --
@@ -61,18 +60,6 @@ To install it use following commands:
     pecl install vips
     composer require rokka/imagine-vips
 
-contao/imagine-svg
-------------------
-
-This adapter only handles SVG images and is an addition to the other adapters.
-
-To install it use following command:
-
-.. code-block:: bash
-
-    composer require contao/imagine-svg
-
 .. _gd: http://php.net/manual/en/book.image.php
 .. _imagick_extension: http://php.net/manual/en/book.imagick.php
 .. _vips_extension: https://github.com/libvips/php-vips-ext
-.. _contao/imagine-svg: https://github.com/contao/imagine-svg
