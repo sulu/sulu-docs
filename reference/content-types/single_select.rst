@@ -61,9 +61,9 @@ You can use symfony expression language to access values or set a default value 
 
 .. code-block:: xml
 
-    <property name="list" type="select">
+    <property name="single" type="single_select">
         <meta>
-            <title lang="en">Select</title>
+            <title lang="en">Single Select</title>
         </meta>
 
         <params>
