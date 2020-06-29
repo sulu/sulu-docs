@@ -51,7 +51,7 @@ Example
         </params>
     </property>
 
-You can use symfony expression language to access values from a service.
+You can use symfony expression language to access values or set a default value from a service.
 
 .. note::
 
@@ -67,6 +67,7 @@ You can use symfony expression language to access values from a service.
         </meta>
 
         <params>
+            <param name="default_value" type="expression" value="service('your_service').getDefaultValue()"/>
             <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
