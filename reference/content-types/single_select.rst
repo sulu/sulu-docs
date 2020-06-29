@@ -51,16 +51,17 @@ Example
         </params>
     </property>
 
-You can use symfony expression language to access values from a service.
+You can use symfony expression language to access values or set a default value from a service.
 
 .. code-block:: xml
 
-    <property name="single" type="single_select">
+    <property name="list" type="select">
         <meta>
-            <title lang="en">Single Select</title>
+            <title lang="en">Select</title>
         </meta>
 
         <params>
+            <param name="default_value" type="expression" value="service('your_service').getDefaultValue()"/>
             <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
