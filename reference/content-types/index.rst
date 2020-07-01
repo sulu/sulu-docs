@@ -53,6 +53,8 @@ content type:
     :maxdepth: 1
 
     block
+    contact_selection
+    account_selection
     category_selection
     checkbox
     color
