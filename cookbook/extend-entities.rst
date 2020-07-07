@@ -9,7 +9,10 @@ These entities are ready to extend:
 * User
 * Role
 * Contact
+* Account
+* Category
 * Media
+* Tag
 
 You can extend all of them in the same way. Therefore we explain it for `User` here.
 
@@ -59,7 +62,7 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
         /**
          * Get myProperty
          *
-         * @return string 
+         * @return string
          */
         public function getMyProperty()
         {
@@ -70,17 +73,21 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
 .. warning::
 
     Your Entity can have own properties, but they should have at least default values.
-    Otherwise the normal features of Sulu could crash (like the 
+    Otherwise the normal features of Sulu could crash (like the
     `sulu:security:user:create` command).
 
 Configuration
 -------------
 
-You can specify your new entity and if it exists your repository in the `sulu_security` 
-configuration section in the file app/config/config.yml.
+You can specify your new entity and if it exists your repository
+in the configuration section of the file ``config/packages/*``.
+If the file does not exist you need to create it.
+
+For the `User` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_security.yaml
     sulu_security:
         objects:
             user:
@@ -91,6 +98,7 @@ For the `Role` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_security.yaml
     sulu_security:
         objects:
             role:
@@ -101,21 +109,65 @@ For the `Contact` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_contact.yaml
     sulu_contact:
         objects:
             contact:
                 model:                Sulu\Bundle\ContactBundle\Entity\Contact
                 repository:           Sulu\Bundle\ContactBundle\Entity\ContactRepository
 
+For the `Account` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_contact.yaml
+    sulu_contact:
+        objects:
+            account:
+                model:                Sulu\Bundle\ContactBundle\Entity\Account
+                repository:           Sulu\Bundle\ContactBundle\Entity\AccountRepository
+
+For the `Category` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_category.yaml
+    sulu_category:
+        objects:
+            category:
+                model:                Sulu\Bundle\CategoryBundle\Entity\Category
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryRepository
+            category_meta:
+                model:                Sulu\Bundle\CategoryBundle\Entity\CategoryMeta
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryMetaRepository
+            category_translation:
+                model:                Sulu\Bundle\CategoryBundle\Entity\CategoryTranslation
+                repository:           Sulu\Bundle\CategoryBundle\Entity\CategoryTranslationRepository
+            keyword:
+                model:                Sulu\Bundle\CategoryBundle\Entity\Keyword
+                repository:           Sulu\Bundle\CategoryBundle\Entity\KeywordRepository
+
 For the `Media` entity:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_media.yaml
     sulu_media:
         objects:
             media:
                 model:                Sulu\Bundle\MediaBundle\Entity\Media
                 repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
+
+For the `Tag` entity:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_tag.yaml
+    sulu_tag:
+        objects:
+            tag:
+                model:                Sulu\Bundle\TagBundle\Entity\Tag
+                repository:           Sulu\Bundle\TagBundle\Entity\TagRepository
 
 .. warning::
 

@@ -62,6 +62,7 @@ content type:
     email
     location
     media_selection
+    number
     page_selection
     phone
     resource_locator

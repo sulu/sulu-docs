@@ -205,7 +205,7 @@ avoid filtering for that values.
 
     <?php
 
-    use JMS\Serializer\SerializerInterface;
+    use Sulu\Component\Serializer\ArraySerializerInterface;
     use Sulu\Component\SmartContent\Orm\BaseDataProvider;
     use Sulu\Component\SmartContent\Orm\DataProviderRepositoryInterface;
     use Symfony\Component\HttpFoundation\RequestStack;
@@ -303,7 +303,7 @@ definition.
 
         <service id="sulu_example.smart_content.data_provider.example" class="Sulu\Bundle\ExampleBundle\SmartContent\ExampleDataProvider">
             <argument type="service" id="sulu_example.example_repository"/>
-            <argument type="service" id="serializer"/>
+            <argument type="service" id="sulu_core.array_serializer"/>
             <argument type="service" id="request_stack"/>
 
             <tag name="sulu.smart_content.data_provider" alias="example"/>

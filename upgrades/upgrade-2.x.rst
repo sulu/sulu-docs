@@ -1,11 +1,11 @@
-Upgrading Sulu 2.0
+Upgrading Sulu 2.x
 ==================
 
 This upgrade guide is valid for any update from any Sulu 2.0 to any version below 3.0. These updates should be less
 problematic, because backwards compatability is only broken when it is really necessary to fix a bug. The following
 steps describe this upgrade process.
 
-**1. Upgrade the ``sulu/sulu`` package**
+**1. Upgrade the sulu/sulu package**
 
    Execute the following command in the root folder of your project.
 
@@ -38,23 +38,9 @@ steps describe this upgrade process.
 
    This can happen in two different ways:
 
-**a. Make the build yourself**
+**a. Download the build from the Skeleton repository**
 
-   Run the following two npm commands (requires npm version 5 or higher) in the `assets/admin` folder of your project:
-
-.. code-block:: bash
-
-    $ npm install
-    $ npm run build
-
-.. note::
-
-    This is the only option to update the administration interface if you have implemented some custom JavaScript code
-    for it.
-
-**b. Download the build from the `Skeleton repository`_**
-
-   In case you have not added any custom JavaScript to our administration interface you can alternatively also use the
+   In case you have not added any custom JavaScript to our administration interface you can use the
    pre-built JavaScript in our `Skeleton repository`_. We have implemented a Symfony command, that automatically checks
    which Sulu version you are using and downloads the correct version of the JavaScript build.
 
@@ -62,6 +48,16 @@ steps describe this upgrade process.
 
     $ bin/console sulu:admin:download-build
 
+**b. Make the build yourself**
+
+    In case you have added custom JavaScript to our administration interface, you need to make the build by yourself.
+    Run the following two npm commands (requires npm version 5 or higher) in the `assets/admin` folder of your project:
+
+.. code-block:: bash
+
+    $ npm install
+    $ npm run build
+
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _Skeleton repository: https://github.com/sulu/skeleton
-.. _UPGRADE.md: https://github.com/sulu/sulu/blob/release/2.0/UPGRADE.md
+.. _UPGRADE.md: https://github.com/sulu/sulu/blob/master/UPGRADE.md

@@ -51,7 +51,13 @@ Example
         </params>
     </property>
 
-You can use symfony expression language to access values from a service.
+You can use symfony expression language to access values or set a default value from a service.
+
+.. note::
+
+    Be aware that the provided expression is only evaluated during the initial request to the administration interface.
+    If you want to provide a selection for your custom entity, you should configure the ``single_selection`` field-type
+    as described in :doc:`../../book/extend-admin`.
 
 .. code-block:: xml
 
@@ -61,6 +67,7 @@ You can use symfony expression language to access values from a service.
         </meta>
 
         <params>
+            <param name="default_value" type="expression" value="service('your_service').getDefaultValue()"/>
             <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
