@@ -5,7 +5,7 @@ This upgrade guide is valid for any update from any Sulu 2.0 to any version belo
 problematic, because backwards compatability is only broken when it is really necessary to fix a bug. The following
 steps describe this upgrade process.
 
-**1. Upgrade the ``sulu/sulu`` package**
+**1. Upgrade the sulu/sulu package**
 
    Execute the following command in the root folder of your project.
 
@@ -38,7 +38,7 @@ steps describe this upgrade process.
 
    This can happen in two different ways:
 
-**a. Download the build from the `Skeleton repository`_**
+**a. Download the build from the Skeleton repository**
 
    In case you have not added any custom JavaScript to our administration interface you can use the
    pre-built JavaScript in our `Skeleton repository`_. We have implemented a Symfony command, that automatically checks
