@@ -56,24 +56,27 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
 
           <IfModule mod_expires.c>
               ExpiresActive On
-              ExpiresDefault "access plus 1 month"
               ExpiresByType image/gif "access plus 1 month"
               ExpiresByType image/png "access plus 1 month"
               ExpiresByType image/svg+xml "access plus 1 month"
+              ExpiresByType image/svg "access plus 1 month"
               ExpiresByType image/jpeg "access plus 1 month"
               ExpiresByType image/jpg "access plus 1 month"
               ExpiresByType image/webp "access plus 1 month"
+              ExpiresByType image/x-icon "access plus 1 month"
+              ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
               ExpiresByType text/javascript "access plus 1 month"
               ExpiresByType text/css "access plus 1 month"
               ExpiresByType font/woff2 "access plus 1 month"
               ExpiresByType font/woff "access plus 1 month"
               ExpiresByType font/eot "access plus 1 month"
               ExpiresByType font/ttf "access plus 1 month"
+              ExpiresByType video/mp4 "access plus 1 month"
           </IfModule>
 
           <IfModule mod_deflate.c>
               SetOutputFilter DEFLATE
-              SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+              SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|mp4)$ no-gzip dont-vary
               SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
               SetEnvIfNoCase Request_URI \.pdf$ no-gzip dont-vary
 

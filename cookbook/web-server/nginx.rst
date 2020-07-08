@@ -33,7 +33,7 @@ The Nginx configuration could look something like.
       }
 
       # expire
-      location ~* \.(?:ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf)$ {
+      location ~* \.(?:ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf|mp4)$ {
           try_files $uri /website.php/$1?$query_string;
           access_log off;
           expires 30d;
