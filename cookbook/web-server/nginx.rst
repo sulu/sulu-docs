@@ -15,17 +15,22 @@ The Nginx configuration could look something like.
       error_log /var/log/nginx/sulu.lo.error.log;
       access_log /var/log/nginx/sulu.lo.at.access.log;
 
+	  # recommended security headers
+      add_header X-Frame-Options sameorigin;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-XSS-Protection "1; mode=block";
+
       location / {
           # try to serve file directly, fallback to index.php
           try_files $uri /index.php$is_args$args;
       }
 
       # expire
-      location ~* \.(?:ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf)$ {
+      location ~* \.(?:ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf|mp4)$ {
           # try to serve file directly, fallback to index.php
           try_files $uri /index.php$is_args$args;
           access_log off;
-          expires 30d;
+          expires 1y;
           add_header Pragma public;
           add_header Cache-Control "public";
       }
