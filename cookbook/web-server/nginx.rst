@@ -18,6 +18,11 @@ The Nginx configuration could look something like.
       # strip app.php/ prefix if it is present
       rewrite ^/app\.php/?(.*)$ /$1 permanent;
 
+      # recommended security headers
+      add_header X-Frame-Options sameorigin;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-XSS-Protection "1; mode=block";
+
       location /admin {
           index admin.php;
           try_files $uri @rewriteadmin;
@@ -36,7 +41,7 @@ The Nginx configuration could look something like.
       location ~* \.(?:ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf|mp4)$ {
           try_files $uri /website.php/$1?$query_string;
           access_log off;
-          expires 30d;
+          expires 1y;
           add_header Pragma public;
           add_header Cache-Control "public";
       }
