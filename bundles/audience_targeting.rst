@@ -102,8 +102,6 @@ Symfony. This includes the following steps:
 
 * Clear the Symfony cache with the `cache:clear` command or manually
   deleting the cache folder
-* Rebuild the translations with the `sulu:translate:export` command
-* Install the new assets using the `assets:install --symlink`
 * Make sure that the users the feature should be enabled for have the correct
   permissions
 
