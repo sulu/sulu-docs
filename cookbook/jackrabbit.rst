@@ -42,6 +42,11 @@ can e.g. be set in your ``.env`` file.
                     url: "%env(JACKRABBIT_URL)%"
                 workspace: "%env(PHPCR_WORKSPACE)%_live"
 
+.. note::
+
+    The ``PHPCR_WORKSPACE`` is something similar as a database name so it is best practice
+    to have a similar value for it, for example: ``su_myproject`` in your ``.env`` files.
+
 Migration
 ---------
 
@@ -55,13 +60,21 @@ data before changing the configuration:
     bin/adminconsole doctrine:phpcr:workspace:export -p /jcr:versions jcr.xml
 
 Then change the configuration as explained in the above Configuration section, and
-executed these commands to clear any previously existing data (first you should make
+then execute the following command to initialize the jackrabbit workspaces for sulu:
+
+.. code-block:: bash
+
+    bin/adminconsole cache:clear
+    bin/adminconsole sulu:document:initialize
+
+Now executed these commands to clear any previously existing data (first you should make
 sure that you really don't need this data anymore).
 
 .. code-block:: bash
 
     bin/adminconsole doctrine:phpcr:node:remove /cmf
     bin/websiteconsole doctrine:phpcr:node:remove /cmf
+    # the following command can fail if the node not exist ignore the error then:
     bin/adminconsole doctrine:phpcr:node:remove /jcr:versions
 
 After that you can import the exported data from ``doctrinedbal`` into ``jackrabbit``
