@@ -41,7 +41,7 @@ Flex:
 
 In a normal Symfony application, that would already work fine, but to
 use Webpack Encore with Sulu, some configuration has to be adjusted,
-because there is an additional build for Sulu’s admin interface.
+because there is an additional Javascript application for Sulu’s admin interface.
 
 To continue, create a directory ``assets/website/`` and move the
 following directories and files into that directory:
