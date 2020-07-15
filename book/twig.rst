@@ -183,5 +183,11 @@ this code:
 
 Image formats need to be defined in the `image_formats.xml`_ in your config.
 
-.. _image_formats.xml: https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/config/image-formats.xml
+CSS / JS
+--------
+
+You can organize and build your website assets the way you are most familiar with.
+If you want to use Symfony's Webpack Encore, have a look at the :doc:`../cookbook/webpack-encore`.
+
+.. _image_formats.xml: https://github.com/sulu/skeleton/blob/master/config/image-formats.xml
 .. _Sulu Homepage: http://sulu.io
