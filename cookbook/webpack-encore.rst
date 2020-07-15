@@ -44,21 +44,19 @@ use Webpack Encore with Sulu, some configuration has to be adjusted,
 because there is an additional Javascript application for Sulu’s admin interface.
 
 To continue, create a directory ``assets/website/`` and move the
-following directories and files into that directory:
+following directories into that directory:
 
 * ``assets/css/``
 * ``assets/js/``
-* ``package.json``
-* ``webpack.config.js``
 
-Next, add the following changes to ``assets/website/webpack.config.js``:
+Next, add the following changes to ``webpack.config.js``:
 
 .. code:: diff
 
     Encore
         // directory where compiled assets will be stored
    -    .setOutputPath('public/build/')
-   +    .setOutputPath('../../public/build/website/')
+   +    .setOutputPath('public/build/website/')
         // public path used by the web server to access the output path
    -    .setPublicPath('/build')
    +    .setPublicPath('/build/website')
@@ -75,7 +73,7 @@ Next, add the following changes to ``assets/website/webpack.config.js``:
          * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
          */
    -    .addEntry('app', './assets/js/app.js')
-   +    .addEntry('app', './js/app.js')
+   +    .addEntry('app', './assets/website/js/app.js')
         //.addEntry('page1', './assets/js/page1.js')
         //.addEntry('page2', './assets/js/page2.js')
 
@@ -127,16 +125,16 @@ And that’s it!
 Build
 -----
 
-Now you are ready to add custom scripts and styles in
+Now you are ready to add your scripts and styles in
 ``assets/website/js`` and ``assets/website/css``. When you finished your
-changes, go to ``assets/website/`` in your terminal and run
+changes, open your terminal in the root directory and run
 
 .. code:: bash
 
    npm install
    npm run build
 
-No you should be able to see your scripts and styles in the browser.
+Now you should be able to see the outcome in the browser.
 
 Customization
 -------------
