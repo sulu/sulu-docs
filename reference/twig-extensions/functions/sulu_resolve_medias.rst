@@ -12,7 +12,7 @@ Returns resolved medias with needed properties for a given media array.
 
 **Arguments**:
 
-- **media**: *object[]* - The media object.
+- **media**: *object[]|int[]* - The media objects or media ids.
 - **locale**: *string* - Locale to resolve metadata.
 
 **Returns**: *object[]* - Object with all needed properties, like `thumbnails`, `title`, `description` and `url`.
