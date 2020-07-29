@@ -16,7 +16,7 @@ The simplest template possible looks something like the this:
         <key>default</key>
 
         <view>ClientWebsiteBundle:templates:default</view>
-        <controller>SuluWebsiteBundle:Default:index</controller>
+        <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
         <cacheLifetime>2400</cacheLifetime>
 
         <meta>
