@@ -302,10 +302,16 @@ Transformation effect can also be combined the following way:
         </format>
     </formats>
 
-Editing exist image formats
----------------------------
+Editing existing image formats
+------------------------------
 
-If you edit exist image formats you need to run the following command to purge the image format cache:
+If you edit exist image formats you need to run the following command to regenerate exist images:
+
+.. code-block:: bash
+
+   php bin/websiteconsole sulu:media:regenerate-formats
+
+or the following command to purge the image format cache:
 
 .. code-block:: bash
 
