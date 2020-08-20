@@ -22,9 +22,21 @@ Parameters
     * - schemes
       - collection
       - List of available schemes in dropdown and validation.
+        Defaults are: ``https://``, ``http://``, ``ftp://``, ``ftps``, ``mailto:``, ``tel:``.
 
 Example
 -------
+
+.. code-block:: xml
+
+    <property name="url" type="url">
+        <meta>
+            <title lang="en">URL</title>
+        </meta>
+    </property>
+
+Extended Example
+----------------
 
 .. code-block:: xml
 

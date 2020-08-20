@@ -16,6 +16,7 @@ our recipes.
     custom-error-page
     extend-entities
     implement-entity-extensible
+    jackrabbit
     using-elasticsearch
     smart-content-data-provider
     system-collections
@@ -34,6 +35,7 @@ our recipes.
     dump-sitemap
     video-preview-images
     external-media-storage
+    webpack-encore
     extending-website-search
 
 It is possible to work through the recipes, although most of the people will

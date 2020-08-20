@@ -205,7 +205,7 @@ avoid filtering for that values.
 
     <?php
 
-    use JMS\Serializer\SerializerInterface;
+    use Sulu\Component\Serializer\ArraySerializerInterface;
     use Sulu\Component\SmartContent\Orm\BaseDataProvider;
     use Sulu\Component\SmartContent\Orm\DataProviderRepositoryInterface;
     use Symfony\Component\HttpFoundation\RequestStack;
@@ -232,6 +232,7 @@ avoid filtering for that values.
                 ->enableLimit()
                 ->enablePagination()
                 ->enablePresentAs()
+                ->enableView('example.edit_form', ['id' => 'id', 'properties/webspaceKey' => 'webspace'])
                 ->getConfiguration();
         }
 
@@ -278,6 +279,14 @@ avoid filtering for that values.
     structures, because it allows to filter e.g. only for pages below a certain
     page.
 
+There is an `enableLimit`, an `enablePagination` and an `enablePresentAs` call,
+which allow you to enable certain features. And the optional `enableView`
+allows you to define to which `View` the application should navigate, when one
+of the resulting items is clicked. The first parameters describes the view
+defined in an `Admin` class, and the second part is a mapping from a json
+pointer, which defines where from the loaded smart content item the value
+should be received, to the parameter of the `View`'s path.
+
 4. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -294,7 +303,7 @@ definition.
 
         <service id="sulu_example.smart_content.data_provider.example" class="Sulu\Bundle\ExampleBundle\SmartContent\ExampleDataProvider">
             <argument type="service" id="sulu_example.example_repository"/>
-            <argument type="service" id="serializer"/>
+            <argument type="service" id="sulu_core.array_serializer"/>
             <argument type="service" id="request_stack"/>
 
             <tag name="sulu.smart_content.data_provider" alias="example"/>

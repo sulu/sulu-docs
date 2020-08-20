@@ -19,8 +19,11 @@ Parameters
       - string
       - Defines the look of the checkbox, can either be "checkbox" or "toggler". Be aware of the difference between property type and parameter type.
     * - default_value
-      - string
+      - bool
       - Defines the default value of the checkbox. When not set the initial value of the checkbox is null.
+    * - label
+      - 
+      - Defines the label of the checkbox. This is recommended if the meta title should be next to the toggler instead of above it.
 
 Examples
 --------
@@ -42,5 +45,18 @@ Examples
         <params>
             <param name="type" value="toggler"/>
             <param name="default_value" value="true"/>
+        </params>
+    </property>
+
+.. code-block:: xml
+
+    <property name="available" type="checkbox">
+        <params>
+            <param name="type" value="toggler"/>
+            <param name="label">
+                <meta>
+                    <title lang="en">Show Author</title>
+                </meta>
+            </param>
         </params>
     </property>

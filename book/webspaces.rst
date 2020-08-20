@@ -41,6 +41,10 @@ following paragraphs.
             <template type="error">error/error</template>
         </templates>
 
+        <excluded-templates>
+            <excluded-template>overview</excluded-template>
+        </excluded-templates>
+
         <navigation>
             <contexts>
                 <context key="main">
@@ -129,6 +133,14 @@ template with type ``error-<http-code>`` respectively it uses the template with
 the type  ``error`` as a fallback. The other use case is the search. Sulu will
 use the template with the type ``search`` from the webspace to display search
 results.
+
+Excluded templates (optional)
+-----------------------------
+
+The ``excluded-templates`` node defines which of the templates (the ones
+described in :doc:`templates`) should be excluded in the template dropdown of
+the page form. The entire node is optional, since especially if you only have
+a single webspace this setting does not make a lot of sense.
 
 Navigation
 ----------

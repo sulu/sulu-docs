@@ -16,7 +16,7 @@ documented the most important ones.
     hash
     http_cache
     markup/index
-    media
+    media/index
     persistence
     preview/index
     route/index

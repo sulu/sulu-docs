@@ -28,6 +28,29 @@ This command will bootstrap a new project in the directory ``my-project``.
         git add .
         git commit -m "Initial commit"
 
+.. note::
+
+    If you want to use other languages than english or german for the
+    administration interface of Sulu you need to configure them in the
+    ``config/packages/sulu_admin.yaml`` file:
+
+    .. code-block:: yaml
+
+        sulu_core:
+            locales:
+                en: English
+                de: Deutsch
+            translations:
+                - en
+                - de
+
+    Available languages are shown on `Crowdin`_.
+    Afterwards the languages have to be downloaded by running the following command:
+
+    .. code-block:: bash
+
+        bin/console sulu:admin:download-language
+
 Webspaces
 ---------
 
@@ -129,7 +152,7 @@ will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    bin/console server:start
+    php -S localhost:8000 -t public/ config/router.php
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".
@@ -153,3 +176,4 @@ When you're ready to learn more, continue with :doc:`templates`.
 .. _Composer: https://getcomposer.org
 .. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Apache Jackrabbit: http://jackrabbit.apache.org
+.. _Crowdin: https://sulu.crowdin.com/sulusulu

@@ -53,11 +53,29 @@ the teasers as you like:
 
 .. code-block:: html+jinja
 
-    <ul property="teasers">
+    <div>
         {% for teaser in content.teasers %}
-            <li><a href="{{ sulu_content_path(teaser.url) }}">{{ teaser.title }}</a></li>
+            <article>
+                 <h3>
+                     {{ teaser.title }}
+                 </h3>
+
+                 {% set teaserImage = sulu_resolve_media(teaser.mediaId, app.request.locale) %}
+
+                 {% if teaserImage %}
+                     <img src="{{ teaserImage.formats['300x'] }}" alt="{{ teaserImage.title }}">
+                 {% endif %}
+
+                 <div>
+                      {{ teaser.description|raw }}
+                 </div>
+
+                 <a href="{{ sulu_content_path(teaser.url) }}">
+                     {{ teaser.moreText|default('Read more') }}
+                 </a>
+            </article>
         {% endfor %}
-    </ul>
+    </div>
 
 Each teaser is an object with the following properties:
 
@@ -211,7 +229,9 @@ from a list of recipes:
                 'recipes', // The resourceKey of the entities to load for this type of teaser
                 'table', // The list adapter in which the entities should be shown
                 ['title'], // The properties which should be shown
-                'Recipe' // The title of the overlay that shows when this entity is assigned
+                'Recipe', // The title of the overlay that shows when this entity is assigned
+                'app.recipe_edit_form', // The view to which a click on an item in the Admin UI will navigate (optional)
+                ['id' => 'id'], // The mapping of the teaserItem to the path parameters of the above view (optional)
             );
         }
 

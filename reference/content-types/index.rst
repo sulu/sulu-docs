@@ -54,6 +54,7 @@ content type:
 
     block
     category_selection
+    single_category_selection
     checkbox
     color
     contact_account_selection
@@ -61,6 +62,7 @@ content type:
     email
     location
     media_selection
+    number
     page_selection
     phone
     resource_locator
