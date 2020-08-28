@@ -16,9 +16,6 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - request_parameters
-      - collection
-      - Collection of parameters that are appended to the requests sent by the selection.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -26,6 +23,13 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
+    * - request_parameters
+      - collection
+      - Collection of parameters that are appended to the requests sent by the selection.
+    * - resource_store_properties_to_request
+      - collection
+      - Collection of property names.
+        The value of the respective properties are appended to the requests sent by the selection.
 
 Example
 -------
