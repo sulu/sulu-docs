@@ -53,6 +53,50 @@ So a sample configuration would look like this:
     `CompilerPass`_. Actually that is what most of the Sulu bundles are doing
     to minimize the configuration effort of the application.
 
+Website Search
+^^^^^^^^^^^^^^
+
+This bundle also provides configuration for the website search. By default,
+when using the website search, only pages will be listed as result. If you
+want e.g. a custom entity to be found in the website search, you have to
+register the corresponding index.
+
+The configuration looks like the following:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_search.yaml
+
+    sulu_search:
+        website:
+            indexes:
+                - examples_published
+
+You could also prevent pages from being found using the
+search. This can be achieved using the following code:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_search.yaml
+
+    sulu_search:
+        website:
+            indexes:
+                pages: null
+
+If the index name contains the webspace key, you can use
+the `#webspace#` placeholder, which will be automatically
+replaced with the key of the current webspace.
+
+.. code-block:: yaml
+
+    # config/packages/sulu_search.yaml
+
+    sulu_search:
+        website:
+            indexes:
+                examples: examples_#webspace#_published
+
 Templating
 ----------
 
