@@ -88,8 +88,6 @@ If the index name contains the webspace key, you can use
 the `#webspace#` placeholder, which will be automatically
 replaced with the key of the current webspace.
 
-An example for this would be the index for the pages:
-
 .. code-block:: yaml
 
     # config/packages/sulu_search.yaml
@@ -97,7 +95,7 @@ An example for this would be the index for the pages:
     sulu_search:
         website:
             indexes:
-                pages: page_#webspace#_published
+                examples: examples_#webspace#_published
 
 Templating
 ----------
