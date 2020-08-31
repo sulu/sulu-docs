@@ -28,6 +28,8 @@ can e.g. be set in your ``.env`` file.
 
     parameters:
         env(JACKRABBIT_URL): 'http://localhost:8080/server/'
+        env(PHPCR_USER): 'admin'
+        env(PHPCR_PASSWORD): 'admin'
 
     sulu_document_manager:
         sessions:
@@ -36,11 +38,15 @@ can e.g. be set in your ``.env`` file.
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
                 workspace: "%env(PHPCR_WORKSPACE)%"
+                username: "%env(PHPCR_USER)%"
+                password: "%env(PHPCR_PASSWORD)%"
             live:
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
                 workspace: "%env(PHPCR_WORKSPACE)%_live"
+                username: "%env(PHPCR_USER)%"
+                password: "%env(PHPCR_PASSWORD)%"
 
 .. note::
 
