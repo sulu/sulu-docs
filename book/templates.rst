@@ -301,6 +301,42 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+Visible/Disabled Conditions
+---------------------------
+
+When you want to show/hide or disable a specific field by a condition
+you can use the ``visibleCondition`` and ``disabledCondition`` attribute.
+
+It uses `jexl`_ and you have access to all root properties of the resource.
+
+.. code-block:: xml
+
+    <!-- config/templates/pages/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <properties>
+            <!-- ... -->
+
+            <property name="isCode" type="checkbox">
+                <!-- ... -->
+            </property>
+
+            <property name="code" type="text_area" visibleCondition="isCode == true">
+                <!-- ... -->
+            </property>
+
+            <property name="image" type="single_media_selection" disabledCondition="isCode != true">
+                <!-- ... -->
+            </property>
+
+            <!-- ... -->
+        </properties>
+    </template>
+
 Language Independent Properties
 -------------------------------
 
@@ -912,6 +948,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
 .. _cron expression: https://github.com/mtdowling/cron-expression
 .. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _Jexl: https://github.com/TomFrost/Jexl
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
 .. |text_area| replace:: :doc:`text_area <../reference/content-types/text_area>`
