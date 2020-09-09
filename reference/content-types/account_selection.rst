@@ -1,10 +1,10 @@
-Single Account selection
+Account selection
 ========================
 
 Description
 -----------
 
-Let you assign one account from the account section to the page.
+Let you assign multiple account from the account section to the page.
 
 Parameters
 ----------
@@ -22,6 +22,13 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
+    * - request_parameters
+      - collection
+      - Collection of parameters that are appended to the requests sent by the selection.
+    * - resource_store_properties_to_request
+      - collection
+      - Collection of property names.
+        The value of the respective properties are appended to the requests sent by the selection.
 
 Return value
 ------------
@@ -33,22 +40,11 @@ Example
 
 .. code-block:: xml
 
-    <property name="account" type="single_account_selection">
+    <property name="account" type="account_selection">
         <meta>
-            <title lang="en">Account</title>
+            <title lang="en">Accounts</title>
         </meta>
     </property>
-
-.. code-block:: twig
-
-    {% set account = content.account %}
-    {{ account.name }}
-
-    {% if account.logo %}
-        {% set image = sulu_resolve_media(account.logo, app.request.locale) %}
-
-        <img src="{{ image.thumbnails['80x80'] }}" alt="{{ account.name }}">
-    {% endif
 
 .. _Account: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Api/Account.php
 .. _jexl: https://github.com/TomFrost/jexl
