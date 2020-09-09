@@ -339,8 +339,8 @@ Inside of these attributes, you can utilize the `jexl`_ syntax for expressing yo
 
 .. note::
 
-    At current state you have inside the conditions only access to the root properties. So you can not
-    make conditions relative to a property inside a block.
+    At the moment, conditions can only access the root properties of the template.
+    This means that it is not possible to express conditions relative to a property inside a block.
 
 Language Independent Properties
 -------------------------------
