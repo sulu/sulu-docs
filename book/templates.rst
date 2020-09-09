@@ -304,10 +304,10 @@ property, set the attribute ``mandatory`` to ``true``:
 Visible/Disabled Conditions
 ---------------------------
 
-When you want to show/hide or disable a specific field by a condition
-you can use the ``visibleCondition`` and ``disabledCondition`` attribute.
+It is possible to hide or disable specific properties based on the current values of
+the template by setting the ``visibleCondition`` and ``disabledCondition`` attribute.
 
-It uses `jexl`_ and you have access to all root properties of the resource.
+Inside of these attributes, you can utilize the `jexl`_ syntax for expressing your conditions.
 
 .. code-block:: xml
 
@@ -336,6 +336,11 @@ It uses `jexl`_ and you have access to all root properties of the resource.
             <!-- ... -->
         </properties>
     </template>
+
+.. note::
+
+    At current state you have inside the conditions only access to the root properties. So you can not
+    make conditions relative to a property inside a block.
 
 Language Independent Properties
 -------------------------------
