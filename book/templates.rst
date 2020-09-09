@@ -159,64 +159,69 @@ A property has three essential attributes:
 
 Here is a table with the content types shipped in Sulu core:
 
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| Key                          | Appearance in the administration            | Value                                   |
-+==============================+=============================================+=========================================+
-| |text_line|                  | simple text input                           | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |text_area|                  | text area                                   | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |text_editor|                | text editor with formatting capabilities    | HTML string                             |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |checkbox|                   | checkbox                                    | boolean                                 |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_select|              | dropdown with options                       | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |select|                     | dropdown with multiple options              | array of strings or numbers             |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |color|                      | color picker                                | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |date|                       | date picker                                 | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |time|                       | text input with time validation             | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |url|                        | text input with URL validation              | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |email|                      | text input with email validation            | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |phone|                      | text input for a phone number               | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |page_selection|             | widget for selecting pages                  | resolved pages as defined in parameters |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_page_selection|      | widget for selecting a single page          | resolved page as defined in parameters  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |smart_content|              | widget for configuring a data source        | resolved pages as defined in parameters |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |resource_locator|           | widget for entering the URL of a page       | string                                  |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |tag_selection|              | autocomplete input for entering and adding  | array of strings                        |
-|                              | tags                                        |                                         |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |category_selection|         | autocomplete input for entering and adding  | array of strings                        |
-|                              | tags                                        |                                         |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |media_selection|            | widget for selecting media (images,         | array containing arrays with            |
-|                              | documents)                                  | urls for every format                   |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_media_selection|     | widget for a single media item (image,      | Media_ Object                           |
-|                              | document)                                   |                                         |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |contact_account_selection|  | widget for selecting contacts and accounts  | array containing array representations  |
-|                              |                                             | of the contact or account objects       |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |teaser_selection|           | widget for displaying content teasers       | array containing array representations  |
-|                              |                                             | of the teasers                          |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |snippet_selection|          | widget for selecting snippets               | array containing array representations  |
-|                              |                                             | of the snippets                         |
-+------------------------------+---------------------------------------------+-----------------------------------------+
-| |single_contact_selection|   | widget for selecting a single contact       | ContactInterface                        |
-+------------------------------+---------------------------------------------+-----------------------------------------+
++------------------------------+---------------------------------------------+
+| Key                          | Appearance in the administration            |
++==============================+=============================================+
+| |text_line|                  | simple text input                           |
++------------------------------+---------------------------------------------+
+| |text_area|                  | multiline text area                         |
++------------------------------+---------------------------------------------+
+| |text_editor|                | text editor with formatting capabilities    |
++------------------------------+---------------------------------------------+
+| |checkbox|                   | checkbox                                    |
++------------------------------+---------------------------------------------+
+| |single_select|              | dropdown with options                       |
++------------------------------+---------------------------------------------+
+| |select|                     | dropdown with multiple options              |
++------------------------------+---------------------------------------------+
+| |color|                      | color picker                                |
++------------------------------+---------------------------------------------+
+| |date|                       | date picker                                 |
++------------------------------+---------------------------------------------+
+| |time|                       | text input with time validation             |
++------------------------------+---------------------------------------------+
+| |url|                        | text input with URL validation              |
++------------------------------+---------------------------------------------+
+| |email|                      | text input with email validation            |
++------------------------------+---------------------------------------------+
+| |phone|                      | text input for a phone number               |
++------------------------------+---------------------------------------------+
+| |page_selection|             | widget for selecting pages                  |
++------------------------------+---------------------------------------------+
+| |single_page_selection|      | widget for selecting a single page          |
++------------------------------+---------------------------------------------+
+| |smart_content|              | widget for configuring a data source        |
++------------------------------+---------------------------------------------+
+| |resource_locator|           | widget for entering the URL of a page       |
++------------------------------+---------------------------------------------+
+| |tag_selection|              | autocomplete input for entering and adding  |
+|                              | tags                                        |
++------------------------------+---------------------------------------------+
+| |category_selection|         | widget for selecting categories             |
++------------------------------+---------------------------------------------+
+| |media_selection|            | widget for selecting media (images,         |
+|                              | documents)                                  |
++------------------------------+---------------------------------------------+
+| |single_media_selection|     | widget for a single media item (image,      |
+|                              | document)                                   |
++------------------------------+---------------------------------------------+
+| |contact_account_selection|  | widget for selecting contacts and accounts  |
+|                              |                                             |
++------------------------------+---------------------------------------------+
+| |teaser_selection|           | widget for displaying content teasers       |
+|                              |                                             |
++------------------------------+---------------------------------------------+
+| |snippet_selection|          | widget for selecting snippets               |
+|                              |                                             |
++------------------------------+---------------------------------------------+
+| |contact_selection|          | widget for selecting a multiple contacts    |
++------------------------------+---------------------------------------------+
+| |single_contact_selection|   | widget for selecting a single contact       |
++------------------------------+---------------------------------------------+
+| |account_selection|          | widget for selecting a multiple accounts    |
++------------------------------+---------------------------------------------+
+| |single_account_selection|   | widget for selecting a single account       |
++------------------------------+---------------------------------------------+
 
 .. tip::
 
@@ -295,6 +300,47 @@ property, set the attribute ``mandatory`` to ``true``:
             <!-- ... -->
         </properties>
     </template>
+
+Visible/Disabled Conditions
+---------------------------
+
+It is possible to hide or disable specific properties based on the current values of
+the template by setting the ``visibleCondition`` and ``disabledCondition`` attribute.
+
+Inside of these attributes, you can utilize the `jexl`_ syntax for expressing your conditions.
+
+.. code-block:: xml
+
+    <!-- config/templates/pages/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <properties>
+            <!-- ... -->
+
+            <property name="isCode" type="checkbox">
+                <!-- ... -->
+            </property>
+
+            <property name="code" type="text_area" visibleCondition="isCode == true">
+                <!-- ... -->
+            </property>
+
+            <property name="image" type="single_media_selection" disabledCondition="isCode != true">
+                <!-- ... -->
+            </property>
+
+            <!-- ... -->
+        </properties>
+    </template>
+
+.. note::
+
+    At the moment, conditions can only access the root properties of the template.
+    This means that it is not possible to express conditions relative to a property inside a block.
 
 Language Independent Properties
 -------------------------------
@@ -907,6 +953,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
 .. _cron expression: https://github.com/dragonmantank/cron-expression
 .. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _Jexl: https://github.com/TomFrost/Jexl
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
 .. |text_area| replace:: :doc:`text_area <../reference/content-types/text_area>`
@@ -931,4 +978,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
 .. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
+.. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
+.. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
+.. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`
