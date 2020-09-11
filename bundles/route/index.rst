@@ -125,9 +125,9 @@ RecipeController
     namespace AppBundle\Controller;
 
     use AppBundle\Entity\Recipe;
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+    use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    class RecipeController extends Controller
+    class RecipeController extends AbstractController
     {
         public function indexAction(Recipe $recipe)
         {
