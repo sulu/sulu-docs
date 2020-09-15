@@ -8,18 +8,20 @@ links, which would take a bigger amount of time. The Google bot
 does not wait a long time for the sitemap to be returned.
 Therefore Sulu is able to pre-generate the whole sitemap and
 cache it on the filesystem. This can be triggered by calling the
-following command. This can also be done by a cron-job.
+following command. This should be be done by a cron-job.
 
-Before you start generating the sitemap, make sure that you have
-properly configured the ``default_host`` parameter.
+If you use the ``{host}`` replacer in your webspace url
+configuration make sure you have the symfony `router context`_
+parameter configured.
 
 .. code-block:: yaml
 
-    sulu_website:
-        sitemap:
-            default_host: http://example.com
-
+    # config/services.yaml
+    parameters:
+        router.request_context.host: 'example.org'
 
 .. code-block:: bash
 
     bin/websiteconsole sulu:website:dump-sitemap
+
+.. _router context: https://symfony.com/doc/4.4/routing.html#generating-urls-in-commands
