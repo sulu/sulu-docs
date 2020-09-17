@@ -58,3 +58,7 @@ to load, bind and de/serialize the object.
 After registering a service with this class and the tag
 `<tag name="sulu_preview.object_provider" provider-key="events"/>`
 you should be able to see the live-preview in your form.
+
+.. toctree::
+    :maxdepth: 2
+    preview-form-builder

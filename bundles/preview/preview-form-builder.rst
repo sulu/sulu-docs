@@ -3,7 +3,7 @@ Preview form
 
 
 PreviewFormViewBuilder
-**********************
+----------------------
 
 .. code-block:: php
 
@@ -34,7 +34,6 @@ PreviewFormViewBuilder
 
         public function configureViews(ViewCollection $viewCollection): void
         {
-
             $editFormView = $this->viewBuilderFactory->createResourceTabViewBuilder(static::EVENT_EDIT_FORM_VIEW, '/events/:id')
                 ->setResourceKey(Event::RESOURCE_KEY)
                 ->setBackView(static::EVENT_LIST_VIEW);
@@ -42,6 +41,7 @@ PreviewFormViewBuilder
             $viewCollection->add($editFormView);
 
             $editDetailsFormView = $this->viewBuilderFactory->createPreviewFormViewBuilder(static::EVENT_EDIT_FORM_VIEW . '.details', '/details')
+                ->setPreviewCondition('id != null') // this is an optional condition when the preview should be shown
                 ->setResourceKey(Event::RESOURCE_KEY)
                 ->setFormKey(static::EVENT_FORM_KEY)
                 ->setTabTitle('sulu_admin.details')
