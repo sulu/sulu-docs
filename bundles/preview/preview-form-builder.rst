@@ -51,3 +51,7 @@ PreviewFormViewBuilder
             $viewCollection->add($editDetailsFormView);
         }
     }
+
+.. note:: For more information about Admin Class take a look at `Extend Admin UI`
+
+.. _Extend Admin UI: ../../book/extend-admin.rst
