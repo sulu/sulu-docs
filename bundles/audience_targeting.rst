@@ -97,11 +97,13 @@ The following will add full caching support including audience targeting for Sul
         call sulu_deliver;
     }
 
-Finally you have to make sure that the bundle is correctly recognized by
-Symfony. This includes the following steps:
+Finally you have to make sure that the bundle is correctly initialized. This includes
+the following steps:
 
 * Clear the Symfony cache with the `cache:clear` command or manually
   deleting the cache folder
+* Update the schema of your database with the `doctrine:schema:update` command or
+  the `doctrine:migrations:diff` command
 * Make sure that the users the feature should be enabled for have the correct
   permissions
 
