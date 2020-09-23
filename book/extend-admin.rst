@@ -7,7 +7,7 @@ views for your entity.
 
 .. note::
 
-    The `Sulu workshop at the Symfony Live Berlin 2019`_ is a great supplementary resource to this document.
+    The `Sulu workshop`_ is a great supplementary resource to this document.
     It consists of 12 assignments that guide you through creating a small website that integrates two simple custom
     entities.
 
@@ -857,4 +857,4 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Builder pattern: https://en.wikipedia.org/wiki/Builder_pattern
 .. _Font Awesome icon font: https://fontawesome.com/
 .. _Symfony Configuration: https://symfony.com/doc/current/configuration.html
-.. _Sulu workshop at the Symfony Live Berlin 2019: https://github.com/sulu/sulu-workshop-symfony-live-berlin-2019
+.. _Sulu workshop: https://github.com/sulu/sulu-workshop
