@@ -63,6 +63,7 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
               ExpiresByType image/webp "access plus 1 year"
               ExpiresByType image/x-icon "access plus 1 year"
               ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+              ExpiresByType application/javascript "access plus 1 year"
               ExpiresByType text/javascript "access plus 1 year"
               ExpiresByType text/css "access plus 1 year"
               ExpiresByType font/woff2 "access plus 1 year"

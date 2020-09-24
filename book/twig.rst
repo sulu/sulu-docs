@@ -86,8 +86,8 @@ The excerpt data is available from:
 View
 ^^^^
 
-In the ``view`` variable Sulu writes the view data of the defined properties 
-in your template. As an example the ``media_selection`` stores the 
+In the ``view`` variable Sulu writes the view data of the defined properties
+in your template. As an example the ``media_selection`` stores the
 ``displayOption`` there.
 
 .. code-block:: html
@@ -101,6 +101,7 @@ Other Variables
  - `request.webspaceName`: Contains the name for the current webspace
  - `request.portalKey`: Contains the key for the current portal
  - `request.portalName`: Contains the name for the current portal
+ - `request.locale`: Contains the locale for the current request
  - `request.portalUrl`: Contains the root URL to the current portal
  - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
  - `request.resourceLocator`: Contains the resourceLocator to the current page
@@ -115,7 +116,7 @@ Other Variables
  - `localization`: Contains all localizations including the URLs for the current page
 
 .. tip::
-    
+
     You can also use ``{{ dump() }}`` in the template to see all available variables if you are in dev mode.
 
 Navigation
@@ -177,7 +178,7 @@ this code:
 
     {% for image in content.images %}
     <div>
-        <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.name }}"/>
+        <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.title }}"/>
         <p>{{ image.title }}</p>
     </div>
     {% endfor %}

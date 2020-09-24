@@ -15,6 +15,7 @@ documented the most important ones.
     page/index
     hash
     http_cache
+    location
     markup/index
     media/index
     persistence
