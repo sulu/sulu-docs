@@ -7,16 +7,17 @@ views for your entity.
 
 .. note::
 
-    The `Sulu workshop at the Symfony Live Berlin 2019`_ is a great supplementary resource to this document.
+    The `Sulu workshop`_ is a great supplementary resource to this document.
     It consists of 12 assignments that guide you through creating a small website that integrates two simple custom
     entities.
 
 Sulu is built with extensibility as a core value and allows the integration of a custom entity without writing any
-JavaScript code in most cases.  In order to provide this extensibility in a simple way, Sulu requires the APIs used for
+JavaScript code in most cases. In order to provide this extensibility in a simple way, Sulu requires the APIs used for
 managing the entities follow some rules. If you provide such an API, Sulu comes with a variety of existing frontend
 views and components that cover a lot of different use cases. Furthermore, once you have reached the limits of the
 existing components, Sulu provides various extension points of different granularity allowing you to hook into most
-areas of the system using custom JavaScript code.
+areas of the system using custom JavaScript code. A description of the JavaScript views, services and components of
+the administration interface frontend and its extension points is available in the `Sulu Javascript Docs`_.
 
 As stated above, the frontend components coming with Sulu expect that your APIs deliver the data for the administration
 interface to match a certain standard. These standards affect the data for the list and form views that will be used to
@@ -175,8 +176,8 @@ Afterwards the ``properties`` tag lists all properties available in this list. E
   translation domain, so make sure that the file is called something like ``admin.en.json``.
 - The ``searchability`` attribute describes if the value of this property is used by the search field in the list.
 - Finally the ``type`` attribute allows to define how to display the content of this property. In the above example it
-  is used to display the datetime value in the localization of the user. There is an extension point for these types,
-  which allows to add more of them via JS.
+  is used to display the datetime value in the localization of the user. There is a ``listFieldTransformerRegistry``
+  extension point for these types, which allows to add more of them via JS.
 
 In addition to these attributes the ``property`` tag has some sub tags as well. This includes the ``field-name``
 telling the ``ListBuilder`` how the column holding the value in the database is called, and the ``entity-name``
@@ -441,8 +442,8 @@ The ``createListViewBuilder`` method returns a ``ListViewBuilder``, which alread
 Therefore we only need to name the view (``app.events_list`` in this example), and tell Sulu on which URL it should be
 rendered (``/events``). Then the previously defined resource key from the `Configure resources`_ section and the list
 key from the XML in the `List configuration and controller`_ section are defined. The list adapters define how the list
-shows the content it has loaded. This is another JS extension point, but for now we use the ``table`` adapter, which
-makes use of an HTML table element.
+shows the content it has loaded. There is a ``listAdapterRegistry`` JS extension point to register adapter, but for
+now we use the ``table`` adapter, which makes use of an HTML table element.
 
 Finally the ``View`` object has to be added to the ``ViewCollection``, which is passed as the first parameter to the
 ``configureViews`` method. This has been implemented like this to allow other bundles to further manipulate views that
@@ -552,7 +553,7 @@ has a few attributes:
 
 - ``name`` is the key in the JSON returned from the server, so usually the name from the property on the entity.
 - ``type`` describes how to render the value of the given property and makes use of so called field types. Sulu has a
-  ``FieldRegistry`` containing all registered field types, and these can also be extended using JS.
+  ``fieldRegistry`` JS extension point containing all available field types.
 - ``mandatory`` defines if the field is required in order for the form to be submitted.
 - ``colspan`` allows to define the width of the field. A value of ``12`` means that the entire available width is used,
   using smaller numbers result in an accordingly smaller field.
@@ -595,12 +596,13 @@ The child components of the ``ResourceTabs`` view will retrieve the data, and ca
 again. For the events we use the ``Form`` view with the configuration already defined in `Form configuration`_. This
 will render a form with all the fields defined in the XML file. It is also necessary to define some so called
 ``toolbarActions``. These define which buttons should appear in the top toolbar of Sulu while this view is shown. The
-same concept is also in place for the ``List`` view. As other parts of the system there are also two registries
-involved, enabling JS developers to add more toolbar actions by using a key being a string. In the ``Admin`` class the
-``ToolbarAction`` class in combination with the ``addToolbarActions`` method can be used to add elements to the
-toolbar. The ``ToolbarAction`` class takes the string key used in the registry as first constructor parameter, and an
-optional array containing some settings specific to the toolbar action as the second. There are also some sub classes
-of ``ToolbarAction``, e.g. the ``DropdownToolbarAction``, which have more specific constructors.
+same concept is also in place for the ``List`` view. Similar to other parts of the system, there is a
+``formToolbarActionRegistry`` and a ``listToolbarActionRegistry`` extension point that allow to register custom
+toolbar actions that can be identified by a key string. In the ``Admin`` class the ``ToolbarAction`` class in
+combination with the ``addToolbarActions`` method can be used to add elements to the toolbar. The ``ToolbarAction``
+class takes the key used in the registry as first constructor parameter, and an optional array containing some
+settings specific to the toolbar action as the second. There are also some sub classes of ``ToolbarAction``, e.g.
+the ``DropdownToolbarAction``, which have more specific constructors.
 
 The following code applies all of the mentioned concepts:
 
@@ -871,4 +873,5 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Builder pattern: https://en.wikipedia.org/wiki/Builder_pattern
 .. _Font Awesome icon font: https://fontawesome.com/
 .. _Symfony Configuration: https://symfony.com/doc/current/configuration.html
-.. _Sulu workshop at the Symfony Live Berlin 2019: https://github.com/sulu/sulu-workshop-symfony-live-berlin-2019
+.. _Sulu workshop: https://github.com/sulu/sulu-workshop
+.. _Sulu Javascript Docs: https://jsdocs.sulu.io/
