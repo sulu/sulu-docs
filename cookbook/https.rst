@@ -1,11 +1,11 @@
 HTTPS
 =====
 
-Sulu behave the same way as Symfony when generating urls.
-If the requested protocol is ``https`` it will use automatically ``https`` to generate its urls.
+Sulu generates URLs in the same way as Symfony does..
+If the requested protocol is ``https`` it will use automatically ``https`` to generate its URLs.
 
-If this does not happen its a hint that you are behind a load balancer or have a proxy between your request server.
-In that case you should have a look at the `Symfony Proxy Documentation`_ and configure your trusted proxy ip addresses.
+If this does not work propertly, your setup probably includes some kind of proxy, e.g. a load balancer or a HTTP cache like Varnish.
+In that case you should add the IP address of your trusted proxy as explained in the `Symfony Proxy Documentation`_.
 
 If it still doesn't work you should debug the Symfony `Request::isSecure`_  method,
 which represents which protocol is used by Symfony in its `Request::getScheme`_  method.
