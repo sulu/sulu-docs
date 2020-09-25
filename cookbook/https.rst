@@ -1,7 +1,7 @@
 HTTPS
 =====
 
-Sulu generates URLs in the same way as Symfony does..
+Sulu generates URLs in the same way as Symfony does.
 If the requested protocol is ``https`` it will use automatically ``https`` to generate its URLs.
 
 If this does not work propertly, your setup probably includes some kind of proxy, e.g. a load balancer or a HTTP cache like Varnish.
