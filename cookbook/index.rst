@@ -39,6 +39,7 @@ our recipes.
     dump-sitemap
     enable-adobe-creative-suite
     video-preview-images
+    https
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
