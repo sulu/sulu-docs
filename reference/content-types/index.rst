@@ -62,6 +62,7 @@ content type:
     contact_account_selection
     date
     email
+    image_map
     location
     media_selection
     number
