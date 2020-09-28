@@ -1,5 +1,5 @@
 ImageMap
-=====
+========
 
 Description
 -----------
