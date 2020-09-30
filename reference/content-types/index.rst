@@ -60,6 +60,7 @@ content type:
     color
     contact_account_selection
     date
+    datetime
     email
     location
     media_selection

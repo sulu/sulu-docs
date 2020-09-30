@@ -4,8 +4,7 @@ Date
 Description
 -----------
 
-Shows a text line with an attached date picker. The inserted content will be
-saved as a normalized string.
+Shows an input field with an attached date picker for selecting a date.
 
 Parameters
 ----------
