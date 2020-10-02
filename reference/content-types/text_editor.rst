@@ -17,8 +17,8 @@ Example
             <title lang="en">Description</title>
         </meta>
     </property>
-    
-Usage
+
+Twig
 -----
 
 When outputting the text editor field in twig the `raw filter`_ need to be used:
@@ -26,5 +26,5 @@ When outputting the text editor field in twig the `raw filter`_ need to be used:
 .. code-block:: twig
 
     {{ content.description|raw }}
-    
-.. _raw filter: https://twig.symfony.com/doc/2.x/filters/raw.html
+
+.. _raw filter: https://twig.symfony.com/doc/3.x/filters/raw.html

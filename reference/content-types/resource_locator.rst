@@ -37,13 +37,25 @@ Example
     <property name="title" type="text_line">
         <tag name="sulu.rlp.part"/>
     </property>
+
     <property name="subtitle" type="text_line">
         <tag name="sulu.rlp.part"/>
     </property>
-    <property name="resource_locator" type="resource_locator">
+
+    <property name="url" type="resource_locator">
         <meta>
             <title lang="en">Resource locator</title>
         </meta>
 
         <tag name="sulu.rlp"/>
     </property>
+
+Twig
+----
+
+You need to use the :doc:`../twig-extensions/functions/sulu_content_path` twig extension
+to render the full url.
+
+.. code-block:: twig
+
+    {{ sulu_content_path(content.url) }}

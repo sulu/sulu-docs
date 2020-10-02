@@ -67,4 +67,13 @@ Example
         </params>
     </property>
 
+Twig
+----
+
+.. code-block:: twig
+
+    {% for snippet in content.snippets %}
+        {{ snippet.title }}
+    {% endfor %}
+
 .. _jexl: https://github.com/TomFrost/jexl

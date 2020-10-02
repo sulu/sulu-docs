@@ -22,3 +22,10 @@ Example
             <title lang="en">E-Mail</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.email }}

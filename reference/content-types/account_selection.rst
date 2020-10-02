@@ -40,11 +40,20 @@ Example
 
 .. code-block:: xml
 
-    <property name="account" type="account_selection">
+    <property name="accounts" type="account_selection">
         <meta>
             <title lang="en">Accounts</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for account in content.accounts %}
+        <h3>{{ account.name }}</h3>
+    {% endif %}
 
 .. _Account: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Api/Account.php
 .. _jexl: https://github.com/TomFrost/jexl

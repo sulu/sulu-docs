@@ -10,7 +10,12 @@ tags will be saved as an array.
 
 .. note::
 
-    Tags which do not already exist will be created. 
+    Tags which do not already exist will be created.
+
+.. note::
+
+    Mostly this content type is not needed as all pages can be tagged over
+    the ``Excerpt and Taxonomies`` tab.
 
 Parameters
 ----------
@@ -27,3 +32,12 @@ Example
             <title lang="en">Tags</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for tag in content.tags %}
+        {{ tag }}
+    {% endfor %}

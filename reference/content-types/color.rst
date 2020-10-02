@@ -22,3 +22,12 @@ Example
             <title lang="en">Color</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    <div style="background-color: {{ content.color }};">
+        Block with specified background color
+    </div>

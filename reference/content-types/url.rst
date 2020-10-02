@@ -50,9 +50,21 @@ Extended Example
                 <param name="scheme" value="http://"/>
                 <param name="specific_part" value="www.google.at"/>
             </param>
+
             <param name="schemes" type="collection">
                 <param name="http://"/>
                 <param name="https://"/>
             </param>
         </params>
     </property>
+
+Twig
+----
+
+The content type return the full url which can directly be rendered:
+
+.. code-block:: twig
+
+    <a href="{{ content.url }}">
+        {{ content.url }}
+    </a>

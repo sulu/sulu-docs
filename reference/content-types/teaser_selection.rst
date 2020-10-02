@@ -6,7 +6,7 @@ content in your website. These teasers could be arranged as list or grid, like
 in this example:
 
 .. figure:: ../../img/teaser-selection-web.png
-	:align: center
+    :align: center
 
 In the administration interface, the widget is displayed as a selector for the
 teasers. Content managers can choose a number of target contents. By default,
@@ -14,7 +14,7 @@ the text from the "Excerpt & Categories" tab of the target content is shown.
 You can however customize the text of the teaser if you like.
 
 .. figure:: ../../img/teaser-selection-admin.png
-	:align: center
+    :align: center
 
 Configuration
 -------------
@@ -45,13 +45,13 @@ Add a field of type "teaser_selection" to your page template:
         </properties>
     </template>
 
-Rendering
----------
+Twig
+----
 
 In Twig, the field contains an array of teasers. Iterate the array and format
 the teasers as you like:
 
-.. code-block:: html+jinja
+.. code-block:: twig
 
     <div>
         {% for teaser in content.teasers %}
@@ -185,11 +185,11 @@ The content manager can choose one of these variants in the administration
 interface:
 
 .. figure:: ../../img/teaser-selection-menu.png
-	:align: center
+    :align: center
 
 The selected value can be used to set the CSS class of the teaser element in Twig:
 
-.. code-block:: html+jinja
+.. code-block:: twig
 
     <ul property="teasers" class="{{ view.teasers.presentAs|default('') }}">
         {% for teaser in content.teasers %}

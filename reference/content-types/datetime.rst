@@ -21,3 +21,10 @@ Example
             <title lang="en">Datetime</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.date.format('Y-m-d') }}

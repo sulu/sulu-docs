@@ -21,3 +21,10 @@ Example
             <title lang="en">Description</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.description }}

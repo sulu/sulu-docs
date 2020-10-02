@@ -1,7 +1,7 @@
 ``sulu_content_path``
 =====================
 
-Returns the absolute URL for the content at the given path. The domain 
+Returns the absolute URL for the content at the given path. The domain
 is taken from ``config/webspaces/*.xml`` and your current
 environment. In case you have multiple URLs in one environment, you can
 prioritize one by giving it ``<url main="true">``.
@@ -29,3 +29,9 @@ prioritize one by giving it ``<url main="true">``.
   used to generate the url (**optional**)
 
 **Returns**: *string* - Absolute URL
+
+.. note::
+
+    The ``sulu_content_load`` twig extension loads the whole page with it content and so
+    can have a negative impact on the performance of the page and if possible should be
+    avoided.
