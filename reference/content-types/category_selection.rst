@@ -54,4 +54,7 @@ Twig
         <h3>{{ category.name }}</h3>
     {% endif %}
 
+If you want to list all categories of a specific category you can use the :doc:`../twig-extensions/functions/sulu_categories`
+twig extension for it.
+
 .. _jexl: https://github.com/TomFrost/jexl
