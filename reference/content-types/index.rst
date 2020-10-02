@@ -68,6 +68,7 @@ content type:
     page_selection
     phone
     resource_locator
+    route
     select
     single_select
     single_page_selection
