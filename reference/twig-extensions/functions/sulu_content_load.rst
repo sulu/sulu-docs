@@ -18,6 +18,6 @@ Returns a Structure for the given UUID
 
 .. note::
 
-    The ``sulu_content_load`` twig extension loads the whole page with it content and so
-    can have a negative impact on the performance of the page and if possible should be
-    avoided.
+    The ``sulu_content_load`` twig extension loads and resolves the whole page content.
+    This is an expensive operation and can have a negative impact on the performance of 
+    the page. If possible, the extension should be avoided.
