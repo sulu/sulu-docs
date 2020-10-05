@@ -29,9 +29,3 @@ prioritize one by giving it ``<url main="true">``.
   used to generate the url (**optional**)
 
 **Returns**: *string* - Absolute URL
-
-.. note::
-
-    The ``sulu_content_load`` twig extension loads the whole page with it content and so
-    can have a negative impact on the performance of the page and if possible should be
-    avoided.
