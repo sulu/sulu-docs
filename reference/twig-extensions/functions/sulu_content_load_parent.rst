@@ -14,3 +14,9 @@ Return the parent of the Structure with the given UUID
 **Returns**:
 
 .. include:: _page_structure.inc
+
+.. note::
+
+    The ``sulu_content_load_parent`` twig extension loads the whole page with it content and so
+    can have a negative impact on the performance of the page and if possible should be
+    avoided.
