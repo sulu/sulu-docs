@@ -66,8 +66,8 @@ Twig
         <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
     {% endfor %}
 
-If you have ``displayOptions`` defined you can access the set ``displayOption``
-over ``view.<property_name>.displayOptions``:
+If your property defines ``displayOptions`, you can access the selected ``displayOption``
+via ``view.<property_name>.displayOptions``:
 
 .. code-block:: twig
 
@@ -77,8 +77,8 @@ over ``view.<property_name>.displayOptions``:
         {% endfor %}
     </div>
 
-If you want to link to documents for download you can do that over the ``.url`` attribute
-alternative you can wrap it with the <sulu_get_media_url>:doc:`../twig-extensions/functions/sulu_get_media_url`
+If you want to provide a link for downloading a document, you can use ``.url`` attribute
+or wrap it with the <sulu_get_media_url>:doc:`../twig-extensions/functions/sulu_get_media_url`
 to control which `disposition header`_ the target url should use:
 
 .. code-block:: twig

@@ -90,8 +90,7 @@ editor as described in the description.
 Twig
 ----
 
-The best way to render a block is having a separate file per type and use the following
-function to achieve this:
+A reusable way for rendering blocks is having a separate template file per type:
 
 .. code-block:: twig
 
@@ -102,5 +101,4 @@ function to achieve this:
         } %}
     {% endfor %}
 
-Inside the rendered function you have again access with ``content`` and ``view`` to the block
-specific ``properties``.
+This way, its possible to access the ``properties`` of the block type  ivia the ``content`` and ``view`` variable in the rendered block template.

@@ -4,12 +4,12 @@ Route
 Description
 -----------
 
-The ``route`` content type is a content type for generate urls for custom ``entities``.
-Have a look at :doc:`/bundles/route/index` to see how you can add routing to your custom entity.
+The ``route`` content type allows to generate urls for **custom entities**.
+Have a look at :doc:`/bundles/route/index` to see how to implement routing for your custom entity.
 
 .. note::
 
-    The ``route`` content type should not be used for pages, instead use the :doc:`resource_locator`
+    The ``route`` content type should not be used on page templates. For pages, use the :doc:`resource_locator`
     content type instead.
 
 Example

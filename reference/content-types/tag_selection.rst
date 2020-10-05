@@ -14,8 +14,8 @@ tags will be saved as an array.
 
 .. note::
 
-    Mostly this content type is not needed as all pages can be tagged over
-    the ``Excerpt and Taxonomies`` tab.
+    This content type is rarely needed because the ``Excerpt and Taxonomies``
+    allows to assign tags to pages.
 
 Parameters
 ----------

@@ -10,8 +10,8 @@ section of Sulu. The selection will be saved as an array.
 
 .. note::
 
-    Mostly this content type is not needed as all pages can be categorized over
-    the ``Excerpt and Taxonomies`` tab.
+    This content type is rarely needed because the ``Excerpt and Taxonomies``
+    allows to assign categories to pages.
 
 Parameters
 ----------
@@ -54,7 +54,7 @@ Twig
         <h3>{{ category.name }}</h3>
     {% endif %}
 
-If you want to list all categories of a specific category you can use the :doc:`../twig-extensions/functions/sulu_categories`
+If you want to list all categories in your template you can use the :doc:`../twig-extensions/functions/sulu_categories`
 twig extension for it.
 
 .. _jexl: https://github.com/TomFrost/jexl
