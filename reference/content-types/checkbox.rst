@@ -22,7 +22,7 @@ Parameters
       - bool
       - Defines the default value of the checkbox. When not set the initial value of the checkbox is null.
     * - label
-      - 
+      -
       - Defines the label of the checkbox. This is recommended if the meta title should be next to the toggler instead of above it.
 
 Examples
@@ -60,3 +60,12 @@ Examples
             </param>
         </params>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% if content.available %}
+        {# ... #}
+    {% endif %}

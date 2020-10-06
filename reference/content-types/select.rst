@@ -80,3 +80,14 @@ You can use symfony expression language to access values or set a default value 
             <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for item in content.list %}
+        <span class="icon-{{ item }}>
+            Icon {{ item }}
+        </span>
+    {% endfor %}

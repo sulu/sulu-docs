@@ -56,18 +56,21 @@ editor as described in the description.
             <title lang="de">Inhalte</title>
             <title lang="en">Content</title>
         </meta>
+
         <types>
             <type name="editor_image">
                 <meta>
                     <title lang="de">Editor mit Bild</title>
                     <title lang="en">Editor with image</title>
                 </meta>
+
                 <properties>
                     <property name="images" type="media_selection" colspan="3">
                         <meta>
                             <title lang="de">Bilder</title>
                             <title lang="en">Images</title>
                         </meta>
+
                         <tag name="sulu.block_preview" priority="512"/>
                     </property>
 
@@ -76,9 +79,26 @@ editor as described in the description.
                             <title lang="de">Artikel</title>
                             <title lang="en">Article</title>
                         </meta>
+
                         <tag name="sulu.block_preview" priority="1024"/>
                     </property>
                 </properties>
             </type>
         </types>
     </block>
+
+Twig
+----
+
+A reusable way for rendering blocks is having a separate template file per type:
+
+.. code-block:: twig
+
+    {% for block in content.blocks %}
+        {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+            content: block,
+            view: view.blocks[loop.index0],
+        } %}
+    {% endfor %}
+
+This way, its possible to access the ``properties`` of the block type  ivia the ``content`` and ``view`` variable in the rendered block template.

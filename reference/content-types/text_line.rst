@@ -32,3 +32,10 @@ Example
             <param name="headline" value="true"/>
         </params>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.title }}

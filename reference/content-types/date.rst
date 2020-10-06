@@ -21,3 +21,10 @@ Example
             <title lang="en">Date</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.date }}
