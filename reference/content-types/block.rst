@@ -27,7 +27,7 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - add_text
+    * - add_button_text
       -
       - Allows to adjust the text of the add buttton that is displayed in the administration interface.
 
@@ -66,7 +66,7 @@ editor as described in the description.
         </meta>
 
         <params>
-            <param name="add_text">
+            <param name="add_button_text">
                 <meta>
                     <title lang="en">Add track</title>
                     <title lang="de">Track hinzufügen</title>
