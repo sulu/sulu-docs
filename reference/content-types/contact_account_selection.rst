@@ -24,12 +24,15 @@ Example
         </meta>
     </property>
 
+Twig
+----
+
 .. code-block:: twig
 
     <ul>
         {% for contact in content.contacts %}
             <li>
-                {{ contact.fullName is defined ? contact.fullName : contact.name }}
+                {{ contact.fullName|default(contact.name) }}
                 (
                 {% for email in contact.contactDetails.emails %}
                     <a href="mailto:{{ email.email }}">{{ email.email }}</a>

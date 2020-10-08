@@ -40,11 +40,20 @@ Example
 
 .. code-block:: xml
 
-    <property name="contact" type="contact_selection">
+    <property name="contacts" type="contact_selection">
         <meta>
             <title lang="en">Contacts</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for contact in content.contacts %}
+        <h3>{{ contact.fullName }}</h3>
+    {% endfor %}
 
 .. _ContactInterface: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
 .. _jexl: https://github.com/TomFrost/jexl

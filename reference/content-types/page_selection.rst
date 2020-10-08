@@ -50,8 +50,25 @@ Example
             <param name="properties" type="collection">
                 <param name="title" value="title"/>
                 <param name="article" value="article"/>
+                <param name="excerptTitle" value="excerpt.title"/>
+                <param name="excerptDescription" value="excerpt.description"/>
             </param>
         </params>
     </property>
 
 .. _jexl: https://github.com/TomFrost/jexl
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for page in content.pages %}
+        <a href="{{ sulu_content_path(page.url) }}">
+            <h3>
+                {{ page.excerptTitle|default(page.title) }}
+            </h3>
+
+            {{ page.excerptDescription|default(page.article) }}
+        </a>
+    {% endfor %}

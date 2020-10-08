@@ -248,7 +248,7 @@ to the content URL. Same takes effect for `?type=image` with the media type
 
 .. _example:
 
-Example for "content" DataProvider
+Example for "pages" DataProvider
 ----------------------------------
 
 Page template
@@ -265,6 +265,7 @@ Page template
             <param name="provider" value="pages"/>
             <param name="max_per_page" value="5"/>
             <param name="page_parameter" value="p"/>
+
             <param name="properties" type="collection">
                 <param name="article" value="article"/>
                 <param name="excerptTitle" value="excerpt.title"/>
@@ -272,12 +273,14 @@ Page template
                 <param name="excerptImages" value="excerpt.images"/>
                 <param name="excerptDescription" value="excerpt.description"/>
             </param>
+
             <param name="present_as" type="collection">
                 <param name="two">
                     <meta>
                         <title lang="en">Two columns</title>
                     </meta>
                 </param>
+
                 <param name="one">
                     <meta>
                         <title lang="en">One column</title>
@@ -298,28 +301,30 @@ Twig template
         {% if page-1 >= 1 %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page-1 }}">&laquo;</a></li>
         {% endif %}
+
         {% if view.pages.hasNextPage %}
             <li><a href="{{ sulu_content_path(content.url) }}?p={{ page+1 }}">&raquo;</a></li>
         {% endif %}
     </ul>
 
     <div property="pages">
-    {% for page in content.pages %}
-        <div class="col-lg-{{ view.pages.presentAs == 'two' ? '6' : '12' }}">
-            <h2>
-                <a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a>
-            </h2>
-            <p>
-                <i>{{ page.excerptTitle }}</i> | <i>{{ page.excerptTags|join(', ') }}</i>
-            </p>
-            {% if page.excerptImages|length > 0 %}
-                <img src="{{ page.excerptImages[0].thumbnails['50x50'] }}" alt="{{ page.excerptImages[0].title }}"/>
-            {% endif %}
-            {% autoescape false %}
-                {{ page.article }}
-            {% endautoescape %}
-        </div>
-    {% endfor %}
+        {% for page in content.pages %}
+            <div class="col-lg-{{ view.pages.presentAs == 'two' ? '6' : '12' }}">
+                <h2>
+                    <a href="{{ sulu_content_path(page.url) }}">{{ page.title }}</a>
+                </h2>
+
+                <p>
+                    <i>{{ page.excerptTitle }}</i> | <i>{{ page.excerptTags|join(', ') }}</i>
+                </p>
+
+                {% if page.excerptImages|length > 0 %}
+                    <img src="{{ page.excerptImages[0].thumbnails['50x50'] }}" alt="{{ page.excerptImages[0].title }}"/>
+                {% endif %}
+
+                {{ page.article|raw }}
+            </div>
+        {% endfor %}
     </div>
 
 .. note::

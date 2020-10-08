@@ -22,3 +22,10 @@ Example
             <title lang="en">Time</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.time }}

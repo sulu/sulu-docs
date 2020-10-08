@@ -23,3 +23,16 @@ Example
             <title lang="en">Location</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.location.latitude }} <br>
+    {{ content.location.longitude }} <br>
+    {{ content.location.street }} <br>
+    {{ content.location.streetNumber }} <br>
+    {{ content.location.zip }} <br>
+    {{ content.location.city }} <br>
+    {{ content.location.country }}

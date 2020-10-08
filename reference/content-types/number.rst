@@ -30,13 +30,21 @@ Example
 
 .. code-block:: xml
 
-    <property name="title" type="number">
+    <property name="number" type="number">
         <meta>
             <title lang="en">Number</title>
         </meta>
+
         <params>
             <param name="min" value="0"/>
             <param name="max" value="100"/>
             <param name="step" value="2"/>
         </params>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.number }}

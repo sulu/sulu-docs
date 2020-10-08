@@ -21,3 +21,10 @@ Example
             <title lang="en">Phone number</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.phone }}

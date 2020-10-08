@@ -65,7 +65,7 @@ You could include the SEO meta tags like this:
 
 .. code-block:: html
 
-    {% include "SuluWebsiteBundle:Extension:seo.html.twig" with {
+    {% include "@SuluWebsite/Extension/seo.html.twig" with {
         "seo": extension.seo|default([]),
         "content": content|default([]),
         "localizations": localizations|default([]),
