@@ -71,3 +71,12 @@ You can use symfony expression language to access values or set a default value 
             <param name="values" type="expression" value="service('your_service').getValues()"/>
         </params>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    <span class="icon-{{ content.single }}>
+        Icon {{ content.single }}
+    </span>

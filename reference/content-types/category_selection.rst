@@ -8,6 +8,11 @@ Shows a list of all available categories. The user can select with a checkbox
 which ones to assign to the page. Categories can be managed in the settings
 section of Sulu. The selection will be saved as an array.
 
+.. note::
+
+    This content type is rarely needed because the ``Excerpt and Taxonomies``
+    allows to assign categories to pages.
+
 Parameters
 ----------
 
@@ -29,7 +34,6 @@ Parameters
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
 
-
 Example
 -------
 
@@ -40,5 +44,17 @@ Example
             <title lang="en">Category Selection</title>
         </meta>
     </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    {% for category in content.categories %}
+        <h3>{{ category.name }}</h3>
+    {% endif %}
+
+If you want to list all categories in your template you can use the :doc:`../twig-extensions/functions/sulu_categories`
+twig extension for it.
 
 .. _jexl: https://github.com/TomFrost/jexl

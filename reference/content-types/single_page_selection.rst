@@ -41,8 +41,8 @@ Example
         </meta>
     </property>
 
-Usage
------
+Twig
+----
 
 Currently this content type only returns the UUID of the target page. In
 order to construct a link to the page use:
@@ -53,5 +53,11 @@ order to construct a link to the page use:
 
 Then ``target.content`` will give you access to the URL and other properties
 of the target page.
+
+.. note::
+
+    The ``sulu_content_load`` twig extension loads and resolves the whole page content.
+    This is an expensive operation and can have a negative impact on the performance of 
+    the page. If possible, the extension should be avoided.
 
 .. _jexl: https://github.com/TomFrost/jexl

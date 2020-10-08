@@ -46,6 +46,12 @@ Example
         </meta>
     </property>
 
+Twig
+----
+
+You need to use the :doc:`../twig-extensions/functions/sulu_resolve_media` if you want to render
+the contact avatar image.
+
 .. code-block:: twig
 
     {% set contact = content.contact %}

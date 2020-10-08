@@ -39,6 +39,12 @@ Example
         </meta>
     </property>
 
+Twig
+----
+
+You need to use the :doc:`../twig-extensions/functions/sulu_resolve_media` if you want to render
+the account logo image.
+
 .. code-block:: twig
 
     {% set account = content.account %}

@@ -74,4 +74,40 @@ Extended Example
         </params>
     </property>
 
+Twig
+----
+
+.. code-block:: twig
+
+    {% set image = content.image %}
+    <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+
+If your property defines ``displayOptions`, you can access the selected ``displayOption``
+via ``view.<property_name>.displayOptions``:
+
+.. code-block:: twig
+
+    {% set image = content.image %}
+
+    <div class="position-{{ view.image.displayOption }}">
+        <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+    </div>
+
+If you want to provide a link for downloading a document, you can use ``.url`` attribute
+or wrap it with the <sulu_get_media_url>:doc:`../twig-extensions/functions/sulu_get_media_url`
+to control which `disposition header`_ the target url should use:
+
+.. code-block:: twig
+
+    <a href="{{ sulu_get_media_url(document.url, 'inline') }}>
+        {{ document.title }}
+    </a>
+
+.. note::
+
+    For performance reasons you should never use the ``.url`` attribute to render ``images`` on your
+    website. Always use ``thumbnails`` and <configure your image formats>:doc:`../../../book/image-formats`
+    to provide fast optimized cacheable images.
+
 .. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _`disposition header`: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
