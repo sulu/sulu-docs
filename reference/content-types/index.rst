@@ -63,6 +63,7 @@ content type:
     date
     datetime
     email
+    image_map
     location
     media_selection
     number
