@@ -13,6 +13,7 @@ our recipes.
     caching-with-varnish
     maintenance-mode
     securing-your-application
+    custom-controller
     custom-error-page
     extend-entities
     implement-entity-extensible
