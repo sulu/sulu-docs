@@ -29,7 +29,7 @@ Parameters
       - Description
     * - add_button_text
       -
-      - Allows to adjust the text of the add buttton that is displayed in the administration interface.
+      - Allows to adjust the text of the add button that is displayed in the administration interface.
 
 Example
 -------
