@@ -20,6 +20,7 @@ our recipes.
     jackrabbit
     using-elasticsearch
     smart-content-data-provider
+    custom-page-data-provider
     system-collections
     create-new-webspace
     manage-analytics
