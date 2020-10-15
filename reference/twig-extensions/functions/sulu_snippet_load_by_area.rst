@@ -1,7 +1,7 @@
 ``sulu_snippet_load_by_area``
 =============================
 
-Returns the selected snippet from the webspace settings for the given :doc:`snippet area <../../../cookbook/default-snippets>`.
+Returns the content of the default snippet for the given :doc:`snippet area <../../../cookbook/default-snippets>`.
 
 .. code-block:: jinja
 
