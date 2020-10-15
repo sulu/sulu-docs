@@ -35,6 +35,7 @@ our recipes.
     link-provider
     sitemap-provider
     dump-sitemap
+    https
     video-preview-images
     external-media-storage
     webpack-encore
