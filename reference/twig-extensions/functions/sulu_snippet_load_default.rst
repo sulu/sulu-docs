@@ -5,7 +5,7 @@
 
     This method is deprecated, use :doc:`sulu_snippet_load_by_area` instead.
 
-Returns content array of selected default snippet for given snippet type.
+Returns the content of the default snippet for the given snippet type.
 
 .. code-block:: jinja
 

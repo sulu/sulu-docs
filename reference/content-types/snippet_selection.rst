@@ -23,9 +23,8 @@ Parameters
       - The type of snippet to assign.
     * - default
       - string - false
-      - If this parameter is true or a specified area and enabled in config the
-        content-type will load the snippet which can be specified by the
-        content-manager in the webspace settings.
+      - If this parameter is true or set to a specific area, the content-type will load the respective
+        default snippet if no snippet is selected.
     * - loadExcerpt
       - boolean
       - If this parameter is set to true, then the taxonomies information for
@@ -44,11 +43,6 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
-
-.. note::
-
-    The fallback mechanism has to be enabled in the config:
-    `sulu_snippet.types.snippet.default_enabled`. (default activated since 1.4)
 
 Example
 -------
