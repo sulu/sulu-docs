@@ -21,7 +21,15 @@ placement in the twig template.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - add_button_text
+      -
+      - Allows to adjust the text of the add button that is displayed in the administration interface.
 
 Example
 -------
@@ -56,6 +64,15 @@ editor as described in the description.
             <title lang="de">Inhalte</title>
             <title lang="en">Content</title>
         </meta>
+
+        <params>
+            <param name="add_button_text">
+                <meta>
+                    <title lang="en">Add track</title>
+                    <title lang="de">Track hinzufügen</title>
+                </meta>
+            </param>
+        </params>
 
         <types>
             <type name="editor_image">
