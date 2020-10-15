@@ -13,12 +13,14 @@ our recipes.
     caching-with-varnish
     maintenance-mode
     securing-your-application
+    custom-controller
     custom-error-page
     extend-entities
     implement-entity-extensible
     jackrabbit
     using-elasticsearch
     smart-content-data-provider
+    custom-page-data-provider
     system-collections
     create-new-webspace
     manage-analytics
@@ -33,6 +35,7 @@ our recipes.
     link-provider
     sitemap-provider
     dump-sitemap
+    https
     video-preview-images
     external-media-storage
     webpack-encore
