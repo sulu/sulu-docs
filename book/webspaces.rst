@@ -176,11 +176,11 @@ A segment is defined in the above ``segments`` tag and the main part is giving
 the segment a ``key``. Additionally a title for the segment to be displayed in
 the UI is defined.
 
-One of the segments must be set as the default segment. That's the segment a
-visitor sees when visiting the website for the very first time. The visitor can
-switch to a different segment in a similar way they can switch the
-localization. The current segment will be stored in a cookie. Sulu also takes
-care of the cookie when caching the website.
+One of the segments must be set as the default. That's the segment a visitor
+sees when visiting the website for the very first time. The visitor can switch
+to a different segment in a similar way they can switch the localization. The
+current segment will be stored in a cookie. Sulu also takes care of the cookie
+when caching the website.
 
 After configuring segments for a webspace the segments can be assigned to pages
 in their "Excerpt & Taxonomies" tab. A page will then be hidden in navigation
