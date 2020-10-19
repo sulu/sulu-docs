@@ -114,6 +114,7 @@ Other Variables
  - `published`: Contains the timestamp of the publishing of the current page
  - `urls`: Contains urls of all locales (deprecated)
  - `localization`: Contains all localizations including the URLs for the current page
+ - `segments`: Contains all segments including the URLs to change the segment and redirect back to the page
 
 .. tip::
 
