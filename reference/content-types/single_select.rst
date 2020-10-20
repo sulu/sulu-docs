@@ -54,7 +54,7 @@ Example
 Expression Example
 ------------------
 
-By u sing a ``param`` with the type ``expression``, it is also possible to display
+By using a ``param`` with the type ``expression``, it is also possible to display
 the values returned by a service (:doc:`../../cookbook/select-values-service`).
 
 .. note::
@@ -65,7 +65,7 @@ the values returned by a service (:doc:`../../cookbook/select-values-service`).
 
 .. code-block:: xml
 
-    <property name="list" type="single_select">
+    <property name="single" type="single_select">
         <meta>
             <title lang="en">Single Select</title>
         </meta>
