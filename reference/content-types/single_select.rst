@@ -51,7 +51,11 @@ Example
         </params>
     </property>
 
-You can use symfony expression language to access values or set a default value from a service.
+Expression Example
+------------------
+
+By using a ``param`` with the type ``expression``, it is also possible to display
+the values returned by a service (:doc:`../../cookbook/select-values-service`).
 
 .. note::
 
@@ -67,8 +71,8 @@ You can use symfony expression language to access values or set a default value 
         </meta>
 
         <params>
-            <param name="default_value" type="expression" value="service('your_service').getDefaultValue()"/>
-            <param name="values" type="expression" value="service('your_service').getValues()"/>
+            <param name="default_value" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getDefaultValue()"/>
+            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues()"/>
         </params>
     </property>
 
