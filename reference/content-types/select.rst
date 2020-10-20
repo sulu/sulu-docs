@@ -60,13 +60,17 @@ Example
         </params>
     </property>
 
-You can use symfony expression language to access values or set a default value from a service.
+Expression Example
+------------------
+
+By u sing a ``param`` with the type ``expression``, it is also possible to display
+the values returned by a service (:doc:`../../cookbook/select-values-service`).
 
 .. note::
 
     Be aware that the provided expression is only evaluated during the initial request to the administration interface.
-    If you want to provide a selection for your custom entity, you should configure the ``selection`` field-type as
-    described in :doc:`../../book/extend-admin`.
+    If you want to provide a selection for your custom entity, you should configure the ``single_selection`` field-type
+    as described in :doc:`../../book/extend-admin`.
 
 .. code-block:: xml
 
@@ -76,8 +80,8 @@ You can use symfony expression language to access values or set a default value 
         </meta>
 
         <params>
-            <param name="default_value" type="expression" value="service('your_service').getDefaultValue()"/>
-            <param name="values" type="expression" value="service('your_service').getValues()"/>
+            <param name="default_values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getDefaultValue()"/>
+            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues()"/>
         </params>
     </property>
 
