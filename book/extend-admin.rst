@@ -211,7 +211,7 @@ shows a controller doing what has just been described.
     use Symfony\Component\HttpFoundation\Response;
 
     /**
-     * @RouteResource("Event")
+     * @RouteResource(Event::RESOURCE_KEY)
      */
     class EventController implements ClassResourceInterface
     {
