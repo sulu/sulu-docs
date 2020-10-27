@@ -10,6 +10,8 @@ views for your entity.
     The `Sulu workshop`_ is a great supplementary resource to this document.
     It consists of 12 assignments that guide you through creating a small website that integrates two simple custom
     entities.
+    Additionally, the `Sulu Demo repository`_ contains multiple pull requests that demonstrate how to extend different
+    parts of the administration interface using simple examples.
 
 Sulu is built with extensibility as a core value and allows the integration of a custom entity without writing any
 JavaScript code in most cases. In order to provide this extensibility in a simple way, Sulu requires the APIs used for
@@ -864,4 +866,5 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Font Awesome icon font: https://fontawesome.com/
 .. _Symfony Configuration: https://symfony.com/doc/current/configuration.html
 .. _Sulu workshop: https://github.com/sulu/sulu-workshop
+.. _Sulu Demo repository: https://github.com/sulu/sulu-demo/pulls
 .. _Sulu Javascript Docs: https://jsdocs.sulu.io/
