@@ -55,6 +55,21 @@ following paragraphs.
             </contexts>
         </navigation>
 
+        <segments>
+            <segment key="w" default="true">
+                <meta>
+                    <title lang="en">Winter</title>
+                    <title lang="de">Winter</title>
+                </meta>
+            </segment>
+            <segment key="s" default="false">
+                <meta>
+                    <title lang="en">Summer</title>
+                    <title lang="de">Sommer</title>
+                </meta>
+            </segment>
+        </segments>
+
         <resource-locator>
             <strategy>tree_leaf_edit</strategy>
         </resource-locator>
@@ -152,6 +167,25 @@ available to choose from in the administration interface. Afterwards the
 developer can retrieve the navigation for a given context by using some
 Twig-extensions delivered with Sulu, whereby it is not only possible to
 retrieve a flat list of pages, but also to retrieve entire navigation trees.
+
+Segments (optional)
+-------------------
+
+For some website it makes sense to be displayed in multiple different segments.
+A segment is defined in the above ``segments`` tag and the main part is giving
+the segment a ``key``. Additionally a title for the segment to be displayed in
+the UI is defined.
+
+One of the segments must be set as the default. That's the segment a visitor
+sees when visiting the website for the very first time. The visitor can switch
+to a different segment in a similar way they can switch the localization. The
+current segment will be stored in a cookie. Sulu also takes care of the cookie
+when caching the website.
+
+After configuring segments for a webspace the segments can be assigned to pages
+in their "Excerpt & Taxonomies" tab. A page will then be hidden in navigation
+and smart contents if the page has a segment assigned and another segment is
+currently set for the visitor.
 
 Resource-Locator (optional)
 ---------------------------
