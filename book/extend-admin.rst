@@ -866,5 +866,5 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Font Awesome icon font: https://fontawesome.com/
 .. _Symfony Configuration: https://symfony.com/doc/current/configuration.html
 .. _Sulu workshop: https://github.com/sulu/sulu-workshop
-.. _Sulu Demo repository: https://github.com/sulu/sulu-demo/pulls
+.. _Sulu Demo repository: https://github.com/sulu/sulu-demo/pulls?q=is%3Aopen+is%3Apr+label%3AExample
 .. _Sulu Javascript Docs: https://jsdocs.sulu.io/
