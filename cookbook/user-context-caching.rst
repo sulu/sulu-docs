@@ -98,7 +98,7 @@ User Context feature in Sulu.
 
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
 
-6. Add the login and logout routes to `config/routes/sulu_website.yaml`
+6. Add the login and logout routes to `config/routes_website.yaml`
 
 .. code-block:: yaml
 
