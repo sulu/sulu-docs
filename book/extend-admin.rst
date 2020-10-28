@@ -200,6 +200,7 @@ shows a controller doing what has just been described.
     namespace App\Controller\Admin;
 
     use App\Entity\Event;
+    use FOS\RestBundle\Controller\Annotations\RouteResource;
     use FOS\RestBundle\Routing\ClassResourceInterface;
     use FOS\RestBundle\View\View;
     use FOS\RestBundle\View\ViewHandlerInterface;
@@ -209,6 +210,9 @@ shows a controller doing what has just been described.
     use Sulu\Component\Rest\RestHelperInterface;
     use Symfony\Component\HttpFoundation\Response;
 
+    /**
+     * @RouteResource("event")
+     */
     class EventController implements ClassResourceInterface
     {
         /**
