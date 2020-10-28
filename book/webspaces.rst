@@ -27,6 +27,10 @@ following paragraphs.
         <name>Example</name>
         <key>example</key>
 
+        <security permission-check="true">
+            <system>example</system>
+        </security>
+
         <localizations>
             <localization language="en"/>
         </localizations>
@@ -112,6 +116,28 @@ administration interface. But even more important is the key, which is used
 internally to generate some files and define some paths. Therefore it is really
 important that the webspace key is unique across all webspaces in a single
 installation.
+
+Security (optional)
+-------------------
+
+The ``security`` tag allows to define a separate security system in its
+``system`` tag. The security system will then be added as a possible option to
+choose for the system of a user role. With this relation it is possible to
+create roles specific to the Webspace's security system (see
+:doc:`../../cookbook/securing-your-application` for more information about
+security systems).
+
+If the ``permission-check`` attribute of the ``security`` tag is set to
+``true``, Sulu will automatically check if the current user has access to see
+the requested page. It will also make sure that no pages are listed in the
+website's navigation or in smart contents, if the user does not have the
+necessary permissions.
+
+.. note::
+
+    Make sure caching is set up correctly if you use the security feature with
+    the ``permission-check`` flag set to ``true``. The caching will only work
+    if you have configured the :doc:`../cookbook/user-context-caching`.
 
 Localizations
 -------------

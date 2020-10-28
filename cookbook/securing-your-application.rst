@@ -143,8 +143,8 @@ First of all you have to add the permission tab to your form to enable the user
 to set up the permissions accordingly. The permission tab presents a list of
 the available user roles and a few permission icons, which can be activated.
 
-Therefore the probably already existing `ContentNavigationProvider` has to be
-extended by the permission tab:
+Therefore the `Admin` class you have created for your own business objects
+needs some updating. You can add the permission tab as shown below:
 
 .. code-block:: php
 
