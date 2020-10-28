@@ -2,7 +2,7 @@ Upgrading Sulu 2.x
 ==================
 
 This upgrade guide is valid for any update from any Sulu 2.0 to any version below 3.0. These updates should be less
-problematic, because backwards compatability is only broken when it is really necessary to fix a bug. The following
+problematic, because backwards compatibility is only broken when it is really necessary to fix a bug. The following
 steps describe this upgrade process.
 
 **1. Upgrade the sulu/sulu package**
@@ -33,30 +33,13 @@ steps describe this upgrade process.
 **4. Update the JavaScript build for the administration interface**
 
    Our administration interface requires a built version of its JavaScript in the `public/build/admin` folder of the
-   project. We might have to update our JavaScript code to fix some bugs, so after an upgrade you have to make sure to
-   have a build matching your Sulu version.
-
-   This can happen in two different ways:
-
-**a. Download the build from the Skeleton repository**
-
-   In case you have not added any custom JavaScript to our administration interface you can use the
-   pre-built JavaScript in our `Skeleton repository`_. We have implemented a Symfony command, that automatically checks
-   which Sulu version you are using and downloads the correct version of the JavaScript build.
+   project. We might have updated our JavaScript code to fix some bugs, so after an upgrade you have to make sure to
+   have a build matching your Sulu version. To simplify this step, Sulu provides a command to update the JavaScript
+   build in the project:
 
 .. code-block:: bash
 
-    $ bin/console sulu:admin:download-build
-
-**b. Make the build yourself**
-
-    In case you have added custom JavaScript to our administration interface, you need to make the build by yourself.
-    Run the following two npm commands (requires npm version 5 or higher) in the `assets/admin` folder of your project:
-
-.. code-block:: bash
-
-    $ npm install
-    $ npm run build
+    $ bin/console sulu:admin:update-build
 
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _Skeleton repository: https://github.com/sulu/skeleton
