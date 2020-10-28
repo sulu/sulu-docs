@@ -75,7 +75,8 @@ User Context feature in Sulu.
         firewalls:
             website:
                 pattern: ^/
-                anonymous: lazy
+                anonymous: true
+                lazy: true
                 form_login:
                     login_path: login
                     check_path: login
