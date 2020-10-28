@@ -136,8 +136,8 @@ necessary permissions.
 .. note::
 
     Make sure caching is set up correctly if you use the security feature with
-    the ``permission-check`` flag set to false. The caching will only work if
-    you have configured the :doc:`../cookbook/user-context-caching`.
+    the ``permission-check`` flag set to ``true``. The caching will only work
+    if you have configured the :doc:`../cookbook/user-context-caching`.
 
 Localizations
 -------------
