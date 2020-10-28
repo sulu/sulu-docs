@@ -2,9 +2,9 @@ Security
 ========
 
 Every page has its own permission tab, which is integrated like described in
-:doc:`../../cookbook/securing-your-application`. The settings placed in this tab
-has an influence on the UI of Sulu. The UI might also be adapted due to the
-permissions defined in Security Contexts.
+:doc:`../../cookbook/securing-your-application`. The permissions for the Sulu
+system in this tab has an influence on the UI of Sulu. The UI might also be
+adapted due to the permissions defined in Security Contexts.
 
 The form adapts to the permissions by changing its toolbar. The delete option
 in the edit dropdown is only available if the user has the delete permission on
@@ -27,3 +27,10 @@ a pencil shows up, in case the user has only the permission to view the page
 an eyes is shown instead. In case the user has no permission at all, there also
 will not appear any icon on hovering.
 
+In addition to the Sulu system the system of the webspace for this page is also
+shown on the permission tab, if the webspace has a system configured (see
+:doc:`../../book/webspaces` for more information on how to do this). If the
+webspace has configured the system with the `permission-check` flag set to
+`true`, Sulu will automatically check in this webspace if the current visitor
+is allowed to see the current page and only show pages in the navigation and
+smart content listings if the visitor has sufficient permissions.
