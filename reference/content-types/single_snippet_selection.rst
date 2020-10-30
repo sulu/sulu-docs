@@ -4,8 +4,7 @@ Snippet Selection
 Description
 -----------
 
-Allows to select an arbitrary number of snippets. Snippets are reusable pieces of content that can be included on
-multiple pages. The assigned snippets will be saved as an array of references.
+Allows to select a single snippet. Snippets are reusable pieces of content that can be included on multiple pages.
 
 Parameters
 ----------
@@ -19,10 +18,6 @@ Parameters
     * - types
       - string
       - If set, only snippets of the type can be selected.
-    * - default
-      - string - false
-      - If this parameter is true or set to a specific area, the content-type will load the respective
-        default snippet if no snippet is selected.
     * - loadExcerpt
       - boolean
       - If set to true, the taxonomies information of the snippet is loaded into a "taxonomies" property
@@ -46,14 +41,13 @@ Example
 
 .. code-block:: xml
 
-    <property name="snippets" type="snippet_selection">
+    <property name="snippet" type="single_snippet_selection">
         <meta>
-            <title lang="en">Snippets</title>
+            <title lang="en">Snippet</title>
         </meta>
 
         <params>
-            <param name="types" value="sidebar"/>
-            <param name="default" value="sidebar_overview"/>
+            <param name="types" value="default"/>
             <param name="loadExcerpt" value="true"/>
         </params>
     </property>
@@ -63,8 +57,6 @@ Twig
 
 .. code-block:: twig
 
-    {% for snippet in content.snippets %}
-        {{ snippet.title }}
-    {% endfor %}
+    {{ content.snippet.title }}
 
 .. _jexl: https://github.com/TomFrost/jexl

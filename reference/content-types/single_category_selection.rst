@@ -57,4 +57,11 @@ Following example defines an entry category for the selection tree.
         </params>
     </property>
 
+Twig
+----
+
+.. code-block:: twig
+
+    {{ content.category.name }}
+
 .. _jexl: https://github.com/TomFrost/jexl
