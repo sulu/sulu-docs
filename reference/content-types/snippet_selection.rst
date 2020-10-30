@@ -20,12 +20,11 @@ Parameters
       - string
       - If set, only snippets of the type can be selected.
     * - default
-      - string - false
-      - If this parameter is true or set to a specific area, the content-type will load the respective
-        default snippet if no snippet is selected.
+      - string
+      - If set, the default snippet of the given area will be used as fallback value if no snippet is selected.
     * - loadExcerpt
       - boolean
-      - If set to true, the taxonomies information of the snippet is loaded into a "taxonomies" property
+      - If set to true, the taxonomies information of the snippet is loaded into a "taxonomies" property.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -53,7 +52,7 @@ Example
 
         <params>
             <param name="types" value="sidebar"/>
-            <param name="default" value="sidebar_overview"/>
+            <param name="default" value="footer_social_media_links"/>
             <param name="loadExcerpt" value="true"/>
         </params>
     </property>
