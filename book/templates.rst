@@ -206,19 +206,18 @@ Here is a table with the content types shipped in Sulu core:
 |                              | document)                                   |
 +------------------------------+---------------------------------------------+
 | |contact_account_selection|  | widget for selecting contacts and accounts  |
-|                              |                                             |
 +------------------------------+---------------------------------------------+
 | |teaser_selection|           | widget for displaying content teasers       |
-|                              |                                             |
 +------------------------------+---------------------------------------------+
-| |snippet_selection|          | widget for selecting snippets               |
-|                              |                                             |
+| |snippet_selection|          | widget for selecting multiple snippets      |
 +------------------------------+---------------------------------------------+
-| |contact_selection|          | widget for selecting a multiple contacts    |
+| |single_snippet_selection|   | widget for selecting a single snippet       |
++------------------------------+---------------------------------------------+
+| |contact_selection|          | widget for selecting multiple contacts      |
 +------------------------------+---------------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       |
 +------------------------------+---------------------------------------------+
-| |account_selection|          | widget for selecting a multiple accounts    |
+| |account_selection|          | widget for selecting multiple accounts      |
 +------------------------------+---------------------------------------------+
 | |single_account_selection|   | widget for selecting a single account       |
 +------------------------------+---------------------------------------------+
@@ -978,6 +977,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
 .. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
+.. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
