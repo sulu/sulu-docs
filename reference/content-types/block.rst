@@ -119,3 +119,62 @@ A reusable way for rendering blocks is having a separate template file per type:
     {% endfor %}
 
 This way, its possible to access the ``properties`` of the block type  ivia the ``content`` and ``view`` variable in the rendered block template.
+
+Extending Block Settings
+------------------------
+
+If you want to add a custom field to the block settings this can be done by create your own
+``config/forms/page_block_settings``:
+
+.. code-block:: php
+
+    <?xml version="1.0" ?>
+    <form xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+    >
+        <key>page_block_settings</key>
+
+        <properties>
+            <section name="custom">
+                <properties>
+                    <property name="theme" type="single_select">
+                        <meta>
+                            <title lang="en">Block Theme</title>
+                            <title lang="de">Block Theme</title>
+                        </meta>
+
+                        <params>
+                            <param name="default_value" value=""/>
+
+                            <param name="values" type="collection">
+                                <param name="">
+                                    <meta>
+                                        <title lang="en">Default</title>
+                                        <title lang="de">Standard</title>
+                                    </meta>
+                                </param>
+
+                                <param name="highlight">
+                                    <meta>
+                                        <title lang="en">Highlight</title>
+                                        <title lang="de">Highlight</title>
+                                    </meta>
+                                </param>
+                            </param>
+                        </params>
+                    </property>
+                </properties>
+            </section>
+        </properties>
+    </form>
+
+The settings can be accessed in twig over the ``settings`` variable:
+
+.. code-block:: twig
+
+    {% for block in content.blocks %}
+        <div class="blocks__item{% if block.settings.theme|default %} block__item--{{ block.settings.theme }}{% endif %}">
+            {# ... #≠
+        </div>
+    {% endfor %}
