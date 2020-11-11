@@ -169,7 +169,7 @@ If you want to add a custom field to the block settings this can be done by crea
         </properties>
     </form>
 
-The settings can be accessed in twig over the ``settings`` variable:
+The value of your field can be accessed in twig over the ``settings`` variable:
 
 .. code-block:: twig
 
