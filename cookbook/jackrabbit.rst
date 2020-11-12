@@ -37,6 +37,8 @@ can e.g. be set in your ``.env`` file.
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
+                    parameters:
+                        "jackalope.jackrabbit_version": "%env(JACKRABBIT_VERSION)%"
                 workspace: "%env(PHPCR_WORKSPACE)%"
                 username: "%env(PHPCR_USER)%"
                 password: "%env(PHPCR_PASSWORD)%"
@@ -44,6 +46,8 @@ can e.g. be set in your ``.env`` file.
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
+                    parameters:
+                        "jackalope.jackrabbit_version": "%env(JACKRABBIT_VERSION)%"
                 workspace: "%env(PHPCR_WORKSPACE)%_live"
                 username: "%env(PHPCR_USER)%"
                 password: "%env(PHPCR_PASSWORD)%"
