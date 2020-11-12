@@ -57,6 +57,16 @@ can e.g. be set in your ``.env`` file.
     The ``PHPCR_WORKSPACE`` is something similar as a database name so it is best practice
     to have a similar value for it, for example: ``su_myproject`` in your ``.env`` files.
 
+    The ``JACKRABBIT_URL`` by default is running under `http://127.0.0.1:8080/server/`
+    or `http://127.0.0.1:8080/jackrabbit/server/` depending on Version and OS.
+
+    The ``JACKRABBIT_VERSION`` should be set for additional UTF-8 support like `emoticons`_ 🐣.
+    You can use the following curl request to find out the jackrabbit version:
+
+    `curl -XGET http://127.0.0.1:8080/server/`
+
+
+
 Migration
 ---------
 
@@ -98,3 +108,4 @@ by running the following commands:
 
 .. _`Jackrabbit`: https://jackrabbit.apache.org/jcr/index.html
 .. _`environment variable`: https://symfony.com/doc/4.4/configuration.html#config-env-vars
+.. _`emoticons`: https://github.com/jackalope/jackalope-jackrabbit/blob/e2c2871164c425daa5ed37311839e1ae1b8acb60/src/Jackalope/Transport/Jackrabbit/Client.php#L83
