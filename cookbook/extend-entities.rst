@@ -30,7 +30,7 @@ Sulu `User` class.
     use Sulu\Bundle\SecurityBundle\Entity\User as SuluUser;
 
     /**
-     * Following annotations are required and should not be changed:
+     * The following annotations are required for replacing the table of the extended entity:
      *
      * @ORM\Table(name="se_users")
      * @ORM\Entity
@@ -74,8 +74,10 @@ Sulu `User` class.
     Otherwise the normal features of Sulu could crash (like the
     `sulu:security:user:create` command).
 
-    The `@ORM\\Table` annotation need to match the exist table else you will get strange
-    errors when query data from it.
+.. warning::
+
+    The `@ORM\\Table` annotation on your entity must match the table of the extended entity. 
+    Otherwise, doctrine might run into errors when querying data of the entity.
 
 Configuration
 -------------
@@ -125,4 +127,4 @@ For the `Media` entity (`me_media`):
 
 .. warning::
 
-    If you override the entities you should provide a data migration script to avoid data lose.
+    If you override entities in an existing project, you need to migrate the existing data to avoid data loss.
