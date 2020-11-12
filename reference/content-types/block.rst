@@ -145,10 +145,10 @@ If you want to add a custom field to the block settings this can be done by crea
                         </meta>
 
                         <params>
-                            <param name="default_value" value="default"/>
+                            <param name="default_value" value=""/>
 
                             <param name="values" type="collection">
-                                <param name="default">
+                                <param name="">
                                     <meta>
                                         <title lang="en">Default</title>
                                         <title lang="de">Standard</title>
