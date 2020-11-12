@@ -57,8 +57,7 @@ can e.g. be set in your ``.env`` file.
     The ``PHPCR_WORKSPACE`` is something similar as a database name so it is best practice
     to have a similar value for it, for example: ``su_myproject`` in your ``.env`` files.
 
-```suggestion
-    The ``JACKRABBIT_URL`` needs to point to your jackrabbit backend. 
+    The ``JACKRABBIT_URL`` needs to point to your jackrabbit backend.
     Depending on your OS and jackrabbit version, the default should be `http://127.0.0.1:8080/server/`
     or `http://127.0.0.1:8080/jackrabbit/server/`.
 
@@ -66,8 +65,6 @@ can e.g. be set in your ``.env`` file.
     You can use the following curl request to gather the version of your jackrabbit backend:
 
     `curl -XGET http://127.0.0.1:8080/server/`
-
-
 
 Migration
 ---------
