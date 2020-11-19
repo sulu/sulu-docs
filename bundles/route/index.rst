@@ -36,7 +36,7 @@ Entity
 
 First extend your entity with the properties `id`, `locale` and a new many-to-one relation `route`:
 
-recipe.orm.xml:
+event.orm.xml:
 
 .. code-block:: xml
 
@@ -52,16 +52,16 @@ recipe.orm.xml:
         <join-column name="idRoutes" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
     </many-to-one>
 
-Recipe.php:
+Event.php:
 
 .. code-block:: php
 
-    namespace AppBundle\Entity;
+    namespace App\Entity;
 
     use Sulu\Bundle\RouteBundle\Model\RoutableInterface;
     use Sulu\Bundle\RouteBundle\Model\RouteInterface;
 
-    class Recipe implements RoutableInterface
+    class Event implements RoutableInterface
     {
         /**
          * @var string
@@ -107,31 +107,31 @@ Configure the route-schema in the file `app/config/config.yml`:
 
     sulu_route:
         mappings:
-            AppBundle\Entity\Recipe:
+            App\Entity\Event:
                 generator: schema
                 options:
-                    route_schema: /{translator.trans('recipe')}/{object.getTitle()}
-                resource_key: recipes
+                    route_schema: /{translator.trans('event')}/{object.getTitle()}
+                resource_key: events
 
 .. note::
 
     You can use the `translator` in the schema to create translated routes.
 
-RecipeController
+EventController
 ****************
 
 .. code-block:: php
 
-    namespace AppBundle\Controller;
+    namespace App\Controller;
 
-    use AppBundle\Entity\Recipe;
+    use App\Entity\Event;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    class RecipeController extends AbstractController
+    class EventController extends AbstractController
     {
-        public function indexAction(Recipe $recipe)
+        public function indexAction(Event $event)
         {
-            return $this->render('AppBundle:website:recipe.html.twig', ['recipe' => $recipe]);
+            return $this->render('events/event.html.twig', ['event' => $event]);
         }
     }
 
@@ -140,26 +140,26 @@ RouteDefaultsProvider
 
 .. code-block:: php
 
-    namespace AppBundle\Routing;
+    namespace App\Routing;
 
-    use AppBundle\Entity\Recipe;
-    use AppBundle\Entity\RecipeRepository;
+    use App\Entity\Event;
+    use App\Entity\EventRepository;
     use Sulu\Bundle\RouteBundle\Routing\Defaults\RouteDefaultsProviderInterface;
 
-    class RecipeRouteDefaultProvider implements RouteDefaultsProviderInterface
+    class EventRouteDefaultProvider implements RouteDefaultsProviderInterface
     {
-        protected $recipeRepository;
+        protected $eventRepository;
 
-        public function __construct(RecipeRepository $recipeRepository)
+        public function __construct(EventRepository $eventRepository)
         {
-            $this->recipeRepository = $recipeRepository;
+            $this->eventRepository = $eventRepository;
         }
 
         public function getByEntity($entityClass, $id, $locale, $object = null)
         {
             return [
-                '_controller' => 'AppBundle:Recipe:index',
-                'recipe' => $object ?: $this->recipeRepository->find($id, $locale),
+                '_controller' => 'App\Controller\EventController::indexAction',
+                'event' => $object ?: $this->eventRepository->find($id, $locale),
             ];
         }
 
@@ -170,7 +170,7 @@ RouteDefaultsProvider
 
         public function supports($entityClass)
         {
-            return $entityClass === Recipe::class;
+            return $entityClass === Event::class;
         }
     }
 
@@ -182,7 +182,7 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
 .. note::
 
     To update already existing entities you can run the command
-    `php bin/console sulu:route:update AppBundle:Recipe` which updates or creates
+    `php bin/console sulu:route:update App\\Entity\\Event` which updates or creates
     the route for all the entities of this type.
 
 Example without RoutableEntity
@@ -199,5 +199,8 @@ generator and the `options` in the mapping configuration.
 
     sulu_route:
         mappings:
-            AppBundle\Entity\Recipe:
-                resource_key: recipes
+            App\Entity\Event:
+                resource_key: events
+
+As there is no cascading on database layer you have to call the `remove` method on the
+service `sulu.repository.route` when you remove your entity.
