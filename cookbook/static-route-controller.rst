@@ -4,8 +4,8 @@ Create a static route controller
 Sometimes you have static symfony routes like a custom search controller or any other
 route which is not a sulu content page.
 
-That you can use the same ``base`` template for this static site you need to use the
-``TemplateAttributeResolver`` service which will generate you the required template attributes.
+In order to use the same ``base`` template for these custom routes, you need to provide the correct
+attributes to your template. To do this, you can use the``TemplateAttributeResolver`` service in your controller:
 
 .. code-block:: php
 
