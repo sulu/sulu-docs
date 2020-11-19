@@ -32,7 +32,7 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
     use Sulu\Bundle\SecurityBundle\Entity\User as SuluUser;
 
     /**
-     * User
+     * The following annotations are required for replacing the table of the extended entity:
      *
      * @ORM\Table(name="se_users")
      * @ORM\Entity
@@ -76,6 +76,11 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
     Otherwise the normal features of Sulu could crash (like the
     `sulu:security:user:create` command).
 
+.. warning::
+
+    The `@ORM\\Table` annotation on your entity must match the table of the extended entity.
+    Otherwise, doctrine might run into errors when querying data of the entity.
+
 Configuration
 -------------
 
@@ -83,7 +88,7 @@ You can specify your new entity and if it exists your repository
 in the configuration section of the file ``config/packages/*``.
 If the file does not exist you need to create it.
 
-For the `User` entity:
+For the `User` entity (`se_users`):
 
 .. code-block:: yaml
 
@@ -94,7 +99,7 @@ For the `User` entity:
                 model: App\Entity\User
                 repository: Sulu\Bundle\SecurityBundle\Entity\UserRepository
 
-For the `Role` entity:
+For the `Role` entity (`se_roles`):
 
 .. code-block:: yaml
 
@@ -105,7 +110,7 @@ For the `Role` entity:
                 model:                Sulu\Bundle\SecurityBundle\Entity\Role
                 repository:           Sulu\Bundle\SecurityBundle\Entity\RoleRepository
 
-For the `Contact` entity:
+For the `Contact` entity (`co_contacts`):
 
 .. code-block:: yaml
 
@@ -116,7 +121,7 @@ For the `Contact` entity:
                 model:                Sulu\Bundle\ContactBundle\Entity\Contact
                 repository:           Sulu\Bundle\ContactBundle\Entity\ContactRepository
 
-For the `Account` entity:
+For the `Account` entity (`co_accounts`):
 
 .. code-block:: yaml
 
@@ -127,7 +132,7 @@ For the `Account` entity:
                 model:                Sulu\Bundle\ContactBundle\Entity\Account
                 repository:           Sulu\Bundle\ContactBundle\Entity\AccountRepository
 
-For the `Category` entity:
+For the `Category` entity (`ca_categories`):
 
 .. code-block:: yaml
 
@@ -147,7 +152,7 @@ For the `Category` entity:
                 model:                Sulu\Bundle\CategoryBundle\Entity\Keyword
                 repository:           Sulu\Bundle\CategoryBundle\Entity\KeywordRepository
 
-For the `Media` entity:
+For the `Media` entity (`me_media`):
 
 .. code-block:: yaml
 
@@ -158,7 +163,7 @@ For the `Media` entity:
                 model:                Sulu\Bundle\MediaBundle\Entity\Media
                 repository:           Sulu\Bundle\MediaBundle\Entity\MediaRepository
 
-For the `Tag` entity:
+For the `Tag` entity (`ta_tags`):
 
 .. code-block:: yaml
 
@@ -171,5 +176,4 @@ For the `Tag` entity:
 
 .. warning::
 
-    If you override the entities you lose your old tables and data. You should provide
-    a upgrade script.
+    If you override entities in an existing project, you need to migrate the existing data to avoid data loss.

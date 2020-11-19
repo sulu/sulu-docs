@@ -41,6 +41,7 @@ our recipes.
     webpack-encore
     add-admin-tabs
     select-values-service
+    sulu-twig-attributes
     user-context-caching
 
 It is possible to work through the recipes, although most of the people will
