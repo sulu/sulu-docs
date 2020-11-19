@@ -14,29 +14,29 @@ system collection and use them.
 
     sulu_media:
         system_collections:
+            # system collection
+            my_key:
+                meta_title:
+                    en: 'My Collection'
+                    de: 'Meine Sammlung'
 
-            # Prototype
-            key:
-                meta_title:           []
+                # optional you can also configure sub collections
                 collections:
-
-                    # Prototype
-                    key:
-                        meta_title:           []
+                    my_child_key:
+                        meta_title:
+                            en: 'Child Collection'
+                            de: 'Kindsammlung'
 
 This structure will be used to create a Collection Structure like this:
 
 .. code-block:: bash
 
     System
-     |--> Sulu contact
-     |     |--> People
-     |     |--> Organizations
-     |--> Client Website
-           |--> My own System-Collection
+     |--> My Collection
+     |     |--> Child Collection
 
-To register own System-Collections you can prepend the configuration with your
-bundle extension:
+If you want to register a system collection in a bundle, you can use the PrependExtensionInterface
+of Symfony to prepend the respective configuration:
 
 .. code-block:: php
 
@@ -54,11 +54,17 @@ bundle extension:
                     'sulu_media',
                     [
                         'system_collections' => [
-                            'client_website' => [
-                                'meta_title' => ['en' => 'Client website', 'de' => 'Client Website'],
+                            'my_key' => [
+                                'meta_title' => [
+                                    'en' => 'Bundle Collection',
+                                    'de' => 'Bundle Sammlung',
+                                ],
                                 'collections' => [
-                                    'uploads' => [
-                                        'meta_title' => ['en' => 'My own System-Collection', 'de' => 'Meine eigene System-Collection'],
+                                    'my_child' => [
+                                        'meta_title' => [
+                                            'en' => 'Child Collection',
+                                            'de' => 'Kindsammlung',
+                                        ],
                                     ],
                                 ],
                             ],
@@ -78,18 +84,23 @@ bundle extension:
     }
 
 To use this new Collection you can use the `sulu_media.system_collections.manager`
-service.
+(`Sulu\Component\Media\SystemCollections\SystemCollectionManagerInterface`) service.
+The service will create the new collection on the first access of the collection.
 
 .. code-block:: php
 
     <?php
 
     // to get id of system collection
-    $systemCollectionManager->getSystemCollection('client_website.uploads');
+    $systemCollectionManager->getSystemCollection('my_key');
+
+    // to get id of a child system collection
+    $systemCollectionManager->getSystemCollection('my_key.my_child_key');
 
     // to determine if id is a system collection (e.g. validation)
     $systemCollectionManager->isSystemCollection(1);
 
 .. note::
-    The key of the system-collection consists of `namespace.key`. In this case
-    `namespace = client_website` and `key = uploads`.
+
+    The key of sub collection is a combination with the parent key so its `parent_key.child_key`
+    e.g.: `my_key.my_child_key`.
