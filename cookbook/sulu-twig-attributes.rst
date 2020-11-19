@@ -1,7 +1,7 @@
 Provide Sulu twig template attributes in your controller
 ========================================================
 
-In order to use the same ``base`` template for these custom routes, you need to provide the correct
+In order to use the ``base`` template that is used for pages on custom routes, you need to provide the correct
 attributes to your template. To do this, you can use the``TemplateAttributeResolver`` service in your controller:
 
 .. code-block:: php
