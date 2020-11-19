@@ -17,26 +17,26 @@ system collection and use them.
             # system collection
             my_key:
                 meta_title:
-                    en: 'Title'
-                    de: 'Titel'
+                    en: 'My Collection'
+                    de: 'Meine Sammlung'
 
                 # optional you can also configure sub collections
                 collections:
                     my_child_key:
                         meta_title:
-                            en: 'Child'
-                            de: 'Kind'
+                            en: 'Child Collection'
+                            de: 'Kindsammlung'
 
 This structure will be used to create a Collection Structure like this:
 
 .. code-block:: bash
 
     System
-     |--> Title
-     |     |--> Child
+     |--> My Collection
+     |     |--> Child Collection
 
-If you want todo this in a bundle you need to use the PrependExtensionInterface
-of Symfony for it and register there the System collections:
+If you want to register a system collection in a bundle, you can use the PrependExtensionInterface
+of Symfony to prepend the respective configuration:
 
 .. code-block:: php
 
@@ -56,14 +56,14 @@ of Symfony for it and register there the System collections:
                         'system_collections' => [
                             'my_key' => [
                                 'meta_title' => [
-                                    'en' => 'Title',
-                                    'de' => 'Titel',
+                                    'en' => 'Bundle Collection',
+                                    'de' => 'Bundle Sammlung',
                                 ],
                                 'collections' => [
                                     'my_child' => [
                                         'meta_title' => [
-                                            'en' => 'Child',
-                                            'de' => 'Kind',
+                                            'en' => 'Child Collection',
+                                            'de' => 'Kindsammlung',
                                         ],
                                     ],
                                 ],
@@ -84,8 +84,8 @@ of Symfony for it and register there the System collections:
     }
 
 To use this new Collection you can use the `sulu_media.system_collections.manager`
-(`Sulu\Component\Media\SystemCollections\SystemCollectionManagerInterface`) service
-which will by first access create the new collection in your database.
+(`Sulu\Component\Media\SystemCollections\SystemCollectionManagerInterface`) service.
+The service will create the new collection on the first access of the collection.
 
 .. code-block:: php
 
