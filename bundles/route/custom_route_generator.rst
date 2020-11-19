@@ -60,12 +60,12 @@ for example) and use this alias in the configuration:
 
     sulu_route:
         mappings:
-            AppBundle\Entity\Recipe:
+            App\Entity\Event:
                 generator: schema
                 options:
-                    route_schema: /{translator.trans('recipe')}/{object.getTitle()}
-                resource_key: recipes
-            AppBundle\Entity\Example:
+                    route_schema: /{translator.trans('event')}/{object.getTitle()}
+                resource_key: events
+            App\Entity\Example:
                 generator: custom
                 options:
                     type1: /example/{object.getName()}
