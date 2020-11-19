@@ -1,5 +1,5 @@
-Snippet Selection
-=================
+Single Snippet Selection
+========================
 
 Description
 -----------
