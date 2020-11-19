@@ -41,6 +41,7 @@ our recipes.
     webpack-encore
     add-admin-tabs
     select-values-service
+    sulu-twig-attributes
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
