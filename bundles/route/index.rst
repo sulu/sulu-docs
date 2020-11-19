@@ -131,7 +131,7 @@ EventController
     {
         public function indexAction(Event $event)
         {
-            return $this->render('App:website:event.html.twig', ['event' => $event]);
+            return $this->render('events/event.html.twig', ['event' => $event]);
         }
     }
 
@@ -158,7 +158,7 @@ RouteDefaultsProvider
         public function getByEntity($entityClass, $id, $locale, $object = null)
         {
             return [
-                '_controller' => 'App:Event:index',
+                '_controller' => 'App\Controller\EventController::indexAction',
                 'event' => $object ?: $this->eventRepository->find($id, $locale),
             ];
         }
@@ -182,7 +182,7 @@ simple call the `save` method of the service `sulu_route.manager.route_manager`.
 .. note::
 
     To update already existing entities you can run the command
-    `php bin/console sulu:route:update App:Event` which updates or creates
+    `php bin/console sulu:route:update App\\Entity\\Event` which updates or creates
     the route for all the entities of this type.
 
 Example without RoutableEntity
