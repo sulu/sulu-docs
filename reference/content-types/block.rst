@@ -126,7 +126,7 @@ Extending Block Settings
 If you want to add a custom field to the block settings this can be done by create your own
 ``config/forms/page_block_settings``:
 
-.. code-block:: php
+.. code-block:: xml
 
     <?xml version="1.0" ?>
     <form xmlns="http://schemas.sulu.io/template/template"
