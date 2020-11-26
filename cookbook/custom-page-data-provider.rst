@@ -1,16 +1,15 @@
-Register a custom DataProvider to filter pages by their template
+Custom DataProvider for SmartContent filtering via custom property
 ================================================================
 
 The ``smart_content`` content type allows for the configuration of a ``provider`` param, which is used for gathering
 the items that are passed to the twig template. As described in :doc:`/reference/content-types/smart_content`, Sulu
 comes with a few included providers and also allows to implement new ones to load custom entities.
 
-In some cases, it might be useful to register an additional provider for pages that only returns pages that use a
-specific template or include a property with a specific value. This is possible by registering a new instance of
-the ``PageDataProvider`` included in Sulu that uses a custom ``QueryBuilder`` implementation. To do this, the
-following changes are required:
+In some cases, it might be useful to register an additional provider, which only returns pages including a property
+with a specific value. This is possible by registering a new instance of the ``PageDataProvider`` included in Sulu
+that uses a custom impementation of the ``QueryBuilder``. To do this, the following changes are required:
 
-**1. Implement a custom ``QueryBuilder`` class that adds conditions**
+**1. Implement a custom** ``QueryBuilder`` **class that adds conditions**
 
 .. code-block:: php
 
@@ -38,7 +37,7 @@ following changes are required:
         }
     }
 
-**2. Register ``PageDataProvider` service that uses custom ``QueryBuilder`` implementation**
+**2. Register** ``PageDataProvider`` **service that uses custom** ``QueryBuilder`` **implementation**
 
 .. code-block:: yaml
 
@@ -65,7 +64,7 @@ following changes are required:
             tags:
                 - { name: 'sulu.smart_content.data_provider', alias: 'product_pages'}
 
-**3. Use registered ``product_pages`` DataProvider in the template**
+**3. Use registered** ``product_pages`` **DataProvider in the template**
 
 .. code-block:: xml
 
