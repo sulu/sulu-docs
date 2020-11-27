@@ -1,5 +1,5 @@
 Filter pages by a property using a custom SmartContent DataProvider
-================================================================
+===================================================================
 
 The ``smart_content`` content type allows for the configuration of a ``provider`` param, which is used for gathering
 the items that are passed to the twig template. As described in :doc:`/reference/content-types/smart_content`, Sulu
@@ -13,6 +13,7 @@ is implemented, which filters the pages for a specific author:
 **1. Implement a custom** ``QueryBuilder`` **class that adds conditions**
 
 .. code-block:: php
+
     <?php
     // src/SmartContent/AuthorPageQueryBuilder.php
 
