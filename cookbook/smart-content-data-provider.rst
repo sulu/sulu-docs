@@ -241,8 +241,8 @@ to avoid filtering for these values.
                     ->enablePagination()
                     ->enablePresentAs()
                     ->enableTypes([
-                        ['type' => 'example-template-1', 'title' => 'my-translation-key-1'],
-                        ['type' => 'example-template-2', 'title' => 'my-translation-key-2'],
+                        ['type' => 'example-type-1', 'title' => 'my-translation-key-1'],
+                        ['type' => 'example-type-2', 'title' => 'my-translation-key-2'],
                     ])
                     ->enableView('example.edit_form', ['id' => 'id', 'properties/webspaceKey' => 'webspace'])
                     ->getConfiguration();
@@ -294,7 +294,7 @@ to avoid filtering for these values.
     structures, because it allows to filter e.g. only for pages below a certain
     page.
 
-There are multiple `enable...` calls, which allow you to define certain features.
+There are multiple `enable...` calls, which allow you to enable certain features in the administration interface:
 
 .. list-table::
     :header-rows: 1

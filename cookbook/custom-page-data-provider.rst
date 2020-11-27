@@ -14,7 +14,7 @@ is implemented, which filters the pages for a specific author:
 
 .. code-block:: php
     <?php
-    // App\SmartContent\AuthorPageQueryBuilder
+    // src/SmartContent/AuthorPageQueryBuilder.php
 
     namespace App\SmartContent;
 
@@ -92,7 +92,7 @@ is implemented, which filters the pages for a specific author:
             tags:
                 - { name: 'sulu.smart_content.data_provider', alias: 'author_pages' }
 
-**3. Use registered** ``authr_pages`` **DataProvider in the template**
+**3. Use registered** ``author_pages`` **DataProvider in the template**
 
 .. code-block:: xml
 
