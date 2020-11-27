@@ -22,6 +22,8 @@ This configuration array includes following values:
       - Multiple selection of categories, which a item should have.
     * - categoryOperator
       - The item has any or all of the selected categories.
+    * - types
+      - Multiple selection of types (e.g. templates), which a item should have
 
 Tags (websiteTags) and Categories (websiteCategories) can also be "injected" by
 GET parameters from the website. This can be handled separately from the
@@ -116,6 +118,8 @@ functions which are optional to override in the repository.
         relation.
     * - appendCategoriesRelation(QueryBuilder $queryBuilder, $alias)
       - Same as tags.
+    * - appendTypeRelation(QueryBuilder $queryBuilder, $alias)
+      - Same as tags.
     * - appendDatasource($datasource, $includeSubFolders, QueryBuilder
         $queryBuilder, $alias)
       - If your dataprovider can handle datasources you can add the
@@ -192,14 +196,14 @@ class implements the Interface `ItemInterface`.
 .. note::
 
     If you return an image within the `getImage` function it will be displayed
-    in the admin ui. You should be sure that the image is not bigger that 50x50.
+    in the admin ui. You should be sure that the image is not bigger than 50x50.
 
 3. DataProvider
 ~~~~~~~~~~~~~~~
 
-Also the DataProvider is mostly abstracted by the SmartContent Component. The
-optimize in the configuration you can disable or enable the form-elements to
-avoid filtering for that values.
+The DataProvider is mostly abstracted by the SmartContent component. For further
+optimization, you can disable or enable the form-elements in the configuration
+to avoid filtering for these values.
 
 .. code-block:: php
 
@@ -221,19 +225,30 @@ avoid filtering for that values.
          */
         private $requestStack;
 
-        public function __construct(DataProviderRepositoryInterface $repository, SerializerInterface $serializer, RequestStack $requestStack)
+        public function __construct(DataProviderRepositoryInterface $repository, ArraySerializerInterface $serializer, RequestStack $requestStack)
         {
             parent::__construct($repository, $serializer);
 
             $this->requestStack = $requestStack;
+        }
 
-            $this->configuration = self::createConfigurationBuilder()
-                ->enableTags()
-                ->enableLimit()
-                ->enablePagination()
-                ->enablePresentAs()
-                ->enableView('example.edit_form', ['id' => 'id', 'properties/webspaceKey' => 'webspace'])
-                ->getConfiguration();
+        public function getConfiguration()
+        {
+            if (!$this->configuration) {
+                $this->configuration = self::createConfigurationBuilder()
+                    ->enableTags()
+                    ->enableLimit()
+                    ->enablePagination()
+                    ->enablePresentAs()
+                    ->enableTypes([
+                        ['type' => 'example-type-1', 'title' => 'my-translation-key-1'],
+                        ['type' => 'example-type-2', 'title' => 'my-translation-key-2'],
+                    ])
+                    ->enableView('example.edit_form', ['id' => 'id', 'properties/webspaceKey' => 'webspace'])
+                    ->getConfiguration();
+            }
+
+            return $this->configuration;
         }
 
         /**
@@ -279,19 +294,46 @@ avoid filtering for that values.
     structures, because it allows to filter e.g. only for pages below a certain
     page.
 
-There is an `enableLimit`, an `enablePagination` and an `enablePresentAs` call,
-which allow you to enable certain features. And the optional `enableView`
-allows you to define to which `View` the application should navigate, when one
-of the resulting items is clicked. The first parameters describes the view
-defined in an `Admin` class, and the second part is a mapping from a json
-pointer, which defines where from the loaded smart content item the value
-should be received, to the parameter of the `View`'s path.
+There are multiple `enable...` calls, which allow you to enable certain features in the administration interface:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Name
+      - Description
+    * - enableTags(bool $enable = true)
+      - Enables the tag filtering functionality.
+    * - enableTypes(array $types = [])
+      - Enables the type filtering functionality. The selectable `types` have to be
+        passed into this method.
+    * - enableCategories(bool $enable = true)
+      - Enables the category filtering functionality.
+    * - enableLimit(bool $enable = true)
+      - Allows to limit the output items to a specified number.
+    * - enablePagination(bool $enable = true)
+      - Allows to enable pagination and specify items per page.
+    * - enablePresentAs(bool $enable = true)
+      - Allows to enable multiple options for the view. These options
+        can be configured in the xml configuration of the SmartContent.
+    * - enableDatasource(string $resourceKey, string $listKey, string $adapter)
+      - Allows to choose a source for the request. This is useful in tree
+        structures, because it allows to filter e.g. for pages below a certain parent page.
+    * - enableAudienceTargeting(bool $enable = true)
+      - Enables the filtering through the audience targeting.
+    * - enableSorting(array $sorting)
+      - Enables sorting functionality. The sorting options have to be passed
+        into this method.
+    * - enableView(string $view, array $resultToView)
+      - Allows you to define to which `View` the application should navigate, when clicking on
+        a resulting item. The first parameter describes the view defined in an `Admin` class and
+        the second parameter is a mapping from a json pointer. The mapping defines how the values of
+        the clicked item should be sent to the `View`'s path.
 
 4. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
 Define a service with your Repository and DataProvider and add the tag
-`sulu.smart_content.data_provider` with a alias to your DataProvider service
+`sulu.smart_content.data_provider` with an alias to your DataProvider service
 definition.
 
 .. code-block:: xml
