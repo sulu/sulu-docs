@@ -1,0 +1,19 @@
+name: "Build docs"
+
+on:
+    pull_request:
+    push:
+
+jobs:
+    docs:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: ammaraskar/sphinx-action@master
+              with:
+                  docs-folder: "docs/"
+                  build-command: "sphinx-build -nW --keep-going -b html -d docs/_build/doctrees . docs/_build/html"
+            - uses: actions/upload-artifact@v1
+              with:
+                  name: DocumentationHTML
+                  path: "docs/_build/html/"
