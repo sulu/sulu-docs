@@ -19,7 +19,6 @@ Be sure to know a thing or two about `Symfony`_. Sulu is based on Symfony and st
     image-formats
     localization
     smart-content
-    themes
     extend-admin
 
 Lots of fun with Sulu. We hope you'll find the love we put in it while creating it.

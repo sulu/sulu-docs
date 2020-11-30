@@ -5,7 +5,7 @@ Sulu is a stable software used in production. It is however still under heavy
 development and therefore a full backwards compatibility can not be guaranteed
 at the current stage.
 
-We are do our best to keep backwards compatibility for the most used extension
+We do our best to keep backwards compatibility for the most used extension
 points and services of Sulu. These are listed in this document.
 
 The promises given in this document are only valid during a single major
@@ -33,7 +33,7 @@ backwards compatibility is promised:
 
 * Webspace (see :doc:`../book/webspaces`)
 * Template (see :doc:`../book/templates`)
-* Image formats (see :doc:`../book/themes`)
+* Image formats (see :doc:`../book/image-formats`)
 * MassiveSearch (see the `MassiveSearchBundle Mapping`_)
 * Bundle configurations
 
