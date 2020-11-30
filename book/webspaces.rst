@@ -159,10 +159,10 @@ Themes (optional)
 -----------------
 
 The ``theme`` is described by a key. This key leads to a certain theme,
-implemented by a developer in the system. Read more about themes in the section
-:doc:`themes`. This feature is default deactivated and therefore in the
-example not used. If you have multiple webspaces which should look different,
-you can use this feature to do this.
+implemented by a developer in the system. If you use multiple webspaces,
+which should have a different look and feel, you can easily accomplish
+this with the `SuluThemeBundle`_. Read more about the installation and usage
+in the `bundle documentation`_.
 
 Templates
 ---------
@@ -305,3 +305,6 @@ the values of them by using the ``de-at``-localization:
 
 Now you got your webspace ready, we will create a template for a page that could
 be added to the webspace.
+
+.. _SuluThemeBundle: https://github.com/sulu/SuluThemeBundle
+.. _bundle documentation: https://github.com/sulu/SuluThemeBundle/blob/master/README.md
