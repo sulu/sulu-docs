@@ -10,7 +10,7 @@ jobs:
             - uses: ammaraskar/sphinx-action@master
               with:
                   docs-folder: "./"
-                  build-command: "sphinx-build -nW --keep-going -b html -d _build/doctrees . _build/html"
+                  build-command: "sphinx-build -n -W --keep-going -b html -d _build/doctrees . _build/html"
             - uses: actions/upload-artifact@v1
               with:
                   name: DocumentationHTML
