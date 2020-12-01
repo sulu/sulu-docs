@@ -30,6 +30,9 @@ Parameters
     * - add_button_text
       -
       - Allows to adjust the text of the add button that is displayed in the administration interface.
+    * - settings_form_key
+      - string
+      - Key of the form that should be opened in an overlay when the settings icon is clicked. Will be set to ``page_block_settings`` per default for pages.
 
 Example
 -------
@@ -118,13 +121,14 @@ A reusable way for rendering blocks is having a separate template file per type:
         } %}
     {% endfor %}
 
-This way, its possible to access the ``properties`` of the block type  ivia the ``content`` and ``view`` variable in the rendered block template.
+This way, its possible to access the ``properties`` of the block type via
+the ``content`` and ``view`` variable in the rendered block template.
 
-Extending Block Settings
-------------------------
+Extending default block settings for pages
+------------------------------------------
 
-If you want to add a custom field to the block settings this can be done by create your own
-``config/forms/page_block_settings``:
+If you want to add a custom field to the block settings for pages, you can extend
+the ``page_block_settings`` form by creating a ``config/forms/page_block_settings``:
 
 .. code-block:: xml
 
