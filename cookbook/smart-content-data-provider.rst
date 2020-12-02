@@ -240,8 +240,8 @@ to avoid filtering for these values.
                     ->enablePagination()
                     ->enablePresentAs()
                     ->enableSorting([
-                        ['column' => 'column', 'title' => 'sort-translation-key-1'],
-                        ['column' => 'relation.column', 'title' => 'sort-translation-key-2'],
+                        ['column' => 'firstname', 'title' => 'sort-translation-key-1'],
+                        ['column' => 'address.country', 'title' => 'sort-translation-key-2'],
                     ])
                     ->enableTypes([
                         ['type' => 'example-type-1', 'title' => 'type-translation-key-1'],
