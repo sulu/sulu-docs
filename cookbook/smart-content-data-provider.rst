@@ -236,13 +236,16 @@ to avoid filtering for these values.
         {
             if (!$this->configuration) {
                 $this->configuration = self::createConfigurationBuilder()
-                    ->enableTags()
                     ->enableLimit()
                     ->enablePagination()
                     ->enablePresentAs()
+                    ->enableSorting([
+                        ['column' => 'column', 'title' => 'sort-translation-key-1'],
+                        ['column' => 'relation.column', 'title' => 'sort-translation-key-2'],
+                    ])
                     ->enableTypes([
-                        ['type' => 'example-type-1', 'title' => 'my-translation-key-1'],
-                        ['type' => 'example-type-2', 'title' => 'my-translation-key-2'],
+                        ['type' => 'example-type-1', 'title' => 'type-translation-key-1'],
+                        ['type' => 'example-type-2', 'title' => 'type-translation-key-2'],
                     ])
                     ->enableView('example.edit_form', ['id' => 'id', 'properties/webspaceKey' => 'webspace'])
                     ->getConfiguration();
