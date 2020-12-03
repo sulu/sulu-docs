@@ -20,7 +20,18 @@ tags will be saved as an array.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - min
+      - string
+      - The minimum amount of selected tags
+    * - max
+      - string
+      - The maximum amount of selected tags
 
 Example
 -------

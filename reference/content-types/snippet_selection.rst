@@ -39,6 +39,12 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
+    * - min
+      - string
+      - The minimum amount of selected snippets
+    * - max
+      - string
+      - The maximum amount of selected snippets
 
 Example
 -------
