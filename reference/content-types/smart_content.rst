@@ -68,10 +68,6 @@ Parameters
     * - category_root
       - string
       - Root category (key) to display category-tree.
-    * - display_options
-      - collection
-      - Hide form-elements (tags, categories, sorting, limit, presentAs)
-        can hide available elements for DataProvider.
     * - exclude_duplicates
       - bool
       - If the provider is able to detect duplicates the content-type filters
