@@ -29,8 +29,6 @@ Example
         <meta>
             <title lang="en">Resource locator</title>
         </meta>
-
-        <tag name="sulu.rlp"/>
     </property>
 
 Twig

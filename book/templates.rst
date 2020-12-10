@@ -243,7 +243,6 @@ choices:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -288,7 +287,6 @@ property, set the attribute ``mandatory`` to ``true``:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -394,16 +392,19 @@ As for properties, the label of the section goes into its ``<meta>`` tag:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
+        <properties>
+            <!-- ... -->
 
-        <section name="organizationalDetails">
-            <meta>
-                <title lang="en">Organizational Details</title>
-            </meta>
+            <section name="organizationalDetails">
+                <meta>
+                    <title lang="en">Organizational Details</title>
+                </meta>
+
+                <!-- ... -->
+            </section>
 
             <!-- ... -->
-        </section>
-
-        <!-- ... -->
+        </properties>
     </template>
 
 The properties in the sections are nested in a separate element below the
@@ -417,25 +418,28 @@ section:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
-        <section name="organizationalDetails">
+        <properties>
             <!-- ... -->
 
-            <properties>
-                <property name="startDate" type="date">
-                    <meta>
-                        <title lang="en">Start Date</title>
-                    </meta>
-                </property>
-                <property name="endDate" type="date">
-                    <meta>
-                        <title lang="en">End Date</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
+            <section name="organizationalDetails">
+                <!-- ... -->
 
-        <!-- ... -->
+                <properties>
+                    <property name="startDate" type="date">
+                        <meta>
+                            <title lang="en">Start Date</title>
+                        </meta>
+                    </property>
+                    <property name="endDate" type="date">
+                        <meta>
+                            <title lang="en">End Date</title>
+                        </meta>
+                    </property>
+                </properties>
+            </section>
+
+            <!-- ... -->
+        </properties>
     </template>
 
 Content Blocks
@@ -460,17 +464,18 @@ content block is set in the ``<meta>`` element:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
-        <!-- ... -->
-         <block name="eventDetails">
-             <meta>
-                 <title lang="en">Event Details</title>
-             </meta>
+            <!-- ... -->
 
-             <!-- ... -->
-         </block>
-        <!-- ... -->
+             <block name="eventDetails">
+                 <meta>
+                     <title lang="en">Event Details</title>
+                 </meta>
+
+                 <!-- ... -->
+             </block>
+
+            <!-- ... -->
         </properties>
-        <!-- ... -->
     </template>
 
 The content managers can choose the type of each individual block from a
@@ -496,36 +501,41 @@ the ``default-type`` attribute:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
-        <block name="eventDetails" default-type="text">
+        <properties>
             <!-- ... -->
 
-            <types>
-                <type name="text">
-                    <meta>
-                        <title lang="en">Text</title>
-                    </meta>
+            <block name="eventDetails" default-type="text">
+                <!-- ... -->
 
-                    <!-- ... -->
-                </type>
-                <type name="imageGallery">
-                    <meta>
-                        <title lang="en">Image Gallery</title>
-                    </meta>
+                <types>
+                    <type name="text">
+                        <meta>
+                            <title lang="en">Text</title>
+                        </meta>
 
-                    <!-- ... -->
-                </type>
-                <type name="quote">
-                    <meta>
-                        <title lang="en">Quote</title>
-                    </meta>
+                        <!-- ... -->
+                    </type>
 
-                    <!-- ... -->
-                </type>
-            </types>
-        </block>
+                    <type name="imageGallery">
+                        <meta>
+                            <title lang="en">Image Gallery</title>
+                        </meta>
 
-        <!-- ... -->
+                        <!-- ... -->
+                    </type>
+
+                    <type name="quote">
+                        <meta>
+                            <title lang="en">Quote</title>
+                        </meta>
+
+                        <!-- ... -->
+                    </type>
+                </types>
+            </block>
+
+            <!-- ... -->
+        </properties>
     </template>
 
 Each of our types can be mapped to one or multiple properties. These properties
@@ -540,33 +550,36 @@ type:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
-        <block name="eventDetails" default-type="text">
+        <properties>
             <!-- ... -->
 
-            <types>
+            <block name="eventDetails" default-type="text">
                 <!-- ... -->
 
-                <type name="quote">
+                <types>
                     <!-- ... -->
 
-                    <properties>
-                        <property name="text" type="text_area">
-                            <meta>
-                                <title lang="en">Text</title>
-                            </meta>
-                        </property>
-                        <property name="author" type="contact_account_selection">
-                            <meta>
-                                <title lang="en">Author</title>
-                            </meta>
-                        </property>
-                    </properties>
-                </type>
-            </types>
-        </block>
+                    <type name="quote">
+                        <!-- ... -->
 
-        <!-- ... -->
+                        <properties>
+                            <property name="text" type="text_area">
+                                <meta>
+                                    <title lang="en">Text</title>
+                                </meta>
+                            </property>
+                            <property name="author" type="contact_account_selection">
+                                <meta>
+                                    <title lang="en">Author</title>
+                                </meta>
+                            </property>
+                        </properties>
+                    </type>
+                </types>
+            </block>
+
+            <!-- ... -->
+        </properties>
     </template>
 
 .. note::
@@ -596,21 +609,25 @@ The width of a property is configured in the ``colspan`` attribute:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
-        <section name="organizationalDetails">
+        <properties>
             <!-- ... -->
 
-            <properties>
-                <property name="startDate" type="date" colspan="6">
-                    <!-- ... -->
-                </property>
-                <property name="endDate" type="date" colspan="6">
-                    <!-- ... -->
-                </property>
-            </properties>
-        </section>
+            <section name="organizationalDetails">
+                <!-- ... -->
 
-        <!-- ... -->
+                <properties>
+                    <property name="startDate" type="date" colspan="6">
+                        <!-- ... -->
+                    </property>
+
+                    <property name="endDate" type="date" colspan="6">
+                        <!-- ... -->
+                    </property>
+                </properties>
+            </section>
+
+            <!-- ... -->
+        </properties>
     </template>
 
 Help Text
@@ -628,7 +645,6 @@ section:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -680,7 +696,6 @@ element:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
-
         <!-- ... -->
 
         <xi:include href="fragments/event-properties.xml"/>
@@ -729,9 +744,7 @@ Let's look at the "Event" template first:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
-
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -755,9 +768,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
-
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -783,9 +794,7 @@ possible:
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
-
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -812,9 +821,7 @@ You can also match multiple elements of different types. Use the wildcard
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
-
         <!-- ... -->
-
         <properties>
             <!-- ... -->
 
@@ -893,6 +900,7 @@ That a property is indexed in the search the property need to be tagged.
         <meta>
             <title lang="en">Title</title>
         </meta>
+
         <tag name="sulu.search.field" role="title" />
     </property>
 
@@ -900,11 +908,13 @@ That a property is indexed in the search the property need to be tagged.
         <meta>
             <title lang="en">Description</title>
         </meta>
+
         <tag name="sulu.search.field" role="description" />
     </property>
 
     <property name="images" type="media_selection">
         <meta>
+
             <title lang="en">Images</title>
         </meta>
         <tag name="sulu.search.field" role="image" index="false" />
@@ -914,6 +924,7 @@ That a property is indexed in the search the property need to be tagged.
         <meta>
             <title lang="en">Article</title>
         </meta>
+
         <tag name="sulu.search.field" />
     </property>
 
