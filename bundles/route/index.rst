@@ -101,7 +101,7 @@ Event.php:
 Route-Schema
 ************
 
-Configure the route-schema in the file `app/config/config.yml`:
+Configure the route-schema in the file `config/packages/sulu_route.yml`:
 
 .. code-block:: yaml
 
@@ -146,7 +146,7 @@ RouteDefaultsProvider
     use App\Entity\EventRepository;
     use Sulu\Bundle\RouteBundle\Routing\Defaults\RouteDefaultsProviderInterface;
 
-    class EventRouteDefaultProvider implements RouteDefaultsProviderInterface
+    class EventRouteDefaultsProvider implements RouteDefaultsProviderInterface
     {
         protected $eventRepository;
 
