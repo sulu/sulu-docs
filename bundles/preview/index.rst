@@ -8,6 +8,18 @@ entities which have a `RouteDefaultsProvider`.
 This Provider will be used to determine which controller should be
 used to render the HTML of the entity.
 
+Configuration
+-------------
+
+The sulu preview bundle can be configured the following way:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_admin.yaml
+    sulu_preview:
+        mode: 'auto' # can be set to 'off' to disable the preview
+        cache_adapter: 'cache.app' # where the preview cache is stored
+
 PreviewObjectProvider
 ---------------------
 
@@ -126,6 +138,7 @@ You can configure other adapter the following way:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_admin.yaml
     sulu_preview:
         cache_adapter: "cache.app" # symfony cache adapter id
 
@@ -133,11 +146,25 @@ For example if you want to use redis you can do it this way:
 
 .. code-block:: yaml
 
+    # config/packages/sulu_admin.yaml
     sulu_preview:
         cache_adapter: "cache.adapter.redis"
+
     framework:
         cache:
             default_redis_provider: 'redis://localhost' # this is default and not needed
+
+If you are in a multi server setup its recommended to set the whole `cache.app` in your
+`config/packages/cache.yaml` to a central cache like redis.
+
+.. code-block:: yaml
+
+    # config/packages/cache.yaml
+    framework:
+        cache:
+            default_redis_provider: '%env(REDIS_CACHE)%' # REDIS_CACHE can be set in your .env files
+            app: cache.adapter.redis
+            # prefix_seed: 'my_project_%kernel.environment%' # unique name for the project installation to avoid cache conflicts between multiple installations
 
 Read more about it in the `Symfony Cache Documentation`_.
 
