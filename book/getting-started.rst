@@ -55,7 +55,7 @@ Webspaces
 ---------
 
 The content management part of Sulu is built upon *webspaces*. Each of these
-webspaces configure a content tree. Each content tree may contain translations
+webspaces configures a content tree. Each content tree may contain translations
 for different locales.
 
 The default webspace configuration is located in
