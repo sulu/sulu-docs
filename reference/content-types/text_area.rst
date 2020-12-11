@@ -9,7 +9,15 @@ Shows a simple text area, the inserted content will be saved as simple string.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - max_characters
+      - string
+      - Soft limit for maximum number of characters. Will show a character counter.
 
 Example
 -------
