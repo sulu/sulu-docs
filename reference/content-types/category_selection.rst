@@ -33,6 +33,12 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
+    * - min
+      - string
+      - The minimum number of selected categories
+    * - max
+      - string
+      - The maximum number of selected categories
 
 Example
 -------

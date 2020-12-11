@@ -132,6 +132,12 @@ The following parameters can be used to customize the field in the page template
       - A collection of strings. Each string is typically a CSS class that is
         used to render the teaser list. You can configure the ``<title>`` of
         each entry that is shown in the admin
+    * - min
+      - string
+      - The minimum number of selected teasers
+    * - max
+      - string
+      - The maximum number of selected teasers
 
 Configurable Presentation
 -------------------------

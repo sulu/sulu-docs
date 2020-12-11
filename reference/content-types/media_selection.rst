@@ -28,6 +28,12 @@ Parameters
     * - defaultDisplayOption
       - string
       - Defines which of the displayOptions is the default one
+    * - min
+      - string
+      - The minimum number of selected media
+    * - max
+      - string
+      - The maximum number of selected media
 
 Example
 -------
