@@ -37,10 +37,10 @@ Parameters
         The value of the respective properties are appended to the requests sent by the selection.
     * - min
       - string
-      - The minimum amount of selected pages
+      - The minimum number of selected pages
     * - max
       - string
-      - The maximum amount of selected pages
+      - The maximum number of selected pages
 
 Example
 -------

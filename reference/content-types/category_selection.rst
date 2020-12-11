@@ -35,10 +35,10 @@ Parameters
         The value of the respective properties are appended to the requests sent by the selection.
     * - min
       - string
-      - The minimum amount of selected categories
+      - The minimum number of selected categories
     * - max
       - string
-      - The maximum amount of selected categories
+      - The maximum number of selected categories
 
 Example
 -------

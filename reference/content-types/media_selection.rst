@@ -30,10 +30,10 @@ Parameters
       - Defines which of the displayOptions is the default one
     * - min
       - string
-      - The minimum amount of selected media elements
+      - The minimum number of selected media
     * - max
       - string
-      - The maximum amount of selected media elements
+      - The maximum number of selected media
 
 Example
 -------

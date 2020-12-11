@@ -134,10 +134,10 @@ The following parameters can be used to customize the field in the page template
         each entry that is shown in the admin
     * - min
       - string
-      - The minimum amount of selected teasers
+      - The minimum number of selected teasers
     * - max
       - string
-      - The maximum amount of selected teasers
+      - The maximum number of selected teasers
 
 Configurable Presentation
 -------------------------

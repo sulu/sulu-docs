@@ -31,10 +31,10 @@ Parameters
         The value of the respective properties are appended to the requests sent by the selection.
     * - min
       - string
-      - The minimum amount of selected contacts
+      - The minimum number of selected contacts
     * - max
       - string
-      - The maximum amount of selected contacts
+      - The maximum number of selected contacts
 
 Return value
 ------------

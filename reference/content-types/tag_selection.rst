@@ -28,10 +28,10 @@ Parameters
       - Description
     * - min
       - string
-      - The minimum amount of selected tags
+      - The minimum number of selected tags
     * - max
       - string
-      - The maximum amount of selected tags
+      - The maximum number of selected tags
 
 Example
 -------
