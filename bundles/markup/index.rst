@@ -37,7 +37,6 @@ Core Tags
     :maxdepth: 1
 
     link
-    media
 
 Extending
 ---------

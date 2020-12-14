@@ -1,8 +1,11 @@
 sulu-link
 =========
 
-The link tag provides the possibility to link to other pages by uuid. This uuid
-will be validated at response time and replaced by a proper anchor tag.
+The sulu-link tag allows to link to pages and other entities in the application by their id.
+This id of the tag will be validated and replaced by a proper anchor tag when a response is generated.
+
+The tag supports 2 different providers: `page` (default) and `media`. Additional provides can be
+implemented by registering a service with the `sulu.link.provider` tag.
 
 Example
 -------
@@ -11,6 +14,9 @@ Example
 
     <sulu-link href="123-123-123" title="test-title" />
     <sulu-link href="123-123-123" target="_blank">Link Text</sulu-link>
+    <sulu-link provider="page" href="123-123-123" target="_blank">Link Text</sulu-link>
+    <sulu-link provider="media" href="1" title="test-title"/>
+    <sulu-link provider="media" href="1">Link Text</sulu-link>
 
 **Results into:**
 
@@ -18,3 +24,6 @@ Example
 
     <a href="/test" title="test-title">Page Title</a>
     <a href="/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
+    <a href="/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
