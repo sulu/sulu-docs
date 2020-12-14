@@ -30,8 +30,13 @@ Configuration
 There are several files and directories added to your project by Symfony
 Flex:
 
-* ``assets/css/``
-* ``assets/js/``
+* ``assets/controllers/``
+* ``assets/styles/``
+* ``assets/app.js``
+* ``assets/bootstrap.js``
+* ``assets/controllers.json``
+* ``assets/controllers/hello_controller.js``
+* ``assets/styles/app.css``
 * ``config/packages/assets.yaml``
 * ``config/packages/prod/webpack_encore.yaml``
 * ``config/packages/test/webpack_encore.yaml``
@@ -44,10 +49,7 @@ use Webpack Encore with Sulu, some configuration has to be adjusted,
 because there is an additional Javascript application for Sulu’s admin interface.
 
 To continue, create a directory ``assets/website/`` and move the
-following directories into that directory:
-
-* ``assets/css/``
-* ``assets/js/``
+newly added files and directories from ``assets/`` into ``assets/website``.
 
 Next, add the following changes to ``webpack.config.js``:
 
@@ -74,8 +76,10 @@ Next, add the following changes to ``webpack.config.js``:
          */
    -    .addEntry('app', './assets/js/app.js')
    +    .addEntry('app', './assets/website/js/app.js')
-        //.addEntry('page1', './assets/js/page1.js')
-        //.addEntry('page2', './assets/js/page2.js')
+
+        // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+   -    .enableStimulusBridge('./assets/controllers.json')
+   +    .enableStimulusBridge('./assets/website/controllers.json')
 
 Because of the above changes, you also have to change the following
 configuration files:
@@ -125,9 +129,9 @@ And that’s it!
 Build
 -----
 
-Now you are ready to add your scripts and styles in
-``assets/website/js`` and ``assets/website/css``. When you finished your
-changes, open your terminal in the root directory and run
+Now you are ready to add your scripts and styles in ``assets/website``.
+When you finished your changes, open your terminal in the root directory
+and run the following command:
 
 .. code:: bash
 
@@ -135,6 +139,36 @@ changes, open your terminal in the root directory and run
    npm run build
 
 Now you should be able to see the outcome in the browser.
+
+Optional: Install Web-JS
+------------------------
+
+In order to install the UI-Library ``web-js`` you have to remove the ``stimulus``
+library from the generated files.
+
+Remove the following files / directories:
+
+* ``assets/website/bootstrap.js``
+* ``assets/website/controllers/``
+* ``assets/website/controllers.json``
+
+And remove following lines from ``assets/website/app.js``:
+
+.. code:: diff
+
+    - // start the Stimulus application
+    - import './bootstrap';
+
+And comment out the following line in ``webpack.config.js``:
+
+.. code:: diff
+
+        // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+   -    .enableStimulusBridge('./assets/website/controllers.json')
+   +    // .enableStimulusBridge('./assets/website/controllers.json')
+
+After that you are able to install ``web-js`` via the documentation
+of the `web-js repository`_.
 
 Customization
 -------------
@@ -144,3 +178,4 @@ Encore Documentation`_.
 
 .. _WebpackEncoreBundle: https://github.com/symfony/webpack-encore-bundle
 .. _Webpack Encore Documentation: https://symfony.com/doc/current/frontend.html#webpack-encore
+.. _web-js repository: https://github.com/sulu/web-js
