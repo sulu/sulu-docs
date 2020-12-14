@@ -54,19 +54,6 @@ following files into that directory:
 * ``assets/styles``
 * ``assets/app.js``
 
-As long as the recipes installs the ``stimolus`` library we have to remove the following files / directories:
-
-* ``assets/controllers/``
-* ``assets/bootstrap.js``
-* ``assets/controllers.json``
-
-And remove following lines from ``assets/website/app.js``:
-
-.. code:: diff
-
-    - // start the Stimulus application
-    - import './bootstrap';
-
 Next, add the following changes to ``webpack.config.js``:
 
 .. code:: diff
@@ -92,10 +79,6 @@ Next, add the following changes to ``webpack.config.js``:
          */
    -    .addEntry('app', './assets/js/app.js')
    +    .addEntry('app', './assets/website/js/app.js')
-
-        // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-   -    .enableStimulusBridge('./assets/controllers.json')
-   +    // .enableStimulusBridge('./assets/controllers.json')
 
 Because of the above changes, you also have to change the following
 configuration files:
@@ -156,6 +139,36 @@ and run the following command:
 
 Now you should be able to see the outcome in the browser.
 
+Optional: Install Web-JS
+------------------------
+
+In order to install the UI-Library ``web-js`` you have to remove the ``stimulus``
+library from the generated files.
+
+Remove the following files / directories:
+
+* ``assets/controllers/``
+* ``assets/bootstrap.js``
+* ``assets/controllers.json``
+
+And remove following lines from ``assets/website/app.js``:
+
+.. code:: diff
+
+    - // start the Stimulus application
+    - import './bootstrap';
+
+And comment out the following line in ``webpack.config.js``:
+
+.. code:: diff
+
+        // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+   -    .enableStimulusBridge('./assets/controllers.json')
+   +    // .enableStimulusBridge('./assets/controllers.json')
+
+After that you are able to install ``web-js`` via the documentation
+of the `web-js repository`_.
+
 Customization
 -------------
 
@@ -164,3 +177,4 @@ Encore Documentation`_.
 
 .. _WebpackEncoreBundle: https://github.com/symfony/webpack-encore-bundle
 .. _Webpack Encore Documentation: https://symfony.com/doc/current/frontend.html#webpack-encore
+.. _web-js repository: https://github.com/sulu/web-js
