@@ -1,12 +1,11 @@
 PreviewBundle
 =============
 
-The PreviewBundle provides the feature of preview for custom-entities.
-It is build on top of the route-bundle and can only be introduced for
-entities which have a `RouteDefaultsProvider`.
+The PreviewBundle implements the preview feature for pages and custom entities.
 
-This Provider will be used to determine which controller should be
-used to render the HTML of the entity.
+The bundle is built to be compatible with the RouteBundle. For custom entities, the
+`RouteDefaultsProvider` will be used to determine which controller should be
+used to render the HTML of an entity.
 
 Configuration
 -------------

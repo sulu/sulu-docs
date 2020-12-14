@@ -11,7 +11,7 @@ First install dependencies.
 
 .. code-block:: bash
 
-    composer require league/flysystem league/flysystem-aws-s3-v3
+    composer require "league/flysystem:^1.0" "league/flysystem-aws-s3-v3:^1.0.1"
 
 Configure the storage with following yaml-snippet:
 
@@ -55,7 +55,7 @@ Install the dependencies:
 
 .. code-block:: bash
 
-    composer require league/flysystem superbalist/flysystem-google-storage
+    composer require "league/flysystem:^1.0" "superbalist/flysystem-google-storage:^7.1"
 
 Dump this file to a readable folder on your machine and configure the storage with following yaml-snippet:
 
@@ -79,7 +79,7 @@ First install dependencies.
 
 .. code-block:: bash
 
-    composer require league/flysystem-azure-blob-storage
+    composer require "league/flysystem:^1.0" "league/flysystem-azure-blob-storage:^0.1"
 
 Configure the storage with following yaml-snippet:
 
