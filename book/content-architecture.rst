@@ -39,4 +39,4 @@ for each country, but the rest of the page should be exactly the same.
 
 .. _PHPCR: http://phpcr.github.io/
 
-With the content architecture on our mind we'll create a webspace.
+With the content architecture on our mind, we can :doc:`webspaces`.
