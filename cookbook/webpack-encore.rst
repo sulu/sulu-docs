@@ -49,10 +49,7 @@ use Webpack Encore with Sulu, some configuration has to be adjusted,
 because there is an additional Javascript application for Sulu’s admin interface.
 
 To continue, create a directory ``assets/website/`` and move the
-following files into that directory:
-
-* ``assets/styles``
-* ``assets/app.js``
+newly added files and directories from ``assets/`` into ``assets/website``.
 
 Next, add the following changes to ``webpack.config.js``:
 
@@ -79,6 +76,10 @@ Next, add the following changes to ``webpack.config.js``:
          */
    -    .addEntry('app', './assets/js/app.js')
    +    .addEntry('app', './assets/website/js/app.js')
+
+        // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+   -    .enableStimulusBridge('./assets/controllers.json')
+   +    .enableStimulusBridge('./assets/website/controllers.json')
 
 Because of the above changes, you also have to change the following
 configuration files:
@@ -147,9 +148,9 @@ library from the generated files.
 
 Remove the following files / directories:
 
-* ``assets/controllers/``
-* ``assets/bootstrap.js``
-* ``assets/controllers.json``
+* ``assets/website/bootstrap.js``
+* ``assets/website/controllers/``
+* ``assets/website/controllers.json``
 
 And remove following lines from ``assets/website/app.js``:
 
@@ -163,8 +164,8 @@ And comment out the following line in ``webpack.config.js``:
 .. code:: diff
 
         // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-   -    .enableStimulusBridge('./assets/controllers.json')
-   +    // .enableStimulusBridge('./assets/controllers.json')
+   -    .enableStimulusBridge('./assets/website/controllers.json')
+   +    // .enableStimulusBridge('./assets/website/controllers.json')
 
 After that you are able to install ``web-js`` via the documentation
 of the `web-js repository`_.
