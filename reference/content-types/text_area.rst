@@ -15,13 +15,13 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - softMaxLength
+    * - soft_max_length
       - string
       - Soft limit for maximum number of characters. Will show a character counter (replaces `max_characters`)
-    * - minLength
+    * - min_length
       - string
       - The minimum number of characters
-    * - maxLength
+    * - max_length
       - string
       - The maximum number of characters
     * - pattern

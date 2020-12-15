@@ -18,7 +18,7 @@ Parameters
     * - headline
       - boolean
       - If true the height and font size of the text line get increased.
-    * - softMaxLength
+    * - soft_max_length
       - string
       - Soft limit for maximum number of characters. Will show a character counter (replaces `max_characters`)
     * - max_segments
@@ -27,10 +27,10 @@ Parameters
     * - segment_delimiter
       - string
       - The delimiter used to split the value into segments (required to use `max_segments`)
-    * - minLength
+    * - min_length
       - string
       - The minimum number of characters
-    * - maxLength
+    * - max_length
       - string
       - The maximum number of characters
     * - pattern
