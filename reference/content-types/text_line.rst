@@ -18,15 +18,24 @@ Parameters
     * - headline
       - boolean
       - If true the height and font size of the text line get increased.
-    * - max_characters
+    * - soft_max_length
       - string
-      - Soft limit for maximum number of characters. Will show a character counter.
+      - Soft limit for maximum number of characters. Will show a character counter (replaces `max_characters`)
     * - max_segments
       - string
       - Soft limit for maximum number of segments. Will show a segment counter.
     * - segment_delimiter
       - string
       - The delimiter used to split the value into segments (required to use `max_segments`)
+    * - min_length
+      - string
+      - The minimum number of characters
+    * - max_length
+      - string
+      - The maximum number of characters
+    * - pattern
+      - string
+      - A regex pattern the must be fulfilled by the entered data (e.g. "^[a-zA-Z]*$" will only allow letters)
 
 Example
 -------

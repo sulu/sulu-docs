@@ -15,9 +15,18 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - max_characters
+    * - soft_max_length
       - string
-      - Soft limit for maximum number of characters. Will show a character counter.
+      - Soft limit for maximum number of characters. Will show a character counter (replaces `max_characters`)
+    * - min_length
+      - string
+      - The minimum number of characters
+    * - max_length
+      - string
+      - The maximum number of characters
+    * - pattern
+      - string
+      - A regex pattern the must be fulfilled by the entered data (e.g. "^[a-zA-Z]*$" will only allow letters)
 
 Example
 -------
