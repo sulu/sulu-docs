@@ -179,6 +179,6 @@ The value of your field can be accessed in twig over the ``settings`` variable:
 
     {% for block in content.blocks %}
         <div class="blocks__item{% if block.settings.theme|default %} block__item--{{ block.settings.theme }}{% endif %}">
-            {# ... #≠
+            {# ... #}
         </div>
     {% endfor %}
