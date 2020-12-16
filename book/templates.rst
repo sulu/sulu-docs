@@ -680,7 +680,7 @@ To enable XInclude, we'll first add the namespace
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <!-- ... -->
 
@@ -696,7 +696,7 @@ element:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
         <xi:include href="fragments/event-properties.xml"/>
@@ -708,8 +708,9 @@ element:
 
     The ``href`` contains a relative path to the included file.
 
-The fragment itself must contain a ``<template>`` or a ``<properties>`` element
-as root. In this example, we'll use a ``<properties>`` container:
+The fragment itself should use a ``<template>`` or a ``<properties>`` element as root
+to pass the XML schema validation in your IDE. In this example, we'll use a ``<properties>``
+container:
 
 .. code-block:: xml
 
@@ -717,7 +718,7 @@ as root. In this example, we'll use a ``<properties>`` container:
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+                xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <property name="startDate" type="date" mandatory="true">
             <!-- ... -->
@@ -744,7 +745,7 @@ Let's look at the "Event" template first:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -768,7 +769,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -794,7 +795,7 @@ possible:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -821,7 +822,7 @@ You can also match multiple elements of different types. Use the wildcard
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
