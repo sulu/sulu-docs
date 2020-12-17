@@ -367,7 +367,7 @@ from within a block.
                                 <!-- ... -->
                             </property>
 
-                            <property name="image" type="single_media_selection" disabledCondition="isCode != true">
+                            <property name="image" type="single_media_selection" disabledCondition="__parent.isCode != true">
                                 <!-- ... -->
                             </property>
                         </properties>
