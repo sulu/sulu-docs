@@ -334,10 +334,53 @@ Inside of these attributes, you can utilize the `jexl`_ syntax for expressing yo
         </properties>
     </template>
 
+The ``isCode`` variable in these conditions is relative to the root of the form. If you want to check a property
+relative from your position, you can use the nestable ``__parent`` variable. This is especially useful when working
+from within a block.
+
+.. code-block:: xml
+
+    <!-- config/templates/pages/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+        <!-- ... -->
+
+        <properties>
+            <!-- ... -->
+
+            <block name="blocks" default-type="editor" minOccurs="0">
+                <meta>
+                    <title lang="en">Content</title>
+                    <title lang="de">Inhalte</title>
+                </meta>
+
+                <types>
+                    <type name="editor">
+                        <properties>
+                            <property name="isCode" type="checkbox">
+                                <!-- ... -->
+                            </property>
+
+                            <property name="code" type="text_area" visibleCondition="__parent.isCode == true">
+                                <!-- ... -->
+                            </property>
+
+                            <property name="image" type="single_media_selection" disabledCondition="__parent.isCode != true">
+                                <!-- ... -->
+                            </property>
+                        </properties>
+                    </type>
+                </types>
+            </block>
+        </properties>
+    </template>
+
 .. note::
 
-    At the moment, conditions can only access the root properties of the template.
-    This means that it is not possible to express conditions relative to a property inside a block.
+    Mind that you can call the ``__parent`` (something like ``__parent.__parent.isCode``) variable multiple times if
+    you use nested blocks.
 
 Language Independent Properties
 -------------------------------
