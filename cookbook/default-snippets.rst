@@ -23,8 +23,8 @@ and can be assigned to a snippet that uses the respective template.
 
 .. note::
 
-    If a snippet template defines no areas, Sulu automatically creates an
-    area for the snippet template using the title and key of the template.
+    If no snippet template of the application defines an area, Sulu automatically creates
+    an area for each snippet template using the title and key of the template.
 
 .. code-block:: xml
 
