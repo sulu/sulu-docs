@@ -72,24 +72,3 @@ Properties
 ----------
 
 Properties are the same as Page :doc:`templates`.
-
-Load Snippets from a Subfolder
-------------------------------
-
-As already mentioned, Sulu loads snippet templates in its default configuration from the following path.
-`config/template/snippets/`
-
-By the means of configuration in `config/packages/sulu_admin.yaml` according to the following scheme
-it is also possible to load snippet templates from custom folders.
-
-.. code-block:: yaml
-
-    sulu_core:
-        content:
-            structure:
-                paths:
-                    events:
-                        path: "%kernel.project_dir%/config/template/events/snippets/"
-                        type: "snippet"
-
-In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
