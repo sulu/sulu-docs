@@ -3,6 +3,7 @@ Using Snippets
 
 What is a Snippet
 -----------------
+
 As the name suggests, a snippet is a small fragment on a page.
 However, unlike blocks, for example, which would also fit this description, the idea with snippets is reusability.
 As a section of a web page a snippet must be first universally maintained, and thereafter be reused anywhere on the website.
@@ -26,48 +27,46 @@ Create a XML File in your `config/template/snippets/` folder like the following 
 
 .. code-block:: xml
 
-<?xml version="1.0" ?>
-<template xmlns="http://schemas.sulu.io/template/template"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-    <key>social_media</key>
+        <key>social_media</key>
 
-    <meta>
-        <title lang="en">Social Media</title>
-        <title lang="de">Social Media</title>
-    </meta>
+        <meta>
+            <title lang="en">Social Media</title>
+            <title lang="de">Social Media</title>
+        </meta>
 
-    <properties>
-        <property name="title" type="text_line" mandatory="true">
-            <meta>
-                <title lang="en">Title</title>
-                <title lang="de">Titel</title>
-            </meta>
-            <tag name="sulu.node.name"/>
-        </property>
+        <properties>
+            <property name="title" type="text_line" mandatory="true">
+                <meta>
+                    <title lang="en">Title</title>
+                    <title lang="de">Titel</title>
+                </meta>
+                <tag name="sulu.node.name"/>
+            </property>
 
-        <property name="facebookImage" type="single_media_selection">
-            <meta>
-                <title lang="en">Facebook Icon</title>
-                <title lang="de">Facebook Icon</title>
-            </meta>
-        </property>
+            <property name="facebookImage" type="single_media_selection">
+                <meta>
+                    <title lang="en">Facebook Icon</title>
+                    <title lang="de">Facebook Icon</title>
+                </meta>
+            </property>
 
-        <property name="facebookLink" type="url">
-            <meta>
-                <title lang="en">Facebook Link</title>
-                <title lang="de">Facebook Link</title>
-            </meta>
-            <param name="schemes" type="collection">
-                <param name="http://"/>
-                <param name="https://"/>
-            </param>
-        </property>
-    </properties>
-</template>
-
-
+            <property name="facebookLink" type="url">
+                <meta>
+                    <title lang="en">Facebook Link</title>
+                    <title lang="de">Facebook Link</title>
+                </meta>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </property>
+        </properties>
+    </template>
 
 Properties
 ----------
@@ -85,12 +84,12 @@ it is also possible to load snippet templates from custom folders.
 
 .. code-block:: yaml
 
-sulu_core:
-    content:
-        structure:
-            paths:
-                events:
-                    path: "%kernel.project_dir%/config/template/events/snippets/"
-                    type: "snippet"
+    sulu_core:
+        content:
+            structure:
+                paths:
+                    events:
+                        path: "%kernel.project_dir%/config/template/events/snippets/"
+                        type: "snippet"
 
 In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
