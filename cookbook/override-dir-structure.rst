@@ -36,5 +36,23 @@ generated it with ``npm install`` and ``npm run build`` into your new directory.
                 sulu_admin:
                     json_manifest_path: "%kernel.project_dir%/public/your/new/path/manifest.json"
 
+
+Load Snippets from a Subfolder
+------------------------------
+By the means of configuration in `config/packages/sulu_admin.yaml` according to the following scheme
+it is also possible to load snippet templates from custom folders.
+
+.. code-block:: yaml
+
+    sulu_core:
+        content:
+            structure:
+                paths:
+                    event_snippets:
+                        path: "%kernel.project_dir%/config/template/events/snippets/"
+                        type: "snippet"
+
+In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
+
 .. _Symfony documentation: https://symfony.com/doc/current/configuration/override_dir_structure.html
 .. _public-dir: https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-public-directory
