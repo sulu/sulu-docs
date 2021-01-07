@@ -66,4 +66,4 @@ exists the default locale is being used. By default this is English:
     <?php
     define('DEFAULT_LOCALE', 'en');
 
-.. _public/maintenance.php: https://github.com/sulu/skeleton/blob/master/public/maintenance.php
+.. _public/maintenance.php: https://github.com/sulu/skeleton/blob/2.x/public/maintenance.php

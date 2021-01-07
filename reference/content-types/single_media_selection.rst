@@ -109,5 +109,5 @@ to control which `disposition header`_ the target url should use:
     website. Always use ``thumbnails`` and <configure your image formats>:doc:`../../../book/image-formats`
     to provide fast optimized cacheable images.
 
-.. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _Media: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
 .. _`disposition header`: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
