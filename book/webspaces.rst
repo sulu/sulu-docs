@@ -247,4 +247,4 @@ the values of them by using the ``de-at``-localization:
 +----------------+----------------------------------------+--------------------+
 
 .. _SuluThemeBundle: https://github.com/sulu/SuluThemeBundle
-.. _bundle documentation: https://github.com/sulu/SuluThemeBundle/blob/master/README.md
+.. _bundle documentation: https://github.com/sulu/SuluThemeBundle
