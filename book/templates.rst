@@ -1007,7 +1007,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
 .. _cron expression: https://github.com/dragonmantank/cron-expression
-.. _Media: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _Media: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
 .. _Jexl: https://github.com/TomFrost/Jexl
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
