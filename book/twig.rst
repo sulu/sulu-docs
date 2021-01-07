@@ -192,5 +192,5 @@ CSS / JS
 You can organize and build your website assets the way you are most familiar with.
 If you want to use Symfony's Webpack Encore, have a look at the :doc:`../cookbook/webpack-encore`.
 
-.. _image_formats.xml: https://github.com/sulu/skeleton/blob/master/config/image-formats.xml
+.. _image_formats.xml: https://github.com/sulu/skeleton/blob/2.x/config/image-formats.xml
 .. _Sulu Homepage: http://sulu.io

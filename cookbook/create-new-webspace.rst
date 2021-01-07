@@ -36,4 +36,4 @@ If you have any error you can use the following command to validate your webspac
 
     $ php bin/adminconsole sulu:content:validate:webspaces
 
-.. _example.xml: https://github.com/sulu/skeleton/blob/master/config/webspaces/example.xml
+.. _example.xml: https://github.com/sulu/skeleton/blob/2.x/config/webspaces/example.xml
