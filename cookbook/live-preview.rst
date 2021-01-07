@@ -92,7 +92,7 @@ Supported RDFa features
 -----------------------
 
 To see a full example of the syntax take a look in the
-`example.html.twig <https://github.com/sulu/sulu-standard/blob/develop/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig>`
+`example.html.twig <https://github.com/sulu/sulu-standard/blob/master/src/Client/Bundle/WebsiteBundle/Resources/themes/default/templates/example.html.twig>`
 file.
 
 Links
