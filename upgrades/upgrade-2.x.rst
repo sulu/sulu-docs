@@ -55,4 +55,4 @@ fix a bug. The upgrade process consists of the following steps:
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _Symfony best practices: https://symfony.com/doc/current/best_practices.html
 .. _changes in the sulu/skeleton repository: https://github.com/sulu/skeleton/compare/2.1.0...2.1.1
-.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/master/UPGRADE.md
+.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.x/UPGRADE.md

@@ -56,5 +56,5 @@ the contact avatar image.
         <img src="{{ image.thumbnails['80x80'] }}" alt="{{ contact.fullName }}">
     {% endif %}
 
-.. _ContactInterface: https://github.com/sulu/sulu/blob/master/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _ContactInterface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
 .. _jexl: https://github.com/TomFrost/jexl
