@@ -8,5 +8,6 @@ Assets can be grouped in nestable collections for better organization.
 .. toctree::
     :maxdepth: 2
 
+    configuration
     security
     imagine-adapter
