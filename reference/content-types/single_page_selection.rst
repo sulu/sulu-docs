@@ -49,6 +49,6 @@ If you need to load additional data of the target page, you can use the
 
 .. code-block:: twig
 
-    {% set target = sulu_content_load(content.link, {'title': 'title', 'excerpt.title': 'excerptTitle'}) %}
+    {% set target = sulu_content_load(content.link, {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
 
 .. _jexl: https://github.com/TomFrost/jexl
