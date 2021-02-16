@@ -44,20 +44,18 @@ Example
 Twig
 ----
 
-Currently this content type only returns the UUID of the target page. In
-order to construct a link to the page use:
+The content type only returns the UUID of the target page at the moment. If you want to
+render a link to the page, you can use the <``sulu-link`` tag>:doc:`../../bundles/markup/link`:
 
 .. code-block:: html
 
-    {% set target = sulu_content_load(content.link) %}
+    <sulu-link href="{{ content.link }}">Link Text</sulu-link>
 
-Then ``target.content`` will give you access to the URL and other properties
-of the target page.
+If you need to load additional data of the target page, you can use the
+<``sulu_content_load`` twig extension>:doc:`../twig-extensions/functions/sulu_content_load`:
 
-.. note::
+.. code-block:: twig
 
-    The ``sulu_content_load`` twig extension loads and resolves the whole page content.
-    This is an expensive operation and can have a negative impact on the performance of 
-    the page. If possible, the extension should be avoided.
+    {% set target = sulu_content_load(content.link, {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
 
 .. _jexl: https://github.com/TomFrost/jexl

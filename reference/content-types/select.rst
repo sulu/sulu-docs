@@ -81,7 +81,7 @@ the values returned by a service (:doc:`../../cookbook/select-values-service`).
 
         <params>
             <param name="default_values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getDefaultValue()"/>
-            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues()"/>
+            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues(locale)"/>
         </params>
     </property>
 
