@@ -24,7 +24,7 @@ A service for returning the values for these content types could look something 
         /**
          * @return array<int, array{name: string, title: string}>
          */
-        public function getValues(): array
+        public function getValues(string $locale): array
         {
             return [
                 [
@@ -80,7 +80,7 @@ When your service is marked as public, you can access it in your template like t
 
         <params>
             <param name="default_value" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getSingleSelectDefaultValue()"/>
-            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues()"/>
+            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues(locale)"/>
         </params>
     </property>
 
@@ -92,7 +92,7 @@ When your service is marked as public, you can access it in your template like t
 
         <params>
             <param name="default_values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getMultiSelectDefaultValue()"/>
-            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues()"/>
+            <param name="values" type="expression" value="service('App\\Content\\Select\\EventTypeSelect').getValues(locale)"/>
         </params>
     </property>
 
