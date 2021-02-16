@@ -5,11 +5,12 @@ Return the parent of the Structure with the given UUID
 
 .. code-block:: jinja
 
-    {% set page = sulu_content_load_parent('1234-1234-1234-1234-1234') %}
+    {% set page = sulu_content_load_parent('1234-1234-1234-1234', {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
 
 **Arguments**:
 
-- **uuid**: *string* - UUID of structure parent
+- **uuid**: *string* - UUID of child structure
+- **properties**: *array* - Array of properties of the structure that should be loaded
 
 **Returns**:
 
@@ -17,6 +18,6 @@ Return the parent of the Structure with the given UUID
 
 .. note::
 
-    The ``sulu_content_load_parent`` twig extension loads and resolves the whole page content.
-    This is an expensive operation and can have a negative impact on the performance of 
-    the page. If possible, the extension should be avoided.
+    Calling the ``sulu_content_load_parent`` twig extension without the ``properties`` argument
+    loads and resolves all properties of the target. This is an expensive operation that has
+    a negative impact on the performance and therefore is deprecated.

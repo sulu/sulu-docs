@@ -70,6 +70,8 @@ CategoryBundle
     functions/sulu_categories
     functions/sulu_category_url
     functions/sulu_category_url_append
+    functions/sulu_category_url_remove
+    functions/sulu_category_url_toggle
     functions/sulu_category_url_clear
 
 ContactBundle
