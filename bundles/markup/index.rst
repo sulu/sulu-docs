@@ -26,7 +26,7 @@ a link to another page. This tag will be replaced via a valid anchor where the
 
     <html>
         <body>
-            <a href="/test" title="test-title">Page Title</a>
+            <a href="http://example.com/test" title="test-title">Page Title</a>
         </body>
     </html>
 
