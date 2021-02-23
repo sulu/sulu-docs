@@ -113,7 +113,7 @@ Other Variables
  - `changed`: Contains the timestamp of the latest change of the current page
  - `published`: Contains the timestamp of the publishing of the current page
  - `urls`: Contains urls of all locales (deprecated)
- - `localization`: Contains all localizations including the URLs for the current page
+ - `localizations`: Contains all localizations including the URLs for the current page
 
 .. tip::
 
