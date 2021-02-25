@@ -23,9 +23,9 @@ Example
 
 .. code-block:: html
 
-    <a href="/test" title="Page Title">Page Title</a>
-    <a href="/test" title="test-title">Page Title</a>
-    <a href="/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
-    <a href="/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
+    <a href="http://example.com/test" title="Page Title">Page Title</a>
+    <a href="http://example.com/test" title="test-title">Page Title</a>
+    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.com/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
+    <a href="http://example.com/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>

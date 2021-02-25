@@ -990,10 +990,12 @@ The tag can have specific attributes:
 **Types**:
 
  - `string`: For simple fields
- - `array`: For multiple fields such as the `category_selection` content type
- - `tags`: Special typ for `tag_selection` content type
+ - `array`: For multiple fields
+ - `tags`: Special type for `tag_selection` content type
+ - `category`: Special type for `single_category_selection` and `category_selection` content types
  - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search
+ - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
 
 Next Steps
 ----------
