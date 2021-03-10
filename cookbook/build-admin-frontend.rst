@@ -1,5 +1,10 @@
-Building Admin Frontend
-=======================
+Building the administration interface frontend application
+==========================================================
+
+The administration interface of Sulu is implemented as a single page application using React. The code of this 
+application is built using webpack and stored in the `public/build/admin` directory of the project. 
+If you update your Sulu version or add custom Javascript code to your project, you need to update the build in 
+the `public/build/admin directory`. There are different ways to do this:
 
 Solution 1: Update Command (Recommended way)
 --------------------------------------------
@@ -14,9 +19,10 @@ Sulu is shipped with a build in command to update the build.
 
 .. note::
 
-   If a manually build is needed for example if you added custom
-   JavaScript to your Project. You need to make sure that you
-   have `node`_ installed to build it.
+   The update build command will download the build for your project from the `sulu/skeleton repository`_ if possible.
+   If you have added custom Javascript code in your project, the command will automatically cleanup leftovers from
+   previous builds and build the Javascript code manually on your system. Make sure that you have installed `node`_ if 
+   your project requires a manual build.
 
 Solution 2: Build manually with docker
 --------------------------------------
@@ -71,4 +77,5 @@ on your computer.
     npm install
     npm run build
 
+.. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
