@@ -17,13 +17,13 @@ The analytics consist of:
     * - All Domains
       - Should it appended to all domains.
     * - Type
-      - The type (google, google_tag_manager, piwik, custom).
+      - The type (google, google_tag_manager, matomo, custom).
     * - Content
       - The code or key of the analytic.
 
-Sulu can handle different types of analytic-systems like google or piwik.
+Sulu can handle different types of analytic-systems like google or matomo.
 This codes will be automatically added with the given key and site-id (for
-piwik). To add other systems simply choose type custom and copy and paste
+matomo). To add other systems simply choose type custom and copy and paste
 the code into the textarea.
 
 .. warning::
@@ -41,7 +41,7 @@ There are three relevant templates folders:
 
 * ``SuluWebsiteBundle:Analytics/type/google``
 * ``SuluWebsiteBundle:Analytics/type/google_tag_manager``
-* ``SuluWebsiteBundle:Analytics/type/piwik``
+* ``SuluWebsiteBundle:Analytics/type/matomo``
 * ``SuluWebsiteBundle:Analytics/type/custom``
 
 Each of these folders can contain multiple templates according to the desired
@@ -74,7 +74,7 @@ You can access the following information in the twig variable ``analytics``.
       - Differs for the type.
     * - type
       - string
-      - google / google_tag_manager / piwik / custom
+      - google / google_tag_manager / matomo / custom
     * - domains
       - array
       - Array of associated domains.
@@ -82,5 +82,5 @@ You can access the following information in the twig variable ``analytics``.
 .. note::
 
     The ``content`` property contains for type google / google_tag_manager the key,
-    for piwik an associated array of ``url`` and ``siteId`` and for the custom type
+    for matomo an associated array of ``url`` and ``siteId`` and for the custom type
     the whole script (except the ``<script>`` tag).
