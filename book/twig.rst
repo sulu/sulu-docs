@@ -18,7 +18,7 @@ In :doc:`templates` we learned how to define a template.
 
         <key>default</key>
 
-        <view>templates/default</view>
+        <view>pages/default</view>
         <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
         ...
     </template>
