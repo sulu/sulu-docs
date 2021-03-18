@@ -67,6 +67,7 @@ After configuration, the PersistenceBundle will automatically set the following 
 
 * `sulu.model.book.class`: currently set entity implementation (Parameter)
 * `sulu.repository.book`: currently set repository implementation (Service)
+* `Sulu\Bundle\BookBundle\Entity\BookRepositoryInterface`: alias for the currently set repository implementation (Service)
 
 ``DependencyInjection/Configuration.php``
 """""""""""""""""""""""""""""""""""""""""
@@ -139,8 +140,9 @@ Therefore our `SuluBookExtension.php` will look something like this:
 """"""""""""""""""""""
 
 In the `SuluBookBundle.php` file we need to add a compiler pass to automatically resolve our interface to
-the currently set entity implementation.
-To do this, we can use the already implemented `buildPersistence()` method of the `PersistenceBundleTrait` class.
+the configured entity and repository implementation.
+To do this, we can use the already implemented `buildPersistence()` method of the `PersistenceBundleTrait`
+class and the `addAliases()` method of the `ContainerBuilder`.
 After this our `SuluBookBundle.php` will look something like this:
 
 .. code-block:: php
@@ -158,6 +160,11 @@ After this our `SuluBookBundle.php` will look something like this:
                     'Sulu\Bundle\BookBundle\Entity\BookInterface' => 'sulu.model.book.class',
                 ],
                 $container
+            );
+            $container->addAliases(
+                [
+                    'Sulu\Bundle\BookBundle\Entity\BookRepositoryInterface' => 'sulu.repository.book',
+                ],
             );
         }
         (...)
