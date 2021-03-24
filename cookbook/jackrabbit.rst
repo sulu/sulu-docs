@@ -27,9 +27,11 @@ can e.g. be set in your ``.env`` file.
 .. code-block:: yaml
 
     parameters:
+        env(PHPCR_WORKSPACE): 'default'
         env(JACKRABBIT_URL): 'http://localhost:8080/server/'
         env(PHPCR_USER): 'admin'
         env(PHPCR_PASSWORD): 'admin'
+        env(JACKRABBIT_VERSION): '2.20.1'
 
     sulu_document_manager:
         sessions:
