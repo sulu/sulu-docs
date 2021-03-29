@@ -1,19 +1,19 @@
 Media Properties Provider
 =========================
 
-The media properties provider will provide data for a given file. Sulu will
-use the provided data to save it to the Media FileVersion object so a developer
-can access it in there twig templates or apis.
+Media properties providers are used to gather data for a given file. Sulu will
+save the provided properties to the respective FileVersion entity which can
+be accessed in twig templates and PHP code. 
 
 Sulu is shipped with the following providers:
 
 Image Properties Provider
 -------------------------
 
-The ``ImagePropertiesProvider`` works for every image which is supported by your
-used :doc:`imagine adapter <imagine-adapter>`.
-It will provide the ``width`` and ``height`` of a image
-this can be used in CSS to provide placeholder images or other kind of things.
+The ``ImagePropertiesProvider`` works for every image which is supported by the 
+configured :doc:`imagine adapter <imagine-adapter>` and provides the ``width`` and 
+``height`` of an image.
+This information can be used in CSS to provide placeholder images or other kind of things.
 
 Video Properties Provider
 -------------------------
@@ -22,11 +22,11 @@ The ``VideoPropertiesProvider`` requires that ``ffprobe`` is configured and inst
 on your server. When it is available the provider will return the ``duration``,
 ``width`` and ``height`` of the video.
 
-Create own one Properties Provider
+Create custom Properties Provider
 ----------------------------------
 
-Its possible to create your own media properties provider you need to create a new
-service which implements the ``PropertiesProviderInterface`` like the following:
+It is possible to register a custom media properties provider in your project.
+To do this, you create a new service that implements the ``PropertiesProviderInterface``:
 
 .. code-block:: php
 
@@ -68,7 +68,7 @@ with the ``sulu_media.media_properties_provider`` tag.
         tags:
             - { name: 'sulu_media.media_properties_provider' }
 
-After this the service should be listed here:
+After this, the service should be listed when executing the following command:
 
 .. code-block:: bash
 
