@@ -11,3 +11,4 @@ Assets can be grouped in nestable collections for better organization.
     configuration
     security
     imagine-adapter
+    properties-provider
