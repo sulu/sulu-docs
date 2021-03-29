@@ -23,7 +23,7 @@ on your server. When it is available the provider will return the ``duration``,
 ``width`` and ``height`` of the video.
 
 Create custom Properties Provider
-----------------------------------
+---------------------------------
 
 It is possible to register a custom media properties provider in your project.
 To do this, you create a new service that implements the ``PropertiesProviderInterface``:
@@ -34,9 +34,10 @@ To do this, you create a new service that implements the ``PropertiesProviderInt
 
     namespace App\Media\PropertiesProvider;
 
+    use Sulu\Bundle\MediaBundle\Media\PropertiesProvider\MediaPropertiesProviderInterface;
     use Symfony\Component\HttpFoundation\File\File;
 
-    class ExifPropertiesProvider implements PropertiesProviderInterface
+    class ExifPropertiesProvider implements MediaPropertiesProviderInterface
     {
         public function provide(File $file): array
         {
