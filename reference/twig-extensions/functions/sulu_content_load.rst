@@ -5,7 +5,10 @@ Returns a Structure for the given UUID
 
 .. code-block:: jinja
 
-    {% set page = sulu_content_load('1234-1234-1234-1234', {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
+    {% set page = sulu_content_load('1234-1234-1234-1234', {
+        'title': 'title',
+        'excerptTitle': 'excerpt.title',
+    }) %}
 
 **Arguments**:
 
