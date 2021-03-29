@@ -25,7 +25,7 @@ on your server. When it is available the provider will return the ``duration``,
 Create own one Properties Provider
 ----------------------------------
 
-Its possible to create your   own media properties provider you need to create a new
+Its possible to create your own media properties provider you need to create a new
 service which implements the ``PropertiesProviderInterface`` like the following:
 
 .. code-block:: php
@@ -40,6 +40,12 @@ service which implements the ``PropertiesProviderInterface`` like the following:
     {
         public function provide(File $file): array
         {
+            $mimeType = $file->getMimeType();
+
+            if (!$mimeType || !\fnmatch('image/*', $mimeType)) {
+                return [];
+            }
+
             $properties = [];
 
             $exifData = exif_read_data($file->getPathname(), 'EXIF');
@@ -49,11 +55,6 @@ service which implements the ``PropertiesProviderInterface`` like the following:
             }
 
             return $properties;
-        }
-
-        public static function supports(File $file): bool
-        {
-            return \fnmatch('image/*', $file->getMimeType());
         }
     }
 
