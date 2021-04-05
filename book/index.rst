@@ -16,7 +16,6 @@ Be sure to know a thing or two about `Symfony`_. Sulu is based on Symfony and st
     twig
     content-architecture
     webspaces
-    snippets
     image-formats
     localization
     smart-content

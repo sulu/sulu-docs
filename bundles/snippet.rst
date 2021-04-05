@@ -1,5 +1,7 @@
-Using Snippets
-==============
+SnippetBundle
+=============
+
+The SnippetBundle contains the implementation to use snippets in Sulu.
 
 What is a Snippet
 -----------------
