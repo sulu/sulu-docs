@@ -73,4 +73,4 @@ Create a XML File in your `config/template/snippets/` folder like the following 
 Properties
 ----------
 
-Properties are the same as Page :doc:`templates`.
+Properties are the same as Page :doc:`../book/templates`.
