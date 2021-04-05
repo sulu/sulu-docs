@@ -20,7 +20,7 @@ A snippet could be configured to cover exactly this use case and you would only 
 Creating a Snippet Template
 ---------------------------
 
-Creating a snippet Template isn't really different like Page :doc:`templates`.
+Creating a snippet Template isn't really different like Page :doc:`../book/templates`.
 Create a XML File in your `config/template/snippets/` folder like the following example
 
 .. note::
