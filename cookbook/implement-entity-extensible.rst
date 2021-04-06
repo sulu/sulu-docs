@@ -67,6 +67,7 @@ After configuration, the PersistenceBundle will automatically set the following 
 
 * `sulu.model.book.class`: currently set entity implementation (Parameter)
 * `sulu.repository.book`: currently set repository implementation (Service)
+* `Sulu\Bundle\BookBundle\Entity\BookRepositoryInterface`: alias for the currently set repository implementation (Service)
 
 ``DependencyInjection/Configuration.php``
 """""""""""""""""""""""""""""""""""""""""
@@ -114,8 +115,10 @@ These paths can be used to overwrite the used implementations.
 """""""""""""""""""""""""""""""""""""""""""""
 
 In the `SuluBookExtension.php` file we need to read the set configuration and define and map the respective services
-to the container.
-We can use the already implemented  `configurePersistence()` method of the `PersistenceExtensionTrait` class to do this.
+to the container. Additionally, we add the repository interface as alias for the configured repository implementation
+to make the repository autowireable.
+We use the already implemented  `configurePersistence()` method of the `PersistenceExtensionTrait` class and the
+and the `addAliases()` method of the `ContainerBuilder` to do this.
 Therefore our `SuluBookExtension.php` will look something like this:
 
 .. code-block:: php
@@ -131,6 +134,11 @@ Therefore our `SuluBookExtension.php` will look something like this:
             $config = $this->processConfiguration($configuration, $configs);
             (...)
             $this->configurePersistence($config['objects'], $container);
+            $container->addAliases(
+                [
+                    'Sulu\Bundle\BookBundle\Entity\BookRepositoryInterface' => 'sulu.repository.book',
+                ],
+            );
         }
         (...)
     }
@@ -139,8 +147,8 @@ Therefore our `SuluBookExtension.php` will look something like this:
 """"""""""""""""""""""
 
 In the `SuluBookBundle.php` file we need to add a compiler pass to automatically resolve our interface to
-the currently set entity implementation.
-To do this, we can use the already implemented `buildPersistence()` method of the `PersistenceBundleTrait` class.
+the configured entity implementation when used in a doctrine mapping.
+To do this, we use the already implemented `buildPersistence()` method of the `PersistenceBundleTrait` class.
 After this our `SuluBookBundle.php` will look something like this:
 
 .. code-block:: php
