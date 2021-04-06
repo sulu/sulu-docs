@@ -214,10 +214,15 @@ from ``symfony`` to ``varnish`` and set the address of your varnish server
 Using XKey
 ----------
 
-Xkey is an efficient way to invalidate Varnish cache entries based on tagging. But it is not integrated
-by default into varnish.
+Xkey is an efficient way to invalidate Varnish cache entries based on tagging. The advantage of
+the feature is that you can use the ``grace mode`` feature of varnish, which allows varnish to 
+serve expired cache entries while fetching an update from the backend transparently. 
+Have a look at the varnish documentation for more information about
+the `Grace mode`_.
 
-To be able to use it you have to install ``varnish-modules``:
+
+Unfortunately, varnish does not support XKey invalidation out of the box. 
+To be able to use it, you need to install ``varnish-modules``:
 
 .. code-block:: bash
 
@@ -294,12 +299,7 @@ xkey:
         call sulu_deliver;
     }
 
-This configuration extends the default config with some xkey purge methods and enable the
-``grace mode``. It allows varnish to serve staled entries (entries where the TTL is over)
-and fetch an update from the backend. For more information about this see the documentation
-of the `Grace mode`_.
-
-Enable the XKey feature inside of sulu:
+Additionally, you need to configure Sulu to use the XKey feature of varnish:
 
 .. code-block:: yaml
 
