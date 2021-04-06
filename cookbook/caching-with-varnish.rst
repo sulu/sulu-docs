@@ -228,36 +228,7 @@ To be able to use it, you need to install ``varnish-modules``:
 
     apt-get install varnish-modules
 
-Or build it from sources:
-
-.. code-block:: bash
-
-    # install dependencies
-    apt-get install
-        libvarnishapi-dev
-        make
-        pkg-config
-        autotools-dev
-        automake
-        autotools-dev
-        libtool
-        m4
-        python-docutils
-
-    # get sources
-    wget https://github.com/varnish/varnish-modules/archive/6.2.zip
-    unzip 6.2
-    cd varnish-modules-6.2/
-
-    # build and install it
-    ./bootstrap
-    ./configure
-    make
-    make check
-    make install
-
-    # restart varnish
-    /etc/init.d/varnishd restart
+Or build it from sources see the documentation at the github repository `varnish/varnish-modules`_.
 
 When the installation was successfull you can use following configuration to enable
 xkey:
@@ -350,3 +321,4 @@ The following is a full configuration example:
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
 .. _skeleton: http://github.com/sulu/skeleton
 .. _Grace mode: https://varnish-cache.org/docs/trunk/users-guide/vcl-grace.html
+.. _varnish/varnish-modules: https://github.com/varnish/varnish-modules#installation
