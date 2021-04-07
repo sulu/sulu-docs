@@ -8,17 +8,16 @@ fix a bug. The upgrade process consists of the following steps:
 1. Update the sulu/sulu package
 -------------------------------
 
-The ``sulu/sulu`` package implement the functionality of the Sulu content management system. Execute the following
-command in the root folder of your project to update it to the version you want.
+The ``sulu/sulu`` package implements the functionality of the Sulu content management system. To update this package, you need to update the version constraint for the package in the ``composer.json`` of your project. 
 
-First you should specify to which version you want to upgrade to, by running the following command
-by replacing ``~x.x.x`` with a valid version string like ``~2.2.7``.
+To do this, you can replace the ``~x.x.x`` with the a version constraint like ``~2.2.7`` and execute the following
+command in the root folder of your project:
 
 .. code-block:: bash
 
     composer require sulu/sulu:"~x.x.x" --no-update
 
-After this all dependencies should be updated with the following command:
+After this, you can update all dependencies of your project by executing the following command:
 
 .. code-block:: bash
 
@@ -64,7 +63,8 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 
 .. note::
 
-    For other ways to build the admin interface see :doc:`../cookbook/build-admin-frontend` documentation.
+    Have a look at the :doc:`../cookbook/build-admin-frontend` documentation if you want to update the 
+    JavaScript build in the project without using the ``sulu:admin:update-build`` command.
 
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
