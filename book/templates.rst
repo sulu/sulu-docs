@@ -631,12 +631,11 @@ The width of a property is configured in the ``colspan`` attribute:
         </properties>
     </template>
 
-Help Text
----------
+Displaying Additional Information for a Field
+---------------------------------------------
 
-You can display a help text with additional information in properties and
-sections. Put the help text into the ``<info_text>`` element in the ``<meta>``
-section:
+You can display a help text with additional information for a property.
+Put the help text into the ``<info_text>`` element in the ``<meta>`` section:
 
 .. code-block:: xml
 
