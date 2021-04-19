@@ -5,7 +5,7 @@ Varnish is a HTTP `caching proxy`_  server which can be used to radically
 improve the response time of your website.
 
 Sulu is bundled with a "soft" `caching proxy`_, the Symfony `HttpCache`_, but
-using Varnish is a more optimal solution for a large website, especially if it 
+using Varnish is a more optimal solution for a large website, especially if it
 has lots of traffic.
 
 In addition to being twice as fast as the default caching implementation it
@@ -19,7 +19,7 @@ appear more up-to-date.
     imperceptible - but varnish will scale better and supports better
     invalidation.
 
-This tutorial will walk you through the process of setting up Varnish on 
+This tutorial will walk you through the process of setting up Varnish on
 your own server and configuring it to work with Sulu.
 
 This tutorial assumes that:
@@ -111,10 +111,10 @@ Under Debian/Ubuntu we can change the initialization script:
     # /etc/default/varnish
 
     # ...
-    DAEMON_OPTS="-a :80 \      
-                 -T localhost:6082 \             
-                 -f /etc/varnish/default.vcl \   
-                 -S /etc/varnish/secret \        
+    DAEMON_OPTS="-a :80 \
+                 -T localhost:6082 \
+                 -f /etc/varnish/default.vcl \
+                 -S /etc/varnish/secret \
                  -s malloc,256m \
                  -p "vcc_allow_inline_c=on"
 
@@ -211,6 +211,77 @@ from ``symfony`` to ``varnish`` and set the address of your varnish server
                 enabled: true
                 servers: ['localhost:80']
 
+Using XKey
+----------
+
+Xkey is an efficient way to invalidate Varnish cache entries based on tagging. The advantage of
+the feature is that you can use the ``grace mode`` feature of varnish, which allows varnish to 
+serve expired cache entries while fetching an update from the backend transparently. 
+Have a look at the varnish documentation for more information about
+the `Grace mode`_.
+
+
+Unfortunately, varnish does not support XKey invalidation out of the box. 
+To be able to use it, you need to install ``varnish-modules``:
+
+.. code-block:: bash
+
+    apt-get install varnish-modules
+
+Or build it from sources see the documentation at the github repository `varnish/varnish-modules`_.
+
+When the installation was successfull you can use following configuration to enable
+xkey:
+
+.. code-block:: varnish4
+
+    # /etc/varnish/default.vcl
+    vcl 4.0;
+
+    include "<PATH-TO-SULU-PROJECT>/vendor/sulu/sulu/src/Sulu/Bundle/HttpCacheBundle/Resources/varnish/sulu.vcl";
+    include "<PATH-TO-SULU-PROJECT>/vendor/friendsofsymfony/http-cache/resources/config/varnish/fos_tags_xkey.vcl";
+
+    acl invalidators {
+        "localhost";
+    }
+
+    backend default {
+        .host = "127.0.0.1";
+        .port = "8090";
+    }
+
+    sub vcl_recv {
+        call fos_tags_xkey_recv;
+        call sulu_recv;
+
+        # Force the lookup, the backend must tell not to cache or vary on all
+        # headers that are used to build the hash.
+        return (hash);
+    }
+
+    sub vcl_backend_response {
+        set beresp.grace = 2m;
+
+        call sulu_backend_response;
+    }
+
+    sub vcl_deliver {
+        call fos_tags_xkey_deliver;
+        call sulu_deliver;
+    }
+
+Additionally, you need to configure Sulu to use the XKey feature of varnish:
+
+.. code-block:: yaml
+
+    sulu_http_cache:
+        proxy_client:
+            varnish:
+                enabled: true
+                servers:
+                  - '%env(resolve:VARNISH_SERVER)%'
+                tag_mode: purgekeys
+
 Optimal configuration
 ---------------------
 
@@ -249,3 +320,5 @@ The following is a full configuration example:
 .. _caching proxy: https://en.wikipedia.org/wiki/Proxy_server
 .. _HttpCache: http://symfony.com/doc/current/book/http_cache.html
 .. _skeleton: http://github.com/sulu/skeleton
+.. _Grace mode: https://varnish-cache.org/docs/trunk/users-guide/vcl-grace.html
+.. _varnish/varnish-modules: https://github.com/varnish/varnish-modules#installation
