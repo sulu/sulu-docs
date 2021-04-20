@@ -69,7 +69,7 @@ Usage of localizations
 For the developer the only touching points with localizations are the
 configuration and the eventual use of a language switcher on the homepage.
 For the language switcher the ``localizations`` variable delivered to the twig template
-can be used, which contains an associative array with the parameters ``locale``, ``url``, ``language`` and ``country``.
+can be used, which contains an associative array with the parameters ``locale``, ``url`` and ``country``.
 
 .. code-block:: twig
 
