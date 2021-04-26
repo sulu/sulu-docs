@@ -68,9 +68,16 @@ Usage of localizations
 
 For the developer the only touching points with localizations are the
 configuration and the eventual use of a language switcher on the homepage.
-For the language switcher the ``urls`` variable delivered to the twig template
-can be used, which contains an associative array with the localization code
-being the key and the value the URL to the current page in this language.
+For the language switcher the ``localizations`` variable delivered to the twig template
+can be used, which contains an associative array with the parameters ``locale``, ``url`` and ``country``.
+
+.. code-block:: twig
+
+    <ul>
+    {% for localization in localizations %}
+        <li><a href="{{ localization.url }}">{{ localization.locale }}</a>
+    {% endfor %}
+    </ul>
 
 The template itself does not have to be adapted for usage with multiple
 localizations. The twig variables are the same for every language, only the
