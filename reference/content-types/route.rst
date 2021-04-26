@@ -24,6 +24,15 @@ Parameters
     * - mode
       - string
       - Defines the mode of the input field, can either be "full" or "leaf". Default value is "leaf".
+    * - entity_class
+      - string
+      - Class that is used for loading the history urls of entity.
+        If not set, the :doc:`/bundles/route/index` mapping for the resource key of the form is used.
+    * - route_schema
+      - string
+      - Route schema that is used for generating the url.
+        If not set, the :doc:`/bundles/route/index` mapping for the resource key of the form is used.
+
 
 Example
 -------
@@ -45,6 +54,8 @@ Example
 
         <params>
             <param name="mode" value="full"/>
+            <param name="entity_class" value="App\Entity\Event"/>
+            <param name="route_schema" value="/events/new-shit/{implode('-', object)}"/>
         </params>
     </property>
 
