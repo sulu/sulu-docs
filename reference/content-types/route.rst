@@ -55,7 +55,7 @@ Example
         <params>
             <param name="mode" value="full"/>
             <param name="entity_class" value="App\Entity\Event"/>
-            <param name="route_schema" value="/events/new-shit/{implode('-', object)}"/>
+            <param name="route_schema" value="/events/{implode('-', object)}"/>
         </params>
     </property>
 
