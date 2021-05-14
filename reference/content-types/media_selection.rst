@@ -72,7 +72,7 @@ Twig
         <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
     {% endfor %}
 
-If your property defines ``displayOptions`, you can access the selected ``displayOption``
+If your property defines ``displayOptions``, you can access the selected ``displayOption``
 via ``view.<property_name>.displayOptions``:
 
 .. code-block:: twig
@@ -84,7 +84,7 @@ via ``view.<property_name>.displayOptions``:
     </div>
 
 If you want to provide a link for downloading a document, you can use ``.url`` attribute
-or wrap it with the <sulu_get_media_url>:doc:`../twig-extensions/functions/sulu_get_media_url`
+or wrap it with the :doc:`sulu_get_media_url <../twig-extensions/functions/sulu_get_media_url>`
 to control which `disposition header`_ the target url should use:
 
 .. code-block:: twig
@@ -102,7 +102,7 @@ to control which `disposition header`_ the target url should use:
 .. note::
 
     For performance reasons you should never use the ``.url`` attribute to render ``images`` on your
-    website. Always use ``thumbnails`` and <configure your image formats>:doc:`../../../book/image-formats`
+    website. Always use ``thumbnails`` and :doc:`configure your image formats <../../../book/image-formats>`
     to provide fast optimized cacheable images.
 
 .. _`disposition header`: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
