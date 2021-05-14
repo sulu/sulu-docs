@@ -12,7 +12,7 @@
 
 /* Body */
 body {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 16px;
     line-height: 24px;
     background-color: white;
@@ -194,10 +194,12 @@ pre {
     padding: 7px 10px;
     margin: 15px 0;
     line-height: 1.3em;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 code {
     line-height: 1.3em;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 .highlight {
@@ -226,6 +228,10 @@ div.admonition p.last {
 }
 
 div.admonition.warning {
+    background: rgba(255, 204, 0, 0.25);
+}
+
+div.admonition.caution {
     background: rgba(255, 204, 0, 0.25);
 }
 
