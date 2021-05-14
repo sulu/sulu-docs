@@ -75,8 +75,6 @@ Properties
 
 Properties are the same as Page :doc:`../book/templates`.
 
-
-
 Load Snippets from a Subfolder
 ------------------------------
 By the means of configuration in `config/packages/sulu_admin.yaml` according to the following scheme
