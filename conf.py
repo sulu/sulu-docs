@@ -125,7 +125,7 @@ html_theme = 'default'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "img/sulu-logo.png"
+html_logo = "img/sulu.svg"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -273,4 +273,4 @@ texinfo_documents = [
 #     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
-html_theme = 'kr'
+html_theme = 'sulu'
