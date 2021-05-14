@@ -289,7 +289,7 @@ necessary should be to execute the migrations we have written:
 
     bin/console phpcr:migrations:migrate
 
-.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.0.0/UPGRADE.md
+.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.0.12/UPGRADE.md
 .. _sulu/skeleton: https://github.com/sulu/skeleton
 .. _sulu/sulu-minimal: https://github.com/sulu/sulu-minimal
 .. _sulu/sulu-standard: https://github.com/sulu/sulu-standard
