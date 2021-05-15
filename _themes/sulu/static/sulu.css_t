@@ -71,12 +71,17 @@ div.related ul {
 /* Sidebar */
 div.sphinxsidebar {
     width: {{ sidebar_width }};
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 16px;
 }
 
-.logo {
+p.logo {
     display: block;
     padding: 5px 0;
+}
+
+img.logo {
+    height: 34px;
 }
 
 div.sphinxsidebarwrapper {
@@ -86,6 +91,9 @@ div.sphinxsidebarwrapper {
 .sphinxsidebar h3 {
     margin-top: 32px;
     margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
 }
 
 div.sphinxsidebar ul {
@@ -105,14 +113,26 @@ div.sphinxsidebar input {
 
 div.sphinxsidebar a {
     color: #112a46;
+    text-decoration: none;
+}
+
+div.sphinxsidebar a:hover {
+    color: #52B6CA;
+    text-decoration: underline;
 }
 
 div.sphinxsidebar a.current {
     color: #52B6CA;
 }
 
-div.sphinxsidebar .toctree-l1 > a {
-    font-weight: bold;
+div.sphinxsidebar li {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    list-style: none;
+}
+
+div.sphinxsidebar li ul {
+    padding-top: 3px;
 }
 
 /* Body */
@@ -125,7 +145,7 @@ div.body p {
 }
 
 div.body h1 {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 div.body h2,
@@ -136,21 +156,8 @@ div.body h6 {
     margin-bottom: 16px;
 }
 
-div.body h1 + .toctree-wrapper {
-    margin-top: 85px;
-}
-
-div.body h1 + p {
-    margin-top: 85px;
-}
-
 h1 + .section > h2:first-child {
-    margin-top: -3px;
     margin-bottom: 25px;
-}
-
-.toctree-wrapper {
-    font-size: 14px;
 }
 
 div.body .section {
@@ -159,6 +166,39 @@ div.body .section {
 
 div.body .section:last-child {
     margin-bottom: 0;
+}
+
+/* Toctree */
+div.toctree-wrapper {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.toctree-wrapper li {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+div.toctree-wrapper li ul {
+    padding-top: 3px;
+}
+
+div.toctree-wrapper a {
+    text-decoration: none;
+}
+
+div.toctree-wrapper a {
+    color: #112a46;
+    text-decoration: none;
+}
+
+div.toctree-wrapper a:hover {
+    color: #52B6CA;
+    text-decoration: underline;
+}
+
+div.toctree-wrapper a.current {
+    color: #52B6CA;
 }
 
 /* Mobile */
@@ -275,22 +315,13 @@ h1, h2, h3, h4, h5, h6, ul, ol, p {
     margin-bottom: 0;
 }
 
-p + p,
-p + ul,
-p + ol,
-p + div,
-ul + p,
-ul + ol,
-ul + ul,
-ul + div,
-ol + p,
-ol + ul,
-ol + ol,
-ol + div,
-div + p,
-div + ul,
-div + ol {
+.section > * {
     margin-top: 16px;
+}
+
+
+.section > *:first-child {
+    margin-top: 0;
 }
 
 ul {
@@ -344,9 +375,37 @@ h6 {
     line-height: 27px;
 }
 
+/* Figure */
+div.figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* Img */
+img {
+    max-width: 75ch;
+}
+
+img.align-center,
+.figure.align-center,
+object.align-center,
+img.align-right,
+.figure.align-right,
+object.align-right {
+    max-width: 75ch;
+    /* not centered */
+    margin-left: 0;
+    margin-right: 0;
+}
+
 /* Table */
 table {
     width: 100%;
+    max-width: 75ch;
+}
+
+table.align-default {
+    margin-left: 0;
 }
 
 .sphinxsidebar code,
