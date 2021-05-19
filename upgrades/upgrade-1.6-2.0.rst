@@ -278,7 +278,7 @@ your database schema in sync:
     DROP INDEX IDX_26E9A614A18CC0FB ON co_addresses;
     ALTER TABLE co_addresses DROP idCountries;
     DROP TABLE co_countries;
-
+    UPDATE se_permissions SET context = REPLACE(context, 'sulu.webspace_settings.', 'sulu.webspace.') WHERE context LIKE 'sulu.webspace_settings.%';
 
 **6. Execute our PHPCR migrations**
 
