@@ -101,6 +101,27 @@ Properties
 
 Properties are the same as Page :doc:`../book/templates`.
 
+
+Implement a Snippet in your Template
+------------------------------------
+
+Snippets are stored separately and are not accessible via the web page URL.
+
+So if we want to use a snippet on a page, we need to add the content type ":doc:`../reference/content-types/snippet_selection`" if we want to link one or more snippets.
+
+.. figure:: ../img/social-media-snippet-selection.png
+
+.. code-block:: xml
+
+        <property name="footer_social_media" type="snippet_selection">
+            <meta>
+                <title lang="en">Footer Social Media</title>
+            </meta>
+            <params>
+                <param name="default" value="social_media"/>
+            </params>
+        </property>
+
 Load Snippets from a Subfolder
 ------------------------------
 By the means of configuration in `config/packages/sulu_admin.yaml` according to the following scheme
