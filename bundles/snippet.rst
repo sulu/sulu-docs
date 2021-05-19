@@ -62,10 +62,12 @@ Create a XML File in your `config/template/snippets/` folder like the following 
                     <title lang="en">Facebook Link</title>
                     <title lang="de">Facebook Link</title>
                 </meta>
-                <param name="schemes" type="collection">
-                    <param name="http://"/>
-                    <param name="https://"/>
-                </param>
+                <params>
+                    <param name="schemes" type="collection">
+                        <param name="http://"/>
+                        <param name="https://"/>
+                    </param>
+                </params>
             </property>
         </properties>
     </template>
