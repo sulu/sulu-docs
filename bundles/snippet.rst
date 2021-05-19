@@ -20,6 +20,10 @@ A snippet could be configured to cover exactly this use case and you would only 
 Creating a Snippet Template
 ---------------------------
 
+In this example we'll creating a "Social Media" snippet to the page of Sulu.
+
+.. figure:: ../img/snippet-social-media.png
+
 Creating a snippet Template isn't really different like Page :doc:`../book/templates`.
 Create a XML File in your `config/template/snippets/` folder like the following example
 
@@ -50,17 +54,37 @@ Create a XML File in your `config/template/snippets/` folder like the following 
                 <tag name="sulu.node.name"/>
             </property>
 
-            <property name="facebookImage" type="single_media_selection">
+            <property name="facebookImage" colspan="3" type="single_media_selection">
                 <meta>
                     <title lang="en">Facebook Icon</title>
                     <title lang="de">Facebook Icon</title>
                 </meta>
             </property>
 
-            <property name="facebookLink" type="url">
+            <property name="facebookLink" colspan="9" type="url">
                 <meta>
                     <title lang="en">Facebook Link</title>
                     <title lang="de">Facebook Link</title>
+                </meta>
+                <params>
+                    <param name="schemes" type="collection">
+                        <param name="http://"/>
+                        <param name="https://"/>
+                    </param>
+                </params>
+            </property>
+
+            <property name="twitterImage" colspan="3" type="single_media_selection">
+                <meta>
+                    <title lang="en">Twitter Icon</title>
+                    <title lang="de">Twitter Icon</title>
+                </meta>
+            </property>
+
+            <property name="twitterLink" colspan="9" type="url">
+                <meta>
+                    <title lang="en">Twitter Link</title>
+                    <title lang="de">Twitter Link</title>
                 </meta>
                 <params>
                     <param name="schemes" type="collection">
