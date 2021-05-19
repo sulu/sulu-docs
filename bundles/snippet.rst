@@ -122,6 +122,10 @@ So if we want to use a snippet on a page, we need to add the content type ":doc:
             </params>
         </property>
 
+.. note::
+
+    With Sulu 2.1 its possible to use a "Single Snippet Selection" to link specially one snippet!
+
 Load Snippets from a Subfolder
 ------------------------------
 By the means of configuration in `config/packages/sulu_admin.yaml` according to the following scheme
