@@ -11,19 +11,22 @@ documented the most important ones.
     :maxdepth: 2
 
     audience_targeting
-    collaboration
-    page/index
+    category
+    contact
+    custom_url
     hash
     http_cache
     location
     markup/index
     media/index
+    page/index
     persistence
     preview/index
     route/index
     search
     security
     snippet
+    tag
     website/index
 
 When you get in touch with another bundle of Sulu, which is not documented in
