@@ -28,7 +28,6 @@ our recipes.
     change-default-locale-provider
     default-snippets
     override-dir-structure
-    custom-urls
     deactivate-request-analyzer
     use-request-analyzer-with-esi
     web-server/index

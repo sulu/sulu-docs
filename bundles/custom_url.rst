@@ -1,5 +1,5 @@
-How to manage custom-urls?
-==========================
+CustomUrlBundle
+===============
 
 Sulu gives the content-manager an easy way to manage custom-urls or landing
 pages. These urls can be defined in the webspace section. A custom-url is
