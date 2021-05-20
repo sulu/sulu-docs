@@ -27,9 +27,11 @@ can e.g. be set in your ``.env`` file.
 .. code-block:: yaml
 
     parameters:
+        env(PHPCR_WORKSPACE): 'default'
         env(JACKRABBIT_URL): 'http://localhost:8080/server/'
         env(PHPCR_USER): 'admin'
         env(PHPCR_PASSWORD): 'admin'
+        env(JACKRABBIT_VERSION): '2.20.1'
 
     sulu_document_manager:
         sessions:
@@ -37,6 +39,8 @@ can e.g. be set in your ``.env`` file.
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
+                    parameters:
+                        "jackalope.jackrabbit_version": "%env(JACKRABBIT_VERSION)%"
                 workspace: "%env(PHPCR_WORKSPACE)%"
                 username: "%env(PHPCR_USER)%"
                 password: "%env(PHPCR_PASSWORD)%"
@@ -44,6 +48,8 @@ can e.g. be set in your ``.env`` file.
                 backend:
                     type: jackrabbit
                     url: "%env(JACKRABBIT_URL)%"
+                    parameters:
+                        "jackalope.jackrabbit_version": "%env(JACKRABBIT_VERSION)%"
                 workspace: "%env(PHPCR_WORKSPACE)%_live"
                 username: "%env(PHPCR_USER)%"
                 password: "%env(PHPCR_PASSWORD)%"
@@ -52,6 +58,15 @@ can e.g. be set in your ``.env`` file.
 
     The ``PHPCR_WORKSPACE`` is something similar as a database name so it is best practice
     to have a similar value for it, for example: ``su_myproject`` in your ``.env`` files.
+
+    The ``JACKRABBIT_URL`` needs to point to your jackrabbit backend.
+    Depending on your OS and jackrabbit version, the default should be `http://127.0.0.1:8080/server/`
+    or `http://127.0.0.1:8080/jackrabbit/server/`.
+
+    The ``JACKRABBIT_VERSION`` allows to enable additional functionality such as UTF-8 support for storing  `emoticons`_ 🐣.
+    You can use the following curl request to gather the version of your jackrabbit backend:
+
+    `curl -XGET http://127.0.0.1:8080/server/`
 
 Migration
 ---------
@@ -94,3 +109,4 @@ by running the following commands:
 
 .. _`Jackrabbit`: https://jackrabbit.apache.org/jcr/index.html
 .. _`environment variable`: https://symfony.com/doc/4.4/configuration.html#config-env-vars
+.. _`emoticons`: https://github.com/jackalope/jackalope-jackrabbit/blob/e2c2871164c425daa5ed37311839e1ae1b8acb60/src/Jackalope/Transport/Jackrabbit/Client.php#L83

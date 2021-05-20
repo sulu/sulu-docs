@@ -1,7 +1,13 @@
 Configure image formats
 =======================
 
-To show images on your website you should define different image formats for optimized output.
+Sulu supports to configure image formats for images that are uploaded via the administration interface.
+This allows to optimize the performance of your website by outputting images in the exact dimensions that
+are needed. Furthermore, the content manager can select the cutout that should be used when outputting a
+specific image format for an uploaded image.
+
+To save space on your server, image formats for uploaded images are generated when they are requested the
+first time.
 
 Image formats can be defined in:
 
@@ -305,19 +311,22 @@ Transformation effect can also be combined the following way:
 Editing exist image formats
 ---------------------------
 
-If you edit exist image formats you need to run the following command to purge the image format cache:
+If you modify existing image formats, you need to remove already generated images by executing the following
+command:
 
 .. code-block:: bash
 
     php bin/websiteconsole sulu:media:format:cache:clear
 
-This will delete all generated images. The new image will be generated on first request of the image format.
+This will delete all generated image formats on the server. A new image will be generated on the first request
+of the image format.
 
-Remove old images
------------------
+Remove obsolete images
+----------------------
 
-In a multi server setup the image formats are only removed on one server.
-To remove generated images which media not longer exist in the database run the following command:
+In a multi server setup, when an image is removed via the administration interface, existing image formats are only
+removed on the current server.
+Generated image formats of media that do not exist in the database can be removed by running the following command:
 
 .. code-block:: bash
 

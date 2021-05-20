@@ -9,11 +9,6 @@ Getting Started
 
 Shown below is an example that creates a simple data fixture.
 
-**Note**
-    - The class name MUST end with `Fixture` for it to be recognized
-    - The class MUST be placed in `<your bundle>/DataFixtures/Document` in order
-      for it to be loaded automatically.
-
 .. code-block:: php
 
     <?php
@@ -115,6 +110,11 @@ Shown below is an example that creates a simple data fixture.
         }
     }
 
+
+.. note::
+
+    When not using the symfony autoconfigure feature the service need to be tagged with ``sulu.document_manager_fixture``
+
 You can now execute your data fixture using the
 ``sulu:document:fixtures:load``
 command.
@@ -133,12 +133,37 @@ loading all of the fixtures.
 Advanced Usage
 --------------
 
-You can specify directories instead of having the command automatically find
-the fixtures:
+You can define groups to run only specific fixtures:
+
+.. code-block:: php
+
+    <?php
+    namespace YourBundle\DataFixtures\Document;
+
+    use Sulu\Component\DocumentManager\DocumentManager;
+    use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
+    use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureGroupInterface;
+    use Sulu\Component\DocumentManager\Exception\MetadataNotFoundException;
+
+    class SomeFixture implements DocumentFixtureInterface, DocumentFixtureGroupInterface
+    {
+        // ...
+
+        public function getGroups(): array
+        {
+            return ['Group1'];
+        }
+    }
 
 .. code-block:: bash
 
-    $ php bin/console sulu:document:fixtures:load --fixtures=/path/to/fixtures1 --fixtures=/path/to/fixtures2
+    $ php bin/console sulu:document:fixtures:load --group=Group1
+
+To load only a specific class you can use its classname as group:
+
+.. code-block:: bash
+
+    $ php bin/console sulu:document:fixtures:load --group=SomeFixture
 
 You can also specify if fixtures should be *appended* (i.e. the repository will
 not be purged) and if the initializer should be executed.
@@ -154,28 +179,3 @@ Do not initialize:
 .. code-block:: bash
 
     $ php bin/console sulu:document:fixtures:load --no-initialize
-
-Using the Service Container
----------------------------
-
-If you need the service container you can implement the `Symfony\Component\DependencyInjection\ContainerAwareInterface`:
-
-.. code-block:: php
-
-    <?php
-
-    namespace YourBundle\DataFixtures\Document;
-
-    use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
-    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-    use Symfony\Component\DependencyInjection\ContainerInterface;
-
-    class SomeFixture implements DocumentFixtureInterface, ContainerAwareInterface
-    {
-        private $container;
-
-        public function setContainer(ContainerInterface $container = null)
-        {
-            $this->container = $container;
-        }
-    }

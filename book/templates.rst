@@ -206,19 +206,18 @@ Here is a table with the content types shipped in Sulu core:
 |                              | document)                                   |
 +------------------------------+---------------------------------------------+
 | |contact_account_selection|  | widget for selecting contacts and accounts  |
-|                              |                                             |
 +------------------------------+---------------------------------------------+
 | |teaser_selection|           | widget for displaying content teasers       |
-|                              |                                             |
 +------------------------------+---------------------------------------------+
-| |snippet_selection|          | widget for selecting snippets               |
-|                              |                                             |
+| |snippet_selection|          | widget for selecting multiple snippets      |
 +------------------------------+---------------------------------------------+
-| |contact_selection|          | widget for selecting a multiple contacts    |
+| |single_snippet_selection|   | widget for selecting a single snippet       |
++------------------------------+---------------------------------------------+
+| |contact_selection|          | widget for selecting multiple contacts      |
 +------------------------------+---------------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       |
 +------------------------------+---------------------------------------------+
-| |account_selection|          | widget for selecting a multiple accounts    |
+| |account_selection|          | widget for selecting multiple accounts      |
 +------------------------------+---------------------------------------------+
 | |single_account_selection|   | widget for selecting a single account       |
 +------------------------------+---------------------------------------------+
@@ -368,9 +367,10 @@ language. In that case, you can mark properties as not multilingual using
 
 .. note::
 
-    If you change an existing property from a multilingual to a non multilingual version,
-    it is necessary to migrate the values in PHPCR from one language to the new property,
-    e.g. from ``i18n:de-article_number`` to ``article_number``.
+    Changing the ``multilingual`` attribute of a property is similar to renaming the property.
+    If you want to keep existing data for the property, you need to migrate it. Multilingual
+    properties are saved with a name like ``i18n:de-article_number``, while non-multilingual
+    properties use a name like ``article_number``.
 
 Sections
 --------
@@ -680,7 +680,7 @@ To enable XInclude, we'll first add the namespace
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <!-- ... -->
 
@@ -696,7 +696,7 @@ element:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
         <xi:include href="fragments/event-properties.xml"/>
@@ -708,8 +708,9 @@ element:
 
     The ``href`` contains a relative path to the included file.
 
-The fragment itself must contain a ``<template>`` or a ``<properties>`` element
-as root. In this example, we'll use a ``<properties>`` container:
+The fragment itself should use a ``<template>`` or a ``<properties>`` element as root
+to pass the XML schema validation in your IDE. In this example, we'll use a ``<properties>``
+container:
 
 .. code-block:: xml
 
@@ -717,7 +718,7 @@ as root. In this example, we'll use a ``<properties>`` container:
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+                xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <property name="startDate" type="date" mandatory="true">
             <!-- ... -->
@@ -744,7 +745,7 @@ Let's look at the "Event" template first:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -768,7 +769,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -794,7 +795,7 @@ possible:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -821,7 +822,7 @@ You can also match multiple elements of different types. Use the wildcard
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
         <properties>
             <!-- ... -->
@@ -946,10 +947,12 @@ The tag can have specific attributes:
 **Types**:
 
  - `string`: For simple fields
- - `array`: For multiple fields such as the `category_selection` content type
- - `tags`: Special typ for `tag_selection` content type
+ - `array`: For multiple fields
+ - `tags`: Special type for `tag_selection` content type
+ - `category`: Special type for `single_category_selection` and `category_selection` content types
  - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search
+ - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
 
 Next Steps
 ----------
@@ -962,7 +965,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XInclude: https://en.wikipedia.org/wiki/XInclude
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
-.. _cron expression: https://github.com/mtdowling/cron-expression
+.. _cron expression: https://github.com/dragonmantank/cron-expression
 .. _Media: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
 .. _Jexl: https://github.com/TomFrost/Jexl
 
@@ -989,6 +992,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
 .. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
 .. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
+.. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`

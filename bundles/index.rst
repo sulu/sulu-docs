@@ -17,7 +17,7 @@ documented the most important ones.
     http_cache
     location
     markup/index
-    media
+    media/index
     persistence
     preview/index
     route/index

@@ -35,9 +35,8 @@ used by default.
 
 The other essential attribute is the ``types``-tag, which contains multiple
 ``type``-tags. A type defines some titles and its containing ``properties``,
-whereby all the available :doc:`index` (except the block itself, since we do
-not support nesting) can be used. These types are offered to the content
-manager via dropdown.
+whereby all the available :doc:`index` can be used. These types are offered 
+to the content manager via dropdown.
 
 If collapsed the system will show the content of three properties in the block
 by default, in order to give the content manager an idea which block they are

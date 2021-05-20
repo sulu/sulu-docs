@@ -118,10 +118,10 @@ Themes (optional)
 -----------------
 
 The ``theme`` is described by a key. This key leads to a certain theme,
-implemented by a developer in the system. Read more about themes in the section
-:doc:`themes`. This feature is default deactivated and therefore in the
-example not used. If you have multiple webspaces which should look different,
-you can use this feature to do this.
+implemented by a developer in the system. If you use multiple webspaces,
+which should have a different look and feel, you can easily accomplish
+this with the `SuluThemeBundle`_. Read more about the installation and usage
+in the `bundle documentation`_.
 
 Templates
 ---------
@@ -156,17 +156,20 @@ retrieve a flat list of pages, but also to retrieve entire navigation trees.
 Resource-Locator (optional)
 ---------------------------
 
-The ``strategy`` for the ``resource-locator`` influences the design of the URLs for
-the content. Default value is ``tree_leaf_edit``, which means that the
-``resource-locator`` will be generated for the whole tree, but only the last part
-will be editable.
+The URL of a page consists of the configured base URL of the webspace and a
+page-specific ``resource-locator``. If the ``resource-locator`` of a page is changed,
+Sulu will automatically redirect old URLs to the new URL per default. A webspace can set a
+``strategy`` for managing the ``resource-locator`` of its pages.
 
-Currently there is only one alternative ``tree_full_edit``, which also generates
-the whole tree, but lets you edit the whole ``resource-locator`` afterwards.
+The default strategy is ``tree_leaf_edit``, which means that the generated
+``resource-locator`` of a page includes all ancestors in the content tree, but only
+the last part will be editable. If the ``resource-locator`` of a page is changed, this
+strategy will also update the ``resource-locator`` of all child pages.
 
-The ``strategy`` also influences the behavior when renaming or moving a page.
-The ``tree_leaf_edit`` (in opposite ``tree_full_edit``) will also update the
-``resource-locator`` of the children.
+The alternative ``tree_full_edit`` strategy also includes all ancestors when
+generating the ``resource-locator``, but it allows to edit the whole ``resource-locator``
+afterwards. If the ``resource-locator`` of a page is changed, this strategy does not update
+the ``resource-locator`` of the child pages.
 
 Portals
 -------
@@ -243,5 +246,5 @@ the values of them by using the ``de-at``-localization:
 |                | sense in combination with `{language}` |                    |
 +----------------+----------------------------------------+--------------------+
 
-Now you got your webspace ready, we will create a template for a page that could
-be added to the webspace.
+.. _SuluThemeBundle: https://github.com/sulu/SuluThemeBundle
+.. _bundle documentation: https://github.com/sulu/SuluThemeBundle

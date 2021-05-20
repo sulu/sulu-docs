@@ -52,13 +52,13 @@ content type:
 .. toctree::
     :maxdepth: 1
 
-    block
-    contact_selection
     account_selection
+    block
     category_selection
     checkbox
     color
     contact_account_selection
+    contact_selection
     date
     datetime
     email
@@ -70,11 +70,13 @@ content type:
     resource_locator
     route
     select
-    single_select
-    single_page_selection
-    single_contact_selection
     single_account_selection
+    single_category_selection
+    single_contact_selection
     single_media_selection
+    single_page_selection
+    single_select
+    single_snippet_selection
     smart_content
     snippet_selection
     tag_selection

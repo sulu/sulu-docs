@@ -13,9 +13,9 @@ The following requirements *must* be met to run Sulu:
 * :doc:`Apache <../cookbook/web-server/apache>` or
   :doc:`Nginx <../cookbook/web-server/nginx>` with enabled URL rewriting
 * `PHP`_ 7.2 or higher
-* the `intl extension`_ for PHP
+* the `intl_extension`_ for PHP
 * the `fileinfo` extension for PHP
-* the `gd`_ or `imagick extension`_ for PHP
+* the `gd`_, `imagick_extension`_ or `vips_extension`_ for PHP
 * a `database management system supported by Doctrine`_
 * `Composer`_
 
@@ -36,9 +36,10 @@ If you want to build parts of the system on your own, you will additionally need
 * `npm`_ 5 or higher
 
 .. _PHP: http://php.net
-.. _intl extension: http://php.net/manual/en/book.intl.php
+.. _intl_extension: http://php.net/manual/en/book.intl.php
 .. _gd: http://php.net/manual/en/book.image.php
-.. _imagick extension: http://php.net/manual/en/book.imagick.php
+.. _imagick_extension: http://php.net/manual/en/book.imagick.php
+.. _vips_extension: https://github.com/libvips/php-vips-ext
 .. _database management system supported by Doctrine: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Composer: https://getcomposer.org
 .. _Apache Jackrabbit: http://jackrabbit.apache.org

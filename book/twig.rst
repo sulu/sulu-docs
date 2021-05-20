@@ -18,7 +18,7 @@ In :doc:`templates` we learned how to define a template.
 
         <key>default</key>
 
-        <view>templates/default</view>
+        <view>pages/default</view>
         <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
         ...
     </template>
@@ -68,7 +68,7 @@ You could include the SEO meta tags like this:
     {% include "@SuluWebsite/Extension/seo.html.twig" with {
         "seo": extension.seo|default([]),
         "content": content|default([]),
-        "urls": urls|default([]),
+        "localizations": localizations|default([]),
         "shadowBaseLocale": shadowBaseLocale|default(),
         "defaultLocale": app.request.locale
     } %}
@@ -112,7 +112,8 @@ Other Variables
  - `created`: Contains the timestamp of the creation of the current page
  - `changed`: Contains the timestamp of the latest change of the current page
  - `published`: Contains the timestamp of the publishing of the current page
- - `urls`: Contains urls of all locales
+ - `urls`: Contains urls of all locales (deprecated)
+ - `localizations`: Contains all localizations including the URLs for the current page
 
 .. tip::
 

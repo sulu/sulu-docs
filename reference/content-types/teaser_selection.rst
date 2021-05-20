@@ -28,7 +28,7 @@ Add a field of type "teaser_selection" to your page template:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <!-- ... -->
 
@@ -149,7 +149,7 @@ Use the ``present_as`` option to configure the rendering variants:
     <template xmlns="http://schemas.sulu.io/template/template"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns:xi="http://www.w3.org/2001/XInclude"
-              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.1.xsd">
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
         <!-- ... -->
 
@@ -229,7 +229,9 @@ from a list of recipes:
                 'recipes', // The resourceKey of the entities to load for this type of teaser
                 'table', // The list adapter in which the entities should be shown
                 ['title'], // The properties which should be shown
-                'Recipe' // The title of the overlay that shows when this entity is assigned
+                'Recipe', // The title of the overlay that shows when this entity is assigned
+                'app.recipe_edit_form', // The view to which a click on an item in the Admin UI will navigate (optional)
+                ['id' => 'id'], // The mapping of the teaserItem to the path parameters of the above view (optional)
             );
         }
 

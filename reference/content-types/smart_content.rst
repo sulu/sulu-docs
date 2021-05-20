@@ -102,6 +102,9 @@ This values are available in the *view* variable in the twig templates.
     * - tagOperator
       - string
       - Operator which combines selected tags
+    * - types
+      - string[]
+      - Selected types
     * - websiteCategories
       - string[]
       - Selected categories over GET parameter

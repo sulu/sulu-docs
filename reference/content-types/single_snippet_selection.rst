@@ -1,11 +1,10 @@
-Snippet Selection
-=================
+Single Snippet Selection
+========================
 
 Description
 -----------
 
-Allows to select an arbitrary number of snippets. Snippets are reusable pieces of content that can be included on
-multiple pages. The assigned snippets will be saved as an array of references.
+Allows to select a single snippet. Snippets are reusable pieces of content that can be included on multiple pages.
 
 Parameters
 ----------
@@ -45,13 +44,13 @@ Example
 
 .. code-block:: xml
 
-    <property name="snippets" type="snippet_selection">
+    <property name="snippet" type="single_snippet_selection">
         <meta>
-            <title lang="en">Snippets</title>
+            <title lang="en">Snippet</title>
         </meta>
 
         <params>
-            <param name="types" value="sidebar"/>
+            <param name="types" value="default"/>
             <param name="default" value="footer_social_media_links"/>
             <param name="loadExcerpt" value="true"/>
         </params>
@@ -62,8 +61,6 @@ Twig
 
 .. code-block:: twig
 
-    {% for snippet in content.snippets %}
-        {{ snippet.title }}
-    {% endfor %}
+    {{ content.snippet.title }}
 
 .. _jexl: https://github.com/TomFrost/jexl

@@ -33,7 +33,7 @@ This command will bootstrap a new project in the directory ``my-project``.
     If you want to use other languages than english or german for the
     administration interface of Sulu you need to configure them in the
     ``config/packages/sulu_admin.yaml`` file:
-    
+
     .. code-block:: yaml
 
         sulu_core:
@@ -55,7 +55,7 @@ Webspaces
 ---------
 
 The content management part of Sulu is built upon *webspaces*. Each of these
-webspaces configure a content tree. Each content tree may contain translations
+webspaces configures a content tree. Each content tree may contain translations
 for different locales.
 
 The default webspace configuration is located in
@@ -152,7 +152,7 @@ will make sure the correct application is loaded.
 
 .. code-block:: bash
 
-    bin/console server:start
+    php -S localhost:8000 -t public/ config/router.php
 
 You can access the administration interface via http://127.0.0.1:8000/admin.
 The default user and password is "admin".

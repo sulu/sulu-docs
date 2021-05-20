@@ -17,6 +17,7 @@ our recipes.
     custom-error-page
     extend-entities
     implement-entity-extensible
+    migrate-content-data
     jackrabbit
     using-elasticsearch
     smart-content-data-provider
@@ -41,6 +42,8 @@ our recipes.
     webpack-encore
     add-admin-tabs
     select-values-service
+    sulu-twig-attributes
+    build-admin-frontend
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
