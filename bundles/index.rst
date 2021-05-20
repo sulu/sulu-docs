@@ -10,6 +10,7 @@ documented the most important ones.
 .. toctree::
     :maxdepth: 2
 
+    activity
     audience_targeting
     collaboration
     page/index
