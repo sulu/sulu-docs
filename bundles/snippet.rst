@@ -107,7 +107,7 @@ Implement a Snippet in your Template
 
 Snippets are stored separately and are not accessible via the web page URL.
 
-So if we want to use a snippet on a page, we need to add the content type ":doc:`../reference/content-types/snippet_selection`" if we want to link one or more snippets.
+So if we want to use a snippet on a page, we need to add the content type ":doc:`../reference/content-types/single_snippet_selection`" if we want to link one or ":doc:`../reference/content-types/snippet_selection`" for more snippets.
 
 .. figure:: ../img/social-media-snippet-selection.png
 
@@ -122,9 +122,6 @@ So if we want to use a snippet on a page, we need to add the content type ":doc:
             </params>
         </property>
 
-.. note::
-
-    With Sulu 2.1 its possible to use a "Single Snippet Selection" to link specially one snippet!
 
 Load Snippets from a Subfolder
 ------------------------------
