@@ -10,7 +10,7 @@ used to render the HTML of an entity.
 Configuration
 -------------
 
-The sulu preview bundle can be configured the following way:
+The PreviewBundle allows for the following configuration:
 
 .. code-block:: yaml
 
