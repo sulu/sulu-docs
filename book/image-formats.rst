@@ -199,7 +199,6 @@ Will add a gamma effect by a given `correction` parameter:
                 </transformation>
             </transformations>
         </format>
-        </format>
     </formats>
 
 Sharpen
