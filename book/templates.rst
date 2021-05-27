@@ -359,15 +359,11 @@ from within a block.
                 <types>
                     <type name="editor">
                         <properties>
-                            <property name="isCode" type="checkbox">
+                            <property name="hasImage" type="checkbox">
                                 <!-- ... -->
                             </property>
 
-                            <property name="code" type="text_area" visibleCondition="__parent.isCode == true">
-                                <!-- ... -->
-                            </property>
-
-                            <property name="image" type="single_media_selection" disabledCondition="__parent.isCode != true">
+                            <property name="image" type="single_media_selection" visibleCondition="__parent.hasImage">
                                 <!-- ... -->
                             </property>
                         </properties>
@@ -379,7 +375,7 @@ from within a block.
 
 .. note::
 
-    Mind that you can call the ``__parent`` (something like ``__parent.__parent.isCode``) variable multiple times if
+    Mind that you can call the ``__parent`` (something like ``__parent.__parent.hasImage``) variable multiple times if
     you use nested blocks.
 
 Language Independent Properties
