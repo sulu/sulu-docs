@@ -336,6 +336,11 @@ Inside of these attributes, you can utilize the `jexl`_ syntax for expressing yo
 
 .. note::
 
+    Because the `&` character cannot be used inside xml, you have to use `AND` instead of `&&` to
+    compare two conditions using a logical and. Additionally, you can also use `OR` instead of `||`.
+
+.. note::
+
     At the moment, conditions can only access the root properties of the template.
     This means that it is not possible to express conditions relative to a property inside a block.
 
