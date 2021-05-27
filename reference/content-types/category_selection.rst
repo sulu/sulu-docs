@@ -58,7 +58,7 @@ Twig
 
     {% for category in content.categories %}
         <h3>{{ category.name }}</h3>
-    {% endif %}
+    {% endfor %}
 
 If you want to list all categories in your template you can use the :doc:`../twig-extensions/functions/sulu_categories`
 twig extension for it.
