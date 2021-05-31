@@ -336,7 +336,7 @@ Inside of these attributes, you can utilize the `jexl`_ syntax for expressing yo
 
 .. note::
 
-    Because the ``&`` character cannot be used inside of XML files, you have to use ``AND`` instead of ``&&`` 
+    Because the ``&`` character needs to be escaped inside of XML files, you have to use ``AND`` instead of ``&&`` 
     if you want to to connect conditions using a logical and. Additionally, you can use ``OR`` instead of ``||``.
 
 .. note::
