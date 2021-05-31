@@ -336,8 +336,8 @@ Inside of these attributes, you can utilize the `jexl`_ syntax for expressing yo
 
 .. note::
 
-    Because the `&` character cannot be used inside xml, you have to use `AND` instead of `&&` to
-    compare two conditions using a logical and. Additionally, you can also use `OR` instead of `||`.
+    Because the ``&`` character cannot be used inside of XML files, you have to use ``AND`` instead of ``&&`` 
+    if you want to to connect conditions using a logical and. Additionally, you can use ``OR`` instead of ``||``.
 
 .. note::
 
