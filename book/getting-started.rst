@@ -99,6 +99,8 @@ untested:
 +==============================+=======================================+
 | MySQL                        | yes                                   |
 +------------------------------+---------------------------------------+
+| MariaDb                      | yes                                   |
++------------------------------+---------------------------------------+
 | PostgreSQL                   | yes                                   |
 +------------------------------+---------------------------------------+
 | Oracle                       | untested                              |
@@ -116,7 +118,7 @@ Here is an example for using Sulu with MySQL:
 
 .. code:: bash
 
-    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7
 
 When you're done with the configuration, populate the database with Sulu's
 default data:
@@ -174,6 +176,6 @@ When you're ready to learn more, continue with :doc:`templates`.
 
 .. _Sulu Skeleton: https://github.com/sulu/skeleton
 .. _Composer: https://getcomposer.org
-.. _supported by Doctrine DBAL: http://doctrine-orm.readthedocs.io/projects/doctrine-dbal/en/latest/reference/platforms.html
+.. _supported by Doctrine DBAL: https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Apache Jackrabbit: http://jackrabbit.apache.org
 .. _Crowdin: https://sulu.crowdin.com/sulusulu
