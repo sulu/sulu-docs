@@ -378,6 +378,11 @@ from within a block.
     Mind that you can call the ``__parent`` (something like ``__parent.__parent.hasImage``) variable multiple times if
     you use nested blocks.
 
+.. note::
+
+    Because the ``&`` character needs to be escaped inside of XML files, you have to use ``AND`` instead of ``&&`` 
+    if you want to to connect conditions using a logical and. Additionally, you can use ``OR`` instead of ``||``.
+
 Language Independent Properties
 -------------------------------
 
