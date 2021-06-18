@@ -32,7 +32,7 @@ User Context feature in Sulu.
 3. Uncomment the registration of the  ``UserContextListener`` in `src/Kernel.php`
 
 .. code-block:: php
- 
+
     <?php
 
     class Kernel extends SuluKernel implements HttpCacheProvider
@@ -131,6 +131,17 @@ User Context feature in Sulu.
     The previous two steps could also be replaced by the `SuluCommunityBundle`_,
     which helps you with creating login and registration forms. Additionally it
     helps you with creating opt-in emails and other tasks.
+
+8. Activate Permission Check for pages (optional)
+
+If you want to allow the content manager to restrict pages to specific roles, you
+need to enable permission checks in your webspace configuration:
+
+.. code-block:: xml
+
+    <security permission-check="true">
+        <system>example</system>
+    </security>
 
 .. _User Context: https://foshttpcachebundle.readthedocs.io/en/latest/features/user-context.html
 .. _documentation: https://symfony.com/doc/current/security.html
