@@ -145,9 +145,9 @@ need to enable permission checks in your webspace configuration:
 
 .. note::
 
-    After enabling security permission check for your webspace, it is required
-    to run the ``bin/console sulu:security:init`` command to create
-    the needed anonymous role.
+    Make sure to create the anonymous role for the webspace by running
+    the ``bin/console sulu:security:init`` command after enabling permission
+    checks in your webspace configuration.
 
 .. _User Context: https://foshttpcachebundle.readthedocs.io/en/latest/features/user-context.html
 .. _documentation: https://symfony.com/doc/current/security.html
