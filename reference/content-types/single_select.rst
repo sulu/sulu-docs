@@ -81,6 +81,6 @@ Twig
 
 .. code-block:: twig
 
-    <span class="icon-{{ content.single }}>
+    <span class="icon-{{ content.single }}">
         Icon {{ content.single }}
     </span>

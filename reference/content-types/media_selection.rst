@@ -86,7 +86,7 @@ to control which `disposition header`_ the target url should use:
     <ul>
         {% for document in content.documents %}
             <li>
-                <a href="{{ document.url }}>
+                <a href="{{ document.url }}">
                     {{ document.title }}
                 </a>
             </li>
