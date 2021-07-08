@@ -91,7 +91,7 @@ Twig
 .. code-block:: twig
 
     {% for item in content.list %}
-        <span class="icon-{{ item }}>
+        <span class="icon-{{ item }}">
             Icon {{ item }}
         </span>
     {% endfor %}

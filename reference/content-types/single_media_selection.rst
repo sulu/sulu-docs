@@ -99,7 +99,7 @@ to control which `disposition header`_ the target url should use:
 
 .. code-block:: twig
 
-    <a href="{{ sulu_get_media_url(document.url, 'inline') }}>
+    <a href="{{ sulu_get_media_url(document.url, 'inline') }}">
         {{ document.title }}
     </a>
 
