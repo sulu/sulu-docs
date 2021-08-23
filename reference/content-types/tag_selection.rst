@@ -20,7 +20,19 @@ tags will be saved as an array.
 Parameters
 ----------
 
-No parameters available
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - request_parameters
+      - collection
+      - Collection of parameters that are appended to the requests sent by the selection.
+    * - resource_store_properties_to_request
+      - collection
+      - Collection of property names.
+        The value of the respective properties are appended to the requests sent by the selection.
 
 Example
 -------
