@@ -4,9 +4,8 @@ Link
 Description
 -----------
 
-The link content type is a universal link provider. It allows to either create urls directly from selected
-entities or to insert directly an external url. The configuration allows to enable ``anchor`` and ``target`` fields as
-well as the available entity types.
+The link content type allows to select different type of links, including links to internal entities like pages and external URLs. 
+The content type can be limited to allow only specific link types and configured to show an ``anchor`` and a ``target`` field.
 
 The types can also be extended by adding new types to the ``linkTypeRegistry``.
 
@@ -28,7 +27,7 @@ Parameters
     * - types
       - collection
       - List of available types in the dropdown.
-        Defaults are: ``page``, ``media``, ``external``.
+        Default: All registered link types
 
 Example
 -------
