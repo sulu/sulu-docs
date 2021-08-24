@@ -5,7 +5,7 @@ The sulu-link tag allows to link to pages and other entities in the application 
 This id of the tag will be validated and replaced by a proper anchor tag when a response is generated.
 
 In a basic installation, the tag supports 2 different providers: ``page`` (default) and ``media``.
-Additional provides can be implemented by :doc:`registering a service with the sulu.link.provider tag<../../cookbook/link-provider>`.
+Additional providers can be implemented by :doc:`registering a service with the sulu.link.provider tag<../../cookbook/link-provider>`.
 
 Example
 -------
