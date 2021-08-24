@@ -165,7 +165,7 @@ event. After implementing your event, you can dispatch it in your code using one
 
             // second option: use the DomainEventCollector service to automatically record the activity after the
             // EntityManager::flush() method was called
-            $this->domainEventCollector->dispatch(new BookCreatedEvent($book));
+            $this->domainEventCollector->collect(new BookCreatedEvent($book));
             $this->entityManager->flush();
         }
     }
