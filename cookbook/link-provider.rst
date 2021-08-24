@@ -1,17 +1,12 @@
-Provider for CKEditor Internal-Sulu-Link
+Provider for Internal-Links
 ========================================
 
-`LinkProvider` are used to load data for the "Internal-Sulu-Link" Plugin for
-the CKEditor. It returns an array of `LinkItem` instances, identified by ids
-which will be passed to the `LinkProviderInterface::preload` function.
-This feature can be used by the CKEditor Plugin "Sulu-Internal-Link" or
-by adding Markup to your twig-templates (see following example and the
-chapter :doc:`../bundles/markup/index`).
-
-.. code-block:: html
-
-    <sulu-link provider="page" href="123-123-123"/>
-
+`LinkProvider` are used to load data for internal links. It returns an
+array of `LinkItem` instances, identified by ids which will be passed
+to the `LinkProviderInterface::preload` function.
+This feature is used in the CKEditor Plugin, in the Markup for twig-templates
+(see :doc:`../bundles/markup/index`) and in the `Link` content-type
+(see :doc:`../reference/content-types/link`).
 
 The LinkItem consists of the following properties:
 
@@ -76,3 +71,6 @@ configured with the `LinkConfigurationBuilder`.
 
 Now you can create a service for this class and add the tag with the corresponding
 resourceKey `<tag name="sulu.link.provider" alias="{resourceKey}"/>`.
+
+Furthermore you can register the `LinkProvider` in the `linkTypeRegistry` to select internal-links
+in the CKEditor Plugin and the `Link` content-type.

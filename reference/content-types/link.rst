@@ -7,7 +7,8 @@ Description
 The link content type allows to select different type of links, including links to internal entities like pages and external URLs. 
 The content type can be limited to allow only specific link types and configured to show an ``anchor`` and a ``target`` field.
 
-The types can also be extended by adding new types to the ``linkTypeRegistry``.
+The types can also be extended by adding new types to the ``linkTypeRegistry``. For custom Entities you also have to
+create a custom :doc:`../../cookbook/link-provider`.
 
 Parameters
 ----------
