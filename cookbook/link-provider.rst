@@ -1,14 +1,13 @@
-Provider for Internal-Links
-========================================
+Provider for custom link type
+=============================
 
-`LinkProvider` are used to load data for internal links. It returns an
-array of `LinkItem` instances, identified by ids which will be passed
-to the `LinkProviderInterface::preload` function.
-This feature is used in the CKEditor Plugin, in the Markup for twig-templates
-(see :doc:`../bundles/markup/index`) and in the `Link` content-type
-(see :doc:`../reference/content-types/link`).
+``LinkProvider`` services are used to resolve data for different types of internal links.
+The services are used in different parts of the system, including the `Link` content-type
+(see :doc:`../reference/content-types/link`), the internal link plugin of the CKEditor and
+the ``<sulu-link>`` tag inside of twig-templates (see :doc:`../bundles/markup/link`).
 
-The LinkItem consists of the following properties:
+The ``LinkProvider::preload`` method is responsible for resolving an array of ``LinkItem``
+instances for the given arguments. Each ``LinkItem`` consists of the following properties:
 
 * id
 * title
@@ -18,9 +17,13 @@ The LinkItem consists of the following properties:
 Example
 -------
 
-This example assumes that the entities will be selected by a datagrid.
-For this we already build an abstract implementation which can be
-configured with the `LinkConfigurationBuilder`.
+To register a ``LinkProvider`` service for a custom link type, you create a service that
+implements the ``LinkProviderInterface`` and tag it with the respective resource key:
+``<tag name="sulu.link.provider" alias="{resourceKey}"/>``
+
+If the entities of the new link type should be selected via a list in the administration interface,
+the ``LinkProvider::getConfiguration`` method must return the configuration that is used for
+the list.
 
 .. code-block:: php
 
@@ -69,8 +72,12 @@ configured with the `LinkConfigurationBuilder`.
         }
     }
 
-Now you can create a service for this class and add the tag with the corresponding
-resourceKey `<tag name="sulu.link.provider" alias="{resourceKey}"/>`.
+If the entities of the new link type cannot be selected via a list, the ``LinkProvider::getConfiguration``
+method of your service must return ``null`` and you need to register a custom overlay via
+the ``linkTypeRegistry`` Javascript service:
 
-Furthermore you can register the `LinkProvider` in the `linkTypeRegistry` to select internal-links
-in the CKEditor Plugin and the `Link` content-type.
+.. code-block:: javascript
+
+    import linkTypeRegistry from 'sulu-admin-bundle/containers/Link/registries/linkTypeRegistry';
+
+    linkTypeRegistry.add('custom_resource_key', CustomLinkTypeOverlay, translate('app.custom_translation_key'));
