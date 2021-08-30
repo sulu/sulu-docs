@@ -353,6 +353,7 @@ because of the autoconfigure feature of Symfony:
 
     use Sulu\Bundle\AdminBundle\Admin\Admin;
     use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItemCollection;
+    use Sulu\Bundle\AdminBundle\Admin\View\ViewBuilderFactoryInterface;
     use Sulu\Bundle\AdminBundle\Admin\View\ViewCollection;
 
     class EventAdmin extends Admin
