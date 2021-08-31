@@ -170,6 +170,14 @@ event. After implementing your event, you can dispatch it in your code using one
         }
     }
 
+The descriptions in the Admin list view are generated via the `Symfony translation`_.The translation key is composed of the following combination. "sulu_activity.description.resourceKey.type" as an example. "sulu_activity.description.book.created"
+In order to capture the logged-in user and the title of the resource, you can create the translation as follows.
+
+.. code-block:: json
+{
+    "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
+}
 
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
 .. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
+.. _Symfony translation: https://symfony.com/doc/current/translation.html
