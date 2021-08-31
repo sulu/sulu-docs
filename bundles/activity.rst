@@ -174,6 +174,7 @@ The descriptions in the Admin list view are generated via the `Symfony translati
 In order to capture the logged-in user and the title of the resource, you can create the translation as follows.
 
 .. code-block:: json
+
     {
         "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
     }
