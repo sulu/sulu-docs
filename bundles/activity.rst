@@ -170,5 +170,6 @@ event. After implementing your event, you can dispatch it in your code using one
         }
     }
 
+
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
-.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
