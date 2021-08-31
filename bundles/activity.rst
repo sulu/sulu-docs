@@ -170,7 +170,10 @@ event. After implementing your event, you can dispatch it in your code using one
         }
     }
 
-The descriptions in the Admin list view are generated via the `Symfony translation`_.The translation key is composed of the following combination. "sulu_activity.description.resourceKey.type" as an example. "sulu_activity.description.book.created"
+Set descriptions for custom activity
+------------------------------------
+
+The descriptions in the Admin list view are generated via the `Symfony translation`_.The translation key is composed of the following combination. ``sulu_activity.description.resourceKey.type`` as an example. ``sulu_activity.description.book.created``
 In order to capture the logged-in user and the title of the resource, you can create the translation as follows.
 
 .. code-block:: json
@@ -179,6 +182,28 @@ In order to capture the logged-in user and the title of the resource, you can cr
         "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
     }
 
+
+Extend security for custom activity
+-----------------------------------
+
+By default, the activities of a custom entity can be seen by anyone who has the right to view the list. It is nevertheless possible to adapt the activities to the security context of the respective resource.
+This can be done with ``getResourceSecurityContext``. To do this, the name of the context must be specified as shown in the example at :doc:`../book/cookbook/securing-your-application`.
+
+.. code-block:: php
+
+    <?php
+
+    namespace App\Event;
+
+    use Sulu\Bundle\ActivityBundle\Domain\Event\DomainEvent;
+
+    class BookCreatedEvent extends DomainEvent
+    {
+        public function getResourceSecurityContext(): ?string
+        {
+            return BookAdmin::SECURITY_CONTEXT;
+        }
+    }
 
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
 .. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
