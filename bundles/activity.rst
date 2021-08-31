@@ -189,6 +189,10 @@ Extend security for custom activity
 By default, the activities of a custom entity can be seen by anyone who has the right to view the list. It is nevertheless possible to adapt the activities to the security context of the respective resource.
 This can be done with ``getResourceSecurityContext``. To do this, the name of the context must be specified as shown in the example at :doc:`../cookbook/securing-your-application`.
 
+.. note::
+
+    Tip! Set your Security Context as a constant in the admin configuration to be able to reuse it everywhere.
+
 .. code-block:: php
 
     <?php
