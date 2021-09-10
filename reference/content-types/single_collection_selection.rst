@@ -1,10 +1,10 @@
-Contact selection
-=================
+Single Collection selection
+===========================
 
 Description
 -----------
 
-Let you assign multiple contacts from the contact section to the page.
+Let you assign one collection from the media section.
 
 Parameters
 ----------
@@ -33,16 +33,16 @@ Parameters
 Return value
 ------------
 
-See the ContactInterface_ for available variables and functions.
+See the Collection_ class for available variables and functions.
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="contacts" type="contact_selection">
+    <property name="collection" type="single_collection_selection">
         <meta>
-            <title lang="en">Contacts</title>
+            <title lang="en">Collection</title>
         </meta>
     </property>
 
@@ -51,9 +51,7 @@ Twig
 
 .. code-block:: twig
 
-    {% for contact in content.contacts %}
-        <h3>{{ contact.fullName }}</h3>
-    {% endfor %}
+    {{ content.collection.fullName }}
 
-.. _ContactInterface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _Collection: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Collection.php
 .. _jexl: https://github.com/TomFrost/jexl
