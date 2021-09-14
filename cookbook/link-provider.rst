@@ -31,10 +31,9 @@ the list.
 
     namespace AppBundle\Link;
 
-    use Sulu\Bundle\PageBundle\Markup\Link\LinkConfiguration;
     use Sulu\Bundle\MarkupBundle\Markup\Link\LinkConfigurationBuilder;
-    use Sulu\Bundle\PageBundle\Markup\Link\LinkItem;
-    use Sulu\Bundle\PageBundle\Markup\Link\LinkProviderInterface;
+    use Sulu\Bundle\MarkupBundle\Markup\Link\LinkItem;
+    use Sulu\Bundle\MarkupBundle\Markup\Link\LinkProviderInterface;
 
     class LinkProvider implements LinkProviderInterface
     {
