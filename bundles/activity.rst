@@ -170,5 +170,50 @@ event. After implementing your event, you can dispatch it in your code using one
         }
     }
 
+Configure description text for a custom activity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Activity descriptions that are displayed in the administration interface are generated using
+`Symfony translations`_.
+Each activity is mapped to a translation key with the format `sulu_activity.description.%resourceKey%.%activityType%``.
+For example, the translation key for the activity shown above is ``sulu_activity.description.book.created``:
+
+.. code-block:: json
+
+    {
+        "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
+    }
+
+The translation text can include placeholders that are replaced with activity specific information. For example,
+``{resourceTitle}`` will be replaced with the title of the affected resource. Have a look at the implementation of the
+`ActivityController class`_ of the ActivityBundle to find all available placeholders.
+
+Configure permissions for custom activities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Activities are visible for all users that are allowed to see the activity list in the administration interface
+per default. To restrict this, it is possible to return a :doc:`security context<../cookbook/securing-your-application>`
+from the ``getResourceSecurityContext`` method.
+An activity that returns a security context from the ``getResourceSecurityContext`` method  will only be visible for
+users with a ``view`` permission for the context:
+
+.. code-block:: php
+
+    <?php
+
+    namespace App\Event;
+
+    use Sulu\Bundle\ActivityBundle\Domain\Event\DomainEvent;
+
+    class BookCreatedEvent extends DomainEvent
+    {
+        public function getResourceSecurityContext(): ?string
+        {
+            return BookAdmin::SECURITY_CONTEXT;
+        }
+    }
+
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
-.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
+.. _ActivityController class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
+.. _Symfony translations: https://symfony.com/doc/current/translation.html
