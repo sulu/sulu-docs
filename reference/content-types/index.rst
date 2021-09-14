@@ -56,6 +56,7 @@ content type:
     block
     category_selection
     checkbox
+    collection_selection
     color
     contact_account_selection
     contact_selection
@@ -73,6 +74,7 @@ content type:
     select
     single_account_selection
     single_category_selection
+    single_collection_selection
     single_contact_selection
     single_media_selection
     single_page_selection

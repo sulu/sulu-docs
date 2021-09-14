@@ -1,10 +1,18 @@
-Contact selection
-=================
+Single Collection selection
+===========================
 
 Description
 -----------
 
-Let you assign multiple contacts from the contact section to the page.
+Let you assign one collection from the media section.
+
+.. note::
+
+    This content type passes a Collection_ entity to the twig template. It does not provide the media
+    entities inside of the selected collections.
+    If you want to access the media entities of a collection, you should use a :doc:`smart_content property <smart_content>`
+    with the ``media`` data provider or load the matching media entities in a  :doc:`custom controller <../../cookbook/custom-controller>`
+    or in a `custom twig extension`_.
 
 Parameters
 ----------
@@ -29,26 +37,20 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
-    * - min
-      - string
-      - The minimum number of selected contacts
-    * - max
-      - string
-      - The maximum number of selected contacts
 
 Return value
 ------------
 
-See the ContactInterface_ for available variables and functions.
+See the Collection_ class for available variables and functions.
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="contacts" type="contact_selection">
+    <property name="collection" type="single_collection_selection">
         <meta>
-            <title lang="en">Contacts</title>
+            <title lang="en">Collection</title>
         </meta>
     </property>
 
@@ -57,9 +59,8 @@ Twig
 
 .. code-block:: twig
 
-    {% for contact in content.contacts %}
-        <h3>{{ contact.fullName }}</h3>
-    {% endfor %}
+    {{ content.collection.fullName }}
 
-.. _ContactInterface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _Collection: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Collection.php
+.. _custom twig extension: https://symfony.com/doc/current/templating/twig_extension.html
 .. _jexl: https://github.com/TomFrost/jexl
