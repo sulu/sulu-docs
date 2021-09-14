@@ -170,11 +170,13 @@ event. After implementing your event, you can dispatch it in your code using one
         }
     }
 
-Set descriptions for custom activity
-------------------------------------
+Configure description text for a custom activity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The descriptions in the Admin list view are generated via the `Symfony translation`_.The translation key is composed of the following combination. ``sulu_activity.description.resourceKey.type`` as an example. ``sulu_activity.description.book.created``
-In order to capture the logged-in user and the title of the resource, you can create the translation as follows.
+Activity descriptions that are displayed in the administration interface are generated using
+`Symfony translations`_.
+Each activity is mapped to a translation key with the format `sulu_activity.description.%resourceKey%.%activityType%``.
+For example, the translation key for the activity shown above is ``sulu_activity.description.book.created``:
 
 .. code-block:: json
 
@@ -182,16 +184,18 @@ In order to capture the logged-in user and the title of the resource, you can cr
         "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
     }
 
+The translation text can include placeholders that are replaced with activity specific information. For example,
+``{resourceTitle}`` will be replaced with the title of the affected resource. Have a look at the implementation of the
+`ActivityController class`_ of the ActivityBundle to find all available placeholders.
 
-Extend security for custom activity
------------------------------------
+Configure permissions for custom activities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, the activities of a custom entity can be seen by anyone who has the right to view the list. It is nevertheless possible to adapt the activities to the security context of the respective resource.
-This can be done with ``getResourceSecurityContext``. To do this, the name of the context must be specified as shown in the example at :doc:`../cookbook/securing-your-application`.
-
-.. note::
-
-    Tip! Set your Security Context as a constant in the admin configuration to be able to reuse it everywhere.
+Activities are visible for all users that are allowed to see the activity list in the administration interface
+per default. To restrict this, it is possible to return a :doc:`security context<../cookbook/securing-your-application>`
+from the ``getResourceSecurityContext`` method.
+An activity that returns a security context from the ``getResourceSecurityContext`` method  will only be visible for
+users with a ``view`` permission for the context:
 
 .. code-block:: php
 
@@ -211,4 +215,5 @@ This can be done with ``getResourceSecurityContext``. To do this, the name of th
 
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
 .. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
-.. _Symfony translation: https://symfony.com/doc/current/translation.html
+.. _ActivityController class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
+.. _Symfony translations: https://symfony.com/doc/current/translation.html
