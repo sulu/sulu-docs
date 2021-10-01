@@ -79,6 +79,17 @@ images.
         </format>
     </formats>
 
+Image format
+------------
+
+Images will be by default to the uploaded format (e.g. JPG, PNG, WEBP, ...). You can set a specific format for every image format.
+
+.. code-block:: twig
+
+    <div>
+        <img src="{{ image.thumbnails['200x100.webp'] }}" alt="{{ image.title }}"/>
+    </div>
+
 Image Compression
 -----------------
 
