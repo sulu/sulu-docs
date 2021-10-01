@@ -15,14 +15,14 @@ Sulu is shipped with a build in command to update the build.
 
 .. code-block:: bash
 
-   bin/adminconsole sulu:admin:update-build
+    bin/adminconsole sulu:admin:update-build
 
 .. note::
 
-   The update build command will download the build for your project from the `sulu/skeleton repository`_ if possible.
-   If you have added custom Javascript code in your project, the command will automatically cleanup leftovers from
-   previous builds and build the Javascript code manually on your system. Make sure that you have installed `node`_ if 
-   your project requires a manual build.
+    The update build command will download the build for your project from the `sulu/skeleton repository`_ if possible.
+    If you have added custom Javascript code in your project, the command will automatically cleanup leftovers from
+    previous builds and build the Javascript code manually on your system. Make sure that you have installed `node`_ if 
+    your project requires a manual build.
 
 Solution 2: Build manually with docker
 --------------------------------------
@@ -31,19 +31,19 @@ Solution 2: Build manually with docker
 
 .. code-block:: bash
 
-   docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
+    docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
 
-   # for completion: using another node version is possible by adjusting the tag of the node image
-   # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:10.24.0 /bin/bash
-   # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:12.21.0 /bin/bash
+    # for completion: using another node version is possible by adjusting the tag of the node image
+    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:10.24.0 /bin/bash
+    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:12.21.0 /bin/bash
 
 2. Cleanup previously created node_modules folders and package-lock.json files
 
 .. code-block:: bash
 
-   cd /var/project
-   rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
-   rm -rf assets/admin/package-lock.json && rm -rf vendor/sulu/sulu/package-lock.json && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/package-lock.json
+    cd /var/project
+    rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
+    rm -rf assets/admin/package-lock.json && rm -rf vendor/sulu/sulu/package-lock.json && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/package-lock.json
 
 3. Create the administration interface build
 
@@ -65,9 +65,9 @@ on your computer.
 
 .. code-block:: bash
 
-   cd /var/project
-   rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
-   rm -rf assets/admin/package-lock.json && rm -rf vendor/sulu/sulu/package-lock.json && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/package-lock.json
+    cd /var/project
+    rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
+    rm -rf assets/admin/package-lock.json && rm -rf vendor/sulu/sulu/package-lock.json && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/package-lock.json
 
 3. Create the administration interface build
 
@@ -77,5 +77,31 @@ on your computer.
     npm install
     npm run build
 
+Common errors
+-------------
+
+If the installation of your dependencies or the webpack build itself fails, there are some quick fixes that may help you fix the problem:
+
+1. Use a supported Node.JS and NPM version
+
+Generally, the Node.JS and NPM versions used in Sulu's `Test Application workflow`_ are the only ones, which are officially supported by us.
+Those are Node.JS v12 and v14 and NPM v6. Newer versions might be working though.
+
+.. warning::
+
+    Sulu is currently not compatible with NPM v7, see `this issue`_.
+
+2. Build fails for no obvious reason
+
+It may happen, that the build fails for no obvious reason.
+In that case, it's a good idea to remove all the `package-lock.json` files and `node_modules` directories below your project root as described above.
+If that still doesn't help, you can try cleaning npm's internal cache by running:
+
+.. code-block:: bash
+
+    npm cache clean --force
+
+.. _this issue: https://github.com/sulu/skeleton/issues/88
+.. _Test Application workflow: https://github.com/sulu/sulu/blob/2.x/.github/workflows/test-application.yaml
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
