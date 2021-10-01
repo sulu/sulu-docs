@@ -52,7 +52,7 @@ render a link to the page, you can use the <``sulu-link`` tag>:doc:`../../bundle
     <sulu-link href="{{ content.link }}">Link Text</sulu-link>
 
 If you need to load additional data of the target page, you can use the
-<``sulu_content_load`` twig extension>:doc:`../twig-extensions/functions/sulu_content_load`:
+:doc:`sulu_content_load twig extension<../twig-extensions/functions/sulu_content_load>`:
 
 .. code-block:: twig
 
