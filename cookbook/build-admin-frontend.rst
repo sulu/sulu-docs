@@ -82,9 +82,10 @@ Common errors
 
 If the installation of the npm dependencies or the webpack build fails, you might want to try the following things:
 
-1. Check you Node.js and npm version
+1. Check your Node.js and npm version
 
-You can check the officially supported and tested Node.js and npm version by looking at the `Test Application workflow`_ of the ``sulu/sulu`` package. At the time of writing, this includes Node.js 12, Node.js 14 and npm 6.
+You can check the officially supported and tested Node.js and npm version by looking at the `Test Application workflow`_ of the ``sulu/sulu`` package. 
+At the time of writing, this includes Node.js 12, Node.js 14 and npm 6.
 
 .. warning::
 
@@ -93,7 +94,7 @@ You can check the officially supported and tested Node.js and npm version by loo
 2. Clear the npm cache on your machine
 
 The webpack build might fail because of leftovers from previous builds our outdated packages.
-To prevent this, you should remove all the `package-lock.json` files and `node_modules` directories below your project root before installing the npm dependencies:
+To prevent this, you should remove all the ``package-lock.json`` files and ``node_modules`` directories below your project root before installing the npm dependencies:
 
 .. code-block:: bash
 
