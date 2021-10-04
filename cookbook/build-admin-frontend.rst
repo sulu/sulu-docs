@@ -80,28 +80,33 @@ on your computer.
 Common errors
 -------------
 
-If the installation of your dependencies or the webpack build itself fails, there are some quick fixes that may help you fix the problem:
+If the installation of the npm dependencies or the webpack build fails, you might want to try the following things:
 
-1. Use a supported Node.JS and NPM version
+1. Check you Node.js and npm version
 
-Generally, the Node.JS and NPM versions used in Sulu's `Test Application workflow`_ are the only ones, which are officially supported by us.
-Those are Node.JS v12 and v14 and NPM v6. Newer versions might be working though.
+You can check the officially supported and tested Node.js and npm version by looking at the `Test Application workflow`_ of the ``sulu/sulu`` package. At the time of writing, this includes Node.js 12, Node.js 14 and npm 6.
 
 .. warning::
 
-    Sulu is currently not compatible with NPM v7, see `this issue`_.
+    Because of a breaking change for linked packages, Sulu is not compatible with npm v7 at the moment. Have a look at the `issue in the sulu/skeleton repository`_ for more information about this..
 
-2. Build fails for no obvious reason
+2. Clear the npm cache on your machine
 
-It may happen, that the build fails for no obvious reason.
-In that case, it's a good idea to remove all the `package-lock.json` files and `node_modules` directories below your project root as described above.
-If that still doesn't help, you can try cleaning npm's internal cache by running:
+The webpack build might fail because of leftovers from previous builds our outdated packages.
+To prevent this, you should remove all the `package-lock.json` files and `node_modules` directories below your project root before installing the npm dependencies:
+
+.. code-block:: bash
+
+   rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
+   rm -rf assets/admin/package-lock.json && rm -rf vendor/sulu/sulu/package-lock.json && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/package-lock.json
+
+If this does not solve the problem, you can try to clean the npm cache on your machine to prevent installing cached packages:
 
 .. code-block:: bash
 
     npm cache clean --force
 
-.. _this issue: https://github.com/sulu/skeleton/issues/88
+.. _issue in the sulu/skeleton repository: https://github.com/sulu/skeleton/issues/88
 .. _Test Application workflow: https://github.com/sulu/sulu/blob/2.x/.github/workflows/test-application.yaml
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
