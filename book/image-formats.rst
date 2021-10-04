@@ -79,6 +79,26 @@ images.
         </format>
     </formats>
 
+Using image formats in your Twig template
+-----------------------------------------
+
+The URLs for accessing specific image formats are passed to you twig template inside of the ``thumbnails`` property:
+
+.. code-block:: twig
+
+    <div>
+        <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.title }}"/>
+    </div>
+    
+Per default, image formats will be outputted in the file format of the original file. 
+You can also use a specific file format (eg. ``png`` or ``webp``) by adding the extension to the format key:
+
+.. code-block:: twig
+
+    <div>
+        <img src="{{ image.thumbnails['200x100.webp'] }}" alt="{{ image.title }}"/>
+    </div>
+
 Image Compression
 -----------------
 
