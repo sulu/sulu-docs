@@ -396,7 +396,7 @@ implementing these things twice. And it allows you to build nice lists with a lo
 entire system without touching a single line of JS.
 
 However, directly using the ``View`` class does not really offer a nice developer experience, because this class cannot
-really validate anything. It has to accept everything, because Sulu does not not what views will be registered in the
+really validate anything. It has to accept everything, because Sulu does not know what views will be registered in the
 future. For this reason the concept of ``ViewBuilders`` has been introduced. As the name suggests it is an
 implementation of the `Builder pattern`_, and provides a better interface to build specific views. For this purpose a
 builder for each type of view has been implemented, which can consider the options required for each view. All of them
