@@ -162,6 +162,10 @@ XML files are used to define this metadata. See an example for such a file below
         </properties>
     </list>
 
+.. note::
+
+    Theoretically you can place such files wherever you want, as long as you configure the paths of those directories, so that sulu knows, where it can find it. But sulu automatically configures config/forms/ as directory to search for forms and config/lists/ for lists. So in most cases you should use those directories. Using other directories is just necessary, if you want to create forms or lists in a custom bundle.
+
 The root tag is called ``list`` and has two sub tags: The ``key`` tag contains a key that must be unique among all
 defined lists. Usually it is a safe bet to just reuse the above ``RESOURCE_KEY`` constant of the ``Event`` entity,
 unless you want to have different lists for the same entity.
