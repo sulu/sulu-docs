@@ -62,6 +62,14 @@ on which subscribers you have registered.
 
 See the :doc:`subscribers` chapter for more information.
 
+.. note::
+
+    To create a document via a Sulu CLI command (e.g., import from an external source), run the command within the admin context.
+
+    .. code-block:: bash
+
+        bin/adminconsole your:command
+
 The Path Builder
 ----------------
 
