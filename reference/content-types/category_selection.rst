@@ -51,6 +51,7 @@ Extended Example
 Following example defines an entry category for the selection tree.
 
 .. code-block:: xml
+
     <property name="categories" type="category_selection">
         <meta>
             <title lang="en">Category Selection</title>
