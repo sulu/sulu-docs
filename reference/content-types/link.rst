@@ -27,6 +27,9 @@ Parameters
     * - enable_anchor
       - bool
       - Enables the ``anchor`` input field in the overlay. Default: ``false``
+    * - enable_title
+      - bool
+      - Enables the ``title`` input field in the overlay. Default: ``false``
     * - types
       - collection
       - List of available types in the dropdown.
@@ -42,9 +45,30 @@ Example
             <title lang="en">Link</title>
             <title lang="de">Link</title>
         </meta>
+    </property>
+
+Twig
+----
+
+.. code-block:: twig
+
+    <a href="{{ content.link }}">Click me</a>
+
+Complex Example
+---------------
+
+.. code-block:: xml
+
+    <property name="link" type="link">
+        <meta>
+            <title lang="en">Link</title>
+            <title lang="de">Link</title>
+        </meta>
+
         <params>
             <param name="enable_target" value="true"/>
             <param name="enable_anchor" value="true"/>
+            <param name="enable_title" value="true"/>
             <param name="types" type="collection">
                 <param name="page"/>
                 <param name="external"/>
@@ -53,9 +77,11 @@ Example
         </params>
     </property>
 
-Twig
-----
+Complex Twig
+------------
 
 .. code-block:: twig
 
-    <a href="{{ content.link }}" target="{{ view.link.target }}">Click me</a>
+    <a href="{{ content.link }}" target="{{ view.link.target }}">
+        {{ view.link.title }}
+    </a>
