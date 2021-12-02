@@ -32,6 +32,9 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
+    * - sortable
+      - bool
+      - Defines if the user should be able to sort the selected items. Default value is true.
     * - request_parameters
       - collection
       - Collection of parameters that are appended to the requests sent by the selection.

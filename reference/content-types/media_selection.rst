@@ -28,6 +28,9 @@ Parameters
     * - defaultDisplayOption
       - string
       - Defines which of the displayOptions is the default one
+    * - sortable
+      - bool
+      - Defines if the user should be able to sort the selected items. Default value is true.
 
 Example
 -------
