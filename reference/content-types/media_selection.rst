@@ -34,6 +34,9 @@ Parameters
     * - max
       - string
       - The maximum number of selected media
+    * - sortable
+      - bool
+      - Defines if the user should be able to sort the selected items. Default value is true.
 
 Example
 -------
