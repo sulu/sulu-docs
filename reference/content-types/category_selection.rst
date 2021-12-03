@@ -51,6 +51,24 @@ Example
         </meta>
     </property>
 
+Extended Example
+----------------
+
+Following example defines an entry category for the selection tree.
+
+.. code-block:: xml
+
+    <property name="categories" type="category_selection">
+        <meta>
+            <title lang="en">Category Selection</title>
+        </meta>
+        <params>
+            <param name="request_parameters" type="collection">
+                <param name="rootKey" value="my_category_key"/>
+            </param>
+        </params>
+    </property>
+
 Twig
 ----
 
