@@ -1,7 +1,7 @@
 ActivityBundle
 ==============
 
-The ActivityBundle implements is responsible for recording activities that happen in the application and allows
+The ActivityBundle is responsible for recording activities that happen in the application and allows
 developer to listen for changes and other events that happen in the system.
 
 Configuration

@@ -28,6 +28,7 @@ documented the most important ones.
     security
     snippet
     tag
+    trash
     website/index
 
 When you get in touch with another bundle of Sulu, which is not documented in
