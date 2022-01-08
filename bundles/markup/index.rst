@@ -12,11 +12,17 @@ This example contains a sulu-related example. The tag ``sulu-link`` represents
 a link to another page. This tag will be replaced via a valid anchor where the
 `href` attribute contains the UUID of the page.
 
+A query string (?) and/or an id (#) that is appended to the UUID will be
+appended to the resulting anchor.
+
 .. code-block:: html
 
     <html>
         <body>
             <sulu-link href="123-123-123" title="test-title" />
+            <sulu-link href="123-123-123?query=string&foo=bar" title="test-title" />
+            <sulu-link href="123-123-123#anchor" title="test-title" />
+            <sulu-link href="123-123-123?query=string#anchor" title="test-title" />
         </body>
     </html>
 
@@ -27,6 +33,9 @@ a link to another page. This tag will be replaced via a valid anchor where the
     <html>
         <body>
             <a href="http://example.com/test" title="test-title">Page Title</a>
+            <a href="http://example.com/test?query=string&foo=bar" title="test-title">Page Title</a>
+            <a href="http://example.com/test#anchor" title="test-title">Page Title</a>
+            <a href="http://example.com/test?query=string#anchor" title="test-title">Page Title</a>
         </body>
     </html>
 
