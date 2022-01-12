@@ -37,6 +37,7 @@ our recipes.
     dump-sitemap
     https
     video-preview-images
+    pdf-preview-images
     external-media-storage
     webpack-encore
     add-admin-tabs
