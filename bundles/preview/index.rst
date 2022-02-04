@@ -64,6 +64,11 @@ to load, bind and de/serialize the object.
         {
             return unserialize($serializedObject);
         }
+
+        public function getSecurityContext($id, $locale): ?string
+        {
+            return ...; // load the name of your security context
+        }
     }
 
 Afterwards the services has to be registered using this class and the tag
