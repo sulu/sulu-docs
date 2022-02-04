@@ -117,6 +117,13 @@ with the correct data.
         }
     }
 
+.. Tip::
+
+    If `TrashItemHandler` is created outside of a Sulu sulu/skeleton application, for example in a separate bundle, the automatic autowire of the Trash bundle does not work.
+    In this case the handler must be tagged with the following tags.
+    ``sulu_trash.store_trash_item_handler`` , ``sulu_trash.restore_trash_item_handler`` and ``sulu_trash.restore_configuration_provider``.
+
+
 (Optional) Add restore configuration for your entity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
