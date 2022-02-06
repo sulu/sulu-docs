@@ -67,7 +67,7 @@ to load, bind and de/serialize the object.
 
         public function getSecurityContext($id, $locale): ?string
         {
-            return ...; // load the name of your security context
+            return null; // the security context used in the admin class for this object
         }
     }
 
