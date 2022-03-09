@@ -71,6 +71,12 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
               ExpiresByType font/eot "access plus 1 year"
               ExpiresByType font/ttf "access plus 1 year"
               ExpiresByType video/mp4 "access plus 1 year"
+          </IfModule>
+
+          <IfModule mod_headers.c>
+              <filesMatch ".(ico|css|js|gif|webp|jpe?g|png|svg|woff|woff2|eot|ttf|mp4)$">
+                  Header set Cache-Control "public, max-age=31536000, immutable"
+              </filesMatch>
 
               # recommended security headers
               Header set X-Content-Type-Options "nosniff"
@@ -79,14 +85,30 @@ Let's add the Apache configuration file for the `sulu.lo` domain.
           </IfModule>
 
           <IfModule mod_deflate.c>
-              SetOutputFilter DEFLATE
-              SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|mp4)$ no-gzip dont-vary
-              SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
-              SetEnvIfNoCase Request_URI \.pdf$ no-gzip dont-vary
-
-              BrowserMatch ^Mozilla/4 gzip-only-text/html
-              BrowserMatch ^Mozilla/4\.0[678] no-gzip
-              BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+              AddOutputFilterByType DEFLATE text/html
+              AddOutputFilterByType DEFLATE application/atom+xml
+              AddOutputFilterByType DEFLATE application/javascript
+              AddOutputFilterByType DEFLATE application/json
+              AddOutputFilterByType DEFLATE application/rss+xml
+              AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+              AddOutputFilterByType DEFLATE application/x-font-opentype
+              AddOutputFilterByType DEFLATE application/x-font-truetype
+              AddOutputFilterByType DEFLATE application/x-font-ttf
+              AddOutputFilterByType DEFLATE application/x-javascript
+              AddOutputFilterByType DEFLATE application/xhtml+xml
+              AddOutputFilterByType DEFLATE application/xml
+              AddOutputFilterByType DEFLATE font/eot
+              AddOutputFilterByType DEFLATE font/opentype
+              AddOutputFilterByType DEFLATE font/otf
+              AddOutputFilterByType DEFLATE font/truetype
+              AddOutputFilterByType DEFLATE image/svg+xml
+              AddOutputFilterByType DEFLATE image/vnd.microsoft.icon
+              AddOutputFilterByType DEFLATE image/x-icon
+              AddOutputFilterByType DEFLATE image/x-win-bitmap
+              AddOutputFilterByType DEFLATE text/css
+              AddOutputFilterByType DEFLATE text/javascript
+              AddOutputFilterByType DEFLATE text/plain
+              AddOutputFilterByType DEFLATE text/xml
           </IfModule>
       </Directory>
   </VirtualHost>
@@ -104,4 +126,3 @@ In general you should configure your vHost like the `Apache`_ paragraph above de
 	:align: center
 
 .. include:: file-permissions.inc.rst
-
