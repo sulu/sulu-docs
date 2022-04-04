@@ -48,7 +48,7 @@ Have a look at the `OpenStreetMap Wiki`_ for an up-to-date list of providers.
 - ``api_key``: Authentication key for the configured Nominatim endpoint.
   (Can be created via `Developer portal of Mapquest`_ for the Mapquest provider).
 
-Goolge Maps
+Google Maps
 """""""""""
 
 `Google geocoding`_ API.
