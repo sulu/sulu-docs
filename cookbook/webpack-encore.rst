@@ -142,7 +142,8 @@ Now you should be able to see the outcome in the browser.
 
 .. note::
 
-   When using custom assets with webpack-encore, you need to update the admin build in the public/build/admin directory: :doc:`build-admin-frontend`
+   If webpack encore assets were accidentally build before changing the `public/build` to `public/website/build`
+   it could happen that all your admin assets were removed. Use `git checkout public/build/admin` or the `bin/console sulu:admin:update-build` command to restore the admin build files: :doc:`build-admin-frontend`
 
 Optional: Install Web-JS
 ------------------------
