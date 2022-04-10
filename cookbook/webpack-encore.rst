@@ -140,6 +140,10 @@ and run the following command:
 
 Now you should be able to see the outcome in the browser.
 
+.. note::
+
+   When using custom assets with webpack-encore, you need to update the admin build in the public/build/admin directory: :doc:`build-admin-frontend`
+
 Optional: Install Web-JS
 ------------------------
 
