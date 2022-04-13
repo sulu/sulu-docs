@@ -131,7 +131,8 @@ property, should it be included in a search and so on. In addition to that it is
 a type, which describes how to format the content (e.g. a type of `datetime` will make sure that the date is displayed
 correctly based on the localization of the user).
 
-XML files are used to define this metadata. See an example for such a file below:
+XML files are used to define this metadata. By default, these list configuration XML files are located in the
+``config/lists`` directory of your project and an example looks like this:
 
 .. code-block:: xml
 
@@ -161,10 +162,6 @@ XML files are used to define this metadata. See an example for such a file below
             </property>
         </properties>
     </list>
-
-.. note::
-
-    Theoretically you can place such files wherever you want, as long as you configure the paths of those directories, so that sulu knows, where it can find it. But sulu automatically configures config/forms/ as directory to search for forms and config/lists/ for lists. So in most cases you should use those directories. Using other directories is just necessary, if you want to create forms or lists in a custom bundle.
 
 The root tag is called ``list`` and has two sub tags: The ``key`` tag contains a key that must be unique among all
 defined lists. Usually it is a safe bet to just reuse the above ``RESOURCE_KEY`` constant of the ``Event`` entity,
@@ -518,7 +515,8 @@ how to render the information. Doctrine already gives us some information about 
 is a string, but Sulu still does not know how to render this information. A string could represented e.g. in a simple
 ``input`` field, in a ``textarea`` or in a rich text editor. That is why we need more information in separate XML file.
 
-The following XML snippet shows how this metadata could be written:
+Form configuration XML files are located in the ``config/forms`` directory of your project by default and look similar
+to the following example:
 
 .. code-block:: xml
 
