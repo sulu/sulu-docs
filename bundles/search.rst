@@ -20,7 +20,7 @@ created by the `MassiveSearchBundle`_ consisting of the following values:
   Useful if the index represents something a non-translatable literal can
   describe.
 - ``security_context``: This setting is used to describe which security context
-  (see :doc:`security`) the user has to have ``view`` permission in, in order
+  (see :doc:`security/index`) the user has to have ``view`` permission in, in order
   to search through this index.
 - ``icon``: Describes which icon should be used in the search result if no
   image is available.

@@ -33,7 +33,7 @@ Security contexts
 
 Every application can define its own security contexts, which will then be
 available in the list of security contexts, on which access can be granted or
-denied. Have a look at :doc:`../cookbook/securing-your-application` to see an
+denied. Have a look at :doc:`../../cookbook/securing-your-application` to see an
 example.
 
 These contexts are used to control the access to different areas of the
@@ -73,7 +73,7 @@ is simply a service implementing the ``AccessControlProviderInterface`` tagged
 with ``sulu.access_control``.
 
 The task of this class is to save the permission information into the correct
-database. This is important, because otherwise it would not be possible to 
+database. This is important, because otherwise it would not be possible to
 paginate lists considering permissions of these entities in an easy and
 performant way. There are already two implementations of the
 ``AccessControlProviderInterface``, the ``PhpcrAccessControlProvider`` handling
@@ -86,7 +86,7 @@ Doctrine entity. The entity only has to implement the
 .. note::
 
     The ``AccessControlManager`` is used by some other components, especially
-    by the ``PermissionController``, which handles the requests from the 
+    by the ``PermissionController``, which handles the requests from the
     reusable permission tab, and the ``SecurityContextVoter`` from Sulu.
 
 Checking security
@@ -107,3 +107,8 @@ from the role might be overridden by the permissions from this specific object
 (which are handled by the previously mentioned ``AccessControlManager``).
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
+
+.. toctree::
+    :maxdepth: 2
+
+    security_system
