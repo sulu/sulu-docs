@@ -1,18 +1,19 @@
 Security System
 ===============
 
-Sulu Security Bundle provides the possibility to work with different security systems.
-This means a user can only login into a configured symfony firewall when the user has
-atleast one role in the current matching security system. A role is always related to
-on security system.
+The SecurityBundle supports to work with different security systems. Each role is assigned 
+to a security system.
+When a request happens, the request is assigned to a security system and the symfony firewall allows a user to login only if the user has at least one role in the assigned security system.
 
-By default there is one Security system the ``Sulu`` which is used in the admin.
+By default, there is a single security system called ``Sulu`` which is used for the administration interface.
 
 Webspace Security System
 ------------------------
 
-Every webspace can also define a security system, this is required when a website requires
-some kind of a login:
+A webspace can define a security system in its configuration. The security system will be
+assigned to the request when a user visits a page of the webspace.
+
+If your webspace requires some kind of login, you should define a security system in its configuration:
 
 .. code:: xml
 
@@ -20,7 +21,8 @@ some kind of a login:
         <system>Website</system>
     </security>
 
-To use object security on pages, media or custom entities you need to enable ``permission-check``:
+If you want to restrict pages, media entities or custom entities to logged in users with a specific role, 
+you need to enable ``permission-check`` in the webspace configuration:
 
 .. code-block:: xml
 
@@ -28,14 +30,13 @@ To use object security on pages, media or custom entities you need to enable ``p
         <system>example</system>
     </security>
 
-For this it is important to activate :doc:`../../cookbook/user-context-caching`.
+To prevent caching problems with restricted entities, it is important to activate :doc:`../../cookbook/user-context-caching`.
 
 Custom Security System
 ----------------------
 
-To add a custom security system. Beside the admin security system on webspace
-security system can be done via a custom Admin class. This is common for
-intranet or extranets which are not related to a webspace:
+You can register a custom security system in a ``Admin`` class. This is useful for sections 
+like an intranet or an extranet which are not associated to a specific webspace:
 
 .. code-block:: php
 
@@ -53,9 +54,8 @@ intranet or extranets which are not related to a webspace:
         }
     }
 
-That the sulu user provider knows about which system is currently active a
-request listener need to be registered which sets the current system for
-the system store service:
+Additionally, you need to register a request listener that assigns the custom security context to the request.
+To do this, you access the ``SystemStore`` service in your listener:
 
 .. code-block:: php
 
@@ -119,8 +119,4 @@ the system store service:
 System Store
 ------------
 
-The system store is the service which provides ``sulu_security.system_store``
-the current security system. This is example used by the UserProvider to
-provide only users which are in the current system. It is also used for
-smart content providers to return only objects which the current user has
-access for.
+The ``SystemStore`` service is used by the ``UserProvider`` to access the security system of the current request. It is registered with the service id ``sulu_security.system_store``. 
