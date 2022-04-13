@@ -140,6 +140,11 @@ and run the following command:
 
 Now you should be able to see the outcome in the browser.
 
+.. note::
+
+   If the website assets were accidentally build before changing the `public/build` to `public/website/build`
+   it could happen that all admin assets were removed. Use `git checkout public/build/admin` or the `bin/console sulu:admin:update-build` command to restore the admin build files: :doc:`build-admin-frontend`
+
 Optional: Install Web-JS
 ------------------------
 
