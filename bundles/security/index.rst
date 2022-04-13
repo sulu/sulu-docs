@@ -33,7 +33,7 @@ Security contexts
 
 Every application can define its own security contexts, which will then be
 available in the list of security contexts, on which access can be granted or
-denied. Have a look at :doc:`../cookbook/securing-your-application` to see an
+denied. Have a look at :doc:`../../cookbook/securing-your-application` to see an
 example.
 
 These contexts are used to control the access to different areas of the
