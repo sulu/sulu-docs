@@ -10,7 +10,8 @@ Add configuration `config/packages/sulu_media.yml`:
 .. code-block:: yaml
 
     sulu_media:
-        ghost_script: /usr/bin/gs
+        ghost_script: 
+          path: /usr/bin/gs
 
 Common locations are:
 
