@@ -31,7 +31,7 @@ The following configuration provides a major pattern which check the password fo
         password_policy:
             enabled: true
             pattern: '(?=^.{8,}$)(?=.*\d)(?=.*[^a-zA-Z0-9]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'
-            information_translation_key: app.password_information
+            info_translation_key: app.password_information
 
 Dont forget to also add your own translation for password information which should contain your requirements.
 See following example:
