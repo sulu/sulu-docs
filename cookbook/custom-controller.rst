@@ -45,7 +45,7 @@ that should be passed to your twig template.
             return $attributes;
         }
 
-        public static function getSubscribedServices()
+        public static function getSubscribedServices(): array
         {
             $subscribedServices = parent::getSubscribedServices();
             $subscribedServices['my_custom_service'] = 'your_service_id_or_class';
