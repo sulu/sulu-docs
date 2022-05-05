@@ -1,9 +1,9 @@
 Password policy
 ===============
 
-The SecurityBundle provides a way to set the password policy by providing a pattern.
-This pattern will be used to validate the input of the user in the form and also in the
-`UserManager`.
+The SecurityBundle allows to define a password policy by configuring a pattern.
+The pattern will be used to validate the input of the user in the administration interface
+and programatically created users in the `UserManager`.
 
 The following example enables the default pattern of sulu (minimum length of 8 characters).
 
@@ -15,7 +15,7 @@ The following example enables the default pattern of sulu (minimum length of 8 c
         password_policy:
             enabled: true
 
-The following configuration provides a major pattern which check the password for:
+The configuration below sets an example pattern that validates the password against following constraints:
 
 * The password length must be greater than or equal to 8
 * The password must contain one or more uppercase characters
@@ -33,11 +33,10 @@ The following configuration provides a major pattern which check the password fo
             pattern: '(?=^.{8,}$)(?=.*\d)(?=.*[^a-zA-Z0-9]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'
             info_translation_key: app.password_information
 
-Dont forget to also add your own translation for password information which should contain your requirements.
-See following example:
+Dont forget to provide a translation that explains your password policy to the user by setting the ``info_translation_key`` configuration. 
 
 .. code:: json
 
     {
-        "app.password_information": "You password should contain one or more uppercase characters, one or more lowercase characters, one or more numeric values, one or more special characters and the minimum length is 8 character."
+        "app.password_information": "Passwords have a minimum length of 8 characters and must contain one or more uppercase characters, one or more lowercase characters, one or more numeric values, one or more special characters."
     }
