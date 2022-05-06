@@ -112,3 +112,4 @@ from the role might be overridden by the permissions from this specific object
     :maxdepth: 2
 
     security_system
+    password_policy
