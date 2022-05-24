@@ -71,27 +71,15 @@ directory of your project and is executed when running ``bin/console phpcr:migra
          */
         private function upgrade(SessionInterface $session)
         {
-            $queryManager = $session->getWorkspace()->getQueryManager();
-            $localizations = $this->container->get('sulu_core.webspace.webspace_manager')->getAllLocalizations();
+            /** @var Row $row */
+            foreach ($this->getRowsToMigrate() as $row) {
+                $node = $row->getNode();
+                $localizedOldPropertyName = \sprintf('i18n:%s-oldPropertyName', $localization->getLocale());
+                $localizedNewPropertyName = \sprintf('i18n:%s-newPropertyName', $localization->getLocale());
 
-            /** @var Localization $localization */
-            foreach ($localizations as $localization) {
-                $pageCondition = '([jcr:mixinTypes] = "sulu:page" OR [jcr:mixinTypes] = "sulu:home")';
-                $templateCondition = \sprintf('([i18n:%s-template] = "my-template-key")', $localization->getLocale());
-
-                $query = 'SELECT * FROM [nt:unstructured] WHERE (' . $templateCondition . 'AND' . $pageCondition . ')';
-                $rows = $queryManager->createQuery($query, 'JCR-SQL2')->execute();
-
-                /** @var Row $row */
-                foreach ($rows as $row) {
-                    $node = $row->getNode();
-                    $localizedOldPropertyName = \sprintf('i18n:%s-oldPropertyName', $localization->getLocale());
-                    $localizedNewPropertyName = \sprintf('i18n:%s-newPropertyName', $localization->getLocale());
-
-                    if ($node->hasProperty($localizedOldPropertyName)) {
-                        $node->setProperty($localizedNewPropertyName, $node->getPropertyValue($localizedOldPropertyName));
-                        $node->setProperty($localizedOldPropertyName, null);
-                    }
+                if ($node->hasProperty($localizedOldPropertyName)) {
+                    $node->setProperty($localizedNewPropertyName, $node->getPropertyValue($localizedOldPropertyName));
+                    $node->setProperty($localizedOldPropertyName, null);
                 }
             }
         }
@@ -100,6 +88,26 @@ directory of your project and is executed when running ``bin/console phpcr:migra
          * Downgrades all nodes in given session.
          */
         private function downgrade(SessionInterface $session)
+        {
+            /** @var Row $row */
+            foreach ($this->getRowsToMigrate() as $row) {
+                $node = $row->getNode();
+                $localizedOldPropertyName = \sprintf('i18n:%s-oldPropertyName', $localization->getLocale());
+                $localizedNewPropertyName = \sprintf('i18n:%s-newPropertyName', $localization->getLocale());
+
+                if ($node->hasProperty($localizedNewPropertyName)) {
+                    $node->setProperty($localizedOldPropertyName, $node->getPropertyValue($localizedNewPropertyName));
+                    $node->setProperty($localizedNewPropertyName, null);
+                }
+            }
+        }
+
+        /**
+        * Creates a generator that generates all rows that have to be migrated.
+        *
+        * @return \Generator
+        */
+        private function getRowsToMigrate()
         {
             $queryManager = $session->getWorkspace()->getQueryManager();
             $localizations = $this->container->get('sulu_core.webspace.webspace_manager')->getAllLocalizations();
@@ -110,19 +118,7 @@ directory of your project and is executed when running ``bin/console phpcr:migra
                 $templateCondition = \sprintf('([i18n:%s-template] = "my-template-key")', $localization->getLocale());
 
                 $query = 'SELECT * FROM [nt:unstructured] WHERE (' . $templateCondition . 'AND' . $pageCondition . ')';
-                $rows = $queryManager->createQuery($query, 'JCR-SQL2')->execute();
-
-                /** @var Row $row */
-                foreach ($rows as $row) {
-                    $node = $row->getNode();
-                    $localizedOldPropertyName = \sprintf('i18n:%s-oldPropertyName', $localization->getLocale());
-                    $localizedNewPropertyName = \sprintf('i18n:%s-newPropertyName', $localization->getLocale());
-
-                    if ($node->hasProperty($localizedNewPropertyName)) {
-                        $node->setProperty($localizedOldPropertyName, $node->getPropertyValue($localizedNewPropertyName));
-                        $node->setProperty($localizedNewPropertyName, null);
-                    }
-                }
+                yield from $queryManager->createQuery($query, 'JCR-SQL2')->execute();
             }
         }
     }
