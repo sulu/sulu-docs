@@ -131,7 +131,8 @@ property, should it be included in a search and so on. In addition to that it is
 a type, which describes how to format the content (e.g. a type of `datetime` will make sure that the date is displayed
 correctly based on the localization of the user).
 
-XML files are used to define this metadata. See an example for such a file below:
+XML files are used to define this metadata. By default, these list configuration XML files are located in the
+``config/lists`` directory of your project and an example looks like this:
 
 .. code-block:: xml
 
@@ -514,7 +515,8 @@ how to render the information. Doctrine already gives us some information about 
 is a string, but Sulu still does not know how to render this information. A string could represented e.g. in a simple
 ``input`` field, in a ``textarea`` or in a rich text editor. That is why we need more information in separate XML file.
 
-The following XML snippet shows how this metadata could be written:
+Form configuration XML files are located in the ``config/forms`` directory of your project by default and look similar
+to the following example:
 
 .. code-block:: xml
 
