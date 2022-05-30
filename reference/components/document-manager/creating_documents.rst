@@ -72,7 +72,7 @@ Defining the alias and type
 In order for the document manager to recognize existing managed documents and
 persist new ones, you must add some mapping to your configuration.
 
-This configuration can be done in you applications ``config.yml`` file:
+The following configuration should be added to the ``config/packages/sulu_document_manager.yaml`` file:
 
 .. code-block:: yaml
 

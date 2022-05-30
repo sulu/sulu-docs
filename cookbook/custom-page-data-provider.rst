@@ -7,7 +7,7 @@ comes with a few included providers and also allows to implement new ones to loa
 
 In some cases, it might be useful to register an additional provider, which only returns pages including a property
 with a specific value. This is possible by registering a new instance of the ``PageDataProvider`` included in Sulu
-that uses a custom impementation of the ``QueryBuilder``. In the following example a custom ``AuthorPageDataProvider``
+that uses a custom implementation of the ``QueryBuilder``. In the following example a custom ``AuthorPageDataProvider``
 is implemented, which filters the pages for a specific author:
 
 **1. Implement a custom** ``QueryBuilder`` **class that adds conditions**
