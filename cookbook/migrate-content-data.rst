@@ -68,10 +68,8 @@ directory of your project and is executed when running ``bin/console phpcr:migra
 
             /** @var Localization $localization */
             foreach ($localizations as $localization) {
-
                 $this->downgrade($session,$localization);
                 $this->downgrade($liveSession,$localization);
-
             }
 
             $session->save();
