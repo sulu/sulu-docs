@@ -54,7 +54,6 @@ directory of your project and is executed when running ``bin/console phpcr:migra
 
                 $this->upgrade($session,$localization);
                 $this->upgrade($liveSession,$localization);
-
             }
 
             $session->save();
