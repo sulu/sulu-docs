@@ -125,6 +125,7 @@ directory of your project and is executed when running ``bin/console phpcr:migra
             $templateCondition = \sprintf('([i18n:%s-template] = "my-template-key")', $localization->getLocale());
 
             $query = 'SELECT * FROM [nt:unstructured] WHERE (' . $templateCondition . 'AND' . $pageCondition . ')';
+
             yield from $queryManager->createQuery($query, 'JCR-SQL2')->execute();
         }
     }
