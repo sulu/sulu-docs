@@ -80,6 +80,11 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
 
     The `@ORM\\Table` annotation on your entity must match the table of the extended entity.
     Otherwise, doctrine might run into errors when querying data of the entity.
+    
+.. warning::
+
+|    If you get the following error ``The table with name 'your_db.se_users' already exists.`` when trying to dump your sql, you might want to run the following command line:
+|    ``php bin/console cache:clear``
 
 Configuration
 -------------
