@@ -9,7 +9,7 @@ does not wait a long time for the sitemap to be returned.
 
 In 99% of the cases the sitemap can be generated on the fly and
 so nothing is required. But for very big websites their is
-a command to pre-generate the sitemap via for Sulu and cache it
+a command to pre-generate the sitemap via Sulu and cache it
 on the filesystem.
 This can be triggered by calling the following command. This
 should be done by a cron-job.
@@ -19,8 +19,8 @@ should be done by a cron-job.
     bin/websiteconsole sulu:website:dump-sitemap
 
 If you use the ``{host}`` replacer in your webspace url
-configuration make sure you have the symfony `router context`_
-parameter configured. Have also a look at the official Symfony
+configuration make sure you have the Symfony ``default_uri``
+configured. Have also a look at the official Symfony
 Documentation about `Generating URLs in Commands`_.
 
 .. code-block:: yaml
