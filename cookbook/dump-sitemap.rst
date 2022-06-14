@@ -45,6 +45,18 @@ For Symfony Versions before 5.1 you have to configure the
         router.request_context.scheme: 'https'
         router.request_context.host: 'example.org'
 
+Switch back to on the fly generation
+------------------------------------
+
+If you want to switch back to on the fly generation, you need
+just remove the exist generated sitemaps from the ``var`` directory.
+
+By default it is the following directory under the ``prod``
+environment:
+
+.. code-block:: bash
+
+    rm -rf var/cache/website/prod/sulu/sitemaps/
 
 .. _router context: https://symfony.com/doc/4.4/routing.html#generating-urls-in-commands
 .. _Generating URLS in Commands: https://symfony.com/doc/5.4/routing.html#generating-urls-in-commands
