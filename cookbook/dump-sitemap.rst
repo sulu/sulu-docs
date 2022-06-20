@@ -7,21 +7,24 @@ Each provider returns mostly 50000 links which can return many
 links, which would take a bigger amount of time. The Google bot
 does not wait a long time for the sitemap to be returned.
 
-In 99% of the cases the sitemap can be generated on the fly and
-so nothing is required. But for very big websites their is
-a command to pre-generate the sitemap via Sulu and cache it
-on the filesystem.
-This can be triggered by calling the following command. This
-should be done by a cron-job.
+To improve the speed of the sitemap page, Sulu provides a command for pre-generating 
+the page and cache it on the filesystem. The should be called in a cron-job to keep the
+pre-generated sitemap up to date.
+
+.. note::
+
+    This is a performance optimization for very big websites. In 99% of the cases, the 
+    optimization is not necessary and the sitemap can be generated on the fly. 
 
 .. code-block:: bash
 
     bin/websiteconsole sulu:website:dump-sitemap
 
 If you use the ``{host}`` replacer in your webspace url
-configuration make sure you have the Symfony ``default_uri``
-configured. Have also a look at the official Symfony
-Documentation about `Generating URLs in Commands`_.
+configuration, you need to set the Symfony ``default_uri`` config option
+for generating the URLs of your sitemap items via a command. 
+Have a look at the official Symfony Documentation about 
+`Generating URLs in Commands`_ for more information.
 
 .. code-block:: yaml
 
@@ -32,11 +35,11 @@ Documentation about `Generating URLs in Commands`_.
 
 .. tip::
 
-    You can use ``%env(DEFAULT_URI)%`` to control the configuration
-    via environment variables.
+    You can use ``%env(DEFAULT_URI)%`` to set the configuration
+    via an environment variables.
 
-For Symfony Versions before 5.1 you have to configure the
-`router context`_  parameters:
+If you are using a Symfony version before 5.1, you need to configure the
+`router context`_  parameters instead of the ``default_uri`` option:
 
 .. code-block:: yaml
 
@@ -49,10 +52,10 @@ Switch back to on the fly generation
 ------------------------------------
 
 If you want to switch back to on the fly generation, you need
-just remove the exist generated sitemaps from the ``var`` directory.
+to remove the exist pre-generated sitemaps from the ``var`` directory.
 
-By default it is the following directory under the ``prod``
-environment:
+By default, pre-generated sitemaps are stored in the following directory in the 
+``prod`` environment:
 
 .. code-block:: bash
 
