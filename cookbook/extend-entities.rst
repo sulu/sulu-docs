@@ -1,10 +1,7 @@
 Extend Entities
 ===============
 
-Sulu has a very easy way to extend and replace the internal entities. This feature is not
-implemented for each entity but it will be implemented for all soon.
-
-These entities are ready to extend:
+Sulu allows to extend and replace the following internal entities.
 
 * User
 * Role
@@ -19,8 +16,7 @@ You can extend all of them in the same way. Therefore we explain it for `User` h
 Create a Entity
 ---------------
 
-Create your own Entity for example in the `src` folder and extends the Entity with the Sulu
-`User` class.
+Create your own Entity that extends Sulu `User` class.
 
 .. code-block:: php
 
@@ -84,9 +80,8 @@ Create your own Entity for example in the `src` folder and extends the Entity wi
 Configuration
 -------------
 
-You can specify your new entity and if it exists your repository
-in the configuration section of the file ``config/packages/*``.
-If the file does not exist you need to create it.
+Configure Sulu to use your own entity instead in the respective file in the
+``config/packages/*`` folder. If the file does not exist, you need to create it.
 
 For the `User` entity (`se_users`):
 
@@ -174,6 +169,14 @@ For the `Tag` entity (`ta_tags`):
                 model:                Sulu\Bundle\TagBundle\Entity\Tag
                 repository:           Sulu\Bundle\TagBundle\Entity\TagRepository
 
+After changing the configuration of your project, use the following command to clear the
+Symfony cache:
+
+.. code-block:: bash
+
+    $ php bin/adminconsole cache:clear
+
 .. warning::
 
-    If you override entities in an existing project, you need to migrate the existing data to avoid data loss.
+    If you override entities in an existing project, you need to migrate the existing data
+    to avoid data loss.
