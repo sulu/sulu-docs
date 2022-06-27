@@ -108,7 +108,7 @@ from the role might be overridden by the permissions from this specific object
 
 
 Two-Factor Authentication
-------------------
+-------------------------
 
 Sulu allows to use two-factor authentication over email via the scheb/2fa packages. To enable it, 
 the packages need to be installed into the project via composer:
