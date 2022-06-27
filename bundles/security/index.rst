@@ -107,18 +107,18 @@ from the role might be overridden by the permissions from this specific object
 (which are handled by the previously mentioned ``AccessControlManager``).
 
 
-2FA Authentication
+Two-Factor Authentication
 ------------------
 
-Sulu provides 2FA authentication over email via the scheb/2fa packages. They must be
-installed into the project via composer:
+Sulu allows to use two-factor authentication over email via the scheb/2fa packages. To enable it, 
+the packages need to be installed into the project via composer:
 
 .. code-block:: bash
 
     composer require scheb/2fa-bundle scheb/2fa-email scheb/2fa-trusted-devices
 
-The security firewall need to be configured to allow 2fa authentication in the
-admin firewall. By enabling following in the ``config/packages//security.yaml``:
+The security configuration needs to be adjusted to allow two-factor authentication in the
+admin firewall. This is configured in the ``config/packages/security.yaml``:
 
 .. code-block:: diff
 
@@ -145,8 +145,8 @@ admin firewall. By enabling following in the ``config/packages//security.yaml``:
    +                 success_handler: sulu_security.two_factor_authentication_success_handler
    +                 failure_handler: sulu_security.two_factor_authentication_failure_handler
 
-The scheb/2fa bundle need to configure email and trusted devices which are the current
-supported 2fa authentication packages ``config/packages/scheb_2fa.yaml``:
+Afterwards, the scheb/2fa bundle needs to be configured to enable email and trusted devices
+in the ``config/packages/scheb_2fa.yaml`` file:
 
 .. code-block:: yaml
 
@@ -157,7 +157,8 @@ supported 2fa authentication packages ``config/packages/scheb_2fa.yaml``:
         trusted_device:
             enabled: true
 
-The  ``config/routes/scheb_2fa.yaml``:
+Additionally, the routes of the scheb/2fa bundle must be added to the project in 
+the ``config/routes/scheb_2fa.yaml`` file:
 
 .. code-block:: yaml
 
@@ -165,8 +166,8 @@ The  ``config/routes/scheb_2fa.yaml``:
     2fa_login_check_admin:
         path: /admin/2fa_check
 
-After this configuration and clearing the symfony cache it is possible to enable
-2fa authentication in the profile of the user which is logged in.
+Finally, after adjusting the configuration and clearing the symfony cache, it is possible to enable
+two-factor authentication via the administration interface in the profile of the logged-in user.
 
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
