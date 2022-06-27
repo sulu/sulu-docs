@@ -36,7 +36,7 @@ Parameters
         Default: All registered link types
     * - excluded_types
       - collection
-      - List of types which should not show in the dropdown.
+      - List of types that should be excluded in the dropdown.
         Default: empty array
 
 Example
