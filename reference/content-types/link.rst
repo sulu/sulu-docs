@@ -30,6 +30,9 @@ Parameters
     * - enable_title
       - bool
       - Enables the ``title`` input field in the overlay. Default: ``false``
+    * - enable_rel
+      - bool
+      - Enables the ``rel`` input field in the overlay. Default: ``false``
     * - types
       - collection
       - List of available types in the dropdown.
@@ -73,6 +76,7 @@ Complex Example
             <param name="enable_target" value="true"/>
             <param name="enable_anchor" value="true"/>
             <param name="enable_title" value="true"/>
+            <param name="enable_rel" value="true"/>
             <param name="types" type="collection">
                 <param name="page"/>
                 <param name="external"/>
@@ -86,6 +90,6 @@ Complex Twig
 
 .. code-block:: twig
 
-    <a href="{{ content.link }}" target="{{ view.link.target }}">
+    <a href="{{ content.link }}" target="{{ view.link.target }}" rel="{{ view.link.rel }}">
         {{ view.link.title }}
     </a>
