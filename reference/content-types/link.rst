@@ -21,15 +21,12 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - enable_target
-      - bool
-      - Enables the ``target`` input field in the overlay. Default: ``false``
     * - enable_anchor
       - bool
       - Enables the ``anchor`` input field in the overlay. Default: ``false``
-    * - enable_title
+    * - enable_attributes
       - bool
-      - Enables the ``title`` input field in the overlay. Default: ``false``
+      - Enables the ``target``, ``title`` and ``rel`` input fields in the overlay. Default: ``false``
     * - types
       - collection
       - List of available types in the dropdown.
@@ -70,9 +67,8 @@ Complex Example
         </meta>
 
         <params>
-            <param name="enable_target" value="true"/>
             <param name="enable_anchor" value="true"/>
-            <param name="enable_title" value="true"/>
+            <param name="enable_attributes" value="true"/>
             <param name="types" type="collection">
                 <param name="page"/>
                 <param name="external"/>
@@ -86,6 +82,6 @@ Complex Twig
 
 .. code-block:: twig
 
-    <a href="{{ content.link }}" target="{{ view.link.target }}">
+    <a href="{{ content.link }}" target="{{ view.link.target }}" rel="{{ view.link.rel }}">
         {{ view.link.title }}
     </a>
