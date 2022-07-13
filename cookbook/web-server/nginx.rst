@@ -32,7 +32,7 @@ The Nginx configuration could look something like.
           access_log off;
           expires 1y;
           add_header Pragma public;
-          add_header Cache-Control "public";
+          add_header Cache-Control "public, immutable";
       }
 
       # pass the PHP scripts to FastCGI server from upstream phpfcgi
