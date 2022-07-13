@@ -37,7 +37,7 @@ Example
     <a href="http://example.com/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
     
 Provider Attributes
-----------
+-------------------
 
 There might be situations where you need to know which provider was used even after the tag was converted to an anchor tag. In that case you can use the provider attributes feature to pass the provider information as a data attribute to the rendered anchor tag.
 
