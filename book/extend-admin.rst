@@ -218,25 +218,13 @@ shows a controller doing what has just been described.
      */
     class EventController implements ClassResourceInterface
     {
-        /**
-         * @var ViewHandlerInterface
-         */
-        private $viewHandler;
+        private ViewHandlerInterface $viewHandler;
 
-        /**
-         * @var FieldDescriptorFactoryInterface
-         */
-        private $fieldDescriptorFactory;
+        private FieldDescriptorFactoryInterface $fieldDescriptorFactory;
 
-        /**
-         * @var DoctrineListBuilderFactoryInterface
-         */
-        private $listBuilderFactory;
+        private DoctrineListBuilderFactoryInterface $listBuilderFactory;
 
-        /**
-         * @var RestHelperInterface
-         */
-        private $restHelper;
+        private RestHelperInterface $restHelper;
 
         public function __construct(
             ViewHandlerInterface $viewHandler,
@@ -359,10 +347,7 @@ because of the autoconfigure feature of Symfony:
 
     class EventAdmin extends Admin
     {
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
+        private ViewBuilderFactoryInterface $viewBuilderFactory;
 
         public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
         {
@@ -423,10 +408,7 @@ items looks like this:
     {
         const EVENT_LIST_VIEW = 'app.events_list';
 
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
+        private ViewBuilderFactoryInterface $viewBuilderFactory;
 
         public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
         {
@@ -634,10 +616,7 @@ The following code applies all of the mentioned concepts:
         const EVENT_ADD_FORM_VIEW = 'app.event_add_form';
         const EVENT_EDIT_FORM_VIEW = 'app.event_edit_form';
 
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
+        private ViewBuilderFactoryInterface $viewBuilderFactory;
 
         public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
         {
