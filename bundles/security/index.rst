@@ -115,7 +115,7 @@ the packages need to be installed into the project via composer:
 
 .. code-block:: bash
 
-    composer require scheb/2fa-bundle scheb/2fa-email scheb/2fa-trusted-devices
+    composer require scheb/2fa-bundle scheb/2fa-email scheb/2fa-trusted-device
 
 The security configuration needs to be adjusted to allow two-factor authentication in the
 admin firewall. This is configured in the ``config/packages/security.yaml``:
