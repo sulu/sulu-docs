@@ -1,7 +1,7 @@
 Security System
 ===============
 
-The SecurityBundle supports to work with different security systems. Each role is assigned 
+The SecurityBundle supports to work with different security systems. Each role is assigned
 to a security system.
 When a request happens, the request is assigned to a security system and the symfony firewall allows a user to login only if the user has at least one role in the assigned security system.
 
@@ -21,7 +21,7 @@ If your webspace requires some kind of login, you should define a security syste
         <system>Website</system>
     </security>
 
-If you want to restrict pages, media entities or custom entities to logged in users with a specific role, 
+If you want to restrict pages, media entities or custom entities to logged in users with a specific role,
 you need to enable ``permission-check`` in the webspace configuration:
 
 .. code-block:: xml
@@ -35,7 +35,7 @@ To prevent caching problems with restricted entities, it is important to activat
 Custom Security System
 ----------------------
 
-You can register a custom security system in a ``Admin`` class. This is useful for sections 
+You can register a custom security system in a ``Admin`` class. This is useful for sections
 like an intranet or an extranet which are not associated to a specific webspace:
 
 .. code-block:: php
@@ -71,21 +71,13 @@ To do this, you access the ``SystemStore`` service in your listener:
 
     class SecuritySystemSubscriber implements EventSubscriberInterface
     {
-        private FirewallMap $map;
-
-        private SystemStoreInterface $systemStore;
-
         public function __construct(
-            SystemStoreInterface $systemStore,
-            FirewallMapInterface $map,
+            private SystemStoreInterface $systemStore,
+            private FirewallMapInterface $map,
         ) {
-            $this->systemStore = $systemStore;
-
             if (!$map instanceof FirewallMap) {
                 throw new \LogicException(\sprintf('Expected "%s" but got "%s".', FirewallMap::class, \get_class($map)));
             }
-
-            $this->map = $map;
         }
 
         public static function getSubscribedEvents(): array
@@ -119,4 +111,4 @@ To do this, you access the ``SystemStore`` service in your listener:
 System Store
 ------------
 
-The ``SystemStore`` service is used by the ``UserProvider`` to access the security system of the current request. It is registered with the service id ``sulu_security.system_store``. 
+The ``SystemStore`` service is used by the ``UserProvider`` to access the security system of the current request. It is registered with the service id ``sulu_security.system_store``.

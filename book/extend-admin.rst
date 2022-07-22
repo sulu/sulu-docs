@@ -218,36 +218,12 @@ shows a controller doing what has just been described.
      */
     class EventController implements ClassResourceInterface
     {
-        /**
-         * @var ViewHandlerInterface
-         */
-        private $viewHandler;
-
-        /**
-         * @var FieldDescriptorFactoryInterface
-         */
-        private $fieldDescriptorFactory;
-
-        /**
-         * @var DoctrineListBuilderFactoryInterface
-         */
-        private $listBuilderFactory;
-
-        /**
-         * @var RestHelperInterface
-         */
-        private $restHelper;
-
         public function __construct(
-            ViewHandlerInterface $viewHandler,
-            FieldDescriptorFactoryInterface $fieldDescriptorFactory,
-            DoctrineListBuilderFactoryInterface $listBuilderFactory,
-            RestHelperInterface $restHelper
+           private ViewHandlerInterface $viewHandler,
+           private FieldDescriptorFactoryInterface $fieldDescriptorFactory,
+           private DoctrineListBuilderFactoryInterface $listBuilderFactory,
+           private RestHelperInterface $restHelper
         ) {
-            $this->viewHandler = $viewHandler;
-            $this->fieldDescriptorFactory = $fieldDescriptorFactory;
-            $this->listBuilderFactory = $listBuilderFactory;
-            $this->restHelper = $restHelper;
         }
 
         public function cgetAction(): Response
@@ -359,14 +335,8 @@ because of the autoconfigure feature of Symfony:
 
     class EventAdmin extends Admin
     {
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
-
-        public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
+        public function __construct(private ViewBuilderFactoryInterface $viewBuilderFactory)
         {
-            $this->viewBuilderFactory = $viewBuilderFactory;
         }
 
         public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
@@ -423,14 +393,8 @@ items looks like this:
     {
         const EVENT_LIST_VIEW = 'app.events_list';
 
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
-
-        public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
+        public function __construct(private ViewBuilderFactoryInterface $viewBuilderFactory)
         {
-            $this->viewBuilderFactory = $viewBuilderFactory;
         }
 
         // ...
@@ -634,14 +598,8 @@ The following code applies all of the mentioned concepts:
         const EVENT_ADD_FORM_VIEW = 'app.event_add_form';
         const EVENT_EDIT_FORM_VIEW = 'app.event_edit_form';
 
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
-
-        public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
+        public function __construct(private ViewBuilderFactoryInterface $viewBuilderFactory)
         {
-            $this->viewBuilderFactory = $viewBuilderFactory;
         }
 
         public function configureViews(ViewCollection $viewCollection): void

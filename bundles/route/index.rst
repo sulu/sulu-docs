@@ -148,11 +148,8 @@ RouteDefaultsProvider
 
     class EventRouteDefaultsProvider implements RouteDefaultsProviderInterface
     {
-        protected $eventRepository;
-
-        public function __construct(EventRepository $eventRepository)
+        public function __construct(protected EventRepository $eventRepository)
         {
-            $this->eventRepository = $eventRepository;
         }
 
         public function getByEntity($entityClass, $id, $locale, $object = null)

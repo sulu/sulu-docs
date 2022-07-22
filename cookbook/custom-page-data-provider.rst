@@ -27,22 +27,15 @@ is implemented, which filters the pages for a specific author:
 
     class AuthorPageQueryBuilder extends QueryBuilder
     {
-        /**
-         * @var ContactRepositoryInterface
-         */
-        private $contactRepository;
-
         public function __construct(
             StructureManagerInterface $structureManager,
             ExtensionManagerInterface $extensionManager,
             SessionManagerInterface $sessionManager,
             $languageNamespace,
-            ContactRepositoryInterface $contactRepository
+            private ContactRepositoryInterface $contactRepository
         )
         {
             parent::__construct($structureManager, $extensionManager, $sessionManager, $languageNamespace);
-
-            $this->contactRepository = $contactRepository;
         }
 
         protected function buildWhere($webspaceKey, $locale)
