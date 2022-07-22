@@ -43,17 +43,8 @@ implemented in the Repository.
 
     class SitemapProvider implements SitemapProviderInterface
     {
-        /**
-         * @var ExampleRepository
-         */
-        private $repository;
-
-        /**
-         * @param ExampleRepository $repository
-         */
-        public function __construct(ExampleRepository $repository)
+        public function __construct(private ExampleRepository $repository)
         {
-            $this->repository = $repository;
         }
 
         public function build($page, $scheme, $host)

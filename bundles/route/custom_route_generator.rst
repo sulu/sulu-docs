@@ -17,16 +17,10 @@ each entity type.
     class RouteGenerator implements RouteGeneratorInterface
     {
         /**
-         * @var RouteGeneratorInterface
-         */
-        private $routeGenerator;
-
-        /**
          * {@inheritdoc}
          */
-        public function __construct(RouteGeneratorInterface $routeGenerator)
+        public function __construct(private RouteGeneratorInterface $routeGenerator)
         {
-            $this->routeGenerator = $routeGenerator;
         }
 
         /**

@@ -159,15 +159,8 @@ needs some updating. You can add the permission tab as shown below:
 
     class ExampleAdmin extends Admin
     {
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
-
-        public function __construct(
-            ViewBuilderFactoryInterface $viewBuilderFactory,
-        ) {
-            $this->viewBuilderFactory = $viewBuilderFactory;
+        public function __construct(private ViewBuilderFactoryInterface $viewBuilderFactory)
+        {
         }
 
         public function configureViews(ViewCollection $viewCollection): void
