@@ -184,5 +184,9 @@ Do not initialize:
 Common mistakes
 ---------------
 
-Sulu is very lenient in what data it accepts. This means that if data is missing it will just be assumed to be null. And if you provide too much data (eg. properties that don't exist in Sulu's structure) the data will just ignored. Therefore if you created a document with fixtures and some part of the data is missing check for spelling mistakes.
+Sulu is very lenient in what data it accepts. This means that if the data for a property is missing
+Sulu will just assumed that it is null. Furthermore, Sulu does not check the data for unknown
+properties and therefore data for properties that dont exist is ignored.
+If you have created a document with fixtures and some part of the data is missing, it is a good idea
+to check for spelling mistakes in the property names.
 
