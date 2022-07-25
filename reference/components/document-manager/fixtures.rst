@@ -179,3 +179,14 @@ Do not initialize:
 .. code-block:: bash
 
     $ php bin/console sulu:document:fixtures:load --no-initialize
+
+
+Common mistakes
+---------------
+
+Sulu is very lenient in what data it accepts. This means that if the data for a property is missing
+Sulu will just assumed that it is null. Furthermore, Sulu does not check the data for unknown
+properties and therefore data for properties that dont exist is ignored.
+If you have created a document with fixtures and some part of the data is missing, it is a good idea
+to check for spelling mistakes in the property names.
+
