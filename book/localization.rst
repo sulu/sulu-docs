@@ -79,6 +79,12 @@ can be used, which contains an associative array with the parameters ``locale``,
     {% endfor %}
     </ul>
 
+.. important::
+
+    The ``localizations`` variable contains the page URLs based on the URLs configured in 
+    the  ``<urls>`` section of your webspace. Have a look at :doc:`../book/webspaces` for
+    more information about the webspace configuration.
+
 The template itself does not have to be adapted for usage with multiple
 localizations. The twig variables are the same for every language, only the
 content is different, and this is handled by Sulu for the developer.
