@@ -14,14 +14,15 @@ To activate the webspace within sulu you have to clear the cache with the comman
 
 .. code-block:: bash
 
-    $ php bin/adminconsole cache:clear
+    php bin/adminconsole cache:clear
+    php bin/websiteconsole cache:clear
 
 Afterwards you will need to initialize the new webspace, to do so run the
 following command:
 
 .. code-block:: bash
 
-    $ php bin/adminconsole sulu:document:initialize
+    php bin/adminconsole sulu:document:initialize
 
 .. note::
 
@@ -34,6 +35,6 @@ If you have any error you can use the following command to validate your webspac
 
 .. code-block:: bash
 
-    $ php bin/adminconsole sulu:content:validate:webspaces
+    php bin/adminconsole sulu:content:validate:webspaces
 
 .. _example.xml: https://github.com/sulu/skeleton/blob/2.x/config/webspaces/example.xml
