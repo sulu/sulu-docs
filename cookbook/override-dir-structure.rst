@@ -43,7 +43,7 @@ generated it with ``npm install`` and ``npm run build`` into your new directory.
 Overwrite templates configuration files path
 --------------------------------------------
 
-To use another directory then the default ``config/templates/pages``. You need to create a ``sulu_core.yaml`` file in ``config/packages`` and add the folling parameters.
+To use another directory then the default ``config/templates/pages``. You need to create a ``sulu_core.yaml`` file in ``config/packages`` and add the following parameters.
 (Subdirectories are not included by design, this allows the use of subdirectories for something else like ``<xi:include .../>`` see :doc:`../book/templates`.)
 
 .. code-block:: yaml
