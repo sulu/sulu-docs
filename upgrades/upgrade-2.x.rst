@@ -32,11 +32,16 @@ After this, you can update all dependencies of your project by executing the fol
 
 The `sulu/skeleton repository`_ contains the project template for Sulu projects. The template might be adjusted
 between different versions to include configuration for new features or keep up with the `Symfony best practices`_.
-It is advised to examine the `changes in the sulu/skeleton repository`_ between the versions you are upgrading and
-apply them to your project if the make sense in your case.
+It is advised to examine the changes in the ``sulu/skeleton`` repository between the versions you are upgrading and
+apply them to your project if they make sense in your case.
 
 This step cannot be automated, because changes in sulu/skeleton repository could include BC breaks or might simply
 not fit your project.
+
+.. note::
+
+    For a convenient view of all changes in the skeleton repository, open https://github.com/sulu/skeleton/compare/
+    and the select your current version as ``base`` and the target version as ``compare``.
 
 3. Check the UPGRADE.md file for BC breaks
 ------------------------------------------
@@ -69,5 +74,4 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _Symfony best practices: https://symfony.com/doc/current/best_practices.html
-.. _changes in the sulu/skeleton repository: https://github.com/sulu/skeleton/compare/2.1.0...2.1.1
 .. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.x/UPGRADE.md
