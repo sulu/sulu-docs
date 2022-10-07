@@ -8,5 +8,4 @@
      - **created**: Date of creation
      - **creator**: User ID of creator
      - **nodeType**: Type of node
-     - **path**: Path of page
      - **excerpt**: Excerpt (if load-excerpt is true)
