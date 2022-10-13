@@ -897,7 +897,7 @@ cached on the client:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <cacheLifetime type="seconds">2400</cacheLifetime>
+        <cacheLifetime type="seconds">1209600</cacheLifetime>
 
         <!-- ... -->
     </template>
