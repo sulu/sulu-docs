@@ -55,7 +55,7 @@ User Context feature in Sulu.
         }
     }
 
-4. Uncomment the ``security`` configuration in `config/packages/security_website.yaml`
+4. Uncomment the ``security`` configuration in `config/packages/security.yaml`
 
 .. note::
 
@@ -112,7 +112,7 @@ User Context feature in Sulu.
     logout:
         path: /logout
 
-7. Implement the template for the login form in `static/login.html.twig`
+7. Implement the template for the login form in `templates/static/login.html.twig`
 
 .. code-block:: twig
 
