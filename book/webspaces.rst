@@ -289,7 +289,7 @@ following line for an example:
 Placeholder are expressions in curly braces, which will be expanded to every
 possible value. For the above example that means, that an URL for every
 localization defined will be generated. So if you have a localization ``de-at``
-and ``en-gb``, the system will create URLs for ``www.example.org/de-at`` and
+and ``en-us``, the system will create URLs for ``www.example.org/de-at`` and
 ``www.example.org/en-us``.
 
 In the following table all the possible placeholders are listed, and explains
