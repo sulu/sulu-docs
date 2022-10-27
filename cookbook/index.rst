@@ -45,6 +45,7 @@ our recipes.
     sulu-twig-attributes
     user-context-caching
     build-admin-frontend
+    multi-server-setup
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
