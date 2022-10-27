@@ -45,7 +45,7 @@ Twig
 ----
 
 The content type only returns the UUID of the target page at the moment. If you want to
-render a link to the page, you can use the <``sulu-link`` tag>:doc:`../../bundles/markup/link`:
+render a link to the page, you can use the ``<sulu-link>`` tag (see :doc:`../../bundles/markup/link`):
 
 .. code-block:: html
 
