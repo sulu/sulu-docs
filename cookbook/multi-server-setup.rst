@@ -72,7 +72,7 @@ Sulu uses the `MassiveSearchBundle`_ for its search functionality on the website
 By default the bundle creates an optimized search index in the filesystem of the current server.
 To prevent outdated search results, you need to `configure Elasticsearch as a centralized search adapter`_.
 
-.. code-block::
+.. code-block:: yaml
 
     # config/packages/massive_search.yaml
     massive_search:
@@ -90,7 +90,7 @@ you need to manage your sessions in a centralized storage that is accessed by al
 `Store Sessions in a Database`_ section of the Symfony documentation to find out how to store sessions in a database like Redis or MySQL.
 Alternatively, you can set a centralized ``session.save_handler`` directly in your ``php.ini``:
 
-.. code-block::
+.. code-block:: ini
 
     session.save_handler = redis
     session.save_path = "tcp://192.168.0.10:6379"
