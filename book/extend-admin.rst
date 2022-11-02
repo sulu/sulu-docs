@@ -318,7 +318,7 @@ This is done by using the ``sulu_admin.resources`` configuration. The following 
                     detail: app.get_event
 
 The configuration makes use of the route names you have seen listed above by the `debug:router` command. For both
-variants of the URL (``/admin/api/events`` and ``/admin/api/events{id}``) one representative is used as a proxy for the
+variants of the URL (``/admin/api/events`` and ``/admin/api/events/{id}``) one representative is used as a proxy for the
 list and detail URL - whereby the detail URL has to be the one including the ID.
 
 Admin class
