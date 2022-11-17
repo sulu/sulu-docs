@@ -298,6 +298,8 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+.. _templates-properties-visible-disabled-conditions:
+
 Visible/Disabled Conditions
 ---------------------------
 
