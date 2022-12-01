@@ -139,3 +139,11 @@ it is also possible to load snippet templates from custom folders.
                         type: "snippet"
 
 In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
+
+
+Learn more
+----------
+
+* :doc:`../cookbook/default-snippets`
+* Content type reference for :doc:`../reference/content-types/single_snippet_selection`
+* Content type reference for :doc:`../reference/content-types/snippet_selection`
