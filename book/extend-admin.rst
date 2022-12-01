@@ -566,6 +566,10 @@ has a few attributes:
 - ``mandatory`` defines if the field is required in order for the form to be submitted.
 - ``colspan`` allows to define the width of the field. A value of ``12`` means that the entire available width is used,
   using smaller numbers result in an accordingly smaller field.
+- ``disabledCondition`` allows to define a condition to render the field as disabled. It works the
+  same way like for :ref:`template properties <templates-properties-visible-disabled-conditions>`.
+- ``visibleCondition`` allows to define a condition to show or hide the field. It works the
+  same way like for :ref:`template properties <templates-properties-visible-disabled-conditions>`.
 
 .. note::
 
