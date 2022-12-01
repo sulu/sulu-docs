@@ -23,7 +23,7 @@ Parameters
       - Description
     * - mode
       - string
-      - Defines the mode of the input field, can either be "full" or "leaf". Default value is "leaf".
+      - Defines the mode of the input field, can either be "full" or "leaf". Default value is "full".
     * - entity_class
       - string
       - Class that is used for loading the history urls of entity.
