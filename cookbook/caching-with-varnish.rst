@@ -148,6 +148,33 @@ The following will add full caching support for Sulu:
     sub vcl_recv {
         call sulu_recv;
 
+        // # Add a Surrogate-Capability header to announce ESI support.
+        // set req.http.Surrogate-Capability = "abc=ESI/1.0";
+
+        // # Remove all cookies except the session ID (SULUSESSID)
+        // # Check configured session ID name in your config/packages/framework.yaml
+        // if (req.http.Cookie) {
+        //     set req.http.Cookie = ";" + req.http.Cookie;
+        //     set req.http.Cookie = regsuball(req.http.Cookie, "; +", ";");
+        //     set req.http.Cookie = regsuball(req.http.Cookie, ";(SULUSESSID)=", "; \1=");
+        //     set req.http.Cookie = regsuball(req.http.Cookie, ";[^ ][^;]*", "");
+        //     set req.http.Cookie = regsuball(req.http.Cookie, "^[; ]+|[; ]+$", "");
+
+        //     if (req.http.Cookie == "") {
+        //         # If there are no more cookies, remove the header to get page cached.
+        //         unset req.http.Cookie;
+        //     }
+        // }
+
+        // if (req.method != "GET" && req.method != "HEAD") {
+        //     return (pass);
+        // }
+
+        // # In different to the builtin.vcl of varnish we cache the page still when it have a cookie
+        // if (req.http.Authorization) {
+        //     return (pass);
+        // }
+
         # Force the lookup, the backend must tell not to cache or vary on all
         # headers that are used to build the hash.
         return (hash);

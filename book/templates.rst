@@ -298,6 +298,8 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+.. _templates-properties-visible-disabled-conditions:
+
 Visible/Disabled Conditions
 ---------------------------
 
@@ -633,6 +635,11 @@ type:
     types*. You define *block types* yourself in the ``<types>`` element
     and set the default selection in ``default-type``. Only from the
     ``<property>``, we reference a *content type*.
+
+.. note::
+
+    More details about blocks, such as the available parameters, can be found on
+    the :doc:`reference <../reference/content-types/block>` page.
 
 Aligning Fields on the Grid
 ---------------------------

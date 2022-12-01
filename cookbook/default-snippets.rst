@@ -1,7 +1,7 @@
 Using default snippets for managing page-independent data
 =========================================================
 
-The snippet feature of Sulu allows to create and manage reusable pieces of content.
+The :doc:`snippet feature<../bundles/snippet>` of Sulu allows to create and manage reusable pieces of content.
 These pieces of content cannot only be assigned to a page using the ``snippet_selection``
 content type, but they can also be associated to a webspace.
 
