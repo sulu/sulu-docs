@@ -75,7 +75,7 @@ User Context feature in Sulu.
         firewalls:
             website:
                 pattern: ^/
-                anonymous: true
+                anonymous: true # only required for Symfony 5 projects in Symfony 6 this can be removed
                 lazy: true
                 form_login:
                     login_path: login
