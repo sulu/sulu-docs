@@ -49,14 +49,14 @@ You may also specify a specific bundle for which to run the tests:
 
 .. code-block:: bash
 
-    $ ./bin/runtests -C -t SuluSearchBundle
+    $ ./bin/runtests -C -t SearchBundle
 
 After the bundles have been initialized you may also simply change to the
 bundle root directory and use ``phpunit`` as normal:
 
 .. code-block:: bash
 
-    $ cd src/Sulu/Bundle/SuluSearchBundle
+    $ cd src/Sulu/Bundle/SearchBundle
     $ phpunit
 
 Component Testing
