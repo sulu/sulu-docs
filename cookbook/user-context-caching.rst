@@ -77,6 +77,7 @@ User Context feature in Sulu.
                 pattern: ^/
                 anonymous: true # only required for Symfony 5 projects in Symfony 6 this can be removed
                 lazy: true
+                provider: sulu
                 form_login:
                     login_path: login
                     check_path: login
