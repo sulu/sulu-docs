@@ -89,7 +89,7 @@ Configure the storage with following yaml-snippet:
         storage: azure_blob
         storages:
             azure_blob:
-                connection_string: ''DefaultEndpointsProtocol=https;AccountName={YOUR_ACCOUNT_NAME};AccountKey={YOUR_ACCOUNT_KEY};''
+                connection_string: 'DefaultEndpointsProtocol=https;AccountName={YOUR_ACCOUNT_NAME};AccountKey={YOUR_ACCOUNT_KEY};'
                 container_name: 'container-name'
                 path_prefix: 'optional path prefix'
 
