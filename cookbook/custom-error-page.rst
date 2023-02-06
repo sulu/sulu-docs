@@ -19,7 +19,7 @@ each theme.
         <template type="error-404">error/error-404</template>
     </templates>
 
-The `ExceptionController` uses the status code of the response to determine
+The `ErrorController` uses the status code of the response to determine
 which template is responsible for the exception. If no special template is
 defined it uses the template without an error code.
 
