@@ -29,10 +29,12 @@ Twig
 
 .. code-block:: twig
 
-    {{ content.location.latitude }} <br>
-    {{ content.location.longitude }} <br>
+    {{ content.location.lat }} <br>
+    {{ content.location.long }} <br>
     {{ content.location.street }} <br>
-    {{ content.location.streetNumber }} <br>
-    {{ content.location.zip }} <br>
-    {{ content.location.city }} <br>
-    {{ content.location.country }}
+    {{ content.location.number }} <br>
+    {{ content.location.code }} <br>
+    {{ content.location.town }} <br>
+    {{ content.location.country }} <br>
+    {{ content.location.title }} <br>
+    {{ content.location.zoom }}
