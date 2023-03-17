@@ -76,6 +76,8 @@ The rest of the functionality and Query generation is done in the Trait.
 
   <?php
 
+    use Doctrine\ORM\EntityRepository;
+    use Doctrine\ORM\QueryBuilder;
     use Sulu\Component\SmartContent\Orm\DataProviderRepositoryInterface;
     use Sulu\Component\SmartContent\Orm\DataProviderRepositoryTrait;
 
@@ -135,6 +137,8 @@ class implements the Interface `ItemInterface`.
 
     <?php
 
+    use JMS\Serializer\Annotation\ExclusionPolicy;
+    use JMS\Serializer\Annotation\VirtualProperty;
     use Sulu\Component\SmartContent\ItemInterface;
 
     /**
