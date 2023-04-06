@@ -121,10 +121,10 @@ When a lot of business logic it is probably better to create a custom entity ins
 
     use Sulu\Bundle\PageBundle\Admin\PageAdmin;
     use Sulu\Component\Content\SmartContent\PageDataProvider;
-    use Sulu\Component\SmartContent\Configuration\Builder;
+    use Sulu\Component\SmartContent\Configuration\ProviderConfiguration;
     use Sulu\Component\SmartContent\Configuration\ProviderConfigurationInterface;
 
-    class CustomPageDataProvider extends PageDataProvider
+    class EventPageDataProvider extends PageDataProvider
     {
         public function getConfiguration(): ProviderConfigurationInterface
         {
@@ -133,32 +133,25 @@ When a lot of business logic it is probably better to create a custom entity ins
 
         private function initConfiguration(): ProviderConfigurationInterface
         {
-            $builder = Builder::create()
-                ->enableTags()
-                ->enableCategories()
-                ->enableLimit()
-                ->enablePagination()
-                ->enablePresentAs()
-                ->enableDatasource('pages', 'pages', 'column_list')
-                ->enableSorting(
-                    [
-                        ['column' => null, 'title' => 'sulu_admin.default'],
-                        ['column' => 'title', 'title' => 'sulu_admin.title'],
-                        ['column' => 'published', 'title' => 'sulu_admin.published'],
-                        ['column' => 'created', 'title' => 'sulu_admin.created'],
-                        ['column' => 'changed', 'title' => 'sulu_admin.changed'],
-                        ['column' => 'authored', 'title' => 'sulu_admin.authored'],
-                        ['column' => 'customProperty', 'title' => 'sulu_admin.custom_property'],
-                    ]
-                )
-                // 
-                ->enableTypes([])
-                ->enableView(PageAdmin::EDIT_FORM_VIEW, ['id' => 'id', 'webspace' => 'webspace'])
-                ->enableAudienceTargeting();
+            /** @var ProviderConfiguration $configuration */
+            $configuration = parent::getConfiguration();
 
-            return $builder->getConfiguration();
+            $configuration->setTags(false);
+            $configuration->setCategories(false);
+            $configuration->setLimit(false);
+            $configuration->setPaginated(false);
+            $configuration->setPresentAs(false);
+            $configuration->setAudienceTargeting(false);
+            $configuration->setSorting([
+                ...$configuration->getSorting(),
+                ['column' => 'datetimeFrom', 'title' => 'sulu_admin.datetime_from'],
+            ]);
+            $configuration->setView(PageAdmin::EDIT_FORM_VIEW);
+
+            return $configuration;
         }
     }
+
 
 .. list-table::
     :header-rows: 1
@@ -166,34 +159,28 @@ When a lot of business logic it is probably better to create a custom entity ins
     * - Method
       - Parameters
       - Description
-    * - `enableTags`
+    * - `setTags`
       - bool
-      - Enable tags to be selecteable for smart_content. Default: `true`
-    * - `enableTypes`
-      - collection
-      - Enable a list of types. Default: `[]`
-    * - `enableCategories`
+      - Enable tags to be selecteable for smart_content.
+    * - `setTags`
       - bool
-      - Enable categories. Default: `true`
-    * - `enableLimit`
+      - Enable categories.
+    * - `setLimit`
       - bool
-      - Enable limit. Default: `true`
-    * - `enablePagination`
+      - Enable limit.
+    * - `setPaginated`
       - bool
-      - Enable pagination. Default: `true`
-    * - `enablePresentAs`
+      - Enable pagination.
+    * - `setPresentAs`
       - bool
-      - Enable present as. Default: `true`
-    * - `enableDatasource`
+      - Enable present as.
+    * - `setAudienceTargeting`
       - bool
-      - Enable datasource. Default: `true`
-    * - `enableAudienceTargeting`
-      - bool
-      - Enable audience targeting. Default: `true`
-    * - `enableSorting`
+      - Enable audience targeting.
+    * - `setSorting`
       - collection
       - Accepts a nested array of two-dimensional arrays. Each two-dimensional array should include a `column` key with the property to sort by, and a `title` key with the label to display in the sorting dropdown menu. Default: `[]`
-    * - `enableView`
+    * - `setView`
       -  `array<string, string> $resultToView`
       - Defines where the deep link when clicking on a smart content item should navigate to.
       
