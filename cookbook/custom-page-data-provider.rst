@@ -106,6 +106,7 @@ is implemented, which filters the pages for a specific author:
 
 Adding custom sorting
 ---------------------
+
 You can implement custom sorting criteria by creating a new ``DataProvider`` class that extends from the ``PageDataProvider`` class and using it instead.
 That way, you can sort by a property that isn't provided by the ``PageDataProvider``. 
 When a lot of business logic it is probably better to create a custom entity instead.
