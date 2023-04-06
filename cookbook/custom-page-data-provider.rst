@@ -180,12 +180,12 @@ When a lot of business logic it is probably better to create a custom entity ins
       - Enable audience targeting.
     * - `setSorting`
       - collection
-      - Accepts a nested array of two-dimensional arrays. Each two-dimensional array should include a `column` key with the property to sort by, and a `title` key with the label to display in the sorting dropdown menu. Default: `[]`
+      - Accepts a nested array of two-dimensional arrays. Each two-dimensional array should include a `column` key with the property to sort by, and a `title` key with the label to display in the sorting dropdown menu.
     * - `setView`
-      -  `array<string, string> $resultToView`
+      - `array<string, string> $resultToView`
       - Defines where the deep link when clicking on a smart content item should navigate to.
-      
-**2. Use the new** ``CustomPageDataProvider`` **in the** ``services.yaml``**.**
+
+**2. Use the custom** ``DataProvider`` **in the** ``services.yaml`` **.**
 
 .. code-block:: yaml
 
