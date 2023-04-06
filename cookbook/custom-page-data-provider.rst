@@ -103,3 +103,106 @@ is implemented, which filters the pages for a specific author:
             <param name="provider" value="author_pages"/>
         </params>
     </property>
+
+Adding custom sorting
+---------------------
+You can implement custom sorting criteria by creating a new ``DataProvider`` class that extends from the ``PageDataProvider`` class and using it instead.
+That way, you can sort by a property that isn't provided by the ``PageDataProvider``. 
+When a lot of business logic it is probably better to create a custom entity instead.
+
+**1. Create a custom** ``DataProvider`` **class that overrides the** ``PageDataProvider`` **configuration.**
+
+.. code-block:: php
+
+    <?php
+    // src/SmartContent/CustomPageDataProvider.php
+
+    namespace App\SmartContent;
+
+    use Sulu\Bundle\PageBundle\Admin\PageAdmin;
+    use Sulu\Component\Content\SmartContent\PageDataProvider;
+    use Sulu\Component\SmartContent\Configuration\Builder;
+    use Sulu\Component\SmartContent\Configuration\ProviderConfigurationInterface;
+
+    class CustomPageDataProvider extends PageDataProvider
+    {
+        public function getConfiguration(): ProviderConfigurationInterface
+        {
+            return $this->initConfiguration();
+        }
+
+        private function initConfiguration(): ProviderConfigurationInterface
+        {
+            $builder = Builder::create()
+                ->enableTags()
+                ->enableCategories()
+                ->enableLimit()
+                ->enablePagination()
+                ->enablePresentAs()
+                ->enableDatasource('pages', 'pages', 'column_list')
+                ->enableSorting(
+                    [
+                        ['column' => null, 'title' => 'sulu_admin.default'],
+                        ['column' => 'title', 'title' => 'sulu_admin.title'],
+                        ['column' => 'published', 'title' => 'sulu_admin.published'],
+                        ['column' => 'created', 'title' => 'sulu_admin.created'],
+                        ['column' => 'changed', 'title' => 'sulu_admin.changed'],
+                        ['column' => 'authored', 'title' => 'sulu_admin.authored'],
+                        ['column' => 'customProperty', 'title' => 'sulu_admin.custom_property'],
+                    ]
+                )
+                // 
+                ->enableTypes([])
+                ->enableView(PageAdmin::EDIT_FORM_VIEW, ['id' => 'id', 'webspace' => 'webspace'])
+                ->enableAudienceTargeting();
+
+            return $builder->getConfiguration();
+        }
+    }
+
+.. list-table::
+    :header-rows: 1
+
+    * - Method
+      - Parameters
+      - Description
+    * - `enableTags`
+      - bool
+      - Enable tags to be selecteable for smart_content. Default: `true`
+    * - `enableTypes`
+      - collection
+      - Enable a list of types. Default: `[]`
+    * - `enableCategories`
+      - bool
+      - Enable categories. Default: `true`
+    * - `enableLimit`
+      - bool
+      - Enable limit. Default: `true`
+    * - `enablePagination`
+      - bool
+      - Enable pagination. Default: `true`
+    * - `enablePresentAs`
+      - bool
+      - Enable present as. Default: `true`
+    * - `enableDatasource`
+      - bool
+      - Enable datasource. Default: `true`
+    * - `enableAudienceTargeting`
+      - bool
+      - Enable audience targeting. Default: `true`
+    * - `enableSorting`
+      - collection
+      - Accepts a nested array of two-dimensional arrays. Each two-dimensional array should include a `column` key with the property to sort by, and a `title` key with the label to display in the sorting dropdown menu. Default: `[]`
+    * - `enableView`
+      -  `array<string, string> $resultToView`
+      - Defines where the deep link when clicking on a smart content item should navigate to.
+      
+**2. Use the new** ``CustomPageDataProvider`` **in the** ``services.yaml``**.**
+
+.. code-block:: yaml
+
+        app.smart_content.data_provider.author_pages:
+            class: App\SmartContent\EventPageDataProvider
+
+
+All other parameters remain the same as you would register a ``PageDataProvider`` service that uses a custom ``QueryBuilder`` implementation.
