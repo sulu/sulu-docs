@@ -137,22 +137,16 @@ When a lot of business logic it is probably better to create a custom entity ins
             /** @var ProviderConfiguration $configuration */
             $configuration = parent::getConfiguration();
 
-            $configuration->setTags(false);
-            $configuration->setCategories(false);
-            $configuration->setLimit(false);
-            $configuration->setPaginated(false);
-            $configuration->setPresentAs(false);
-            $configuration->setAudienceTargeting(false);
             $configuration->setSorting([
                 ...$configuration->getSorting(),
                 ['column' => 'datetimeFrom', 'title' => 'sulu_admin.datetime_from'],
             ]);
-            $configuration->setView(PageAdmin::EDIT_FORM_VIEW);
 
             return $configuration;
         }
     }
 
+Other configuration settings can be overriden as well. The available options are:
 
 .. list-table::
     :header-rows: 1
