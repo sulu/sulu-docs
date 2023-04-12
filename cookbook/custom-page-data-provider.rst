@@ -103,3 +103,88 @@ is implemented, which filters the pages for a specific author:
             <param name="provider" value="author_pages"/>
         </params>
     </property>
+
+Adding custom sorting
+---------------------
+
+You can implement custom sorting criteria by creating a new ``DataProvider`` class that extends from the ``PageDataProvider`` class and using it instead.
+That way, you can sort by a property that isn't provided by the ``PageDataProvider``. 
+When a lot of business logic it is probably better to create a custom entity instead.
+
+**1. Create a custom** ``DataProvider`` **class that overrides the** ``PageDataProvider`` **configuration.**
+
+.. code-block:: php
+
+    <?php
+    // src/SmartContent/CustomPageDataProvider.php
+
+    namespace App\SmartContent;
+
+    use Sulu\Bundle\PageBundle\Admin\PageAdmin;
+    use Sulu\Component\Content\SmartContent\PageDataProvider;
+    use Sulu\Component\SmartContent\Configuration\ProviderConfiguration;
+    use Sulu\Component\SmartContent\Configuration\ProviderConfigurationInterface;
+
+    class EventPageDataProvider extends PageDataProvider
+    {
+        public function getConfiguration(): ProviderConfigurationInterface
+        {
+            return $this->initConfiguration();
+        }
+
+        private function initConfiguration(): ProviderConfigurationInterface
+        {
+            /** @var ProviderConfiguration $configuration */
+            $configuration = parent::getConfiguration();
+
+            $configuration->setSorting([
+                ...$configuration->getSorting(),
+                ['column' => 'datetimeFrom', 'title' => 'sulu_admin.datetime_from'],
+            ]);
+
+            return $configuration;
+        }
+    }
+
+Other configuration settings can be overriden as well. The available options are:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Method
+      - Parameters
+      - Description
+    * - `setTags`
+      - bool
+      - Enable tags to be selecteable for smart_content.
+    * - `setTags`
+      - bool
+      - Enable categories.
+    * - `setLimit`
+      - bool
+      - Enable limit.
+    * - `setPaginated`
+      - bool
+      - Enable pagination.
+    * - `setPresentAs`
+      - bool
+      - Enable present as.
+    * - `setAudienceTargeting`
+      - bool
+      - Enable audience targeting.
+    * - `setSorting`
+      - collection
+      - Accepts a nested array of two-dimensional arrays. Each two-dimensional array should include a `column` key with the property to sort by, and a `title` key with the label to display in the sorting dropdown menu.
+    * - `setView`
+      - `array<string, string> $resultToView`
+      - Defines where the deep link when clicking on a smart content item should navigate to.
+
+**2. Use the custom** ``DataProvider`` **in the** ``services.yaml`` **.**
+
+.. code-block:: yaml
+
+        app.smart_content.data_provider.author_pages:
+            class: App\SmartContent\EventPageDataProvider
+
+
+All other parameters remain the same as you would register a ``PageDataProvider`` service that uses a custom ``QueryBuilder`` implementation.
