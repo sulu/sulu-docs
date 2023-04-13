@@ -180,6 +180,10 @@ needs some updating. You can add the permission tab as shown below:
         }
     }
 
+.. note::
+
+    The usage of the ``setRequestParameters`` method in the FormViewBuilder is deprecated. Please use ``addRequestParameters`` instead.
+
 The important option here is set in the ``setRequestParameters`` call, which
 defines for which resource this permission form is used. In order for that to
 work the relation between the ``resourceKey`` and the security context and the
