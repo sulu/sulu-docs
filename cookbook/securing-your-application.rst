@@ -171,7 +171,7 @@ needs some updating. You can add the permission tab as shown below:
                     ->createFormViewBuilder('sulu_example.edit_form.permissions', '/permissions')
                     ->setResourceKey('permissions')
                     ->setFormKey('permission_details')
-                    ->setRequestParameters(['resourceKey' => 'example'])
+                    ->addRequestParameters(['resourceKey' => 'example'])
                     ->setTabCondition('_permissions.security')
                     ->setTabTitle('sulu_security.permissions')
                     ->addToolbarActions([new ToolbarAction('sulu_admin.save')])
@@ -180,11 +180,7 @@ needs some updating. You can add the permission tab as shown below:
         }
     }
 
-.. note::
-
-    The usage of the ``setRequestParameters`` method in the FormViewBuilder is deprecated. Please use ``addRequestParameters`` instead.
-
-The important option here is set in the ``setRequestParameters`` call, which
+The important option here is set in the ``addRequestParameters`` call, which
 defines for which resource this permission form is used. In order for that to
 work the relation between the ``resourceKey`` and the security context and the
 security class has to be configured:
