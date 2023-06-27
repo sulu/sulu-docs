@@ -8,8 +8,6 @@
     - **changer**: User ID of changer
     - **created**: Date of creation
     - **creator**: User ID of creator
-    - **path**: Path of page
-    - **localizations**: Localizations including URLs to other languages
     - **urls**: Urls of page (Deprecated)
     - **published**: Publish date of page
     - **shadowBaseLocale**: Shadow locale of page

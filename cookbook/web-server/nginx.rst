@@ -32,12 +32,12 @@ The Nginx configuration could look something like.
           access_log off;
           expires 1y;
           add_header Pragma public;
-          add_header Cache-Control "public";
+          add_header Cache-Control "public, immutable";
       }
 
       # pass the PHP scripts to FastCGI server from upstream phpfcgi
       location ~ ^/(index|config)\.php(/|$) {
-          fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+          fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
           fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;

@@ -7,8 +7,8 @@ You can define a template for each HTTP status code.
 Configuration
 -------------
 
-The following code-block from the webspace configuration file shows a default
-configuration for the exception templates. If you want to add an own exception
+The following code block from the webspace configuration file shows a default
+configuration for the exception templates. If you want to add your own exception
 for example 404 you can simply add it to the list. You can specify that for
 each theme.
 
@@ -19,14 +19,14 @@ each theme.
         <template type="error-404">error/error-404</template>
     </templates>
 
-The `ExceptionController` uses the status-code of the response to determine
+The `ErrorController` uses the status code of the response to determine
 which template is responsible for the exception. If no special template is
 defined it uses the template without an error code.
 
-Twig-Template
+Twig Template
 -------------
 
-In the twig-template you can use your website master template to reuse your
+In the twig template you can use your website base template to reuse your
 style.
 
 .. code-block:: html
@@ -44,10 +44,10 @@ style.
 
 .. warning::
 
-    Be careful which variable you use in your `master.html.twig`. If you use variables
-    which are not defined in the error-template, the error-page cannot be rendered.
+    Be careful which variables you use in your `base.html.twig`. If you use variables
+    which are not defined in the error template, the error page cannot be rendered.
 
-Following variables are usable inside the exception template.
+The following variables are available inside the exception template.
 
 +---------------------------------+------------------------------------------------------------------+
 | Name                            | Description                                                      |
@@ -82,7 +82,7 @@ Following variables are usable inside the exception template.
 Test it
 -------
 
-To test your error pages you can use following routes:
+To test your error pages you can use the following routes:
 
 .. code-block:: bash
 

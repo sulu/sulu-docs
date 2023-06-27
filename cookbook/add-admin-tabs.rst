@@ -1,7 +1,7 @@
 Adding tabs to Sulu's Admin UI
 ==============================
 
-.. note:: 
+.. note::
 
     It is recommended to read :doc:`../book/extend-admin` beforehand to get a better understandig of how Sulu admin
     classes work.
@@ -19,9 +19,9 @@ Create the form for this view
 -----------------------------
 
 You have to create the form that is rendered in this view. Therefore create a form at
-``config/forms/page_socials.xml``. 
+``config/forms/page_socials.xml``.
 
-.. note:: 
+.. note::
 
     Note how we use slashes in the names of the properties, this returns the values in the given hierarchy.
 
@@ -83,29 +83,11 @@ The ``setFormKey`` takes a string reference, which should be the same as the key
 
     class SocialAdmin extends Admin
     {
-        /**
-        * @var ViewBuilderFactoryInterface
-        */
-        private $viewBuilderFactory;
-
-        /**
-        * @var WebspaceManagerInterface
-        */
-        private $webspaceManager;
-
-        /**
-        * @var SecurityCheckerInterface
-        */
-        private $securityChecker;
-
         public function __construct(
-            ViewBuilderFactoryInterface $viewBuilderFactory,
-            WebspaceManagerInterface $webspaceManager,
-            SecurityCheckerInterface $securityChecker
+            private ViewBuilderFactoryInterface $viewBuilderFactory,
+            private WebspaceManagerInterface $webspaceManager,
+            private SecurityCheckerInterface $securityChecker
         ) {
-            $this->viewBuilderFactory = $viewBuilderFactory;
-            $this->webspaceManager = $webspaceManager;
-            $this->securityChecker = $securityChecker;
         }
 
         public function configureViews(ViewCollection $viewCollection): void
@@ -175,24 +157,24 @@ When you debug the container right now your should see your own ``Admin`` class 
 
     $ php bin/console debug:container --tag=sulu.admin
 
-        Service ID               Class name                                           
-        sulu_contact.admin       Sulu\Bundle\ContactBundle\Admin\ContactAdmin        
-        sulu_preview.admin       Sulu\Bundle\PreviewBundle\Admin\PreviewAdmin        
-        sulu_custom_urls.admin   Sulu\Bundle\CustomUrlBundle\Admin\CustomUrlAdmin    
-        sulu_website.admin       Sulu\Bundle\WebsiteBundle\Admin\WebsiteAdmin        
-        sulu_tag.admin           Sulu\Bundle\TagBundle\Admin\TagAdmin                
-        sulu_page.admin          Sulu\Bundle\PageBundle\Admin\PageAdmin              
-        sulu_snippet.admin       Sulu\Bundle\SnippetBundle\Admin\SnippetAdmin        
-        sulu_category.admin      Sulu\Bundle\CategoryBundle\Admin\CategoryAdmin      
-        sulu_security.admin      Sulu\Bundle\SecurityBundle\Admin\SecurityAdmin      
-        sulu_media.admin         Sulu\Bundle\MediaBundle\Admin\MediaAdmin            
-        sulu_search.admin        Sulu\Bundle\SearchBundle\Admin\SearchAdmin          
-        app.social_admin         App\Admin\SocialAdmin  
+        Service ID               Class name
+        sulu_contact.admin       Sulu\Bundle\ContactBundle\Admin\ContactAdmin
+        sulu_preview.admin       Sulu\Bundle\PreviewBundle\Admin\PreviewAdmin
+        sulu_custom_urls.admin   Sulu\Bundle\CustomUrlBundle\Admin\CustomUrlAdmin
+        sulu_website.admin       Sulu\Bundle\WebsiteBundle\Admin\WebsiteAdmin
+        sulu_tag.admin           Sulu\Bundle\TagBundle\Admin\TagAdmin
+        sulu_page.admin          Sulu\Bundle\PageBundle\Admin\PageAdmin
+        sulu_snippet.admin       Sulu\Bundle\SnippetBundle\Admin\SnippetAdmin
+        sulu_category.admin      Sulu\Bundle\CategoryBundle\Admin\CategoryAdmin
+        sulu_security.admin      Sulu\Bundle\SecurityBundle\Admin\SecurityAdmin
+        sulu_media.admin         Sulu\Bundle\MediaBundle\Admin\MediaAdmin
+        sulu_search.admin        Sulu\Bundle\SearchBundle\Admin\SearchAdmin
+        app.social_admin         App\Admin\SocialAdmin
 
 You should now see the tab in the administration interface, but the data of the form is not saved yet.
 
 
-Persist the data of the form 
+Persist the data of the form
 ----------------------------
 
 In the final step, we need to persist the data of the added tab. In the case of the pages, we can utilize the existing
@@ -200,7 +182,7 @@ pages API by registering a new `StructureExtension`. In other cases, we would ne
 for the tab as shown in the :doc:`../book/extend-admin` chapter.
 
 .. code-block :: php
-    
+
     <?php
 
     class SocialStructureExtension extends AbstractExtension implements ExportExtensionInterface

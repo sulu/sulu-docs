@@ -144,14 +144,8 @@ class implements the Interface `ItemInterface`.
      */
     class ExampleDataItem implements ItemInterface
     {
-        /**
-         * @var Example
-         */
-        private $entity;
-
-        public function __construct(Example $entity)
+        public function __construct(private Example $entity)
         {
-            $this->entity = $entity;
         }
 
         /**
@@ -220,16 +214,12 @@ to avoid filtering for these values.
      */
     class ExampleDataProvider extends BaseDataProvider
     {
-        /**
-         * @var RequestStack
-         */
-        private $requestStack;
-
-        public function __construct(DataProviderRepositoryInterface $repository, ArraySerializerInterface $serializer, RequestStack $requestStack)
-        {
+        public function __construct(
+            DataProviderRepositoryInterface $repository,
+            ArraySerializerInterface $serializer,
+            private RequestStack $requestStack
+        ) {
             parent::__construct($repository, $serializer);
-
-            $this->requestStack = $requestStack;
         }
 
         public function getConfiguration()

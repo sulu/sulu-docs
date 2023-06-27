@@ -298,6 +298,8 @@ property, set the attribute ``mandatory`` to ``true``:
         </properties>
     </template>
 
+.. _templates-properties-visible-disabled-conditions:
+
 Visible/Disabled Conditions
 ---------------------------
 
@@ -634,6 +636,11 @@ type:
     and set the default selection in ``default-type``. Only from the
     ``<property>``, we reference a *content type*.
 
+.. note::
+
+    More details about blocks, such as the available parameters, can be found on
+    the :doc:`reference <../reference/content-types/block>` page.
+
 Aligning Fields on the Grid
 ---------------------------
 
@@ -897,7 +904,7 @@ cached on the client:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <cacheLifetime type="seconds">2400</cacheLifetime>
+        <cacheLifetime type="seconds">1209600</cacheLifetime>
 
         <!-- ... -->
     </template>

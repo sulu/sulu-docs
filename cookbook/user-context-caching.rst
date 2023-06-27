@@ -55,7 +55,7 @@ User Context feature in Sulu.
         }
     }
 
-4. Uncomment the ``security`` configuration in `config/packages/security_website.yaml`
+4. Uncomment the ``security`` configuration in `config/packages/security.yaml`
 
 .. note::
 
@@ -75,8 +75,9 @@ User Context feature in Sulu.
         firewalls:
             website:
                 pattern: ^/
-                anonymous: true
+                anonymous: true # only required for Symfony 5 projects in Symfony 6 this can be removed
                 lazy: true
+                provider: sulu
                 form_login:
                     login_path: login
                     check_path: login
@@ -112,7 +113,7 @@ User Context feature in Sulu.
     logout:
         path: /logout
 
-7. Implement the template for the login form in `static/login.html.twig`
+7. Implement the template for the login form in `templates/static/login.html.twig`
 
 .. code-block:: twig
 

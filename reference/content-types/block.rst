@@ -30,6 +30,9 @@ Parameters
     * - ``add_button_text``
       -
       - Allows to adjust the text of the add button that is displayed in the administration interface.
+    * - ``paste_button_text``
+      -
+      - Allows to adjust the text of the paste button that is displayed in the administration interface.
     * - ``collapsable``
       - boolean
       - If set to ``true`` blocks can be collapsed, otherwise they are always expanded. Defaults to ``true``.
@@ -52,7 +55,7 @@ used by default.
 
 The other essential attribute is the ``types``-tag, which contains multiple
 ``type``-tags. A type defines some titles and its containing ``properties``,
-whereby all the available :doc:`index` can be used. These types are offered 
+whereby all the available :doc:`index` can be used. These types are offered
 to the content manager via dropdown.
 
 If collapsed the system will show the content of three properties in the block

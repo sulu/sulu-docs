@@ -8,6 +8,7 @@ Returns a Structure for the given UUID
     {% set page = sulu_content_load('1234-1234-1234-1234', {
         'title': 'title',
         'excerptTitle': 'excerpt.title',
+        'url': 'url',
     }) %}
 
 **Arguments**:
