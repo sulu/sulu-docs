@@ -45,17 +45,18 @@ To enable replacement of your custom tags you can define a service which
 implements the ``TagInterface``.
 
 .. code-block:: php
-
+    <?php
     class LinkTag implements TagInterface
     {
         /**
          * Returns new tag with given attributes.
          *
          * @param array $attributes attributes array of each tag occurrence.
+         * @param string $locale
          *
          * @return array Tag array to replace all occurrences.
          */
-        public function parseAll($attributesByTag) {
+        public function parseAll(array $attributesByTag, $locale): array {
             $result = [];
             foreach($attributesByTag as $tag => $attributes) {
                 $url = ; // load url via uuid from document-manager

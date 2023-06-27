@@ -100,15 +100,7 @@ In order to display the preview in our form, we have to make use of the `Preview
         const EVENT_FORM_KEY = 'event_details';
         const EVENT_EDIT_FORM_VIEW = 'app.event_edit_form';
 
-        /**
-         * @var ViewBuilderFactoryInterface
-         */
-        private $viewBuilderFactory;
-
-        public function __construct(ViewBuilderFactoryInterface $viewBuilderFactory)
-        {
-            $this->viewBuilderFactory = $viewBuilderFactory;
-        }
+        public function __construct(private ViewBuilderFactoryInterface $viewBuilderFactory) { }
 
         public function configureViews(ViewCollection $viewCollection): void
         {

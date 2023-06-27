@@ -55,7 +55,7 @@ event.orm.xml:
 Event.php:
 
 .. code-block:: php
-
+    <?php
     namespace App\Entity;
 
     use Sulu\Bundle\RouteBundle\Model\RoutableInterface;
@@ -63,15 +63,9 @@ Event.php:
 
     class Event implements RoutableInterface
     {
-        /**
-         * @var string
-         */
-        private $title;
+        private string $title;
 
-        /**
-         * @var RouteInterface
-         */
-        private $route;
+        private RouteInterface $route;
 
         public function getTitle() { ... }
 
@@ -121,7 +115,7 @@ EventController
 ****************
 
 .. code-block:: php
-
+    <?php
     namespace App\Controller;
 
     use App\Entity\Event;
@@ -139,7 +133,7 @@ RouteDefaultsProvider
 *********************
 
 .. code-block:: php
-
+    <?php
     namespace App\Routing;
 
     use App\Entity\Event;
@@ -148,12 +142,7 @@ RouteDefaultsProvider
 
     class EventRouteDefaultsProvider implements RouteDefaultsProviderInterface
     {
-        protected $eventRepository;
-
-        public function __construct(EventRepository $eventRepository)
-        {
-            $this->eventRepository = $eventRepository;
-        }
+        public function __construct(protected EventRepository $eventRepository) { }
 
         public function getByEntity($entityClass, $id, $locale, $object = null)
         {
