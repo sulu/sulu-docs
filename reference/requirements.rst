@@ -13,19 +13,17 @@ The following requirements *must* be met to run Sulu:
 * :doc:`Apache <../cookbook/web-server/apache>` or
   :doc:`Nginx <../cookbook/web-server/nginx>` with enabled URL rewriting
 * `PHP`_ 7.2 or higher
-* the `intl_extension`_ for PHP
-* the `fileinfo` extension for PHP
+* the `json_extension`_, `dom_extension`_ and `xml_extension`_ for PHP
 * the `gd`_, `imagick_extension`_ or `vips_extension`_ for PHP
 * a `database management system supported by Doctrine`_
 * `Composer`_
 
-Recommended Requirements
+Optional Requirements
 ------------------------
 
-The following requirements are optional, but recommended for using Sulu in
-production:
+The following requirements are optional:
 
-* `Apache Jackrabbit`_
+* `Apache Jackrabbit`_ when :doc:`../bundles/page/versioning` of content is needed
 
 Development Requirements
 ------------------------
@@ -33,10 +31,12 @@ Development Requirements
 If you want to build parts of the system on your own, you will additionally need:
 
 * `Node.js`_
-* `npm`_ 5 or higher
+* `npm`_ 6
 
 .. _PHP: http://php.net
-.. _intl_extension: http://php.net/manual/en/book.intl.php
+.. _json_extension: http://php.net/manual/en/book.json.php
+.. _xml_extension: http://php.net/manual/en/book.xml.php
+.. _dom_extension: http://php.net/manual/en/book.dom.php
 .. _gd: http://php.net/manual/en/book.image.php
 .. _imagick_extension: http://php.net/manual/en/book.imagick.php
 .. _vips_extension: https://github.com/libvips/php-vips-ext
