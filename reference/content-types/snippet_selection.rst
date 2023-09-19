@@ -7,6 +7,8 @@ Description
 Allows to select an arbitrary number of snippets. Snippets are reusable pieces of content that can be included on
 multiple pages. The assigned snippets will be saved as an array of references.
 
+Currently this content type does not support multiple areas and types.
+
 Parameters
 ----------
 
