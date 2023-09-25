@@ -94,6 +94,11 @@ For the `User` entity (`se_users`):
                 model: App\Entity\User
                 repository: Sulu\Bundle\SecurityBundle\Entity\UserRepository
 
+.. note::
+
+   Symfony keeps the user object in the session, clearing the sessions is so sometimes required
+   when running into ``php.CRITICAL: Uncaught Error: Failed opening required /var/project/var/cache/website/prod/doctrine/orm/Proxies/__CG__SuluBundleSecurityBundleEntityUser.php``
+
 For the `Role` entity (`se_roles`):
 
 .. code-block:: yaml
