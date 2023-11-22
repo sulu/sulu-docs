@@ -76,6 +76,34 @@ on your computer.
     npm install
     npm run build
 
+Solution 4: Build manually locally with bun
+-------------------------------------------
+
+As an alternative to node/npm Sulu also supports to use `bun`_ to build the administration interface.
+The support for bun is experimental and can be removed in future versions of Sulu.
+
+1. Install Bun
+
+If not yet installed on your computer you would need to install `bun`_
+on your computer.
+
+2. Cleanup previously created node_modules folders and bun.lockb files
+
+.. code-block:: bash
+
+    cd /var/project
+    rm -rf assets/admin/node_modules && rm -rf vendor/sulu/sulu/node_modules && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/node_modules
+    rm -rf assets/admin/bun.lockb && rm -rf vendor/sulu/sulu/bun.lockb && rm -rf vendor/sulu/sulu/src/Sulu/Bundle/*/Resources/js/bun.lockb
+
+3. Create the administration interface build
+
+.. code-block:: bash
+
+    cd /var/project/assets/admin
+    bun run preinstall
+    bun install
+    bun run build
+
 Common errors
 -------------
 
@@ -110,3 +138,4 @@ If this does not solve the problem, you can try to clean the npm cache on your m
 .. _Test Application workflow: https://github.com/sulu/sulu/blob/2.x/.github/workflows/test-application.yaml
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
+.. _bun: https://bun.sh/
