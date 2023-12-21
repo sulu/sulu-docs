@@ -293,6 +293,12 @@ as well, then you should be able to see these actions when using the ``debug:rou
       app.put_event      PUT      ANY      ANY    /admin/api/events/{id}.{_format}
       app.delete_event   DELETE   ANY      ANY    /admin/api/events/{id}.{_format}
 
+.. note::
+
+    Routes to this actions must be exposed using `FOSJsRoutingBundle`_, and also they must have set ``methods``
+    parameter (e.g. ``options: ['expose' => true], methods: ['GET']``). Examples can be found at `Sulu Workshops`_, specificly in assignment 10.
+
+
 These routes are spread over two different URLs, one without the ID (``/admin/api/events``) and one with the ID
 (``/admin/api/events/{id}``). The first one is used to get a list of available events and to create new events, while
 the latter is about already existing events.
@@ -889,3 +895,5 @@ the parent then the ``/config/forms/event_details.xml`` would look like this:
 .. _Sulu workshop: https://github.com/sulu/sulu-workshop
 .. _Sulu Demo repository: https://github.com/sulu/sulu-demo/pulls?q=is%3Aopen+is%3Apr+label%3AExample
 .. _Sulu Javascript Docs: https://jsdocs.sulu.io/
+.. _FOSJsRoutingBundle: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/usage.rst
+.. _Sulu Workshops: https://github.com/sulu/sulu-workshop/pulls
