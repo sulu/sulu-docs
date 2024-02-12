@@ -903,7 +903,7 @@ templates.
 To define a global block, you have to create a new XML file in the ``config/templates/blocks`` directory. The following
 file is an example and defines a global block with the name ``text-block``:
 
-... code-block:: xml
+.. code-block:: xml
 
     <?xml version="1.0" ?>
     <template xmlns="http://schemas.sulu.io/template/template"
@@ -938,7 +938,7 @@ file is an example and defines a global block with the name ``text-block``:
 This block can be used in any other template by using the ``<block>`` or ``<property>`` element with the ``type``
 attribute:
 
-... code-block:: xml
+.. code-block:: xml
 
     <block name="blocks" default-type="text_block" minOccurs="0">
         <types>
