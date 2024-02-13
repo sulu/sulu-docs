@@ -14,7 +14,7 @@ Configuration
         geolocators:
             nominatim:
                 api_key:              ''
-                endpoint:             'http://open.mapquestapi.com/nominatim/v1/search.php'
+                endpoint:             'https://nominatim.openstreetmap.org/search'
             google:
                 api_key:              ''
 
