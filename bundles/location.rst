@@ -17,6 +17,9 @@ Configuration
                 endpoint:             'http://open.mapquestapi.com/nominatim/v1/search.php'
             google:
                 api_key:              ''
+            mapquest:
+                api_key:              ''
+                endpoint:             'https://www.mapquestapi.com/geocoding/v1/address'
 
 Services
 --------
