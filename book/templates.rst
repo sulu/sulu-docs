@@ -896,9 +896,8 @@ You can also match multiple elements of different types. Use the wildcard
 Using Global blocks
 -------------------
 
-Another way to include other templates is to use global blocks. Global blocks define a set of properties that can be
-used as type inside of a block or any other property. This is useful if you want to reuse a block type in multiple
-templates.
+Global blocks define a set of properties that can be used as type inside of a block or any other property. This is
+useful if you want to reuse a block type in multiple templates.
 
 To define a global block, you have to create a new XML file in the ``config/templates/blocks`` directory. The following
 file is an example and defines a global block with the name ``text-block``:
@@ -935,8 +934,8 @@ file is an example and defines a global block with the name ``text-block``:
         </properties>
     </template>
 
-This block can be used in any other template by using the ``<block>`` or ``<property>`` element with the ``type``
-attribute:
+This block can be used in any other template by using the ``<block>`` or ``<property>`` element within the ``type``
+node and the ``ref`` attribute:
 
 .. code-block:: xml
 
