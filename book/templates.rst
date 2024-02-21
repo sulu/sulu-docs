@@ -900,7 +900,7 @@ Global blocks define a set of properties that can be used as type inside of a bl
 useful if you want to reuse a block type in multiple templates.
 
 To define a global block, you have to create a new XML file in the ``config/templates/blocks`` directory. The following
-file is an example and defines a global block with the name ``text-block``:
+file is an example and defines a global block with the name ``text_block``:
 
 .. code-block:: xml
 
