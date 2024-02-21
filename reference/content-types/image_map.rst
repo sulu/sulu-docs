@@ -72,6 +72,11 @@ XML
         </types>
     </property>
 
+.. note::
+
+    You can use global block-types also for the image_map content-type. See
+    :ref:`template properties <templates-global-blocks>` for more information.
+
 Twig
 ^^^^
 

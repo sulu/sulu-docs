@@ -641,6 +641,12 @@ type:
     More details about blocks, such as the available parameters, can be found on
     the :doc:`reference <../reference/content-types/block>` page.
 
+.. note::
+
+    If you want to use a block-type in multiple templates, you can define it as a
+    global block. More information about global blocks can be found in the
+    :ref:`templates-global-blocks` section.
+
 Aligning Fields on the Grid
 ---------------------------
 
@@ -884,6 +890,74 @@ You can also match multiple elements of different types. Use the wildcard
             <!-- ... -->
         </properties>
     </template>
+
+.. _templates-global-blocks:
+
+Using Global blocks
+-------------------
+
+Global blocks define a set of properties that can be used as type inside of a block or any other property. This is
+useful if you want to reuse a block type in multiple templates.
+
+To define a global block, you have to create a new XML file in the ``config/templates/blocks`` directory. The following
+file is an example and defines a global block with the name ``text_block``:
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+        <key>text_block</key>
+
+        <meta>
+            <title lang="en">Text Block</title>
+            <title lang="de">Text Block</title>
+        </meta>
+
+        <properties>
+            <property name="title" type="text_line" mandatory="true">
+                <meta>
+                    <title lang="en">Title</title>
+                    <title lang="de">Titel</title>
+                </meta>
+
+            </property>
+
+            <property name="description" type="text_editor">
+                <meta>
+                    <title lang="en">Description</title>
+                    <title lang="de">Beschreibung</title>
+                </meta>
+            </property>
+        </properties>
+    </template>
+
+This block can be used in any other template by using the ``<block>`` or ``<property>`` element within the ``type``
+node and the ``ref`` attribute:
+
+.. code-block:: xml
+
+    <block name="blocks" default-type="text_block" minOccurs="0">
+        <types>
+            <type ref="text_block" />
+            <type name="editor">
+                <meta>
+                    <title lang="en">Editor</title>
+                    <title lang="de">Editor</title>
+                </meta>
+                <properties>
+                    <property name="text_editor" type="text_editor">
+                        <meta>
+                            <title lang="en">Text Editor</title>
+                            <title lang="de">Texteditor</title>
+                        </meta>
+                    </property>
+                </properties>
+            </type>
+        </types>
+    </block>
 
 Caching
 -------

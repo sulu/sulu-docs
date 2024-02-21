@@ -115,6 +115,11 @@ editor as described in the description.
         </types>
     </block>
 
+.. note::
+
+    If you want to use a block-type in multiple templates, you can use global blocks. See
+    :ref:`template properties <templates-global-blocks>` for more information.
+
 Twig
 ----
 
