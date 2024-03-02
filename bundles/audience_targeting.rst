@@ -104,8 +104,7 @@ the following steps:
   deleting the cache folder
 * Update the schema of your database with the `doctrine:schema:update` command or
   the `doctrine:migrations:diff` command
-* Make sure that the users the feature should be enabled for have the correct
-  permissions
+* Make sure to have the correct permissions by enabling the feature `target-groups` in the user roles. The feature will be visible under `Settings` menu.
 
 Manually set target group
 -------------------------
