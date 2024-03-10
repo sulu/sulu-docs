@@ -14,9 +14,10 @@ Localizations for the content are configured in the webspaces, as already
 described in :doc:`webspaces`. Adding another localization is as easy as
 adding another ``localization`` tag to the webspace configuration file.
 Localizations can also be nested, which has no impact on the representation in
-all the dropdowns, but it will help the system to find better fallbacks.
+all the dropdowns, but it will help the system to find better fallbacks. This
+is why you can only nest them with a depth of 2.
 
-So a good example using english and german as a language might look something
+So a good example using English and German as a language might look something
 like the following fragment.
 
 .. code-block:: xml

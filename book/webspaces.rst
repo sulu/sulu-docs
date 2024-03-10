@@ -11,19 +11,35 @@ administration interface. Sulu allows you to create pages and sub pages in
 these trees and fill them with content. Have a closer look at
 :doc:`templates` for more details on the content management process.
 
-Normally you'll create a webspace for a new website, a landingpage or a portal,
+Normally you'll create a webspace for a new website, a landing page or a portal,
 that should run on your Sulu instance.
 
-The following file shows a configuration. These lines will be explained in the
+To make working with configuration files easier Symfony Config provides some handy commands:
+
+.. code-block:: bash
+   # Creating a new webspace configuring template
+   bin/adminconsole config:dump-reference sulu_website --format xml
+
+   # Debugging the configuration
+   bin/adminconsole debug:config: sulu_website
+
+.. note::
+    All of the webspace definition files are located under `config/webspaces` and the default format is XML.
+
+The following file shows an example configuration written in XML. These lines will be explained in the
 following paragraphs.
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="utf-8"?>
-    <webspace xmlns="http://schemas.sulu.io/webspace/webspace"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
-
+    <services:container xmlns="http://example.org/schema/dic/sulu_website"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:services="http://symfony.com/schema/dic/services"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services
+            https://symfony.com/schema/dic/services/services-1.0.xsd"
+        >
+    <config>
+    <webspace>
         <name>Example</name>
         <key>example</key>
 
@@ -98,6 +114,8 @@ following paragraphs.
             </portal>
         </portals>
     </webspace>
+    </config>
+    </services:container>
 
 .. note::
 
