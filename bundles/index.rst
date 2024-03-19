@@ -28,6 +28,7 @@ documented the most important ones.
     security
     snippet
     tag
+    test
     trash
     website/index
 
