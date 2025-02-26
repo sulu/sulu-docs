@@ -7,7 +7,7 @@ our recipes.
 
 .. note::
 
-    Additional to the following cookbooks, there are also a few Examples in the Sulu Demo Repository under the `Example Label`_
+    In addition to the following cookbooks, there are also a few examples in the Sulu Demo Repository under the `Example Label`_
     showing other interesting cookbooks.
 
 **Our recipes**
