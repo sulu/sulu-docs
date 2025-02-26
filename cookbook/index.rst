@@ -1,11 +1,16 @@
 Cookbook
 ========
 
-Here are some awesome recepies for lunch. The Cookbook covers some advanced
+Here are some awesome recipes for lunch. The Cookbook covers some advanced
 topics which each covers a very special problem. Create your very own menu with
 our recipes.
 
-**Our recepies**
+.. note::
+
+    In addition to the following cookbooks, there are also a few examples in the Sulu Demo Repository under the `Example Label`_
+    showing other interesting cookbooks.
+
+**Our recipes**
 
 .. toctree::
     :maxdepth: 1
@@ -50,3 +55,5 @@ our recipes.
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
 `suggestions <http://sulu.io/en/contact>`_.
+
+_`Example Label`: Sulu Demo Examples <https://github.com/sulu/sulu-demo/pulls?q=is%3Aopen+is%3Apr+label%3AExample>
