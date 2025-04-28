@@ -31,10 +31,11 @@ Solution 2: Build manually with docker
 
 .. code-block:: bash
 
-    docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
+    docker run --rm --interactive --tty --volume ${PWD}:/var/project node:20.18.1 /bin/bash
 
     # for completion: using another node version is possible by adjusting the tag of the node image
-    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:12.21.0 /bin/bash
+    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:22.11.0 /bin/bash
+    # check the assets/admin/package.json for compatible npm versions
 
 2. Cleanup previously created node_modules folders and package-lock.json files
 
@@ -112,11 +113,7 @@ If the installation of the npm dependencies or the webpack build fails, you migh
 1. Check your Node.js and npm version
 
 You can check the officially supported and tested Node.js and npm version by looking at the `Test Application workflow`_ of the ``sulu/sulu`` package.
-At the time of writing, this includes Node.js 12, Node.js 14 and npm 6.
-
-.. warning::
-
-    Because of a breaking change for linked packages, Sulu is not compatible with npm v7 at the moment. Have a look at the `issue in the sulu/skeleton repository`_ for more information about this..
+Since Sulu 2.6 Sulu requires at least NPM 8 and Node 18 to build the administration interface.
 
 2. Clear the npm cache on your machine
 
