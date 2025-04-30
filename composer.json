@@ -1,0 +1,7 @@
+{
+    "name": "sulu/sulu-docs",
+    "description": "The documentation for Sulu content management system based on Symfony",
+    "type": "documentation",
+    "license": "MIT",
+    "require": {}
+}
