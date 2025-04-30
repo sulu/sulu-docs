@@ -1,9 +1,9 @@
 Welcome to the Sulu Documentation!
 ##################################
 
-`Sulu`_ makes Content Management awesome. 
+`Sulu`_ makes Content Management awesome.
 
-Here's the perfect place to get started and find everything you need to know to code with Sulu. 
+Here's the perfect place to get started and find everything you need to know to code with Sulu.
 We got :doc:`book/index`, :doc:`cookbook/index`, :doc:`reference/index`, :doc:`bundles/index` and :doc:`developer/index`.
 
 Be sure to visit our `website`_. There's a lot of information about Sulu and how we do things.
