@@ -185,7 +185,7 @@ defines for which resource this permission form is used. In order for that to
 work the relation between the ``resourceKey`` and the security context and the
 security class has to be configured:
 
-.. code-block: yaml
+.. code-block:: yaml
 
     resources:
         example:
