@@ -216,6 +216,8 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       |
 +------------------------------+---------------------------------------------+
+| |single_icon_selection|      | widget for selecting a single icon          |
++------------------------------+---------------------------------------------+
 | |account_selection|          | widget for selecting multiple accounts      |
 +------------------------------+---------------------------------------------+
 | |single_account_selection|   | widget for selecting a single account       |
@@ -1116,5 +1118,6 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
+.. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/content-types/single_icon_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
 .. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`
