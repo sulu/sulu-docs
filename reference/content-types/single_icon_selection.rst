@@ -51,8 +51,8 @@ Example
         </meta>
 
         <params>
-<!-- "sulu" is the default configured icon font for the Sulu icons-->
-<!--        <param name="icon_set" value="sulu"/>-->
+    <!-- "sulu" is the default configured icon font for the Sulu icons-->
+    <!--    <param name="icon_set" value="sulu"/> -->
             <param name="icon_set" value="iconfont"/>
         </params>
     </property>
