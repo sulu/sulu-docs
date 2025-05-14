@@ -4,7 +4,8 @@ Single Icon selection
 Description
 -----------
 
-Shows a list with the possibility to assign a single icon from a configured iconfont or from provided svgs.
+Lets you select a single icon from a configured icon set. The selected icon is passed to the twig template as an object.
+The configured icon sets can be either icon fonts or SVGs.
 
 .. warning::
 
