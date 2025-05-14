@@ -8,7 +8,7 @@ Shows a list with the possibility to assign a single icon from a configured icon
 
 .. warning::
 
-    This content type is only available for Sulu >= 2.6.9 and needs a configuration.
+    This content type is only available for Sulu >= 2.6.9.
 
 Parameters
 ----------
@@ -31,6 +31,8 @@ Returns the name of the selected icon or svg.
 Configuration
 ----------------
 
+By default, you can select Sulu icons in the single icon selection field. If you’d like to add your own icon font or SVGs, simply extend the configuration as shown below.
+
 .. code-block:: yaml
 
     sulu_admin:
@@ -49,6 +51,8 @@ Example
         </meta>
 
         <params>
+<!-- "sulu" is the default configured icon font for the Sulu icons-->
+<!--        <param name="icon_set" value="sulu"/>-->
             <param name="icon_set" value="iconfont"/>
         </params>
     </property>
