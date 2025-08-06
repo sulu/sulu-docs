@@ -59,7 +59,7 @@ To install it use following commands:
 
 .. note::
 
-    It is very common that the `imagick` extension my not remove failed temporary files.
+    It is very common that the `imagick` extension may not remove failed temporary files.
     You can create a cronjob to clean up the temporary files if you experience issues with disk space.
     On a unix system, you can use a cronjob like this to clean up temporary files older than 60 minutes:
 
