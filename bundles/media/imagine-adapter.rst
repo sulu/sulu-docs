@@ -14,7 +14,7 @@ Available adapters are:
 
     You may need to install additional libraries on your operating system to support various image MIME types,
     such as ``libjpeg-dev, ``libpng-dev``, ``libwebp-dev``, ``libavif-dev``.
-     
+
     Note that some Linux distributions, like Alpine, do not include these libraries in their base images by default.
 
 GD
@@ -56,6 +56,16 @@ To install it use following commands:
 
     apt-get install libmagickwand-dev
     apt-get install php8.3-imagick
+
+.. note::
+
+    It is very common that the `imagick` extension may not remove failed temporary files.
+    You can create a cronjob to clean up the temporary files if you experience issues with disk space.
+    On a unix system, you can use a cronjob like this to clean up temporary files older than 60 minutes:
+
+    .. code-block:: bash
+
+        0 * * * * find /tmp -name 'magick-*' -type f -mmin +60 -delete
 
 VIPS
 ----
