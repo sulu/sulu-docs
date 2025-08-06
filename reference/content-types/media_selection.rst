@@ -72,7 +72,7 @@ Twig
 .. code-block:: twig
 
     {% for image in content.images %}
-        <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+        <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.description|default(image.title) }}">
     {% endfor %}
 
 If your property defines ``displayOptions``, you can access the selected ``displayOption``
@@ -82,7 +82,7 @@ via ``view.<property_name>.displayOptions``:
 
     <div class="position-{{ view.images.displayOption }}">
         {% for image in content.images %}
-            <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+            <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.description|default(image.title) }}">
         {% endfor %}
     </div>
 
