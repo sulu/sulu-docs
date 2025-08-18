@@ -63,19 +63,13 @@ Event.php:
 
     class Event implements RoutableInterface
     {
-        /**
-         * @var string
-         */
-        private $title;
+        private string $title;
 
-        /**
-         * @var RouteInterface
-         */
-        private $route;
+        private RouteInterface $route;
 
-        public function getTitle() { ... }
+        public function getTitle(): string { ... }
 
-        public function setTitle() { ... }
+        public function setTitle(string $title) { ... }
 
         /**
          * {@inheritdoc}
