@@ -90,33 +90,24 @@ Let's assume that we have this very simplified entity enriched with `doctrine an
 
     use Doctrine\ORM\Mapping as ORM;
 
-    /**
-     * @ORM\Entity
-     */
+    #[ORM\Entity]
     class Event
     {
         const RESOURCE_KEY = 'events';
 
-        /**
-         * @ORM\Id()
-         * @ORM\GeneratedValue()
-         * @ORM\Column(type="integer")
-         */
+        
+        #[ORM\Id]
+        #[ORM\GeneratedValue]
+        #[ORM\Column(type: 'integer')]
         private $id;
 
-        /**
-         * @ORM\Column(type="string")
-         */
+        #[ORM\Column(type: 'string')]
         private $name;
 
-        /**
-         * @ORM\Column(type="datetime_immutable")
-         */
+        #[ORM\Column(type: 'datetime_immutable')]
         private $startDate;
 
-        /**
-         * @ORM\Column(type="datetime_immutable")
-         */
+        #[ORM\Column(type: 'datetime_immutable')]
         private $endDate;
     }
 
