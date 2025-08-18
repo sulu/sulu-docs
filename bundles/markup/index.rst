@@ -55,7 +55,8 @@ implements the ``TagInterface``.
          *
          * @return array Tag array to replace all occurrences.
          */
-        public function parseAll($attributesByTag) {
+        public function parseAll($attributesByTag): array
+        {
             $result = [];
             foreach($attributesByTag as $tag => $attributes) {
                 $url = ; // load url via uuid from document-manager
