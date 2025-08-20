@@ -188,8 +188,8 @@ div.toctree-wrapper a {
 }
 
 div.toctree-wrapper a {
-    color: #112a46;
-    text-decoration: none;
+    color: #52B6CA;
+    text-decoration: underline;
 }
 
 div.toctree-wrapper a:hover {

@@ -11,6 +11,7 @@ documented the most important ones.
     :maxdepth: 2
 
     activity
+    admin/index
     audience_targeting
     category
     contact
