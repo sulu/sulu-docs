@@ -38,7 +38,7 @@ html[data-theme=dark] {
     color-scheme: dark;
 
     a:visited {
-        color: #9d9d9d;
+        color: #ba6fff;
     }
 
     .logo {
