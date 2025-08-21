@@ -15,6 +15,31 @@
 
 {%- block header %}
 <!-- Header:Website:Replace -->
+<div class="color__switch">
+  <input id="color-toggle" type="checkbox" onchange="setColorMode(this.checked?'light':'dark')" onload="getColorMode()" checked=""/>
+  <label for="color-toggle">Toggle Dark Mode</label>
+</div>
+<script>
+  const setColorMode = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  const getColorMode = () => {
+    const getStoredTheme = () => localStorage.getItem('theme');
+    const storedTheme = getStoredTheme();
+
+    if (storedTheme) {
+      return storedTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light';
+  }
+
+  const colorMode = getColorMode();
+  setColorMode(colorMode);
+  document.getElementById('color-toggle').checked = colorMode === 'light';
+</script>
 {% endblock %}
 
 {% block sidebartoc %}
@@ -30,7 +55,6 @@
 
 {%- block footer %}
 <!-- Footer:Website:Replace -->
-
 <script type="text/javascript">
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
