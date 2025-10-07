@@ -194,29 +194,27 @@ shows a controller doing what has just been described.
     namespace App\Controller\Admin;
 
     use App\Entity\Event;
-    use FOS\RestBundle\Controller\Annotations\RouteResource;
-    use FOS\RestBundle\Routing\ClassResourceInterface;
-    use FOS\RestBundle\View\View;
-    use FOS\RestBundle\View\ViewHandlerInterface;
     use Sulu\Component\Rest\ListBuilder\Doctrine\DoctrineListBuilderFactoryInterface;
     use Sulu\Component\Rest\ListBuilder\Metadata\FieldDescriptorFactoryInterface;
     use Sulu\Component\Rest\ListBuilder\PaginatedRepresentation;
     use Sulu\Component\Rest\RestHelperInterface;
+    use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Response;
+    use Symfony\Component\Serializer\SerializerInterface;
 
-    /**
-     * @RouteResource("event")
-     */
-    class EventController implements ClassResourceInterface
+    class EventController
     {
         public function __construct(
-           private ViewHandlerInterface $viewHandler,
            private FieldDescriptorFactoryInterface $fieldDescriptorFactory,
            private DoctrineListBuilderFactoryInterface $listBuilderFactory,
-           private RestHelperInterface $restHelper
+           private RestHelperInterface $restHelper,
+           private SerializerInterface $serializer,
         ) {
         }
 
+        /**
+        * Gets a list of all events ina a paginated response
+        */
         public function cgetAction(): Response
         {
             $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(Event::RESOURCE_KEY);
@@ -231,7 +229,64 @@ shows a controller doing what has just been described.
                 $listBuilder->count()
             );
 
-            return $this->viewHandler->handle(View::create($listRepresentation));
+            return new JsonResponse($this->serializer->serialize($listRepresentation->toArray()));
+        }
+
+        /**
+         * Gets a single event
+         */
+        public function getAction(int $id): Response
+        {
+            $event = $this->eventRepository->find($id);
+
+            return new JsonResponse($this->serializer->serialize($event));
+        }
+
+        /**
+         * Creates a new event
+         */
+        public function postAction(Request $request): Response
+        {
+            $event = new Event();
+            $this->mapRequestToEvent($request, $event);
+
+            $this->eventRepository->persist($event);
+            $this->eventRepository->flush();
+
+            return new JsonResponse($this->serializer->serialize($event)));
+        }
+
+        /**
+         * Updates an existing event by finding it, mapping new data onto it and saving it
+         */
+        public function putAction(int $id, Request $request): Response
+        {
+            $event = $this->eventRepository->find($id);
+
+            $this->mapRequestToEvent($request, $event);
+
+            $this->eventRepository->flush();
+
+            return new JsonResponse($this->serializer->serialize($event)));
+        }
+
+        public function deleteAction(int $id): Response
+        {
+            $event = $this->eventRepository->find($id);
+            $this->eventRepository->remove($event);
+            $this->eventRepository->flush();
+
+            return new JsonResponse(null, Response::HTTP_NO_CONTENT);
+        }
+
+        /**
+         * Maps the request body to an event event object
+         */
+        private function mapRequestToEvent(Request $request, Event $event): void
+        {
+            $event->setName($request->request->get('name'));
+            $event->setStartDate($request->request->get('startDate'));
+            $event->setEndDate($request->request->get('endDate'));
         }
     }
 
@@ -239,11 +294,30 @@ Register your new Controller in the ``config/routes_admin.yaml`` file the follow
 
 .. code-block:: yaml
 
-    app_events_api:
-        type: rest
-        prefix: /admin/api
-        resource: App\Controller\Admin\EventController
-        name_prefix: app.
+    app.get_events:
+        path: /admin/api/events
+        controller: App\Controller\Admin\EventController::cgetAction
+        methods: [GET]
+
+    app.get_event:
+        path: /admin/api/events/{id}
+        controller: App\Controller\Admin\EventController::getAction
+        methods: [GET]
+
+    app.post_event:
+        path: /admin/api/events
+        controller: App\Controller\Admin\EventController::postAction
+        methods: [POST]
+
+    app.put_event:
+        path: /admin/api/events/{id}
+        controller: App\Controller\Admin\EventController::putAction
+        methods: [PUT]
+
+    app.delete_event:
+        path: /admin/api/events/{id}
+        controller: App\Controller\Admin\EventController::deleteAction
+        methods: [DELETE]
 
 Configure resources
 -------------------
@@ -254,11 +328,11 @@ as well, then you should be able to see these actions when using the ``debug:rou
 .. code-block:: bash
 
     $ bin/adminconsole debug:router | grep event
-      app.get_events     GET      ANY      ANY    /admin/api/events.{_format}
-      app.post_event     POST     ANY      ANY    /admin/api/events.{_format}
-      app.get_event      GET      ANY      ANY    /admin/api/events/{id}.{_format}
-      app.put_event      PUT      ANY      ANY    /admin/api/events/{id}.{_format}
-      app.delete_event   DELETE   ANY      ANY    /admin/api/events/{id}.{_format}
+      app.get_events     GET      ANY      ANY    /admin/api/events
+      app.post_event     POST     ANY      ANY    /admin/api/events
+      app.get_event      GET      ANY      ANY    /admin/api/events/{id}
+      app.put_event      PUT      ANY      ANY    /admin/api/events/{id}
+      app.delete_event   DELETE   ANY      ANY    /admin/api/events/{id}
 
 .. note::
 
