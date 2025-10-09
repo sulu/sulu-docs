@@ -15,7 +15,6 @@ to do things the way we do them.
     sulu-focus
     structure
     components
-    backend-template
     content-architecture
 
 It is important to understand the underlying concepts of Sulu,
