@@ -136,9 +136,6 @@ default data:
 
         php bin/adminconsole sulu:build prod
 
-Optionally, you can store the content of your website (all tables starting with
-``phpcr_``) in `Apache Jackrabbit`_. We'll get back to that later.
-
 Start a Web Server
 ------------------
 

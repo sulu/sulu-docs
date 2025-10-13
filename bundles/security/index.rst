@@ -75,11 +75,8 @@ with ``sulu.access_control``.
 The task of this class is to save the permission information into the correct
 database. This is important, because otherwise it would not be possible to
 paginate lists considering permissions of these entities in an easy and
-performant way. There are already two implementations of the
-``AccessControlProviderInterface``, the ``PhpcrAccessControlProvider`` handling
-the permission storing for PHPCR and therefore for our content section, and the
-``DoctrineAccessControlProvider``, which can be used in combination with any
-Doctrine entity. The entity only has to implement the
+performant way. The ``DoctrineAccessControlProvider`` can be used in combination
+with any Doctrine entity. The entity only has to implement the
 ``SecuredEntityInterface`` to signalize that it can be used with the
 ``DoctrineAccessControlProvider``.
 

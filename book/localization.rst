@@ -42,12 +42,11 @@ After adding localizations in the webspace, note that you need to run
 
 .. code-block:: bash
 
-    php bin/adminconsole sulu:document:initialize
+    php bin/adminconsole sulu:page:initialize
 
-This will re-initialize the PHPCR content tree, setting up the new locale for
-accepting new content. Afterwards nobody will have any permissions on this
-locale, so make sure that you add this permission in the permissions tab of
-the contacts.
+This will reinitialize the page content tree and prepare the system to handle
+the newly added localization. Afterwards, no user will have permissions for the
+new localization, so make sure to assign them in the contact permissions tab.
 
 .. note::
 

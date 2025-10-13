@@ -11,13 +11,13 @@ This graphic shows how the core of Sulu is setup.
 Data
 ----
 
-Symfony uses PHPCR, Doctrine and MySQL, MariaDB or Jackrabbit.
+Sulu uses Doctrine ORM with MySQL, MariaDB, or PostgreSQL.
 
 
 Basic Frameworks
 ----------------
 
-Sulu is based on Symfony and the Symfony CMF.
+Sulu is based on Symfony.
 
 
 Sulu
