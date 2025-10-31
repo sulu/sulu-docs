@@ -22,6 +22,10 @@ Parameters
       - string
       - The name of the param which should be set as default.
 
+.. note::
+
+    Have a look at the  :doc:`select` type if you want to select multiple values.
+
 Example
 -------
 
