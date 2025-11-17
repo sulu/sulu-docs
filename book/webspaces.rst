@@ -241,7 +241,7 @@ themselves in which localization they publish the content, so that you can
 spread different localizations over different URLs.
 
 Our sample file defines just one portal, which includes a ``name`` and a
-``key`` just as the webspace, whereby the key for the portal hast to be unique
+``key`` just as the webspace, whereby the key for the portal has to be unique
 for the entire installation, not only within this webspace.
 
 URLs
