@@ -72,7 +72,7 @@ when the content of a page is changed. To prevent different cache entries on dif
 Application Cache
 -----------------
 
-The Symfony cache improves the speed of your application by caching metadata, doctrine results and PHPCR data.
+The Symfony cache improves the speed of your application by caching metadata and doctrine results.
 If your application runs on multiple servers, you need to `configure a centralized caching adapter`_ like ``redis`` for your ``app`` cache.
 Additionally, if the application runs in different directories on different servers, you need to set a static ``prefix_seed``:
 

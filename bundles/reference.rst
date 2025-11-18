@@ -4,13 +4,13 @@ ReferenceBundle
 The ReferenceBundle is tasked with tracking references among entities within the application.
 It enables developers and maintainers to quickly determine the relationships between entities and understand the manner
 and location in which an entity is utilized. Presently, the ReferenceBundle is capable of monitoring the usage of Snippets and
-Media within PHPCR entities such as `pages` and `snippets`. These references are managed distinctly for the draft
+Media within content entities such as `pages` and `snippets`. These references are managed distinctly for the draft
 state within the `admin context` and the live state within the `website context`.
 
-The main reason we need this bundle is that, unlike traditional database references, our content management system
-operates on an unstructured data model. Therefore, we cannot rely solely on database references, which are usually preferred.
-It is essential to note that the ReferenceBundle should only be used for unstructured data, where database relations are
-not feasible.
+The main reason we need this bundle is that content is stored as JSON data within dimension entities.
+Therefore, we cannot rely solely on database foreign key references.
+It is essential to note that the ReferenceBundle should only be used for unstructured JSON content data,
+where database relations are not feasible.
 
 Content maintainers are able to see the references to a specific entity in the `Insights` tab of an entity like `Snippet`.
 

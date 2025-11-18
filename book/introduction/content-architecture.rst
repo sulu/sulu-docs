@@ -1,8 +1,7 @@
 Content Architecture
 ====================
 
-Our content is heavily structured. As mentioned in :doc:`structure`, we rely on
-the Symfony CMF on top of PHPCR. On this page we'll get into the Sulu Content
+Our content is heavily structured. On this page we'll get into the Sulu Content
 Architecture.
 
 

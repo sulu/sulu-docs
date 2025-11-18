@@ -81,10 +81,10 @@ How the tag is processed
 
 The ``<sulu-link>`` tag is processed after the response content is generated and
 before it is sent to the client. A parser detects all links and loads the paths of all
-linked pages from the PHPCR in a *single* query.
+linked pages in a *single* query for optimal performance.
 
 If a twig function would be used to generate the links, each call would trigger a
-request to the PHPCR which would worsen the performance.
+separate query which would worsen the performance.
 
 Removing invalid links
 ----------------------

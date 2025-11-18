@@ -1,78 +1,63 @@
 Drafting
 ========
 
-The drafting feature of Sulu allows to work on a draft of a page, which will
-not be available on the website directly. For this to happen the page has to be
-published. This document will explain the technical structure behind this
-feature and how to maintain it.
+The drafting feature of Sulu allows you to work on a draft version of a page
+without making changes visible on the live website. Pages must be published
+to make them available to website visitors.
 
-Structure
----------
+Multi-Dimension Content Storage
+--------------------------------
 
-In general we use `PHPCR`_ to store our unstructured content like pages and
-snippets. We use two different PHPCR workspaces, which can be compared to
-schemas in relational databases. There is one for all the drafts and one for
-the already published content.
+Sulu uses a modern multi-dimension entity system for content storage.
+This system supports multiple dimensions:
 
-If a document is saved using the ``persist`` method from the ``DocumentManager``
-it will only be saved in the draft workspace and therefore not being available
-on the website. When the ``publish`` method  from the ``DocumentManager`` is
-called the content of the passed document will be saved to the live workspace,
-and though be available on the website.
+- **Locale**: Different languages and localizations
+- **Stage**: Draft vs Live content
+- **Version**: Historical versions of content
 
-Sulu also maintains two different search indexes for pages. There is one for
-the published data, named after the scheme
-``sulu_page_<webspace>-<locale>-i18n_published`` and one for the drafting data
-called ``sulu_page_<webspace>-<locale>-i18n``.
+Technical Structure
+-------------------
 
-Configuration
--------------
+Content is stored using dimension entities that contain:
 
-The sessions are configured in the ``sulu_document_manager.sessions`` option.
-This configuration will tell the system where to save the content for the drafts
-and live documents. See the following configuration for an example:
+- A unique identifier
+- Locale information
+- Stage indicator (draft or live)
+- Version number
+- Content data (stored as JSON)
 
-.. code-block:: yaml
+Draft and Live Workflow
+------------------------
 
-    parameters:
-        env(PHPCR_WORKSPACE): 'default'
+When working with pages in Sulu:
 
-    sulu_document_manager:
-        sessions:
-            default:
-                backend:
-                    type: doctrinedbal
-                workspace: "%env(PHPCR_WORKSPACE)%"
-            live:
-                backend:
-                    type: doctrinedbal
-                workspace: "%env(PHPCR_WORKSPACE)%_live"
+1. **Editing**: All edits are made to the draft stage (version 0)
+2. **Publishing**: Publishing copies content from draft to live stage
+3. **Website Display**: Only live stage content is displayed on the website
 
-Session handling
-----------------
-
-Most of the commands with the ``doctrine:phpcr:`` take a ``--session``
-parameter, which specifies which of the configured sessions should be used. So
-if you want to start e.g. the `PHPCR Shell`_:
-
-.. code-block:: bash
-
-    php bin/console doctrine:phpcr:shell --session=live
-
-If you want to start the `PHPCR Shell`_ with the ``default_session`` you can
-simply omit the ``--session`` parameter.
-
-Search handling
+Search Indexing
 ---------------
 
-As already described the pages are stored in two different search indexes. So
-if you want to reindex the content you have to address both of these indexes.
-You do so by using two different console commands:
+Sulu maintains separate search indexes for draft and live content:
+
+- Draft index: ``sulu_page_<webspace>-<locale>-i18n``
+- Live index: ``sulu_page_<webspace>-<locale>-i18n_published``
+
+To reindex content for both draft and live:
 
 .. code-block:: bash
 
-    php bin/console massive:search:reindex # Reindex the default session
-    php bin/websiteconsole massive:search:reindex # Reindex the live session
+    php bin/console massive:search:reindex # Reindex draft content
+    php bin/websiteconsole massive:search:reindex # Reindex live content
 
-.. _PHPCR: http://phpcr.github.io/
-.. _PHPCR Shell: http://phpcr.readthedocs.io/en/latest/phpcr-shell/
+Content Dimensions
+------------------
+
+The dimension system allows content to exist in multiple states simultaneously:
+
+- A page can have different content per locale (e.g., English vs German)
+- Each locale can have separate draft and live versions
+- Historical versions can be maintained for auditing and restoration
+
+This multi-dimensional approach keeps complexity hidden from end users while
+providing powerful content management capabilities for editors and administrators.

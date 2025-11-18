@@ -5,13 +5,10 @@ We already heard something about :doc:`introduction/content-architecture`
 in the introduction.
 Now we are starting to code will dig a little bit deeper.
 
-
-Sulu uses `PHPCR`_ as a persistence layer, and therefore follows its structure.
-Additionally Sulu adds another layer called webspaces, which have already been
-explained in the section about the :doc:`introduction/components`. These
-webspaces contain an arbitrary number of pages, which are ordered in a tree in
-a hierarchical way. Each of these pages can contain content in many different
-localizations.
+Sulu organizes content in webspaces, which have already been explained in the
+section about the :doc:`introduction/components`. These webspaces contain an
+arbitrary number of pages, which are ordered in a tree in a hierarchical way.
+Each of these pages can contain content in many different localizations.
 
 This tree also represents the actual structure of the website, so that no
 additional navigation tree is required. Pages can be enabled in the navigation,
@@ -36,7 +33,5 @@ American and British English, it is possible to use the content of the American
 English for the British English, without managing the exactly same content
 again. This is especially useful if there are e.g. different contact addresses
 for each country, but the rest of the page should be exactly the same.
-
-.. _PHPCR: http://phpcr.github.io/
 
 With the content architecture on our mind, we can :doc:`webspaces`.

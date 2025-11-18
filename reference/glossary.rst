@@ -11,17 +11,6 @@ reference and as a guide to use when naming things in the code-base.
 Component
     Of a Structure -- a named set of Properties. Used by blocks. ??
 
-Document
-    Documents are the domain representation of nodes from the PHPCR content
-    repository. For example "PageDocument", or "SnippetDocument".
-
-    The namespace used within components/bundles for all things relating to document
-    the document manager component.
-
-Document type
-    The short name for a class of document, for example "page" the name of the
-    PageDocument class.
-
 Locale
     Represents a linguistic region, for example `de`, `de_at`, `en` or `en_us`.
 
