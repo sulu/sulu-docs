@@ -6,7 +6,7 @@ In Sulu, each page has a *page template*. The page template controls two things:
 * the structure of the page
 * how that structure is rendered
 
-The structure of a page consists of *properties*, each of which has a *(content)
+The structure of a page consists of *properties*, each of which has a *property
 type*. The default page template, for example, defines the following
 properties:
 
@@ -156,7 +156,7 @@ A property has three essential attributes:
 * a ``type`` that defines what kind of content can be stored
 * a ``title`` that is shown in the administration interface
 
-Here is a table with the content types shipped in Sulu core:
+Here is a table with the property types shipped in Sulu core:
 
 +------------------------------+---------------------------------------------+
 | Key                          | Appearance in the administration            |
@@ -223,16 +223,7 @@ Here is a table with the content types shipped in Sulu core:
 | |single_account_selection|   | widget for selecting a single account       |
 +------------------------------+---------------------------------------------+
 
-.. tip::
-
-    Use the command ``sulu:content:types:dump`` to list all the content types
-    available in your project:
-
-    .. code-block:: bash
-
-        php bin/adminconsole sulu:content:types:dump
-
-Many content types can be configured by passing parameters in the element
+Many property types can be configured by passing parameters in the element
 ``<params>``. For a single select, for example, you need to set the possible
 choices:
 
@@ -271,8 +262,8 @@ choices:
         </properties>
     </template>
 
-More detail about the content types and their parameters can be found in the
-:doc:`../reference/content-types/index`.
+More detail about the property types and their parameters can be found in the
+:doc:`../reference/property-types/index`.
 
 Mandatory/Optional Properties
 -----------------------------
@@ -533,9 +524,9 @@ content block is set in the ``<meta>`` element:
     </template>
 
 The content managers can choose the type of each individual block from a
-dropdown. Attention, we're not talking about content types! The users of
+dropdown. Attention, we're not talking about property types! The users of
 the administration interface don't even know what the quite technical concept of
-a content type is.
+a property type is.
 
 Instead, you should think about your own types that make sense in your case.
 In this particular example, we want to provide the following types to our users:
@@ -638,15 +629,15 @@ type:
 
 .. note::
 
-    The challenge here is to mentally separate *block types* from *content
+    The challenge here is to mentally separate *block types* from *property
     types*. You define *block types* yourself in the ``<types>`` element
     and set the default selection in ``default-type``. Only from the
-    ``<property>``, we reference a *content type*.
+    ``<property>``, we reference a *property type*.
 
 .. note::
 
     More details about blocks, such as the available parameters, can be found on
-    the :doc:`reference <../reference/content-types/block>` page.
+    the :doc:`reference <../reference/property-types/block>` page.
 
 .. note::
 
@@ -1071,9 +1062,9 @@ The tag can have specific attributes:
 
  - `string`: For simple fields
  - `array`: For multiple fields
- - `tags`: Special type for `tag_selection` content type
- - `category`: Special type for `single_category_selection` and `category_selection` content types
- - `date`: For indexing the `date` content type
+ - `tags`: Special type for `tag_selection` property type
+ - `category`: Special type for `single_category_selection` and `category_selection` property types
+ - `date`: For indexing the `date` property type
  - `json`: For indexing raw data in the search
  - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
 
@@ -1092,32 +1083,32 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _Media: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
 .. _Jexl: https://github.com/TomFrost/Jexl
 
-.. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
-.. |text_area| replace:: :doc:`text_area <../reference/content-types/text_area>`
-.. |text_editor| replace:: :doc:`text_editor <../reference/content-types/text_editor>`
-.. |color| replace:: :doc:`color <../reference/content-types/color>`
-.. |date| replace:: :doc:`date <../reference/content-types/date>`
-.. |time| replace:: :doc:`time <../reference/content-types/time>`
-.. |url| replace:: :doc:`url <../reference/content-types/url>`
-.. |email| replace:: :doc:`email <../reference/content-types/email>`
-.. |phone| replace:: :doc:`phone <../reference/content-types/phone>`
-.. |page_selection| replace:: :doc:`page_selection <../reference/content-types/page_selection>`
-.. |single_page_selection| replace:: :doc:`single_page_selection <../reference/content-types/single_page_selection>`
-.. |smart_content| replace:: :doc:`smart_content <../reference/content-types/smart_content>`
-.. |resource_locator| replace:: :doc:`resource_locator <../reference/content-types/resource_locator>`
-.. |tag_selection| replace:: :doc:`tag_selection <../reference/content-types/tag_selection>`
-.. |category_selection| replace:: :doc:`category_selection <../reference/content-types/category_selection>`
-.. |media_selection| replace:: :doc:`media_selection <../reference/content-types/media_selection>`
-.. |single_media_selection| replace:: :doc:`single_media_selection <../reference/content-types/single_media_selection>`
-.. |contact_account_selection| replace:: :doc:`contact_account_selection <../reference/content-types/contact_account_selection>`
-.. |teaser_selection| replace:: :doc:`teaser_selection <../reference/content-types/teaser_selection>`
-.. |checkbox| replace:: :doc:`checkbox <../reference/content-types/checkbox>`
-.. |select| replace:: :doc:`multiple_select <../reference/content-types/select>`
-.. |single_select| replace:: :doc:`single_select <../reference/content-types/single_select>`
-.. |snippet_selection| replace:: :doc:`snippet_selection <../reference/content-types/snippet_selection>`
-.. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
-.. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
-.. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
-.. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/content-types/single_icon_selection>`
-.. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
-.. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`
+.. |text_line| replace:: :doc:`text_line <../reference/property-types/text_line>`
+.. |text_area| replace:: :doc:`text_area <../reference/property-types/text_area>`
+.. |text_editor| replace:: :doc:`text_editor <../reference/property-types/text_editor>`
+.. |color| replace:: :doc:`color <../reference/property-types/color>`
+.. |date| replace:: :doc:`date <../reference/property-types/date>`
+.. |time| replace:: :doc:`time <../reference/property-types/time>`
+.. |url| replace:: :doc:`url <../reference/property-types/url>`
+.. |email| replace:: :doc:`email <../reference/property-types/email>`
+.. |phone| replace:: :doc:`phone <../reference/property-types/phone>`
+.. |page_selection| replace:: :doc:`page_selection <../reference/property-types/page_selection>`
+.. |single_page_selection| replace:: :doc:`single_page_selection <../reference/property-types/single_page_selection>`
+.. |smart_content| replace:: :doc:`smart_content <../reference/property-types/smart_content>`
+.. |resource_locator| replace:: :doc:`resource_locator <../reference/property-types/resource_locator>`
+.. |tag_selection| replace:: :doc:`tag_selection <../reference/property-types/tag_selection>`
+.. |category_selection| replace:: :doc:`category_selection <../reference/property-types/category_selection>`
+.. |media_selection| replace:: :doc:`media_selection <../reference/property-types/media_selection>`
+.. |single_media_selection| replace:: :doc:`single_media_selection <../reference/property-types/single_media_selection>`
+.. |contact_account_selection| replace:: :doc:`contact_account_selection <../reference/property-types/contact_account_selection>`
+.. |teaser_selection| replace:: :doc:`teaser_selection <../reference/property-types/teaser_selection>`
+.. |checkbox| replace:: :doc:`checkbox <../reference/property-types/checkbox>`
+.. |select| replace:: :doc:`multiple_select <../reference/property-types/select>`
+.. |single_select| replace:: :doc:`single_select <../reference/property-types/single_select>`
+.. |snippet_selection| replace:: :doc:`snippet_selection <../reference/property-types/snippet_selection>`
+.. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/property-types/single_snippet_selection>`
+.. |contact_selection| replace:: :doc:`contact_selection <../reference/property-types/contact_selection>`
+.. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/property-types/single_contact_selection>`
+.. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/property-types/single_icon_selection>`
+.. |account_selection| replace:: :doc:`account_selection <../reference/property-types/account_selection>`
+.. |single_account_selection| replace:: :doc:`single_account_selection <../reference/property-types/single_account_selection>`

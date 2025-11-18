@@ -1,12 +1,10 @@
-Single Snippet Selection
-========================
+Single page selection
+=====================
 
 Description
 -----------
 
-Allows to select a single snippet. Snippets are reusable pieces of content that can be included on multiple pages.
-
-Currently this content type does not support multiple areas and types.
+Shows a field, on which exactly one link to another page can be assigned.
 
 Parameters
 ----------
@@ -17,15 +15,6 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - types
-      - string
-      - If set, only snippets of the type can be selected.
-    * - default
-      - string
-      - If set, the default snippet of the given area will be used as fallback value if no snippet is selected.
-    * - loadExcerpt
-      - boolean
-      - If set to true, the taxonomies information of the snippet is loaded into a "taxonomies" property.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -46,23 +35,27 @@ Example
 
 .. code-block:: xml
 
-    <property name="snippet" type="single_snippet_selection">
+    <property name="link" type="single_page_selection">
         <meta>
-            <title lang="en">Snippet</title>
+            <title lang="en">Link</title>
         </meta>
-
-        <params>
-            <param name="types" value="default"/>
-            <param name="default" value="footer_social_media_links"/>
-            <param name="loadExcerpt" value="true"/>
-        </params>
     </property>
 
 Twig
 ----
 
+The property type only returns the UUID of the target page at the moment. If you want to
+render a link to the page, you can use the :doc:`sulu-link tag<../../bundles/markup/link>`:
+
+.. code-block:: html
+
+    <sulu-link href="{{ content.link }}">Link Text</sulu-link>
+
+If you need to load additional data of the target page, you can use the
+:doc:`sulu_content_load twig extension<../twig-extensions/functions/sulu_content_load>`:
+
 .. code-block:: twig
 
-    {{ content.snippet.title }}
+    {% set target = sulu_content_load(content.link, {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
 
 .. _jexl: https://github.com/TomFrost/jexl

@@ -35,14 +35,14 @@ references by executing the `bin/console sulu:reference:refresh` command. This c
     Please note that references are only refreshed for the current context. To refresh the references for both the
     admin and website contexts, you will need to execute the command twice via the `bin/adminconsole` and the `bin/websiteconsole`.
 
-Integrating references for custom content-types
------------------------------------------------
+Integrating references for custom property-types
+------------------------------------------------
 
-To integrate the ReferenceBundle for custom content-types, you need to implement the `ReferenceContentTypeInterface` in your
-content-type class. The interface requires you to implement the `getReferences` method. The method already receives the
+To integrate the ReferenceBundle for custom property types, you need to implement the `ReferenceContentTypeInterface` in your
+property type class. The interface requires you to implement the `getReferences` method. The method already receives the
 `ReferenceCollector` which you can use to add references to the collector.
 
-Example implementation for a custom content-type:
+Example implementation for a custom property type:
 
 .. code-block:: php
 

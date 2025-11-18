@@ -16,13 +16,13 @@ and will then appear in the right spot on the navigation of the website.
 
 The pages in Sulu have a specific template applied. The template defines which
 properties the page will have, whereby each of these properties are further
-specified by a content type. The content type will have a direct impact on the
+specified by a property type. The property type will have a direct impact on the
 possible values and configuration possibilities of the property it is applied
 to. There is also a further reference of all the available
-:doc:`../reference/content-types/index`.
+:doc:`../reference/property-types/index`.
 
 There are also some advanced features regarding the pages in Sulu. Besides the
-content management using the properties and content types already described
+content management using the properties and property types already described
 there is also the possibility to define internal and external links. Internal
 links redirect to other pages managed by the content management section of
 Sulu, and external link to an arbitrary URL.

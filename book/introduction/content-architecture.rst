@@ -38,11 +38,11 @@ pages are contained within your webspace. Once you got your
 structure in the backend.
 
 
-Content-Type
-------------
+Property Type
+-------------
 
-A template is built up of several content types. A blog post, for example, could
-consist of the following content types:
+A template is built up of several property types. A blog post, for example, could
+consist of the following property types:
 
 * Single line text (*Title*)
 * Multi line text (*Infobox*)
@@ -50,7 +50,7 @@ consist of the following content types:
 * Date (*Event-Date*)
 * List of Tags (*Tags*)
 
-A detailed list of all the content types is covered in
+A detailed list of all the property types is covered in
 :doc:`../templates`.
 
 

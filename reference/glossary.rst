@@ -38,7 +38,7 @@ Page
 
 Parameter
     In relation to Property and Structure items; a configuration parameter
-    which relates to the configuration of the content type.
+    which relates to the configuration of the property type.
 
 Prefix
     The former part of a web facing URL which is defined by the portal, it is

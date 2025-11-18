@@ -3,7 +3,7 @@ Using default snippets for managing page-independent data
 
 The :doc:`snippet feature<../bundles/snippet>` of Sulu allows to create and manage reusable pieces of content.
 These pieces of content cannot only be assigned to a page using the ``snippet_selection``
-content type, but they can also be associated to a webspace.
+property type, but they can also be associated to a webspace.
 
 To do this, Sulu allows to define **snippet areas** which then can be assigned to a
 **default snippet** on the ``Default Snippets`` tab of the webspace in the administration
@@ -67,7 +67,7 @@ the default snippet for a given area. The usage of the function is documented in
 Using the default snippet as fallback value in a ``snippet_selection``
 ----------------------------------------------------------------------
 
-The ``snippet_selection`` content type can be configured to use the default snippet of a
+The ``snippet_selection`` property type can be configured to use the default snippet of a
 specific area as fallback value when no snippet is selected. To do this, the ``default``
-param needs to be set as described in :doc:`../reference/content-types/snippet_selection`.
+param needs to be set as described in :doc:`../reference/property-types/snippet_selection`.
 

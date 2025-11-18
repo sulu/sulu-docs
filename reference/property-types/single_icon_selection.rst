@@ -9,7 +9,7 @@ The configured icon sets can be either icon fonts or SVGs.
 
 .. warning::
 
-    This content type is only available for Sulu >= 2.6.9.
+    This property type is only available for Sulu >= 2.6.9.
 
 Parameters
 ----------

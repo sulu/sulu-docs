@@ -637,7 +637,7 @@ and uses the `Symfony Translations component`_ to get the texts for the ``Form``
 Furthermore the ``params`` tag can be used to customize the fields in certain ways. E.g. you see in the above XML that
 the ``name`` property has a parameter called ``headline`` being set to ``true``. This will cause the field type
 registered as ``text_line`` to render an ``input`` with a bigger font size. Every field type has its own set of
-``params`` it will act on. You can have a look at our documentation at :doc:`../reference/content-types/index` to learn
+``params`` it will act on. You can have a look at our documentation at :doc:`../reference/property-types/index` to learn
 more about them.
 
 Configure form views

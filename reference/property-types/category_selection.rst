@@ -10,7 +10,7 @@ section of Sulu. The selection will be saved as an array.
 
 .. note::
 
-    This content type is rarely needed because the ``Excerpt and Taxonomies``
+    This property type is rarely needed because the ``Excerpt and Taxonomies``
     allows to assign categories to pages.
 
 Parameters

@@ -4,9 +4,9 @@ ImageMap
 Description
 -----------
 
-The image map content type allows to assign an arbitrary amount of hotspots to
+The image map property type allows to assign an arbitrary amount of hotspots to
 an image. These hotspots can be either circles, rectangles or points. It's
-possible to define multiple types with different content types included. Every
+possible to define multiple types with different property types included. Every
 hotspot needs to be one of the defined types.
 
 A quite common use case is to create a type containing a text editor. Then it's
