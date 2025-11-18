@@ -61,7 +61,7 @@ Extended Example
 Twig
 ----
 
-The content type returns the full url which can be rendered directly:
+The property type returns the full url which can be rendered directly:
 
 .. code-block:: twig
 

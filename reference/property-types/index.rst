@@ -1,8 +1,8 @@
-Content Type Reference
-======================
+Property Type Reference
+=======================
 
 As already described in :doc:`/book/templates`
-a template consists of multiple content types, which enable the user to manage
+a template consists of multiple property types, which enable the user to manage
 content in a semantic way.
 
 The simplest template possible looks something like the this:
@@ -43,11 +43,11 @@ The simplest template possible looks something like the this:
     </template>
 
 This chapter will describe which types you can insert within the
-``properties`` tag. Every content type in the documentation comes with an
+``properties`` tag. Every property type in the documentation comes with an
 example ``property`` tag to clarify the usage.
 
 This documentation also specifies the available parameters and tags for each
-content type:
+property type:
 
 .. toctree::
     :maxdepth: 1

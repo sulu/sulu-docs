@@ -50,14 +50,10 @@ Sulu-Admin
 Using the ``Admin`` class together with its navigation is guaranteed not to
 break.
 
-Content Types
-~~~~~~~~~~~~~
+Property Types
+~~~~~~~~~~~~~~
 
-It is safe to create custom content types by implementing the
-``ContentTypeInterface`` or by inheriting one of the abstract
-``SimpleContentType`` or ``ComplexContentType`` classes.
-
-We also make sure that the content types delivered with Sulu will save the
+We also make sure that the property types delivered with Sulu will save the
 content in the same way so that there will not be any regressions with the
 content on an upgrade.
 

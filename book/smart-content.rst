@@ -4,7 +4,7 @@ Using smart content
 What is smart content?
 ----------------------
 
-The smart content is one of our most powerful content types. It allows the
+The smart content is one of our most powerful property types. It allows the
 content editor to dynamically configure an aggregation of content, whereby
 content does not only mean pages. This is possible due to the data providers,
 which can be registered in the system. A data provider defines which options
@@ -69,7 +69,7 @@ or two columns with variations like with or without images.
 
 There are also more parameters to tweak the smart content, for a deeper
 understanding of this there is the reference documentation of the
-:doc:`../../reference/content-types/smart_content`.
+:doc:`../../reference/property-types/smart_content`.
 
 Use the smart content in a twig template
 ----------------------------------------
@@ -114,8 +114,8 @@ Pagination
 ----------
 
 The smart content supports pagination, which can be activated with the param
-``max_per_page`` described in the content-type reference
-:doc:`../../reference/content-types/smart_content`.
+``max_per_page`` described in the property-type reference
+:doc:`../../reference/property-types/smart_content`.
 
 .. code-block:: jinja
 

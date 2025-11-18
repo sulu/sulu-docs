@@ -1,14 +1,14 @@
-Collection selection
-====================
+Single Collection selection
+===========================
 
 Description
 -----------
 
-Let you assign multiple collections from the media section.
+Let you assign one collection from the media section.
 
 .. note::
 
-    This content type passes an array of Collection_ entities to the twig template. It does not provide the media
+    This property type passes a Collection_ entity to the twig template. It does not provide the media
     entities inside of the selected collections.
     If you want to access the media entities of a collection, you should use a :doc:`smart_content property <smart_content>`
     with the ``media`` data provider or load the matching media entities in a  :doc:`custom controller <../../cookbook/custom-controller>`
@@ -30,9 +30,6 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
-    * - sortable
-      - bool
-      - Defines if the user should be able to sort the selected items. Default value is true.
     * - request_parameters
       - collection
       - Collection of parameters that are appended to the requests sent by the selection.
@@ -51,9 +48,9 @@ Example
 
 .. code-block:: xml
 
-    <property name="collections" type="collection_selection">
+    <property name="collection" type="single_collection_selection">
         <meta>
-            <title lang="en">Collections</title>
+            <title lang="en">Collection</title>
         </meta>
     </property>
 
@@ -62,9 +59,7 @@ Twig
 
 .. code-block:: twig
 
-    {% for collection in content.collections %}
-        <h3>{{ collection.title }}</h3>
-    {% endfor %}
+    {{ content.collection.fullName }}
 
 .. _Collection: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Collection.php
 .. _custom twig extension: https://symfony.com/doc/current/templating/twig_extension.html
