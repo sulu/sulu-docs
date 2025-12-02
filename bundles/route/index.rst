@@ -95,21 +95,104 @@ Event.php:
 Route-Schema
 ************
 
-Configure the route-schema in the file `config/packages/sulu_route.yml`:
+The route schema is defined in the XML template of the route property:
 
-.. code-block:: yaml
+.. code-block:: xml
 
-    sulu_route:
-        mappings:
-            App\Entity\Event:
-                generator: schema
-                options:
-                    route_schema: /{translator.trans('event')}/{object.getTitle()}
-                resource_key: events
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+        ...
+
+        <properties>
+            <property name="title" type="text_line" mandatory="true">
+                <meta>
+                    <title lang="en">Title</title>
+                </meta>
+
+                <tag name="sulu.rlp.part"/>
+            </property>
+
+            <property name="url" type="route" mandatory="true">
+                <meta>
+                    <title lang="en">Resourcelocator</title>
+                    <title lang="de">Adresse</title>
+                </meta>
+
+                <params>
+                    <param name="route_schema" value="/{translator.trans('event', [], 'admin')}/{implode('-', object)}"/>
+                </params>
+
+                <tag name="sulu.rlp"/>
+            </property>
+        </properties>
+    </template>
+
+The ``<route-schema>`` parameter in the ``route`` property defines the URL pattern.
+
+Route Parts
+^^^^^^^^^^^
+
+Properties tagged with ``<tag name="sulu.rlp.part"/>`` are automatically included in the
+``object`` variable. This allows you to reference content properties in your route schema:
+
+.. code-block:: xml
+
+    <property name="title" type="text_line">
+        <tag name="sulu.rlp.part"/>
+    </property>
+
+    <property name="year" type="text_line">
+        <tag name="sulu.rlp.part"/>
+    </property>
+
+With these properties tagged, you can use them in the route schema:
+
+.. code-block:: xml
+
+    <param name="route_schema" value="/blog/{object.year}/{object.title}"/>
+
+The route schema uses Symfony's ExpressionLanguage to evaluate expressions within `{...}`.
+
+Available Variables
+^^^^^^^^^^^^^^^^^^^
+
+``object``
+    An array-like object containing the entity's route-relevant properties (the "parts").
+    Supports both dot notation and array access:
+
+    - ``object.title`` - dot notation
+    - ``object['title']`` - array access
+
+``translator``
+    The Symfony translator service for creating localized URL segments:
+
+    - ``translator.trans('event')`` - translate with default domain
+    - ``translator.trans('event', [], 'messages')`` - translate with specific domain
+
+``locale``
+    The current locale string (e.g., ``en``, ``de``).
+
+Available Functions
+^^^^^^^^^^^^^^^^^^^
+
+``implode(separator, object)``
+    Joins all parts with the given separator:
+
+    .. code-block:: xml
+
+        <param name="route_schema" value="/{implode('-', object)}"/>
+
+    With parts ``['year' => '2024', 'title' => 'Hello']`` this produces ``/2024-hello``.
+
+``is_array(value)``
+    Checks if a value is an array. Useful for conditional logic in expressions.
 
 .. note::
 
-    You can use the `translator` in the schema to create translated routes.
+    All path segments are automatically cleaned up (slugified) based on the locale.
 
 EventController
 ****************
