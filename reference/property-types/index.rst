@@ -32,9 +32,9 @@ The simplest template possible looks something like the this:
                 <tag name="sulu.rlp.part"/>
             </property>
 
-            <property name="url" type="resource_locator" mandatory="true">
+            <property name="url" type="route" mandatory="true">
                 <meta>
-                    <title lang="en">Resourcelocator</title>
+                    <title lang="en">URL</title>
                 </meta>
 
                 <tag name="sulu.rlp"/>
@@ -72,7 +72,6 @@ property type:
     page_selection
     page_tree_route
     phone
-    resource_locator
     route
     select
     single_account_selection

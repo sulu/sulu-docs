@@ -6,6 +6,9 @@ Description
 
 The ``route`` property type allows to generate urls for **pages**, **articles** and **custom entities**.
 
+For custom entities, see :doc:`/bundles/route/index` to implement routing with
+a RouteDefaultsProvider.
+
 Parameters
 ----------
 
@@ -23,7 +26,7 @@ Parameters
       - Route schema that is used for generating the url.
         For pages, the route schema is defined in the webspace configuration, so you usually do not need to set this parameter.
         For articles and custom entities, you can define the schema using expression language. Within the expression, the variable ``object`` is available and contains an array with the values of all properties tagged with the ``sulu.rlp.part`` tag (see the example below).
-
+        See :doc:`/bundles/route/index` for available variables and functions.
 
 Example
 -------
@@ -36,14 +39,36 @@ Example
 
     <property name="url" type="route" mandatory="true">
         <meta>
-            <title lang="en">Resource locator</title>
+            <title lang="en">URL</title>
         </meta>
 
         <params>
             <param name="mode" value="tree_full_edit"/>
             <param name="route_schema" value="/events/{implode('-', object)}"/>
         </params>
+
+        <tag name="sulu.rlp"/>
     </property>
+
+Route Parts
+-----------
+
+Properties tagged with ``<tag name="sulu.rlp.part"/>`` are included in the ``object`` variable
+available in the route schema expression. This allows dynamic URL generation based on
+content field values.
+
+Tags
+----
+
+.. list-table::
+    :header-rows: 1
+
+    * - Tag
+      - Description
+    * - sulu.rlp
+      - Marks this property as the route/URL field
+    * - sulu.rlp.part
+      - Marks a property as part of the route generation (included in ``object``)
 
 Twig
 ----
