@@ -1,2 +1,2 @@
-setuptools==68.2.2
+setuptools==78.1.1
 sphinx==7.2.6
