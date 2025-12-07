@@ -15,15 +15,9 @@ The following requirements *must* be met to run Sulu:
 * `PHP`_ 8.2 or higher
 * the `dom_extension`_ and `xml_extension`_ for PHP
 * the `gd`_, `imagick_extension`_ or `vips_extension`_ for PHP
+* the `pdo_sqlite`_ when using `Loupe`_ as the `SEAL`_ Search Engine Adapter
 * a `database management system supported by Doctrine`_
 * `Composer`_
-
-Optional Requirements
-------------------------
-
-The following requirements are optional:
-
-* `Apache Jackrabbit`_ when :doc:`../bundles/page/versioning` of content is needed
 
 Development Requirements
 ------------------------
@@ -38,6 +32,9 @@ If you want to build parts of the system on your own, you will additionally need
 .. _dom_extension: http://php.net/manual/en/book.dom.php
 .. _gd: http://php.net/manual/en/book.image.php
 .. _imagick_extension: http://php.net/manual/en/book.imagick.php
+.. _pdo_sqlite: https://www.php.net/manual/en/ref.pdo-sqlite.php
+.. _Loupe: https://github.com/loupe-php/loupe
+.. _SEAL: https://github.com/PHP-CMSIG/search
 .. _vips_extension: https://github.com/libvips/php-vips-ext
 .. _database management system supported by Doctrine: https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Composer: https://getcomposer.org
