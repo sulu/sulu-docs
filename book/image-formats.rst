@@ -13,10 +13,6 @@ Image formats can be defined in:
 
  - `config/image-formats.xml`
 
-Or when you use the SuluThemeBundle you can define the formats in your theme folder:
-
- - `path/to/<theme>/config/image-formats.xml`
-
 The following example shows you different ways to define image formats:
 
 .. code-block:: xml
