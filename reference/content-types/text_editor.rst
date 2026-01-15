@@ -44,7 +44,6 @@ control over how images are presented on the website. It makes it easier to prov
 different formats through headless APIs to apps and other services. It also simplifies website
 redesigns, as content outlives any design.
 
-
-A typical Sulu page would use the `block type`_ to allow editors
-to create flexible pages. See the `block type documentation`_ for more
+A typical Sulu page would use the :doc:`block type <block>`  to allow editors
+to create flexible pages. See the :doc:`block type documentation <block>` for more
 information.
