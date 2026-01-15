@@ -38,12 +38,12 @@ The answer is you don't handle them inside the text editor.
 In Sulu the text editor is only meant for text formatting. So its not like other
 CMS systems where all content live inside one big WYSIWYG editor.
 
-Sulu follows the principle of separating content and presentation. Therefore images should be
-handled as separated media property. This way a developer and designer has full
-control over how images are presented in the website, and make it easier to
-provide content in different formats, but also via headless APIs to apps
-or other services and make redesign of website a lot easier as content lives longer
-as any design.
+Sulu follows the principle of separating content and presentation. Therefore, images should
+be handled as separate media properties. This approach gives developers and designers full
+control over how images are presented on the website. It makes it easier to provide content in
+different formats through headless APIs to apps and other services. It also simplifies website
+redesigns, as content outlives any design.
+
 
 A typical Sulu page would use the `block type`_ to allow editors
 to create flexible pages. See the `block type documentation`_ for more
