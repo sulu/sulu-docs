@@ -35,12 +35,14 @@ look something like the following typical XML fragment:
                 <param name="title" value="title"/>
                 <param name="description" value="excerpt.description"/>
             </param>
+
             <param name="present_as" type="collection">
                 <param name="one">
                     <meta>
                         <title lang="en">One column</title>
                     </meta>
                 </param>
+
                 <param name="two">
                     <meta>
                         <title lang="en">Two column</title>
