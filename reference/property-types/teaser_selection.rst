@@ -2,19 +2,12 @@ Teaser Selection
 ================
 
 The "teaser_selection" property type is used for displaying teasers to other
-content in your website. These teasers could be arranged as list or grid, like
-in this example:
-
-.. figure:: ../../img/teaser-selection-web.png
-    :align: center
+content in your website. These teasers could be arranged as a list or grid.
 
 In the administration interface, the widget is displayed as a selector for the
 teasers. Content managers can choose a number of target contents. By default,
 the text from the "Excerpt & Categories" tab of the target content is shown.
 You can however customize the text of the teaser if you like.
-
-.. figure:: ../../img/teaser-selection-admin.png
-    :align: center
 
 Configuration
 -------------
@@ -56,73 +49,84 @@ the teasers as you like:
     <div>
         {% for teaser in content.teasers %}
             <article>
-                 <h3>
-                     {{ teaser.title }}
-                 </h3>
+                <h3>{{ teaser.title }}</h3>
 
-                 {% set teaserImage = sulu_resolve_media(teaser.mediaId, app.request.locale) %}
+                {% if teaser.mediaId %}
+                    {% set teaserImage = sulu_resolve_media(teaser.mediaId, app.request.locale) %}
+                    {% if teaserImage %}
+                        <img src="{{ teaserImage.formats['300x'] }}"
+                             alt="{{ teaserImage.title }}">
+                    {% endif %}
+                {% endif %}
 
-                 {% if teaserImage %}
-                     <img src="{{ teaserImage.formats['300x'] }}" alt="{{ teaserImage.title }}">
-                 {% endif %}
+                {% if teaser.description %}
+                    <div>
+                        {{ teaser.description|raw }}
+                    </div>
+                {% endif %}
 
-                 <div>
-                      {{ teaser.description|raw }}
-                 </div>
-
-                 <a href="{{ sulu_content_path(teaser.url) }}">
-                     {{ teaser.moreText|default('Read more') }}
-                 </a>
+                <a href="{{ sulu_content_path(teaser.url) }}">
+                    {{ teaser.moreText|default('Read more') }}
+                </a>
             </article>
         {% endfor %}
     </div>
+
+.. note::
+
+    Some teaser providers include additional data in the ``attributes`` property.
+    For example, article teasers may include the webspace information. You can
+    access these with ``teaser.attributes.webspace``.
 
 Each teaser is an object with the following properties:
 
 .. list-table::
     :header-rows: 1
+    :widths: 20 20 60
 
     * - Property
       - Type
       - Description
     * - id
-      - string
+      - int|string
       - The ID of the teaser
-    * - type (e.g. content or article)
+    * - type
       - string
-      - The type of the teaser
+      - The resource key/type of the teaser (e.g., "pages", "articles")
     * - locale
       - string
-      - The locale, e.g. "de_AT"
+      - The locale of the teaser (e.g., "en", "de_AT")
     * - title
       - string
-      - The title of the teaser. This is usually taken from the "Excerpt
-        & Categories" tab of the target content, but can be changed for each
-        teaser
+      - The title of the teaser. For pages and articles, this is taken from the
+        "Excerpt & Categories" tab or the content title, but can be customized
+        per teaser
     * - description
       - string
-      - The description of the teaser. This is usually taken from the "Excerpt
-        & Categories" tab of the referenced content, but can be changed for
-        each teaser
+      - The description text. For pages and articles, this defaults to the
+        excerpt description or tagged properties, but can be customized per teaser
     * - moreText
       - string
-      - The text of the "More" link
+      - The text for the "read more" link. Defaults to excerpt more text
     * - mediaId
-      - string
-      - The ID of the image displayed with the teaser. Defaults to the first
-        image in the tab "Excerpt & Categories", but can be changed for each
-        teaser
+      - int|null
+      - The ID of the teaser image. For pages and articles, defaults to the
+        excerpt image or tagged media properties, but can be customized per teaser
     * - url
       - string
-      - The relative URL of the target content
+      - The URL of the target content
+    * - attributes
+      - array
+      - Additional custom attributes provided by the teaser provider
 
 Parameters
 ----------
 
-The following parameters can be used to customize the field in the page template:
+The following parameters can be used to customize the field in the template:
 
 .. list-table::
     :header-rows: 1
+    :widths: 20 20 60
 
     * - Parameter
       - Type
@@ -138,6 +142,36 @@ The following parameters can be used to customize the field in the page template
     * - max
       - string
       - The maximum number of selected teasers
+
+Tagging Properties for Teaser Data
+-----------------------------------
+
+You can tag properties in your template to use them as default teaser data:
+
+**sulu.teaser.description**
+    Use a text property as the default teaser description.
+
+**sulu.teaser.media**
+    Use a media property as the default teaser image.
+
+Sulu resolves teaser data in this order: custom values → tagged properties →
+excerpt data → content title.
+
+.. code-block:: xml
+
+    <property name="lead" type="text_editor">
+        <meta>
+            <title lang="en">Lead Text</title>
+        </meta>
+        <tag name="sulu.teaser.description"/>
+    </property>
+
+    <property name="header_image" type="single_media_selection">
+        <meta>
+            <title lang="en">Header Image</title>
+        </meta>
+        <tag name="sulu.teaser.media"/>
+    </property>
 
 Configurable Presentation
 -------------------------
@@ -188,12 +222,7 @@ Use the ``present_as`` option to configure the rendering variants:
     </template>
 
 The content manager can choose one of these variants in the administration
-interface:
-
-.. figure:: ../../img/teaser-selection-menu.png
-    :align: center
-
-The selected value can be used to set the CSS class of the teaser element in Twig:
+interface. The selected value can be used to set the CSS class of the teaser element in Twig:
 
 .. code-block:: twig
 
@@ -214,59 +243,159 @@ from a list of recipes:
 
     <?php
 
-    namespace AppBundle\Teaser;
+    namespace App\Teaser;
 
-    use Sulu\Bundle\PageBundle\Teaser\Configuration\TeaserConfiguration;
-    use Sulu\Bundle\PageBundle\Teaser\Provider\TeaserProviderInterface;
-    use Sulu\Bundle\PageBundle\Teaser\Teaser;
+    use Sulu\Bundle\AdminBundle\Teaser\Configuration\TeaserConfiguration;
+    use Sulu\Bundle\AdminBundle\Teaser\Provider\TeaserProviderInterface;
+    use Sulu\Bundle\AdminBundle\Teaser\Teaser;
+    use App\Repository\RecipeRepository;
+    use Symfony\Contracts\Translation\TranslatorInterface;
 
     class RecipeTeaserProvider implements TeaserProviderInterface
     {
-        /**
-         * Returns the configuration for rendering the teaser provider in the
-         * administration interface
-         *
-         * @return TeaserProvider
-         */
-        public function getConfiguration()
+        public function __construct(
+            private RecipeRepository $recipeRepository,
+            private TranslatorInterface $translator,
+        ) {
+        }
+
+        public function getConfiguration(): TeaserConfiguration
         {
             return new TeaserConfiguration(
-                'Recipe', // The title in the dropdown of the administration interface
-                'recipes', // The resourceKey of the entities to load for this type of teaser
-                'table', // The list adapter in which the entities should be shown
-                ['title'], // The properties which should be shown
-                'Recipe', // The title of the overlay that shows when this entity is assigned
-                'app.recipe_edit_form', // The view to which a click on an item in the Admin UI will navigate (optional)
-                ['id' => 'id'], // The mapping of the teaserItem to the path parameters of the above view (optional)
+                $this->translator->trans('app.recipe', [], 'admin'),
+                'recipes',
+                'table',
+                ['title'],
+                $this->translator->trans('app.select_recipe', [], 'admin'),
+                'app.recipe_edit_form',
+                ['id' => 'id'],
             );
         }
 
         /**
-         * Returns the actual teaser data.
+         * @param array<string|int> $ids
          *
-         * @return Teaser[] The teasers
+         * @return Teaser[]
          */
-        public function find(array $ids, $locale): array
+        public function find(array $ids, string $locale): array
         {
-            if (0 === count($ids)) {
+            if (0 === \count($ids)) {
                 return [];
             }
 
-            $items = ...; // load items by id
+            $recipes = $this->recipeRepository->findByIds($ids, $locale);
 
-            foreach ($items as $item) {
-                $result[] = new Teaser(...);
+            $teasers = [];
+            foreach ($recipes as $recipe) {
+                $teasers[] = new Teaser(
+                    $recipe->getId(),
+                    'recipes',
+                    $locale,
+                    $recipe->getTitle() ?? '',
+                    $recipe->getDescription() ?? '',
+                    $recipe->getMoreText() ?? '',
+                    $recipe->getUrl(),
+                    $recipe->getImageId(),
+                    [],
+                );
             }
 
-            return $result;
+            return $teasers;
         }
     }
 
+The ``TeaserConfiguration`` constructor accepts the following parameters:
+
+.. list-table::
+    :header-rows: 1
+    :widths: 20 20 60
+
+    * - Parameter
+      - Type
+      - Description
+    * - title
+      - string
+      - Display name shown in the admin interface dropdown
+    * - resourceKey
+      - string
+      - The resource key for your resource (e.g., "recipes", "pages")
+    * - listAdapter
+      - string
+      - The list adapter to use ("table" or "column_list")
+    * - displayProperties
+      - array
+      - Which properties to display in the selection list (e.g., ["title"])
+    * - overlayTitle
+      - string
+      - Title shown in the selection overlay
+    * - view
+      - string|null
+      - Admin route to navigate to when clicking an item (optional)
+    * - resultToView
+      - array|null
+      - Mapping of teaser properties to route parameters (e.g., ["id" => "id"]) (optional)
+
+The ``Teaser`` constructor accepts the following parameters:
+
+.. list-table::
+    :header-rows: 1
+    :widths: 20 20 60
+
+    * - Parameter
+      - Type
+      - Description
+    * - id
+      - int|string
+      - The unique identifier of the teaser
+    * - type
+      - string
+      - The resource key/type of the teaser (e.g., "recipes", "pages")
+    * - locale
+      - string
+      - The locale of the teaser
+    * - title
+      - string
+      - The title text
+    * - description
+      - string
+      - The description text
+    * - moreText
+      - string
+      - The text for the "read more" link
+    * - url
+      - string
+      - The URL to link to
+    * - mediaId
+      - int|null
+      - The ID of the teaser image
+    * - attributes
+      - array
+      - Additional custom attributes
+
 Register the provider in Symfony's service container and tag it with
-``sulu.teaser.provider`` to make it functional:
+``sulu.teaser.provider``:
 
-.. code-block:: xml
+.. code-block:: yaml
 
-    <service id="recipe_teaser_provider" class="AppBundle\Teaser\RecipeTeaserProvider">
-        <tag name="sulu.teaser.provider" alias="{your teaser-type}"/>
-    </service>
+    # config/services.yaml
+    services:
+        App\Teaser\RecipeTeaserProvider:
+            arguments:
+                - '@App\Repository\RecipeRepository'
+                - '@translator'
+            tags:
+                - { name: 'sulu.teaser.provider', alias: 'recipes' }
+
+The ``alias`` in the tag must match the resource key you use in the
+``TeaserConfiguration``.
+
+Built-in Teaser Providers
+--------------------------
+
+Sulu includes built-in teaser providers for common Sulu resources:
+
+**Pages** (alias: ``pages``)
+    Allows selecting pages from your content tree.
+
+**Articles** (alias: ``articles``)
+    Allows selecting articles.
