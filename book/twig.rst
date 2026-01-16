@@ -80,8 +80,8 @@ The excerpt data is available from:
     {{ extension.excerpt.title }}
     {{ extension.excerpt.description }}
     {{ extension.excerpt.more }}
-    {{ extension.excerpt.icon[0].thumbnails['50x50'] }}
-    {{ extension.excerpt.images[0].thumbnails['300x300'] }}
+    {{ extension.excerpt.icon.thumbnails['50x50'] }}
+    {{ extension.excerpt.images.thumbnails['300x300'] }}
 
 View
 ^^^^
