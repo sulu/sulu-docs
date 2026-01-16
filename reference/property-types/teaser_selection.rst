@@ -2,19 +2,12 @@ Teaser Selection
 ================
 
 The "teaser_selection" property type is used for displaying teasers to other
-content in your website. These teasers could be arranged as a list or grid, like
-in this example:
-
-.. figure:: ../../img/teaser-selection-web.png
-    :align: center
+content in your website. These teasers could be arranged as a list or grid.
 
 In the administration interface, the widget is displayed as a selector for the
 teasers. Content managers can choose a number of target contents. By default,
 the text from the "Excerpt & Categories" tab of the target content is shown.
 You can however customize the text of the teaser if you like.
-
-.. figure:: ../../img/teaser-selection-admin.png
-    :align: center
 
 Configuration
 -------------
@@ -229,12 +222,7 @@ Use the ``present_as`` option to configure the rendering variants:
     </template>
 
 The content manager can choose one of these variants in the administration
-interface:
-
-.. figure:: ../../img/teaser-selection-menu.png
-    :align: center
-
-The selected value can be used to set the CSS class of the teaser element in Twig:
+interface. The selected value can be used to set the CSS class of the teaser element in Twig:
 
 .. code-block:: twig
 
