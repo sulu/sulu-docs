@@ -248,7 +248,7 @@ to the content URL. Same takes effect for `?type=image` with the media type
 .. _example:
 
 Example for "pages" SmartContentProvider
-----------------------------------
+-----------------------------------------
 
 Page template
 ~~~~~~~~~~~~~
