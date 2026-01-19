@@ -62,14 +62,7 @@ After that you can check the result in the `_build/html` folder.
 
 ### Test Locally
 
-To test the documentation (including redirects) in a browser:
-
-```bash
-cd _build/html
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000 in your browser.
+To test the documentation in a browser, open the `_build/html/index.html` file.
 
 ### Clean Build
 
