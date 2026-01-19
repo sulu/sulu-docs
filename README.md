@@ -8,7 +8,7 @@ Contributing
 ------------
 
 If there's something missing or wrong, feel free to contribute or contact us.
-We are on Twitter [@sulu](https://twitter.com/sulu) and we got a 
+We are on Twitter [@sulu](https://twitter.com/sulu) and we got a
 [Slack Channel](http://sulu.io/en/contact).
 
 
