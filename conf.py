@@ -36,7 +36,52 @@ lexers['varnish4'] = CLexer()
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    'sphinx_reredirects',
+]
+
+# Redirects for renamed pages (content-types -> property-types in 3.0)
+redirects = {
+    "reference/content-types/index": "/reference/property-types/index.html",
+    "reference/content-types/account_selection": "/reference/property-types/account_selection.html",
+    "reference/content-types/block": "/reference/property-types/block.html",
+    "reference/content-types/category_selection": "/reference/property-types/category_selection.html",
+    "reference/content-types/checkbox": "/reference/property-types/checkbox.html",
+    "reference/content-types/collection_selection": "/reference/property-types/collection_selection.html",
+    "reference/content-types/color": "/reference/property-types/color.html",
+    "reference/content-types/contact_account_selection": "/reference/property-types/contact_account_selection.html",
+    "reference/content-types/contact_selection": "/reference/property-types/contact_selection.html",
+    "reference/content-types/date": "/reference/property-types/date.html",
+    "reference/content-types/datetime": "/reference/property-types/datetime.html",
+    "reference/content-types/email": "/reference/property-types/email.html",
+    "reference/content-types/image_map": "/reference/property-types/image_map.html",
+    "reference/content-types/link": "/reference/property-types/link.html",
+    "reference/content-types/location": "/reference/property-types/location.html",
+    "reference/content-types/media_selection": "/reference/property-types/media_selection.html",
+    "reference/content-types/number": "/reference/property-types/number.html",
+    "reference/content-types/page_selection": "/reference/property-types/page_selection.html",
+    "reference/content-types/phone": "/reference/property-types/phone.html",
+    "reference/content-types/resource_locator": "/reference/property-types/resource_locator.html",
+    "reference/content-types/route": "/reference/property-types/route.html",
+    "reference/content-types/select": "/reference/property-types/select.html",
+    "reference/content-types/single_account_selection": "/reference/property-types/single_account_selection.html",
+    "reference/content-types/single_category_selection": "/reference/property-types/single_category_selection.html",
+    "reference/content-types/single_collection_selection": "/reference/property-types/single_collection_selection.html",
+    "reference/content-types/single_contact_selection": "/reference/property-types/single_contact_selection.html",
+    "reference/content-types/single_icon_selection": "/reference/property-types/single_icon_selection.html",
+    "reference/content-types/single_media_selection": "/reference/property-types/single_media_selection.html",
+    "reference/content-types/single_page_selection": "/reference/property-types/single_page_selection.html",
+    "reference/content-types/single_select": "/reference/property-types/single_select.html",
+    "reference/content-types/single_snippet_selection": "/reference/property-types/single_snippet_selection.html",
+    "reference/content-types/smart_content": "/reference/property-types/smart_content.html",
+    "reference/content-types/snippet_selection": "/reference/property-types/snippet_selection.html",
+    "reference/content-types/tag_selection": "/reference/property-types/tag_selection.html",
+    "reference/content-types/teaser_selection": "/reference/property-types/teaser_selection.html",
+    "reference/content-types/text_area": "/reference/property-types/text_area.html",
+    "reference/content-types/text_line": "/reference/property-types/text_line.html",
+    "reference/content-types/time": "/reference/property-types/time.html",
+    "reference/content-types/url": "/reference/property-types/url.html",
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -19,13 +19,63 @@ If you are planning to create a pull request to this documentation repository
 you may want to check if your changes are valid. You can achieve that by using
 the `make` tool.
 
-Before you can build the docs locally, make sure that you have [installed sphinx][1].
+### Prerequisites
 
-Start the building process by executing
+Make sure you have Python 3.12 or higher installed. For more details about Sphinx,
+see the [official Sphinx installation guide][1].
+
+### Setup with Virtual Environment (Recommended)
+
+We recommend using a virtual environment to install dependencies:
+
+**Bash/Zsh:**
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**Fish Shell:**
+```fish
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate.fish
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Build
+
+Start the building process by executing:
 
     make html
 
 After that you can check the result in the `_build/html` folder.
+
+### Test Locally
+
+To test the documentation (including redirects) in a browser:
+
+```bash
+cd _build/html
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000 in your browser.
+
+### Clean Build
+
+To remove all built files:
+
+    make clean
 
 
 [1]: https://www.sphinx-doc.org/en/master/usage/installation.html
