@@ -5,17 +5,17 @@ Description
 -----------
 
 Shows a list of items, which depend on a configurable filter. Depending on
-the DataProvider you can define where the items come from (Datasource),
+the SmartContentProvider you can define where the items come from (Datasource),
 what tags the filtered items must have, how they are sorted, and how many
 results you want to get. Additionally you can define some presentation
 types, so that the content manager can decide if the items should be displayed
 e.g. in one column or two columns. The filter is saved as a JSON string in the
 database.
 
-The DataProviders are backend modules which handle the selected filters and
-return the items which fit to this filters. There are some predefined ones but
-you can add your own DataProvider easily. How you can do this is described in
-:doc:`/cookbook/smart-content-data-provider`
+SmartContentProviders are backend modules which handle the selected filters and
+return the items that match these filters. There are several built-in providers
+and you can add your own SmartContentProvider easily. How you can do this is
+described in :doc:`/cookbook/smart-content-data-provider`
 
 A very important feature is the ``exclude_duplicates`` parameter which offers
 the possibility to filter already used items on a website. If this parameter
@@ -33,7 +33,7 @@ Parameters
       - Description
     * - provider
       - string
-      - DataProvider alias for content of SmartContent. Default: `pages`
+      - SmartContentProvider alias for content of SmartContent. Default: `pages`
     * - max_per_page
       - integer
       - Limits the results per page. Omit this parameter to disable pagination.
@@ -136,16 +136,16 @@ This values are available in the *view* variable in the twig templates.
       - bool
       - Is TRUE if another page exists
 
-The "content" values depends on the DataProvider.
+The "content" values depends on the SmartContentProvider.
 
 .. note::
 
     You can determine content properties with the twig function ``dump``.
 
-DataProvider
-------------
+SmartContentProvider
+--------------------
 
-These providers are predefined for Sulu-Entities.
+Sulu includes several built-in SmartContentProviders for common Sulu resources.
 
 Content Pages
 ~~~~~~~~~~~~~
@@ -153,7 +153,7 @@ Content Pages
 Alias: "pages"
 
 This provider filters content pages. You can choose a parent page as data
-source, whose child pages will be filtered by the DataProvider.
+source, whose child pages will be filtered by the SmartContentProvider.
 
 **Parameters**
 
@@ -247,8 +247,8 @@ to the content URL. Same takes effect for `?type=image` with the media type
 
 .. _example:
 
-Example for "pages" DataProvider
-----------------------------------
+Example for "pages" SmartContentProvider
+-----------------------------------------
 
 Page template
 ~~~~~~~~~~~~~
@@ -333,3 +333,32 @@ Twig template
 
     If you have not defined the parameter ``max_per_page`` you can omit the
     pagination.
+
+Built-in SmartContentProviders
+-------------------------------
+
+Sulu includes the following built-in SmartContentProviders:
+
+**Pages** (alias: ``pages``)
+    Filters content pages from the page tree. Supports tags, categories, types,
+    datasource, pagination, sorting, and audience targeting.
+
+**Snippets** (alias: ``snippets``)
+    Filters snippets. Supports tags, categories, types, pagination, sorting, and
+    audience targeting.
+
+**Articles** (alias: ``articles``, if SuluArticleBundle is installed)
+    Filters articles. Supports tags, categories, types (via article types/groups),
+    pagination, and sorting.
+
+**Media** (alias: ``media``)
+    Filters media items. Supports tags, categories, types (document/video/image/audio),
+    datasource (collections), pagination, and sorting.
+
+**Contacts** (alias: ``contacts``)
+    Filters contacts/people. Supports tags, categories, pagination, and sorting.
+
+**Accounts** (alias: ``accounts``)
+    Filters accounts/organizations. Supports tags, categories, pagination, and sorting.
+
+For creating custom SmartContentProviders, see :doc:`/cookbook/smart-content-data-provider`.
