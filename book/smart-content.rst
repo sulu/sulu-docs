@@ -4,7 +4,7 @@ Using Smart Content
 What is Smart Content?
 ----------------------
 
-Smart content is one of our most powerful property types. It allows the
+Smart content is one of our most powerful content types. It allows the
 content editor to dynamically configure an aggregation of content, whereby
 content does not only refer to pages. This is possible due to the data providers,
 which can be registered in the system. A data provider defines which options

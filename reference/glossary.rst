@@ -58,10 +58,10 @@ Prefix
 Property
     This term refers to the items in a Structure.
     
-Property Type
-    Property types are the way Sulu represents different types of "content". For
+Content Type
+    Content types are the way Sulu represents different types of "content". For
     example, `email`, `text` and `smart_content` are three examples of Sulu
-    Property Types
+    Content Types
 
 Resource locator
     The later part of a web facing URL belonging to some document, excluding

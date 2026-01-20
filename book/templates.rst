@@ -156,7 +156,7 @@ A property has three essential attributes:
 * a ``type`` that defines what kind of content can be stored
 * a ``title`` that is shown in the administration interface
 
-Here is a table with the property types included in the Sulu core:
+Here is a table with the content types included in the Sulu core:
 
 +------------------------------+---------------------------------------------+
 | Key                          | Appearance in the administration            |
@@ -223,7 +223,7 @@ Here is a table with the property types included in the Sulu core:
 | |single_account_selection|   | widget for selecting a single account       |
 +------------------------------+---------------------------------------------+
 
-Many property types can be configured by passing parameters in the element
+Many content types can be configured by passing parameters in the element
 ``<params>``. For a single select, for example, you need to set the possible
 choices:
 
@@ -524,9 +524,9 @@ content block is set in the ``<meta>`` element:
     </template>
 
 The content managers can choose the type of each individual block from a
-dropdown. Note: We are not referring to property types here. The users of
+dropdown. Note: We are not referring to content types here. The users of
 the administration interface may not be familiar with the technical concept of
-a property type.
+a content type.
 
 Instead, consider defining custom types that suit your needs.
 In this particular example, we want to provide the following types to our users:
@@ -631,7 +631,7 @@ type:
 
     The challenge here is to distinguish between *block types* and *property
     types*. You define *block types* yourself in the ``<types>`` element
-    and set the default selection in ``default-type``. We reference a *property type* only from the
+    and set the default selection in ``default-type``. We reference a *content type* only from the
     ``<property>`` element.
 
 .. note::
@@ -1062,9 +1062,9 @@ The tag supports the following attributes:
 
  - `string`: For simple fields
  - `array`: For multiple fields
- - `tags`: Special type for `tag_selection` property type
- - `category`: Special type for `single_category_selection` and `category_selection` property types
- - `date`: For indexing the `date` property type
+ - `tags`: Special type for `tag_selection` content type
+ - `category`: Special type for `single_category_selection` and `category_selection` content types
+ - `date`: For indexing the `date` content type
  - `json`: For indexing raw data in the search
  - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
 
