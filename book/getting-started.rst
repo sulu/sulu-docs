@@ -4,8 +4,8 @@ Getting Started
 Are you ready for a quick start with Sulu? Sit back, fasten your seat belts
 and... go!
 
-Bootstrap a Project
--------------------
+Bootstrapping a Project
+-----------------------
 
 We'll bootstrap a new project based on the `Sulu Skeleton`_ with
 Composer_:
@@ -30,7 +30,7 @@ This command will bootstrap a new project in the directory ``my-project``.
 
 .. note::
 
-    If you want to use other languages than english or german for the
+    If you want to use languages other than English or German for the
     administration interface of Sulu you need to configure them in the
     ``config/packages/sulu_admin.yaml`` file:
 
@@ -45,7 +45,7 @@ This command will bootstrap a new project in the directory ``my-project``.
                 - de
 
     Available languages are shown on `Crowdin`_.
-    Afterwards the languages have to be downloaded by running the following command:
+    Afterward, download the languages by running the following command:
 
     .. code-block:: bash
 
@@ -81,16 +81,16 @@ administration interface. The key is the unique identifier of the webspace:
 
 .. caution::
 
-    Changing the ``<key>`` of a webspace later on causes complications. We
-    recommend to decide what key to use before you build the database in the
+    Changing the ``<key>`` of a webspace later on can cause complications. We
+    recommend deciding what key to use before you build the database in the
     next step.
 
 We'll :doc:`return to webspaces <webspaces>` later in this book.
 
-Setup the Database
-------------------
+Setting up the Database
+-----------------------
 
-Next we'll setup a database for Sulu. You can use Sulu with the database
+Next, we will set up a database for Sulu. You can use Sulu with the database
 backends `supported by Doctrine DBAL`_. Some of those are currently still
 untested:
 
@@ -142,9 +142,9 @@ Optionally, you can store the content of your website (all tables starting with
 Start a Web Server
 ------------------
 
-Now that the database is ready, we'll fire up a server to try Sulu in the browser.
+With the database ready, we can start a server to try Sulu in the browser.
 
-Sulu is made up of two separate applications for the administration interface
+Sulu is composed of two separate applications for the administration interface
 and the website. Each application is optimized for its purpose. The applications
 can be managed with the command line tools ``bin/adminconsole`` (for the
 administration) and ``bin/websiteconsole`` (for the website).
@@ -156,7 +156,7 @@ will make sure the correct application is loaded.
 
     php -S localhost:8000 -t public/ config/router.php
 
-You can access the administration interface via http://127.0.0.1:8000/admin.
+You can access the administration interface at http://127.0.0.1:8000/admin.
 The default user and password is "admin".
 
 The web frontend can be found under http://127.0.0.1:8000.

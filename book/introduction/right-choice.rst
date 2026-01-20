@@ -8,17 +8,17 @@ Sulu is the right choice when you can answer **some** of the following questions
 with yes.
 
 * Do you want to work with the Symfony stack?
-* You got a running app based on Symfony and want to add a content management
+* Do you have a running app based on Symfony and want to add a content management
   layer?
 * Do you need a clean, solid development setup?
-* Default solutions won't fit the requirements?
+* Do default solutions not fit the requirements?
 * You want to create a modern website based on modern technology?
 * Do you need total freedom over your frontend code?
 * Does your project require multiple languages?
 * Should there be several portals?
-* Usability and design of the backend are important?
+* Are usability and design of the backend important?
 
-Answering some of the following questions with yes, may be a hint that another
+Answering 'yes' to some of the following questions may indicate that another
 technology may be a better pick.
 
 * You want to choose from tons of ready to use templates?

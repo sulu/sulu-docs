@@ -1,30 +1,29 @@
 Content Architecture
 ====================
 
-Our content is heavily structured. As mentioned in :doc:`structure`, we rely on
-the Symfony CMF on top of PHPCR. On this page we'll get into the Sulu Content
+Our content is heavily structured. This page details the Sulu Content
 Architecture.
 
 
 Sulu Instance
 -------------
 
-At first, you create a Sulu Instance. A Sulu instance can be seen as a **single
-installation** or one pool of data. Its real live mapping could be a company or
+First, you create a Sulu Instance. A Sulu instance can be seen as a **single
+installation** or one pool of data. In real life, this could map to a company or
 an organization.
 
 
 Webspace
 --------
 
-On your instance you'll define webspaces. Webspaces could represent your brands
+In your instance, you will define webspaces. Webspaces could represent your brands
 and corporations. A landing page could be a single webspace.
 
 
 Languages
 ---------
 
-Once you created your webpsaces, you could define languages. Pages could
+Once you have created your webspaces, you could define languages. Pages could
 then be translated or mapped to another language as **shadow-** or
 **ghost-pages**.
 
@@ -32,18 +31,18 @@ then be translated or mapped to another language as **shadow-** or
 Page
 ----
 
-As already heard in :doc:`backend-template` pages are configured in templates.
+As mentioned in :doc:`backend-template` pages are configured in templates.
 They are created in webspaces and represent an entry in a certain menu. These
-pages are contained within your webspace. Once you got your
-:doc:`setup <../getting-started>` right, you can start exploring the Sulu default
+pages are contained within your webspace. Once you have your
+:doc:`setup <../getting-started>` configured correctly, you can start exploring the Sulu default
 structure in the backend.
 
 
-Content-Type
-------------
+Property Type
+-------------
 
-A template is built up of several content types. A blog post, for example, could
-consist of the following content types:
+A template is built from several property types. A blog post, for example, could
+consist of the following property types:
 
 * Single line text (*Title*)
 * Multi line text (*Infobox*)
@@ -51,7 +50,7 @@ consist of the following content types:
 * Date (*Event-Date*)
 * List of Tags (*Tags*)
 
-A detailed list of all the content types is covered in
+A detailed list of all the property types is covered in
 :doc:`../templates`.
 
 
@@ -79,12 +78,12 @@ Users itself.
 Whatever you want
 -----------------
 
-Sulu is very extensible. You got existing content you want to integrate through
+Sulu is very extensible. Do you have existing content you want to integrate through
 DBAL? Do it. An API that delivers content? Integrate it. Other Symfony bundles
-you've already coded. Integrate them.
+that you have already coded? Integrate them.
 
-A more detailed documentation could be found in the section
+A more detailed documentation can be found in the section
 :doc:`../content-architecture`.
 
-Now you are really deep into the concepts of Sulu. So the next step is to get
+You have now dived deep into the concepts of Sulu. So the next step is to get
 started. :doc:`../getting-started`

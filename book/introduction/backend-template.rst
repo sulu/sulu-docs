@@ -2,7 +2,7 @@ Separation of Concerns
 ======================
 
 Like most modern Content Management Systems, Sulu completely separates content
-from design. It urges template based content rendering. Since usability, web
+from design. It encourages template-based content rendering. Since usability, web
 standards and SEO are of such great importance, templates take a big role
 in the creation of a Sulu based web platform.
 
@@ -14,16 +14,16 @@ content will be much easier to manage, the performance of your system will be
 optimized, and your website will be more easily accessible for users, search
 engines and third party applications.
 
-Here are some of the separations we did.
+Here are some of the separations we made.
 
 Template vs. Theme
 ------------------
 
 As usual in Symfony, the structure of data is separated from its presentation.
-In Sulu, the structure of a page, a so called **template**, is defined.
+In Sulu, the structure of a page, a **template**, is defined.
 The template describes how the administration interface of the page looks and
 how the data is passed to the theme. The **theme** itself is - by default -
 a set of **Twig templates**.
 
-We already heard some content specific terms on this page. On the next page
-we'll have detailed look at the :doc:`content-architecture`.
+We have already introduced some content-specific terms on this page. On the next page
+we'll have a detailed look at the :doc:`content-architecture`.

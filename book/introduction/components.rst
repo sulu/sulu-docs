@@ -19,13 +19,13 @@ online-shop customers or other contact based data.
 Assets
 ------
 
-The Assets module let you upload and organize any type of documents such as
+The Assets module lets you upload and organize any type of documents such as
 pictures, text documents (PDF, Word, Excel etc.), videos or audio clips. Once
-uploaded an asset can be used in as many webpages as required remaining its
+uploaded an asset can be used in as many webpages as required maintaining a
 single source in the Assets module. This means if you would like to change a
 document that is used in several different webpages you would only have to
 replace it once in Assets. Pictures will be automatically transformed to
-web-compatible formats and resized to the required formats of the templates
+web-compatible formats and resized to the required formats for the templates
 while the original file will be stored as well. All other document types
 remain in their original format.
 
@@ -49,7 +49,7 @@ engine, this would mean 1 website with 3 languages sharing the same content
 structure.
 
 Next, let's assume that ACME Inc. wants to dedicate each language to its
-correspondent market by using top-level-domains. This would of course be more
+corresponding market by using top-level domains. This would of course be more
 marketing oriented and search engine friendly. The English content would be
 published in www.acme.com, the German content in www.acme.de and the French
 content in www.acme.fr. Let's go even further and say that each website's design

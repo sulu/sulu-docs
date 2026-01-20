@@ -1,12 +1,12 @@
 Creating a Page Template
 ========================
 
-In Sulu, each page has a *page template*. The page template controls two things:
+In Sulu, every page has a *page template*. The page template controls two things:
 
 * the structure of the page
 * how that structure is rendered
 
-The structure of a page consists of *properties*, each of which has a *(content)
+The structure of a page consists of *properties*, each of which has a *property
 type*. The default page template, for example, defines the following
 properties:
 
@@ -15,7 +15,7 @@ properties:
 * **article** of type **text_editor**
 
 When a content manager opens a page in the administration interface, they can
-change the values of these properties. At last, frontend designers can access
+change the values of these properties. Finally, frontend designers can access
 these values and render them according to the desired design.
 
 Each page template is defined by two files:
@@ -26,24 +26,24 @@ Each page template is defined by two files:
 For example, the default template -- named "default" -- is defined by the files
 ``config/templates/pages/default.xml`` and
 ``templates/pages/default.html.twig``. The Sulu Skeleton
-also contains a second template named "homepage", which you can find in the
+also includes a second template named "homepage", which you can find in the
 same directories.
 
 This guide focuses on the configuration of the page structure in the XML file.
-If you want to learn more about rendering the pages in Twig, read
-:doc:`twig`.
+If you want to learn more about rendering the pages in Twig, read the
+:doc:`twig` documentation.
 
 Choosing the Template of a Page
 -------------------------------
 
-The template of a page can be selected in the admin interface:
+You can select the template for a page in the admin interface:
 
 .. figure:: ../img/templates-selection.png
 
 .. note::
 
     If you don't want a template to appear in this list, use the ``excluded-templates`` node in the webspace configuration file.
-    Have a closer look at `Setup a Webspace <webspaces.html#urls>`_ for more details.
+    Have a closer look at `Setting up a Webspace <webspaces.html#urls>`_ for more details.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
 the XML:
@@ -90,7 +90,7 @@ identifier of the template:
 
 .. caution::
 
-    Currently the ``<key>`` has to be identical to the filename of the template
+    Currently, the ``<key>`` must be identical to the filename of the template
     minus the ``.xml`` suffix.
 
 The second thing you have to customize is the ``<view>``. This element stores
@@ -115,17 +115,17 @@ the Twig file that is used to render the template:
     Sulu automatically adds the ``.<format>.twig`` suffix to the view string,
     depending on the format requested by the client (HTML, JSON, XML, ...).
 
-    Instead of the folder notation with the ``/`` you can use the
+    Instead of folder notation using ``/``, you can use
     `Symfony's naming convention`_ without the file extension for Twig
     templates.
 
-We'll talk more about the Twig file itself in :doc:`twig`. Let's continue with
+We will discuss the Twig file itself in :doc:`twig`. Let's continue with
 adding properties to our page template.
 
 Properties
 ----------
 
-Properties make up the structure of a page. They are defined in the element
+Properties define the structure of a page. They are defined in the element
 ``<properties>``:
 
 .. code-block:: xml
@@ -156,7 +156,7 @@ A property has three essential attributes:
 * a ``type`` that defines what kind of content can be stored
 * a ``title`` that is shown in the administration interface
 
-Here is a table with the content types shipped in Sulu core:
+Here is a table with the property types included in the Sulu core:
 
 +------------------------------+---------------------------------------------+
 | Key                          | Appearance in the administration            |
@@ -223,16 +223,7 @@ Here is a table with the content types shipped in Sulu core:
 | |single_account_selection|   | widget for selecting a single account       |
 +------------------------------+---------------------------------------------+
 
-.. tip::
-
-    Use the command ``sulu:content:types:dump`` to list all the content types
-    available in your project:
-
-    .. code-block:: bash
-
-        php bin/adminconsole sulu:content:types:dump
-
-Many content types can be configured by passing parameters in the element
+Many property types can be configured by passing parameters in the element
 ``<params>``. For a single select, for example, you need to set the possible
 choices:
 
@@ -533,18 +524,18 @@ content block is set in the ``<meta>`` element:
     </template>
 
 The content managers can choose the type of each individual block from a
-dropdown. Attention, we're not talking about content types! The users of
-the administration interface don't even know what the quite technical concept of
-a content type is.
+dropdown. Note: We are not referring to property types here. The users of
+the administration interface may not be familiar with the technical concept of
+a property type.
 
-Instead, you should think about your own types that make sense in your case.
+Instead, consider defining custom types that suit your needs.
 In this particular example, we want to provide the following types to our users:
 
 * "Text" for formatted text
 * "Image Gallery" for a gallery of images
 * "Quote" for a quote from an artist
 
-We'll define these types in the ``<types>`` element and set the default type in
+We define these types in the ``<types>`` element and set the default type in
 the ``default-type`` attribute:
 
 .. code-block:: xml
@@ -638,10 +629,10 @@ type:
 
 .. note::
 
-    The challenge here is to mentally separate *block types* from *content
+    The challenge here is to distinguish between *block types* and *property
     types*. You define *block types* yourself in the ``<types>`` element
-    and set the default selection in ``default-type``. Only from the
-    ``<property>``, we reference a *content type*.
+    and set the default selection in ``default-type``. We reference a *property type* only from the
+    ``<property>`` element.
 
 .. note::
 
@@ -657,9 +648,9 @@ type:
 Aligning Fields on the Grid
 ---------------------------
 
-Sulu's administration interface uses a basic twelve-column grid for the
+The Sulu administration interface uses a standard twelve-column grid for the
 properties. By default, each property is all the twelve columns wide. If you
-reduce that width, properties automatically float next to each other if they fit
+reduce the width, properties automatically float next to each other if they fit
 within the twelve columns:
 
 .. figure:: ../img/templates-aligned-fields.png
@@ -699,7 +690,7 @@ Displaying Additional Information for a Field
 ---------------------------------------------
 
 You can display a help text with additional information for a property.
-Put the help text into the ``<info_text>`` element in the ``<meta>`` section:
+Place the help text in the ``<info_text>`` element in the ``<meta>`` section:
 
 .. code-block:: xml
 
@@ -731,7 +722,7 @@ Including Other Templates
 -------------------------
 
 If you want to reuse a portion of a template in a different template, you can
-move the portion to a separate file and include it using `XInclude`_.
+move that portion to a separate file and include it using `XInclude`_.
 
 To enable XInclude, we'll first add the namespace
 ``xmlns:xi="http://www.w3.org/2001/XInclude"`` to our document:
@@ -1017,7 +1008,7 @@ For example, if you know that your homepage changes its content each day at
 Search
 ------
 
-That a property is indexed in the search the property need to be tagged.
+To index a property in the search, the property needs to be tagged.
 
 .. code-block:: xml
 
@@ -1053,11 +1044,11 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" />
     </property>
 
-The tag can have specific attributes:
+The tag supports the following attributes:
 
  - `role`: The role for the property
- - `type`: Type how the data need to be stored
- - `index`: Is indexed need only to be set to deactivate index
+ - `type`: Type of how the data should be stored
+ - `index`: Determines if the field is indexed. Set to 'false' to deactivate indexing.
 
 **Roles**:
 
@@ -1065,15 +1056,15 @@ The tag can have specific attributes:
  - `description`: The main description of the document
  - `image`: The main image of the document
 
-.. note:: Roles are not possible on properties inside a block
+.. note:: Roles cannot be assigned to properties within a block
 
 **Types**:
 
  - `string`: For simple fields
  - `array`: For multiple fields
- - `tags`: Special type for `tag_selection` content type
- - `category`: Special type for `single_category_selection` and `category_selection` content types
- - `date`: For indexing the `date` content type
+ - `tags`: Special type for `tag_selection` property type
+ - `category`: Special type for `single_category_selection` and `category_selection` property types
+ - `date`: For indexing the `date` property type
  - `json`: For indexing raw data in the search
  - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
 
@@ -1121,3 +1112,4 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/content-types/single_icon_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
 .. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`
+

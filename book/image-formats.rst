@@ -1,19 +1,19 @@
 Configure image formats
 =======================
 
-Sulu supports to configure image formats for images that are uploaded via the administration interface.
-This allows to optimize the performance of your website by outputting images in the exact dimensions that
+Sulu supports configuring image formats for images that are uploaded via the administration interface.
+This allows you to optimize the performance of your website by outputting images in the exact dimensions that
 are needed. Furthermore, the content manager can select the cutout that should be used when outputting a
 specific image format for an uploaded image.
 
-To save space on your server, image formats for uploaded images are generated when they are requested the
+To save space on your server, image formats for uploaded images are generated when they are requested for the
 first time.
 
 Image formats can be defined in:
 
  - `config/image-formats.xml`
 
-The following example shows you different ways to define image formats:
+The following example shows different ways to define image formats:
 
 .. code-block:: xml
 
@@ -78,7 +78,7 @@ images.
 Using image formats in your Twig template
 -----------------------------------------
 
-The URLs for accessing specific image formats are passed to you twig template inside of the ``thumbnails`` property:
+The URLs for accessing specific image formats are passed to your Twig template inside of the ``thumbnails`` property:
 
 .. code-block:: twig
 
@@ -86,7 +86,7 @@ The URLs for accessing specific image formats are passed to you twig template in
         <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.title }}"/>
     </div>
     
-Per default, image formats will be outputted in the file format of the original file. 
+By default, image formats are output in the file format of the original file. 
 You can also use a specific file format (eg. ``png`` or ``webp``) by adding the extension to the format key:
 
 .. code-block:: twig
@@ -115,12 +115,12 @@ This file does not exist by default and must be created on your own.
                 avif_quality: 80
                 png_compression_level: 6
 
-Its recommended to have `jpeg_quality` between 70-90 as this is the best compromise between quality and image size.
+It is recommended to have `jpeg_quality` between 70-90 as this is the best compromise between quality and image size.
 
 Specific image compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A image compression can also be set on a specific image format the following way:
+Image compression can also be set on a specific image format the following way:
 
 .. code-block:: xml
 
@@ -328,7 +328,7 @@ Transformation effect can also be combined the following way:
 Editing existing image formats
 ------------------------------
 
-If you edit exist image formats you need to run the following command to regenerate exist images:
+If you edit existing image formats you need to run the following command to regenerate existing images:
 
 If you modify an existing image format configuration, you need to regenerate already generated images
 by executing the following command:
