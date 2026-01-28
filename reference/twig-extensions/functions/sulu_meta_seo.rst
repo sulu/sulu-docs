@@ -1,23 +1,10 @@
+:orphan:
+
 ``sulu_meta_seo``
 =================
 
 .. note::
 
-    This documentation is a incomplete.
+    This extension was removed in Sulu 3.0.
 
-.. note::
-
-    This method was replaced by :doc:`sulu_seo`, which is also already
-    deprecated. Use the predefined template as described in
-    :doc:`../../../book/twig`.
-
-Return SEO metatags with fallbacks
-
-**Arguments**:
-
-- **extension**: *array*
-- **content**: *array*
-
-**Returns**:
-
-Seo fallbacks
+    It was replaced by an extendable ``@SuluWebsite/Extension/seo.html.twig`` twig file.

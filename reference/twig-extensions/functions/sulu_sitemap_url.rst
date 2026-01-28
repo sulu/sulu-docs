@@ -1,14 +1,14 @@
+:orphan:
+
 ``sulu_sitemap_url``
 ====================
 
-Returns url for given Webspace and locale.
+.. note::
 
-**Arguments**;
+    This extension was removed in Sulu 3.0.
 
-- **url** *string* - The uuid of the current content
-- **locale** *string* - optional: locale for determine url
-- **webspaceKey** *string* - optional: webspace for determine url
+    The previous extension did not keep articles or other routable content in mind.
+    To bring this feature back we require deeper feedback from the community about the use-cases.
+    Please provide your feedback on GitHub `Sitemap Twig Extension for Sulu 3 issue`_ .
 
-**Returns**:
-
-Url for a given webspace and locale
+.. _Sitemap Twig Extension for Sulu 3 issue: https://github.com/sulu/sulu/issues/8580
