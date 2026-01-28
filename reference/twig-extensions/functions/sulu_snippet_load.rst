@@ -12,6 +12,7 @@ Returns content array for given snippet uuid.
 
 - **uuid**: *string* - The uuid of requested content.
 - **locale**: *string* - optional: Locale to load snippet.
+- **loadExcerpt**: *boolean* - optional: Load data from excerpt tab
 
 **Returns**:
 

@@ -174,5 +174,4 @@ When you're ready to learn more, continue with :doc:`templates`.
 .. _Sulu Skeleton: https://github.com/sulu/skeleton
 .. _Composer: https://getcomposer.org
 .. _supported by Doctrine DBAL: https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
-.. _Apache Jackrabbit: http://jackrabbit.apache.org
 .. _Crowdin: https://sulu.crowdin.com/sulusulu
