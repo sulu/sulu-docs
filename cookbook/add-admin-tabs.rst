@@ -180,10 +180,13 @@ Extend the PageDimensionContent entity.
 
 See :doc:`../book/extend-entities` for more information about extending entities in Sulu entities.
 
-Next Step is to create a ContentMerger, ContentDataMapper and ContentNormalizer for our new data.
+.. note::
 
-Currently this steps not yet documented but look at AuthorMerger, AuthorDataMapper and AuthorNormalizer classes as reference:
+    This documentation does not yet exists for Sulu 3.0. Please feel free to contribute it.
 
- - ``PageSocialMerger`` implements ``Sulu\Content\Application\ContentMerger\Merger\MergerInterface``
- - ``PageSocialDataMapper`` implements ``Sulu\Content\Application\ContentDataMapper\DataMapper\DataMapperInterface``
- - ``PageSocialNormalizer`` implements ``Sulu\Content\Application\ContentNormalizer\Normalizer\NormalizerInterface``
+    Next Step would be to create a ContentMerger, ContentDataMapper and ContentNormalizer for our new data.
+    Currently this steps not yet documented but look at AuthorMerger, AuthorDataMapper and AuthorNormalizer classes as reference:
+
+     - ``PageSocialMerger`` implements ``Sulu\Content\Application\ContentMerger\Merger\MergerInterface``
+     - ``PageSocialDataMapper`` implements ``Sulu\Content\Application\ContentDataMapper\DataMapper\DataMapperInterface``
+     - ``PageSocialNormalizer`` implements ``Sulu\Content\Application\ContentNormalizer\Normalizer\NormalizerInterface``
