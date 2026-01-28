@@ -17,13 +17,10 @@ Functions
     functions/sulu_content_load_parent
     functions/sulu_content_path
     functions/sulu_content_root_path
-    functions/sulu_meta_alternate
-    functions/sulu_meta_seo
     functions/sulu_navigation_flat
     functions/sulu_navigation_root_flat
     functions/sulu_navigation_root_tree
     functions/sulu_navigation_tree
-    functions/sulu_seo
     functions/sulu_sitemap
     functions/sulu_sitemap_url
 
