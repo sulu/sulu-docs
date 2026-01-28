@@ -32,11 +32,11 @@ the component tests (``C``).
 
 `runtests` has the following options:
 
-   * ``-i``: Initialize the test setup (e.g. creating database).
-   * ``-t [Bundle]``: Run the tests only for the specific bundle.
-   * ``-a``: Run all tests.
-   * ``-B``: Don't run the bundle tests
-   * ``-C``: Don't run the component tests
+   * ``-i`` or ``--initialize```: Initialize the test setup (e.g. creating database).
+   * ``-t [BundleOrComponent]`` or ``--target [BundleOrComponent]``: Run the tests only for the specific bundle or component under packages.
+   * ``-a`` or ``--all```: Run all tests.
+   * ``-B`` or ``--no-bundle-tests```: Don't run the bundle tests
+   * ``-C`` or ``--no-component-tests``: Don't run the component tests
 
 Subsequently you will only need to run the tests, so you can omit the ``-i``
 option.
@@ -49,15 +49,14 @@ You may also specify a specific bundle for which to run the tests:
 
 .. code-block:: bash
 
-    $ ./bin/runtests -C -t SearchBundle
+    $ ./bin/runtests -C -t content # runs the packages/content component tests
+    $ ./bin/runtests -C -t MediaBundle # runs the src/Sulu/Bundle/MediaBundle tests
 
-After the bundles have been initialized you may also simply change to the
-bundle root directory and use ``phpunit`` as normal:
+Use PHPUnit filters to run specific tests within a bundle. For example, to run
 
 .. code-block:: bash
 
-    $ cd src/Sulu/Bundle/SearchBundle
-    $ phpunit
+    $ ./bin/runtests -C -t MediaBundle --flags="--filter=MediaControllerTest"
 
 Component Testing
 -----------------
@@ -68,39 +67,10 @@ the root directory:
 .. code-block:: bash
 
     $ ./bin/runtests -B
-    $ phpunit
+    $ vendor/bin/phpunit
 
 You can test a specific component with PHPUnit by specifying the path:
 
 .. code-block:: bash
 
-    $ phpunit src/Sulu/Component/Content
-
-Jackrabbit installation
------------------------
-
-By default Sulu uses the Doctrine DBAL implementation for PHPCR in your local
-test environment. If you need to test against the Jackrabbit backend, you can
-install it with the following bash snippet:
-
-.. code-block:: bash
-
-    JACKRABBIT_VERSION=2.12.0
-    if [ ! -f downloads/jackrabbit-standalone-$JACKRABBIT_VERSION.jar ]; then
-        cd downloads
-        wget http://archive.apache.org/dist/jackrabbit/$JACKRABBIT_VERSION/jackrabbit-standalone-$JACKRABBIT_VERSION.jar
-        cd -
-    fi
-
-To start your jackrabbit installation run
-
-.. code-block:: bash
-
-    java -jar downloads/jackrabbit-standalone-2.12.0.jar > /dev/null &
-
-Now you have to run your tests with the ``jackrabbit`` backend enabled (omit the
-initialization step [``-i``] after the first run):
-
-.. code-block:: bash
-
-    $ PHPCR_TRANSPORT=jackrabbit ./bin/runtests -i -a
+    $ vendor/bin/phpunit src/Sulu/Component/Cache

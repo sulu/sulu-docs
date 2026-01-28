@@ -38,6 +38,5 @@ If you want to build parts of the system on your own, you will additionally need
 .. _vips_extension: https://github.com/libvips/php-vips-ext
 .. _database management system supported by Doctrine: https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
 .. _Composer: https://getcomposer.org
-.. _Apache Jackrabbit: http://jackrabbit.apache.org
 .. _Node.js: http://nodejs.org
 .. _npm: https://www.npmjs.com
