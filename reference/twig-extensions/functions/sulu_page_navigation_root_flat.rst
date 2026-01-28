@@ -15,7 +15,7 @@ Returns the navigation as a list of pages:
 
 .. code-block:: twig
 
-    {% for item in sulu_page_navigation_root_flat('main', 2, 2, {
+    {% for item in sulu_page_navigation_root_flat('main', 2, {
         'title': 'title',
         'url': 'url',
         'excerptTitle': 'excerpt.title',

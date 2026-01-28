@@ -17,13 +17,13 @@ Returns the navigation for a given page uuid as a tree of pages:
                 <ul>
                     {% for child in item.children %}
                         <li>
-                            <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
+                            <a href="{{ sulu_content_path(child.url) }}">{{ child.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             {% endif %}
         {% endfor %}
-    <ul>
+    </ul>
 
 **Complex Example**:
 
@@ -43,13 +43,13 @@ Returns the navigation for a given page uuid as a tree of pages:
                 <ul>
                     {% for child in item.children %}
                         <li>
-                            <a href="{{ sulu_content_path(item.url) }}">{{ item.excerptTitle|default(item.title) }}</a>
+                            <a href="{{ sulu_content_path(child.url) }}">{{ child.excerptTitle|default(child.title) }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             {% endif %}
         {% endfor %}
-    <ul>
+    </ul>
 
 **Arguments**:
 
