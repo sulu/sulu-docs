@@ -2,10 +2,4 @@
      - **uuid**: UUID of page
      - **title**: Title of page
      - **url**: URL for page
-     - **template**: Template name of page
-     - **changed**: Changed date of page
-     - **changer**: User ID of changer
-     - **created**: Date of creation
-     - **creator**: User ID of creator
-     - **nodeType**: Type of node
-     - **excerpt**: Excerpt (if load-excerpt is true)
+     - use ``properties`` config to provide additional fields
