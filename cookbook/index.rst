@@ -38,6 +38,7 @@ our recipes.
     localization-provider
     link-provider
     sitemap-provider
+    property-resolver-and-resource-loader
     dump-sitemap
     https
     video-preview-images
