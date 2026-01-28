@@ -13,7 +13,7 @@ Returns the navigation for a given page uuid as a tree of pages:
                 <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
             </li>
 
-            {% if item.children|length !== 0 %}
+            {% if item.children|length != 0 %}
                 <ul>
                     {% for child in item.children %}
                         <li>
@@ -39,7 +39,7 @@ Returns the navigation for a given page uuid as a tree of pages:
                 <a href="{{ sulu_content_path(item.url) }}">{{ item.excerptTitle|default(item.title) }}</a>
             </li>
 
-            {% if item.children|length !== 0 %}
+            {% if item.children|length != 0 %}
                 <ul>
                     {% for child in item.children %}
                         <li>
