@@ -19,9 +19,9 @@ Functions
     functions/sulu_meta_alternate
     functions/sulu_meta_seo
     functions/sulu_page_breadcrumb
-    functions/sulu_page_navigation_flat
-    functions/sulu_page_navigation_root_flat
     functions/sulu_page_navigation_root_tree
+    functions/sulu_page_navigation_root_flat
+    functions/sulu_page_navigation_flat
     functions/sulu_page_navigation_tree
     functions/sulu_seo
     functions/sulu_sitemap
