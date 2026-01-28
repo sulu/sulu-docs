@@ -53,7 +53,7 @@ Returns the navigation for a given page uuid as a tree of pages:
 
 **Arguments**:
 
-- **uuid**: *string* - UUID of page node for which to show the breadcrumb
+- **uuid**: *string* - UUID of page node for which to show the navigation
 - **context**: *string* - optional: context to filter navigation
 - **depth**: *int* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...). Default to 1.
 - **level**: *int|null* - optional: level to load pages on the specific level null for current level. Default to null.
