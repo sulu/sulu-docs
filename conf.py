@@ -81,6 +81,11 @@ redirects = {
     "reference/property-types/text_line": "../../reference/content-types/text_line.html",
     "reference/property-types/time": "../../reference/content-types/time.html",
     "reference/property-types/url": "../../reference/content-types/url.html",
+    "reference/twig-extensions/functions/sulu_breadcrumb": "../../../reference/twig-extensions/functions/sulu_page_breadcrumb.html",
+    "reference/twig-extensions/functions/sulu_navigation_flat": "../../../reference/twig-extensions/functions/sulu_page_navigation_flat.html",
+    "reference/twig-extensions/functions/sulu_navigation_root_flat": "../../../reference/twig-extensions/functions/sulu_page_navigation_root_flat.html",
+    "reference/twig-extensions/functions/sulu_navigation_root_tree": "../../../reference/twig-extensions/functions/sulu_page_navigation_root_tree.html",
+    "reference/twig-extensions/functions/sulu_navigation_tree": "../../../reference/twig-extensions/functions/sulu_page_navigation_tree.html"
 }
 
 # Add any paths that contain templates here, relative to this directory.
