@@ -18,8 +18,8 @@ Functions
     functions/sulu_content_root_path
     functions/sulu_page_breadcrumb
     functions/sulu_page_navigation_root_tree
-    functions/sulu_page_navigation_root_flat
     functions/sulu_page_navigation_flat
+    functions/sulu_page_navigation_root_flat
     functions/sulu_page_navigation_tree
 
 Filters
