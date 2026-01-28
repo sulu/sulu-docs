@@ -12,4 +12,4 @@ is implemented, which filters the pages for a specific author:
 
 .. note::
 
-    This documentation does not yet exists for Sulu 3.0. Please feel free to contribute it.
+    This documentation does not yet exist for Sulu 3.0. Please feel free to contribute it.

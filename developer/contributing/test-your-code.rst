@@ -52,7 +52,7 @@ You may also specify a specific bundle for which to run the tests:
     $ ./bin/runtests -C -t content # runs the packages/content component tests
     $ ./bin/runtests -C -t MediaBundle # runs the src/Sulu/Bundle/MediaBundle tests
 
-Use PHPUnit filters to run specific tests within a bundle. For example, to run
+Use PHPUnit filters to run specific tests within a bundle. For example, to run a specific test:
 
 .. code-block:: bash
 
