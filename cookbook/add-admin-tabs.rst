@@ -158,121 +158,35 @@ When you debug the container right now your should see your own ``Admin`` class 
     $ php bin/console debug:container --tag=sulu.admin
 
         Service ID               Class name
-        sulu_contact.admin       Sulu\Bundle\ContactBundle\Admin\ContactAdmin
-        sulu_preview.admin       Sulu\Bundle\PreviewBundle\Admin\PreviewAdmin
-        sulu_custom_urls.admin   Sulu\Bundle\CustomUrlBundle\Admin\CustomUrlAdmin
-        sulu_website.admin       Sulu\Bundle\WebsiteBundle\Admin\WebsiteAdmin
-        sulu_tag.admin           Sulu\Bundle\TagBundle\Admin\TagAdmin
-        sulu_page.admin          Sulu\Bundle\PageBundle\Admin\PageAdmin
-        sulu_snippet.admin       Sulu\Bundle\SnippetBundle\Admin\SnippetAdmin
-        sulu_category.admin      Sulu\Bundle\CategoryBundle\Admin\CategoryAdmin
-        sulu_security.admin      Sulu\Bundle\SecurityBundle\Admin\SecurityAdmin
-        sulu_media.admin         Sulu\Bundle\MediaBundle\Admin\MediaAdmin
-        sulu_search.admin        Sulu\Bundle\SearchBundle\Admin\SearchAdmin
+        ...
         app.social_admin         App\Admin\SocialAdmin
 
 You should now see the tab in the administration interface, but the data of the form is not saved yet.
 
-
 Persist the data of the form
 ----------------------------
 
-In the final step, we need to persist the data of the added tab. In the case of the pages, we can utilize the existing
-pages API by registering a new `StructureExtension`. In other cases, we would need to implement our own API endpoint
-for the tab as shown in the :doc:`../book/extend-admin` chapter.
+Extend the PageDimensionContent entity.
 
-.. code-block :: php
+.. code-block:: yaml
 
-    <?php
+    # config/packages/sulu_page.yaml
+    sulu_page:
+        objects:
+            page:
+                model: App\Entity\Page
+            page_content:
+                model: App\Entity\PageDimensionContent
 
-    class SocialStructureExtension extends AbstractExtension implements ExportExtensionInterface
-    {
-        /**
-        * name of structure extension.
-        */
-        const SOCIAL_EXTENSION_NAME = 'social';
+See :doc:`../cookbook/extend-entities` for more information about extending entities in Sulu entities.
 
-        protected $properties = [
-            'twitter_title',
-            'twitter_description',
-            'twitter_image',
-        ];
+.. note::
 
-        protected $name = self::SOCIAL_EXTENSION_NAME;
+    This documentation does not yet exist for Sulu 3.0. Please feel free to contribute it.
 
-        protected $additionalPrefix = 'social';
+    Next Step would be to create a ContentMerger, ContentDataMapper and ContentNormalizer for our new data.
+    Currently these steps are not yet documented but look at AuthorMerger, AuthorDataMapper and AuthorNormalizer classes as reference:
 
-        public function save(NodeInterface $node, $data, $webspaceKey, $languageCode)
-        {
-            $this->setLanguageCode($languageCode, 'i18n', null);
-
-            $data = $this->encodeImages($data);
-
-            $this->saveProperty($node, $data, 'twitter_title');
-            $this->saveProperty($node, $data, 'twitter_description');
-            $this->saveProperty($node, $data, 'twitter_image');
-        }
-
-        public function load(NodeInterface $node, $webspaceKey, $languageCode)
-        {
-            $twitterImageNode = $this->loadProperty($node, 'twitter_image');
-            $twitterImage = null;
-            if ($twitterImageNode) {
-                $twitterImage = json_decode($twitterImageNode, true);
-            }
-
-            return [
-                'twitter_title' => $this->loadProperty($node, 'twitter_title'),
-                'twitter_description' => $this->loadProperty($node, 'twitter_description'),
-                'twitter_image' => $twitterImage,
-            ];
-        }
-
-        public function export($properties, $format = null)
-        {
-            $data = [];
-            foreach ($properties as $key => $property) {
-                $value = $property;
-                if (\is_bool($value)) {
-                    $value = (int) $value;
-                }
-
-                $data[$key] = [
-                    'name' => $key,
-                    'value' => $value,
-                    'type' => '',
-                ];
-            }
-
-            return $data;
-        }
-
-        public function import(NodeInterface $node, $data, $webspaceKey, $languageCode, $format)
-        {
-            $this->setLanguageCode($languageCode, 'i18n', null);
-
-            $this->save($node, $data, $webspaceKey, $languageCode);
-        }
-
-        public function getImportPropertyNames()
-        {
-            return $this->properties;
-        }
-
-        private function encodeImages(array $data)
-        {
-            if ($data['twitter_image']) {
-                $data['twitter_image'] = json_encode($data['twitter_image']);
-            }
-
-            return $data;
-        }
-    }
-
-This class needs to be registered as a service with the tag ``sulu.structure.extension``.
-
-.. code-block :: yaml
-
-    app.social_structure_extension:
-        class: App\Structure\SocialStructureExtension
-        tags: { name: 'sulu.structure.extension' }
+     - ``PageSocialMerger`` implements ``Sulu\Content\Application\ContentMerger\Merger\MergerInterface``
+     - ``PageSocialDataMapper`` implements ``Sulu\Content\Application\ContentDataMapper\DataMapper\DataMapperInterface``
+     - ``PageSocialNormalizer`` implements ``Sulu\Content\Application\ContentNormalizer\Normalizer\NormalizerInterface``
