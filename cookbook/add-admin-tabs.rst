@@ -178,7 +178,7 @@ Extend the PageDimensionContent entity.
             page_content:
                 model: App\Entity\PageDimensionContent
 
-See :doc:`../book/extend-entities` for more information about extending entities in Sulu entities.
+See :doc:`../cookbook/extend-entities` for more information about extending entities in Sulu entities.
 
 .. note::
 
