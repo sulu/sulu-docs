@@ -12,11 +12,11 @@ Functions
 
 .. toctree::
 
-    functions/sulu_content_load
-    functions/sulu_content_load_parent
+    functions/sulu_article_load
     functions/sulu_content_path
     functions/sulu_content_root_path
     functions/sulu_page_breadcrumb
+    functions/sulu_page_load
     functions/sulu_page_navigation_root_tree
     functions/sulu_page_navigation_flat
     functions/sulu_page_navigation_root_flat
