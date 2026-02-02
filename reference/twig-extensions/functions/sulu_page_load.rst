@@ -22,7 +22,17 @@ Returns page Structure with provided properties for the given UUID
 
 **Returns**:
 
-.. include:: _structure.inc
+- `array`
+    - **resource**: Resource of page (e.g. uuid, webspaceKey,...)
+    - **content**: Content of page
+    - **view**: View of page
+    - **extension**: Extensions of page
+    - **availableLocales**: Array of the available locales
+    - **template**: Template name of page
+    - **author**: User ID of the author
+    - **authored**: Authored date of page
+    - **lastModified**: LastModified date of page
+    - **shadowBaseLocale**: Shadow locale of page
 
 .. note::
 
