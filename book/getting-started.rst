@@ -118,7 +118,7 @@ Here is an example for using Sulu with MySQL:
 
 .. code:: bash
 
-    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7
+    DATABASE_URL=mysql://db_user:db_password@localhost:3306/db_name?serverVersion=5.7
 
 When you're done with the configuration, populate the database with Sulu's
 default data:
@@ -153,10 +153,10 @@ will make sure the correct application is loaded.
 
     php -S localhost:8000 -t public/ config/router.php
 
-You can access the administration interface via http://127.0.0.1:8000/admin.
+You can access the administration interface via http://localhost:8000/admin.
 The default user and password is "admin".
 
-The web frontend can be found under http://127.0.0.1:8000.
+The web frontend can be found under http://localhost:8000.
 
 .. tip::
 
