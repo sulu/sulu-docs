@@ -27,14 +27,14 @@ Example
 
 .. code-block:: html
 
-    <a href="http://example.com/test" title="Page Title">Page Title</a>
-    <a href="http://example.com/test" title="test-title">Page Title</a>
-    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="http://example.com/test#test-anchor" title="Page Title">Anchor Example</a>
-    <a href="http://example.com/test?query=test" title="Page Title">Query String Example</a>
-    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
+    <a href="http://example.org/test" title="Page Title">Page Title</a>
+    <a href="http://example.org/test" title="test-title">Page Title</a>
+    <a href="http://example.org/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.org/test#test-anchor" title="Page Title">Anchor Example</a>
+    <a href="http://example.org/test?query=test" title="Page Title">Query String Example</a>
+    <a href="http://example.org/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
 
 Provider Attributes
 -------------------
@@ -59,8 +59,8 @@ There might be situations where you need to know which provider was used even af
 
 .. code-block:: html
 
-    <a href="http://example.com/test" title="Page Title" data-provider="page">Link Text</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" data-provider="media">Media Title</a>
+    <a href="http://example.org/test" title="Page Title" data-provider="page">Link Text</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" data-provider="media">Media Title</a>
 
 Now you will be able to target the links in CSS and Javascript by using the data attribute as a selector. This allows things such as:
 

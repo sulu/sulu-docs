@@ -15,7 +15,7 @@ Sulu is shipped with a build in command to update the build.
 
 .. code-block:: bash
 
-    bin/adminconsole sulu:admin:update-build
+    php bin/adminconsole sulu:admin:update-build
 
 .. note::
 

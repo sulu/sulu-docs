@@ -287,7 +287,7 @@ necessary should be to execute the migrations we have written:
 
 .. code-block:: bash
 
-    bin/console phpcr:migrations:migrate
+    php bin/console phpcr:migrations:migrate
 
 .. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.0.12/UPGRADE.md
 .. _sulu/skeleton: https://github.com/sulu/skeleton

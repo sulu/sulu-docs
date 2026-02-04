@@ -20,9 +20,7 @@ attributes to your template. To do this, you can use the``TemplateAttributeResol
     #[AsController]
     class StaticController
     {
-        /**
-         * @Route("/custom", name="app_custom")
-         */
+        #[Route("/custom", name: "app_custom")]
         public function indexAction(
             TemplateAttributeResolverInterface $resolver,
             Environment $twig

@@ -7,23 +7,23 @@ Each provider returns mostly 50000 links which can return many
 links, which would take a bigger amount of time. The Google bot
 does not wait a long time for the sitemap to be returned.
 
-To improve the speed of the sitemap page, Sulu provides a command for pre-generating 
+To improve the speed of the sitemap page, Sulu provides a command for pre-generating
 the page and cache it on the filesystem. The should be called in a cron-job to keep the
 pre-generated sitemap up to date.
 
 .. note::
 
-    This is a performance optimization for very big websites. In 99% of the cases, the 
-    optimization is not necessary and the sitemap can be generated on the fly. 
+    This is a performance optimization for very big websites. In 99% of the cases, the
+    optimization is not necessary and the sitemap can be generated on the fly.
 
 .. code-block:: bash
 
-    bin/websiteconsole sulu:website:dump-sitemap
+    php bin/websiteconsole sulu:website:dump-sitemap
 
 If you use the ``{host}`` replacer in your webspace url
 configuration, you need to set the Symfony ``default_uri`` config option
-for generating the URLs of your sitemap items via a command. 
-Have a look at the official Symfony Documentation about 
+for generating the URLs of your sitemap items via a command.
+Have a look at the official Symfony Documentation about
 `Generating URLs in Commands`_ for more information.
 
 .. code-block:: yaml
@@ -54,7 +54,7 @@ Switch back to on the fly generation
 If you want to switch back to on the fly generation, you need
 to remove the exist pre-generated sitemaps from the ``var`` directory.
 
-By default, pre-generated sitemaps are stored in the following directory in the 
+By default, pre-generated sitemaps are stored in the following directory in the
 ``prod`` environment:
 
 .. code-block:: bash

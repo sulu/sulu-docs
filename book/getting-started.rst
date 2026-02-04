@@ -49,7 +49,7 @@ This command will bootstrap a new project in the directory ``my-project``.
 
     .. code-block:: bash
 
-        bin/console sulu:admin:download-language
+        php bin/console sulu:admin:download-language
 
 Webspaces
 ---------
@@ -59,7 +59,7 @@ webspaces configures a content tree. Each content tree may contain translations
 for different locales.
 
 The default webspace configuration is located in
-``config/webspaces/example.xml``. Rename this file so that it matches
+``config/webspaces/website.xml``. Rename this file so that it matches
 the name of your project.
 
 To get started, change the ``<name>`` and the ``<key>`` of the webspace to the
@@ -125,7 +125,7 @@ default data:
 
 .. code-block:: bash
 
-    bin/adminconsole sulu:build dev
+    php bin/adminconsole sulu:build dev
 
 .. caution::
 
@@ -134,7 +134,7 @@ default data:
 
     .. code-block:: bash
 
-        bin/adminconsole sulu:build prod
+        php bin/adminconsole sulu:build prod
 
 Optionally, you can store the content of your website (all tables starting with
 ``phpcr_``) in `Apache Jackrabbit`_. We'll get back to that later.

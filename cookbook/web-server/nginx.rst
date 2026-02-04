@@ -9,11 +9,11 @@ The Nginx configuration could look something like.
       listen 80;
       listen [::]:80;
 
-      server_name sulu.lo;
-      root /var/www/sulu.lo/public;
+      server_name example.org;
+      root /var/www/example.org/public;
 
-      error_log /var/log/nginx/sulu.lo.error.log;
-      access_log /var/log/nginx/sulu.lo.at.access.log;
+      error_log /var/log/nginx/example.org.error.log;
+      access_log /var/log/nginx/example.org.at.access.log;
 
 	  # recommended security headers
       add_header X-Frame-Options sameorigin;

@@ -3,7 +3,7 @@ Adding new Webspace
 
 To create a new webspace you have to create a new file within the
 `config/webspaces` directory. The content of the file should be quite
-similar to the `example.xml`_ file in this folder.
+similar to the `website.xml`_ file in this folder.
 
 .. note::
 
@@ -37,4 +37,4 @@ If you have any error you can use the following command to validate your webspac
 
     php bin/adminconsole sulu:content:validate:webspaces
 
-.. _example.xml: https://github.com/sulu/skeleton/blob/2.x/config/webspaces/example.xml
+.. _website.xml: https://github.com/sulu/skeleton/blob/2.6/config/webspaces/website.xml

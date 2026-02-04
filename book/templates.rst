@@ -216,6 +216,8 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       |
 +------------------------------+---------------------------------------------+
+| |single_icon_selection|      | widget for selecting a single icon          |
++------------------------------+---------------------------------------------+
 | |account_selection|          | widget for selecting multiple accounts      |
 +------------------------------+---------------------------------------------+
 | |single_account_selection|   | widget for selecting a single account       |
@@ -228,7 +230,7 @@ Here is a table with the content types shipped in Sulu core:
 
     .. code-block:: bash
 
-        bin/adminconsole sulu:content:types:dump
+        php bin/adminconsole sulu:content:types:dump
 
 Many content types can be configured by passing parameters in the element
 ``<params>``. For a single select, for example, you need to set the possible
@@ -383,6 +385,12 @@ from within a block.
 
     Because the ``&`` character needs to be escaped inside of XML files, you have to use ``AND`` instead of ``&&``
     if you want to connect conditions using a logical and. Additionally, you can use ``OR`` instead of ``||``.
+
+.. caution::
+
+    Conditional fields can not be used in combination with the ``mandatory`` attribute. While conditions are evaluated
+    on the client side in JEXL language, the ``mandatory`` attribute is evaluated on the server side via JSON Schema.
+    As it is not possible to validate JEXL in a JSON Schema it is not possible to combine these two features.
 
 Language Independent Properties
 -------------------------------
@@ -1110,5 +1118,6 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
+.. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/content-types/single_icon_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
 .. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`

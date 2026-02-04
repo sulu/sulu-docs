@@ -27,6 +27,9 @@ Parameters
     * - enable_attributes
       - bool
       - Enables the ``target``, ``title`` and ``rel`` input fields in the overlay. Default: ``false``
+    * - enable_query
+      - bool
+      - Enables the ``query`` input field in the overlay. Default: ``false``
     * - types
       - collection
       - List of available types in the dropdown.

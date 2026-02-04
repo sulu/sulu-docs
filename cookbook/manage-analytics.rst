@@ -39,10 +39,10 @@ You are able to override the analytics template with the
 
 There are three relevant templates folders:
 
-* ``SuluWebsiteBundle:Analytics/type/google``
-* ``SuluWebsiteBundle:Analytics/type/google_tag_manager``
-* ``SuluWebsiteBundle:Analytics/type/matomo``
-* ``SuluWebsiteBundle:Analytics/type/custom``
+* ``SuluWebsiteBundle/Analytics/google``
+* ``SuluWebsiteBundle/Analytics/google_tag_manager``
+* ``SuluWebsiteBundle/Analytics/matomo``
+* ``SuluWebsiteBundle/Analytics/custom``
 
 Each of these folders can contain multiple templates according to the desired
 position of its content:

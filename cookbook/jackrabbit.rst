@@ -76,36 +76,36 @@ data before changing the configuration:
 
 .. code-block:: bash
 
-    bin/adminconsole doctrine:phpcr:workspace:export -p /cmf cmf.xml
-    bin/websiteconsole doctrine:phpcr:workspace:export -p /cmf cmf_live.xml
-    bin/adminconsole doctrine:phpcr:workspace:export -p /jcr:versions jcr.xml
+    php bin/adminconsole doctrine:phpcr:workspace:export -p /cmf cmf.xml
+    php bin/websiteconsole doctrine:phpcr:workspace:export -p /cmf cmf_live.xml
+    php bin/adminconsole doctrine:phpcr:workspace:export -p /jcr:versions jcr.xml
 
 Then change the configuration as explained in the above Configuration section, and
 then execute the following command to initialize the jackrabbit workspaces for sulu:
 
 .. code-block:: bash
 
-    bin/adminconsole cache:clear
-    bin/adminconsole sulu:document:initialize
+    php bin/adminconsole cache:clear
+    php bin/adminconsole sulu:document:initialize
 
 Now executed these commands to clear any previously existing data (first you should make
 sure that you really don't need this data anymore).
 
 .. code-block:: bash
 
-    bin/adminconsole doctrine:phpcr:node:remove /cmf
-    bin/websiteconsole doctrine:phpcr:node:remove /cmf
+    php bin/adminconsole doctrine:phpcr:node:remove /cmf
+    php bin/websiteconsole doctrine:phpcr:node:remove /cmf
     # the following command can fail if the node not exist ignore the error then:
-    bin/adminconsole doctrine:phpcr:node:remove /jcr:versions
+    php bin/adminconsole doctrine:phpcr:node:remove /jcr:versions
 
 After that you can import the exported data from ``doctrinedbal`` into ``jackrabbit``
 by running the following commands:
 
 .. code-block:: bash
 
-    bin/adminconsole doctrine:phpcr:workspace:import -p / cmf.xml
-    bin/websiteconsole doctrine:phpcr:workspace:import -p / cmf_live.xml
-    bin/adminconsole doctrine:phpcr:workspace:import -p / jcr.xml
+    php bin/adminconsole doctrine:phpcr:workspace:import -p / cmf.xml
+    php bin/websiteconsole doctrine:phpcr:workspace:import -p / cmf_live.xml
+    php bin/adminconsole doctrine:phpcr:workspace:import -p / jcr.xml
 
 .. _`Jackrabbit`: https://jackrabbit.apache.org/jcr/index.html
 .. _`environment variable`: https://symfony.com/doc/4.4/configuration.html#config-env-vars

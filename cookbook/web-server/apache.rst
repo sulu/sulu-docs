@@ -16,16 +16,16 @@ system, this file can be found in different places:
 * Unix: ``/etc/hosts``
 * Windows: ``%SystemRoot%\System32\drivers\etc\hosts``
 
-On a development machine, we could use the domain `sulu.lo` ("lo" stands for
+On a development machine, we could use the domain `sulu.lo` or `sulu.localhost` ("lo" stands for
 "local"). Add that domain to the end of the `hosts` file:
 
 .. code-block:: text
 
     # ...
 
-    127.0.0.1  sulu.lo
+    127.0.0.1  example.org
 
-When you type the URL http://sulu.lo in your browser, the browser will now
+When you type the URL http://example.org in your browser, the browser will now
 load the page from your computer.
 
 .. note::
@@ -37,14 +37,14 @@ But before it works, we need to tell Apache what to do when that URL is loaded.
 Virtual Host Configuration
 --------------------------
 
-Let's add the Apache configuration file for the `sulu.lo` domain.
+Let's add the Apache configuration file for the `example.org` domain.
 
 .. code-block:: apache
 
   <VirtualHost *:80>
-      DocumentRoot "/var/www/sulu.lo/public"
-      ServerName sulu.lo
-      <Directory "/var/www/sulu.lo/public">
+      DocumentRoot "/var/www/example.org/public"
+      ServerName example.org
+      <Directory "/var/www/example.org/public">
           Options Indexes FollowSymLinks
           AllowOverride All
           Require all granted

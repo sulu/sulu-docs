@@ -3,14 +3,54 @@ Upgrading Sulu 2.x
 
 This upgrade guide describes how to upgrade a Sulu 2.x project to any newer version below 3.0. In a majority of cases,
 these upgrades should be unproblematic, because backwards compatibility is only broken when it is really necessary to
-fix a bug. The upgrade process consists of the following steps:
+fix a bug.
+
+Unrelated to Sulu changes, upgrades sometimes require first updating PHP, Symfony, or other dependencies. The following table
+should show you which versions of Sulu are compatible with which versions of PHP and Symfony. It is
+recommended to avoid big upgrades that tackle Sulu, PHP, and Symfony simultaneously. Instead, upgrade them and release 
+the upgrade of your project in small, separate steps rather than one big step. This approach helps to better identify
+the cause of any problems.
+
+
+.. list-table:: Sulu, Symfony, PHP Version support
+   :header-rows: 1
+
+   * - Sulu Version
+     - supported PHP Versions
+     - supported Symfony Versions
+   * - 2.0
+     - 7.2 - 7.4
+     - 4.3 - 4.4
+   * - 2.1
+     - 7.2 - 8.0
+     - 4.3 - 5.4
+   * - 2.2
+     - 7.2 - 8.1
+     - 4.3 - 5.4
+   * - 2.3
+     - 7.2 - 8.1
+     - 4.4 - 5.4
+   * - 2.4
+     - 7.2 - 8.3
+     - 4.4 - 5.4
+   * - 2.5
+     - 8.0 - 8.4
+     - 5.4 - 6.4
+   * - 2.6
+     - 8.2 - 8.5
+     - 5.4 - 7.4
+   * - 3.0
+     - 8.2 - 8.5
+     - 5.4 - 7.4
+
+The upgrade process of Sulu consists of the following steps:
 
 1. Update the sulu/sulu package
 -------------------------------
 
-The ``sulu/sulu`` package implements the functionality of the Sulu content management system. To update this package, you need to update the version constraint for the package in the ``composer.json`` of your project. 
+The ``sulu/sulu`` package implements the functionality of the Sulu content management system. To update this package, you need to update the version constraint for the package in the ``composer.json`` of your project.
 
-To do this, you can replace the ``~x.x.x`` with the a version constraint like ``~2.2.7`` and execute the following
+To do this, you can replace the ``~x.x.x`` with the a version constraint like ``~2.5.22`` and execute the following
 command in the root folder of your project:
 
 .. code-block:: bash
@@ -68,7 +108,7 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 
 .. note::
 
-    Have a look at the :doc:`../cookbook/build-admin-frontend` documentation if you want to update the 
+    Have a look at the :doc:`../cookbook/build-admin-frontend` documentation if you want to update the
     JavaScript build in the project without using the ``sulu:admin:update-build`` command.
 
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints

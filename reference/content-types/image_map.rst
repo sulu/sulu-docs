@@ -129,7 +129,7 @@ Twig
     </style>
 
     <div class="imageMap__container">
-        <img class="imageMap__img" src="{{ image_map.image.url }}"/>
+        <img class="imageMap__img" src="{{ image_map.image.thumbnails['1920x'] }}" alt="{{ image.description|default(image.title) }}"> {# define a dynamic image format #}
 
         {% for index, hotspot in image_map.hotspots %}
             {% set left = hotspot.hotspot.left * 100 %}
@@ -169,3 +169,9 @@ Twig
             <p>{{ hotspot.text|default|raw }}</p>
         {% endif %}
     {% endfor %}
+
+.. note::
+
+    For performance reasons you should never use the ``<your_field>.image.url`` attribute to render ``images`` on your
+    website. Always use ``thumbnails`` and :doc:`configure your image formats <../../../book/image-formats>`
+    to provide fast optimized cacheable images.

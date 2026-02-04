@@ -246,7 +246,7 @@ from a list of recipes:
          *
          * @return Teaser[] The teasers
          */
-        public function find(array $ids, $locale)
+        public function find(array $ids, $locale): array
         {
             if (0 === count($ids)) {
                 return [];

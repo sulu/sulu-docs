@@ -68,7 +68,7 @@ See the :doc:`subscribers` chapter for more information.
 
     .. code-block:: bash
 
-        bin/adminconsole your:command
+        php bin/adminconsole your:command
 
 The Path Builder
 ----------------

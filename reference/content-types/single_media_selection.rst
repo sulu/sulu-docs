@@ -80,7 +80,7 @@ Twig
 .. code-block:: twig
 
     {% set image = content.image %}
-    <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+    <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.description|default(image.title) }}">
 
 If your property defines ``displayOptions``, you can access the selected ``displayOption``
 via ``view.<property_name>.displayOptions``:
@@ -90,7 +90,7 @@ via ``view.<property_name>.displayOptions``:
     {% set image = content.image %}
 
     <div class="position-{{ view.image.displayOption }}">
-        <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
+        <img src="{{ image.thumbnails['400x400'] }}" alt="{{ image.description|default(image.title) }}">
     </div>
 
 If you want to provide a link for downloading a document, you can use ``.url`` attribute
