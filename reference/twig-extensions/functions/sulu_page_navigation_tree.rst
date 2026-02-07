@@ -8,7 +8,7 @@ Returns the navigation for a given page uuid as a tree of pages:
 .. code-block:: twig
 
     <ul>
-        {% for item in sulu_page_navigation_tree(uuid, 'main', 2) %}
+        {% for item in sulu_page_navigation_tree(resource.uuid, 'main', 2) %}
             <li>
                 <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
             </li>
@@ -30,7 +30,7 @@ Returns the navigation for a given page uuid as a tree of pages:
 .. code-block:: twig
 
     <ul>
-        {% for item in sulu_page_navigation_tree(uuid, 'main', 2, 2, {
+        {% for item in sulu_page_navigation_tree(resource.uuid, 'main', 2, 2, {
             'title': 'title',
             'url': 'url',
             'excerptTitle': 'excerpt.title',
@@ -53,7 +53,7 @@ Returns the navigation for a given page uuid as a tree of pages:
 
 **Arguments**:
 
-- **uuid**: *string* - UUID of page node for which to show the navigation
+- **uuid**: *string* - UUID of the page for which to show the navigation
 - **context**: *string* - optional: context to filter navigation
 - **depth**: *int* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...). Default to 1.
 - **level**: *int|null* - optional: level to load pages on the specific level null for current level. Default to null.
