@@ -22,10 +22,12 @@ The following requirements *must* be met to run Sulu:
 Development Requirements
 ------------------------
 
-If you want to build parts of the system on your own, you will additionally need:
+If you want to build parts of the admin on your own, you will additionally need:
 
 * `Node.js`_
-* `npm`_ 6
+* `npm`_ >=8
+
+Also check the ``assets/admin/package.json`` file for all supported versions and alternative package managers.
 
 .. _PHP: http://php.net
 .. _xml_extension: http://php.net/manual/en/book.xml.php
