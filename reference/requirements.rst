@@ -33,7 +33,7 @@ If you want to build parts of the admin on your own, you will additionally need:
 * `Node.js`_
 * `npm`_ >=8
 
-Also check the ``assets/admin/package.json`` file for all supported versions of package managers.
+Also check the ``assets/admin/package.json`` file for all supported versions and alternative package managers.
 For Sulu <= 2.5, you will need to use npm 6.
 
 .. _PHP: http://php.net
