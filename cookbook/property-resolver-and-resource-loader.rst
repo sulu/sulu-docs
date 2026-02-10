@@ -146,6 +146,14 @@ Register the PropertyResolver as a service with the ``sulu_content.property_reso
             tags:
                 - { name: 'sulu_content.property_resolver' }
 
+.. note::
+
+    With autowiring enabled (the default in Sulu), you don't need to manually register
+    these services. Sulu will automatically apply the ``sulu_content.property_resolver``
+    tag to all services implementing ``PropertyResolverInterface`` and the
+    ``sulu_content.resource_loader`` tag to all services implementing
+    ``ResourceLoaderInterface``.
+
 The service tag uses the ``getType()`` method to automatically index the resolver by its
 type. When a property with ``type="product_selection"`` is encountered, Sulu will use
 this resolver.
@@ -248,20 +256,25 @@ Here's a complete ResourceLoader for products:
 2. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
-Register the ResourceLoader with the ``sulu_content.resource_loader`` tag:
+Register the ResourceLoader as a service with the ``sulu_content.resource_loader`` tag:
 
 .. code-block:: yaml
 
     # config/services.yaml
     services:
         App\Content\ResourceLoader\ProductResourceLoader:
-            arguments:
-                - '@App\Repository\ProductRepository'
             tags:
-                - { name: 'sulu_content.resource_loader', key: 'products' }
+                - { name: 'sulu_content.resource_loader' }
 
-The ``key`` attribute must match the value returned by ``getKey()``. This key is used
-by PropertyResolvers to specify which loader should fetch their resources.
+.. note::
+
+    With autowiring enabled (the default in Sulu), you don't need to manually add the tag.
+    Sulu will automatically apply the ``sulu_content.resource_loader`` tag to all services
+    implementing ``ResourceLoaderInterface``.
+
+The service tag uses the ``getKey()`` method to automatically index the loader by its
+key. This key is used by PropertyResolvers to specify which loader should fetch their
+resources.
 
 Complete Example: Product Selection Field
 ------------------------------------------
@@ -510,10 +523,8 @@ Register both services:
 
         # ResourceLoader
         App\Content\ResourceLoader\ProductResourceLoader:
-            arguments:
-                - '@App\Repository\ProductRepository'
             tags:
-                - { name: 'sulu_content.resource_loader', key: 'products' }
+                - { name: 'sulu_content.resource_loader' }
 
         # PropertyResolver
         App\Content\PropertyResolver\ProductSelectionPropertyResolver:
