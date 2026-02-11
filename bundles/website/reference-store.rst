@@ -1,45 +1,39 @@
 Reference Store
 ===============
 
-The reference-store is a service which collects ids of entities/documents
-which are used to render a page. This ids will be used for example in the
-caching component :doc:`../http_cache`.
+The reference store is a service which collects ids of entities used to render
+a page. These ids are used for cache tag generation in the caching component
+:doc:`../http_cache`.
 
 Architecture
 ------------
 
-Each type of content registers its own service which implements the
-``ReferenceStoreInterface`` or with the default implementation
-``Sulu\Bundle\PageBundle\ReferenceStore\ReferenceStore``.
+Sulu provides a single ``ReferenceStoreInterface`` service
+(``Sulu\Bundle\HttpCacheBundle\ReferenceStore\ReferenceStoreInterface``) that
+stores references for all resource types. Each reference consists of an entity
+id and a resource key.
 
-The service ``sulu_website.reference_store_pool`` collects the services with the
-tag ``sulu_website.reference_store`` and use the ``alias`` attribute to
-identify them.
+Usage
+-----
 
-To register a loaded entity use the concrete store (e.g.
-``sulu_page.reference_store.content`` or your own service) and call the
-method ``add`` to append the id of the entity.
-
-Example
--------
-
-.. code-block:: xml
-
-    <service id="app.reference_store.example"
-             class="Sulu\Bundle\WebsiteBundle\ReferenceStore\ReferenceStore">
-        <tag name="sulu_website.reference_store" alias="example"/>
-    </service>
+Inject the ``ReferenceStoreInterface`` and call ``add`` with the entity id and
+resource key to register a loaded entity:
 
 .. code-block:: php
 
-    $exampleReferenceStore = $container->get('app.reference_store.example');
-    $exampleReferenceStore->add(1);
+    use Sulu\Bundle\HttpCacheBundle\ReferenceStore\ReferenceStoreInterface;
 
-    $referenceStore = $container->get('sulu_website.reference_store');
-    var_dump($referenceStore->getStore('example')->getAll());
+    class MyService
+    {
+        public function __construct(
+            private ReferenceStoreInterface $referenceStore,
+        ) {
+        }
 
-    // prints
-    // array(1) {
-    //   [0] =>
-    //   int(1)
-    // }
+        public function loadExample(string $id): void
+        {
+            // ... load entity ...
+
+            $this->referenceStore->add($id, 'examples');
+        }
+    }
