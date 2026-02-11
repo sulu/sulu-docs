@@ -179,11 +179,19 @@ source, whose child pages will be filtered by the SmartContentProvider.
 
 .. note::
 
-    "properties" can include structure properties or extension data:
+    "properties" can include structure properties, extension data, or entity
+    properties using the ``object.`` prefix:
 
-    * title - is a property of the structure
-    * excerpt.title - is a property of the excerpt structure extension with
-      the name title
+    * ``title`` - a template property
+    * ``excerpt.title`` - a property of the excerpt extension
+    * ``object.resource.uuid`` - reads the UUID from the underlying resource entity
+    * ``object.authored`` - reads ``authored`` directly from the entity
+    * ``object.lastModified`` - reads ``lastModified`` directly from the entity
+
+    The ``object.`` prefix uses the PropertyAccessor to read any getter on the
+    DimensionContent entity (or nested objects like ``resource``). This includes
+    properties from ``AuthorTrait`` (``authored``, ``lastModified``, ``author``)
+    and ``AuditableTrait`` (``created``, ``changed``).
 
     For an example see :ref:`example`
 
@@ -332,6 +340,9 @@ Page template
 
             <param name="properties" type="collection">
                 <param name="article" value="article"/>
+                <param name="uuid" value="object.resource.uuid"/>
+                <param name="authored" value="object.authored"/>
+                <param name="lastModified" value="object.lastModified"/>
                 <param name="excerptTitle" value="excerpt.title" />
                 <param name="excerptDescription" value="excerpt.description "/>
                 <param name="excerptMore" value="excerpt.more" />
@@ -406,47 +417,12 @@ Twig template
     If you have not defined the parameter ``max_per_page`` you can omit the
     pagination.
 
-.. _automatically_available_properties:
+Default properties
+~~~~~~~~~~~~~~~~~~
 
-Automatically available properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The following properties are available on each smart content item **without**
-needing to be mapped in the ``properties`` parameter. They are resolved
-automatically from the entity settings:
-
-.. list-table::
-    :header-rows: 1
-
-    * - Property
-      - Type
-      - Description
-    * - authored
-      - DateTimeImmutable
-      - The authored date set by the content manager
-    * - lastModified
-      - DateTimeImmutable
-      - The last modified date (if enabled by the content manager)
-    * - author
-      - object
-      - The author contact reference
-    * - template
-      - string
-      - The template key used by the item
-    * - availableLocales
-      - string[]
-      - The locales in which the item is available
-
-Additionally, the ``title`` and ``url`` properties are included as default
-properties for the ``pages`` and ``articles`` providers, so they are always
-available without explicit mapping.
-
-.. note::
-
-    The ``properties`` parameter is used to expose **template properties**
-    (like ``article``) and **extension data** (like ``excerpt.title``) on
-    each item. Settings like ``authored`` and ``lastModified`` do not need
-    to be listed there.
+The ``title`` and ``url`` properties are included as default properties for
+the ``pages`` and ``articles`` providers, so they are always available
+without explicit mapping in the ``properties`` parameter.
 
 Available sort columns
 ~~~~~~~~~~~~~~~~~~~~~~
