@@ -71,8 +71,8 @@ Parameters
       - Root category (key) to display category-tree.
     * - exclude_duplicates
       - bool
-      - If the provider is able to detect duplicates the content-type filters
-        already loaded records. Default: `false`
+      - Not yet fully implemented in Sulu 3. Intended to filter already loaded
+        records when the provider supports duplicate detection. Default: `false`
 
 Return Value
 ------------
@@ -344,7 +344,7 @@ Page template
                 <param name="authored" value="object.authored"/>
                 <param name="lastModified" value="object.lastModified"/>
                 <param name="excerptTitle" value="excerpt.title" />
-                <param name="excerptDescription" value="excerpt.description "/>
+                <param name="excerptDescription" value="excerpt.description"/>
                 <param name="excerptMore" value="excerpt.more" />
                 <param name="excerptTags" value="excerpt.tags" />
                 <param name="excerptCategories" value="excerpt.categories" />
@@ -393,7 +393,9 @@ Twig template
                 </h2>
 
                 <p>
-                    <time datetime="{{ page.authored|date('Y-m-d') }}">{{ page.authored|date('M d, Y') }}</time>
+                    {% if page.authored %}
+                        <time datetime="{{ page.authored|date('Y-m-d') }}">{{ page.authored|date('M d, Y') }}</time>
+                    {% endif %}
                     {% if page.lastModified %}
                         | Last modified: {{ page.lastModified|date('M d, Y') }}
                     {% endif %}
