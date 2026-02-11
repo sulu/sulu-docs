@@ -21,6 +21,7 @@ resource key to register a loaded entity:
 
 .. code-block:: php
 
+    <?php
     use Sulu\Bundle\HttpCacheBundle\ReferenceStore\ReferenceStoreInterface;
 
     class MyService
