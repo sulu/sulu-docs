@@ -142,12 +142,9 @@ The smart content supports pagination, which can be activated with the param
     </div>
 
 The view variable ``page`` contains the current page number (default: 1) and
-``hasNextPage`` is a flag which is true if another page exists.
-
-.. warning::
-    To avoid performance issues it is not possible to get a number of maximum
-    page because the system would have to load the whole content of each page
-    to determine how many pages would fit to the filters.
+``hasNextPage`` is a flag which is true if another page exists. Additionally,
+``total`` provides the total number of matching items and ``maxPage`` provides
+the maximum page number.
 
 If you want to use different parameters for different smart content on the same
 page you can define the GET-parameter with the property param

@@ -17,10 +17,11 @@ return the items that match these filters. There are several built-in providers
 and you can add your own SmartContentProvider easily. How you can do this is
 described in :doc:`/cookbook/smart-content-data-provider`
 
-A very important feature is the ``exclude_duplicates`` parameter which offers
-the possibility to filter already used items on a website. If this parameter
-is set to true the smart-content uses the :doc:`/bundles/reference-store`
-to detect already used items and filters them.
+.. warning::
+
+    The ``exclude_duplicates`` parameter is not yet fully implemented in Sulu 3.
+    While the admin UI collects excluded IDs from other smart content fields on
+    the same page, the backend does not yet filter them from query results.
 
 Parameters
 ----------
@@ -117,17 +118,14 @@ This values are available in the *view* variable in the twig templates.
     * - websiteTagOperator
       - string
       - Operator which combines GET parameter tags
-    * - sortBy
-      - string
-      - Selected sort column
-    * - sortMethod
-      - string
-      - Selected sort method - ASC or DESC
+    * - sortBys
+      - array
+      - Selected sort configuration (e.g. ``{'authored': 'ASC'}``)
     * - presentAs
       - string
-      - selected present as value
+      - Selected present as value
     * - limitResult
-      - string
+      - int
       - Selected limit for result
     * - page
       - int
@@ -135,6 +133,18 @@ This values are available in the *view* variable in the twig templates.
     * - hasNextPage
       - bool
       - Is TRUE if another page exists
+    * - paginated
+      - bool
+      - Is TRUE if pagination is enabled
+    * - total
+      - int
+      - Total number of items matching the filter
+    * - maxPage
+      - int|null
+      - Maximum page number (null if pagination is disabled)
+    * - maxPerPage
+      - int|null
+      - Maximum items per page (null if pagination is disabled)
 
 The "content" values depends on the SmartContentProvider.
 
@@ -227,6 +237,32 @@ This provider filters snippets.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
+
+Articles
+~~~~~~~~
+
+Alias: "articles"
+
+This provider filters articles. Requires the SuluArticleBundle to be installed.
+
+**Parameters**
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - properties
+      - collection
+      - Defines the property names which will be exposed in the HTML template.
+
+.. note::
+
+    The ``types`` filter for articles corresponds to article groups (types),
+    not template keys. The ``properties`` parameter works the same way as for
+    pages, supporting both template properties and extension data
+    (e.g. ``excerpt.title``).
 
 Contact - People
 ~~~~~~~~~~~~~~~~
@@ -346,11 +382,18 @@ Twig template
                 </h2>
 
                 <p>
+                    <time datetime="{{ page.authored|date('Y-m-d') }}">{{ page.authored|date('M d, Y') }}</time>
+                    {% if page.lastModified %}
+                        | Last modified: {{ page.lastModified|date('M d, Y') }}
+                    {% endif %}
+                </p>
+
+                <p>
                     <i>{{ page.excerptTitle }}</i> | <i>{{ page.excerptTags|join(', ') }}</i>
                 </p>
 
-                {% if page.excerptImages|length > 0 %}
-                    <img src="{{ page.excerptImages[0].thumbnails['50x50'] }}" alt="{{ page.excerptImages[0].title }}"/>
+                {% if page.excerptImage|length > 0 %}
+                    <img src="{{ page.excerptImage.thumbnails['50x50'] }}" alt="{{ page.excerptImage.title }}"/>
                 {% endif %}
 
                 {{ page.article|raw }}
@@ -362,6 +405,70 @@ Twig template
 
     If you have not defined the parameter ``max_per_page`` you can omit the
     pagination.
+
+.. _automatically_available_properties:
+
+Automatically available properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following properties are available on each smart content item **without**
+needing to be mapped in the ``properties`` parameter. They are resolved
+automatically from the entity settings:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Property
+      - Type
+      - Description
+    * - authored
+      - DateTimeImmutable
+      - The authored date set by the content manager
+    * - lastModified
+      - DateTimeImmutable
+      - The last modified date (if enabled by the content manager)
+    * - author
+      - object
+      - The author contact reference
+    * - template
+      - string
+      - The template key used by the item
+    * - availableLocales
+      - string[]
+      - The locales in which the item is available
+
+Additionally, the ``title`` and ``url`` properties are included as default
+properties for the ``pages`` and ``articles`` providers, so they are always
+available without explicit mapping.
+
+.. note::
+
+    The ``properties`` parameter is used to expose **template properties**
+    (like ``article``) and **extension data** (like ``excerpt.title``) on
+    each item. Settings like ``authored`` and ``lastModified`` do not need
+    to be listed there.
+
+Available sort columns
+~~~~~~~~~~~~~~~~~~~~~~
+
+The following sort columns are available for the ``pages`` and ``articles``
+providers:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Column
+      - Description
+    * - workflowPublished
+      - The date when the item was published
+    * - authored
+      - The authored date set by the content manager
+    * - created
+      - The date when the item was created in the system
+    * - changed
+      - The date when the item was last changed in the system
+    * - title
+      - The title of the item (alphabetical sorting)
 
 Built-in SmartContentProviders
 -------------------------------

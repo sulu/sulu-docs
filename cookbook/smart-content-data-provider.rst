@@ -235,7 +235,7 @@ The ``Builder`` class provides these methods to configure your provider:
 3. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
-Register the provider as a service with the ``sulu.smart_content.data_provider`` tag:
+Register the provider as a service with the ``sulu_content.smart_content_provider`` tag:
 
 .. code-block:: yaml
 
@@ -245,9 +245,9 @@ Register the provider as a service with the ``sulu.smart_content.data_provider``
             arguments:
                 - '@App\Repository\ExampleRepository'
             tags:
-                - { name: 'sulu.smart_content.data_provider', alias: 'examples' }
+                - { name: 'sulu_content.smart_content_provider', type: 'examples' }
 
-The ``alias`` must match the value returned by ``getType()``.
+The ``type`` attribute must match the value returned by ``getType()``.
 
 Afterwards you can use your new SmartContentProvider in your templates by setting
 the ``provider`` parameter to ``examples``.
