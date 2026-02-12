@@ -19,7 +19,7 @@ described in :doc:`/cookbook/smart-content-data-provider`
 
 A very important feature is the ``exclude_duplicates`` parameter which offers
 the possibility to filter already used items on a website. If this parameter
-is set to true the smart-content uses the :doc:`/bundles/website/reference-store`
+is set to true the smart-content uses the :doc:`/bundles/reference-store`
 to detect already used items and filters them.
 
 Parameters
