@@ -3,7 +3,7 @@ Reference Store
 
 The reference store is a service which collects ids of entities used to render
 a page. These ids are used for cache tag generation in the caching component
-:doc:`../http_cache`.
+:doc:`http_cache`.
 
 Architecture
 ------------

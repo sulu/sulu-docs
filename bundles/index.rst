@@ -24,6 +24,7 @@ documented the most important ones.
     persistence
     preview/index
     reference
+    reference-store
     route/index
     search
     security/index
