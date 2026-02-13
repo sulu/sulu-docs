@@ -1,12 +1,12 @@
-Page Selection
-==============
+Single Article selection
+========================
 
 Description
 -----------
 
-Shows a list with the possibility to add links to other pages managed in Sulu.
+Shows a field, on which exactly one link to an article can be assigned.
 Additionally it populates all the fields defined in the template configuration
-to the HTML template. The content is stored as an array of references.
+to the HTML template. The selected article is exposed to the HTML template as a single object containing the configured properties.
 
 Parameters
 ----------
@@ -19,7 +19,7 @@ Parameters
       - Description
     * - properties
       - collection
-      - Defines with which key which property of the linked page should be
+      - Defines with which key which property of the linked article should be
         populated to the HTML template.
     * - item_disabled_condition
       - string
@@ -28,9 +28,6 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
-    * - sortable
-      - bool
-      - Defines if the user should be able to sort the selected items. Default value is true.
     * - request_parameters
       - collection
       - Collection of parameters that are appended to the requests sent by the selection.
@@ -38,21 +35,15 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
-    * - min
-      - string
-      - The minimum number of selected pages
-    * - max
-      - string
-      - The maximum number of selected pages
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="pages" type="page_selection">
+    <property name="singleArticle" type="single_article_selection">
         <meta>
-            <title lang="en">Pages</title>
+            <title lang="en">Single Article</title>
         </meta>
 
         <params>
@@ -70,9 +61,9 @@ Complex Example
 
 .. code-block:: xml
 
-    <property name="pages" type="page_selection">
+    <property name="singleArticle" type="single_article_selection">
         <meta>
-            <title lang="en">Pages</title>
+            <title lang="en">Single Article</title>
         </meta>
 
         <params>
@@ -87,23 +78,21 @@ Complex Example
         </params>
     </property>
 
-.. _jexl: https://github.com/TomFrost/jexl
-
 Twig
 ----
 
 .. code-block:: twig
 
-    {% for page in content.pages %}
+    <div>
+        <h3>
+            {{ content.singleArticle.excerptTitle|default(content.singleArticle.title) }}
+        </h3>
+
         <div>
-            <h3>
-                {{ page.excerptTitle|default(page.title) }}
-            </h3>
-
-            <div>
-                {{ page.excerptDescription|default(page.article)|raw }}
-            </div>
-
-            <a href="{{ sulu_content_path(page.url) }}">Read more</a>
+            {{ content.singleArticle.excerptDescription|default(content.singleArticle.article)|raw }}
         </div>
-    {% endfor %}
+
+        <a href="{{ sulu_content_path(content.singleArticle.url) }}">Read more</a>
+    </div>
+
+.. _jexl: https://github.com/TomFrost/jexl

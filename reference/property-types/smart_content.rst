@@ -177,6 +177,35 @@ source, whose child pages will be filtered by the SmartContentProvider.
 
     For an example see :ref:`example`
 
+Articles
+~~~~~~~~~~~~~
+
+Alias: "articles"
+
+This provider filters articles.
+
+**Parameters**
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - properties
+      - collection
+      - Defines the property names which will be exposed in the HTML template.
+
+.. note::
+
+    "properties" can include structure properties or extension data:
+
+    * title - is a property of the structure
+    * excerpt.title - is a property of the excerpt structure extension with
+      the name title
+
+    For an example, see the :ref:`example` section of the "pages" provider. Use the same configuration, but change the provider alias to "articles".
+
 Snippet
 ~~~~~~~
 
