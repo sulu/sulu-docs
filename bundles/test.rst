@@ -25,13 +25,13 @@ Therefore Sulu provides an extended `KernelTestCase`_ to specify the kernel
 context.
 
 .. code-block:: php
-    
+
     // tests/Integration/Service/NewsletterGeneratorTest.php
     namespace App\Tests\Integration\Service;
-    
+
     use Sulu\Bundle\TestBundle\Testing\KernelTestCase;
     use Sulu\Component\HttpKernel\SuluKernel;
-    
+
     class NewsletterGeneratorTest extends KernelTestCase
     {
         public function testSomething()
@@ -61,13 +61,13 @@ Use Sulu's `SuluTestCase`_ to create a client in the website context and define
 your expectations to the called action.
 
 .. code-block:: php
-    
+
     // tests/Functional/Controller/Website/RegistrationControllerTest.php
     namespace App\Tests\Functional\Controller\Website;
-    
+
     use Sulu\Bundle\TestBundle\Testing\SuluTestCase;
     use Sulu\Component\HttpKernel\SuluKernel;
-    
+
     class RegistrationControllerTest extends SuluTestCase
     {
         public function testIndexAction(): void
@@ -83,9 +83,9 @@ your expectations to the called action.
     }
 
 Actually calling ``$client = static::createWebsiteClient()`` is equal to this
-    
+
 .. code-block:: php
-    
+
     $client = static::createClient([
         'sulu.context' => SuluKernel::CONTEXT_WEBSITE,
     ]);
@@ -100,13 +100,13 @@ If you need a logged in user to test secured actions, Sulu provides a test
 user, which you can use.
 
 .. code-block:: php
-    
+
     class ArticleAdminControllerTest extends SuluTestCase
     {
         public function testIndexAction(): void
         {
             $client = static::createClient();
-        
+
             $user = $this->getTestUser();
             $client->loginUser($user);
         }
@@ -123,7 +123,7 @@ If you are doing database manipulations in your tests, and need a clean database
 before you run your tests. You may want to use Sulu's database purging helper.
 
 .. code-block:: php
-    
+
     class ActivityRepositoryTest extends SuluTestCase
     {
         public function setUp(): void
@@ -138,6 +138,6 @@ it in ``setUpBeforeClass()`` instead of ``setUp()``.
 
 
 .. _test documentation: https://symfony.com/doc/current/testing.html
-.. _KernelTestCase: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TestBundle/Testing/KernelTestCase.php
-.. _SuluTestCase: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TestBundle/Testing/SuluTestCase.php
+.. _KernelTestCase: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/TestBundle/Testing/KernelTestCase.php
+.. _SuluTestCase: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/TestBundle/Testing/SuluTestCase.php
 .. _DOM Crawler: https://symfony.com/doc/current/testing/dom_crawler.html

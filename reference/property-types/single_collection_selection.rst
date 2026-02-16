@@ -61,6 +61,6 @@ Twig
 
     {{ content.collection.fullName }}
 
-.. _Collection: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/MediaBundle/Api/Collection.php
+.. _Collection: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/MediaBundle/Api/Collection.php
 .. _custom twig extension: https://symfony.com/doc/current/templating/twig_extension.html
 .. _jexl: https://github.com/TomFrost/jexl
