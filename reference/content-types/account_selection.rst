@@ -64,5 +64,5 @@ Twig
         <h3>{{ account.name }}</h3>
     {% endfor %}
 
-.. _Account: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ContactBundle/Api/Account.php
+.. _Account: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ContactBundle/Api/Account.php
 .. _jexl: https://github.com/TomFrost/jexl
