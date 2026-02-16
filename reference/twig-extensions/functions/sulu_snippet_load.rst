@@ -1,19 +1,9 @@
+:orphan:
+
 ``sulu_snippet_load``
 =====================
 
-Returns content array for given snippet uuid.
+.. note::
 
-.. code-block:: jinja
-
-    {% set snippet = sulu_snippet_load('1234-1234-1234-1234-1234') %}
-    {{ snippet.content.title }}
-
-**Arguments**:
-
-- **uuid**: *string* - The uuid of requested content.
-- **locale**: *string* - optional: Locale to load snippet.
-- **loadExcerpt**: *boolean* - optional: Load data from excerpt tab
-
-**Returns**:
-
-.. include:: _snippet_structure.inc
+    This extension was removed in Sulu 3.0.
+    Use :doc:`sulu_snippet_load_by_area <sulu_snippet_load_by_area>` instead.
