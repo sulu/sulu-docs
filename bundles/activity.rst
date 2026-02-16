@@ -221,6 +221,6 @@ The `createActivityListViewBuilder` method is used to create the view. It takes 
 The setParent method sets the parent view to integrate the activities table into the existing admin view.
 
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
-.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
-.. _ActivityController class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
+.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
+.. _ActivityController class: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
 .. _Symfony translations: https://symfony.com/doc/current/translation.html
