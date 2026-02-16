@@ -132,7 +132,7 @@ If this does not solve the problem, you can try to clean the npm cache on your m
     npm cache clean --force
 
 .. _issue in the sulu/skeleton repository: https://github.com/sulu/skeleton/issues/88
-.. _Test Application workflow: https://github.com/sulu/sulu/blob/2.x/.github/workflows/test-application.yaml
+.. _Test Application workflow: https://github.com/sulu/sulu/blob/2.6/.github/workflows/test-application.yaml
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
 .. _bun: https://bun.sh/

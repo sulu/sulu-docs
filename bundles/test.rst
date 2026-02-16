@@ -138,6 +138,6 @@ it in ``setUpBeforeClass()`` instead of ``setUp()``.
 
 
 .. _test documentation: https://symfony.com/doc/current/testing.html
-.. _KernelTestCase: https://github.com/sulu/sulu/blob/2.5/src/Sulu/Bundle/TestBundle/Testing/KernelTestCase.php
-.. _SuluTestCase: https://github.com/sulu/sulu/blob/2.5/src/Sulu/Bundle/TestBundle/Testing/SuluTestCase.php
+.. _KernelTestCase: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TestBundle/Testing/KernelTestCase.php
+.. _SuluTestCase: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TestBundle/Testing/SuluTestCase.php
 .. _DOM Crawler: https://symfony.com/doc/current/testing/dom_crawler.html
