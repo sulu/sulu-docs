@@ -18,6 +18,9 @@ Parameters
     * - headline
       - boolean
       - If true the height and font size of the text line get increased.
+    * - autofocus
+      - boolean
+      - If true the field will be automatically focused once its visible
     * - soft_max_length
       - string
       - Soft limit for maximum number of characters. Will show a character counter (replaces `max_characters`)
