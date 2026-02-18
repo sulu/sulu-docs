@@ -7,7 +7,7 @@ fix a bug.
 
 Unrelated to Sulu changes, upgrades sometimes require first updating PHP, Symfony, or other dependencies. The following table
 should show you which versions of Sulu are compatible with which versions of PHP and Symfony. It is
-recommended to avoid big upgrades that tackle Sulu, PHP, and Symfony simultaneously. Instead, upgrade them and release 
+recommended to avoid big upgrades that tackle Sulu, PHP, and Symfony simultaneously. Instead, upgrade them and release
 the upgrade of your project in small, separate steps rather than one big step. This approach helps to better identify
 the cause of any problems.
 
@@ -114,4 +114,4 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _Symfony best practices: https://symfony.com/doc/current/best_practices.html
-.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.6/UPGRADE.md
+.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/3.0/UPGRADE.md

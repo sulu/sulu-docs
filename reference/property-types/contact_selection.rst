@@ -64,5 +64,5 @@ Twig
         <h3>{{ contact.fullName }}</h3>
     {% endfor %}
 
-.. _ContactInterface: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
+.. _ContactInterface: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php
 .. _jexl: https://github.com/TomFrost/jexl

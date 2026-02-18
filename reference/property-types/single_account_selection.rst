@@ -63,5 +63,5 @@ the account logo image.
         <img src="{{ image.thumbnails['80x80'] }}" alt="{{ account.name }}">
     {% endif
 
-.. _Account: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ContactBundle/Api/Account.php
+.. _Account: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ContactBundle/Api/Account.php
 .. _jexl: https://github.com/TomFrost/jexl
