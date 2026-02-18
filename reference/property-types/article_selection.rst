@@ -104,6 +104,6 @@ Twig
                 {{ article.excerptDescription|default(article.article)|raw }}
             </div>
 
-            <div href="{{ sulu_content_path(article.url) }}">Read more</div>
+            <a href="{{ sulu_content_path(article.url) }}">Read more</a>
         </div>
     {% endfor %}
