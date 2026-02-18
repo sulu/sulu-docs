@@ -53,6 +53,7 @@ property type:
     :maxdepth: 1
 
     account_selection
+    article_selection
     block
     category_selection
     checkbox
@@ -74,6 +75,7 @@ property type:
     route
     select
     single_account_selection
+    single_article_selection
     single_category_selection
     single_collection_selection
     single_contact_selection

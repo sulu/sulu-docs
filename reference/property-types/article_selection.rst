@@ -1,10 +1,10 @@
-Page Selection
-==============
+Article selection
+=================
 
 Description
 -----------
 
-Shows a list with the possibility to add links to other pages managed in Sulu.
+Shows a list with the possibility to add links to other articles managed in Sulu.
 Additionally it populates all the fields defined in the template configuration
 to the HTML template. The content is stored as an array of references.
 
@@ -19,7 +19,7 @@ Parameters
       - Description
     * - properties
       - collection
-      - Defines with which key which property of the linked page should be
+      - Defines with which key which property of the linked article should be
         populated to the HTML template.
     * - item_disabled_condition
       - string
@@ -40,19 +40,19 @@ Parameters
         The value of the respective properties are appended to the requests sent by the selection.
     * - min
       - string
-      - The minimum number of selected pages
+      - The minimum number of selected articles
     * - max
       - string
-      - The maximum number of selected pages
+      - The maximum number of selected articles
 
 Example
 -------
 
 .. code-block:: xml
 
-    <property name="pages" type="page_selection">
+    <property name="articles" type="article_selection">
         <meta>
-            <title lang="en">Pages</title>
+            <title lang="en">Articles</title>
         </meta>
 
         <params>
@@ -70,9 +70,9 @@ Complex Example
 
 .. code-block:: xml
 
-    <property name="pages" type="page_selection">
+    <property name="articles" type="article_selection">
         <meta>
-            <title lang="en">Pages</title>
+            <title lang="en">Articles</title>
         </meta>
 
         <params>
@@ -94,16 +94,16 @@ Twig
 
 .. code-block:: twig
 
-    {% for page in content.pages %}
+    {% for article in content.articles %}
         <div>
             <h3>
-                {{ page.excerptTitle|default(page.title) }}
+                {{ article.excerptTitle|default(article.title) }}
             </h3>
 
             <div>
-                {{ page.excerptDescription|default(page.article)|raw }}
+                {{ article.excerptDescription|default(article.article)|raw }}
             </div>
 
-            <a href="{{ sulu_content_path(page.url) }}">Read more</a>
+            <a href="{{ sulu_content_path(article.url) }}">Read more</a>
         </div>
     {% endfor %}

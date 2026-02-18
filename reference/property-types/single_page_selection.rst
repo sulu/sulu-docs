@@ -1,10 +1,12 @@
-Single page selection
+Single Page selection
 =====================
 
 Description
 -----------
 
 Shows a field, on which exactly one link to another page can be assigned.
+Additionally it populates all the fields defined in the template configuration
+to the HTML template. The selected page is exposed to the HTML template as a single object containing the configured properties.
 
 Parameters
 ----------
@@ -15,6 +17,10 @@ Parameters
     * - Parameter
       - Type
       - Description
+    * - properties
+      - collection
+      - Defines with which key which property of the linked page should be
+        populated to the HTML template.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -35,27 +41,58 @@ Example
 
 .. code-block:: xml
 
-    <property name="link" type="single_page_selection">
-        <meta>
-            <title lang="en">Link</title>
-        </meta>
-    </property>
+        <property name="page" type="single_page_selection">
+            <meta>
+                <title lang="en">Single Page</title>
+            </meta>
+
+            <params>
+                <param name="properties" type="collection">
+                    <param name="title" value="title"/>
+                    <param name="article" value="article"/>
+                    <param name="excerptTitle" value="excerpt.title"/>
+                    <param name="excerptDescription" value="excerpt.description"/>
+                </param>
+            </params>
+        </property>
+
+Complex Example
+---------------
+
+.. code-block:: xml
+
+        <property name="page" type="single_page_selection">
+            <meta>
+                <title lang="en">Single Page</title>
+            </meta>
+
+            <params>
+                <param name="properties" type="collection">
+                    <param name="title" value="title"/>
+                    <param name="article" value="article"/>
+                    <param name="excerptTitle" value="excerpt.title"/>
+                    <param name="excerptDescription" value="excerpt.description"/>
+                    <param name="uuid" value="object.resource.id"/>
+                </param>
+                <param name="item_disabled_condition" value="title == 'No'"/>
+            </params>
+        </property>
 
 Twig
 ----
 
-The property type only returns the UUID of the target page at the moment. If you want to
-render a link to the page, you can use the :doc:`sulu-link tag<../../bundles/markup/link>`:
-
-.. code-block:: html
-
-    <sulu-link href="{{ content.link }}">Link Text</sulu-link>
-
-If you need to load additional data of the target page, you can use the
-:doc:`sulu_content_load twig extension<../twig-extensions/functions/sulu_content_load>`:
-
 .. code-block:: twig
 
-    {% set target = sulu_content_load(content.link, {'title': 'title', 'excerptTitle': 'excerpt.title'}) %}
+    <div>
+        <h3>
+            {{ content.page.excerptTitle|default(content.page.title) }}
+        </h3>
+
+        <div>
+            {{ content.page.excerptDescription|default(content.page.article)|raw }}
+        </div>
+
+        <a href="{{ sulu_content_path(content.page.url) }}">Read more</a>
+    </div>
 
 .. _jexl: https://github.com/TomFrost/jexl
