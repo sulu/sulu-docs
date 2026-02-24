@@ -34,7 +34,7 @@ Solution 2: Build manually with docker
     docker run --rm --interactive --tty --volume ${PWD}:/var/project node:24.11.1 /bin/bash
 
     # for completion: using another node version is possible by adjusting the tag of the node image
-    # for Versions before 2.6 npm 6 has to be used so Node 14 is best there:
+    # Sulu versions before 2.6 require npm 6, which ships with Node 14:
     # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
 
 2. Cleanup previously created node_modules folders and package-lock.json files
@@ -118,7 +118,7 @@ but you can use pnpm 8 - 10 or bun 1 as alternative.
 
 .. warning::
 
-    Sulu Versions before 2.6 requires to use NPM 6 (shipped with Node 14) because of a breaking changes for linked packages.
+    Sulu versions before 2.6 require using npm 6 (shipped with Node 14) due to breaking changes for linked packages.
 
 2. Clear the npm cache on your machine
 
