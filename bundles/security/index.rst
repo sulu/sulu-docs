@@ -148,6 +148,12 @@ the user is then redirected to the SSO provider to authenticate. After successfu
 If the domain does not match the configured domain, the user is authenticated using the standard login form.
 On password reset, when the domain matches, the user is also redirected to the SSO provider.
 
+Enable SSO provider: 
+Before enabling the SSO provider, ensure you've created a role with the key USER, or set a key for your preferred default role and use it for the parameter ``default_role_key``.
+
+Redirect URL: 
+If your provider requires a redirect URL, provide your admin URL, e.g., ``sulu.io/admin``.
+
 .. note::
 
     At the moment, only the OpenID protocol is supported for Single-Sign-On authentication in Sulu.
