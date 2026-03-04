@@ -59,7 +59,7 @@ webspaces configures a content tree. Each content tree may contain translations
 for different locales.
 
 The default webspace configuration is located in
-``config/webspaces/example.xml``. Rename this file so that it matches
+``config/webspaces/website.xml``. Rename this file so that it matches
 the name of your project.
 
 To get started, change the ``<name>`` and the ``<key>`` of the webspace to the

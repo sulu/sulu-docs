@@ -35,18 +35,27 @@ and can be assigned to a snippet that uses the respective template.
     </meta>
 
     <areas>
-        <area key="menu_social_media_links">
+        <area key="menu_social_media_links" cache-invalidation="true">
             <meta>
                 <title lang="en">Menu Social Media Links</title>
             </meta>
         </area>
 
-        <area key="footer_social_media_links">
+        <area key="footer_social_media_links" cache-invalidation="false">
             <meta>
                 <title lang="en">Footer Social Media Links</title>
             </meta>
         </area>
     </areas>
+
+For each area you can also define if the cache should be invalidated when either the snippet is
+changed or the snippet assigned to the area is modified/removed. This can be done by setting the
+``cache-invalidation`` attribute of the area to ``true`` or ``false``, the default value is ``true``.
+
+.. note::
+
+        Be aware that if a default-snippet is used in a base twig template, modifying the snippet or the
+        area may result in a full cache invalidation of the website.
 
 Loading the default snippet inside of a twig template
 -----------------------------------------------------

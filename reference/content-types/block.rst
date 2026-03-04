@@ -65,55 +65,86 @@ properties should be shown as a preview in collapsed blocks. These tags
 additionally take a ``priority`` attribute, which can alter the order of the
 property previews.
 
-The example only shows a single type, combining a media selection with a text
-editor as described in the description.
+The example only shows a single type, combining a single media selection with
+a text line and text editor. This is a very common block type in Sulu to
+have images between different text passages or side.
 
 .. code-block:: xml
 
-    <block name="blocks" default-type="editor_image" minOccurs="0">
+    <!-- A maxOccurs is also possible to limit the blocks for very special cases  -->
+    <block name="blocks" default-type="text_image" minOccurs="0">
         <meta>
             <title lang="de">Inhalte</title>
             <title lang="en">Content</title>
         </meta>
 
+        <!-- Params are optional, but specially for nested blocks `add_button_text` is recommended to be set -->
         <params>
             <param name="add_button_text">
                 <meta>
-                    <title lang="en">Add track</title>
-                    <title lang="de">Track hinzufügen</title>
+                    <title lang="en">Add block</title>
+                    <title lang="de">Block hinzufügen</title>
                 </meta>
             </param>
         </params>
 
         <types>
-            <type name="editor_image">
+            <type name="text_image">
                 <meta>
                     <title lang="de">Editor mit Bild</title>
                     <title lang="en">Editor with image</title>
                 </meta>
 
                 <properties>
-                    <property name="images" type="media_selection" colspan="3">
+                    <property name="title" type="text_line">
                         <meta>
-                            <title lang="de">Bilder</title>
-                            <title lang="en">Images</title>
+                            <title lang="de">Titel</title>
+                            <title lang="en">Title</title>
                         </meta>
 
-                        <tag name="sulu.block_preview" priority="512"/>
+                        <!-- optional: you can control which fields the collapsed view prefer to show -->
+                        <tag name="sulu.block_preview" priority="128"/>
                     </property>
 
-                    <property name="article" type="text_editor" colspan="9">
+                    <property name="description" type="text_editor">
                         <meta>
                             <title lang="de">Artikel</title>
                             <title lang="en">Article</title>
                         </meta>
 
+                        <!-- optional: you can control which fields the collapsed view prefer to show -->
+                        <tag name="sulu.block_preview" priority="64"/>
+                    </property>
+
+                    <property name="image" type="single_media_selection">
+                        <meta>
+                            <title lang="de">Bilder</title>
+                            <title lang="en">Images</title>
+                        </meta>
+
+                        <params>
+                            <param name="types" value="image"/>
+                            <param name="defaultDisplayOption" value="bottom"/>
+                            <param name="displayOptions" type="collection">
+                                <param name="top" value="true"/>
+                                <param name="left" value="true"/>
+                                <param name="right" value="true"/>
+                                <param name="bottom" value="true"/>
+                            </param>
+                        </params>
+
+                        <!-- optional: you can control which fields the collapsed view prefer to show -->
                         <tag name="sulu.block_preview" priority="1024"/>
                     </property>
                 </properties>
             </type>
         </types>
     </block>
+
+.. note::
+
+    If you want to use a block-type in multiple templates, you can use global blocks. See
+    :ref:`template properties <templates-global-blocks>` for more information.
 
 Twig
 ----

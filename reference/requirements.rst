@@ -12,7 +12,7 @@ The following requirements *must* be met to run Sulu:
 * Mac OSX, Linux or Windows
 * :doc:`Apache <../cookbook/web-server/apache>` or
   :doc:`Nginx <../cookbook/web-server/nginx>` with enabled URL rewriting
-* `PHP`_ 8.1 or higher
+* `PHP`_ 8.2 or higher
 * the `dom_extension`_ and `xml_extension`_ for PHP
 * the `gd`_, `imagick_extension`_ or `vips_extension`_ for PHP
 * a `database management system supported by Doctrine`_
@@ -28,10 +28,13 @@ The following requirements are optional:
 Development Requirements
 ------------------------
 
-If you want to build parts of the system on your own, you will additionally need:
+If you want to build parts of the admin on your own, you will additionally need:
 
 * `Node.js`_
-* `npm`_ 6
+* `npm`_ >=8
+
+Also check the ``assets/admin/package.json`` file for all supported versions and alternative package managers.
+For Sulu <= 2.5, you will need to use npm 6.
 
 .. _PHP: http://php.net
 .. _xml_extension: http://php.net/manual/en/book.xml.php

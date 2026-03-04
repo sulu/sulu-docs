@@ -97,8 +97,8 @@ Examples:
 
 .. code-block:: bash
 
-    sulu.lo/ch._twig_error_test       ANY    ANY    sulu.lo /ch/_error/{code}.{_format}
-    sulu.lo/en._twig_error_test       ANY    ANY    sulu.lo /en/_error/{code}.{_format}
-    sulu.lo/fr._twig_error_test       ANY    ANY    sulu.lo /fr/_error/{code}.{_format}
-    sulu.lo/de._twig_error_test       ANY    ANY    sulu.lo /de/_error/{code}.{_format}
-    sulu.lo._twig_error_test          ANY    ANY    sulu.lo /_error/{code}.{_format}
+    example.org/ch._twig_error_test       ANY    ANY    example.org /ch/_error/{code}.{_format}
+    example.org/en._twig_error_test       ANY    ANY    example.org /en/_error/{code}.{_format}
+    example.org/fr._twig_error_test       ANY    ANY    example.org /fr/_error/{code}.{_format}
+    example.org/de._twig_error_test       ANY    ANY    example.org /de/_error/{code}.{_format}
+    example.org._twig_error_test          ANY    ANY    example.org /_error/{code}.{_format}

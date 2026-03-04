@@ -36,7 +36,57 @@ lexers['varnish4'] = CLexer()
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    'sphinx_reredirects',
+]
+
+# Redirects for version switcher (property-types -> content-types for 1.0/2.x)
+redirects = {
+    "reference/property-types/index": "../../reference/content-types/index.html",
+    "reference/property-types/account_selection": "../../reference/content-types/account_selection.html",
+    "reference/property-types/block": "../../reference/content-types/block.html",
+    "reference/property-types/category_selection": "../../reference/content-types/category_selection.html",
+    "reference/property-types/checkbox": "../../reference/content-types/checkbox.html",
+    "reference/property-types/collection_selection": "../../reference/content-types/collection_selection.html",
+    "reference/property-types/color": "../../reference/content-types/color.html",
+    "reference/property-types/contact_account_selection": "../../reference/content-types/contact_account_selection.html",
+    "reference/property-types/contact_selection": "../../reference/content-types/contact_selection.html",
+    "reference/property-types/date": "../../reference/content-types/date.html",
+    "reference/property-types/datetime": "../../reference/content-types/datetime.html",
+    "reference/property-types/email": "../../reference/content-types/email.html",
+    "reference/property-types/image_map": "../../reference/content-types/image_map.html",
+    "reference/property-types/link": "../../reference/content-types/link.html",
+    "reference/property-types/location": "../../reference/content-types/location.html",
+    "reference/property-types/media_selection": "../../reference/content-types/media_selection.html",
+    "reference/property-types/number": "../../reference/content-types/number.html",
+    "reference/property-types/page_selection": "../../reference/content-types/page_selection.html",
+    "reference/property-types/phone": "../../reference/content-types/phone.html",
+    "reference/property-types/resource_locator": "../../reference/content-types/resource_locator.html",
+    "reference/property-types/route": "../../reference/content-types/route.html",
+    "reference/property-types/select": "../../reference/content-types/select.html",
+    "reference/property-types/single_account_selection": "../../reference/content-types/single_account_selection.html",
+    "reference/property-types/single_category_selection": "../../reference/content-types/single_category_selection.html",
+    "reference/property-types/single_collection_selection": "../../reference/content-types/single_collection_selection.html",
+    "reference/property-types/single_contact_selection": "../../reference/content-types/single_contact_selection.html",
+    "reference/property-types/single_icon_selection": "../../reference/content-types/single_icon_selection.html",
+    "reference/property-types/single_media_selection": "../../reference/content-types/single_media_selection.html",
+    "reference/property-types/single_page_selection": "../../reference/content-types/single_page_selection.html",
+    "reference/property-types/single_select": "../../reference/content-types/single_select.html",
+    "reference/property-types/single_snippet_selection": "../../reference/content-types/single_snippet_selection.html",
+    "reference/property-types/smart_content": "../../reference/content-types/smart_content.html",
+    "reference/property-types/snippet_selection": "../../reference/content-types/snippet_selection.html",
+    "reference/property-types/tag_selection": "../../reference/content-types/tag_selection.html",
+    "reference/property-types/teaser_selection": "../../reference/content-types/teaser_selection.html",
+    "reference/property-types/text_area": "../../reference/content-types/text_area.html",
+    "reference/property-types/text_line": "../../reference/content-types/text_line.html",
+    "reference/property-types/time": "../../reference/content-types/time.html",
+    "reference/property-types/url": "../../reference/content-types/url.html",
+    "reference/twig-extensions/functions/sulu_page_breadcrumb": "../../../reference/twig-extensions/functions/sulu_breadcrumb.html",
+    "reference/twig-extensions/functions/sulu_page_navigation_flat": "../../../reference/twig-extensions/functions/sulu_navigation_flat.html",
+    "reference/twig-extensions/functions/sulu_page_navigation_root_flat": "../../../reference/twig-extensions/functions/sulu_navigation_root_flat.html",
+    "reference/twig-extensions/functions/sulu_page_navigation_root_tree": "../../../reference/twig-extensions/functions/sulu_navigation_root_tree.html",
+    "reference/twig-extensions/functions/sulu_page_navigation_tree": "../../../reference/twig-extensions/functions/sulu_navigation_tree.html"
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -59,9 +109,9 @@ copyright = '2022, Sulu GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = '2.5'
+version = '2.x'
 # The full version, including alpha/beta/rc tags.
-release = '2.5'
+release = '2.x'
 
 # The language for content autogenerated by Sphinx. Refer to documentation
 # for a list of supported languages.

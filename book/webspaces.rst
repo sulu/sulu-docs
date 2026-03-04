@@ -24,11 +24,11 @@ following paragraphs.
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
 
-        <name>Example</name>
-        <key>example</key>
+        <name>Website</name>
+        <key>website</key>
 
         <security permission-check="true">
-            <system>example</system>
+            <system>website</system>
         </security>
 
         <localizations>
@@ -36,7 +36,7 @@ following paragraphs.
         </localizations>
 
         <default-templates>
-            <default-template type="page">example</default-template>
+            <default-template type="page">default</default-template>
             <default-template type="homepage">default</default-template>
         </default-templates>
 
@@ -80,8 +80,8 @@ following paragraphs.
 
         <portals>
             <portal>
-                <name>example</name>
-                <key>example</key>
+                <name>Website</name>
+                <key>website</key>
 
                 <environments>
                     <environment type="prod">
@@ -91,7 +91,7 @@ following paragraphs.
                     </environment>
                     <environment type="dev">
                         <urls>
-                            <url language="en">example.lo</url>
+                            <url language="en">example.localhost</url>
                         </urls>
                     </environment>
                 </environments>

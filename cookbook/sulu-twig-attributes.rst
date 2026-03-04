@@ -13,14 +13,14 @@ attributes to your template. To do this, you can use the``TemplateAttributeResol
     use Sulu\Bundle\HttpCacheBundle\Cache\SuluHttpCache;
     use Sulu\Bundle\WebsiteBundle\Resolver\TemplateAttributeResolverInterface;
     use Symfony\Component\HttpFoundation\Response;
+    use Symfony\Component\HttpKernel\Attribute\AsController;
     use Symfony\Component\Routing\Annotation\Route;
     use Twig\Environment;
 
+    #[AsController]
     class StaticController
     {
-        /**
-         * @Route("/custom", name="app_custom")
-         */
+        #[Route("/custom", name: "app_custom")]
         public function indexAction(
             TemplateAttributeResolverInterface $resolver,
             Environment $twig

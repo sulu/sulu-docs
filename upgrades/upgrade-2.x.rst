@@ -114,4 +114,4 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _Symfony best practices: https://symfony.com/doc/current/best_practices.html
-.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.x/UPGRADE.md
+.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/2.6/UPGRADE.md

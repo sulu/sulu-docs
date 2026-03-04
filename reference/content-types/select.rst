@@ -22,6 +22,10 @@ Parameters
       - collection
       - A collection of default values which are activated by default.
 
+.. note::
+
+    Have a look at the  :doc:`single_select` type if you want to select a single value.
+
 Example
 -------
 

@@ -187,7 +187,40 @@ users with a ``view`` permission for the context:
         }
     }
 
+Extending the Admin View with a Activity Table
+------------------------------------------------
+
+To extend the admin view by adding a activities table, follow these steps:
+
+	1.	Inject the `ActivityViewBuilderFactoryInterface`: Inject this interface into your custom Admin class. This will allow you to utilize the necessary methods to create the activities view.
+	2.	Create the Activity List View: Use the `createActivityListViewBuilder` method to create the list view for the activities table.
+
+Here’s an example implementation, demonstrating how to add the activities tab to your custom admin view, for further examples take a look at the SnippetAdmin class:
+
+.. code-block:: php
+
+    if ($this->activityViewBuilderFactory->hasActivityListPermission()) {
+        $viewCollection->add(
+            $this->activityViewBuilderFactory
+                ->createActivityListViewBuilder(
+                    $insightsResourceTabViewName . '.activity',
+                    '/activities',
+                    CustomEntity::RESOURCE_KEY
+                )
+                ->setParent($insightsResourceTabViewName)
+        );
+    }
+
+The `hasActivityListPermission` method ensures that the current user has permission to view the activities list.
+The `createActivityListViewBuilder` method is used to create the view. It takes three parameters:
+
+    - The name of the new view, usually appended with .activity to indicate it is an activity view.
+    - The URL path for the activities table.
+    - The resource key identifies the type of resource for the activities.
+
+The setParent method sets the parent view to integrate the activities table into the existing admin view.
+
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
-.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
-.. _ActivityController class: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
+.. _DomainEvent class: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
+.. _ActivityController class: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
 .. _Symfony translations: https://symfony.com/doc/current/translation.html

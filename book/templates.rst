@@ -216,6 +216,8 @@ Here is a table with the content types shipped in Sulu core:
 +------------------------------+---------------------------------------------+
 | |single_contact_selection|   | widget for selecting a single contact       |
 +------------------------------+---------------------------------------------+
+| |single_icon_selection|      | widget for selecting a single icon          |
++------------------------------+---------------------------------------------+
 | |account_selection|          | widget for selecting multiple accounts      |
 +------------------------------+---------------------------------------------+
 | |single_account_selection|   | widget for selecting a single account       |
@@ -646,6 +648,12 @@ type:
     More details about blocks, such as the available parameters, can be found on
     the :doc:`reference <../reference/content-types/block>` page.
 
+.. note::
+
+    If you want to use a block-type in multiple templates, you can define it as a
+    global block. More information about global blocks can be found in the
+    :ref:`templates-global-blocks` section.
+
 Aligning Fields on the Grid
 ---------------------------
 
@@ -890,6 +898,66 @@ You can also match multiple elements of different types. Use the wildcard
         </properties>
     </template>
 
+.. _templates-global-blocks:
+
+Using Global blocks
+-------------------
+
+Global blocks define a set of properties that can be used as type inside of a block or any other property. This is
+useful if you want to reuse a block type in multiple templates.
+
+To define a global block, you have to create a new XML file in the ``config/templates/blocks`` directory. The following
+file is an example and defines a global block with the name ``text_block``:
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+        <key>text_block</key>
+
+        <meta>
+            <title lang="en">Text Block</title>
+            <title lang="de">Text Block</title>
+        </meta>
+
+        <properties>
+            <property name="title" type="text_line" mandatory="true">
+                <meta>
+                    <title lang="en">Title</title>
+                    <title lang="de">Titel</title>
+                </meta>
+
+            </property>
+
+            <property name="description" type="text_editor">
+                <meta>
+                    <title lang="en">Description</title>
+                    <title lang="de">Beschreibung</title>
+                </meta>
+            </property>
+        </properties>
+    </template>
+
+This block can be used in any other template by using the ``<block>`` or ``<property>`` element within the ``type``
+node and the ``ref`` attribute:
+
+.. code-block:: xml
+
+    <block name="blocks" default-type="text_block" minOccurs="0">
+        <types>
+            <type ref="text_block" />
+        </types>
+    </block>
+
+.. note::
+
+    Mixing global and local block types is supported, but it is recommended to keep your block type names unique
+    to avoid confusion. This approach also simplifies the transition to global blocks in the future, eliminating the need
+    for data migrations.
+
 Caching
 -------
 
@@ -1021,7 +1089,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. _XPointer: https://en.wikipedia.org/wiki/XPointer
 .. _Symfony's naming convention: http://symfony.com/doc/current/templating.html#template-naming-and-locations
 .. _cron expression: https://github.com/dragonmantank/cron-expression
-.. _Media: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/MediaBundle/Api/Media.php
+.. _Media: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/MediaBundle/Api/Media.php
 .. _Jexl: https://github.com/TomFrost/Jexl
 
 .. |text_line| replace:: :doc:`text_line <../reference/content-types/text_line>`
@@ -1050,5 +1118,6 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |single_snippet_selection| replace:: :doc:`single_snippet_selection <../reference/content-types/single_snippet_selection>`
 .. |contact_selection| replace:: :doc:`contact_selection <../reference/content-types/contact_selection>`
 .. |single_contact_selection| replace:: :doc:`single_contact_selection <../reference/content-types/single_contact_selection>`
+.. |single_icon_selection| replace:: :doc:`single_icon_selection <../reference/content-types/single_icon_selection>`
 .. |account_selection| replace:: :doc:`account_selection <../reference/content-types/account_selection>`
 .. |single_account_selection| replace:: :doc:`single_account_selection <../reference/content-types/single_account_selection>`

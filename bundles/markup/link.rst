@@ -27,14 +27,14 @@ Example
 
 .. code-block:: html
 
-    <a href="http://example.com/test" title="Page Title">Page Title</a>
-    <a href="http://example.com/test" title="test-title">Page Title</a>
-    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="http://example.com/test#test-anchor" title="Page Title">Anchor Example</a>
-    <a href="http://example.com/test?query=test" title="Page Title">Query String Example</a>
-    <a href="http://example.com/test" title="Page Title" target="_blank">Link Text</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
+    <a href="http://example.org/test" title="Page Title">Page Title</a>
+    <a href="http://example.org/test" title="test-title">Page Title</a>
+    <a href="http://example.org/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.org/test#test-anchor" title="Page Title">Anchor Example</a>
+    <a href="http://example.org/test?query=test" title="Page Title">Query String Example</a>
+    <a href="http://example.org/test" title="Page Title" target="_blank">Link Text</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" title="test-title">Media Title</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" title="Media Title">Link Text</a>
 
 Provider Attributes
 -------------------
@@ -59,8 +59,8 @@ There might be situations where you need to know which provider was used even af
 
 .. code-block:: html
 
-    <a href="http://example.com/test" title="Page Title" data-provider="page">Link Text</a>
-    <a href="http://example.com/media/1/download/image.jpg?v=1" data-provider="media">Media Title</a>
+    <a href="http://example.org/test" title="Page Title" data-provider="page">Link Text</a>
+    <a href="http://example.org/media/1/download/image.jpg?v=1" data-provider="media">Media Title</a>
 
 Now you will be able to target the links in CSS and Javascript by using the data attribute as a selector. This allows things such as:
 
@@ -76,7 +76,6 @@ Now you will be able to target the links in CSS and Javascript by using the data
         font-color: green;
     }
 
-
 How the tag is processed
 ------------------------
 
@@ -86,3 +85,23 @@ linked pages from the PHPCR in a *single* query.
 
 If a twig function would be used to generate the links, each call would trigger a
 request to the PHPCR which would worsen the performance.
+
+Removing invalid links
+----------------------
+
+By default Sulu will remove links if the target they are linking to does not exist anymore:
+
+.. code-block:: html
+
+    <sulu-link provider="page" href="123-123-123">Link Text</sulu-link>
+
+    <!-- If the page does not exist, it will render plain text -->
+    Link Text
+
+If you want to completely remove the link text as well you can add the "remove-if-not-exists":
+
+.. code-block:: html
+
+    <sulu-link provider="page" href="123-123-123" remove-if-not-exists="true">Link Text</sulu-link>
+
+    <!-- If the page does not exist, it will render anything -->

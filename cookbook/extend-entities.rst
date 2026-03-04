@@ -27,28 +27,20 @@ Create your own Entity that extends Sulu `User` class.
     use Doctrine\ORM\Mapping as ORM;
     use Sulu\Bundle\SecurityBundle\Entity\User as SuluUser;
 
-    /**
-     * The following annotations are required for replacing the table of the extended entity:
-     *
-     * @ORM\Table(name="se_users")
-     * @ORM\Entity
+    /*
+     * The following attributes are required for replacing the table of the extended entity:
      */
+    #[ORM\Entity]
+    #[ORM\Table(name: 'se_users')]
     class User extends SuluUser
     {
-        /**
-         * @var string
-         *
-         * @ORM\Column(name="myProperty", type="string", length=255, nullable = true)
-         */
-        private $myProperty;
+        #[ORM\Column(name: 'myProperty', type: 'string', length: 255, nullable: true)]
+        private ?string $myProperty = null;
 
         /**
          * Set myProperty
-         *
-         * @param string $myProperty
-         * @return User
          */
-        public function setMyProperty($myProperty)
+        public function setMyProperty(?string $myProperty): self
         {
             $this->myProperty = $myProperty;
 
@@ -57,10 +49,8 @@ Create your own Entity that extends Sulu `User` class.
 
         /**
          * Get myProperty
-         *
-         * @return string
          */
-        public function getMyProperty()
+        public function getMyProperty(): ?string
         {
             return $this->myProperty;
         }
@@ -74,7 +64,7 @@ Create your own Entity that extends Sulu `User` class.
 
 .. warning::
 
-    The `@ORM\\Table` annotation on your entity must match the table of the extended entity.
+    The `#[ORM\\Table(...)]` attribute on your entity must match the table of the extended entity.
     Otherwise, doctrine might run into errors when querying data of the entity.
 
 Configuration

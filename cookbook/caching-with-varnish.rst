@@ -198,7 +198,7 @@ And now have a look at the headers on your website:
 
 .. code-block:: bash
 
-    $ curl -I mywebsite.com
+    $ curl -I example.org
     HTTP/1.1 200 OK
     # ...
     Via: 1.1 varnish

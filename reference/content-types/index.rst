@@ -77,6 +77,7 @@ content type:
     single_category_selection
     single_collection_selection
     single_contact_selection
+    single_icon_selection
     single_media_selection
     single_page_selection
     single_select

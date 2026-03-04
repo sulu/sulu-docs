@@ -59,14 +59,14 @@ The base-domains (which can be selected) will be configured in the
                 <environments>
                     ...
 
-                    <environment type="dev">
+                    <environment type="prod">
                         <urls>
-                            <url>sulu.lo/{localization}</url>
+                            <url>example.org/{localization}</url>
                         </urls>
                         <custom-urls>
-                            <custom-url>sulu.lo/*</custom-url>
-                            <custom-url>*.sulu.lo</custom-url>
-                            <custom-url>*.sulu.lo/*</custom-url>
+                            <custom-url>example.org/*</custom-url>
+                            <custom-url>*.example.org</custom-url>
+                            <custom-url>*.example.org/*</custom-url>
                         </custom-urls>
                     </environment>
                 </environments>

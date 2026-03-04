@@ -26,7 +26,7 @@ a link to another page. This tag will be replaced via a valid anchor where the
 
     <html>
         <body>
-            <a href="http://example.com/test" title="test-title">Page Title</a>
+            <a href="http://example.org/test" title="test-title">Page Title</a>
         </body>
     </html>
 
@@ -55,7 +55,8 @@ implements the ``TagInterface``.
          *
          * @return array Tag array to replace all occurrences.
          */
-        public function parseAll($attributesByTag) {
+        public function parseAll($attributesByTag): array
+        {
             $result = [];
             foreach($attributesByTag as $tag => $attributes) {
                 $url = ; // load url via uuid from document-manager

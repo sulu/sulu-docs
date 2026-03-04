@@ -23,6 +23,7 @@ documented the most important ones.
     page/index
     persistence
     preview/index
+    reference
     route/index
     search
     security/index

@@ -220,11 +220,11 @@ drive or related data in an external system.
     However, if you've created a custom ``TrashItemHandler`` with the restore functionality in a separate bundle,
     be sure to tag the service also with ``sulu_trash.remove_trash_item_handler`` to ensure proper functionality.
 
-.. _TrashItem entity: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Domain/Model/TrashItem.php
-.. _TrashManager service: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/TrashManager/TrashManager.php
-.. _StoreTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/StoreTrashItemHandlerInterface.php
-.. _RestoreTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/RestoreTrashItemHandlerInterface.php
-.. _RemoveTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/RemoveTrashItemHandlerInterface.php
-.. _RestoreConfiguration object: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/RestoreConfigurationProvider/RestoreConfiguration.php
-.. _RestoreConfigurationProviderInterface interface: https://github.com/sulu/sulu/blob/2.x/src/Sulu/Bundle/TrashBundle/Application/RestoreConfigurationProvider/RestoreConfigurationProviderInterface.php
+.. _TrashItem entity: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Domain/Model/TrashItem.php
+.. _TrashManager service: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/TrashManager/TrashManager.php
+.. _StoreTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/StoreTrashItemHandlerInterface.php
+.. _RestoreTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/RestoreTrashItemHandlerInterface.php
+.. _RemoveTrashItemHandlerInterface interface: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/TrashItemHandler/RemoveTrashItemHandlerInterface.php
+.. _RestoreConfiguration object: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/RestoreConfigurationProvider/RestoreConfiguration.php
+.. _RestoreConfigurationProviderInterface interface: https://github.com/sulu/sulu/blob/2.6/src/Sulu/Bundle/TrashBundle/Application/RestoreConfigurationProvider/RestoreConfigurationProviderInterface.php
 .. _services.yaml configuration from Symfony: https://symfony.com/doc/6.4/service_container.html#service-container-services-load-example
