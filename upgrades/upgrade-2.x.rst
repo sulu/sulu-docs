@@ -39,6 +39,9 @@ the cause of any problems.
    * - 2.6
      - 8.2 - 8.5
      - 5.4 - 7.4
+   * - 3.0
+     - 8.2 - 8.5
+     - 6.4 - 7.4
 
 The upgrade process of Sulu consists of the following steps:
 
