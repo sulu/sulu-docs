@@ -23,9 +23,6 @@ Parameters
     * - default
       - string
       - If set, the default snippet of the given area will be used as fallback value if no snippet is selected.
-    * - loadExcerpt
-      - boolean
-      - If set to true, the taxonomies information of the snippet is loaded into a "taxonomies" property.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -54,7 +51,6 @@ Example
         <params>
             <param name="types" value="default"/>
             <param name="default" value="footer_social_media_links"/>
-            <param name="loadExcerpt" value="true"/>
         </params>
     </property>
 

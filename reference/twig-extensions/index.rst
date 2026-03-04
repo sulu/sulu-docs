@@ -34,8 +34,6 @@ SnippetBundle
 
 .. toctree::
 
-    functions/sulu_snippet_load
-    functions/sulu_snippet_load_default
     functions/sulu_snippet_load_by_area
 
 MediaBundle
