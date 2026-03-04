@@ -31,10 +31,11 @@ Solution 2: Build manually with docker
 
 .. code-block:: bash
 
-    docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
+    docker run --rm --interactive --tty --volume ${PWD}:/var/project node:24.11.1 /bin/bash
 
     # for completion: using another node version is possible by adjusting the tag of the node image
-    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:12.21.0 /bin/bash
+    # Sulu versions before 2.6 require npm 6, which ships with Node 14:
+    # docker run --rm --interactive --tty --volume ${PWD}:/var/project node:14.16.0 /bin/bash
 
 2. Cleanup previously created node_modules folders and package-lock.json files
 
@@ -112,11 +113,12 @@ If the installation of the npm dependencies or the webpack build fails, you migh
 1. Check your Node.js and npm version
 
 You can check the officially supported and tested Node.js and npm version by looking at the `Test Application workflow`_ of the ``sulu/sulu`` package.
-At the time of writing, this includes Node.js 12, Node.js 14 and npm 6.
+At the time of writing, this includes Node.js 20 - Node.js 25 and npm 8 - 11. There is no support for yarn,
+but you can use pnpm 8 - 10 or bun 1 as alternative.
 
 .. warning::
 
-    Because of a breaking change for linked packages, Sulu is not compatible with npm v7 at the moment. Have a look at the `issue in the sulu/skeleton repository`_ for more information about this..
+    Sulu versions before 2.6 require using npm 6 (shipped with Node 14) due to breaking changes for linked packages.
 
 2. Clear the npm cache on your machine
 
@@ -134,7 +136,6 @@ If this does not solve the problem, you can try to clean the npm cache on your m
 
     npm cache clean --force
 
-.. _issue in the sulu/skeleton repository: https://github.com/sulu/skeleton/issues/88
 .. _Test Application workflow: https://github.com/sulu/sulu/blob/2.6/.github/workflows/test-application.yaml
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _node: https://nodejs.org/en/
