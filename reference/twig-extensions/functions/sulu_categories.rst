@@ -16,7 +16,7 @@ Returns all categories in the system.
 
 **Arguments**:
 
- - **locale**: If item is not in the same locale as current content (**optional**)
- - **parentKey**: If only specific categories should be loaded set a parent category key (**optional**)
+ - **locale**: *string* - Locale to resolve categories
+ - **parentKey**: *string* - If only specific categories should be loaded set a parent category key (**optional**)
 
 **Returns**: array - array of serialized Category instances
