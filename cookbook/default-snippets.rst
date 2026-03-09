@@ -21,11 +21,6 @@ Each snippet template can define multiple snippet areas. All defined snippet are
 be displayed on the ``Default Snippets`` tab of the webspace in the administration interface
 and can be assigned to a snippet that uses the respective template.
 
-.. note::
-
-    If no snippet template of the application defines an area, Sulu automatically creates
-    an area for each snippet template using the title and key of the template.
-
 .. code-block:: xml
 
     <key>social_media_links</key>
@@ -70,4 +65,3 @@ Using the default snippet as fallback value in a ``snippet_selection``
 The ``snippet_selection`` property type can be configured to use the default snippet of a
 specific area as fallback value when no snippet is selected. To do this, the ``default``
 param needs to be set as described in :doc:`../reference/property-types/snippet_selection`.
-
