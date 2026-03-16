@@ -21,6 +21,7 @@ our recipes.
     custom-controller
     custom-error-page
     extend-entities
+    extend-dimension-content
     implement-entity-extensible
     using-elasticsearch
     smart-content-data-provider

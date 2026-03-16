@@ -182,11 +182,6 @@ See :doc:`../cookbook/extend-entities` for more information about extending enti
 
 .. note::
 
-    This documentation does not yet exist for Sulu 3.0. Please feel free to contribute it.
-
-    Next Step would be to create a ContentMerger, ContentDataMapper and ContentNormalizer for our new data.
-    Currently these steps are not yet documented but look at AuthorMerger, AuthorDataMapper and AuthorNormalizer classes as reference:
-
-     - ``PageSocialMerger`` implements ``Sulu\Content\Application\ContentMerger\Merger\MergerInterface``
-     - ``PageSocialDataMapper`` implements ``Sulu\Content\Application\ContentDataMapper\DataMapper\DataMapperInterface``
-     - ``PageSocialNormalizer`` implements ``Sulu\Content\Application\ContentNormalizer\Normalizer\NormalizerInterface``
+    For the full Sulu 3.0 workflow, continue with :doc:`extend-dimension-content`.
+    Once your custom tab writes to fields outside template data, you usually need a ``ContentMerger``,
+    ``ContentDataMapper`` and ``ContentNormalizer`` in addition to the entity replacement.
