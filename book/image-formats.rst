@@ -43,6 +43,13 @@ The following example shows you different ways to define image formats:
         </format>
     </formats>
 
+.. note::
+
+    If the original image is smaller as the requested image format dimensions,
+    the image will be returned in the image formats aspect ratio without upscaling
+    the image. Upscaling the image to the HTML container should be done on the frontend
+    with CSS ``width: 100%;`` definition.
+
 Defining meta title
 -------------------
 
@@ -85,8 +92,8 @@ The URLs for accessing specific image formats are passed to you twig template in
     <div>
         <img src="{{ image.thumbnails['200x100'] }}" alt="{{ image.title }}"/>
     </div>
-    
-Per default, image formats will be outputted in the file format of the original file. 
+
+Per default, image formats will be outputted in the file format of the original file.
 You can also use a specific file format (eg. ``png`` or ``webp``) by adding the extension to the format key:
 
 .. code-block:: twig
