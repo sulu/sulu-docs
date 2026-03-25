@@ -30,6 +30,7 @@ Parameters
     * - rows
       - integer
       - Desired amount of visible height, in lines
+
 Example
 -------
 
