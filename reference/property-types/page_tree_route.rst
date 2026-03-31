@@ -4,7 +4,12 @@ Route
 Description
 -----------
 
-The ``route`` property type allows to generate urls for **pages**, **articles** and **custom entities**.
+The ``page_tree_route`` property type allows to generate urls for **articles** and **custom entities**.
+
+.. note::
+
+    The ``page_tree_route`` property type should not be used on page templates. For pages, use the :doc:`route`
+    property type instead.
 
 Parameters
 ----------
@@ -17,11 +22,11 @@ Parameters
       - Description
     * - mode
       - string
-      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit". Pages get there config from webspace configuration.
+      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit".
     * - route_schema
       - string
       - Route schema that is used for generating the url.
-        Pages don't need define this for articles or custom entities you can use expression language while ``object`` contains an array object of the ``sulu.rlp.part`` fields.
+        For articles or custom entities you can use expression language while ``object`` contains an array object of the ``sulu.rlp.part`` fields.
 
 
 Example
