@@ -38,7 +38,7 @@ Example
         <tag name="sulu.rlp.part"/>
     </property>
 
-    <property name="url" type="route" mandatory="true">
+    <property name="url" type="page_tree_route" mandatory="true">
         <meta>
             <title lang="en">Resource locator</title>
         </meta>
