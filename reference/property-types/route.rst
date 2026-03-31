@@ -21,7 +21,8 @@ Parameters
     * - route_schema
       - string
       - Route schema that is used for generating the url.
-        Pages don't need define this for articles or custom entities you can use expression language while ``object`` contains an array object of the ``sulu.rlp.part`` fields.
+        For pages, the route schema is defined in the webspace configuration, so you usually do not need to set this parameter.
+        For articles and custom entities, you can define the schema using expression language. Within the expression, the variable ``object`` is available and contains an array with the values of all properties tagged with the ``sulu.rlp.part`` tag (see the example below).
 
 
 Example
