@@ -17,7 +17,7 @@ Parameters
       - Description
     * - mode
       - string
-      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit". Pages get there config from webspace configuration.
+      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit". Pages get their config from webspace configuration.
     * - route_schema
       - string
       - Route schema that is used for generating the url.
