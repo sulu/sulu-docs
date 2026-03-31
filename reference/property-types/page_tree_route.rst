@@ -1,10 +1,15 @@
-Route
-=====
+Page Tree Route
+===============
 
 Description
 -----------
 
-The ``route`` property type allows to generate urls for **pages**, **articles** and **custom entities**.
+The ``page_tree_route`` property type allows to generate urls for **articles** and **custom entities**.
+
+.. note::
+
+    The ``page_tree_route`` property type should not be used on page templates. For pages, use the :doc:`route`
+    property type instead.
 
 Parameters
 ----------
@@ -17,12 +22,11 @@ Parameters
       - Description
     * - mode
       - string
-      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit". Pages get their config from webspace configuration.
+      - Defines the mode of the input field, can either be "tree_full_edit" or "tree_leaf_edit". Default value is "tree_full_edit".
     * - route_schema
       - string
       - Route schema that is used for generating the url.
-        For pages, the route schema is defined in the webspace configuration, so you usually do not need to set this parameter.
-        For articles and custom entities, you can define the schema using expression language. Within the expression, the variable ``object`` is available and contains an array with the values of all properties tagged with the ``sulu.rlp.part`` tag (see the example below).
+        For articles or custom entities you can use expression language while ``object`` contains an array object of the ``sulu.rlp.part`` fields.
 
 
 Example
@@ -34,7 +38,7 @@ Example
         <tag name="sulu.rlp.part"/>
     </property>
 
-    <property name="url" type="route" mandatory="true">
+    <property name="url" type="page_tree_route" mandatory="true">
         <meta>
             <title lang="en">Resource locator</title>
         </meta>

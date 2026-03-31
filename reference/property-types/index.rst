@@ -70,6 +70,7 @@ property type:
     media_selection
     number
     page_selection
+    page_tree_route
     phone
     resource_locator
     route
