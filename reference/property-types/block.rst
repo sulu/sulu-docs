@@ -167,7 +167,7 @@ Extending default block settings for pages
 ------------------------------------------
 
 If you want to add a custom field to the block settings for pages, you can extend
-the ``page_block_settings`` form by creating a ``config/forms/page_block_settings``:
+the ``content_block_settings`` form by creating a ``config/forms/content_block_settings``:
 
 .. code-block:: xml
 
@@ -176,7 +176,7 @@ the ``page_block_settings`` form by creating a ``config/forms/page_block_setting
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
     >
-        <key>page_block_settings</key>
+        <key>content_block_settings</key>
 
         <properties>
             <section name="custom">
