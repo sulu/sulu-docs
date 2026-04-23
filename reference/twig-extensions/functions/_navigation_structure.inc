@@ -1,5 +1,5 @@
 - `array`
-     - **uuid**: UUID of page
      - **title**: Title of page
      - **url**: URL for page
+     - **targetType**: Link type set via the "Enable Link" option in the page settings (``page``, ``article``, ``media``, or ``external``)
      - use ``properties`` config to provide additional fields

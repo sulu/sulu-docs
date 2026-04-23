@@ -1,10 +1,10 @@
 ``sulu_content_path``
 =====================
 
-Returns the absolute URL for the content at the given path. The domain
-is taken from ``config/webspaces/*.xml`` and your current
-environment. In case you have multiple URLs in one environment, you can
-prioritize one by giving it ``<url main="true">``.
+Returns the URL for the content at the given path. It is recommended to
+use this function instead of outputting a URL directly, especially when
+working with articles, as it ensures the correct URL is generated for
+the current webspace and locale.
 
 .. code-block:: jinja
 
@@ -23,9 +23,5 @@ prioritize one by giving it ``<url main="true">``.
   content (**optional**)
 - **locale** *string* - If item is not in the same locale as current
   content (**optional**)
-- **domain** *string* - If a specific domain should be used to generate the url
-  (**optional**)
-- **scheme** *string* - If a different scheme (as the current scheme) should be
-  used to generate the url (**optional**)
 
-**Returns**: *string* - Absolute URL
+**Returns**: *string* - URL

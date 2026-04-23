@@ -7,7 +7,7 @@ Returns resolved medias with needed properties for a given media array.
 
     {% set medias = sulu_resolve_medias(contact.medias, 'de') %}
     {% for media in medias %}
-        <img src="{{ media.thumbnails['100x100'] }}" title="{{ media.title }}" />
+        <img src="{{ media.formats['100x100'] }}" title="{{ media.title }}" />
     {% endfor %}
 
 **Arguments**:

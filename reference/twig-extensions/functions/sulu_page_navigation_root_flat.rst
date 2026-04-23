@@ -19,6 +19,7 @@ Returns the navigation as a list of pages:
         'title': 'title',
         'url': 'url',
         'excerptTitle': 'excerpt.title',
+        'uuid': 'object.resource.uuid',
     }) %}
         <a href="{{ sulu_content_path(item.url) }}">{{ item.excerptTitle|default(item.title) }}</a>
     {% endfor %}

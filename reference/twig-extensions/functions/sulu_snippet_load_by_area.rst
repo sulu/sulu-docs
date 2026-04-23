@@ -11,9 +11,9 @@ Returns the content of the default snippet for the given :doc:`snippet area <../
 **Arguments**:
 
 - **area**: *string* - The area to search for snippet.
+- **properties**: *array<string, string>* - optional: List of property names to resolve. By default all properties are resolved.
 - **webspaceKey**: *string* - optional: The webspace to get area snippet settings.
 - **locale**: *string* - optional: The locale to load snippet.
-- **loadExcerpt**: *boolean* - optional: Load data from excerpt tab
 
 **Returns**:
 
