@@ -34,6 +34,7 @@ Returns the navigation for a given page uuid as a tree of pages:
             'title': 'title',
             'url': 'url',
             'excerptTitle': 'excerpt.title',
+            'uuid': 'object.resource.uuid',
         }) %}
             <li>
                 <a href="{{ sulu_content_path(item.url) }}">{{ item.excerptTitle|default(item.title) }}</a>
