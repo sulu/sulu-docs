@@ -126,8 +126,10 @@ Here's a complete example of a PropertyResolver for selecting products:
 * **ContentView Factory Methods**: Use ``createResolvablesWithReferences()`` for multiple
   resources that should create reference entries. Use ``createResolvable()`` for single
   resources or ``create()`` for simple data that doesn't need loading
-* **Priority Values**: Convention is ``-50`` for links, ``0`` for default/simple types,
-  ``150`` for content entities, and higher values for special cases
+* **Priority Values**: Convention is ``-50`` for links and media, ``0`` for default/simple
+  types, ``100`` for content entities like articles or snippets, and ``150`` for pages.
+  Higher values are reserved for special cases (e.g., ``2048`` for ``SmartResolvable``).
+  Resources with the same priority and loader key are batched together
 * **Metadata**: Pass metadata to control which properties are resolved for nested content
   entities
 * **Resource Key**: The resource key (e.g., ``Product::RESOURCE_KEY``) is used for
@@ -600,7 +602,7 @@ Best Practices
   * ``createResolvable()`` - Single resource reference
   * ``create()`` - Simple data without loading
 
-* Use standard priority values: ``-50`` (links/media), ``0`` (default), ``150`` (content entities),
+* Use standard priority values: ``-50`` (links/media), ``0`` (default), ``100`` (articles/snippets), ``150`` (pages)
 
 **ResourceLoader:**
 
