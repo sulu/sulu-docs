@@ -1,53 +1,55 @@
 Provider for XML-Sitemap
 ========================
 
-`SitemapProvider` are used to load data for the XML-Sitemap. It returns
-an array of `SitemapUrl` instances. This API has to be paginated because
-Google only allows 50000 urls in a single Sitemap. The `SitemapController`
-takes care of generating a `sitemapindex` if more than one Provider or
-more than one pages are available. Otherwise it will deliver a the Sitemap
-of the first Provider.
+``SitemapProvider`` classes are used to load data for the XML sitemap. Each provider
+returns an array of ``SitemapUrl`` instances. The API is paginated because Google
+limits a single sitemap file to 50,000 URLs. The ``SitemapController`` generates a
+``sitemapindex`` automatically when more than one provider exists or when a provider
+spans multiple pages; otherwise it delivers the single sitemap directly.
 
-The `SitemapUrl` consists of the following properties:
+The ``SitemapUrl`` constructor accepts the following arguments:
 
-* loc - Url to page.
-* locale - Locale of the page
-* defaultLocale - Default locale of the page
-* lastmod (optional) - Latest modification datetime.
-* changefreq (optional) - Frequency of change (see
-  `SitemapUrl::CHANGE_FREQUENCY_*` constants)
-* priority (optional) - Priority of page in relation to other pages.
-* alternateLinks (optional) - Alternate links like other representations
-  or translations
+* ``loc`` - Absolute URL to the page.
+* ``locale`` - Locale of the page.
+* ``defaultLocale`` - Default locale of the page.
+* ``lastmod`` (optional) - Latest modification datetime (``\DateTimeInterface``).
+* ``changefreq`` (optional) - Frequency of change (see ``SitemapUrl::CHANGE_FREQUENCY_*`` constants).
+* ``priority`` (optional) - Priority of page relative to other pages (float).
+* ``attributes`` (optional) - Additional attributes passed to the sitemap template.
+* ``alternateLinks`` (optional) - Added via ``addAlternateLink()`` after construction.
 
-The Sulu core provides a single Provider for pages (including homepage).
-Custom modules can provide their own Providers that this URLs also will
-be published over the `sitemap.xml`.
+Sulu provides built-in providers for pages (including the homepage) and, when
+``SuluArticleBundle`` is enabled, for articles. Custom providers add their own
+URLs to the sitemap.
 
 Example
 -------
 
-This is a simple example which assumes that the logic to load entities is
-implemented in the Repository.
+The recommended approach is to extend ``AbstractSitemapProvider``. It implements
+``createSitemap()`` for you (you rarely need to override it) and provides a default
+``getMaxPage()`` that returns ``1``, meaning a single page of up to ``PAGE_SIZE``
+(50,000) URLs. Override ``getMaxPage()`` when your provider exceeds that limit —
+return the total number of pages — or return ``0`` to exclude the provider entirely
+for a given host.
 
 .. code-block:: php
 
     <?php
 
-    namespace AppBundle\Sitemap;
+    namespace App\Sitemap;
 
-    use AppBundle\Entity\ExampleRepository;
+    use App\Repository\ExampleRepository;
+    use Sulu\Bundle\WebsiteBundle\Sitemap\AbstractSitemapProvider;
     use Sulu\Bundle\WebsiteBundle\Sitemap\Sitemap;
-    use Sulu\Bundle\WebsiteBundle\Sitemap\SitemapProviderInterface;
     use Sulu\Bundle\WebsiteBundle\Sitemap\SitemapUrl;
 
-    class SitemapProvider implements SitemapProviderInterface
+    class ExampleSitemapProvider extends AbstractSitemapProvider
     {
         public function __construct(private ExampleRepository $repository)
         {
         }
 
-        public function build($page, $scheme, $host)
+        public function build($page, $scheme, $host): array
         {
             $result = [];
             foreach ($this->repository->findAllForSitemap($page, self::PAGE_SIZE) as $item) {
@@ -62,25 +64,32 @@ implemented in the Repository.
             return $result;
         }
 
-        public function getAlias()
+        public function getAlias(): string
         {
             return 'myalias';
         }
 
-        public function createSitemap($scheme, $host)
+        public function createSitemap($scheme, $host): Sitemap
         {
             return new Sitemap($this->getAlias(), $this->getMaxPage($scheme, $host));
         }
 
-        public function getMaxPage($scheme, $host)
+        public function getMaxPage($scheme, $host): int
         {
             if ($host !== 'example.org') {
-                // If the pages are only for a specific
+                // If the pages are only for a specific host.
                 return 0;
             }
 
-            return ceil($this->repository->countForSitemap() / self::PAGE_SIZE);
+            return (int) ceil($this->repository->countForSitemap() / self::PAGE_SIZE);
         }
     }
 
-If you are not using autowiring you need to tag the service with `sulu.sitemap.provider`.
+If you have disabled autoconfiguration for this service, add the tag manually:
+
+.. code-block:: yaml
+
+    # config/services.yaml
+    App\Sitemap\ExampleSitemapProvider:
+        tags:
+            - { name: sulu.sitemap.provider }
