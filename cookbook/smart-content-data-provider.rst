@@ -137,10 +137,12 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
 
     namespace App\SmartContent;
 
+    use App\Entity\Example;
+    use App\Repository\ExampleRepository;
+    use App\ResourceLoader\ExampleResourceLoader;
     use Sulu\Bundle\AdminBundle\SmartContent\Configuration\Builder;
     use Sulu\Bundle\AdminBundle\SmartContent\Configuration\ProviderConfigurationInterface;
     use Sulu\Bundle\AdminBundle\SmartContent\SmartContentProviderInterface;
-    use App\Repository\ExampleRepository;
 
     class ExampleSmartContentProvider implements SmartContentProviderInterface
     {
@@ -173,9 +175,20 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
             return $this->repository->countByFilters($filters);
         }
 
+        /**
+         * @return array<array{id: string, title: string}>
+         */
         public function findFlatBy(array $filters, array $sortBys, array $params = []): array
         {
-            return $this->repository->findByFilters($filters, $sortBys, $params);
+            $entities = $this->repository->findByFilters($filters, $sortBys, $params);
+
+            return array_map(
+                static fn (Example $entity) => [
+                    'id' => (string) $entity->getId(),
+                    'title' => $entity->getTitle(),
+                ],
+                $entities,
+            );
         }
 
         public function getType(): string
@@ -185,9 +198,18 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
 
         public function getResourceLoaderKey(): string
         {
-            return 'examples';
+            return ExampleResourceLoader::RESOURCE_LOADER_KEY;
         }
     }
+
+.. note::
+
+    ``findFlatBy`` must return a list of ``['id' => ..., 'title' => ...]`` arrays. Sulu
+    only uses these IDs to determine which records the SmartContent should render and
+    then delegates the actual loading to the ``ResourceLoader`` identified by
+    ``getResourceLoaderKey()``. The matching ``ResourceLoader`` must implement
+    ``Sulu\Content\Application\ResourceLoader\Loader\ResourceLoaderInterface`` and is
+    auto-tagged via ``sulu_content.resource_loader``.
 
 Configuration Builder Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
