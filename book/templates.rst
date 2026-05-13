@@ -11,7 +11,7 @@ type*. The default page template, for example, defines the following
 properties:
 
 * **title** of type **text_line**
-* **url** of type **resource_locator**
+* **url** of type **route**
 * **article** of type **text_editor**
 
 When a content manager opens a page in the administration interface, they can
@@ -191,7 +191,7 @@ Here is a table with the property types shipped in Sulu core:
 +------------------------------+---------------------------------------------+
 | |smart_content|              | widget for configuring a data source        |
 +------------------------------+---------------------------------------------+
-| |resource_locator|           | widget for entering the URL of a page       |
+| |route|                      | widget for entering the URL                 |
 +------------------------------+---------------------------------------------+
 | |tag_selection|              | autocomplete input for entering and adding  |
 |                              | tags                                        |
@@ -1095,7 +1095,7 @@ with :doc:`twig` to learn more about rendering this structure as HTML.
 .. |page_selection| replace:: :doc:`page_selection <../reference/property-types/page_selection>`
 .. |single_page_selection| replace:: :doc:`single_page_selection <../reference/property-types/single_page_selection>`
 .. |smart_content| replace:: :doc:`smart_content <../reference/property-types/smart_content>`
-.. |resource_locator| replace:: :doc:`resource_locator <../reference/property-types/resource_locator>`
+.. |route| replace:: :doc:`route <../reference/property-types/route>`
 .. |tag_selection| replace:: :doc:`tag_selection <../reference/property-types/tag_selection>`
 .. |category_selection| replace:: :doc:`category_selection <../reference/property-types/category_selection>`
 .. |media_selection| replace:: :doc:`media_selection <../reference/property-types/media_selection>`

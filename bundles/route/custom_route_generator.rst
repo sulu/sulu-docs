@@ -1,67 +1,9 @@
+:orphan:
+
 Custom Route-Generator
 ======================
 
-The RouteBundle enables you to define custom route generators.
-These generators will be called every time you create or update
-a route for the given entity. For each entity you can define
-which generator will be used.
+.. note::
 
-The following example will generate a route by using the
-core route generator, but you can define route schemas for
-each entity type.
-
-.. code-block:: php
-
-    <?php
-
-    class RouteGenerator implements RouteGeneratorInterface
-    {
-        /**
-         * {@inheritdoc}
-         */
-        public function __construct(private RouteGeneratorInterface $routeGenerator)
-        {
-        }
-
-        /**
-         * {@inheritdoc}
-         */
-        public function generate($entity, array $options)
-        {
-            $type = $entity->getType();
-
-            if (!array_key_exists($type, $options)) {
-                throw new \Exception(sprintf('Route-schema for type "%s" not configured!', $type));
-            }
-
-            return $this->routeGenerator->generate($entity, ['route_schema' => $options[$type]]);
-        }
-
-        /**
-         * {@inheritdoc}
-         */
-        public function getOptionsResolver(array $options)
-        {
-            // allow all options.
-            return (new OptionsResolver())->setDefined(array_keys($options));
-        }
-    }
-
-Register this as a service with the tag `sulu.route_generator` (with alias `custom`
-for example) and use this alias in the configuration:
-
-.. code-block:: yaml
-
-    sulu_route:
-        mappings:
-            App\Entity\Event:
-                generator: schema
-                options:
-                    route_schema: /{translator.trans('event')}/{object.getTitle()}
-                resource_key: events
-            App\Entity\Example:
-                generator: custom
-                options:
-                    type1: /example/{object.getName()}
-                    type2: /example/{object.getTitle()}
-                resource_key: examples
+    The custom route generator was replaced in Sulu 3.0.
+    See :doc:`/bundles/route/index` for the new RouteBundle documentation.
