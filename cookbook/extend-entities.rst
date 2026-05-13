@@ -11,6 +11,12 @@ Sulu allows to extend and replace the following internal entities.
 * Media
 * Tag
 
+.. note::
+
+    This cookbook covers the classic persistence-bundle entity replacement for entities like ``User`` or ``Contact``.
+    For extending ``PageDimensionContent`` or ``ArticleDimensionContent`` in Sulu 3.0, see
+    :doc:`extend-dimension-content`.
+
 You can extend all of them in the same way. Therefore we explain it for `User` here.
 
 Create a Entity
