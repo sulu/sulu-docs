@@ -85,7 +85,7 @@ for a given host.
         }
     }
 
-If you have disabled autoconfiguration for this service, add the tag manually:
+If you have disabled autowiring, add the tag manually:
 
 .. code-block:: yaml
 
