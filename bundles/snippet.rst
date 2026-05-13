@@ -25,7 +25,7 @@ In this example we'll creating a "Social Media" snippet to the page of Sulu.
 .. figure:: ../img/snippet-social-media.png
 
 Creating a snippet Template isn't really different like Page :doc:`../book/templates`.
-Create a XML File in your `config/template/snippets/` folder like the following example
+Create a XML File in your `config/templates/snippets/` folder like the following example
 
 .. note::
 
@@ -130,13 +130,12 @@ it is also possible to load snippet templates from custom folders.
 
 .. code-block:: yaml
 
-    sulu_core:
-        content:
-            structure:
-                paths:
-                    event_snippets:
-                        path: "%kernel.project_dir%/config/template/events/snippets/"
-                        type: "snippet"
+    sulu_admin:
+        templates:
+            snippet:
+                default_type: 'my_snippet_key'
+                directories:
+                    event_snippets: "%kernel.project_dir%/config/templates/events/snippets/"
 
 In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
 
