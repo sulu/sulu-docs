@@ -79,8 +79,9 @@ Parameters
         separated list of article group identifiers to pre-filter the result set.
     * - templateKeys
       - string
-      - Pages and snippets (``pages`` and ``snippets`` providers): comma separated
-        list of template keys to pre-filter the result set.
+      - Comma separated list of template keys to pre-filter the result set. Supported
+        by the ``pages``, ``snippets`` and ``article`` providers. For articles the value
+        is intersected with the templates resolved from ``groups``.
 
 Return Value
 ------------
