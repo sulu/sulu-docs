@@ -15,7 +15,7 @@ This configuration array includes the following values:
     * - dataSource
       - Additional constraint - like page-"folder".
     * - tags
-      - Multiple selection of tags, which an item should have.
+      - Array of selected tag IDs (``int[]``) the item should have.
     * - tagOperator
       - The item has any or all of the selected tags.
     * - categories

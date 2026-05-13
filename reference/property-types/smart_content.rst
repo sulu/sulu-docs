@@ -73,6 +73,14 @@ Parameters
       - bool
       - Not yet fully implemented in Sulu 3. Intended to filter already loaded
         records when the provider supports duplicate detection. Default: `false`
+    * - groups
+      - string
+      - Articles only (``articles`` and ``articles_page_tree`` providers): comma
+        separated list of article group identifiers to pre-filter the result set.
+    * - templateKeys
+      - string
+      - Pages and snippets (``pages`` and ``snippets`` providers): comma separated
+        list of template keys to pre-filter the result set.
 
 Return Value
 ------------
@@ -98,8 +106,8 @@ This values are available in the *view* variable in the twig templates.
       - string
       - Operator which combines selected categories
     * - tags
-      - string[]
-      - Selected tags
+      - int[]
+      - Selected tag IDs
     * - tagOperator
       - string
       - Operator which combines selected tags
@@ -114,7 +122,7 @@ This values are available in the *view* variable in the twig templates.
       - Operator which combines GET parameter categories
     * - websiteTags
       - string[]
-      - Selected tags over GET parameter
+      - Selected tag names over GET parameter
     * - websiteTagOperator
       - string
       - Operator which combines GET parameter tags
@@ -264,13 +272,16 @@ This provider filters articles. Requires the SuluArticleBundle to be installed.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
+    * - groups
+      - string
+      - Comma separated list of article group identifiers to pre-filter the result
+        set. The "Type" filter shown in the SmartContent admin UI corresponds to these
+        article groups.
 
 .. note::
 
-    The ``types`` filter for articles corresponds to article groups (types),
-    not template keys. The ``properties`` parameter works the same way as for
-    pages, supporting both template properties and extension data
-    (e.g. ``excerpt.title``).
+    The ``properties`` parameter works the same way as for pages, supporting both
+    template properties and extension data (e.g. ``excerpt.title``).
 
 Contact - People
 ~~~~~~~~~~~~~~~~
