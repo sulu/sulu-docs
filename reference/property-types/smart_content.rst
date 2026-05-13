@@ -17,10 +17,11 @@ return the items that match these filters. There are several built-in providers
 and you can add your own SmartContentProvider easily. How you can do this is
 described in :doc:`/cookbook/smart-content-data-provider`
 
-A very important feature is the ``exclude_duplicates`` parameter which offers
-the possibility to filter already used items on a website. If this parameter
-is set to true the smart-content uses the :doc:`/bundles/reference-store`
-to detect already used items and filters them.
+.. warning::
+
+    The ``exclude_duplicates`` parameter is not yet fully implemented in Sulu 3.
+    While the admin UI collects excluded IDs from other smart content fields on
+    the same page, the backend does not yet filter them from query results.
 
 Parameters
 ----------
@@ -70,8 +71,16 @@ Parameters
       - Root category (key) to display category-tree.
     * - exclude_duplicates
       - bool
-      - If the provider is able to detect duplicates the content-type filters
-        already loaded records. Default: `false`
+      - Not yet fully implemented in Sulu 3. Intended to filter already loaded
+        records when the provider supports duplicate detection. Default: `false`
+    * - groups
+      - string
+      - Articles only (``articles`` and ``articles_page_tree`` providers): comma
+        separated list of article group identifiers to pre-filter the result set.
+    * - templateKeys
+      - string
+      - Pages and snippets (``pages`` and ``snippets`` providers): comma separated
+        list of template keys to pre-filter the result set.
 
 Return Value
 ------------
@@ -97,8 +106,8 @@ This values are available in the *view* variable in the twig templates.
       - string
       - Operator which combines selected categories
     * - tags
-      - string[]
-      - Selected tags
+      - int[]
+      - Selected tag IDs
     * - tagOperator
       - string
       - Operator which combines selected tags
@@ -113,21 +122,18 @@ This values are available in the *view* variable in the twig templates.
       - Operator which combines GET parameter categories
     * - websiteTags
       - string[]
-      - Selected tags over GET parameter
+      - Selected tag names over GET parameter
     * - websiteTagOperator
       - string
       - Operator which combines GET parameter tags
-    * - sortBy
-      - string
-      - Selected sort column
-    * - sortMethod
-      - string
-      - Selected sort method - ASC or DESC
+    * - sortBys
+      - array
+      - Selected sort configuration (e.g. ``{'authored': 'ASC'}``)
     * - presentAs
       - string
-      - selected present as value
+      - Selected present as value
     * - limitResult
-      - string
+      - int
       - Selected limit for result
     * - page
       - int
@@ -135,6 +141,18 @@ This values are available in the *view* variable in the twig templates.
     * - hasNextPage
       - bool
       - Is TRUE if another page exists
+    * - paginated
+      - bool
+      - Is TRUE if pagination is enabled
+    * - total
+      - int
+      - Total number of items matching the filter
+    * - maxPage
+      - int|null
+      - Maximum page number (null if pagination is disabled)
+    * - maxPerPage
+      - int|null
+      - Maximum items per page (null if pagination is disabled)
 
 The "content" values depends on the SmartContentProvider.
 
@@ -169,11 +187,19 @@ source, whose child pages will be filtered by the SmartContentProvider.
 
 .. note::
 
-    "properties" can include structure properties or extension data:
+    "properties" can include structure properties, extension data, or entity
+    properties using the ``object.`` prefix:
 
-    * title - is a property of the structure
-    * excerpt.title - is a property of the excerpt structure extension with
-      the name title
+    * ``title`` - a template property
+    * ``excerpt.title`` - a property of the excerpt extension
+    * ``object.resource.uuid`` - reads the UUID from the underlying resource entity
+    * ``object.authored`` - reads ``authored`` directly from the entity
+    * ``object.lastModified`` - reads ``lastModified`` directly from the entity
+
+    The ``object.`` prefix uses the PropertyAccessor to read any getter on the
+    DimensionContent entity (or nested objects like ``resource``). This includes
+    properties from ``AuthorTrait`` (``authored``, ``lastModified``, ``author``)
+    and ``AuditableTrait`` (``created``, ``changed``).
 
     For an example see :ref:`example`
 
@@ -227,6 +253,35 @@ This provider filters snippets.
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
+
+Articles
+~~~~~~~~
+
+Alias: "articles"
+
+This provider filters articles. Requires the SuluArticleBundle to be installed.
+
+**Parameters**
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - properties
+      - collection
+      - Defines the property names which will be exposed in the HTML template.
+    * - groups
+      - string
+      - Comma separated list of article group identifiers to pre-filter the result
+        set. The "Type" filter shown in the SmartContent admin UI corresponds to these
+        article groups.
+
+.. note::
+
+    The ``properties`` parameter works the same way as for pages, supporting both
+    template properties and extension data (e.g. ``excerpt.title``).
 
 Contact - People
 ~~~~~~~~~~~~~~~~
@@ -296,8 +351,11 @@ Page template
 
             <param name="properties" type="collection">
                 <param name="article" value="article"/>
+                <param name="uuid" value="object.resource.uuid"/>
+                <param name="authored" value="object.authored"/>
+                <param name="lastModified" value="object.lastModified"/>
                 <param name="excerptTitle" value="excerpt.title" />
-                <param name="excerptDescription" value="excerpt.description "/>
+                <param name="excerptDescription" value="excerpt.description"/>
                 <param name="excerptMore" value="excerpt.more" />
                 <param name="excerptTags" value="excerpt.tags" />
                 <param name="excerptCategories" value="excerpt.categories" />
@@ -346,11 +404,20 @@ Twig template
                 </h2>
 
                 <p>
+                    {% if page.authored %}
+                        <time datetime="{{ page.authored|date('Y-m-d') }}">{{ page.authored|date('M d, Y') }}</time>
+                    {% endif %}
+                    {% if page.lastModified %}
+                        | Last modified: {{ page.lastModified|date('M d, Y') }}
+                    {% endif %}
+                </p>
+
+                <p>
                     <i>{{ page.excerptTitle }}</i> | <i>{{ page.excerptTags|join(', ') }}</i>
                 </p>
 
-                {% if page.excerptImages|length > 0 %}
-                    <img src="{{ page.excerptImages[0].thumbnails['50x50'] }}" alt="{{ page.excerptImages[0].title }}"/>
+                {% if page.excerptImage|length > 0 %}
+                    <img src="{{ page.excerptImage.thumbnails['50x50'] }}" alt="{{ page.excerptImage.title }}"/>
                 {% endif %}
 
                 {{ page.article|raw }}
@@ -362,6 +429,35 @@ Twig template
 
     If you have not defined the parameter ``max_per_page`` you can omit the
     pagination.
+
+Default properties
+~~~~~~~~~~~~~~~~~~
+
+The ``title`` and ``url`` properties are included as default properties for
+the ``pages`` and ``articles`` providers, so they are always available
+without explicit mapping in the ``properties`` parameter.
+
+Available sort columns
+~~~~~~~~~~~~~~~~~~~~~~
+
+The following sort columns are available for the ``pages`` and ``articles``
+providers:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Column
+      - Description
+    * - workflowPublished
+      - The date when the item was published
+    * - authored
+      - The authored date set by the content manager
+    * - created
+      - The date when the item was created in the system
+    * - changed
+      - The date when the item was last changed in the system
+    * - title
+      - The title of the item (alphabetical sorting)
 
 Built-in SmartContentProviders
 -------------------------------

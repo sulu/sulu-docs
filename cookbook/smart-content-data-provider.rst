@@ -15,7 +15,7 @@ This configuration array includes the following values:
     * - dataSource
       - Additional constraint - like page-"folder".
     * - tags
-      - Multiple selection of tags, which an item should have.
+      - Array of selected tag IDs (``int[]``) the item should have.
     * - tagOperator
       - The item has any or all of the selected tags.
     * - categories
@@ -137,10 +137,12 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
 
     namespace App\SmartContent;
 
+    use App\Entity\Example;
+    use App\Repository\ExampleRepository;
+    use App\ResourceLoader\ExampleResourceLoader;
     use Sulu\Bundle\AdminBundle\SmartContent\Configuration\Builder;
     use Sulu\Bundle\AdminBundle\SmartContent\Configuration\ProviderConfigurationInterface;
     use Sulu\Bundle\AdminBundle\SmartContent\SmartContentProviderInterface;
-    use App\Repository\ExampleRepository;
 
     class ExampleSmartContentProvider implements SmartContentProviderInterface
     {
@@ -173,9 +175,20 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
             return $this->repository->countByFilters($filters);
         }
 
+        /**
+         * @return array<array{id: string, title: string}>
+         */
         public function findFlatBy(array $filters, array $sortBys, array $params = []): array
         {
-            return $this->repository->findByFilters($filters, $sortBys, $params);
+            $entities = $this->repository->findByFilters($filters, $sortBys, $params);
+
+            return array_map(
+                static fn (Example $entity) => [
+                    'id' => (string) $entity->getId(),
+                    'title' => $entity->getTitle(),
+                ],
+                $entities,
+            );
         }
 
         public function getType(): string
@@ -185,9 +198,18 @@ Create a SmartContentProvider by implementing the ``SmartContentProviderInterfac
 
         public function getResourceLoaderKey(): string
         {
-            return 'examples';
+            return ExampleResourceLoader::RESOURCE_LOADER_KEY;
         }
     }
+
+.. note::
+
+    ``findFlatBy`` must return a list of ``['id' => ..., 'title' => ...]`` arrays. Sulu
+    only uses these IDs to determine which records the SmartContent should render and
+    then delegates the actual loading to the ``ResourceLoader`` identified by
+    ``getResourceLoaderKey()``. The matching ``ResourceLoader`` must implement
+    ``Sulu\Content\Application\ResourceLoader\Loader\ResourceLoaderInterface`` and is
+    auto-tagged via ``sulu_content.resource_loader``.
 
 Configuration Builder Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,7 +257,7 @@ The ``Builder`` class provides these methods to configure your provider:
 3. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
-Register the provider as a service with the ``sulu.smart_content.data_provider`` tag:
+Register the provider as a service with the ``sulu_content.smart_content_provider`` tag:
 
 .. code-block:: yaml
 
@@ -245,9 +267,9 @@ Register the provider as a service with the ``sulu.smart_content.data_provider``
             arguments:
                 - '@App\Repository\ExampleRepository'
             tags:
-                - { name: 'sulu.smart_content.data_provider', alias: 'examples' }
+                - { name: 'sulu_content.smart_content_provider', type: 'examples' }
 
-The ``alias`` must match the value returned by ``getType()``.
+The ``type`` attribute must match the value returned by ``getType()``.
 
 Afterwards you can use your new SmartContentProvider in your templates by setting
 the ``provider`` parameter to ``examples``.
