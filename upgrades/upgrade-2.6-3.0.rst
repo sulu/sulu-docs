@@ -17,6 +17,14 @@ every project has to perform.
     relational database and the PHPCR repository, and the second phase is significantly easier to
     repeat if you can restore the dump after a failed attempt.
 
+Prerequisites
+-------------
+
+Before starting the upgrade, make sure the project runs on at least **Symfony 6.4**. Sulu 3.0 no
+longer supports older Symfony versions, so projects still on Symfony 5.4 or earlier must be updated
+to Symfony 6.4 first. Doing this on the existing Sulu 2.6 codebase keeps the Symfony upgrade
+isolated from the Sulu upgrade and avoids mixing two unrelated sources of breaking changes.
+
 Phase 1 — Prepare the project on Sulu 2.6
 -----------------------------------------
 
@@ -47,7 +55,7 @@ structure that 2.6 expects:
 .. code-block:: bash
 
     php bin/console doctrine:migrations:migrate
-    php bin/adminconsole phpcr:migrations:migrate
+    php bin/console phpcr:migrations:migrate
 
 **4. Run the PHPCR cleanup command**
 
@@ -57,7 +65,7 @@ the chance of problems during the later content migration:
 
 .. code-block:: bash
 
-    php bin/adminconsole sulu:document:phpcr-cleanup
+    php bin/console sulu:document:phpcr-cleanup
 
 **5. Dump the database**
 
@@ -82,9 +90,10 @@ is compatible with Sulu 3.0, then run:
 
 **2. Compare the sulu/skeleton changes**
 
-Compare the `sulu/skeleton repository`_ between Sulu 2.6 and Sulu 3.0 and apply the changes that make
-sense for your project. These changes can include updated JavaScript build setup, new configuration
-files or adjustments that follow newer Symfony and Sulu defaults.
+Compare the `sulu/skeleton repository`_ between Sulu 2.6 and Sulu 3.0 and apply the configuration
+changes that make sense for your project. The relevant differences are mainly in ``config/``,
+``.env``, the bundle list and other Symfony/Sulu defaults. The admin JavaScript build itself does
+not need to be updated manually — that is handled later by ``sulu:admin:update-build``.
 
 .. note::
 
@@ -104,16 +113,10 @@ automated and must be applied to your project code and configuration manually.
     to perform those steps as you walk through the file — they are required for the following
     migrations to run successfully.
 
-**4. Install Doctrine Migrations and run the Sulu 3.0 migrations**
+**4. Run the Sulu 3.0 migrations**
 
-Sulu 3.0 depends on the Doctrine Migrations Bundle and ships its core schema migrations through it.
-If your project does not have the bundle installed yet, add it now:
-
-.. code-block:: bash
-
-    composer require doctrine/doctrine-migrations-bundle
-
-Then run the migrations that come with Sulu 3.0:
+Sulu 3.0 ships its core schema migrations through the Doctrine Migrations Bundle, which is already
+pulled in as a dependency of ``sulu/sulu``. Run the migrations that come with Sulu 3.0:
 
 .. code-block:: bash
 
@@ -133,7 +136,7 @@ so it matches the new backend:
 
 .. code-block:: bash
 
-    php bin/adminconsole sulu:admin:update-build
+    php bin/console sulu:admin:update-build
 
 If you use a custom admin build, refer to the ``sulu/skeleton`` repository for the updated build setup
 and run your custom build pipeline accordingly. Note that Sulu 3.0 requires at least ``Node 20`` for
@@ -156,7 +159,7 @@ would otherwise interrupt the migration mid-way:
 
 .. code-block:: bash
 
-    php bin/adminconsole sulu:phpcr-migration:migrate --dry-mode
+    php bin/console sulu:phpcr-migration:migrate --dry-mode
 
 Fix every error that the dry run reports — typically these are template or configuration mismatches
 that need to be adjusted in your project — and re-run the command until it finishes without errors.
@@ -168,15 +171,15 @@ all PHPCR data into the new content architecture:
 
 .. code-block:: bash
 
-    php bin/adminconsole sulu:phpcr-migration:migrate
+    php bin/console sulu:phpcr-migration:migrate
 
-**10. Reindex the admin search**
+**10. Reindex the search**
 
-Populate the new admin search index with the migrated Sulu 3.0 data:
+Populate the new search index (admin and website) with the migrated Sulu 3.0 data:
 
 .. code-block:: bash
 
-    php bin/adminconsole cmsig:seal:reindex --drop
+    php bin/console cmsig:seal:reindex --drop
 
 **11. Verify the migration**
 
