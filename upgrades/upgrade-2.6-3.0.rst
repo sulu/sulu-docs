@@ -119,24 +119,27 @@ Then run the migrations that come with Sulu 3.0:
 
     php bin/console doctrine:migrations:migrate
 
-**5. Fix remaining breaking changes in templates and configuration**
+**5. Adjust template XML for the new route content type**
 
-Beyond the items listed in ``UPGRADE.md``, the following changes are required in virtually every
-project:
+The Sulu 3.0 content structure requires every routable template to use the ``route`` content type
+on a property named ``url``, with the ``sulu.rlp.part`` tag on the title and the ``sulu.rlp`` tag on
+the URL property. See the *Upgrade resourceLocator and route property type* section in ``UPGRADE.md``
+for the diff and full details.
 
-- In template XML files, the ``resource_locator`` content type has been renamed to ``route``.
-  Replace every occurrence of ``type="resource_locator"`` with ``type="route"``.
-- The property holding the URL of a page or article must be named ``url``. Rename any existing
-  ``resource_locator`` / ``url`` property accordingly in your templates so the route handling and the
-  PHPCR migration can pick it up correctly.
+**6. Rebuild the admin frontend**
 
-Search your template directory for the old type and adjust the affected files, for example:
+Sulu 3.0 ships updated admin JavaScript dependencies and assets. Rebuild the administration interface
+so it matches the new backend:
 
 .. code-block:: bash
 
-    grep -r "resource_locator" config/templates
+    php bin/adminconsole sulu:admin:update-build
 
-**6. Install the PHPCR migration bundle**
+If you use a custom admin build, refer to the ``sulu/skeleton`` repository for the updated build setup
+and run your custom build pipeline accordingly. Note that Sulu 3.0 requires at least ``Node 20`` for
+custom admin builds.
+
+**7. Install the PHPCR migration bundle**
 
 The actual migration of pages, snippets and articles from PHPCR into the new Doctrine-based content
 storage is provided by a dedicated bundle. Install it:
@@ -145,7 +148,7 @@ storage is provided by a dedicated bundle. Install it:
 
     composer require sulu/phpcr-migration-bundle
 
-**7. Run the PHPCR migration in dry-run mode**
+**8. Run the PHPCR migration in dry-run mode**
 
 Before performing the real migration, execute the command in dry-run mode. Dry-run mode runs through
 all content without writing the result back, which is the easiest way to surface exceptions that
@@ -158,7 +161,7 @@ would otherwise interrupt the migration mid-way:
 Fix every error that the dry run reports — typically these are template or configuration mismatches
 that need to be adjusted in your project — and re-run the command until it finishes without errors.
 
-**8. Run the PHPCR migration**
+**9. Run the PHPCR migration**
 
 Once the dry run completes successfully, run the migration without ``--dry-mode`` to actually transfer
 all PHPCR data into the new content architecture:
@@ -167,7 +170,7 @@ all PHPCR data into the new content architecture:
 
     php bin/adminconsole sulu:phpcr-migration:migrate
 
-**9. Reindex the admin search**
+**10. Reindex the admin search**
 
 Populate the new admin search index with the migrated Sulu 3.0 data:
 
@@ -175,12 +178,12 @@ Populate the new admin search index with the migrated Sulu 3.0 data:
 
     php bin/adminconsole cmsig:seal:reindex --drop
 
-**10. Verify the migration**
+**11. Verify the migration**
 
 Log in to the Sulu admin panel and check that pages, articles, snippets, media and other entities are
 present and rendered correctly before continuing.
 
-**11. Remove the PHPCR migration bundle**
+**12. Remove the PHPCR migration bundle**
 
 Once the migration has been verified, the bundle is no longer needed and can be removed:
 
@@ -188,7 +191,7 @@ Once the migration has been verified, the bundle is no longer needed and can be 
 
     composer remove sulu/phpcr-migration-bundle
 
-**12. Drop the obsolete PHPCR tables**
+**13. Drop the obsolete PHPCR tables**
 
 The ``phpcr_*`` tables in the database are no longer required by Sulu 3.0. Generate a Doctrine schema
 diff to create a migration that removes them:
@@ -203,6 +206,50 @@ execute it:
 .. code-block:: bash
 
     php bin/console doctrine:migrations:migrate
+
+Common issues after upgrading
+-----------------------------
+
+The most frequent breaking changes you may run into after the upgrade are listed below. See the
+linked ``UPGRADE.md`` sections for full migration details.
+
+**Container build fails: deprecated smart content parameters**
+
+In ``smart_content`` properties, the ``types`` parameter has been split per provider and the
+``structureTypes`` parameter has been renamed:
+
+- For article providers (``articles``, ``articles_page_tree``), replace ``types`` with ``groups``.
+- For all other providers (``pages``, ``snippets``), replace ``types`` with ``templateKeys``.
+- Replace ``structureTypes`` with ``templateKeys``.
+
+If a deprecated parameter is still used, the container build fails with a message pointing at the
+affected template and property. See *Consistent smart content params across article, page and snippet
+providers* in ``UPGRADE.md``.
+
+**Articles are missing from the admin or have no template group**
+
+If your project used the ArticleBundle with article types defined under ``sulu_article.types`` in
+``config/packages/sulu_article.yaml``, those types have been replaced by template groups. Remove the
+``types`` block from the configuration and add a ``<group>`` element to each affected article template
+XML file (for example ``<group>blog</group>``). After the migration, the new template groups also need
+to be granted to user roles in the Sulu admin interface. See *Migrating from Article Types to Template
+Groups* in ``UPGRADE.md`` for the full migration.
+
+**Navigation Twig functions throw "unknown function" errors**
+
+The navigation Twig functions have been renamed with a ``sulu_page_`` prefix (for example
+``sulu_navigation_tree`` → ``sulu_page_navigation_tree``, ``sulu_breadcrumb`` →
+``sulu_page_breadcrumb``). Their default property set has been reduced to ``title`` and ``url``, and
+``nodeType`` has been replaced by ``linkProvider``. See *Navigation Twig functions renamed* and
+*Navigation Twig Extension property filtering* in ``UPGRADE.md`` for the full list of renames and
+migration examples.
+
+**``sulu_content_load`` no longer exists or "properties" argument is missing**
+
+The ``sulu_content_load`` Twig function has been split into ``sulu_page_load`` and
+``sulu_article_load``, and the ``properties`` parameter is now mandatory.
+``sulu_snippet_load_by_area`` also takes a mandatory ``properties`` parameter now. See *Content load
+Twig functions split and properties now required* in ``UPGRADE.md`` for the new signatures.
 
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _UPGRADE.md file: https://github.com/sulu/sulu/blob/3.0/UPGRADE.md
