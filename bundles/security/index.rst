@@ -106,120 +106,6 @@ the object type and id are also passed the permissions of the security contexts
 from the role might be overridden by the permissions from this specific object
 (which are handled by the previously mentioned ``AccessControlManager``).
 
-Single-Sign-On Authentication
-------------------------------
-
-Sulu supports authentication via Single-Sign-On (SSO).
-To enable it, the security configuration needs to be adjusted to allow SSO in the admin firewall.
-This can be configured in the ``config/packages/security.yaml``:
-
-.. code-block:: diff
-
-    security:
-        # ...
-
-        firewalls:
-            # ...
-            admin:
-
-                # ...
-                logout:
-                    path: sulu_admin.logout
-   +            access_token:
-   +                token_handler: sulu_security.single_sign_on_token_handler
-   +                token_extractors: sulu_security.single_sign_on_token_extractor
-
-    # ...
-    sulu_security:
-        checker:
-            enabled: true
-        password_policy:
-            enabled: true
-   +    single_sign_on:
-   +        providers:
-   +            'sulu.io':
-   +                dsn: 'openid://%env(resolve:SULU_OPEN_ID_CLIENT_ID)%:%env(resolve:SULU_OPEN_ID_CLIENT_SECRET)%@%env(resolve:SULU_OPEN_ID_ENDPOINT)%'
-   +                default_role_key: 'USER'
-
-After adjusting the configuration and clearing the symfony cache,
-you only see the ``username or email`` field when you try to login to the administration interface.
-When the user email matches the configured domain,
-the user is then redirected to the SSO provider to authenticate. After successful authentication, the system redirects the user back to the administration interface.
-If the domain does not match the configured domain, the user is authenticated using the standard login form.
-On password reset, when the domain matches, the user is also redirected to the SSO provider.
-
-Enable SSO provider: 
-Before enabling the SSO provider, ensure you've created a role with the key USER, or set a key for your preferred default role and use it for the parameter ``default_role_key``.
-
-Redirect URL: 
-If your provider requires a redirect URL, provide your admin URL, e.g., ``sulu.io/admin``.
-
-.. note::
-
-    At the moment, only the OpenID protocol is supported for Single-Sign-On authentication in Sulu.
-
-Two-Factor Authentication
--------------------------
-
-Sulu allows to use two-factor authentication over email via the scheb/2fa packages. To enable it, 
-the packages need to be installed into the project via composer:
-
-.. code-block:: bash
-
-    composer require scheb/2fa-bundle scheb/2fa-email scheb/2fa-trusted-device
-
-The security configuration needs to be adjusted to allow two-factor authentication in the
-admin firewall. This is configured in the ``config/packages/security.yaml``:
-
-.. code-block:: diff
-
-    security:
-        # ...
-
-        access_control:
-            # ...
-            - { path: ^/admin/login$, roles: PUBLIC_ACCESS }
-   +         - { path: ^/admin/2fa, role: PUBLIC_ACCESS }
-            # ...
-        firewalls:
-            # ...
-            admin:
-
-                # ...
-                logout:
-                    path: sulu_admin.logout
-   +             two_factor:
-   +                 prepare_on_login: true
-   +                 prepare_on_access_denied: true
-   +                 check_path: 2fa_login_check_admin
-   +                 authentication_required_handler: sulu_security.two_factor_authentication_required_handler
-   +                 success_handler: sulu_security.two_factor_authentication_success_handler
-   +                 failure_handler: sulu_security.two_factor_authentication_failure_handler
-
-Afterwards, the scheb/2fa bundle needs to be configured to enable email and trusted devices
-in the ``config/packages/scheb_2fa.yaml`` file:
-
-.. code-block:: yaml
-
-    scheb_two_factor:
-        email:
-            enabled: true
-            sender_email: "%env(SULU_ADMIN_EMAIL)%"
-        trusted_device:
-            enabled: true
-
-Additionally, the routes of the scheb/2fa bundle must be added to the project in 
-the ``config/routes/scheb_2fa.yaml`` file:
-
-.. code-block:: yaml
-
-    # For Admin:
-    2fa_login_check_admin:
-        path: /admin/2fa_check
-
-Finally, after adjusting the configuration and clearing the symfony cache, it is possible to enable
-two-factor authentication via the administration interface in the profile of the logged-in user.
-
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
 
@@ -228,3 +114,5 @@ two-factor authentication via the administration interface in the profile of the
 
     security_system
     password_policy
+    single_sign_on_authentication
+    two_factor_authentication
