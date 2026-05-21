@@ -47,14 +47,13 @@ Update every other ``sulu/*`` bundle used in the project (for example ``sulu/art
 that is compatible with Sulu 2.6. Keeping the ``sulu/article-bundle`` up to date is particularly
 important, because the article migration relies on its latest PHPCR migrations having been applied.
 
-**3. Run all Doctrine and PHPCR migrations**
+**3. Run the PHPCR migrations**
 
-Execute the outstanding migrations to make sure the project is on the latest schema and content
+Execute the outstanding PHPCR migrations to make sure the content repository is on the latest
 structure that 2.6 expects:
 
 .. code-block:: bash
 
-    php bin/console doctrine:migrations:migrate
     php bin/console phpcr:migrations:migrate
 
 **4. Run the PHPCR cleanup command**
