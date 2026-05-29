@@ -3,6 +3,9 @@ Nginx
 
 The Nginx configuration could look something like.
 
+The example shows a common production ready Nginx VHost using HTTPS via Letsencrypt.
+It also forces all future requests to HTTPS via `Strict-Transport-Security` header.
+
 .. code-block:: nginx
 
   server {
@@ -10,7 +13,24 @@ The Nginx configuration could look something like.
       listen [::]:80;
 
       server_name example.org;
+
+      return 301 https://$host$request_uri;
+  }
+
+  server {
+      listen 443 ssl http2;
+      listen [::]:443 ssl http2;
+
+      server_name example.org;
       root /var/www/example.org/public;
+
+      # SSL
+      ssl_certificate /etc/letsencrypt/live/example.org/fullchain.pem; # managed by Certbot
+      ssl_certificate_key /etc/letsencrypt/live/example.org/privkey.pem; # maanged by Certbot
+      include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+      ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+      # see: https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+      add_header Strict-Transport-Security "max-age=15552000; preload";
 
       error_log /var/log/nginx/example.org.error.log;
       access_log /var/log/nginx/example.org.at.access.log;
@@ -37,7 +57,7 @@ The Nginx configuration could look something like.
 
       # pass the PHP scripts to FastCGI server from upstream phpfcgi
       location ~ ^/(index|config)\.php(/|$) {
-          fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+          fastcgi_pass unix:/var/run/php/php8.5-fpm.sock; # replace with your used php version
           fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
@@ -94,6 +114,7 @@ In your ``/etc/nginx/nginx.conf`` we recommend to enable gzip:
         # see: https://github.com/google/ngx_brotli#sample-configuration
 
 .. warning::
+
     Be sure to also configure your local host-file, if running Sulu locally.
 
 File upload
