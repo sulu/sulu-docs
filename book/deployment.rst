@@ -45,14 +45,14 @@ Have a look at the ``.env`` for all the available configuration options.
 4. Setup your Data
 ~~~~~~~~~~~~~~~~~~
 
-To setup your data you need to install the dependencies:
+To set up your data you need to install the dependencies:
 
 .. code-block:: bash
 
     composer install --no-dev --optimize-autoloader --classmap-authoritative
 
 If you are not using an existing Database, you need to create your database by running the following command once
-to finish setup the database, the command create also all required fixtures and search indexes:
+to finish setting up the database, the command also creates all required fixtures and search indexes:
 
 .. code-block:: bash
 
@@ -60,7 +60,7 @@ to finish setup the database, the command create also all required fixtures and 
 
 .. note::
 
-    This command don't need to be rerun on every deployment, check Continuous Deployment section below for more details
+    This command does not need to be rerun on every deployment, check the Continuous Deployment section below for more details
     about which commands are required for every deployment.
 
 5. Check Login and Website
