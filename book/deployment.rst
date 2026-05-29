@@ -10,8 +10,8 @@ There are different tools to automate deployment, we will cover here the most ba
 1. Setup your Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-You need to setup a webserver, for that have a look at the :ref:`../cookbook/web-server/nginx` or :ref:`../cookbook/web-server/apache`.
-You need atleast `git`, `php` and `composer` installed on your server and have a supported database (MySQL, MariaDB or PostgreSQL) running.
+You need to set up a web server; for that, have a look at :doc:`../cookbook/web-server/nginx` or :doc:`../cookbook/web-server/apache`.
+You need at least ``git``, ``php`` and ``composer`` installed on your server and have a supported database (MySQL, MariaDB or PostgreSQL) running.
 
 2. Install your Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,7 +52,7 @@ to finish setup the database, the command create also all required fixtures and 
 
     php bin/console sulu:build dev
 
-..note::
+.. note::
 
     This command don't need to be rerun on every deployment, check Continue Deployment section below for more details
     about which commands are required for every deployment.
@@ -62,12 +62,12 @@ to finish setup the database, the command create also all required fixtures and 
 
 After it you should be able to login to the admin interface and see your website.
 
-..note::
+.. note::
 
     Always have a look at the `Symfony Performance Best Practices`_ to make sure your project is optimized for production.
 
-Continues Deployment
---------------------
+Continuous Deployment
+---------------------
 
 For any further deployment you just need to get the latest changes from your repository:
 
@@ -112,12 +112,12 @@ This should just give a raw overview of a simple deployment process,
 there are many tools to automate this process and make it more robust,
 we recommend using tools like `Deployer`_ to automate this process.
 
-..note::
+.. note::
 
     Keep in mind that PHP has a OPCache which may need be cleared after deployment by restarting your PHP-FPM or Apache service.
     Or use a tool like `gordalina cachetool`_ to clear the cache without restarting the service.
 
-..note::
+.. note::
 
     Check always the `Sulu UPGRADE`_ documentation for any required changes during the upgrade process.
 
