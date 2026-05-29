@@ -753,7 +753,7 @@ element:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <!-- ... -->
 
-        <xi:include href="fragments/event-properties.xml"/>
+        <xi:include href="../includes/event-properties.xml"/>
 
         <!-- ... -->
     </template>
@@ -768,7 +768,7 @@ container:
 
 .. code-block:: xml
 
-    <!-- config/templates/pages/fragments/event-properties.xml -->
+    <!-- config/templates/includes/event-properties.xml -->
     <?xml version="1.0" ?>
     <properties xmlns="http://schemas.sulu.io/template/template"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -830,7 +830,7 @@ an XPointer that selects these elements in the ``xpointer`` attribute of the
 
             <xi:include href="event.xml"
                 xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
-                          xpointer(/sulu:properties/sulu:property)"/>
+                          xpointer(/sulu:template/sulu:properties/sulu:property)"/>
 
             <!-- ... -->
         </properties>
@@ -856,7 +856,7 @@ possible:
 
             <xi:include href="event.xml"
                 xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)
-                          xpointer(/sulu:properties/sulu:property[@name='startDate'])"/>
+                          xpointer(/sulu:template/sulu:properties/sulu:property[@name='startDate'])"/>
 
             <!-- ... -->
         </properties>

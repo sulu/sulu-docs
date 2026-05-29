@@ -27,6 +27,9 @@ Parameters
     * - pattern
       - string
       - A regex pattern the must be fulfilled by the entered data (e.g. "^[a-zA-Z]*$" will only allow letters)
+    * - rows
+      - integer
+      - Desired amount of visible height, in lines
 
 Example
 -------
