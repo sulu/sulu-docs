@@ -39,7 +39,7 @@ Have a look at the ``.env`` for all the available configuration options.
 4. Setup your Data
 ~~~~~~~~~~~~~~~~~~
 
-To setup your data you need to install the dependencies and build the assets.
+To setup your data you need to install the dependencies:
 
 .. code-block:: bash
 
