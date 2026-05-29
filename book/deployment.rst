@@ -122,4 +122,4 @@ we recommend using tools like `Deployer`_ to automate this process.
 .. _Doctrine Migration Bundle: https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
 .. _Deployer: https://deployer.org/
 .. _gordalina cachetool: https://github.com/gordalina/cachetool
-.. _Sulu UPGRADE: https://github.com/sulu/sulu/blob/2.6/UPGRADE.md
+.. _Sulu UPGRADE: https://github.com/sulu/sulu/blob/3.0/UPGRADE.md
