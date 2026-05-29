@@ -14,7 +14,7 @@ You need to set up a web server; for that, have a look at :doc:`../cookbook/web-
 You need at least ``git``, ``php`` and ``composer`` installed on your server and have a supported database (MySQL, MariaDB or PostgreSQL) running.
 
 2. Install your Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create and go into the directory where you want to deploy your application and clone the repository.
 
