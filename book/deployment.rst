@@ -54,7 +54,7 @@ to finish setup the database, the command create also all required fixtures and 
 
 .. note::
 
-    This command don't need to be rerun on every deployment, check Continue Deployment section below for more details
+    This command don't need to be rerun on every deployment, check Continuous Deployment section below for more details
     about which commands are required for every deployment.
 
 5. Check Login and Website
