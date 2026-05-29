@@ -99,20 +99,11 @@ If any services, config or twig files changed you need to clear the caches:
 
 If you have external caches in Redis or somewhere else you need to clear them via the related commands.
 
-For database changes for example during Sulu upgrades you need to run the related database migration commands:
-
-.. code-block:: bash
-
-    php bin/console phpcr:migrations:migrate
-
-We recommend the usage of `Doctrine Migration Bundle`_ for your own database changes, so you can run following command:
+For database changes for example during Sulu upgrades you need to run the database migration command:
 
 .. code-block:: bash
 
     php bin/console doctrine:migrations:migrate
-    # alternative but not recommended is using built-in schema update command:
-    php bin/console doctrine:schema:update --dump-sql # check changes
-    php bin/console doctrine:schema:update --force # run changes
 
 This should just give a raw overview of a simple deployment process,
 there are many tools to automate this process and make it more robust,
