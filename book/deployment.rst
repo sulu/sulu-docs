@@ -120,7 +120,7 @@ we recommend using tools like `Deployer`_ to automate this process.
 
 .. note::
 
-    Keep in mind that PHP has a OPCache which may need be cleared after deployment by restarting your PHP-FPM or Apache service.
+    Keep in mind that PHP has an OPCache which may need to be cleared after deployment by restarting your PHP-FPM or Apache service.
     Or use a tool like `gordalina cachetool`_ to clear the cache without restarting the service.
 
 .. note::
