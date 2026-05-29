@@ -24,6 +24,12 @@ Create and go into the directory where you want to deploy your application and c
     git clone <repository-url> example.org
     cd example.org
 
+.. note::
+
+    Make sure that your web server user has the right permissions to read the project data. The web server
+    user also requires write permission for the ``var`` and ``public/media`` directories. Checkout the
+    web server documentation for more details about how to set up permissions for your web server.
+
 3. Configure your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
