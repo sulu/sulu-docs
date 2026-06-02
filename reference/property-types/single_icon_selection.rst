@@ -4,7 +4,7 @@ Single Icon selection
 Description
 -----------
 
-Lets you select a single icon from a configured icon set. The selected icon is passed to the twig template as an object.
+Lets you select a single icon from a configured icon set. The selected icon is returned as a plain string (the icon name/id).
 The configured icon sets can be either icon fonts or SVGs.
 
 .. warning::
@@ -63,9 +63,9 @@ Twig
 
 .. code-block:: twig
 
-    {% set icons = content.icon %}
-    <span class="icon-{{ icon.icon }}"></span>
+    {# icon font #}
+    <span class="icon-{{ content.icon }}"></span>
 
-    {% set svg = content.svg %}
-    <img src="{{ asset('svgs/' ~ svg.icon ~ '.svg') }}"/>
+    {# svg #}
+    <img src="{{ asset('svgs/' ~ content.icon ~ '.svg') }}"/>
 

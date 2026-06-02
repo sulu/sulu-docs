@@ -41,6 +41,10 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
+    * - template_keys
+      - string
+      - Comma-separated list of template keys. When set, only snippets using one of those
+        templates are shown in the selection overlay.
     * - min
       - string
       - The minimum number of selected snippets
@@ -59,7 +63,7 @@ Example
         </meta>
 
         <params>
-            <param name="types" value="sidebar"/>
+            <param name="template_keys" value="sidebar"/>
             <param name="default" value="footer_social_media_links"/>
         </params>
     </property>

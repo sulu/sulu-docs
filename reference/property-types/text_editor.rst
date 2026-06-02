@@ -7,6 +7,24 @@ Description
 Shows a rich text editor, capable of formatting text as well. The output of the
 editor will be stored as HTML in a string field.
 
+Parameters
+----------
+
+.. list-table::
+    :header-rows: 1
+
+    * - Parameter
+      - Type
+      - Description
+    * - formats
+      - collection
+      - Heading levels available in the toolbar. Each item name is a heading tag (``h2``–``h6``).
+        Defaults to ``h2``, ``h3``, ``h4``, ``h5``, ``h6``.
+    * - enter_mode
+      - string
+      - Controls the Enter key behaviour. ``p`` (default) wraps text in ``<p>`` tags;
+        ``br`` inserts ``<br>`` line breaks instead.
+
 Example
 -------
 

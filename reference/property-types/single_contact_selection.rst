@@ -49,18 +49,13 @@ Example
 Twig
 ----
 
-You need to use the :doc:`../twig-extensions/functions/sulu_resolve_media` if you want to render
-the contact avatar image.
-
 .. code-block:: twig
 
     {% set contact = content.contact %}
     {{ contact.fullName }}
 
     {% if contact.avatar %}
-        {% set image = sulu_resolve_media(contact.avatar, app.request.locale) %}
-
-        <img src="{{ image.thumbnails['80x80'] }}" alt="{{ contact.fullName }}">
+        <img src="{{ contact.avatar.thumbnails['80x80'] }}" alt="{{ contact.fullName }}">
     {% endif %}
 
 .. _ContactInterface: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ContactBundle/Entity/ContactInterface.php

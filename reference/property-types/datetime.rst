@@ -27,4 +27,4 @@ Twig
 
 .. code-block:: twig
 
-    {{ content.date.format('Y-m-d') }}
+    {{ content.datetime.format('Y-m-d H:i') }}
