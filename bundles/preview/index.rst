@@ -188,9 +188,16 @@ it the block's id:
         {# ... #}
     </div>
 
-The function renders a ``data-sulu-preview-id`` attribute in the preview. Everything else - the click handling
-in the preview iframe and the scroll/expand behaviour in the admin form - is already wired up by
-the bundle; there is nothing else to configure.
+The function renders a ``data-sulu-preview-id`` attribute in the preview. For previews rendered by the
+standard ``ContentController``, everything else - the click handling in the preview iframe and the
+scroll/expand behaviour in the admin form - is already wired up by the bundle; there is nothing else to
+configure.
+
+If a custom ``RouteDefaultsProvider`` or controller renders the preview, include the
+``preview-deep-link.js`` bridge script in its Twig template as well. The standard controller loads this
+script through ``@SuluWebsite/Preview/preview.html.twig``; custom templates do not load it automatically.
+The script is available at
+``src/Sulu/Bundle/WebsiteBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu.
 
 .. note::
 
@@ -216,7 +223,7 @@ omitted outside of a preview render):
     }
 
 Sulu has no control over how or where your frontend renders, so getting a click from your preview
-back to the admin is on your frontend. Two things are required:
+back to the admin is on your frontend. The frontend must:
 
 #. Render the id as a ``data-sulu-preview-id`` attribute on the block's root DOM element - the
    same role ``sulu_preview_deep_link()`` plays in Twig.
@@ -238,5 +245,11 @@ back to the admin is on your frontend. Two things are required:
            }
        });
 
-For a full reference implementation see ``src/Sulu/Bundle/WebsiteBundle/Resources/public/js/preview-deep-link.js`` in
-sulu/sulu - the script the classic Twig integration loads automatically.
+When the headless frontend is hosted on a different origin from the admin, a direct message to the
+admin is rejected. In this case, serve a preview wrapper from the admin's origin. The frontend sends
+its message to this wrapper, which relays it to the admin. The HeadlessBundle preview implementation
+uses this wrapper pattern.
+
+For a reference implementation of the click handling, see
+``src/Sulu/Bundle/WebsiteBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu - the script
+the classic Twig integration loads automatically.
