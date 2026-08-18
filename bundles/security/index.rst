@@ -192,7 +192,7 @@ admin firewall. This is configured in the ``config/packages/security.yaml``:
         access_control:
             # ...
             - { path: ^/admin/login$, roles: PUBLIC_ACCESS }
-   +         - { path: ^/admin/2fa, role: PUBLIC_ACCESS }
+   +         - { path: ^/admin/2fa, roles: PUBLIC_ACCESS }
             # ...
         firewalls:
             # ...
@@ -221,6 +221,10 @@ in the ``config/packages/scheb_2fa.yaml`` file:
         totp:
             enabled: true
             issuer: 'Sulu'
+        # or, when scheb/2fa-google-authenticator is installed instead of scheb/2fa-totp:
+        # google:
+        #     enabled: true
+        #     issuer: 'Sulu'
         backup_codes:
             enabled: true
         trusted_device:
@@ -263,7 +267,9 @@ toolbar button on the permissions tab of the user or via the following command:
 
     bin/adminconsole sulu:security:user:reset-two-factor <username>
 
-The user can then log in with the password only and set up two-factor authentication again.
+The user can then log in with the password only and set up two-factor authentication again. If
+forced two-factor authentication (see below) applies to the user, the email method is activated
+again automatically instead, so the reset can not be used to bypass the enforced second factor.
 
 Force Two-Factor Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -280,7 +286,7 @@ configured pattern in the ``config/packages/sulu_security.yaml`` file:
                 pattern: '/@sulu\.io$/'
 
 The email method is activated automatically for matching users that have no two-factor method
-configured yet. A user that already uses an authenticator app method is not affected.
+configured yet. A user that has already configured a two-factor method is not affected.
 
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
