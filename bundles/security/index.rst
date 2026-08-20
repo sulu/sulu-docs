@@ -267,9 +267,7 @@ toolbar button on the permissions tab of the user or via the following command:
 
     bin/adminconsole sulu:security:user:reset-two-factor <username>
 
-The user can then log in with the password only and set up two-factor authentication again. If
-forced two-factor authentication (see below) applies to the user, the email method is activated
-again automatically instead, so the reset can not be used to bypass the enforced second factor.
+The user can then log in with the password only and set up two-factor authentication again.
 
 Force Two-Factor Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,8 +283,12 @@ configured pattern in the ``config/packages/sulu_security.yaml`` file:
                 enabled: true
                 pattern: '/@sulu\.io$/'
 
-The email method is activated automatically for matching users that have no two-factor method
-configured yet. A user that has already configured a two-factor method is not affected.
+The email method is activated automatically when a matching user is created and has no
+two-factor method configured yet. A user that has already configured a two-factor method is
+not affected. Users that already exist when the configuration is enabled are not migrated.
+
+A user that is affected by the forced configuration can not disable two-factor authentication
+in the profile, the server rejects the request.
 
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
