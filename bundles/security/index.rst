@@ -287,9 +287,6 @@ The email method is activated automatically when a matching user is created and 
 two-factor method configured yet. A user that has already configured a two-factor method is
 not affected. Users that already exist when the configuration is enabled are not migrated.
 
-A user that is affected by the forced configuration can not disable two-factor authentication
-in the profile, the server rejects the request.
-
 
 .. _security mechanisms of Symfony: http://symfony.com/doc/current/book/security.html
 
