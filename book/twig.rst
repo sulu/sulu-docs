@@ -186,6 +186,25 @@ this code:
 
 Image formats need to be defined in the `image_formats.xml`_ in your config.
 
+Blocks
+^^^^^^
+
+The block content type is one of the most important content types in Sulu. It allows content managers to add
+different sections and components to a page,
+which they can place in any order they want.
+
+In Twig it is recommended to use the following snippet to render the blocks. This way you have
+access to the ``content`` and ``view`` variables of each block again.
+
+.. code-block:: twig
+
+    {% for block in content.blocks %}
+        {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+            content: block,
+            view: view.blocks[loop.index0],
+        } %}
+    {% endfor %}
+
 CSS / JS
 --------
 
