@@ -42,6 +42,7 @@ extensions = [
 
 # Redirects for version switcher (property-types -> content-types for 1.0/2.x)
 redirects = {
+    "bundles/reference-store": "../bundles/website/reference-store.html",
     "reference/property-types/index": "../../reference/content-types/index.html",
     "reference/property-types/account_selection": "../../reference/content-types/account_selection.html",
     "reference/property-types/block": "../../reference/content-types/block.html",
@@ -78,6 +79,7 @@ redirects = {
     "reference/property-types/tag_selection": "../../reference/content-types/tag_selection.html",
     "reference/property-types/teaser_selection": "../../reference/content-types/teaser_selection.html",
     "reference/property-types/text_area": "../../reference/content-types/text_area.html",
+    "reference/property-types/text_editor": "../../reference/content-types/text_editor.html",
     "reference/property-types/text_line": "../../reference/content-types/text_line.html",
     "reference/property-types/time": "../../reference/content-types/time.html",
     "reference/property-types/url": "../../reference/content-types/url.html",

@@ -72,3 +72,18 @@ To remove all built files:
 
 
 [1]: https://www.sphinx-doc.org/en/master/usage/installation.html
+
+## Renaming or removing a page
+
+The documentation is published for several versions (`2.x`, `3.x`, ...) and the version switcher keeps the current
+path, so a page that is renamed or removed in one version must keep answering at its old URL. Add an entry to the
+`redirects` map of `conf.py` (handled by [sphinx-reredirects](https://pypi.org/project/sphinx-reredirects/)), with the
+target relative to the old page:
+
+```python
+redirects = {
+    "reference/content-types/text_line": "../../reference/property-types/text_line.html",
+}
+```
+
+A check in the CI fails when a pull request renames or removes an `.rst` file without such an entry.

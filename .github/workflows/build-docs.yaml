@@ -27,3 +27,17 @@ jobs:
               with:
                   name: DocumentationHTML
                   path: "_build/html"
+
+    redirects:
+        name: "Check redirects of renamed or removed pages"
+        runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Check that every renamed or removed page has a redirect in conf.py
+              run: |
+                  git diff --name-status --diff-filter=DR "origin/${{ github.base_ref }}...HEAD" -- '*.rst' > changes.txt
+                  python3 .github/check-redirects.py changes.txt
