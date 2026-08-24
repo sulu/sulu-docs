@@ -167,3 +167,89 @@ If you are in a multi server setup its recommended to set the whole `cache.app` 
 Read more about it in the `Symfony Cache Documentation`_.
 
 .. _Symfony Cache Documentation: https://symfony.com/doc/4.4/cache.html#configuring-cache-with-frameworkbundle
+
+Navigate from Preview to Block
+-------------------------------
+
+Hovering a block inside the preview shows a small focus button.
+Clicking it scrolls the admin form to the matching block and expands it.
+
+Rendering the Deep Link in Twig
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Call the ``sulu_preview_deep_link()`` Twig function on the root element of your block template, passing
+it the block's id:
+
+.. code-block:: twig
+
+    {# includes/blocks/text_image.html.twig #}
+    <div {{ sulu_preview_deep_link(block._id) }}>
+        <h3>{{ content.title }}</h3>
+        {# ... #}
+    </div>
+
+The function renders a ``data-sulu-preview-id`` attribute in the preview. For previews rendered by the
+standard ``ContentController``, everything else - the click handling in the preview iframe and the
+scroll/expand behaviour in the admin form - is already wired up by the bundle; there is nothing else to
+configure.
+
+If a custom ``RouteDefaultsProvider`` or controller renders the preview, include the
+``preview-deep-link.js`` bridge script in its Twig template as well. The standard controller loads this
+script through ``@SuluWebsite/Preview/preview.html.twig``; custom templates do not load it automatically.
+The script is available at
+``src/Sulu/Bundle/WebsiteBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu.
+
+.. note::
+
+    ``block._id`` is only set while ``block_id_generator`` is enabled for the block field, which
+    is the default for page, article and snippet templates. If you disabled it, or are rendering a
+    block field that predates this option, ``sulu_preview_deep_link()`` simply renders nothing and
+    the block won't be clickable from the preview.
+
+Headless Setup
+~~~~~~~~~~~~~~
+
+With the HeadlessBundle, the JSON returned while previewing already includes each block's id -
+for example, a block inside ``homeBlocks`` looks like this while previewing (the ``id`` key is
+omitted outside of a preview render):
+
+.. code-block:: json
+
+    {
+        "type": "text-image",
+        "settings": [],
+        "id": "0198f2b1-2e3a-7000-8a1b-2c9e6f8d1a4b",
+        "title": "Why Sulu"
+    }
+
+Sulu has no control over how or where your frontend renders, so getting a click from your preview
+back to the admin is on your frontend. The frontend must:
+
+#. Render the id as a ``data-sulu-preview-id`` attribute on the block's root DOM element - the
+   same role ``sulu_preview_deep_link()`` plays in Twig.
+
+#. On click of an element carrying that attribute, ``postMessage`` the admin window with
+   ``{type: 'sulu.preview.navigate', id: <the id>}``:
+
+   .. code-block:: javascript
+
+       var adminWindow = window.opener || window.parent;
+
+       document.addEventListener('click', function (event) {
+           var anchor = event.target.closest('[data-sulu-preview-id]');
+           if (anchor) {
+               adminWindow.postMessage(
+                   {type: 'sulu.preview.navigate', id: anchor.getAttribute('data-sulu-preview-id')},
+                   '*'
+               );
+           }
+       });
+
+When the headless frontend is hosted on a different origin from the admin, a direct message to the
+admin is rejected. In this case, serve a preview wrapper from the admin's origin. The frontend sends
+its message to this wrapper, which relays it to the admin. The HeadlessBundle preview implementation
+uses this wrapper pattern.
+
+For a reference implementation of the click handling, see
+``src/Sulu/Bundle/WebsiteBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu - the script
+the classic Twig integration loads automatically.
