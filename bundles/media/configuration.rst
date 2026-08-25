@@ -40,17 +40,25 @@ free slot before their image is generated:
 
 The limit is shared between all the PHP workers of the application through a
 semaphore of the `Symfony Semaphore component`_, using the storage configured
-under ``framework.semaphore`` (e.g. a Redis DSN):
+under ``framework.semaphore``. The ``lock://`` storage works out of the box,
+without any extra service:
 
 .. code-block:: bash
 
-    composer require symfony/semaphore
+    composer require symfony/semaphore symfony/lock
 
 .. code-block:: yaml
 
+    # config/packages/lock.yaml
+    framework:
+        lock: '%env(LOCK_DSN)%'
+
     # config/packages/semaphore.yaml
     framework:
-        semaphore: 'redis://localhost'
+        semaphore: 'lock://'
+
+The ``lock://`` storage requires ``symfony/semaphore`` 8.1. On older versions,
+configure a Redis DSN instead (``semaphore: 'redis://localhost'``).
 
 When no slot becomes available within one minute, the request fails: the limit
 protects the server, generating the image anyway would defeat it.
