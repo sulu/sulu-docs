@@ -28,6 +28,7 @@ our recipes.
     custom-page-data-provider
     system-collections
     create-new-webspace
+    setting-default-templates
     manage-analytics
     change-default-locale-provider
     default-snippets
