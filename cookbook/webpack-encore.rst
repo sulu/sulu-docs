@@ -24,6 +24,12 @@ if that has not been done already for you by Symfony Flex:
        Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
    ];
 
+Then add the StimulusBundle as a dependency to your composer.json file.
+
+.. code:: bash
+
+   composer require symfony/stimulus-bundle
+
 Configuration
 -------------
 
