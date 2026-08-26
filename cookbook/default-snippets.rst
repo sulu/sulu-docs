@@ -59,6 +59,12 @@ Sulu includes a ``sulu_snippet_load_by_area`` twig function that allows to load 
 the default snippet for a given area. The usage of the function is documented in
 :doc:`/reference/twig-extensions/functions/sulu_snippet_load_by_area`.
 
+.. tip::
+
+        After defining a new area in the snippet template, you may have to clear the website cache with
+        ``php bin/websiteconsole cache:clear`` command. Not clearing the website cache may result in Parameter
+        not found exception.
+
 Using the default snippet as fallback value in a ``snippet_selection``
 ----------------------------------------------------------------------
 
