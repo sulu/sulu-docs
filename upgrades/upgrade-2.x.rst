@@ -1,9 +1,10 @@
-Upgrading Sulu 2.x
-==================
+Upgrading Sulu 2.x and 3.x
+==========================
 
-This upgrade guide describes how to upgrade a Sulu 2.x project to any newer version below 3.0. In a majority of cases,
-these upgrades should be unproblematic, because backwards compatibility is only broken when it is really necessary to
-fix a bug.
+This upgrade guide describes how to upgrade a Sulu 2.x or 3.x project to any newer version within the same major
+version. For upgrading from Sulu 2.6 to Sulu 3.0, see the dedicated :doc:`upgrade-2.6-3.0` guide. In a majority of
+cases, upgrades within the same major version should be unproblematic, because backwards compatibility is only broken
+when it is really necessary to fix a bug.
 
 Unrelated to Sulu changes, upgrades sometimes require first updating PHP, Symfony, or other dependencies. The following table
 should show you which versions of Sulu are compatible with which versions of PHP and Symfony. It is
@@ -50,8 +51,8 @@ The upgrade process of Sulu consists of the following steps:
 
 The ``sulu/sulu`` package implements the functionality of the Sulu content management system. To update this package, you need to update the version constraint for the package in the ``composer.json`` of your project.
 
-To do this, you can replace the ``~x.x.x`` with the a version constraint like ``~2.5.22`` and execute the following
-command in the root folder of your project:
+To do this, you can replace the ``~x.x.x`` with a version constraint like ``~2.6.0`` or ``~3.0.0`` and execute the
+following command in the root folder of your project:
 
 .. code-block:: bash
 
@@ -67,7 +68,20 @@ After this, you can update all dependencies of your project by executing the fol
 
     See the `Composer documentation`_ for more information about version constraints.
 
-2. Check sulu/skeleton repository changes
+2. Run database migrations
+--------------------------
+
+Starting with Sulu 3.0, Sulu depends on the Doctrine Migrations Bundle and ships core schema changes through Doctrine
+migrations. After updating the dependencies of a Sulu 3.x project, run the migrations:
+
+.. code-block:: bash
+
+    php bin/console doctrine:migrations:migrate
+
+For Sulu 2.x projects, this step is only required if your project or one of the installed bundles provides Doctrine
+migrations.
+
+3. Check sulu/skeleton repository changes
 -----------------------------------------
 
 The `sulu/skeleton repository`_ contains the project template for Sulu projects. The template might be adjusted
@@ -83,7 +97,7 @@ not fit your project.
     For a convenient view of all changes in the skeleton repository, open https://github.com/sulu/skeleton/compare/
     and the select your current version as ``base`` and the target version as ``compare``.
 
-3. Check the UPGRADE.md file for BC breaks
+4. Check the UPGRADE.md file for BC breaks
 ------------------------------------------
 
 The `UPGRADE.md file`_ in the ``sulu/sulu`` repository contains all changes breaking backwards compatibility
@@ -94,7 +108,7 @@ In a majority of cases, the changes should not affect your project because backw
 when it is really necessary to fix a bug. However, if something goes south, this file should contain an explanation
 what to change.
 
-4. Update the Admin JavaScript build
+5. Update the Admin JavaScript build
 ------------------------------------
 
 Our administration interface requires a built version of its JavaScript code in the ``public/build/admin`` folder of
