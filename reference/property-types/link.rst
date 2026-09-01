@@ -86,5 +86,5 @@ Complex Twig
 .. code-block:: twig
 
     <a href="{{ content.link }}" target="{{ view.link.target }}" rel="{{ view.link.rel }}">
-        {{ view.link.title }}
+        {{ view.link.title|default(view.link.resourceTitle) }}
     </a>
