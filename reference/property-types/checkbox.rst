@@ -24,6 +24,9 @@ Parameters
     * - label
       -
       - Defines the label of the checkbox. This is recommended if the meta title should be next to the toggler instead of above it.
+    * - skin
+      - string
+      - When set to ``heading``, the toggler is wrapped in a heading-style component and the field label is suppressed.
 
 Examples
 --------

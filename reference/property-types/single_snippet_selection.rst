@@ -30,6 +30,10 @@ Parameters
     * - allow_deselect_for_disabled_items
       - bool
       - Defines if the user should be able to deselect an item that is disabled. Default value is true.
+    * - template_keys
+      - string
+      - Comma-separated list of template keys. When set, only snippets using one of those
+        templates are shown in the selection overlay.
     * - request_parameters
       - collection
       - Collection of parameters that are appended to the requests sent by the selection.
@@ -49,7 +53,7 @@ Example
         </meta>
 
         <params>
-            <param name="types" value="default"/>
+            <param name="template_keys" value="default"/>
             <param name="default" value="footer_social_media_links"/>
         </params>
     </property>

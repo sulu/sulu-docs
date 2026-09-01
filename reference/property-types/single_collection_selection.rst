@@ -59,7 +59,7 @@ Twig
 
 .. code-block:: twig
 
-    {{ content.collection.fullName }}
+    {{ content.collection.title }}
 
 .. _Collection: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/MediaBundle/Api/Collection.php
 .. _custom twig extension: https://symfony.com/doc/current/templating/twig_extension.html

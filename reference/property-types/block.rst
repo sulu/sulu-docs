@@ -41,7 +41,7 @@ Parameters
       - If set to ``true`` the position of blocks can be changed by using drag&drop, otherwise they have a fixed position. Default to ``true``.
     * - ``settings_form_key``
       - string
-      - Key of the form that should be opened in an overlay when the settings icon is clicked. Will be set to ``page_block_settings`` per default for pages.
+      - Key of the form that should be opened in an overlay when the settings icon is clicked. Will be set to ``content_block_settings`` per default for pages.
 
 Example
 -------

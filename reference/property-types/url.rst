@@ -18,7 +18,7 @@ Parameters
       - Description
     * - defaults
       - collection
-      - Default values for input (scheme and specificPart).
+      - Default values for input (scheme and specific_part).
     * - schemes
       - collection
       - List of available schemes in dropdown and validation.

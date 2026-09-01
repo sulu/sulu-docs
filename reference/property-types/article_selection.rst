@@ -38,6 +38,14 @@ Parameters
       - collection
       - Collection of property names.
         The value of the respective properties are appended to the requests sent by the selection.
+    * - template_keys
+      - string
+      - Comma-separated list of template keys. When set, only articles using one of those
+        templates are shown in the selection overlay.
+    * - groups
+      - string
+      - Comma-separated list of article group identifiers. When set, only articles belonging
+        to one of those groups are shown in the selection overlay.
     * - min
       - string
       - The minimum number of selected articles
