@@ -1,7 +1,8 @@
 Provider for XML-Sitemap
 ========================
 
-``SitemapProvider`` classes are used to load data for the XML sitemap. Each provider
+``SitemapProvider`` classes are used to load data for the XML sitemap and for the
+:doc:`sulu_sitemap </reference/twig-extensions/functions/sulu_sitemap>` Twig function. Each provider
 returns an array of ``SitemapUrl`` instances. The API is paginated because Google
 limits a single sitemap file to 50,000 URLs. The ``SitemapController`` generates a
 ``sitemapindex`` automatically when more than one provider exists or when a provider
@@ -16,6 +17,9 @@ The ``SitemapUrl`` constructor accepts the following arguments:
 * ``changefreq`` (optional) - Frequency of change (see ``SitemapUrl::CHANGE_FREQUENCY_*`` constants).
 * ``priority`` (optional) - Priority of page relative to other pages (float).
 * ``attributes`` (optional) - Additional attributes passed to the sitemap template.
+* ``title`` (optional) - Human readable title of the URL. It is not rendered into the XML sitemap, but it
+  is used as link text by the ``sulu_sitemap`` Twig function, so set it if your entity should show up with
+  a readable label in a human readable sitemap.
 * ``alternateLinks`` (optional) - Added via ``addAlternateLink()`` after construction.
 
 Sulu provides built-in providers for pages (including the homepage) and, when
@@ -57,7 +61,8 @@ for a given host.
                     $scheme . '://' . $host . $item->getUrl(),
                     $item->getLocale(),
                     $item->getDefaultLocale(),
-                    $item->getChanged()
+                    $item->getChanged(),
+                    title: $item->getTitle()
                 );
             }
 
@@ -93,3 +98,8 @@ If you have disabled autowiring, add the tag manually:
     App\Sitemap\ExampleSitemapProvider:
         tags:
             - { name: sulu.sitemap.provider }
+
+Once the provider is registered, its URLs appear in ``/sitemap.xml``, in
+:doc:`sulu_sitemap </reference/twig-extensions/functions/sulu_sitemap>` and under its alias in
+:doc:`sulu_sitemap_aliases </reference/twig-extensions/functions/sulu_sitemap_aliases>` - no further
+wiring is required.
