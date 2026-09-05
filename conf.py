@@ -42,6 +42,7 @@ extensions = [
 
 # Redirects for renamed pages (content-types -> property-types in 3.0)
 redirects = {
+    "bundles/website/reference-store": "../../bundles/reference-store.html",
     "reference/content-types/index": "../../reference/property-types/index.html",
     "reference/content-types/account_selection": "../../reference/property-types/account_selection.html",
     "reference/content-types/block": "../../reference/property-types/block.html",
@@ -78,6 +79,7 @@ redirects = {
     "reference/content-types/tag_selection": "../../reference/property-types/tag_selection.html",
     "reference/content-types/teaser_selection": "../../reference/property-types/teaser_selection.html",
     "reference/content-types/text_area": "../../reference/property-types/text_area.html",
+    "reference/content-types/text_editor": "../../reference/property-types/text_editor.html",
     "reference/content-types/text_line": "../../reference/property-types/text_line.html",
     "reference/content-types/time": "../../reference/property-types/time.html",
     "reference/content-types/url": "../../reference/property-types/url.html",
