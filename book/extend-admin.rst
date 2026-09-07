@@ -297,10 +297,39 @@ This is done by using the ``sulu_admin.resources`` configuration. The following 
                 routes:
                     list: app.get_events
                     detail: app.get_event
+                views:
+                    list: app.events_list
+                    detail: app.event_edit_form.details
 
 The configuration makes use of the route names you have seen listed above by the `debug:router` command. For both
 variants of the URL (``/admin/api/events`` and ``/admin/api/events/{id}``) one representative is used as a proxy for the
 list and detail URL - whereby the detail URL has to be the one including the ID.
+
+The ``views`` key maps the same ``list`` and ``detail`` names to the names of the Admin views defined for this
+resource in the `Admin class`_ (see the `Configure list view`_ and `Configure form views`_ sections below). Once
+configured, the ``ResourceViewUrlGeneratorInterface`` can use it to generate a URL pointing to a resource's list or
+detail view from PHP, e.g. to link to it from an email notification:
+
+.. code-block:: php
+
+    <?php
+
+    namespace App\EventListener;
+
+    use Sulu\Bundle\AdminBundle\Admin\View\ResourceViewUrlGeneratorInterface;
+
+    class ExampleService
+    {
+        public function __construct(private ResourceViewUrlGeneratorInterface $resourceViewUrlGenerator)
+        {
+        }
+
+        public function example(): string
+        {
+            return $this->resourceViewUrlGenerator->generate('events', 'detail', ['id' => 1]);
+            // /admin/#/events/1/details
+        }
+    }
 
 Admin class
 -----------
@@ -705,43 +734,6 @@ After successfully finishing the above steps you should be able to see the form 
 edit icon in the list or if you click the add button in the toolbar:
 
 .. figure:: ../img/extend-admin-form.jpg
-
-Generate a URL for a view
--------------------------
-
-Sometimes you need a URL pointing to a specific view of the Admin application from PHP, e.g. to link to it from an
-email notification. The ``ViewUrlGeneratorInterface`` takes the ``name`` of a view together with the parameters
-required by its ``path`` and returns the corresponding URL of the Admin application:
-
-.. code-block:: php
-
-    <?php
-
-    namespace App\EventListener;
-
-    use Sulu\Bundle\AdminBundle\Admin\View\ViewUrlGeneratorInterface;
-
-    class ExampleService
-    {
-        public function __construct(private ViewUrlGeneratorInterface $viewUrlGenerator)
-        {
-        }
-
-        public function example(): string
-        {
-            return $this->viewUrlGenerator->generate(
-                'sulu_contact.contact_edit_form.details',
-                ['id' => 1]
-            );
-            // /admin/#/contacts/1/details
-        }
-    }
-
-If the view's ``path`` contains a ``:webspace`` or ``:locale`` placeholder and it is not explicitly passed in the
-parameters, the value is taken from the current request when available. Missing a value the ``path`` needs throws a
-``ViewParameterNotFoundException``. The ``referenceType`` argument mirrors Symfony's ``UrlGeneratorInterface``
-constants (``ABSOLUTE_URL``, ``ABSOLUTE_PATH``, ``RELATIVE_PATH``, ``NETWORK_PATH``) and defaults to
-``ABSOLUTE_PATH``.
 
 Selection field type
 --------------------
