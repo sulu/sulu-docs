@@ -973,7 +973,9 @@ the same type, you can organize them into groups by adding a ``<group>`` element
         <!-- ... -->
     </template>
 
-Templates without a ``<group>`` element land in the implicit ``default`` group.
+Templates without a ``<group>`` element land in the implicit ``default`` group, whose tab title
+falls back to the plain word "Default" unless your project adds a translation for
+``sulu_admin.template_group.default`` (see below).
 
 Grouping templates this way splits the list into one tab per group, restricts each group's "Add" and
 "Edit" forms to that group's templates, and gives every group other than ``default`` its own security
