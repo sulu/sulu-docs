@@ -949,6 +949,48 @@ node and the ``ref`` attribute:
     to avoid confusion. This approach also simplifies the transition to global blocks in the future, eliminating the need
     for data migrations.
 
+.. _templates-template-groups:
+
+Template Groups
+----------------
+
+Template groups are available for article templates (since Sulu 3.0) and snippet templates (since
+Sulu 3.1) only; page templates do not support the ``<group>`` element. If you have many templates of
+the same type, you can organize them into groups by adding a ``<group>`` element next to the
+``<key>``:
+
+.. code-block:: xml
+
+    <!-- config/templates/articles/event.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+        <key>event</key>
+        <group>marketing</group>
+
+        <!-- ... -->
+    </template>
+
+Templates without a ``<group>`` element land in the implicit ``default`` group.
+
+Grouping templates this way splits the list into one tab per group, restricts each group's "Add" and
+"Edit" forms to that group's templates, and gives every group other than ``default`` its own security
+context (e.g. ``sulu.article.articles_marketing``, see :doc:`../bundles/security/index`) that has to
+be granted to the roles that need it; selection fields and smart content for the resource can be
+filtered by group too, see e.g. :doc:`../reference/property-types/snippet_selection`.
+
+The group title shown in the administration interface, for every group including the implicit
+``default`` group, comes from the translation key ``sulu_admin.template_group.<group>`` and falls
+back to the capitalized group identifier if no translation exists.
+
+.. note::
+
+    Groups are also picked up by the admin search index. After adding or renaming a group, run
+    ``bin/console cmsig:seal:reindex`` for both kernels so search results deep-link into the correct
+    group.
+
 Caching
 -------
 
