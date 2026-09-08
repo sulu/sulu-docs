@@ -105,9 +105,9 @@ Properties are the same as Page :doc:`../book/templates`.
 Grouping Snippet Templates
 ---------------------------
 
-If your project has many snippet templates, you can organize them into groups, e.g. to give
-"Events" and "Marketing" snippets their own tab in the snippet list. Add a ``<group>`` element to
-each template:
+Available since Sulu 3.1. If your project has many snippet templates, you can organize them into
+groups, e.g. to give "Events" and "Marketing" snippets their own tab in the snippet list. Add a
+``<group>`` element to each template:
 
 .. code-block:: xml
 
