@@ -973,9 +973,7 @@ the same type, you can organize them into groups by adding a ``<group>`` element
         <!-- ... -->
     </template>
 
-Templates without a ``<group>`` element land in the implicit ``default`` group, whose tab title
-falls back to the plain word "Default" unless your project adds a translation for
-``sulu_admin.template_group.default`` (see below).
+Templates without a ``<group>`` element land in the implicit ``default`` group.
 
 Grouping templates this way splits the list into one tab per group, restricts each group's "Add" and
 "Edit" forms to that group's templates, and gives every group other than ``default`` its own security
@@ -983,9 +981,9 @@ context (e.g. ``sulu.article.articles_marketing``, see :doc:`../bundles/security
 be granted to the roles that need it; selection fields and smart content for the resource can be
 filtered by group too, see e.g. :doc:`../reference/property-types/snippet_selection`.
 
-The group title shown in the administration interface comes from the translation key
-``sulu_admin.template_group.<group>`` and falls back to the capitalized group identifier if no
-translation exists.
+The group title shown in the administration interface — for every group, including the implicit
+``default`` group — comes from the translation key ``sulu_admin.template_group.<group>`` and falls
+back to the capitalized group identifier if no translation exists.
 
 .. note::
 
