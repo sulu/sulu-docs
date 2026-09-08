@@ -18,9 +18,14 @@ Parameters
     * - Parameter
       - Type
       - Description
-    * - types
+    * - templateKeys
       - string
-      - If set, only snippets of the type can be selected.
+      - Comma separated list of template keys. If set, only snippets using one of these templates
+        can be selected.
+    * - groups
+      - string
+      - Comma separated list of group identifiers, available since Sulu 3.1. If set, only snippets
+        belonging to one of these groups can be selected. See :ref:`templates-template-groups`.
     * - default
       - string
       - If set, the default snippet of the given area will be used as fallback value if no snippet is selected.
@@ -59,7 +64,7 @@ Example
         </meta>
 
         <params>
-            <param name="types" value="sidebar"/>
+            <param name="templateKeys" value="sidebar"/>
             <param name="default" value="footer_social_media_links"/>
         </params>
     </property>

@@ -75,13 +75,14 @@ Parameters
         records when the provider supports duplicate detection. Default: `false`
     * - groups
       - string
-      - Articles only (``articles`` and ``articles_page_tree`` providers): comma
-        separated list of article group identifiers to pre-filter the result set.
+      - Comma separated list of group identifiers to pre-filter the result set. Supported by the
+        ``articles`` and ``articles_page_tree`` providers, and by the ``snippets`` provider since
+        Sulu 3.1. See :ref:`templates-template-groups`.
     * - templateKeys
       - string
       - Comma separated list of template keys to pre-filter the result set. Supported
-        by the ``pages``, ``snippets`` and ``article`` providers. For articles the value
-        is intersected with the templates resolved from ``groups``.
+        by the ``pages``, ``snippets`` and ``articles`` providers. For articles and snippets the
+        value is intersected with the templates resolved from ``groups``.
 
 Return Value
 ------------
