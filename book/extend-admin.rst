@@ -305,31 +305,9 @@ The configuration makes use of the route names you have seen listed above by the
 variants of the URL (``/admin/api/events`` and ``/admin/api/events/{id}``) one representative is used as a proxy for the
 list and detail URL - whereby the detail URL has to be the one including the ID.
 
-The ``views`` key maps the same ``list`` and ``detail`` names to the names of the Admin views defined for this
-resource in the `Admin class`_ (see the `Configure list view`_ and `Configure form views`_ sections below). Once
-configured, the ``ResourceViewUrlGeneratorInterface`` can use it to generate a URL pointing to a resource's list or
-detail view from PHP, e.g. to link to it from an email notification:
-
-.. code-block:: php
-
-    <?php
-
-    namespace App\EventListener;
-
-    use Sulu\Bundle\AdminBundle\Admin\View\ResourceViewUrlGeneratorInterface;
-
-    class ExampleService
-    {
-        public function __construct(private ResourceViewUrlGeneratorInterface $resourceViewUrlGenerator)
-        {
-        }
-
-        public function example(): string
-        {
-            return $this->resourceViewUrlGenerator->generate('events', 'detail', ['id' => 1]);
-            // /admin/#/events/1/details
-        }
-    }
+The ``views`` key maps the ``list`` and ``detail`` names to the Admin views defined for this resource in the
+`Admin class`_ (see the `Configure list view`_ and `Configure form views`_ sections below). It is required to generate
+deeplinks to a resource's list or detail view.
 
 Admin class
 -----------
