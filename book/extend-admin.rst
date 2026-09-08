@@ -297,10 +297,17 @@ This is done by using the ``sulu_admin.resources`` configuration. The following 
                 routes:
                     list: app.get_events
                     detail: app.get_event
+                views:
+                    list: app.events_list
+                    detail: app.event_edit_form.details
 
 The configuration makes use of the route names you have seen listed above by the `debug:router` command. For both
 variants of the URL (``/admin/api/events`` and ``/admin/api/events/{id}``) one representative is used as a proxy for the
 list and detail URL - whereby the detail URL has to be the one including the ID.
+
+The ``views`` key maps the ``list`` and ``detail`` names to the Admin views defined for this resource in the
+`Admin class`_ (see the `Configure list view`_ and `Configure form views`_ sections below). It is required to generate
+deeplinks to a resource's list or detail view.
 
 Admin class
 -----------
