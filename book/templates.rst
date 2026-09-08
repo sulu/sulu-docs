@@ -949,6 +949,74 @@ node and the ``ref`` attribute:
     to avoid confusion. This approach also simplifies the transition to global blocks in the future, eliminating the need
     for data migrations.
 
+.. _templates-template-groups:
+
+Template Groups
+----------------
+
+.. note::
+
+    Template groups are available for article and snippet templates only. Page templates do not
+    support the ``<group>`` element.
+
+If you have many templates of the same type, you can organize them into groups by adding a
+``<group>`` element next to the ``<key>``:
+
+.. code-block:: xml
+
+    <!-- config/templates/articles/news.xml -->
+    <?xml version="1.0" ?>
+    <template xmlns="http://schemas.sulu.io/template/template"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+        <key>news</key>
+        <group>news</group>
+
+        <!-- ... -->
+    </template>
+
+Templates without a ``<group>`` element land in the implicit ``default`` group.
+
+Grouping templates this way changes the administration interface for the corresponding resource
+(articles or snippets):
+
+* The list is split into one tab per group, each showing only the entries that use a template from
+  that group.
+* The "Add" and "Edit" forms of a group only offer the templates belonging to that group.
+* Every group other than ``default`` registers its own security context, e.g.
+  ``sulu.article.articles_news`` or ``sulu.snippet.snippets_news``, so access can be granted or
+  denied per group. See :doc:`../bundles/security/index` for more on security contexts. Remember to
+  grant the new context to the roles that need it. The ``default`` group and setups with only one
+  group keep using the resource's regular security context (``sulu.article.articles`` /
+  ``sulu.snippet.snippets``).
+* Selection fields such as |snippet_selection|, |single_snippet_selection|,
+  :doc:`article_selection <../reference/property-types/article_selection>` or
+  :doc:`single_article_selection <../reference/property-types/single_article_selection>`, and the
+  article/snippet smart content, can be restricted to specific groups with the ``groups``
+  parameter:
+
+.. code-block:: xml
+
+    <property name="relatedNews" type="article_selection">
+        <meta>
+            <title lang="en">Related News</title>
+        </meta>
+        <params>
+            <param name="groups" value="news"/>
+        </params>
+    </property>
+
+The group title shown in the administration interface comes from the translation key
+``sulu_admin.template_group.<group>`` and falls back to the capitalized group identifier if no
+translation exists.
+
+.. note::
+
+    Groups are also picked up by the admin search index. After adding or renaming a group, run
+    ``bin/console cmsig:seal:reindex`` for both kernels so search results deep-link into the correct
+    group.
+
 Caching
 -------
 

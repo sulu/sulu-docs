@@ -102,6 +102,24 @@ Properties
 Properties are the same as Page :doc:`../book/templates`.
 
 
+Grouping Snippet Templates
+---------------------------
+
+If your project has many snippet templates, you can organize them into groups, e.g. to give
+"Events" and "Marketing" snippets their own tab in the snippet list. Add a ``<group>`` element to
+each template:
+
+.. code-block:: xml
+
+    <!-- config/templates/snippets/social_media.xml -->
+    <key>social_media</key>
+    <group>marketing</group>
+
+See :ref:`templates-template-groups` for the full explanation, including the ``groups`` parameter for
+:doc:`../reference/property-types/snippet_selection` and
+:doc:`../reference/property-types/single_snippet_selection`, and how groups affect security contexts.
+
+
 Implement a Snippet in your Template
 ------------------------------------
 
