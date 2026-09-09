@@ -53,8 +53,8 @@ new localization, so make sure to assign them in the contact permissions tab.
     When adding a new localization you have to make sure that the localization
     is also covered by one of the webspaces URLs. This can either happen by using
     the `language` and `country` attributes of the `url` tag, or by specifying
-    e.g. the `{localization}` placeholder. For more information see
-    `Setup a Webspace <webspaces.html#urls>`_.
+    e.g. the `{localization}` placeholder. For more information see the
+    :ref:`URLs <webspace-urls>` of a webspace.
 
 Adding custom localizations
 ---------------------------
