@@ -18,3 +18,49 @@ The SuluMediaBundle can be configured the following way:
                 - video/quicktime
                 - video/x-msvideo
                 - video/x-ms-wmv
+
+Limiting the parallel image generation
+--------------------------------------
+
+Image formats are generated on the fly the first time they are requested. When
+many uncached formats are requested at once (e.g. when a large media collection
+is opened in the administration interface for the first time), every PHP worker
+generates an image at the same time, which can exhaust the memory of the
+server. The ``parallel_image_generation.limit`` option limits the number of
+HTTP requests generating an image concurrently; the other requests wait for a
+free slot before their image is generated:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_media.yaml
+    sulu_media:
+        format_manager:
+            parallel_image_generation:
+                limit: 4
+
+The limit is shared between all the PHP workers of the application through a
+semaphore of the `Symfony Semaphore component`_, using the storage configured
+under ``framework.semaphore``. The ``lock://`` storage works out of the box,
+without any extra service:
+
+.. code-block:: bash
+
+    composer require symfony/semaphore symfony/lock
+
+.. code-block:: yaml
+
+    # config/packages/lock.yaml
+    framework:
+        lock: '%env(LOCK_DSN)%'
+
+    # config/packages/semaphore.yaml
+    framework:
+        semaphore: 'lock://'
+
+The ``lock://`` storage requires ``symfony/semaphore`` 8.1. On older versions,
+configure a Redis DSN instead (``semaphore: 'redis://localhost'``).
+
+When no slot becomes available within one minute, the request fails: the limit
+protects the server, generating the image anyway would defeat it.
+
+.. _`Symfony Semaphore component`: https://symfony.com/doc/current/components/semaphore.html
