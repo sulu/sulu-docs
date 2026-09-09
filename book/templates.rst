@@ -66,6 +66,15 @@ the XML:
 
 You can customize the text by changing this property.
 
+.. note::
+
+    The ``lang`` attribute of the ``<title>`` elements refers to a
+    :ref:`system language <getting-started-system-languages>`, which is the
+    language of the administration interface selected by the user, and not to
+    one of the content languages of your webspaces. Add a ``<title>`` for each
+    language configured in ``sulu_core.translations``; the ``fallback_locale``
+    of that section is used when a language is missing.
+
 Creating a Custom Template
 --------------------------
 
