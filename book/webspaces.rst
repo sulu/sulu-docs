@@ -306,5 +306,36 @@ the values of them by using the ``de-at``-localization:
 |                | sense in combination with `{language}` |                    |
 +----------------+----------------------------------------+--------------------+
 
+Redirecting an URL to another one
+.................................
+
+An URL can also be defined as a redirect only, by adding the ``redirect``
+attribute. Such an URL never delivers any content, it answers with a permanent
+redirect (HTTP 301) to the given target instead:
+
+.. code-block:: xml
+
+    <url redirect="www.example.org/de">www.example.com</url>
+    <url language="de" country="at">www.example.org/de</url>
+
+The path of the incoming request is kept, so a request for
+``www.example.com/team`` ends up at ``www.example.org/de/team``. The scheme and
+the port are taken from the incoming request, and the host of the target is only
+used when the target defines one.
+
+The ``{localization}``, ``{language}`` and ``{country}`` placeholders can also
+be used in the target. They are not expanded into several URLs as described
+above, they are replaced with the values of the default localization when the
+redirect happens:
+
+.. code-block:: xml
+
+    <url redirect="www.example.org/{localization}">www.example.com</url>
+
+.. note::
+
+    Sulu only redirects when the target resolves to an existing route. If it
+    does not, the request keeps its 404 response.
+
 .. _SuluThemeBundle: https://github.com/sulu/SuluThemeBundle
 .. _bundle documentation: https://github.com/sulu/SuluThemeBundle
