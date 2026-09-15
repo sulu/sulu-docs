@@ -60,7 +60,9 @@ without any extra service:
 The ``lock://`` storage requires ``symfony/semaphore`` 8.1. On older versions,
 configure a Redis DSN instead (``semaphore: 'redis://localhost'``).
 
-When no slot becomes available within one minute, the request fails: the limit
-protects the server, generating the image anyway would defeat it.
+When no slot becomes available within 20 seconds, the request fails with a
+``503 Service Unavailable`` response: the limit protects the server, generating
+the image anyway would defeat it. A slot that is never released, e.g. because
+the PHP worker holding it was killed, is freed automatically after one minute.
 
 .. _`Symfony Semaphore component`: https://symfony.com/doc/current/components/semaphore.html
