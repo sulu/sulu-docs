@@ -22,13 +22,13 @@ The SuluMediaBundle can be configured the following way:
 Limiting the parallel image generation
 --------------------------------------
 
-Image formats are generated on the fly the first time they are requested. When
-many uncached formats are requested at once (e.g. when a large media collection
-is opened in the administration interface for the first time), every PHP worker
-generates an image at the same time, which can exhaust the memory of the
-server. The ``parallel_image_generation.limit`` option limits the number of
-HTTP requests generating an image concurrently; the other requests wait for a
-free slot before their image is generated:
+Available since Sulu 3.1. Image formats are generated on the fly the first time
+they are requested. When many uncached formats are requested at once (e.g. when
+a large media collection is opened in the administration interface for the first
+time), every PHP worker generates an image at the same time, which can exhaust
+the memory of the server. The ``parallel_image_generation.limit`` option limits
+the number of HTTP requests generating an image concurrently; the other requests
+wait for a free slot before their image is generated:
 
 .. code-block:: yaml
 
