@@ -123,51 +123,11 @@ Other Variables
 Navigation
 ^^^^^^^^^^
 
-There is a Twig function that obtains the menu. You need to pass the key of the
-navigation context you defined in your webspace (:doc:`webspaces`).
-While editing a page the navigation context could be defined in
-*settings > Navigation context*. For many projects one or two navigation
-contexts might be enough:
-
-* The main navigation usually is the main entry point for the user of the
-  website.
-* A footer navigation can be useful for imprints and similar pages.
-
-The following screenshot shows the `Sulu homepage`_ with the main navigation on
-the top. As you can see the navigation returned for the navigation contexts are
-not necessarily flat, but can also contain sub pages.
-
-.. figure:: ../img/website-navigation-contexts.png
-    :align: center
-
-The navigation contexts can also be used in any other combination you want. The
-separation into main and footer navigation is only a quite common example.
-
-The advantage of this method is that the content manager can decide on his own
-which pages to show in the navigation. This code show an example for creating a
-nested navigation using all the pages marked to be shown in the main navigation
-context.
-
-.. code-block:: html
-
-    <ul>
-        {% for item in sulu_navigation_root_tree('main', 2) %}
-        <li>
-            <a href="{{ sulu_content_path(item.url) }}"
-                title="{{ item.title }}">{{ item.title }}</a>
-            {% if item.children|length > 0 %}
-                <ul>
-                {% for child in item.children %}
-                    <li><a href="{{ sulu_content_path(child.url) }}"
-                            title="{{ child.title }}">
-                        {{ child.title }}
-                    </a></li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+The pages assigned to a navigation context of the webspace are retrieved with
+the ``sulu_page_navigation_*`` Twig functions, e.g.
+``sulu_page_navigation_root_tree('main', 2)`` for the main navigation up to two
+levels deep. Read :doc:`navigation` for the configuration of the contexts and a
+complete rendering example.
 
 Images
 ^^^^^^
