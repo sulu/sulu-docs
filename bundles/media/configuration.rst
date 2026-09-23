@@ -66,3 +66,30 @@ the image anyway would defeat it. A slot that is never released, e.g. because
 the PHP worker holding it was killed, is freed automatically after one minute.
 
 .. _`Symfony Semaphore component`: https://symfony.com/doc/current/components/semaphore.html
+
+Media languages
+---------------
+
+Available since Sulu 3.1. Documents and videos have a "Media language" field,
+which records the language(s) the file itself is in, independent of the content
+locale (e.g. a French datasheet placed on a German page). The field is optional,
+accepts multiple languages and is kept when a new version of the file is
+uploaded. The media overview can be filtered by it, including media without any
+language.
+
+By default, the selectable languages are the locales of the webspaces. The
+``media_languages`` option replaces them with a fixed list of language codes:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_media.yaml
+    sulu_media:
+        media_languages: ['de', 'en', 'fr', 'it']
+
+The administration interface shows each code with its localized name (``de_at``
+becomes "German (Austria)"). The stored codes are available in the media data
+of the API and in Twig:
+
+.. code-block:: twig
+
+    {{ media.mediaLanguages|join(', ') }}
