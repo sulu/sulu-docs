@@ -31,6 +31,16 @@ example sulu uses for a html request the template
 `templates/pages/default.xml.twig` for a xml request. With this
 feature you are able to define different output format for a single page.
 
+Themes
+------
+
+By default templates are locacated in the project in the `templates/` directory. If you have installed
+the Sulu Theme Bundle, you can find the themes in the `themes/` directory.
+
+One use case for themes is to have a different look and feel for different webspaces but still use simmilar base templates.
+
+For more information about themes, see `Sulu Theme Bundle documentation`_.
+
 Rendering the Content
 ---------------------
 
@@ -213,3 +223,4 @@ If you want to use Symfony's Webpack Encore, have a look at the :doc:`../cookboo
 
 .. _image_formats.xml: https://github.com/sulu/skeleton/blob/2.6/config/image-formats.xml
 .. _Sulu Homepage: http://sulu.io
+.. _Sulu Theme Bundle documentation: https://github.com/sulu/SuluThemeBundle/blob/3.1/README.md
