@@ -201,6 +201,31 @@ into every admin preview response automatically, so this works regardless of whi
     block field that predates this option, ``sulu_preview_deep_link()`` simply renders nothing and
     the block won't be clickable from the preview.
 
+Customizing the Colors
+~~~~~~~~~~~~~~~~~~~~~~
+
+By default, the outline and focus button use the Sulu blue with a white icon. Call the
+``sulu_preview_deep_link_colors()`` Twig function in the ``<head>`` of your base template to match
+your website's design:
+
+.. code-block:: twig
+
+    {# base.html.twig #}
+    {{ sulu_preview_deep_link_colors(
+        {border: '#23a3ec', icon: '#fff'},
+        {border: '#7cc8f5', icon: '#111'}
+    ) }}
+
+The first argument sets the light colors, the optional second argument the colors used with
+``prefers-color-scheme: dark``. Both accept the keys ``border`` (outline and button background) and
+``icon`` (the icon on the button). A key left out of the light colors keeps its default, one left
+out of the dark colors keeps its light color. The translucent fill over the hovered element is
+derived from the border color.
+
+Like ``sulu_preview_deep_link()``, the function renders nothing outside the preview. It sets the CSS
+custom properties ``--sulu-preview-deep-link-border`` and ``--sulu-preview-deep-link-icon`` on
+``:root``.
+
 Headless Setup
 ~~~~~~~~~~~~~~
 
