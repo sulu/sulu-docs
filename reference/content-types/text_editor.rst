@@ -32,6 +32,10 @@ When outputting the text editor field in twig the `raw filter`_ need to be used:
 Language of text parts
 ----------------------
 
+.. note::
+
+   This was added in 2.6.27
+
 The toolbar contains a language dropdown, which lets editors mark a part of the
 text with its language. The marked text is wrapped in a ``span`` with ``lang`` and
 ``dir`` attributes, so screen readers pronounce foreign-language passages
