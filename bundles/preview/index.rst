@@ -226,6 +226,10 @@ Like ``sulu_preview_deep_link()``, the function renders nothing outside the prev
 custom properties ``--sulu-preview-deep-link-border`` and ``--sulu-preview-deep-link-icon`` on
 ``:root``.
 
+The colors only apply to the outline and button of the bridge script Sulu injects into the preview.
+A headless frontend draws its own overlay (see `Headless Setup`_) and styles it itself, for example
+with the same two custom properties.
+
 Headless Setup
 ~~~~~~~~~~~~~~
 
