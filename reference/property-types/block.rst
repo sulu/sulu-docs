@@ -224,3 +224,19 @@ The value of your field can be accessed in twig over the ``settings`` variable:
             } %}
         </div>
     {% endfor %}
+
+Conditions based on the block
+-----------------------------
+
+The block settings form is rendered on its own, so ``visibleCondition`` and ``disabledCondition`` in it cannot
+reach the block via ``__parent``. Instead, the block owning the settings form is available as ``__block``, at any
+depth of the settings form. It contains the type and the content of the block, but not its settings:
+
+.. code-block:: xml
+
+    <property name="theme" type="single_select" visibleCondition="__block.type == 'editor'">
+        <!-- ... -->
+    </property>
+
+``__block`` holds the block as it was when the settings overlay was opened, and it is only available inside the
+block settings form.
