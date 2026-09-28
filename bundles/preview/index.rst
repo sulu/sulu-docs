@@ -204,9 +204,10 @@ into every admin preview response automatically, so this works regardless of whi
 Headless Setup
 ~~~~~~~~~~~~~~
 
-With the HeadlessBundle, the JSON returned while previewing already includes each block's id -
-for example, a block inside ``homeBlocks`` looks like this while previewing (the ``_id`` key is
-omitted outside of a preview render):
+With the HeadlessBundle, the JSON returned while previewing already includes the id of each block
+and image map hotspot - for example, a block inside ``homeBlocks`` looks like this while previewing
+(the ``_id`` key is omitted outside of a preview render, and for fields with ``block_id_generator``
+disabled):
 
 .. code-block:: json
 
@@ -240,11 +241,36 @@ back to the admin is on your frontend. The frontend must:
            }
        });
 
-When the headless frontend is hosted on a different origin from the admin, a direct message to the
-admin is rejected. In this case, serve a preview wrapper from the admin's origin. The frontend sends
-its message to this wrapper, which relays it to the admin. The HeadlessBundle preview implementation
-uses this wrapper pattern.
+The bridge script Sulu injects into the preview only runs in the document the admin renders, so it
+does not reach a frontend that renders on its own. The frontend therefore also draws the hover
+outline and focus button itself, including their colors.
 
-For a reference implementation of the click handling, see
+When the headless frontend is hosted on a different origin from the admin, a direct message to the
+admin is rejected. In this case, the page template of the preview acts as a wrapper: it is rendered
+by the admin's origin, loads the frontend in an iframe, and relays the message to the admin. The
+HeadlessBundle does not ship this wrapper, it is part of your project's template:
+
+.. code-block:: twig
+
+    {# pages/headless.html.twig #}
+    <iframe id="frontend" src="https://frontend.example.com/preview"></iframe>
+
+    <script>
+        var frame = document.getElementById('frontend');
+
+        window.addEventListener('message', function (event) {
+            if (event.source !== frame.contentWindow
+                || !event.data
+                || event.data.type !== 'sulu.preview.navigate'
+            ) {
+                return;
+            }
+
+            var adminWindow = window.opener || window.parent;
+            adminWindow.postMessage(event.data, window.location.origin);
+        });
+    </script>
+
+For a reference implementation of the click handling and the hover overlay, see
 ``src/Sulu/Bundle/PreviewBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu - the script
 injected into every preview automatically for the classic Twig integration.
