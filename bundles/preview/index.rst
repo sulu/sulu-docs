@@ -204,31 +204,28 @@ for any controller or ``RouteDefaultsProvider`` that renders the preview.
 Customizing the Colors
 ~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the outline and focus button use the Sulu blue with a white icon. Call the
-``sulu_preview_deep_link_colors()`` Twig function in the ``<head>`` of your base template to match
-your website's design:
+By default, the outline and focus button use the Sulu blue. Set the CSS custom property
+``--sulu-preview-deep-link-color`` in your website's CSS to match your website's design:
 
-.. code-block:: twig
+.. code-block:: css
 
-    {# base.html.twig #}
-    {{ sulu_preview_deep_link_colors(
-        {border: '#23a3ec', icon: '#fff'},
-        {border: '#7cc8f5', icon: '#111'}
-    ) }}
+    :root {
+        --sulu-preview-deep-link-color: #23a3ec;
+    }
 
-The first argument sets the light colors, the optional second argument the colors used with
-``prefers-color-scheme: dark``. Both accept the keys ``border`` (outline and button background) and
-``icon`` (the icon on the button). A key left out of the light colors keeps its default, one left
-out of the dark colors keeps its light color. The translucent fill over the hovered element is
-derived from the border color.
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --sulu-preview-deep-link-color: #7cc8f5;
+        }
+    }
 
-Like ``sulu_preview_deep_link()``, the function renders nothing outside the preview. It sets the CSS
-custom properties ``--sulu-preview-deep-link-border`` and ``--sulu-preview-deep-link-icon`` on
-``:root``.
+The color is used for the outline and the button background. The translucent fill over the hovered
+element is derived from it, and the icon on the button is black or white, whichever contrasts better
+with the color. Any CSS color value works.
 
 The colors only apply to the outline and button of the bridge script Sulu injects into the preview.
 A headless frontend draws its own overlay (see `Headless Setup`_) and styles it itself, for example
-with the same two custom properties.
+with the same custom property.
 
 Headless Setup
 ~~~~~~~~~~~~~~
