@@ -140,6 +140,36 @@ it is also possible to load snippet templates from custom folders.
 In this example, a new Events folder has been specified. It is important that the key for the configuration remains unique for each config.
 
 
+Shadow Locales
+--------------
+
+Like pages and articles, a snippet can shadow another locale. A shadow locale shows the content of its source locale,
+so content that is identical in several locales has to be maintained only once.
+
+To use it, open the snippet in the locale that should become the shadow, go to the *Settings* tab, enable *Shadow*
+and choose the source locale. The toggle is disabled while the current locale is itself the source of another shadow.
+
+* Saving the settings gives the new shadow the template and content of its source locale.
+* The source locale has to be published before the shadow can be published, otherwise publishing fails with a hint to
+  publish the source first.
+* Publishing the shadow copies the live content of the source locale into the live content of the shadow. Publishing the
+  source again refreshes all its shadows.
+* A shadow stores no references of its own.
+
+Rendering does not change. For a shadow locale, :doc:`../reference/twig-extensions/functions/sulu_snippet_load_by_area`
+returns the content of the source locale:
+
+.. code-block:: twig
+
+    {{ sulu_snippet_load_by_area('hotel') }}
+
+.. note::
+
+    The shadow locales are stored in the ``shadowLocale`` and ``shadowLocales`` columns of the
+    ``sn_snippet_dimension_contents`` table, run ``bin/console doctrine:migrations:migrate`` after updating. A project
+    with its own implementation of ``SnippetDimensionContentInterface`` has to implement the methods of
+    ``Sulu\Content\Domain\Model\ShadowInterface``, most simply by using ``Sulu\Content\Domain\Model\ShadowTrait``.
+
 Learn more
 ----------
 
