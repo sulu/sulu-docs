@@ -49,7 +49,7 @@ following paragraphs.
             <excluded-template>overview</excluded-template>
         </excluded-templates>
 
-        <settings-form>website_settings</settings-form>
+        <webspace-settings-form>website_settings</webspace-settings-form>
 
         <navigation>
             <contexts>
@@ -185,12 +185,12 @@ described in :doc:`templates`) should be excluded in the template dropdown of
 the page form. The entire node is optional, since especially if you only have
 a single webspace this setting does not make a lot of sense.
 
-Settings form (optional)
-------------------------
+Webspace settings form (optional)
+---------------------------------
 
-The ``settings-form`` node adds a "Settings" tab to the webspace in the administration interface, for data which is not
-part of a page, e.g. the receiver of a contact form or links to social media. It contains the key of a form in the
-``config/forms`` directory of your project (see :doc:`extend-admin`):
+The ``webspace-settings-form`` node adds a "Settings" tab to the webspace in the administration interface, for data
+which is not part of a page, e.g. the receiver of a contact form or links to social media. It contains the key of a form
+in the ``config/forms`` directory of your project (see :doc:`extend-admin`):
 
 .. code-block:: xml
 
@@ -223,6 +223,18 @@ as long as nothing is published:
     {% if settings %}
         <a href="mailto:{{ settings.content.receiverEmail }}">Contact us</a>
     {% endif %}
+
+The function takes three optional arguments, ``properties``, ``webspaceKey`` and ``locale``. The last two default to
+the webspace and localization of the current request. Without ``properties`` all values are in ``content``. With
+``properties``, a map of a name in the result to the name of the property in the form, the values are top level keys of
+the result:
+
+.. code-block:: twig
+
+    {% set settings = sulu_page_webspace_settings_load({'mail': 'receiverEmail'}) %}
+    {{ settings.mail }}
+
+    {% set settings = sulu_page_webspace_settings_load(webspaceKey: 'blog', locale: 'de') %}
 
 Navigation
 ----------
