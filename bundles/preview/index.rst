@@ -204,18 +204,18 @@ for any controller or ``RouteDefaultsProvider`` that renders the preview.
 Customizing the Colors
 ~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the outline and focus button use the Sulu blue. Set the CSS custom property
+By default, the outline and focus button use the Sulu blue (``#23a3ec``). Set the CSS custom property
 ``--sulu-preview-deep-link-color`` in your website's CSS to match your website's design:
 
 .. code-block:: css
 
     :root {
-        --sulu-preview-deep-link-color: #23a3ec;
+        --sulu-preview-deep-link-color: #e8590c;
     }
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --sulu-preview-deep-link-color: #7cc8f5;
+            --sulu-preview-deep-link-color: #ff922b;
         }
     }
 
@@ -223,9 +223,7 @@ The color is used for the outline and the button background. The translucent fil
 element is derived from it, and the icon on the button is black or white, whichever contrasts better
 with the color. Any CSS color value works.
 
-The colors only apply to the outline and button of the bridge script Sulu injects into the preview.
-A headless frontend draws its own overlay (see `Headless Setup`_) and styles it itself, for example
-with the same custom property.
+A headless frontend styles its own overlay, see `Headless Setup`_.
 
 Headless Setup
 ~~~~~~~~~~~~~~
