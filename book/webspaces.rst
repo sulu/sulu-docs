@@ -188,9 +188,9 @@ a single webspace this setting does not make a lot of sense.
 Webspace settings form (optional)
 ---------------------------------
 
-The ``webspace-settings-form`` node adds a "Settings" tab to the webspace in the administration interface, for data
-which is not part of a page, e.g. the receiver of a contact form or links to social media. It contains the key of a form
-in the ``config/forms`` directory of your project (see :doc:`extend-admin`):
+Available since Sulu 3.1. The ``webspace-settings-form`` node adds a "Settings" tab to the webspace in the
+administration interface, for data which is not part of a page, e.g. the receiver of a contact form or links to social
+media. It contains the key of a form in the ``config/forms`` directory of your project (see :doc:`extend-admin`):
 
 .. code-block:: xml
 
