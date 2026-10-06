@@ -38,7 +38,8 @@ contexts are enough:
 
 The ``key`` of a context is what you pass to the Twig functions, the ``title``
 is what the content manager sees: while editing a page, the contexts the page
-belongs to are selected in *Settings > Navigation context*.
+belongs to are selected in the *Show page in* field of the *Page settings*
+section on the *Settings* tab.
 
 The following screenshot shows the `Sulu homepage`_ with the main navigation on
 the top. As you can see the navigation returned for the navigation contexts are

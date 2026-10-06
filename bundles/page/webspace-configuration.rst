@@ -177,27 +177,19 @@ shared among different portals and URLs. The portals can then also define for
 themselves in which localization they publish the content, so that you can
 spread different localizations over different URLs.
 
-Our sample file defines just one portal, which includes a ``name`` and a
-``key`` just as the webspace, whereby the key for the portal has to be unique
-for the entire installation, not only within this webspace.
+The ``name`` and ``key`` of a portal and its environments are described in
+:doc:`../../book/webspaces`.
 
 URLs
 ~~~~
 
-The most important part of the portal configuration are the environments,
-because they are including the URLs for the portal. A portal can have multiple
-environments, which have to match the environments defined in Symfony. Usually
-``dev``, ``stage`` and ``prod`` are available. Each environment can define its
-own set of URLs.
-
-The URLs also have to include the localization somehow. You have two
-possibilities to do so:
+The URLs of a portal also have to include the localization somehow. You have
+two possibilities to do so:
 
 Fixing an URL to a specific localization
 ........................................
 
-The above example shows this possibility, where you fix one URL to exactly one
-localization. The following fragment shows again how to this:
+You can fix one URL to exactly one localization:
 
 .. code-block:: xml
 
@@ -235,6 +227,11 @@ the values of them by using the ``de-at``-localization:
 +----------------+----------------------------------------+--------------------+
 | {country}      | The name of the country, only makes    | `at`               |
 |                | sense in combination with `{language}` |                    |
++----------------+----------------------------------------+--------------------+
+| {segment}      | The key of the segment, see `Segments` | `w`                |
++----------------+----------------------------------------+--------------------+
+| {host}         | The host of the current request, to    | `www.example.org`  |
+|                | match all hosts                        |                    |
 +----------------+----------------------------------------+--------------------+
 
 .. _SuluThemeBundle: https://github.com/sulu/SuluThemeBundle

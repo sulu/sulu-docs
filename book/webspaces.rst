@@ -166,8 +166,7 @@ localization:
     If you want to match all hosts, e.g. during development, you can use the
     ``{host}`` placeholder: ``<url>{host}/{localization}</url>``.
 
-The available placeholders and the way to spread the localizations of a
-webspace over several portals are described in detail in the
+The available placeholders are listed in the
 :doc:`webspace configuration reference <../bundles/page/webspace-configuration>`.
 
 Further Configuration
@@ -177,8 +176,9 @@ The configuration above is all that is needed for most websites. The webspace
 schema offers some more, optional, tags, which are described in the
 :doc:`webspace configuration reference <../bundles/page/webspace-configuration>`:
 
-* ``security``: restrict the pages of the webspace to the users of a separate
-  security system, with optional permission checks on the website;
+* ``security``: define a separate security system for the webspace, with
+  ``permission-check`` the website shows its pages only to the users of that
+  system;
 * ``theme``: use a different look and feel per webspace with the
   SuluThemeBundle;
 * ``excluded-templates``: hide some page templates in the template dropdown of
