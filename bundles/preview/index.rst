@@ -167,3 +167,113 @@ If you are in a multi server setup its recommended to set the whole `cache.app` 
 Read more about it in the `Symfony Cache Documentation`_.
 
 .. _Symfony Cache Documentation: https://symfony.com/doc/4.4/cache.html#configuring-cache-with-frameworkbundle
+
+Navigate from Preview to Block
+-------------------------------
+
+Available since Sulu 3.1. Hovering a block inside the preview shows a small focus button.
+Clicking it scrolls the admin form to the matching block and expands it.
+
+Rendering the Deep Link in Twig
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Call the ``sulu_preview_deep_link()`` Twig function on the root element of your block template, passing
+it the block's id. Inside the block template the block is available as ``content``, see
+:doc:`../../reference/property-types/block`:
+
+.. code-block:: twig
+
+    {# includes/blocks/text_image.html.twig #}
+    <div {{ sulu_preview_deep_link(content._id) }}>
+        <h3>{{ content.title }}</h3>
+        {# ... #}
+    </div>
+
+The function renders a ``data-sulu-preview-id`` attribute in the preview. The bundle handles the rest:
+the click in the preview iframe and the scroll and expand in the admin form. There is nothing to
+configure. The bridge script is added to every admin preview that contains the attribute, so this works
+for any controller or ``RouteDefaultsProvider`` that renders the preview.
+
+.. note::
+
+    ``content._id`` is only set while ``block_id_generator`` is enabled for the block field, which
+    is the default for page, article and snippet templates. If you disabled it,
+    ``sulu_preview_deep_link()`` simply renders nothing and the block won't be clickable from the
+    preview.
+
+Headless Setup
+~~~~~~~~~~~~~~
+
+Available since ``sulu/headless-bundle`` 3.1. While previewing, the HeadlessBundle adds the id of each
+block and image map hotspot to the JSON. A block inside ``homeBlocks`` looks like this (``_id`` is
+omitted outside a preview and for fields with ``block_id_generator`` disabled):
+
+.. code-block:: json
+
+    {
+        "type": "text-image",
+        "settings": [],
+        "_id": "0198f2b1-2e3a-7000-8a1b-2c9e6f8d1a4b",
+        "title": "Why Sulu"
+    }
+
+Sulu has no control over how or where your frontend renders, so getting a click from your preview
+back to the admin is on your frontend. The frontend must:
+
+#. Render the ``_id`` as a ``data-sulu-preview-id`` attribute on the block's root DOM element, like
+   ``sulu_preview_deep_link()`` does in Twig.
+
+#. Draw a hover outline on the element carrying that attribute and a focus button inside it. The
+   bridge script Sulu injects into the preview only runs in the document the admin renders, so it does
+   not reach a frontend that renders on its own and the frontend draws both itself, including their
+   colors.
+
+#. On click of the focus button, ``postMessage`` the admin window with
+   ``{type: 'sulu.preview.navigate', id: <the id>}``. Post from the button only, not from every
+   click inside the block, so links and buttons in the block keep working:
+
+   .. code-block:: javascript
+
+       var adminWindow = window.opener || window.parent;
+
+       // ".focus-button" is the button your frontend draws inside the hovered block element
+       document.addEventListener('click', function (event) {
+           var button = event.target.closest('.focus-button');
+           var anchor = button && button.closest('[data-sulu-preview-id]');
+           if (anchor) {
+               adminWindow.postMessage(
+                   {type: 'sulu.preview.navigate', id: anchor.getAttribute('data-sulu-preview-id')},
+                   '*'
+               );
+           }
+       });
+
+When the headless frontend is hosted on a different origin from the admin, a direct message to the
+admin is rejected. In this case, the page template of the preview acts as a wrapper: it is rendered
+by the admin's origin, loads the frontend in an iframe, and relays the message to the admin. The
+HeadlessBundle does not ship this wrapper, it is part of your project's template:
+
+.. code-block:: twig
+
+    {# pages/headless.html.twig #}
+    <iframe id="frontend" src="https://frontend.example.com/preview"></iframe>
+
+    <script>
+        var frame = document.getElementById('frontend');
+
+        window.addEventListener('message', function (event) {
+            if (event.source !== frame.contentWindow
+                || !event.data
+                || event.data.type !== 'sulu.preview.navigate'
+            ) {
+                return;
+            }
+
+            var adminWindow = window.opener || window.parent;
+            adminWindow.postMessage(event.data, window.location.origin);
+        });
+    </script>
+
+For a reference implementation of the click handling and the hover overlay, see
+``src/Sulu/Bundle/PreviewBundle/Resources/public/js/preview-deep-link.js`` in sulu/sulu. Sulu injects
+this script into previews that use ``sulu_preview_deep_link()`` in the classic Twig integration.
