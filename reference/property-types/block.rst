@@ -238,5 +238,19 @@ depth of the settings form. It contains the type and the content of the block, b
         <!-- ... -->
     </property>
 
+If the block is nested in other blocks, the blocks around it are reachable via ``__block.__parent``, and
+``__block.__parent.__parent`` is the block around that one, and so on up to the outermost block. A block on the top
+level has no ``__parent``. For an ``image`` block inside a ``column`` block inside a ``section`` block, this looks like
+the following:
+
+.. code-block:: xml
+
+    <property name="alt" type="text_line" visibleCondition="__block.type == 'image'"/>
+    <property name="width" type="text_line" visibleCondition="__block.__parent.type == 'column'"/>
+    <property name="spacing" type="text_line" visibleCondition="__block.__parent.__parent.type == 'section'"/>
+
+If the settings form itself contains a block with its own settings form, the block owning the outer settings form is
+the outermost ``__parent`` of ``__block`` there.
+
 ``__block`` holds the block as it was when the settings overlay was opened, and it is only available inside the
 block settings form.
