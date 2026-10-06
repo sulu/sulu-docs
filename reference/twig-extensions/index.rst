@@ -21,6 +21,9 @@ Functions
     functions/sulu_page_navigation_flat
     functions/sulu_page_navigation_root_flat
     functions/sulu_page_navigation_tree
+    functions/sulu_sitemap
+    functions/sulu_sitemap_aliases
+    functions/sulu_sitemap_url
 
 Filters
 ~~~~~~~
