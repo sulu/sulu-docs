@@ -220,6 +220,9 @@ reach them. Set these CSS custom properties in your website's CSS instead, they 
     * - ``--sulu-preview-deep-link-border-width``
       - ``2px``
       - Width of the outline
+    * - ``--sulu-preview-deep-link-padding``
+      - ``12px``
+      - Space between the hovered block and the outline
     * - ``--sulu-preview-deep-link-border-radius``
       - ``0``
       - Corner radius of the outline
