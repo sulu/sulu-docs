@@ -31,11 +31,10 @@ then be translated or mapped to another language as **shadow-** or
 Page
 ----
 
-As already heard in :doc:`backend-template` pages are configured in templates.
-They are created in webspaces and represent an entry in a certain menu. These
-pages are contained within your webspace. Once you got your
-:doc:`setup <../getting-started>` right, you can start exploring the Sulu default
-structure in the backend.
+Pages are configured in templates. They are created in webspaces and represent
+an entry in a certain menu. These pages are contained within your webspace. 
+Once you got your :doc:`setup <../getting-started>` right, you can start exploring
+the Sulu default structure in the backend.
 
 
 Property Type
