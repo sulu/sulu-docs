@@ -53,10 +53,11 @@ separation into main and footer navigation is only a quite common example.
 Rendering a Navigation
 ----------------------
 
-The advantage of this method is that the content manager can decide on his own
-which pages to show in the navigation. This code shows an example for creating
-a nested navigation using all the pages marked to be shown in the main
-navigation context, up to two levels deep:
+The ``sulu_page_navigation_root_tree`` Twig function returns the pages of a
+navigation context as a tree, so the content manager decides which pages show
+up in the navigation. This code shows an example for creating a nested
+navigation using all the pages marked to be shown in the main navigation
+context, up to two levels deep:
 
 .. code-block:: html+twig
 

@@ -63,8 +63,7 @@ The default webspace configuration is located in
 the name of your project.
 
 To get started, change the ``<name>`` and the ``<key>`` of the webspace to the
-name of your project. The name is a human-readable label that is shown in the
-administration interface. The key is the unique identifier of the webspace:
+name of your project, as described in :doc:`webspaces`:
 
 .. code-block:: xml
 

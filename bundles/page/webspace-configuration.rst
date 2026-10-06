@@ -30,7 +30,7 @@ A complete configuration looks as follows:
 
         <default-templates>
             <default-template type="page">default</default-template>
-            <default-template type="homepage">default</default-template>
+            <default-template type="homepage">homepage</default-template>
         </default-templates>
 
         <templates>
@@ -190,12 +190,6 @@ environments, which have to match the environments defined in Symfony. Usually
 ``dev``, ``stage`` and ``prod`` are available. Each environment can define its
 own set of URLs.
 
-.. note::
-
-    Please consider that you have to omit the port in the configuration. The
-    system will work with any port, so you don't have to name it in the
-    configuration.
-
 The URLs also have to include the localization somehow. You have two
 possibilities to do so:
 
@@ -228,11 +222,6 @@ possible value. For the above example that means, that an URL for every
 localization defined will be generated. So if you have a localization ``de-at``
 and ``en-us``, the system will create URLs for ``www.example.org/de-at`` and
 ``www.example.org/en-us``.
-
-.. note::
-
-    If you want to match all hosts you can use the ``{host}`` placeholder.
-    Example: ``<url>{host}/{localization}</url>``
 
 In the following table all the possible placeholders are listed, and explains
 the values of them by using the ``de-at``-localization:

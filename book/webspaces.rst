@@ -107,9 +107,13 @@ Default Templates
 
 The ``default-templates``-tag defines which of your :doc:`page templates
 <templates>` is preselected when a content manager creates a new page
-(``type="page"``) and which template is used for the homepage of the webspace
-(``type="homepage"``). The value is the key of the template, i.e. the name of
-its XML file without the extension.
+(``type="page"``). The value is the key of the template, i.e. the name of its
+XML file without the extension.
+
+The ``type="homepage"`` template is only used when the ``sulu:page:initialize``
+command creates the homepage of a localization. A localization which already
+has a homepage is skipped, so changing this value does not change an existing
+homepage.
 
 Templates
 ---------
