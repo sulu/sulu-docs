@@ -171,8 +171,8 @@ Read more about it in the `Symfony Cache Documentation`_.
 Navigate from Preview to Block
 -------------------------------
 
-Available since Sulu 3.1. Hovering a block inside the preview shows a small focus button.
-Clicking it scrolls the admin form to the matching block and expands it.
+Available since Sulu 3.1. Hovering a block inside the preview outlines it and shows a small edit button in its top left
+corner. Clicking the button scrolls the admin form to the matching block and expands it.
 
 Rendering the Deep Link in Twig
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,27 +201,92 @@ for any controller or ``RouteDefaultsProvider`` that renders the preview.
     ``sulu_preview_deep_link()`` simply renders nothing and the block won't be clickable from the
     preview.
 
-Customizing the Colors
-~~~~~~~~~~~~~~~~~~~~~~
+Customizing the Overlay
+~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the outline and focus button use the Sulu blue (``#23a3ec``). Set the CSS custom property
-``--sulu-preview-deep-link-color`` in your website's CSS to match your website's design:
+The outline and the edit button are drawn inside a closed shadow DOM, so the styles of your website do not
+reach them. Set these CSS custom properties in your website's CSS instead, they are inherited into the overlay:
+
+.. list-table::
+    :header-rows: 1
+    :widths: 45 20 35
+
+    * - Custom property
+      - Default
+      - Used for
+    * - ``--sulu-preview-deep-link-border-color``
+      - ``#23a3ec``
+      - Outline around the hovered block
+    * - ``--sulu-preview-deep-link-border-width``
+      - ``2px``
+      - Width of the outline
+    * - ``--sulu-preview-deep-link-border-radius``
+      - ``0``
+      - Corner radius of the outline
+    * - ``--sulu-preview-deep-link-background``
+      - 8% of the border color
+      - Fill over the hovered block
+    * - ``--sulu-preview-deep-link-button-background``
+      - ``#112a46``
+      - Background of the edit button
+    * - ``--sulu-preview-deep-link-button-color``
+      - ``#fff``
+      - Color of the pencil icon
+    * - ``--sulu-preview-deep-link-button-icon``
+      - A filled pencil
+      - Icon of the edit button, a CSS ``url()`` to an SVG or PNG
+    * - ``--sulu-preview-deep-link-button-width``
+      - ``28px``
+      - Width of the edit button
+    * - ``--sulu-preview-deep-link-button-height``
+      - ``22px``
+      - Height of the edit button, the icon scales with it
+    * - ``--sulu-preview-deep-link-button-gap``
+      - ``4px``
+      - Space between the edit button and the outline
+    * - ``--sulu-preview-deep-link-button-border-radius``
+      - ``4px 4px 4px 0``
+      - Corner radii of the edit button, the bottom left corner is square
+
+Any CSS value works. For example, to match an orange website with a dark mode:
 
 .. code-block:: css
 
     :root {
-        --sulu-preview-deep-link-color: #e8590c;
+        --sulu-preview-deep-link-border-color: #e8590c;
+        --sulu-preview-deep-link-button-background: #e8590c;
     }
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --sulu-preview-deep-link-color: #ff922b;
+            --sulu-preview-deep-link-border-color: #ff922b;
+            --sulu-preview-deep-link-button-background: #ff922b;
+            --sulu-preview-deep-link-button-color: #212529;
         }
     }
 
-The color is used for the outline and the button background. The translucent fill over the hovered
-element is derived from it, and the icon on the button is black or white, whichever contrasts better
-with the color. Any CSS color value works.
+The icon is used as a mask, so it takes the ``--sulu-preview-deep-link-button-color`` and its own colors are
+ignored. Use a data URI or an absolute URL, a relative URL does not resolve against your stylesheet:
+
+.. code-block:: css
+
+    :root {
+        --sulu-preview-deep-link-button-icon: url("https://example.com/assets/edit.svg");
+    }
+
+For everything the properties do not cover, the overlay exposes its elements as shadow parts, ``outline``,
+``button`` and ``icon``. Style them with ``::part()`` on the ``sulu-preview-deep-link`` class of the
+overlay's host element:
+
+.. code-block:: css
+
+    .sulu-preview-deep-link::part(outline) {
+        outline-style: dashed;
+    }
+
+    .sulu-preview-deep-link::part(button) {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
 
 A headless frontend styles its own overlay, see `Headless Setup`_.
 
