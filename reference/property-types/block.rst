@@ -228,7 +228,7 @@ The value of your field can be accessed in twig over the ``settings`` variable:
 Conditions based on the block
 -----------------------------
 
-The block settings form is rendered on its own, so ``visibleCondition`` and ``disabledCondition`` in it cannot
+Available since 3.0.11. The block settings form is rendered on its own, so ``visibleCondition`` and ``disabledCondition`` in it cannot
 reach the block via ``__parent``. Instead, the block owning the settings form is available as ``__block``, at any
 depth of the settings form. It contains the type and the content of the block, but not its settings:
 
