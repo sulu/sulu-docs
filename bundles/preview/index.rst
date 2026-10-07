@@ -174,6 +174,8 @@ Navigate from Preview to Block
 Available since Sulu 3.1. Hovering a block inside the preview outlines it and shows a small edit button in its top left
 corner. Clicking the button scrolls the admin form to the matching block and expands it.
 
+A preview opened in its own window has no overlay, as the form is not next to it.
+
 Rendering the Deep Link in Twig
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
