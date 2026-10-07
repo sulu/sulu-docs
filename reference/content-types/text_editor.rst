@@ -45,18 +45,18 @@ correctly, as required by the WCAG "language of parts" success criterion:
 
     <p>The motto was <span lang="de" dir="ltr">Vorsprung durch Technik</span>.</p>
 
-By default the dropdown offers the languages of all webspace localizations,
+By default the dropdown offers the locales of all webspace localizations,
 without their country variants, so the localizations ``de_at`` and ``de_ch``
-both result in ``de``. A different list of languages can be configured in
+both result in ``de``. A different list of locales can be configured in
 ``config/packages/sulu_admin.yaml``:
 
 .. code-block:: yaml
 
     sulu_admin:
-        ckeditor:
-            text_part_languages: ['en', 'de', 'ar']
+        text_editor:
+            content_locales: ['en', 'de', 'ar']
 
-Only language codes without a country are accepted, so ``de`` is valid while
+Only locale codes without a country are accepted, so ``de`` is valid while
 ``de_at`` or ``de-AT`` cause a configuration error.
 
 What about images in text editor?
