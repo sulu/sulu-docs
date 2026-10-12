@@ -249,8 +249,8 @@ the following:
     <property name="width" type="text_line" visibleCondition="__block.__parent.type == 'column'"/>
     <property name="spacing" type="text_line" visibleCondition="__block.__parent.__parent.type == 'section'"/>
 
-If the settings form itself contains a block with its own settings form, the block owning the outer settings form is
-the outermost ``__parent`` of ``__block`` there.
+If the settings form itself contains a block with its own settings form, the ``__parent`` chain of ``__block`` in that
+inner form continues with the block owning the outer settings form and the blocks around it.
 
 ``__block`` holds the block as it was when the settings overlay was opened, and it is only available inside the
 block settings form.
