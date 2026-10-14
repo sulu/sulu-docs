@@ -988,8 +988,7 @@ back to the capitalized group identifier if no translation exists.
 .. note::
 
     Groups are also picked up by the admin search index. After adding or renaming a group, run
-    ``bin/console cmsig:seal:reindex`` for both kernels so search results deep-link into the correct
-    group.
+    ``bin/console cmsig:seal:reindex`` so search results deep-link into the correct group.
 
 Caching
 -------
@@ -1047,10 +1046,14 @@ For example, if you know that your homepage changes its content each day at
         <!-- ... -->
     </template>
 
+.. _templates-search:
+
 Search
 ------
 
-That a property is indexed in the search the property need to be tagged.
+Tag a property of a page or article template with ``sulu.search.field`` to add it to the website search (see
+:doc:`../bundles/search`). Only properties of the type ``text_line``, ``text_area`` and ``text_editor`` are
+indexed as content. The HTML of a ``text_editor`` is converted to plain text:
 
 .. code-block:: xml
 
@@ -1062,20 +1065,12 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" role="title" />
     </property>
 
-    <property name="description" type="text_editor">
-        <meta>
-            <title lang="en">Description</title>
-        </meta>
-
-        <tag name="sulu.search.field" role="description" />
-    </property>
-
     <property name="images" type="media_selection">
         <meta>
-
             <title lang="en">Images</title>
         </meta>
-        <tag name="sulu.search.field" role="image" index="false" />
+
+        <tag name="sulu.search.field" role="image" />
     </property>
 
     <property name="article" type="text_editor">
@@ -1086,29 +1081,19 @@ That a property is indexed in the search the property need to be tagged.
         <tag name="sulu.search.field" />
     </property>
 
-The tag can have specific attributes:
+The tag has one attribute ``role``, which defines how the property is used in the search document:
 
- - `role`: The role for the property
- - `type`: Type how the data need to be stored
- - `index`: Is indexed need only to be set to deactivate index
+ - ``title``: The value is the title of the search document. Without it the title of the excerpt is used, then
+   the title of the page or article.
+ - ``image``: The first selected media of a ``media_selection`` or ``single_media_selection`` is the
+   image of the search result.
+ - ``url``: The property is not added to the indexed content.
 
-**Roles**:
+A property without ``role`` or with another value is indexed as content. Properties inside of a block are
+indexed as content too, but roles do not work there: a property inside of a block with the role ``title``,
+``image`` or ``url`` is not indexed at all.
 
- - `title`: The main title of the document
- - `description`: The main description of the document
- - `image`: The main image of the document
-
-.. note:: Roles are not possible on properties inside a block
-
-**Types**:
-
- - `string`: For simple fields
- - `array`: For multiple fields
- - `tags`: Special type for `tag_selection` property type
- - `category`: Special type for `single_category_selection` and `category_selection` property types
- - `date`: For indexing the `date` property type
- - `json`: For indexing raw data in the search
- - `structure`: Special type for all kinds of embedded structure (e.g. `single_snippet_selection`, `page_selection`, ...)
+After changing the tags of a template, run ``bin/console cmsig:seal:reindex``.
 
 Next Steps
 ----------
