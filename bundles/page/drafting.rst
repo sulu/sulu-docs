@@ -35,6 +35,9 @@ When working with pages in Sulu:
 2. **Publishing**: Publishing copies content from draft to live stage
 3. **Website Display**: Only live stage content is displayed on the website
 
+Available since Sulu 3.1. A :doc:`request workflow <../content/request-workflow>` adds a review step before
+publishing.
+
 Search Indexing
 ---------------
 
