@@ -5,7 +5,7 @@ Description
 -----------
 
 Shows a field, on which exactly one link to another page can be assigned.
-Additionally it populates all the fields defined in the template configuration
+Additionally it populates the title, the url and the fields listed in the ``properties`` parameter
 to the HTML template. The selected page is exposed to the HTML template as a single object containing the configured properties.
 
 Parameters
@@ -81,18 +81,32 @@ Complex Example
 Twig
 ----
 
+``content.page`` is an object with ``title``, ``url``, ``authored``, ``lastModified`` and the keys defined in the
+``properties`` parameter. Other fields of the page template are not available. It is ``null`` if no page is selected or
+the page cannot be loaded, for example because the visitor may not view it on a website with security enabled.
+
 .. code-block:: twig
 
-    <div>
-        <h3>
-            {{ content.page.excerptTitle|default(content.page.title) }}
-        </h3>
-
+    {% if content.page %}
         <div>
-            {{ content.page.excerptDescription|default(content.page.article)|raw }}
-        </div>
+            <h3>
+                {{ content.page.excerptTitle|default(content.page.title) }}
+            </h3>
 
-        <a href="{{ sulu_content_path(content.page.url) }}">Read more</a>
-    </div>
+            <div>
+                {{ content.page.excerptDescription|default(content.page.article)|raw }}
+            </div>
+
+            <a href="{{ sulu_content_path(content.page.url) }}">Read more</a>
+        </div>
+    {% endif %}
+
+``view.page`` is an object with ``id``, ``uuid``, ``template``, ``webspaceKey`` and ``parent`` (the uuid of the parent
+page or ``null``), the view data of the fields it contains and the parameters of the property. If no page is selected,
+it only contains ``id`` (``null``) and the parameters.
+
+.. code-block:: twig
+
+    {{ view.page.uuid }}
 
 .. _jexl: https://github.com/TomFrost/jexl

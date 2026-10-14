@@ -636,7 +636,8 @@ type:
 
 .. note::
 
-    More details about blocks, such as the available parameters, can be found on
+    More details about blocks, such as the available parameters and the
+    :ref:`built-in block settings <property-types-block-settings>`, can be found on
     the :doc:`reference <../reference/property-types/block>` page.
 
 .. note::

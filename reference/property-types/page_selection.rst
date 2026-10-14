@@ -5,7 +5,7 @@ Description
 -----------
 
 Shows a list with the possibility to add links to other pages managed in Sulu.
-Additionally it populates all the fields defined in the template configuration
+Additionally it populates the title, the url and the fields listed in the ``properties`` parameter
 to the HTML template. The content is stored as an array of references.
 
 Parameters
@@ -92,6 +92,11 @@ Complex Example
 Twig
 ----
 
+``content.pages`` is a list with one entry per selected page. Each entry contains ``title``, ``url``, ``authored``,
+``lastModified`` and the keys defined in the ``properties`` parameter. Other fields of the page template are not
+available. A page that cannot be loaded, for example because the visitor may not view it on a website with security
+enabled, is removed from the list.
+
 .. code-block:: twig
 
     {% for page in content.pages %}
@@ -106,4 +111,15 @@ Twig
 
             <a href="{{ sulu_content_path(page.url) }}">Read more</a>
         </div>
+    {% endfor %}
+
+When pages are selected, ``view.pages`` is a flat list in the same order as ``content.pages``. Each entry contains
+``uuid``, ``template``, ``webspaceKey`` and ``parent`` (the uuid of the parent page or ``null``) and the view data of
+the fields it contains. Without a selection, ``view.pages`` is no list: it holds an empty ``ids`` and the parameters of
+the property.
+
+.. code-block:: twig
+
+    {% for page in content.pages %}
+        {{ page.title }} ({{ view.pages[loop.index0].template }})
     {% endfor %}
