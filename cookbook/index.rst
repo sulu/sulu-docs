@@ -39,6 +39,7 @@ our recipes.
     link-provider
     sitemap-provider
     property-resolver-and-resource-loader
+    custom-content-resolver
     dump-sitemap
     https
     video-preview-images

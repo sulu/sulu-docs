@@ -150,7 +150,7 @@ Register the PropertyResolver as a service with the ``sulu_content.property_reso
 
 .. note::
 
-    With autowiring enabled (the default in Sulu), you don't need to manually register
+    With autoconfiguration enabled, you don't need to manually register
     these services. Sulu will automatically apply the ``sulu_content.property_resolver``
     tag to all services implementing ``PropertyResolverInterface`` and the
     ``sulu_content.resource_loader`` tag to all services implementing
@@ -270,7 +270,7 @@ Register the ResourceLoader as a service with the ``sulu_content.resource_loader
 
 .. note::
 
-    With autowiring enabled (the default in Sulu), you don't need to manually add the tag.
+    With autoconfiguration enabled, you don't need to manually add the tag.
     Sulu will automatically apply the ``sulu_content.resource_loader`` tag to all services
     implementing ``ResourceLoaderInterface``.
 
