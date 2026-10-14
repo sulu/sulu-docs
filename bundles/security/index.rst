@@ -9,8 +9,7 @@ Structure
 ---------
 
 Every Sulu user is linked to a specific Sulu contact from the
-SuluContactBundle. In addition to that a user can have some roles and groups
-assigned, whereby a group can consist of multiple other groups and roles.
+SuluContactBundle. In addition to that a user can have some roles assigned.
 
 Every role has to be part of a certain system. Different systems can be
 registered via the security contexts, which are explained later. These systems
@@ -27,6 +26,14 @@ a double opt-in mechanism you can set this flag to false on the registration,
 and toggle it, e.g. when the user clicks on a link in an email. As long as the
 ``enabled`` flag is set to false, the Sulu-Admin offers you a button to enable
 the user.
+
+Available since Sulu 3.1. A user can also be locked and unlocked on the command
+line, with the username or the email of the user:
+
+.. code-block:: bash
+
+    bin/adminconsole sulu:security:user-lock <identifier>
+    bin/adminconsole sulu:security:user-unlock <identifier>
 
 Security contexts
 -----------------
@@ -55,13 +62,20 @@ The following permissions are distinguished:
       - Permission to archive data in the given context
     * - ``LIVE``
       - Permission to publish data in the given context
+    * - ``REVIEW``
+      - Permission to approve or reject a request for publishing in the given context (available since Sulu 3.1)
     * - ``SECURITY``
       - Permission to grant or deny access on data in the given context
+
+Available since Sulu 3.1. ``REVIEW`` is not implied by ``LIVE``. A role gets it in
+**Settings** -> **User roles**. It only takes effect where a request workflow covers the content. In a request
+workflow an editor requests publishing and a reviewer approves.
 
 All the permission values are encoded in a bitmask and saved in a permission
 object, which has a link to a role. This way it is easily possible to evaluate
 if a user has access to a security context by checking if one of his roles
-grants access.
+grants access. In Sulu 3.0 the mask for all permissions is 127. Since Sulu 3.1
+``REVIEW`` uses the highest bit (128), so the mask is 255.
 
 Access Control Manager
 ----------------------
