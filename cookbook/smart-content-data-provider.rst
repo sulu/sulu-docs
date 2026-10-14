@@ -247,12 +247,15 @@ The ``Builder`` class provides these methods to configure your provider:
     * - enableProperties(array $properties)
       - Defines default property names to be exposed in HTML templates. Only use
         if your provider returns ContentRichEntities.
-    * - enableView(string $view, array $resultToView)
+    * - enableView(string $view, array $resultToView, ?array $resultToViewName = null)
       - Allows defining which view the application should navigate to when
         clicking on a resulting item. The first parameter describes the view
         defined in an ``Admin`` class and the second parameter is a mapping from
         a json pointer. The mapping defines how the values of the clicked item
-        should be sent to the view's path.
+        should be sent to the view's path. The optional third parameter is
+        available since Sulu 3.1. It allows placeholders like ``{group}`` in the
+        view name and maps a json pointer to the name of a placeholder, for
+        example ``['group' => 'group']``.
 
 3. Service Definition
 ~~~~~~~~~~~~~~~~~~~~~

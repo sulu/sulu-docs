@@ -79,6 +79,12 @@ in the edit form for pages.
 
 The ``setFormKey`` takes a string reference, which should be the same as the key tag in the above form XML.
 
+.. note::
+
+    The example takes the save button of the page from the ``ContentViewBuilderFactoryInterface``
+    (``Sulu\Content\Infrastructure\Sulu\Admin\ContentViewBuilderFactoryInterface``), so the tab saves and publishes
+    like the other tabs of the page. ``PageInterface`` is ``Sulu\Page\Domain\Model\PageInterface``.
+
 .. code-block:: php
 
     class SocialAdmin extends Admin
@@ -86,14 +92,15 @@ The ``setFormKey`` takes a string reference, which should be the same as the key
         public function __construct(
             private ViewBuilderFactoryInterface $viewBuilderFactory,
             private WebspaceManagerInterface $webspaceManager,
-            private SecurityCheckerInterface $securityChecker
+            private SecurityCheckerInterface $securityChecker,
+            private ContentViewBuilderFactoryInterface $contentViewBuilderFactory
         ) {
         }
 
         public function configureViews(ViewCollection $viewCollection): void
         {
             $formToolbarActionsWithoutType = [
-                new ToolbarAction('sulu_admin.save_with_publishing'),
+                $this->contentViewBuilderFactory->getDefaultToolbarActions(PageInterface::class)['save'],
             ];
 
             $routerAttributesToFormRequest = ['parentId', 'webspace'];
@@ -147,6 +154,7 @@ We can register this class as a service and give it a ``sulu.admin`` tag, then i
             - '@Sulu\Bundle\AdminBundle\Admin\View\ViewBuilderFactoryInterface'
             - '@sulu_core.webspace.webspace_manager'
             - '@sulu_security.security_checker'
+            - '@Sulu\Content\Infrastructure\Sulu\Admin\ContentViewBuilderFactoryInterface'
         tags:
             - { name: 'sulu.admin'}
             - { name: 'sulu.context', context: 'admin' }
