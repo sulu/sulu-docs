@@ -125,7 +125,7 @@ pulled in as a dependency of ``sulu/sulu``. Run the migrations that come with Su
 
 The Sulu 3.0 content structure requires every routable template to use the ``route`` content type
 on a property named ``url``, with the ``sulu.rlp.part`` tag on the title and the ``sulu.rlp`` tag on
-the URL property. See the *Upgrade resourceLocator and route property type* section in ``UPGRADE.md``
+the URL property. See the *Upgrade resourceLocator and route property type* section in ``UPGRADE-3.x.md``
 for the diff and full details.
 
 **6. Rebuild the admin frontend**
@@ -215,18 +215,32 @@ Common issues after upgrading
 The most frequent breaking changes you may run into after the upgrade are listed below. See the
 linked ``UPGRADE.md`` sections for full migration details.
 
-**Container build fails: deprecated smart content parameters**
+**Container build fails: deprecated smart content and selection parameters**
 
-In ``smart_content`` properties, the ``types`` parameter has been split per provider and the
-``structureTypes`` parameter has been renamed:
+In ``smart_content`` properties and in the selections (``page_selection``, ``snippet_selection``,
+``article_selection`` and their ``single_*`` variants), the ``types`` parameter has been split per provider and
+other filter parameters have been renamed:
 
-- For article providers (``articles``, ``articles_page_tree``), replace ``types`` with ``groups``.
-- For all other providers (``pages``, ``snippets``), replace ``types`` with ``templateKeys``.
-- Replace ``structureTypes`` with ``templateKeys``.
+- For article providers (``articles``, ``articles_page_tree``) and the article selections, replace ``types`` with
+  ``groups``.
+- For all other providers (``pages``, ``snippets``) and the page and snippet selections, replace ``types`` with
+  ``templateKeys``.
+- Replace ``structureTypes`` (smart content) and ``templates`` (article selections) with ``templateKeys``.
 
-If a deprecated parameter is still used, the container build fails with a message pointing at the
-affected template and property. See *Consistent smart content params across article, page and snippet
-providers* in ``UPGRADE.md``.
+If a deprecated parameter is still used, the container build fails with a message pointing at the affected template
+and property. See *Consistent smart content params across article, page and snippet providers* and *Renamed selection
+filter parameters* in ``UPGRADE-3.x.md``.
+
+**Container build fails: unrecognized option below ``sulu_core``**
+
+The directories of the templates and ``default_type`` moved from ``sulu_core.content.structure`` to
+``sulu_admin.templates``. See *Template path configuration changed* in ``UPGRADE-3.x.md``.
+
+**Container build fails: invalid media storage configuration**
+
+Remove ``sulu_media.storages`` and string values like ``sulu_media.storage: s3``, and define the storage below
+``flysystem.storages``, see *Updating to flysystem 3* in ``UPGRADE-3.x.md``. For the local storage, set ``directory`` to
+``%kernel.project_dir%/var/uploads/media``, where Sulu 2.6 stored the files.
 
 **Articles are missing from the admin or have no template group**
 
@@ -235,23 +249,24 @@ If your project used the ArticleBundle with article types defined under ``sulu_a
 ``types`` block from the configuration and add a ``<group>`` element to each affected article template
 XML file (for example ``<group>blog</group>``). After the migration, the new template groups also need
 to be granted to user roles in the Sulu admin interface. See *Migrating from Article Types to Template
-Groups* in ``UPGRADE.md`` for the full migration.
+Groups* in ``UPGRADE-3.x.md`` for the full migration.
 
 **Navigation Twig functions throw "unknown function" errors**
 
 The navigation Twig functions have been renamed with a ``sulu_page_`` prefix (for example
 ``sulu_navigation_tree`` → ``sulu_page_navigation_tree``, ``sulu_breadcrumb`` →
-``sulu_page_breadcrumb``). Their default property set has been reduced to ``title`` and ``url``, and
-``nodeType`` has been replaced by ``linkProvider``. See *Navigation Twig functions renamed* and
-*Navigation Twig Extension property filtering* in ``UPGRADE.md`` for the full list of renames and
+``sulu_page_breadcrumb``). Their default properties are ``title``, ``url`` and ``targetType``, and
+``nodeType`` has been replaced by ``targetType``, which holds the link provider. See *Navigation Twig functions
+renamed* and *Navigation Twig Extension property filtering* in ``UPGRADE-3.x.md`` for the full list of renames and
 migration examples.
 
 **``sulu_content_load`` no longer exists or "properties" argument is missing**
 
 The ``sulu_content_load`` Twig function has been split into ``sulu_page_load`` and
 ``sulu_article_load``, and the ``properties`` parameter is now mandatory.
-``sulu_snippet_load_by_area`` also takes a mandatory ``properties`` parameter now. See *Content load
-Twig functions split and properties now required* in ``UPGRADE.md`` for the new signatures.
+``sulu_snippet_load_by_area`` also takes a ``properties`` parameter now, but there it is optional and all
+properties are loaded when it is omitted. See *Content load Twig functions split and properties now required* in
+``UPGRADE-3.x.md`` for the new signatures.
 
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _UPGRADE.md file: https://github.com/sulu/sulu/blob/3.0/UPGRADE.md
