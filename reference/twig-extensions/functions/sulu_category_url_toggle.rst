@@ -9,7 +9,7 @@ or removes given category from GET parameters, if it is.
 **Arguments**:
 
 - **category**: *array* - Serialized Category instance to determine value
-- **categoryParameter**: *string* - optional "category": parameter name
+- **categoriesParameter**: *string* - optional "categories": parameter name
 
 **Returns**: string - current URL with or without given category in categories parameter
 

@@ -2,8 +2,8 @@ Versioning
 ==========
 
 The versioning feature in Sulu creates a new version each time a page is
-published. Version history is available in the settings tab of each page,
-allowing you to restore previous versions.
+published. Version history is available in the *Versions* tab below *Insights*
+of each page, allowing you to restore previous versions.
 
 How Versioning Works
 --------------------
@@ -11,13 +11,14 @@ How Versioning Works
 Sulu's multi-dimension entity system natively supports versioning:
 
 - **Version 0**: The current working version (always editable)
-- **Version 1+**: Historical snapshots created during publishing
+- **Any other version**: Historical snapshot created during publishing, numbered with the Unix timestamp of the
+  publication
 
 When you publish a page:
 
 1. The current draft content (Version 0) is copied to the live stage
-2. Optionally, a new historical version is created with a timestamp
-3. The version is stored with all dimension data (locale, stage, content)
+2. A new historical version is created with the Unix timestamp as version
+3. The version is stored with all dimension data (locale, stage, content), except the URL
 
 Restoring Versions
 ------------------
@@ -25,18 +26,20 @@ Restoring Versions
 When you restore an old version from the version history table:
 
 1. The selected version's content is copied to Version 0 (draft stage)
-2. This creates a new draft based on the historical version
+2. This creates a new draft based on the historical version and overwrites an existing draft
 3. You can review and edit the restored content before publishing
 4. Publishing creates a new version in the history
+
+The URL of a page is not part of a version and is therefore not restored.
 
 Version Storage
 ---------------
 
 Each version is stored as a separate dimension entity containing:
 
-- Version number
+- Version (Unix timestamp of the publication)
 - Locale
-- Stage (draft/live)
+- Stage (draft)
 - Content data (JSON)
 - Timestamp metadata
 
@@ -48,7 +51,7 @@ is required - versioning is built into the core dimension system.
 
 The version history table in the admin interface shows:
 
-- Version number
-- Publication date
-- Editor who created the version
-- Actions (restore, compare)
+- Title
+- Publication date (*Published on*)
+- Changer
+- Action to restore the version

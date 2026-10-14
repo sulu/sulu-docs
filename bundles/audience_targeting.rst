@@ -26,8 +26,7 @@ file (`config/routes/sulu_admin.yaml`):
 
     # ...
     sulu_audience_targeting_api:
-        type: rest
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.yml"
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_api.yaml"
         prefix: /admin/api
 
 And the routes for the website in the corresponding configuration file
@@ -37,7 +36,7 @@ And the routes for the website in the corresponding configuration file
 
     # ...
     sulu_audience_targeting:
-        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.yml"
+        resource: "@SuluAudienceTargetingBundle/Resources/config/routing_website.yaml"
 
 Finally the cache has to be correctly configured. You have the choice between
 the Symfony Cache and Varnish.
@@ -116,20 +115,34 @@ target groups based on some behavior, e.g. filling out a form, starting a
 download, etc.
 
 Therefore we have introduced the `TargetGroupStore`. You can simply call its
-`updateTargetGroupId` method and Sulu will do the rest for you. This would like
-this in an action of a Controller:
+`updateTargetGroupId` method and Sulu will do the rest for you. This would look
+like this in an action of a Controller:
 
 .. code-block:: php
 
     <?php
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-    class DefaultController extends Controller {
-        public function indexAction() {
+    namespace App\Controller\Website;
+
+    use Sulu\Bundle\AudienceTargetingBundle\TargetGroup\TargetGroupStoreInterface;
+    use Symfony\Component\DependencyInjection\Attribute\Autowire;
+    use Symfony\Component\HttpFoundation\Response;
+
+    class FormController
+    {
+        public function __construct(
+            #[Autowire(service: 'sulu_audience_targeting.target_group_store')]
+            private readonly TargetGroupStoreInterface $targetGroupStore,
+        ) {
+        }
+
+        public function indexAction(): Response
+        {
             // determine the desired target group based on form values, etc.
             $targetGroupId = 0;
-            $this->get('sulu_audience_targeting.target_group_store')
-                ->updateTargetGroupId($targetGroupId);
+            $this->targetGroupStore->updateTargetGroupId($targetGroupId);
+
+            // ...
         }
     }
 

@@ -27,7 +27,8 @@ Returns the breadcrumb for a given page uuid as a list of pages:
 **Arguments**:
 
 - **uuid**: *string* - UUID of page node for which to show the breadcrumb
-- **properties**: *array<string, string>* - Which properties to load. Default to "title" and "url".
+- **properties**: *array<string, string>* - optional: Maps result keys to the properties to load, merged over the
+  defaults ``title``, ``url`` and ``targetType``.
 
 **Returns**:
 

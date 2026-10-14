@@ -55,10 +55,11 @@ Returns the navigation for a given page uuid as a tree of pages:
 **Arguments**:
 
 - **uuid**: *string* - UUID of the page for which to show the navigation
-- **context**: *string* - optional: context to filter navigation
+- **context**: *string|null* - optional: Navigation context to filter the pages by. Default to null (no filter).
 - **depth**: *int* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...). Default to 1.
 - **level**: *int|null* - optional: level to load pages on the specific level null for current level. Default to null.
-- **properties**: *array<string, string>* - Which properties to load. Default to "title" and "url".
+- **properties**: *array<string, string>* - optional: Maps result keys to the properties to load, merged over the
+  defaults ``title``, ``url`` and ``targetType``.
 
 **Returns**:
 

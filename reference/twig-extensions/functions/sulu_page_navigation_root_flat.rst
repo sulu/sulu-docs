@@ -26,9 +26,10 @@ Returns the navigation as a list of pages:
 
 **Arguments**:
 
-- **context**: *string* - optional: context to filter navigation
+- **navigationContext**: *string* - Navigation context to load the pages of
 - **depth**: *int* - optional: depth to load (1 - one level deep, 2 - two levels deep, ...). Default to 1.
-- **properties**: *array<string, string>* - Which properties to load. Default to "title" and "url".
+- **properties**: *array<string, string>* - optional: Maps result keys to the properties to load, merged over the
+  defaults ``title``, ``url`` and ``targetType``.
 
 **Returns**:
 

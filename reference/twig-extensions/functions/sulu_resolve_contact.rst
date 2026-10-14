@@ -1,14 +1,14 @@
 ``sulu_resolve_contact``
 ========================
 
-Returns user entity.
+Returns the contact entity for the given id, or ``null`` if no contact exists.
 
 .. code-block:: jinja
 
-    {{ sulu_resolve_contact(contactId).fullName }}
+    {{ sulu_resolve_contact(author).fullName }}
 
 **Arguments**:
 
-- **id**: *int* - Id of the requested contact.
+- **id**: *int|string* - Id of the requested contact.
 
-**Returns**: *Contact* - Object with all needed properties.
+**Returns**: *Contact|null* - Object with all needed properties.

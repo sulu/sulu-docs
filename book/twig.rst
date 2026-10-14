@@ -19,7 +19,7 @@ In :doc:`templates` we learned how to define a template.
         <key>default</key>
 
         <view>pages/default</view>
-        <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+        <controller>Sulu\Content\UserInterface\Controller\Website\ContentController::indexAction</controller>
         ...
     </template>
 
@@ -34,8 +34,8 @@ feature you are able to define different output format for a single page.
 Rendering the Content
 ---------------------
 
-If you don't use your custom controller and modify the output the Sulu
-Controller renders, Sulu passes some default variables to Twig.
+The ``ContentController`` passes the variables below to Twig. If you need more,
+extend it as described in :doc:`../cookbook/custom-controller`.
 
 Content
 ^^^^^^^
@@ -81,7 +81,7 @@ The excerpt data is available from:
     {{ extension.excerpt.description }}
     {{ extension.excerpt.more }}
     {{ extension.excerpt.icon.thumbnails['50x50'] }}
-    {{ extension.excerpt.images.thumbnails['300x300'] }}
+    {{ extension.excerpt.image.thumbnails['300x300'] }}
 
 View
 ^^^^
@@ -97,28 +97,59 @@ in your template. As an example the ``media_selection`` stores the
 Other Variables
 ^^^^^^^^^^^^^^^
 
- - `request.webspaceKey`: Contains the key for the current webspace
- - `request.webspaceName`: Contains the name for the current webspace
- - `request.portalKey`: Contains the key for the current portal
- - `request.portalName`: Contains the name for the current portal
- - `request.locale`: Contains the locale for the current request
- - `request.portalUrl`: Contains the root URL to the current portal
- - `request.resourceLocatorPrefix`: Contains the prefix for the current portal
- - `request.resourceLocator`: Contains the resourceLocator to the current page
- - `uuid`: Contains the uuid of the current page
- - `template`: Contains the template key of the current page
- - `creator`: Contains the id of the creator of the current page
- - `changer`: Contains the id of the changer of the current page
- - `created`: Contains the timestamp of the creation of the current page
- - `changed`: Contains the timestamp of the latest change of the current page
- - `published`: Contains the timestamp of the publishing of the current page
- - `urls`: Contains urls of all locales (deprecated)
- - `localizations`: Contains all localizations including the URLs for the current page
- - `segments`: Contains all segments including the URLs to change the segment and redirect back to the page
+ - ``resource``: The entity (e.g. the page) the content belongs to
+ - ``template``: The template key of the current page
+ - ``availableLocales``: The locales in which the page has content
+ - ``mainWebspace``: The key of the main webspace (articles only)
+ - ``author``: The contact ID of the author, resolve it with
+   :doc:`sulu_resolve_contact <../reference/twig-extensions/functions/sulu_resolve_contact>`
+ - ``authored``: The date the page was authored
+ - ``lastModified``: The date of the latest change of the page
+ - ``shadowBaseLocale``: The locale the page is a shadow of, ``null`` if it is not a shadow page
+ - ``localizations``: The URL of the page in every locale of the webspace, see :ref:`twig-localizations`
+
+Sulu 2 also passed ``request.*``, ``uuid``, ``creator``, ``changer``, ``created``, ``changed``,
+``published``, ``urls`` and ``segments``. They are not passed anymore. Use Symfony's ``app.request``
+to access the request.
+
+To switch the segment of a webspace with segments, link to the route ``sulu_website.segment_switch`` with the
+``segment`` key and the ``url`` to redirect to. The path of the route is ``/_sulu_segment_switch``, change it with the
+``sulu_website.segments.switch_url`` configuration.
+
+.. code-block:: twig
+
+    <a href="{{ path('sulu_website.segment_switch', {segment: 'w', url: app.request.requestUri}) }}">Winter</a>
 
 .. tip::
 
     You can also use ``{{ dump() }}`` in the template to see all available variables if you are in dev mode.
+
+.. _twig-localizations:
+
+Localizations
+"""""""""""""
+
+``localizations`` is an array indexed by locale. Every entry contains:
+
+ - ``url``: The URL of the page in this locale
+ - ``locale``: The locale
+ - ``alternate``: ``true`` if the page has its own URL in this locale, ``false`` if ``url`` links
+   to the start page of the webspace in this locale
+
+.. code-block:: twig
+
+    {% for localization in localizations %}
+        {% if localization.alternate %}
+            <link rel="alternate" hreflang="{{ localization.locale }}" href="{{ localization.url }}"/>
+        {% endif %}
+    {% endfor %}
+
+.. note::
+
+    Available since Sulu 3.1. To change the URLs of a resource, register an implementation of
+    ``Sulu\Content\Application\ContentLocalizationsResolver\ContentLocalizationsResolverInterface``
+    as a service tagged ``sulu_content.content_localizations_resolver`` with the ``resource_key`` of the resource.
+    Content without one uses the default described above.
 
 Navigation
 ^^^^^^^^^^

@@ -36,10 +36,29 @@ A custom-url consists of following properties:
     * - No Follow
       - The links on the page will not be followed by search engines.
 
-.. note::
+Behavior
+--------
 
-    If the target page gets deleted the custom-url will stay in the list, will
-    be marked that the target is missing and returns a 404 on the website.
+* A custom-url that is not published is not served.
+* The target page is rendered in its live version and the selected localization. If the page is
+  missing there, the URL returns a 404.
+* With *Redirect* checked, or without a target page, the custom-url redirects permanently (301) to the URL of the
+  target page, or to the start page of the webspace if there is none. The request format and the query string are
+  kept.
+* When the URL of a custom-url is changed, its old URL redirects permanently (301) to the new one.
+* *Canonical URL*, *No Index* and *No Follow* are passed to the page in the ``_seo`` request attribute. The
+  ``@SuluWebsite/Extension/seo.html.twig`` template merges it into the SEO data, so the base template has to include
+  it to render the meta tags (see :doc:`../book/twig`).
+
+Permissions
+-----------
+
+The *Custom URLs* tab appears in every webspace of the administration interface if at least one webspace defines
+``<custom-urls>`` for the current environment and the user has the *edit* permission for custom-urls in at least
+one webspace.
+
+The permissions *view*, *add*, *edit* and *delete* are assigned per webspace in the user role under the security
+context ``sulu.webspaces.<webspace key>.custom-urls``.
 
 Configuration
 -------------

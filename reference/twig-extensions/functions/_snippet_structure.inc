@@ -1,8 +1,8 @@
 - `array`
-     - **uuid**: UUID of page
-     - **changed**: Changed date of page
-     - **changer**: User ID of changer
-     - **created**: Date of creation
-     - **creator**: User ID of creator
+     - **resource**: The snippet entity
      - **content**: Snippet content data
      - **view**: Snippet view data
+     - **extension**: Extensions of snippet
+     - **availableLocales**: Array of the available locales
+     - **template**: Template name of snippet
+     - **shadowBaseLocale**: Shadow locale of snippet (available since Sulu 3.1)

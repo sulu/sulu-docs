@@ -68,7 +68,8 @@ Usage of localizations
 For the developer the only touching points with localizations are the
 configuration and the eventual use of a language switcher on the homepage.
 For the language switcher the ``localizations`` variable delivered to the twig template
-can be used, which contains an associative array with the parameters ``locale``, ``url`` and ``country``.
+can be used, which contains an associative array indexed by locale with the parameters ``url``, ``locale`` and
+``alternate`` (see :ref:`twig-localizations`).
 The currently active locale can be obtained from the underlying Symfony Request
 object with ``app.locale``.
 
