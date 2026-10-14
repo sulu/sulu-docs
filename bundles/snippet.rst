@@ -136,7 +136,7 @@ So if we want to use a snippet on a page, we need to add the property type ":doc
                 <title lang="en">Footer Social Media</title>
             </meta>
             <params>
-                <param name="default" value="social_media"/>
+                <param name="templateKeys" value="social_media"/>
             </params>
         </property>
 

@@ -6,7 +6,7 @@ These pieces of content cannot only be assigned to a page using the ``snippet_se
 property type, but they can also be associated to a webspace.
 
 To do this, Sulu allows to define **snippet areas** which then can be assigned to a
-**default snippet** on the ``Default Snippets`` tab of the webspace in the administration
+**default snippet** on the ``Default snippets`` tab of the webspace in the administration
 interface. After assigning default snippets to snippet areas via the administration
 interface, Sulu provides different solutions for loading the data of the configured snippet
 for a specific area and webspace.
@@ -18,7 +18,7 @@ Defining possible areas for a snippet type
 ------------------------------------------
 
 Each snippet template can define multiple snippet areas. All defined snippet areas will
-be displayed on the ``Default Snippets`` tab of the webspace in the administration interface
+be displayed on the ``Default snippets`` tab of the webspace in the administration interface
 and can be assigned to a snippet that uses the respective template.
 
 .. code-block:: xml
@@ -51,6 +51,14 @@ changed or the snippet assigned to the area is modified/removed. This can be don
 
         Be aware that if a default-snippet is used in a base twig template, modifying the snippet or the
         area may result in a full cache invalidation of the website.
+
+The area ``key`` must be unique across all snippet templates.
+
+The ``Default snippets`` tab only exists when at least one snippet template defines an area. It is shown to users
+whose role has the ``Edit`` permission for the ``sulu.webspaces.<webspace>.snippet-areas`` security context of at
+least one webspace. Then it appears under every webspace. Grant the permission per webspace in the ``Webspaces``
+section of the role permissions. Listing the areas of a webspace requires ``View``, assigning or removing a snippet
+requires ``Edit`` for that webspace.
 
 Loading the default snippet inside of a twig template
 -----------------------------------------------------

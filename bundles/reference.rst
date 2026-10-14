@@ -1,74 +1,109 @@
 ReferenceBundle
 ===============
 
-The ReferenceBundle is tasked with tracking references among entities within the application.
-It enables developers and maintainers to quickly determine the relationships between entities and understand the manner
-and location in which an entity is utilized. Presently, the ReferenceBundle is capable of monitoring the usage of Snippets and
-Media within content entities such as `pages` and `snippets`. These references are managed distinctly for the draft
-state within the `admin context` and the live state within the `website context`.
+The ReferenceBundle tracks where an entity is used. For the content of pages, snippets and articles, Sulu stores
+one reference per used entity and property, separately for the ``draft`` and the ``live`` stage.
 
 The main reason we need this bundle is that content is stored as JSON data within dimension entities.
 Therefore, we cannot rely solely on database foreign key references.
 It is essential to note that the ReferenceBundle should only be used for unstructured JSON content data,
 where database relations are not feasible.
 
-Content maintainers are able to see the references to a specific entity in the `Insights` tab of an entity like `Snippet`.
-
-.. figure:: ../img/snippet-insights.png
-    :alt: Snippet References
-
-    Snippet References
+Content maintainers see where a media is used in the ``References`` tab below the ``Insights`` tab of the media.
 
 Refresh references
 ------------------
 
-The references are automatically updated upon saving an entity. You also have the option to manually update the
-references by executing the `bin/console sulu:reference:refresh` command. This command optionally accepts the
-<resource-key> argument. When this argument is provided, only the references for the specified resource key will be refreshed.
+References are updated when a page, snippet or article is saved. The ``sulu:reference:refresh`` command updates
+all references. The optional ``resource-key`` argument limits the refresh to one resource key, for example
+``pages``, ``snippets`` or ``articles``.
 
 .. code-block:: bash
 
     bin/console sulu:reference:refresh <resource-key>
 
-.. note::
+Run it without arguments after an upgrade that makes more content register references, for example the
+``teaser_selection`` property type.
 
-    Please note that references are only refreshed for the current context. To refresh the references for both the
-    admin and website contexts, you will need to execute the command twice via the `bin/adminconsole` and the `bin/websiteconsole`.
-
-Integrating references for custom property-types
+Integrating references for custom property types
 ------------------------------------------------
 
-To integrate the ReferenceBundle for custom property types, you need to implement the `ReferenceContentTypeInterface` in your
-property type class. The interface requires you to implement the `getReferences` method. The method already receives the
-`ReferenceCollector` which you can use to add references to the collector.
+A property resolver (see :doc:`../cookbook/property-resolver-and-resource-loader`) passes the references of its
+value to the ``ContentView``. Sulu adds the path of each reference, for example ``blocks.0.product``.
 
-Example implementation for a custom property type:
+This resolver stores a reference to the ``products`` resource for the id saved in the property:
 
 .. code-block:: php
 
-        public function getReferences(PropertyInterface $property, ReferenceCollectorInterface $referenceCollector, string $propertyPrefix = ''): void
+    <?php
+
+    declare(strict_types=1);
+
+    namespace App\Content\PropertyResolver;
+
+    use Sulu\Content\Application\ContentResolver\Value\ContentView;
+    use Sulu\Content\Application\ContentResolver\Value\Reference;
+    use Sulu\Content\Application\PropertyResolver\Resolver\PropertyResolverInterface;
+
+    class ProductPropertyResolver implements PropertyResolverInterface
+    {
+        public function resolve(mixed $data, string $locale, array $params = []): ContentView
         {
-            $data = $property->getValue();
-            if (!\is_array($data) || !isset($data['id'])) {
-                return;
+            if (!\is_string($data) && !\is_int($data)) {
+                return ContentView::create(null, $params);
             }
 
-            $referenceCollector->addReference(
-                CustomEntity::RESOURCE_KEY,
-                (string) $data['id'],
-                $propertyPrefix . $property->getName()
+            return ContentView::createWithReferences(
+                $data,
+                $params,
+                [new Reference($data, 'products')],
             );
+        }
+
+        public static function getType(): string
+        {
+            return 'product';
+        }
     }
+
+For a value loaded by a resource loader, use ``ContentView::createResolvableWithReferences`` or
+``ContentView::createResolvablesWithReferences``, see :doc:`../cookbook/property-resolver-and-resource-loader`.
+
+Integrating references for a custom content entity
+--------------------------------------------------
+
+Pages, snippets and articles are refreshed by a service implementing
+``Sulu\Bundle\ReferenceBundle\Application\Refresh\ReferenceRefresherInterface``. Implement it to track the
+references of your own content entity:
+
+- ``public static function getResourceKey(): string`` returns the resource key of the dimension content, for
+  example ``products``.
+- ``refresh(?array $filter = null): \Generator`` resolves the content views of the matching dimension contents.
+  It adds each reference to a ``ReferenceCollector`` and calls ``persistReferences()``.
+
+``refresh()`` must yield each dimension content after its references are persisted. Sulu flushes after every 100
+yielded objects. The filter holds the ``resourceId``, ``resourceKey``, ``locale`` and ``stage`` of the saved
+content. ``null`` means all contents.
+
+With autoconfiguration, services implementing the interface get the ``sulu_reference.refresher`` tag.
+
+When a dimension content is saved, Sulu sends a ``RefreshReferenceMessage`` to the ``sulu_message_bus``. The
+refresher with the same resource key handles it in the same request.
+
+Do not route the message to an asynchronous transport. The listener expects the message to be handled right away and
+throws otherwise.
+
+The ``SnippetReferenceRefresher`` is a complete example.
 
 Extending the Admin View with a References Table
 ------------------------------------------------
 
-To extend the admin view by adding a references table, follow these steps:
+To show the references of your entity, add a references table to its admin views:
 
-	1.	Inject the `ReferenceViewBuilderFactoryInterface`: Inject this interface into your custom Admin class. This will allow you to utilize the necessary methods to create the references view.
-	2.	Create the Reference List View: Use the `createReferenceListViewBuilder` method to create the list view for the references table.
+1. Inject the ``ReferenceViewBuilderFactoryInterface`` into your custom Admin class.
+2. Use its ``createReferenceListViewBuilder`` method to create the list view for the references table.
 
-Here’s an example implementation from the `SnippetAdmin` class, demonstrating how to add the references tab to your custom admin view:
+``MediaAdmin`` adds the references tab below its ``Insights`` tab:
 
 .. code-block:: php
 
@@ -78,17 +113,18 @@ Here’s an example implementation from the `SnippetAdmin` class, demonstrating 
                 ->createReferenceListViewBuilder(
                     $insightsResourceTabViewName . '.reference',
                     '/references',
-                    SnippetDocument::RESOURCE_KEY
+                    MediaInterface::RESOURCE_KEY
                 )
                 ->setParent($insightsResourceTabViewName)
         );
     }
 
-The `hasReferenceListPermission` method ensures that the current user has permission to view the references list.
-The `createReferenceListViewBuilder` method is used to create the view. It takes three parameters:
+``hasReferenceListPermission`` checks that the current user may view the references list.
+``createReferenceListViewBuilder`` takes the following parameters:
 
-    - The name of the new view, usually appended with .reference to indicate it is a reference view.
-    - The URL path for the references table.
-    - The resource key identifies the type of resource being referenced.
+- The name of the new view, usually appended with .reference to indicate it is a reference view.
+- The URL path for the references table.
+- The resource key identifies the type of resource being referenced.
+- Optional, the router attribute that holds the resource id, ``id`` by default.
 
 The setParent method sets the parent view to integrate the references table into the existing admin view.
