@@ -14,6 +14,7 @@ documented the most important ones.
     audience_targeting
     category
     contact
+    content/index
     custom_url
     hash
     http_cache
