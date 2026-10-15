@@ -63,8 +63,7 @@ The default webspace configuration is located in
 the name of your project.
 
 To get started, change the ``<name>`` and the ``<key>`` of the webspace to the
-name of your project. The name is a human-readable label that is shown in the
-administration interface. The key is the unique identifier of the webspace:
+name of your project, as described in :doc:`webspaces`:
 
 .. code-block:: xml
 
@@ -85,7 +84,8 @@ administration interface. The key is the unique identifier of the webspace:
     recommend to decide what key to use before you build the database in the
     next step.
 
-We'll :doc:`return to webspaces <webspaces>` later in this book.
+We'll :doc:`return to webspaces <webspaces>` later in this book, to configure
+the localizations, templates, navigation and URLs of your website.
 
 Setup the Database
 ------------------
