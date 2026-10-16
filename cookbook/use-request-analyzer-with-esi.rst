@@ -8,7 +8,7 @@ shown in the following code, you might encounter issues:
 
 .. code-block:: jinja
 
-    {{ render_esi(controller('AppBundle:News:latest', { 'maxPerPage': 5 })) }}
+    {{ render_esi(controller('App\\Controller\\NewsController::latestAction', { 'maxPerPage': 5 })) }}
 
 This will probably work for most controllers, but if the ``latestAction`` of
 the ``NewsController`` makes use of the ``RequestAnalyzer`` it might fail,
@@ -21,7 +21,11 @@ the options:
 
 .. code-block:: jinja
 
-    {{ render_esi(controller('AppBundle:News:latest', { 'maxPerPage': 5, _portal: request.portalKey, _locale: request.locale })) }}
+    {{ render_esi(controller('App\\Controller\\NewsController::latestAction', {
+        'maxPerPage': 5,
+        _portal: app.request.attributes.get('_sulu').getAttribute('portal').key,
+        _locale: app.request.locale
+    })) }}
 
 .. _symfony documentation: https://symfony.com/doc/current/book/http_cache.html#using-edge-side-includes
 .. _edge side includes: https://en.wikipedia.org/wiki/Edge_Side_Includes

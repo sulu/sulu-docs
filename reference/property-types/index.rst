@@ -15,8 +15,8 @@ The simplest template possible looks something like the this:
               xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
         <key>default</key>
 
-        <view>ClientWebsiteBundle:templates:default</view>
-        <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+        <view>pages/default</view>
+        <controller>Sulu\Content\UserInterface\Controller\Website\ContentController::indexAction</controller>
         <cacheLifetime>2400</cacheLifetime>
 
         <meta>

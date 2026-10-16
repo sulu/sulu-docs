@@ -20,7 +20,7 @@ Returns page Structure with provided properties for the given UUID
 - **properties**: *array* - Array of properties of the structure that should be loaded
 - **locale**: *?string* - Locale in which the structure should be loaded (**optional**)
 
-**Returns**:
+**Returns**: *array|null* - ``null`` if the page does not exist or is not published in the locale
 
 - `array`
     - **resource**: Resource of page (e.g. uuid, webspaceKey,...)
@@ -29,7 +29,7 @@ Returns page Structure with provided properties for the given UUID
     - **extension**: Extensions of page
     - **availableLocales**: Array of the available locales
     - **template**: Template name of page
-    - **author**: User ID of the author
+    - **author**: Contact ID of the author (see :doc:`sulu_resolve_contact`)
     - **authored**: Authored date of page
     - **lastModified**: LastModified date of page
     - **shadowBaseLocale**: Shadow locale of page

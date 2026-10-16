@@ -548,7 +548,7 @@ Add the product selection to your page template:
         <key>product_page</key>
 
         <view>templates/product_page</view>
-        <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+        <controller>Sulu\Content\UserInterface\Controller\Website\ContentController::indexAction</controller>
 
         <properties>
             <property name="title" type="text_line" mandatory="true">

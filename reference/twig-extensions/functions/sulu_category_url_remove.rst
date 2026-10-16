@@ -8,7 +8,7 @@ Returns current URL and removes given category from GET parameters.
 **Arguments**:
 
 - **category**: *array* - Serialized Category instance to determine value
-- **categoryParameter**: *string* - optional "category": parameter name
+- **categoriesParameter**: *string* - optional "categories": parameter name
 
 **Returns**: string - current URL without given category in categories parameter
 
