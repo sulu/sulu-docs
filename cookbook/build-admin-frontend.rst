@@ -24,6 +24,15 @@ Sulu is shipped with a build in command to update the build.
     previous builds and build the Javascript code manually on your system. Make sure that you have installed `node`_ if
     your project requires a manual build.
 
+To check if the build of the project matches the installed Sulu version, for example in a deployment pipeline, run:
+
+.. code-block:: bash
+
+    php bin/adminconsole sulu:admin:validate-build
+
+The command fails and asks to run ``sulu:admin:update-build`` if no build or no build version is found, or if the
+versions differ.
+
 Solution 2: Build manually with docker
 --------------------------------------
 

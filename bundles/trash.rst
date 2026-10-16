@@ -201,6 +201,10 @@ All configuration properties are optional an can be set to ``null``.
     * - resultSerializationGroups
       - Defines the serialization groups that are used to serialize a restored entity.
         The properties of the serialized entity can be used in the ``resultToView`` attribute.
+    * - resultToViewName
+      - Available since Sulu 3.1. Allows placeholders like ``{group}`` in the configured ``view``.
+        It maps a property of the serialized entity to the name of a placeholder,
+        for example ``['group' => 'group']``.
 
 (Optional) Cleanup external data when a trash item is removed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
