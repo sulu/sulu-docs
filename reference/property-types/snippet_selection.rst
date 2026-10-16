@@ -29,6 +29,10 @@ Parameters
     * - default
       - string
       - If set, the default snippet of the given area will be used as fallback value if no snippet is selected.
+    * - properties
+      - collection
+      - Defines with which key which property of the linked snippet should be
+        populated to the HTML template.
     * - item_disabled_condition
       - string
       - Allows to set a `jexl`_ expression that evaluates if an item should be displayed as disabled.
@@ -72,10 +76,28 @@ Example
 Twig
 ----
 
+``content.snippets`` is a list with one entry per selected snippet. Each entry contains the fields of the snippet
+template by their property name. If the ``properties`` parameter is set, it contains only the listed fields, under the
+names given there. If no snippet is selected and the ``default`` parameter is set, the default snippet of that area in
+the current webspace is used instead.
+
 .. code-block:: twig
 
     {% for snippet in content.snippets %}
         {{ snippet.title }}
+    {% endfor %}
+
+When snippets are selected, ``view.snippets`` is a flat list in the same order as ``content.snippets``. Each entry
+contains ``uuid`` and ``template`` (the template key of the snippet) and the view data of the snippet's fields, for
+example the ``link`` of a link field. Without a selection, ``view.snippets`` is empty or holds only ``ids`` and the
+parameters of the property. If the default snippet is used, ``view.snippets`` is no list: it holds ``ids`` with the uuid
+of the default snippet and the parameters of the property, but no ``uuid``, ``template`` or field view data at the top
+level.
+
+.. code-block:: twig
+
+    {% for snippet in content.snippets %}
+        {{ snippet.title }} ({{ view.snippets[loop.index0].template }})
     {% endfor %}
 
 .. _jexl: https://github.com/TomFrost/jexl

@@ -163,6 +163,43 @@ A reusable way for rendering blocks is having a separate template file per type:
 This way, its possible to access the ``properties`` of the block type via
 the ``content`` and ``view`` variable in the rendered block template.
 
+.. _property-types-block-settings:
+
+Built-in block settings
+-----------------------
+
+The settings overlay of a block is the ``content_block_settings`` form, unless ``settings_form_key`` is set. These
+settings ship with Sulu. They are saved in the ``settings`` of the block and applied when the website content is
+resolved. A block that is filtered out is removed from ``content`` and ``view``:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Setting
+      - Keys in ``settings``
+      - Effect on the website
+    * - Hidden
+      - ``hidden``
+      - The block is not rendered.
+    * - Schedules
+      - ``schedules_enabled``, ``schedules``
+      - The block is rendered only while at least one schedule matches. A ``fixed`` schedule has an optional ``start``
+        and ``end`` date and time. A ``weekly`` schedule has ``days``, a ``start`` and an ``end`` time. The cache
+        lifetime of the page is lowered to the time until the next start or end of a schedule, so that the cached
+        page expires when the block appears or disappears.
+    * - Segments
+      - ``segment_enabled``, ``segments``
+      - The block is not rendered if the segment of the request differs from the segment selected for the current
+        webspace. The setting is only shown in the administration interface if the webspace of the page has segments,
+        or, for content without a webspace, if any webspace has segments.
+    * - Target groups
+      - ``target_groups_enabled``, ``target_groups``
+      - The block is not rendered if the target group of the request is not one of the selected target groups. Only
+        available with the :doc:`AudienceTargetingBundle <../../bundles/audience_targeting>`.
+
+The keys of the schedules, segments and target groups are only evaluated if the matching ``*_enabled`` key is set.
+The settings are available in Twig as ``block.settings``. A block without saved settings has no ``settings`` key.
+
 Extending default block settings for pages
 ------------------------------------------
 

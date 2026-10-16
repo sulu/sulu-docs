@@ -50,7 +50,7 @@ Parameters
       - string
       - Defines the categories key to be used in the website query string. This
         comma separated list of category ids will be combined (AND) with the
-        selected tags from the backend. Default: `categories`
+        selected categories from the backend. Default: `categories`
     * - website_tags_operator
       - string
       - OR or AND to define how the tags will be combined in the query. Default: `OR`
@@ -81,8 +81,25 @@ Parameters
     * - templateKeys
       - string
       - Comma separated list of template keys to pre-filter the result set. Supported
-        by the ``pages``, ``snippets`` and ``articles`` providers. For articles and snippets the
-        value is intersected with the templates resolved from ``groups``.
+        by the ``pages``, ``snippets``, ``articles`` and ``articles_page_tree``
+        providers. For articles, and for snippets since Sulu 3.1, the value is
+        intersected with the templates resolved from ``groups``.
+    * - tagResourceLoader
+      - string
+      - Key of the resource loader that resolves the tag ids in ``view.<field>.tags``.
+        Use ``tag`` to receive the tag names. Default: ``raw``, which keeps the ids.
+    * - categoryResourceLoader
+      - string
+      - Key of the resource loader that resolves the category ids in
+        ``view.<field>.categories``. Use ``category`` to receive ``Sulu\Bundle\CategoryBundle\Api\Category`` objects.
+        Default: ``raw``, which keeps the ids.
+
+.. note::
+
+    The parameters ``types`` and ``structureTypes`` of Sulu 2.x are not supported anymore. The build fails and
+    names the replacement. Use ``groups`` instead of ``types`` for the
+    ``articles`` and ``articles_page_tree`` providers (since Sulu 3.1 also for ``snippets``), and ``templateKeys`` for
+    all other cases.
 
 Return Value
 ------------
@@ -102,20 +119,23 @@ This values are available in the *view* variable in the twig templates.
       - bool
       - Is TRUE if subfolders will be crawled
     * - categories
-      - string[]
-      - Selected categories
+      - int[]|Category[]
+      - Selected category ids, or the category objects if ``categoryResourceLoader`` is set to ``category``
     * - categoryOperator
       - string
       - Operator which combines selected categories
     * - tags
-      - int[]
-      - Selected tag IDs
+      - int[]|string[]
+      - Selected tag ids, or the tag names if ``tagResourceLoader`` is set to ``tag``
     * - tagOperator
       - string
       - Operator which combines selected tags
     * - types
       - string[]
       - Selected types
+    * - templateKeys
+      - string[]
+      - Template keys of the filter. Empty by default, the ``templateKeys`` parameter is not part of it.
     * - websiteCategories
       - string[]
       - Selected categories over GET parameter
@@ -135,8 +155,11 @@ This values are available in the *view* variable in the twig templates.
       - string
       - Selected present as value
     * - limitResult
-      - int
-      - Selected limit for result
+      - int|null
+      - The value of ``max_per_page`` if pagination is enabled, otherwise the selected limit for the result
+    * - limit
+      - int|null
+      - Maximum number of items over all pages (null if no limit is set)
     * - page
       - int
       - Current page number
@@ -249,9 +272,6 @@ This provider filters snippets.
     * - Parameter
       - Type
       - Description
-    * - type
-      - string
-      - If defined only snippets from this type will be returned
     * - properties
       - collection
       - Defines the property names which will be exposed in the HTML template.
@@ -439,19 +459,22 @@ The ``title`` and ``url`` properties are included as default properties for
 the ``pages`` and ``articles`` providers, so they are always available
 without explicit mapping in the ``properties`` parameter.
 
+The ``snippets`` provider has no default properties. Without a ``properties``
+parameter all fields of the snippet template are available.
+
 Available sort columns
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The following sort columns are available for the ``pages`` and ``articles``
-providers:
+The following sort columns are available for the ``pages``, ``articles`` and
+``snippets`` providers. The ``snippets`` provider has no ``changed`` column:
 
 .. list-table::
     :header-rows: 1
 
     * - Column
       - Description
-    * - workflowPublished
-      - The date when the item was published
+    * - published
+      - The date when the item was published.
     * - authored
       - The authored date set by the content manager
     * - created
