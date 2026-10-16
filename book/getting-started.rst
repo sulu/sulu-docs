@@ -121,7 +121,8 @@ Here is an example for using Sulu with MySQL:
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7
 
 When you're done with the configuration, populate the database with Sulu's
-default data:
+default data. The command also creates the search indexes of the engine that is
+configured in ``SEAL_DSN`` (see :doc:`../bundles/search`):
 
 .. code-block:: bash
 

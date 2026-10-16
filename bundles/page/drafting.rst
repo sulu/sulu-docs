@@ -41,17 +41,20 @@ publishing.
 Search Indexing
 ---------------
 
-Sulu maintains separate search indexes for draft and live content:
+Sulu keeps the draft and the live content of pages in two search indexes (see :doc:`../search`):
 
-- Draft index: ``sulu_page_<webspace>-<locale>-i18n``
-- Live index: ``sulu_page_<webspace>-<locale>-i18n_published``
+- The ``admin`` index contains the draft content. It is updated when a page or one of its translations is created,
+  saved, removed or restored from the trash, and is used by the search of the administration interface.
+  A copied page and a restored version appear in it after the next reindex.
+- The ``website`` index contains the live content. It is updated when a workflow transition like
+  publishing is applied to the page, and the page is removed from it when it is unpublished or removed.
+  It is used by the website search.
 
-To reindex content for both draft and live:
+To rebuild both indexes from the stored content, run:
 
 .. code-block:: bash
 
-    php bin/console massive:search:reindex # Reindex draft content
-    php bin/websiteconsole massive:search:reindex # Reindex live content
+    php bin/console cmsig:seal:reindex
 
 Content Dimensions
 ------------------
