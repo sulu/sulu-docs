@@ -39,6 +39,7 @@ our recipes.
     link-provider
     sitemap-provider
     property-resolver-and-resource-loader
+    custom-content-resolver
     dump-sitemap
     https
     video-preview-images
@@ -51,6 +52,7 @@ our recipes.
     user-context-caching
     build-admin-frontend
     multi-server-setup
+    request-workflow-validator
 
 It is possible to work through the recipes, although most of the people will
 pick the ones, which are most similar to their own tasks. We're open to
