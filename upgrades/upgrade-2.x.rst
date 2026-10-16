@@ -42,7 +42,10 @@ the cause of any problems.
      - 5.4 - 7.4
    * - 3.0
      - 8.2 - 8.5
-     - 6.4 - 7.4
+     - 6.4 - 8.0
+   * - 3.1
+     - 8.2 - 8.5
+     - 6.4 - 8.0
 
 The upgrade process of Sulu consists of the following steps:
 
@@ -128,4 +131,4 @@ To simplify this step, Sulu provides a command to update the JavaScript build in
 .. _Composer documentation: https://getcomposer.org/doc/articles/versions.md#writing-version-constraints
 .. _sulu/skeleton repository: https://github.com/sulu/skeleton
 .. _Symfony best practices: https://symfony.com/doc/current/best_practices.html
-.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/3.0/UPGRADE.md
+.. _UPGRADE.md file: https://github.com/sulu/sulu/blob/3.1/UPGRADE.md
