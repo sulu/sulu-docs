@@ -22,7 +22,7 @@ The SuluMediaBundle can be configured the following way:
 Origin and AI disclosure
 ------------------------
 
-Available since Sulu 2.6.26. The media details have an "Origin" field with the values "Created by humans"
+Available since Sulu 2.6.26 and 3.0.9. The media details have an "Origin" field with the values "Created by humans"
 (``human_created``), "Created by AI" (``ai_generated``), "Modified by AI" (``ai_modified``) and "Unknown"
 (``unknown``, the default). "Created by AI" and "Modified by AI" show an "AI Disclosure" section:
 
