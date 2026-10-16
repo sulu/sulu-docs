@@ -46,7 +46,7 @@ Behavior
   target page, or to the start page of the webspace if there is none. The request format and the query string are
   kept.
 * When the URL of a custom-url is changed, its old URL redirects permanently (301) to the new one. With *Redirect*
-  checked, or without a target page, it redirects to the URL of the target page instead.
+  checked, or without a target page, it redirects like the current URL does, see above.
 * *Canonical URL*, *No Index* and *No Follow* are passed to the page in the ``_seo`` request attribute. The
   ``@SuluWebsite/Extension/seo.html.twig`` template merges it into the SEO data, so the base template has to include
   it to render the meta tags (see :doc:`../book/twig`).
