@@ -59,7 +59,7 @@ in time.
                     'title' => $book->getTitle(),
                     'description' => $book->getDescription(),
                     'created' => $book->getCreated()->format('c'),
-                ];
+                ],
                 null,
                 $options,
                 Book::SECURITY_CONTEXT,

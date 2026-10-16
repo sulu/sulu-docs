@@ -285,6 +285,31 @@ This provider filters articles. Requires the SuluArticleBundle to be installed.
     The ``properties`` parameter works the same way as for pages, supporting both
     template properties and extension data (e.g. ``excerpt.title``).
 
+Articles in a page tree
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Alias: "articles_page_tree"
+
+This provider works like the ``articles`` provider and adds a page datasource. Requires the SuluArticleBundle to
+be installed.
+
+The content manager selects a page as datasource. The provider returns the articles whose
+:doc:`page_tree_route` property points to that page. With "Include sub elements" enabled, it also returns the
+articles of the sub pages. Without a datasource, no page filter is applied.
+
+**Parameters**
+
+The parameters are the same as for the ``articles`` provider, including ``groups`` and ``templateKeys``.
+
+.. code-block:: xml
+
+    <property name="articles" type="smart_content">
+        <params>
+            <param name="provider" value="articles_page_tree"/>
+            <param name="groups" value="blog"/>
+        </params>
+    </property>
+
 Contact - People
 ~~~~~~~~~~~~~~~~
 
@@ -477,6 +502,9 @@ Sulu includes the following built-in SmartContentProviders:
 **Articles** (alias: ``articles``, if SuluArticleBundle is installed)
     Filters articles. Supports tags, categories, types (via article types/groups),
     pagination, and sorting.
+
+**Articles in a page tree** (alias: ``articles_page_tree``, if SuluArticleBundle is installed)
+    Filters articles. Supports the same options as ``articles`` plus a page datasource.
 
 **Media** (alias: ``media``)
     Filters media items. Supports tags, categories, types (document/video/image/audio),
