@@ -21,6 +21,7 @@ documented the most important ones.
     location
     markup/index
     media/index
+    notifier
     page/index
     persistence
     preview/index
