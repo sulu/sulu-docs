@@ -39,13 +39,14 @@ A custom-url consists of following properties:
 Behavior
 --------
 
-* A custom-url that is not published is not served.
+* A custom-url that is not published is not served. Its old URLs still redirect.
 * The target page is rendered in its live version and the selected localization. If the page is
   missing there, the URL returns a 404.
 * With *Redirect* checked, or without a target page, the custom-url redirects permanently (301) to the URL of the
   target page, or to the start page of the webspace if there is none. The request format and the query string are
   kept.
-* When the URL of a custom-url is changed, its old URL redirects permanently (301) to the new one.
+* When the URL of a custom-url is changed, its old URL redirects permanently (301) to the new one. With *Redirect*
+  checked, or without a target page, it redirects like the current URL does, see above.
 * *Canonical URL*, *No Index* and *No Follow* are passed to the page in the ``_seo`` request attribute. The
   ``@SuluWebsite/Extension/seo.html.twig`` template merges it into the SEO data, so the base template has to include
   it to render the meta tags (see :doc:`../book/twig`).
