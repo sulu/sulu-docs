@@ -69,16 +69,26 @@ adapter.
 Creating the Indexes
 --------------------
 
-``sulu:build dev`` and ``sulu:build prod`` create the missing indexes with their ``search`` target (see
-:doc:`../book/getting-started`). Existing indexes are skipped. To only create the indexes, or to drop
-and recreate them, run the target on its own. ``--destroy`` leaves the indexes empty, so run the
-reindex afterwards:
+The indexes are created and dropped with the commands of the SEAL bundle, see the `SEAL documentation`_
+for their options:
+
+.. code-block:: bash
+
+    php bin/console cmsig:seal:index-create
+    php bin/console cmsig:seal:index-drop --force
+    php bin/console cmsig:seal:reindex
+
+``index-create`` only creates the missing indexes. ``index-drop`` does nothing without ``--force``, and
+leaves the indexes empty, so run the reindex afterwards.
+
+``sulu:build dev`` and ``sulu:build prod`` are a shortcut for this: their ``search`` target creates the
+missing indexes (see :doc:`../book/getting-started`). To run only that target, or to drop and recreate the
+indexes, use:
 
 .. code-block:: bash
 
     php bin/adminconsole sulu:build search
     php bin/adminconsole sulu:build search --destroy
-    php bin/console cmsig:seal:reindex
 
 Reindexing
 ----------
