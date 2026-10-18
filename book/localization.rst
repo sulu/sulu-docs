@@ -7,6 +7,12 @@ using Sulu. Sulu also considers the different variations of a language among
 different countries. The combination of these two factors is called a
 localization.
 
+.. note::
+
+    Localizations are the languages of your *content*. They are independent of
+    the :ref:`system languages <getting-started-system-languages>`, which are
+    the languages of the administration interface itself.
+
 Configuring webspace localizations
 ----------------------------------
 
