@@ -376,6 +376,32 @@ The configuration makes use of the route names you have seen listed above by the
 variants of the URL (``/admin/api/events`` and ``/admin/api/events/{id}``) one representative is used as a proxy for the
 list and detail URL - whereby the detail URL has to be the one including the ID.
 
+Optionally, a ``prefill`` route can be configured as well. When the form of a *new* resource is opened, the
+administration interface sends a ``GET`` request to that route (with the same ``locale`` and options as the detail
+request) and uses the returned JSON to prefill the form. This makes it easy to compute default values on the PHP side,
+e.g. depending on the current user or on another resource:
+
+.. code-block:: yaml
+
+    sulu_admin:
+        resources:
+            events:
+                routes:
+                    list: app.get_events
+                    detail: app.get_event
+                    prefill: app.get_event_prefill
+
+.. code-block:: php
+
+    // src/Controller/Admin/EventController.php
+    #[Route('/admin/api/events/prefill', name: 'app.get_event_prefill', methods: ['GET'])]
+    public function prefillAction(): Response
+    {
+        return new JsonResponse(['title' => 'My new event', 'startDate' => (new \DateTimeImmutable('tomorrow'))->format('c')]);
+    }
+
+The prefilled form is not marked as changed, and a failing ``prefill`` request only results in an empty form.
+
 Admin class
 -----------
 
