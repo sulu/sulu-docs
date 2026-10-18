@@ -29,7 +29,7 @@ will not appear any icon on hovering.
 
 In addition to the Sulu system the system of the webspace for this page is also
 shown on the permission tab, if the webspace has a system configured (see
-:doc:`../../book/webspaces` for more information on how to do this). If the
+:doc:`webspace-configuration` for more information on how to do this). If the
 webspace has configured the system with the `permission-check` flag set to
 `true`, Sulu will automatically check in this webspace if the current visitor
 is allowed to see the current page and only show pages in the navigation and

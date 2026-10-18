@@ -43,7 +43,7 @@ The template of a page can be selected in the admin interface:
 .. note::
 
     If you don't want a template to appear in this list, use the ``excluded-templates`` node in the webspace configuration file.
-    Have a closer look at `Setup a Webspace <webspaces.html#urls>`_ for more details.
+    Have a closer look at the :doc:`webspace configuration reference <../bundles/page/webspace-configuration>` for more details.
 
 The name displayed in the dropdown is configured in the ``<meta>`` section of
 the XML:

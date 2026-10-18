@@ -14,7 +14,7 @@ required to delete assets and entire collections.
 
 The permissions for collections will also show the systems for each webspace if
 configured with the `permission-check` flag set to `true` (see
-:doc:`../../book/webspaces` for more information on how to do this). Then Sulu
-will only show the media on this website (no matter if it is displayed via a
-smart content or media selection) if the current visitor has the `view`
+:doc:`../page/webspace-configuration` for more information on how to do this).
+Then Sulu will only show the media on this website (no matter if it is displayed
+via a smart content or media selection) if the current visitor has the `view`
 permission for this media.
