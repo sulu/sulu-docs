@@ -1,16 +1,17 @@
-Generating thumbnails for pdf files with ghostscript
-====================================================
+Generating thumbnails for PDF files with Ghostscript
+==================================================
 
 Ghostscript (gs) is a PostScript and PDF language interpreter and previewer.
-Sulu is able to use the **gs** command line program to generate thumbnail/preview images for pdf files.
+Sulu is able to use the **gs** command line program to generate thumbnail/preview images for PDF files.
 The location of the **gs** program depends on your system and needs to be configured for Sulu to find it.
 
-Add configuration `config/packages/sulu_media.yml`:
+Add the following configuration to ``config/packages/sulu_media.yml``:
 
 .. code-block:: yaml
 
     parameters:
-        # Sulu by default assumes that the gs command is available in the PATH. This may not be true for your web server user:
+        # Sulu by default assumes that the gs command is available in the PATH.
+        # This may not be true for your web server user and then requires the full path to be configured:
         env(GHOST_SCRIPT_PATH): 'gs'
 
     sulu_media:
@@ -48,4 +49,4 @@ If configured correctly, you should see the following output:
         ]
     }
 
-When this is configured, Sulu ``MediaImageExtractor`` will use the **gs** command to generate a thumbnail for pdf files.
+When this is configured, Sulu ``MediaImageExtractor`` will use the **gs** command to generate a thumbnail for PDF files.
