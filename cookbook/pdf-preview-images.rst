@@ -1,5 +1,5 @@
 Generating thumbnails for PDF files with Ghostscript
-==================================================
+====================================================
 
 Ghostscript (gs) is a PostScript and PDF language interpreter and previewer.
 Sulu is able to use the **gs** command line program to generate thumbnail/preview images for PDF files.
