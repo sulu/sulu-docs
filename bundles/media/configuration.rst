@@ -93,3 +93,31 @@ of the API and in Twig:
 .. code-block:: twig
 
     {{ media.mediaLanguages|join(', ') }}
+
+Media validity
+--------------
+
+Available since Sulu 3.1. A media can carry an optional validity period, e.g.
+the term of a license, with a "Validity From" and a "Validity To" date. The
+dates are for information only: they have no effect on how long the media is
+available. Both dates are optional, the end cannot be before the start, and
+they are kept when a new version of the file is uploaded.
+
+The fields are hidden in the administration interface by default. The
+``validity`` option shows them in the media details:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_media.yaml
+    sulu_media:
+        validity: true
+
+The API accepts and returns the dates as ``validFrom`` and ``validTo`` in the
+``Y-m-d`` format regardless of this option; ``null`` or an empty string clears
+them. In Twig they are available as date objects:
+
+.. code-block:: twig
+
+    {% if media.validTo %}
+        {{ media.validTo|date('d.m.Y') }}
+    {% endif %}
