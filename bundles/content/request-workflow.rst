@@ -200,4 +200,198 @@ The review overlay needs the admin API routes of the ContentBundle:
         resource: "@SuluContentBundle/config/routing_admin_api.yaml"
         prefix: /admin/api
 
+Extending the Request
+---------------------
+
+A bundle can add its own fields and its own footer actions to the request for publishing. It can also react when a
+request ends. The core does not need to know about it.
+
+.. note::
+
+    The events and the action interface below are marked ``@experimental``. They may change in future releases.
+
+Request Form
+~~~~~~~~~~~~
+
+**Save and request for publish** opens an overlay with the form ``workflow_transition_request_details`` before it saves.
+The form has one field, ``message``, a text area for the reviewer. The review overlay shows the message to the reviewer.
+The overlay only opens when the form has at least one field.
+
+Add fields by extending the form. Create a form with the same key, as described in
+:doc:`../../reference/property-types/block`:
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <!-- config/forms/workflow_transition_request_details.xml -->
+    <form xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+    >
+        <key>workflow_transition_request_details</key>
+
+        <properties>
+            <property name="publishAt" type="datetime"/>
+        </properties>
+    </form>
+
+The admin sends the form data in the body of the save, under the key ``workflowTransitionRequestData``. The page,
+article and snippet controllers remove the key from the content data and pass it on. The request stores it as JSON in
+the new nullable column ``data`` of ``ct_workflow_transition_requests``. Run ``bin/console doctrine:migrations:migrate``
+after the update. The API returns the stored values as ``data``.
+
+Reading the Data
+~~~~~~~~~~~~~~~~
+
+Two events carry the data of a request:
+
+.. list-table::
+    :header-rows: 1
+
+    * - Event
+      - Dispatched when
+    * - ``WorkflowTransitionRequestSettledEvent``
+      - The publish of an approved request went through.
+    * - ``WorkflowTransitionRequestCancelledEvent``
+      - A request ends without a publish, because the review was cancelled or the content was rejected.
+
+Both live in ``Sulu\Content\Application\WorkflowTransitionRequest\Event`` and offer ``getResourceKey()``,
+``getResourceId()``, ``getLocale()`` and ``getData()``:
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace App\EventListener;
+
+    use Sulu\Content\Application\WorkflowTransitionRequest\Event\WorkflowTransitionRequestSettledEvent;
+    use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+
+    #[AsEventListener]
+    class SchedulePublishListener
+    {
+        public function __invoke(WorkflowTransitionRequestSettledEvent $event): void
+        {
+            $publishAt = $event->getData()['publishAt'] ?? null;
+
+            // schedule the publish of $event->getResourceKey() and $event->getResourceId()
+        }
+    }
+
+Use the cancelled event to undo what the bundle set up for the request.
+
+.. warning::
+
+    ``ContentWorkflowInterface::apply()`` has a fourth argument, ``array $workflowTransitionRequestData = []``.
+    Classes that implement the interface have to add it. Callers can leave it out. See ``UPGRADE-3.x.md`` of Sulu.
+
+Footer Actions
+~~~~~~~~~~~~~~
+
+An action adds a button to the footer of the review overlay, next to the actions of the core. Implement
+``WorkflowTransitionRequestActionInterface``. It is autoconfigured with the tag
+``sulu_content.workflow_transition_request_action``:
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace App\RequestWorkflow;
+
+    use Sulu\Component\Security\Authorization\PermissionTypes;
+    use Sulu\Content\Application\WorkflowTransitionRequest\Action\WorkflowTransitionRequestActionInterface;
+    use Sulu\Content\Domain\Model\WorkflowTransitionRequest\WorkflowTransitionRequest;
+
+    class PublishAtAction implements WorkflowTransitionRequestActionInterface
+    {
+        public function __construct(
+            private readonly PublishScheduler $publishScheduler,
+        ) {
+        }
+
+        public static function getKey(): string
+        {
+            return 'publish_at';
+        }
+
+        public function getLabel(): string
+        {
+            return 'app.publish_at';
+        }
+
+        public function getPermission(): string
+        {
+            return PermissionTypes::LIVE;
+        }
+
+        public function isAvailable(WorkflowTransitionRequest $request): bool
+        {
+            return isset($request->getData()['publishAt']);
+        }
+
+        public function execute(WorkflowTransitionRequest $request, array $data): void
+        {
+            $this->publishScheduler->schedule(
+                $request->getResourceKey(),
+                $request->getResourceId(),
+                $request->getLocale(),
+                new \DateTimeImmutable($request->getData()['publishAt']),
+            );
+        }
+    }
+
+``PublishScheduler`` stands for your own service. Add an entry for the label to the admin translations, for example
+``"app.publish_at": "Publish at the chosen date"`` in ``translations/admin.en.json``.
+
+.. list-table::
+    :header-rows: 1
+
+    * - Method
+      - Purpose
+    * - ``getKey()``
+      - Unique and static. It names the action in the API. The keys ``approve``, ``reject``, ``retry``, ``cancel`` and
+        ``publish`` belong to the core. Using one throws a ``LogicException``.
+    * - ``getLabel()``
+      - Translation key of the button label.
+    * - ``getPermission()``
+      - Permission the user needs on the content, to see the button and to take the action.
+    * - ``isAvailable()``
+      - Whether the action fits the request. Only open requests are asked.
+    * - ``execute()``
+      - Runs inside the HTTP request and is flushed with it. Throw an exception to refuse. ``$data`` is the body of the
+        HTTP request.
+
+The API lists the actions that fit a request and that the user may take as ``actions``, each with its ``key`` and
+``label``. A closed request has none. A click runs:
+
+.. code-block:: text
+
+    POST /admin/api/workflow-transition-requests/{id}?action=<key>
+
+The answer is ``400`` for an unknown key. It is ``409`` for a closed request and for an action that is not available for
+the request.
+
+Checking the Publish Permission for a User
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code without a token, such as a console command or a ``task:run`` job, is let through by the publish check. To check a
+user, pass it as the optional fourth argument of ``WorkflowTransitionAdminAuthorizerInterface::assertCanPublish()``:
+
+.. code-block:: php
+
+    $authorizer->assertCanPublish('pages', $id, 'en', $user);
+
+``$user`` is a ``Sulu\Component\Security\Authentication\UserInterface``. The permissions come from the roles of the user.
+The rule is the same as in the admin: ``live``, or ``edit`` with an approved request. A user without it causes an
+``AccessDeniedException``. The check runs in the system ``Admin::SULU_ADMIN_SECURITY_SYSTEM`` unless the security
+condition names another one. Without a user, the current token decides, as before.
+
+.. note::
+
+    The interface is marked ``@internal``.
+
 .. _Symfony Messenger documentation: https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport
