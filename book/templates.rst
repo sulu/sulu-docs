@@ -987,6 +987,12 @@ context (e.g. ``sulu.article.articles_marketing``, see :doc:`../bundles/security
 be granted to the roles that need it; selection fields and smart content for the resource can be
 filtered by group too, see e.g. :doc:`../reference/property-types/snippet_selection`.
 
+The tab of a group is hidden for users whose role lacks the ``Edit`` permission for its security context. Since
+Sulu 3.1 an article REST request checks the security context of the group the article is in, so a role needs
+``sulu.article.articles`` only for articles of the ``default`` group or when there is a single group. In Sulu 3.0
+every article REST request also checked ``sulu.article.articles``, so a role needed it in addition to the
+permissions of the groups.
+
 The group title shown in the administration interface, for every group including the implicit
 ``default`` group, comes from the translation key ``sulu_admin.template_group.<group>`` and falls
 back to the capitalized group identifier if no translation exists.
