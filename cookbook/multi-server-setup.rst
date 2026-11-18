@@ -11,20 +11,36 @@ Media Storage
 
 Media files that are uploaded in the media section of the Sulu administration interface are stored in the filesystem of the
 current server by default. If your application runs on multiple servers, you need to :doc:`configure an external storage adapter<./external-media-storage>`
-for your media files.
+for your media files. Sulu uses the Flysystem storage ``default.storage`` unless
+``sulu_media.storage.flysystem_service`` names another one. This example stores the media in AWS S3:
+
+.. code-block:: bash
+
+    composer require league/flysystem-aws-s3-v3
 
 .. code-block:: yaml
 
-    # config/packages/sulu_media.yaml
-    sulu_media:
-        storage: s3
+    # config/packages/flysystem.yaml
+    flysystem:
         storages:
-            s3:
-                key: 'your aws s3 key'
-                secret: 'your aws s3 secret'
-                bucket_name: 'your aws s3 bucket name'
-                path_prefix: 'optional path prefix'
-                region: 'eu-west-1'
+            default.storage:
+                adapter: 'aws'
+                options:
+                    client: 'app.s3_client'
+                    bucket: 'your aws s3 bucket name'
+                    prefix: 'optional path prefix'
+
+    # config/services.yaml
+    services:
+        app.s3_client:
+            class: Aws\S3\S3Client
+            arguments:
+                -
+                    version: 'latest'
+                    region: 'eu-west-1'
+                    credentials:
+                        key: 'your aws s3 key'
+                        secret: 'your aws s3 secret'
 
 Image Formats
 -------------
@@ -92,19 +108,23 @@ Additionally, if the application runs in different directories on different serv
 Search Index
 ------------
 
-Sulu uses the `MassiveSearchBundle`_ for its search functionality on the website and in the administration interface.
-By default the bundle creates an optimized search index in the filesystem of the current server.
-To prevent outdated search results, you need to `configure Elasticsearch as a centralized search adapter`_.
+Sulu uses `SEAL`_ for its search functionality on the website and in the administration interface,
+see :doc:`../bundles/search`. The skeleton uses the Loupe adapter, which creates the search index in the
+filesystem of the current server. To prevent outdated search results, you need to use an adapter for a
+search engine that all your servers share, like Elasticsearch. Install the adapter and change the
+``SEAL_DSN`` environment variable:
 
-.. code-block:: yaml
+.. code-block:: bash
 
-    # config/packages/massive_search.yaml
-    massive_search:
-        adapter: elastic
-        adapters:
-            elastic:
-                version: 7.13
-                hosts: [ '192.168.0.10:9200' ]
+    composer require cmsig/seal-elasticsearch-adapter
+
+.. code-block:: bash
+
+    # .env
+    SEAL_DSN="elasticsearch://192.168.0.10:9200"
+
+Fill the new search engine with ``bin/console cmsig:seal:reindex``, which creates missing indexes itself.
+``bin/adminconsole sulu:build search`` creates them without filling them.
 
 Session Management
 ------------------
@@ -120,8 +140,7 @@ Alternatively, you can set a centralized ``session.save_handler`` directly in yo
     session.save_path = "tcp://192.168.0.10:6379"
 
 
-.. _MassiveSearchBundle: https://github.com/massiveart/MassiveSearchBundle
+.. _SEAL: https://github.com/PHP-CMSIG/search
 .. _FOSHttpCacheBundle: https://github.com/friendsofsymfony/FOSHttpCacheBundle
 .. _Store Sessions in a Database: https://symfony.com/doc/current/session/database.html
 .. _configure a centralized caching adapter: https://symfony.com/doc/current/cache.html
-.. _configure Elasticsearch as a centralized search adapter: https://massivesearchbundle.readthedocs.io/en/latest/search_adapters.html#elasticsearch

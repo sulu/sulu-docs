@@ -34,7 +34,7 @@ backwards compatibility is promised:
 * Webspace (see :doc:`../book/webspaces`)
 * Template (see :doc:`../book/templates`)
 * Image formats (see :doc:`../book/image-formats`)
-* MassiveSearch (see the `MassiveSearchBundle Mapping`_)
+* Search tags of templates (see :ref:`templates-search`)
 * Bundle configurations
 
 Events
@@ -74,5 +74,3 @@ compatibility:
 * ``Contact``
 * ``Category``
 * ``Tag``
-
-.. _MassiveSearchBundle Mapping: http://massivesearchbundle.readthedocs.org/en/latest/mapping.html
