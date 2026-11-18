@@ -5,7 +5,7 @@ Description
 -----------
 
 Shows a list with the possibility to add links to other articles managed in Sulu.
-Additionally it populates all the fields defined in the template configuration
+Additionally it populates the title, the url and the fields listed in the ``properties`` parameter
 to the HTML template. The content is stored as an array of references.
 
 Parameters
@@ -92,6 +92,10 @@ Complex Example
 Twig
 ----
 
+``content.articles`` is a list with one entry per selected article. Each entry contains ``title``, ``url``,
+``authored``, ``lastModified`` and the keys defined in the ``properties`` parameter. Other fields of the article
+template are not available.
+
 .. code-block:: twig
 
     {% for article in content.articles %}
@@ -106,4 +110,15 @@ Twig
 
             <a href="{{ sulu_content_path(article.url) }}">Read more</a>
         </div>
+    {% endfor %}
+
+When articles are selected, ``view.articles`` is a flat list in the same order as ``content.articles``. Each entry
+contains ``uuid``, ``template``, ``mainWebspace`` and ``additionalWebspaces`` and the view data of the fields it
+contains. Without a selection, ``view.articles`` is empty or holds only an empty ``ids`` and the parameters of the
+property.
+
+.. code-block:: twig
+
+    {% for article in content.articles %}
+        {{ article.title }} ({{ view.articles[loop.index0].template }})
     {% endfor %}

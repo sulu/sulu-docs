@@ -43,37 +43,54 @@ generated it with ``npm install`` and ``npm run build`` into your new directory.
 Overwrite templates configuration files path
 --------------------------------------------
 
-To use another directory then the default ``config/templates/pages``. You need to create a ``sulu_core.yaml`` file in ``config/packages`` and add the following parameters.
-(Subdirectories are not included by design, this allows the use of subdirectories for something else like ``<xi:include .../>`` see :doc:`../book/templates`.)
+The directories of the template XML files are configured per template type in ``sulu_admin.templates``. The types are
+``page``, ``snippet``, ``article`` and ``block``. By default each type has one directory registered under the name
+``app``: ``config/templates/pages``, ``config/templates/snippets``, ``config/templates/articles`` and
+``config/templates/blocks``.
+
+To use further directories, add them to ``directories`` under a new name. To replace the default directory,
+use the name ``app``. A directory that does not exist is skipped. Do not add a subdirectory of a configured directory
+(like ``config/templates/pages/projectA``), because the files of subdirectories are loaded already.
 
 .. code-block:: yaml
 
-    # config/packages/sulu_core.yaml
-    sulu_core:
-        content:
-            structure:
-                paths:
-                    page_projectA:
-                        path: '%kernel.project_dir%/config/templates/pages/projectA'
-                        type: page
-                    page_projectB:
-                        path: '%kernel.project_dir%/config/templates/pages/projectB'
-                        type: page
+    # config/packages/sulu_admin.yaml
+    sulu_admin:
+        templates:
+            page:
+                directories:
+                    page_projectA: '%kernel.project_dir%/config/templates/projectA/pages'
+                    page_projectB: '%kernel.project_dir%/config/templates/projectB/pages'
 
-Or use the environment variable ``SITE`` for the active Webspace.
+Or use the environment variable ``SITE`` for the active Webspace and replace the default directory.
 
 .. code-block:: yaml
 
-    # config/packages/sulu_core.yaml
-    sulu_core:
-        content:
-            structure:
-                paths:
-                    page_site:
-                        path: '%kernel.project_dir%/config/sites/%env(SITE)%/templates'
-                        type: page
+    # config/packages/sulu_admin.yaml
+    sulu_admin:
+        templates:
+            page:
+                directories:
+                    app: '%kernel.project_dir%/config/sites/%env(SITE)%/templates'
 
+Every ``*.xml`` file in a directory and in its subdirectories is loaded, and the properties of files with the same
+``<key>`` are combined. Define the title, view and controller of a template in one file only, because the load order is
+not guaranteed. Keep ``<xi:include .../>`` fragments outside of these directories, see :doc:`../book/templates`.
 
+``default_type`` sets the template key that the administration interface preselects for new content. Without it, the
+first loaded template is preselected, in no guaranteed order. For pages, the default template of the webspace is
+preselected.
+
+The key is also used when content is saved without a template. In Sulu 3.0 such a save fails if ``default_type`` is not
+set:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_admin.yaml
+    sulu_admin:
+        templates:
+            snippet:
+                default_type: 'my_snippet_key'
 
 Overwrite Webspaces config file path
 ------------------------------------

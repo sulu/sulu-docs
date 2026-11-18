@@ -5,7 +5,7 @@ Description
 -----------
 
 Shows a field, on which exactly one link to an article can be assigned.
-Additionally it populates all the fields defined in the template configuration
+Additionally it populates the title, the url and the fields listed in the ``properties`` parameter
 to the HTML template. The selected article is exposed to the HTML template as a single object containing the configured properties.
 
 Parameters
@@ -80,6 +80,14 @@ Complex Example
 
 Twig
 ----
+
+``content.singleArticle`` is an object with ``title``, ``url``, ``authored``, ``lastModified`` and the keys defined in
+the ``properties`` parameter. Other fields of the article template are not available. It is ``null`` if no article is
+selected, so check for it before you use it.
+
+``view.singleArticle`` is an object with ``id``, ``uuid``, ``template``, ``mainWebspace`` and ``additionalWebspaces``,
+the view data of the fields it contains and the parameters of the property. If no article is selected, it only contains
+``id`` (``null``) and the parameters.
 
 .. code-block:: twig
 
