@@ -54,7 +54,7 @@ structure that 2.6 expects:
 
 .. code-block:: bash
 
-    php bin/console phpcr:migrations:migrate
+    php bin/adminconsole phpcr:migrations:migrate
 
 **4. Run the PHPCR cleanup command**
 
@@ -64,9 +64,15 @@ the chance of problems during the later content migration:
 
 .. code-block:: bash
 
-    php bin/console sulu:document:phpcr-cleanup
+    php bin/adminconsole sulu:document:phpcr-cleanup
 
-**5. Dump the database**
+**5. Check the webspace, template and navigation context keys**
+
+Sulu 3.0 validates the keys of webspaces, templates and navigation contexts strictly: they have to match
+``[a-z0-9_-]+`` and may be at most 31 characters long. Change keys that do not match before the upgrade, with a
+PHPCR migration or manually in the database.
+
+**6. Dump the database**
 
 Once all migrations have run and the cleanup command has finished, create a database dump. This dump
 is your fallback if anything goes wrong during Phase 2 — you can restore it and repeat the 3.0 upgrade
@@ -93,6 +99,8 @@ Compare the `sulu/skeleton repository`_ between Sulu 2.6 and Sulu 3.0 and apply 
 changes that make sense for your project. The relevant differences are mainly in ``config/``,
 ``.env``, the bundle list and other Symfony/Sulu defaults. The admin JavaScript build itself does
 not need to be updated manually — that is handled later by ``sulu:admin:update-build``.
+The new bundles and routes are also listed in *Upgrade to Sulu 3.0 and register new bundles* and *Register new bundle
+routes* in ``UPGRADE-3.x.md``.
 
 .. note::
 
@@ -150,6 +158,31 @@ storage is provided by a dedicated bundle. Install it:
 
     composer require sulu/phpcr-migration-bundle
 
+Add the bundle to your ``config/bundles.php``:
+
+.. code-block:: php
+
+    // config/bundles.php
+
+    return [
+        // ...
+        Sulu\Bundle\PhpcrMigrationBundle\SuluPhpcrMigrationBundle::class => ['all' => true],
+    ];
+
+Configure it in ``config/packages/sulu_phpcr_migration.yaml``. If your project used Jackrabbit, use the
+``jackrabbit://`` DSN instead of the ``dbal://`` one:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_phpcr_migration.yaml
+    sulu_phpcr_migration:
+        # dbal://<dbalConnection>?workspace=<workspaceName>
+        # jackrabbit://<user>:<password>@<host>:<port>/server?workspace=<workspaceName>
+        DSN: "dbal://default?workspace=%env(PHPCR_WORKSPACE)%"
+        target:
+            dbal:
+                connection: default
+
 **8. Run the PHPCR migration in dry-run mode**
 
 Before performing the real migration, execute the command in dry-run mode. Dry-run mode runs through
@@ -158,21 +191,31 @@ would otherwise interrupt the migration mid-way:
 
 .. code-block:: bash
 
-    php bin/console sulu:phpcr-migration:migrate --dry-mode
+    php bin/adminconsole sulu:phpcr-migration:migrate --dry-run
 
 Fix every error that the dry run reports — typically these are template or configuration mismatches
 that need to be adjusted in your project — and re-run the command until it finishes without errors.
 
 **9. Run the PHPCR migration**
 
-Once the dry run completes successfully, run the migration without ``--dry-mode`` to actually transfer
+Once the dry run completes successfully, run the migration without ``--dry-run`` to actually transfer
 all PHPCR data into the new content architecture:
 
 .. code-block:: bash
 
-    php bin/console sulu:phpcr-migration:migrate
+    php bin/adminconsole sulu:phpcr-migration:migrate
 
-**10. Reindex the search**
+**10. Refresh the references**
+
+The ``referenceContext`` of the references uses ``draft`` and ``live`` in Sulu 3.0 instead of ``admin`` and
+``website``. Refresh the references of the migrated content, see *Adjusted the ReferenceContext for Reference
+Entities* in ``UPGRADE-3.x.md``:
+
+.. code-block:: bash
+
+    php bin/console sulu:reference:refresh
+
+**11. Reindex the search**
 
 Populate the new search index (admin and website) with the migrated Sulu 3.0 data:
 
@@ -180,12 +223,12 @@ Populate the new search index (admin and website) with the migrated Sulu 3.0 dat
 
     php bin/console cmsig:seal:reindex --drop
 
-**11. Verify the migration**
+**12. Verify the migration**
 
 Log in to the Sulu admin panel and check that pages, articles, snippets, media and other entities are
 present and rendered correctly before continuing.
 
-**12. Remove the PHPCR migration bundle**
+**13. Remove the PHPCR migration bundle**
 
 Once the migration has been verified, the bundle is no longer needed and can be removed:
 
@@ -193,7 +236,7 @@ Once the migration has been verified, the bundle is no longer needed and can be 
 
     composer remove sulu/phpcr-migration-bundle
 
-**13. Drop the obsolete PHPCR tables**
+**14. Drop the obsolete PHPCR tables**
 
 The ``phpcr_*`` tables in the database are no longer required by Sulu 3.0. Generate a Doctrine schema
 diff to create a migration that removes them:
@@ -239,8 +282,10 @@ The directories of the templates and ``default_type`` moved from ``sulu_core.con
 **Container build fails: invalid media storage configuration**
 
 Remove ``sulu_media.storages`` and string values like ``sulu_media.storage: s3``, and define the storage below
-``flysystem.storages``, see *Updating to flysystem 3* in ``UPGRADE-3.x.md``. For the local storage, set ``directory`` to
-``%kernel.project_dir%/var/uploads/media``, where Sulu 2.6 stored the files.
+``flysystem.storages``, see *Updating to flysystem 3* in ``UPGRADE-3.x.md``. For the local storage, name the
+storage ``default.storage``, which Sulu uses unless you set ``sulu_media.storage.flysystem_service``, and set
+``directory`` to ``%kernel.project_dir%/var/uploads/media``, where Sulu 2.6 stored the files unless you changed
+``sulu_media.storages.local.path``.
 
 **Articles are missing from the admin or have no template group**
 
