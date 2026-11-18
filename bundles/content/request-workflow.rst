@@ -333,6 +333,16 @@ An action adds a button to the footer of the review overlay, next to the actions
             return PermissionTypes::LIVE;
         }
 
+        public function getStatusMessage(WorkflowTransitionRequest $request): ?array
+        {
+            return null;
+        }
+
+        public function replacesPublish(WorkflowTransitionRequest $request): bool
+        {
+            return false;
+        }
+
         public function isAvailable(WorkflowTransitionRequest $request): bool
         {
             return isset($request->getData()['publishAt']);
@@ -364,6 +374,15 @@ An action adds a button to the footer of the review overlay, next to the actions
       - Translation key of the button label.
     * - ``getLabelParameters()``
       - Values for the placeholders of the label, for example ``{date}``. Return an empty array when it has none.
+    * - ``getStatusMessage()``
+      - Replaces the message of the banner of the form while the request is open, for example to tell that a publish is
+        scheduled. Return ``['message' => 'app.scheduled', 'parameters' => ['date' => '...']]`` with a translation key,
+        or ``null`` to keep the message of the core. The first action that answers wins. It is asked whether the action
+        is available or not.
+    * - ``replacesPublish()``
+      - Whether the content may only be published through this action while the request is open. The API then reports
+        ``permissions.publish`` as ``false``, so the admin hides the plain publish buttons. The content workflow also
+        refuses a publish by a user. A publish without a user, like the one of a scheduled task, still passes.
     * - ``getPermission()``
       - Permission the user needs on the content, to see the button and to take the action.
     * - ``isAvailable()``
