@@ -68,7 +68,9 @@ The second level just defines the title for another separation used in the
 administration interface. The third level defines the name of the permissions
 themselves. This name follows a namespacing scheme based on the previously used
 names. This value is the key for an array containing all the available
-permission types for this security context.
+permission types for this security context. The permission types are ``VIEW``,
+``ADD``, ``EDIT``, ``DELETE``, ``ARCHIVE``, ``LIVE`` and ``SECURITY``, and since
+Sulu 3.1 ``REVIEW``. They are described in :doc:`../bundles/security/index`.
 
 .. note::
 
@@ -197,6 +199,15 @@ security class has to be configured:
 
 After this addition the permission tab should already be visible in the edit
 form.
+
+.. note::
+
+    Available since Sulu 3.1. For content with a draft and a live stage, the ``security_context`` also guards
+    publishing: it needs ``live``, or ``edit`` with an approved request. Content covered by a request workflow,
+    where an editor requests publishing and a reviewer approves, needs the ``security_context``, otherwise
+    publishing it answers with ``500``. A ``security_context`` with a placeholder like ``#webspace#`` needs a
+    ``security_class`` implementing the ``SecuredEntityInterface``, which fills the placeholder. Without it,
+    publishing answers with ``500`` too.
 
 Configure the controller
 ~~~~~~~~~~~~~~~~~~~~~~~~
