@@ -271,6 +271,37 @@ The service is automatically tagged via autoconfiguration when implementing
             tags:
                 - { name: sulu_route.route_defaults_provider, resource_key: events }
 
+Creating Routes
+---------------
+
+Create a ``Route`` and add it with the ``RouteRepositoryInterface``:
+
+.. code-block:: php
+
+    use Sulu\Route\Domain\Model\Route;
+    use Sulu\Route\Domain\Repository\RouteRepositoryInterface;
+
+    $route = new Route('events', (string) $event->getId(), 'en', '/events/my-event', 'example');
+    $routeRepository->add($route);
+
+The ``add()`` method does not flush, so the route is saved with the next flush of the
+entity manager.
+
+The id of a new entity is often not known before the flush. Create the route with
+``Route::createRouteWithTempId()`` and a callback which returns the id instead. The
+RouteBundle replaces the temporary id after the flush:
+
+.. code-block:: php
+
+    $route = Route::createRouteWithTempId(
+        'events',
+        fn (): string => (string) $event->getId(),
+        'en',
+        '/events/my-event',
+        'example',
+    );
+    $routeRepository->add($route);
+
 Route History
 -------------
 
@@ -314,6 +345,12 @@ To generate URLs for routes, use the ``RouteGeneratorInterface``:
                 webspace: 'example',
             );
 
-            // $url = 'https://example.com/en/events/my-event'
+            // $url = '/en/events/my-event'
         }
     }
+
+The ``generate()`` method returns an absolute path by default, or the full URL when its scheme or
+host differs from the current request. Pass ``UrlGeneratorInterface::ABSOLUTE_URL`` as
+``referenceType`` to always get scheme and host. Without ``webspace`` the one of the
+current request is used, and the call fails if there is none. Without ``locale`` the locale of the
+current request is used, or the current locale of the application.

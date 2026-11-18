@@ -312,7 +312,7 @@ Additionally, you need to configure Sulu to use the XKey feature of varnish:
 Optimal configuration
 ---------------------
 
-To get the most out of the Varnish cache you should enable the ``tags`` option in the configuration.
+To get the most out of the Varnish cache you should keep the ``tags`` option enabled. It is enabled by default.
 
 .. code-block:: yaml
 
