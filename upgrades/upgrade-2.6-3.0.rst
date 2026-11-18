@@ -114,8 +114,8 @@ automated and must be applied to your project code and configuration manually.
 
 **4. Run the Sulu 3.0 migrations**
 
-Sulu 3.0 ships its core schema migrations through the Doctrine Migrations Bundle, which is already
-pulled in as a dependency of ``sulu/sulu``. Run the migrations that come with Sulu 3.0:
+Sulu 3.0 ships its core schema migrations through the Doctrine Migrations Bundle, which is
+pulled in as a dependency of ``sulu/sulu`` since Sulu 3.0.6. Run the migrations that come with Sulu 3.0:
 
 .. code-block:: bash
 
@@ -222,9 +222,9 @@ In ``smart_content`` properties and in the selections (``page_selection``, ``sni
 other filter parameters have been renamed:
 
 - For article providers (``articles``, ``articles_page_tree``) and the article selections, replace ``types`` with
-  ``groups``.
-- For all other providers (``pages``, ``snippets``) and the page and snippet selections, replace ``types`` with
-  ``templateKeys``.
+  ``groups``. Since Sulu 3.1 this also applies to the ``snippets`` provider.
+- For the ``pages`` provider, for the ``snippets`` provider up to Sulu 3.0 and for the page and snippet selections,
+  replace ``types`` with ``templateKeys``.
 - Replace ``structureTypes`` (smart content) and ``templates`` (article selections) with ``templateKeys``.
 
 If a deprecated parameter is still used, the container build fails with a message pointing at the affected template

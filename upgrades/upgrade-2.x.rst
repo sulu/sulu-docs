@@ -74,7 +74,7 @@ After this, you can update all dependencies of your project by executing the fol
 2. Run database migrations
 --------------------------
 
-Starting with Sulu 3.0, Sulu depends on the Doctrine Migrations Bundle and ships core schema changes through Doctrine
+Starting with Sulu 3.0.6, Sulu depends on the Doctrine Migrations Bundle and ships core schema changes through Doctrine
 migrations. After updating the dependencies of a Sulu 3.x project, run the migrations:
 
 .. code-block:: bash
