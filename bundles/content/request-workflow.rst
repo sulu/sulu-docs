@@ -320,7 +320,12 @@ An action adds a button to the footer of the review overlay, next to the actions
 
         public function getLabel(): string
         {
-            return 'app.publish_at';
+            return 'app.publish_on';
+        }
+
+        public function getLabelParameters(WorkflowTransitionRequest $request): array
+        {
+            return ['date' => $request->getData()['publishAt'] ?? ''];
         }
 
         public function getPermission(): string
@@ -345,7 +350,7 @@ An action adds a button to the footer of the review overlay, next to the actions
     }
 
 ``PublishScheduler`` stands for your own service. Add an entry for the label to the admin translations, for example
-``"app.publish_at": "Publish at the chosen date"`` in ``translations/admin.en.json``.
+``"app.publish_on": "Publish on {date}"`` in ``translations/admin.en.json``.
 
 .. list-table::
     :header-rows: 1
@@ -357,6 +362,8 @@ An action adds a button to the footer of the review overlay, next to the actions
         ``publish`` belong to the core. Using one throws a ``LogicException``.
     * - ``getLabel()``
       - Translation key of the button label.
+    * - ``getLabelParameters()``
+      - Values for the placeholders of the label, for example ``{date}``. Return an empty array when it has none.
     * - ``getPermission()``
       - Permission the user needs on the content, to see the button and to take the action.
     * - ``isAvailable()``
