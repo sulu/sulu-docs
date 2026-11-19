@@ -243,7 +243,7 @@ after the update. The API returns the stored values as ``data``.
 Reading the Data
 ~~~~~~~~~~~~~~~~
 
-Two events carry the data of a request:
+Two events tell that a request ended:
 
 .. list-table::
     :header-rows: 1
@@ -256,7 +256,9 @@ Two events carry the data of a request:
       - A request ends without a publish, because the review was cancelled or the content was rejected.
 
 Both live in ``Sulu\Content\Application\WorkflowTransitionRequest\Event`` and offer ``getResourceKey()``,
-``getResourceId()``, ``getLocale()`` and ``getData()``:
+``getResourceId()``, ``getLocale()`` and ``getData()``. The settled event comes from the publish itself. Use it for
+what follows the publish. Schedule things in a footer action, as shown below. The example drops the schedule of the
+action, because the content is published now:
 
 .. code-block:: php
 
@@ -270,13 +272,20 @@ Both live in ``Sulu\Content\Application\WorkflowTransitionRequest\Event`` and of
     use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 
     #[AsEventListener]
-    class SchedulePublishListener
+    class DropScheduleListener
     {
+        public function __construct(
+            private readonly PublishScheduler $publishScheduler,
+        ) {
+        }
+
         public function __invoke(WorkflowTransitionRequestSettledEvent $event): void
         {
-            $publishAt = $event->getData()['publishAt'] ?? null;
-
-            // schedule the publish of $event->getResourceKey() and $event->getResourceId()
+            $this->publishScheduler->cancel(
+                $event->getResourceKey(),
+                $event->getResourceId(),
+                $event->getLocale(),
+            );
         }
     }
 
@@ -291,8 +300,8 @@ Footer Actions
 ~~~~~~~~~~~~~~
 
 An action adds a button to the footer of the review overlay, next to the actions of the core. Implement
-``WorkflowTransitionRequestActionInterface``. It is autoconfigured with the tag
-``sulu_content.workflow_transition_request_action``:
+``WorkflowTransitionRequestActionInterface``. The interface is autoconfigured with the tag
+``sulu_content.workflow_transition_request_action``, so a class that implements it needs nothing else:
 
 .. code-block:: php
 
@@ -348,7 +357,7 @@ An action adds a button to the footer of the review overlay, next to the actions
             return isset($request->getData()['publishAt']);
         }
 
-        public function execute(WorkflowTransitionRequest $request, array $data): void
+        public function execute(WorkflowTransitionRequest $request): void
         {
             $this->publishScheduler->schedule(
                 $request->getResourceKey(),
@@ -359,7 +368,8 @@ An action adds a button to the footer of the review overlay, next to the actions
         }
     }
 
-``PublishScheduler`` stands for your own service. Add an entry for the label to the admin translations, for example
+The action schedules the publish. ``PublishScheduler`` stands for your own service, with a ``schedule()`` and a
+``cancel()`` method. Add an entry for the label to the admin translations, for example
 ``"app.publish_on": "Publish on {date}"`` in ``translations/admin.en.json``.
 
 .. list-table::
@@ -388,8 +398,7 @@ An action adds a button to the footer of the review overlay, next to the actions
     * - ``isAvailable()``
       - Whether the action fits the request. Only open requests are asked.
     * - ``execute()``
-      - Runs inside the HTTP request and is flushed with it. Throw an exception to refuse. ``$data`` is the body of the
-        HTTP request.
+      - Runs inside the HTTP request and is flushed with it. Throw an exception to refuse.
 
 The API lists the actions that fit a request and that the user may take as ``actions``, each with its ``key`` and
 ``label``. A closed request has none. A click runs:
@@ -405,7 +414,8 @@ Entries in the Save Dropdown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A bundle can add entries to the save dropdown of a content form, behind the entries of the core. Implement
-``SaveToolbarActionProviderInterface``. It is autoconfigured with the tag ``sulu_content.save_toolbar_action_provider``:
+``SaveToolbarActionProviderInterface``. The interface is autoconfigured with the tag
+``sulu_content.save_toolbar_action_provider``, so a provider that implements it needs nothing else:
 
 .. code-block:: php
 
@@ -495,11 +505,12 @@ user, pass it as the optional fourth argument of ``WorkflowTransitionAdminAuthor
 
 ``$user`` is a ``Sulu\Component\Security\Authentication\UserInterface``. The permissions come from the roles of the user.
 The rule is the same as in the admin: ``live``, or ``edit`` with an approved request. A user without it causes an
-``AccessDeniedException``. The check runs in the system ``Admin::SULU_ADMIN_SECURITY_SYSTEM`` unless the security
+``AccessDeniedException``. A user that is locked or disabled is refused as well. The check runs in the system ``Admin::SULU_ADMIN_SECURITY_SYSTEM`` unless the security
 condition names another one. Without a user, the current token decides, as before.
 
 .. note::
 
-    The interface is marked ``@internal``.
+    The interface is marked ``@internal``. The authorizer is only registered in the admin context, so ``bin/console``
+    and ``bin/adminconsole`` can inject it. The website kernel and ``bin/websiteconsole`` cannot.
 
 .. _Symfony Messenger documentation: https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport
