@@ -440,9 +440,10 @@ A bundle can add entries to the save dropdown of a content form, behind the entr
 The provider is asked once per content form. It returns nothing for the entity types it does not handle. A bundle that is
 not installed adds nothing, so the entry only shows where the bundle is.
 
-The option ``permission`` is optional. It is ``edit`` or ``live``. An entry that has it also gets the condition the form
-uses for that permission. On pages, this is the permission on the webspace. A provider cannot know it. Without the option,
-the entry shows for everybody who sees the dropdown.
+The option ``permission`` is optional. It is ``edit`` or ``live``, any other value throws. An entry that has it also gets
+the condition the form uses for that permission. On pages, this is the permission on the webspace. A provider cannot know
+it. Without the option, the entry shows for everybody who sees the dropdown. Every entry is hidden while a request is
+open.
 
 .. note::
 
@@ -486,8 +487,8 @@ for the content, for example a publish at a date. It needs no admin JavaScript o
     * - ``parameters``
       - Query parameters that are sent along.
     * - ``idParameter``, ``localeParameter``
-      - Names of the query parameters for the id and the locale of the saved content. They are ``id`` and ``locale``
-        by default.
+      - Names of the query parameters for the id and the locale of the saved content. ``idParameter`` is required and
+        must not be ``id``. ``localeParameter`` is ``locale`` by default.
     * - ``visible_condition``
       - Condition that hides the entry. The action checks it itself, so it also works inside the dropdown.
 
