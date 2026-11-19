@@ -401,6 +401,88 @@ The API lists the actions that fit a request and that the user may take as ``act
 The answer is ``400`` for an unknown key. It is ``409`` for a closed request and for an action that is not available for
 the request.
 
+Entries in the Save Dropdown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A bundle can add entries to the save dropdown of a content form, behind the entries of the core. Implement
+``SaveToolbarActionProviderInterface``. It is autoconfigured with the tag ``sulu_content.save_toolbar_action_provider``:
+
+.. code-block:: php
+
+    <?php
+
+    use Sulu\Bundle\AdminBundle\Admin\View\ToolbarAction;
+    use Sulu\Content\Infrastructure\Sulu\Admin\SaveToolbarActionProviderInterface;
+
+    class ScheduleSaveToolbarActionProvider implements SaveToolbarActionProviderInterface
+    {
+        public function getToolbarActions(string $contentRichEntityClass): array
+        {
+            return [
+                new ToolbarAction('app.schedule', [
+                    'label' => 'app.schedule',
+                    'permission' => 'live',
+                ]),
+            ];
+        }
+    }
+
+The provider is asked once per content form. It returns nothing for the entity types it does not handle. A bundle that is
+not installed adds nothing, so the entry only shows where the bundle is.
+
+The option ``permission`` is optional. It is ``edit`` or ``live``. An entry that has it also gets the condition the form
+uses for that permission. On pages, this is the permission on the webspace. A provider cannot know it. Without the option,
+the entry shows for everybody who sees the dropdown.
+
+.. note::
+
+    The interface is marked ``@experimental``.
+
+Saving and Creating an Item
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The toolbar action ``sulu_admin.save_and_create`` saves the form as a draft. Then it creates an item of another
+resource, with the values of a dialog form and the id and the locale of the saved content. Use it to schedule something
+for the content, for example a publish at a date. It needs no admin JavaScript of your own:
+
+.. code-block:: php
+
+    new ToolbarAction('sulu_admin.save_and_create', [
+        'label' => 'app.publish_at',
+        'title' => 'app.publish_at',
+        'formKey' => 'app_publish_at',
+        'resourceKey' => 'tasks',
+        'data' => ['handlerClass' => PagePublishTaskHandler::class],
+        'parameters' => ['entityClass' => PageInterface::class],
+        'idParameter' => 'entityId',
+        'permission' => 'live',
+        'visible_condition' => '!activeWorkflowTransitionRequest',
+    ]);
+
+.. list-table::
+    :header-rows: 1
+    :widths: 25 75
+
+    * - Option
+      - Meaning
+    * - ``formKey``
+      - Form of the dialog. Its values are sent as the body of the request.
+    * - ``resourceKey``
+      - Resource that gets the new item, sent as ``POST``.
+    * - ``label``, ``title``
+      - Translation keys of the entry and of the dialog title.
+    * - ``data``
+      - Values that are sent along with the values of the dialog.
+    * - ``parameters``
+      - Query parameters that are sent along.
+    * - ``idParameter``, ``localeParameter``
+      - Names of the query parameters for the id and the locale of the saved content. They are ``id`` and ``locale``
+        by default.
+    * - ``visible_condition``
+      - Condition that hides the entry. The action checks it itself, so it also works inside the dropdown.
+
+The entry saves the form first, so a content that is new gets its id before the item is created.
+
 Checking the Publish Permission for a User
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
