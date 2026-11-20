@@ -447,6 +447,10 @@ the condition the form uses for that permission. On pages, this is the permissio
 it. Without the option, the entry shows for everybody who sees the dropdown. Every entry is hidden while a request is
 open.
 
+An entry may be any ``ToolbarAction`` subclass, for example ``SaveWithFormDialogToolbarAction``. The class is kept, so
+its serializer subscribers still run. Only the options change: ``visible_condition`` is combined with the permission
+condition and the rule that hides the entry while a request is open.
+
 .. note::
 
     The interface is marked ``@experimental``.
@@ -456,21 +460,23 @@ Saving and Creating an Item
 
 The toolbar action ``sulu_admin.save_and_create`` saves the form as a draft. Then it creates an item of another
 resource, with the values of a dialog form and the id and the locale of the saved content. Use it to schedule something
-for the content, for example a publish at a date. It needs no admin JavaScript of your own:
+for the content, for example a publish at a date. It needs no admin JavaScript of your own. Build it with the class
+``SaveAndCreateToolbarAction``:
 
 .. code-block:: php
 
-    new ToolbarAction('sulu_admin.save_and_create', [
-        'label' => 'app.publish_at',
-        'title' => 'app.publish_at',
-        'formKey' => 'app_publish_at',
-        'resourceKey' => 'tasks',
-        'data' => ['handlerClass' => PagePublishTaskHandler::class],
-        'parameters' => ['entityClass' => PageInterface::class],
-        'idParameter' => 'entityId',
-        'permission' => 'live',
-        'visible_condition' => '!activeWorkflowTransitionRequest',
-    ]);
+    use Sulu\Bundle\AdminBundle\Admin\View\SaveAndCreateToolbarAction;
+
+    new SaveAndCreateToolbarAction(
+        label: 'app.publish_at',
+        title: 'app.publish_at',
+        formKey: 'app_publish_at',
+        resourceKey: 'tasks',
+        idParameter: 'entityId',
+        data: ['handlerClass' => PagePublishTaskHandler::class],
+        parameters: ['entityClass' => PageInterface::class],
+        permission: 'live',
+    );
 
 .. list-table::
     :header-rows: 1
@@ -483,7 +489,7 @@ for the content, for example a publish at a date. It needs no admin JavaScript o
     * - ``resourceKey``
       - Resource that gets the new item, sent as ``POST``.
     * - ``label``, ``title``
-      - Translation keys of the entry and of the dialog title.
+      - Translation keys of the entry and of the dialog title. The server translates them in the domain ``admin``.
     * - ``data``
       - Values that are sent along with the values of the dialog.
     * - ``parameters``
@@ -491,8 +497,11 @@ for the content, for example a publish at a date. It needs no admin JavaScript o
     * - ``idParameter``, ``localeParameter``
       - Names of the query parameters for the id and the locale of the saved content. ``idParameter`` is required and
         must not be ``id``. ``localeParameter`` is ``locale`` by default.
-    * - ``visible_condition``
-      - Condition that hides the entry. The action checks it itself, so it also works inside the dropdown.
+    * - ``visibleCondition``
+      - Condition that hides the entry, sent as ``visible_condition``. The action checks it itself, so it also works
+        inside the dropdown.
+    * - ``permission``
+      - ``edit`` or ``live``, see the section above.
 
 The entry saves the form first, so a content that is new gets its id before the item is created.
 
