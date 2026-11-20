@@ -251,9 +251,11 @@ Two events tell that a request ended:
     * - Event
       - Dispatched when
     * - ``WorkflowTransitionRequestSettledEvent``
-      - The publish of an approved request went through.
+      - During the publish transition of an approved request, before the marking is written and flushed. The publish can
+        still fail after the event.
     * - ``WorkflowTransitionRequestCancelledEvent``
-      - A request ends without a publish, because the review was cancelled or the content was rejected.
+      - During a cancel or reject transition, before the marking is written and flushed. Not when the request is deleted
+        with its content or locale.
 
 Both live in ``Sulu\Content\Application\WorkflowTransitionRequest\Event`` and offer ``getResourceKey()``,
 ``getResourceId()``, ``getLocale()`` and ``getData()``. The settled event comes from the publish itself. Use it for
@@ -379,7 +381,7 @@ The action schedules the publish. ``PublishScheduler`` stands for your own servi
       - Purpose
     * - ``getKey()``
       - Unique and static. It names the action in the API. The keys ``approve``, ``reject``, ``retry``, ``cancel`` and
-        ``publish`` belong to the core. Using one throws a ``LogicException``.
+        ``publish`` belong to the core. Using one throws a ``\RuntimeException`` when the container is built.
     * - ``getLabel()``
       - Translation key of the button label.
     * - ``getLabelParameters()``
