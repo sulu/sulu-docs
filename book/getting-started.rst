@@ -28,28 +28,58 @@ This command will bootstrap a new project in the directory ``my-project``.
         git add .
         git commit -m "Initial commit"
 
+.. _getting-started-system-languages:
+
+System Languages vs Content Languages
+-------------------------------------
+
+Sulu distinguishes two kinds of languages, which are configured in different
+places and should not be confused:
+
+* The **system languages** are the languages of the administration interface.
+  Every user picks one of them in their profile, and it defines the language of
+  the menus, the buttons, the error messages and the labels of your templates
+  (the ``<title lang="...">`` elements of the template XML files, see
+  :doc:`templates`).
+* The **content languages** (called *localizations* in Sulu) are the languages
+  in which your content is written and published. They are configured per
+  webspace (see the next section and :doc:`localization`), and a content
+  editor switches between them while editing a page.
+
+The two lists are independent: a german speaking editor can manage content
+written in french, and a website can be published in languages that nobody
+uses in the administration interface.
+
+The system languages are configured in the ``sulu_core`` section. By default,
+Sulu ships with english and german:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_admin.yaml
+    sulu_core:
+        locales:
+            en: English
+            de: Deutsch
+        translations:
+            - en
+            - de
+
+The ``locales`` key lists the languages a user can select in their profile,
+with the label displayed in the dropdown, and ``translations`` lists the
+translations of the administration interface to download. Available languages
+are shown on `Crowdin`_. After adding a language, download its translations by
+running the following command:
+
+.. code-block:: bash
+
+    php bin/console sulu:admin:download-language
+
 .. note::
 
-    If you want to use other languages than english or german for the
-    administration interface of Sulu you need to configure them in the
-    ``config/packages/sulu_admin.yaml`` file:
-
-    .. code-block:: yaml
-
-        sulu_core:
-            locales:
-                en: English
-                de: Deutsch
-            translations:
-                - en
-                - de
-
-    Available languages are shown on `Crowdin`_.
-    Afterwards the languages have to be downloaded by running the following command:
-
-    .. code-block:: bash
-
-        php bin/console sulu:admin:download-language
+    Template labels are not part of the Crowdin translations: when you add a
+    system language, you also have to provide the ``<title>`` of your templates
+    and properties in that language, otherwise the labels fall back to the
+    ``fallback_locale`` of the ``sulu_core`` section (``en`` by default).
 
 Webspaces
 ---------
