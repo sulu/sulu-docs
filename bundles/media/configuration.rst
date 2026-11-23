@@ -121,3 +121,44 @@ them. In Twig they are available as date objects:
     {% if media.validTo %}
         {{ media.validTo|date('d.m.Y') }}
     {% endif %}
+
+.. _media-classifications:
+
+Media classifications
+---------------------
+
+Available since Sulu 3.1. A media can be assigned to a project-defined
+classification, e.g. a data sheet or a warranty certificate. The
+classifications are configured with the translation key of their title in the
+``admin`` domain; a key starts with a letter and consists of up to 191
+letters, digits, ``_`` or ``-``:
+
+.. code-block:: yaml
+
+    # config/packages/sulu_media.yaml
+    sulu_media:
+        classifications:
+            data_sheet: app.data_sheet
+            warranty_certificate: app.warranty_certificate
+
+With at least one classification configured, the media details show a
+classification select, which also offers "No classification". The value is
+stored per file version: a new version starts with the classification of the
+previous one, older versions keep theirs. The API accepts and returns it as
+``classification``; ``null`` or an empty string clears it.
+
+The ``classifications`` parameter of the :doc:`media_selection
+<../../reference/property-types/media_selection>` and
+:doc:`single_media_selection <../../reference/property-types/single_media_selection>`
+property types restricts the selectable media to the given classifications:
+
+.. code-block:: xml
+
+    <property name="datasheet" type="single_media_selection">
+        <params>
+            <param name="classifications" value="data_sheet"/>
+        </params>
+    </property>
+
+The media list API accepts the same filter as the ``classifications`` query
+parameter, several classifications separated by commas.

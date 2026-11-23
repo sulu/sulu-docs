@@ -21,6 +21,11 @@ Parameters
       - string
       - A comma separated list of available asset types to assign. Each item in
         the list must be one of ``document``, ``image``, ``video`` or ``audio``.
+    * - classifications
+      - string
+      - A comma separated list of media classifications to choose from, see
+        :ref:`media-classifications`. Uploading is not available in the
+        overlay while it is set, since a new file has no classification yet.
     * - displayOptions
       - collection
       - A collection of booleans, which defines to which positions the assets
