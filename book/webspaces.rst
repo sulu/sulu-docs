@@ -210,6 +210,27 @@ media. It contains the key of a form in the ``config/forms`` directory of your p
         </properties>
     </form>
 
+The settings are provided by the ``SuluWebspaceBundle``, which has to be registered in ``config/bundles.php``:
+
+.. code-block:: php
+
+    Sulu\Webspace\Infrastructure\Symfony\HttpKernel\SuluWebspaceBundle::class => ['all' => true],
+
+Its admin API routes have to be imported in ``config/routes/sulu_admin.yaml``:
+
+.. code-block:: yaml
+
+    sulu_webspace_api:
+        resource: "@SuluWebspaceBundle/config/routing_admin_api.yaml"
+        prefix: /admin/api
+
+The settings are stored in the ``we_webspace_settings`` and ``we_webspace_setting_contents`` tables, which are created
+by the migration of the bundle:
+
+.. code-block:: bash
+
+    bin/console doctrine:migrations:migrate
+
 A webspace has exactly one set of settings, which are translated, saved as a draft and published like a page. Access is
 controlled by the permission ``sulu.webspaces.<webspace-key>.webspace-settings``, where ``live`` is needed to publish.
 
@@ -218,7 +239,7 @@ as long as nothing is published:
 
 .. code-block:: twig
 
-    {% set settings = sulu_page_webspace_settings_load() %}
+    {% set settings = sulu_webspace_settings_load() %}
 
     {% if settings %}
         <a href="mailto:{{ settings.content.receiverEmail }}">Contact us</a>
@@ -231,10 +252,10 @@ the result:
 
 .. code-block:: twig
 
-    {% set settings = sulu_page_webspace_settings_load({'mail': 'receiverEmail'}) %}
+    {% set settings = sulu_webspace_settings_load({'mail': 'receiverEmail'}) %}
     {{ settings.mail }}
 
-    {% set settings = sulu_page_webspace_settings_load(webspaceKey: 'blog', locale: 'de') %}
+    {% set settings = sulu_webspace_settings_load(webspaceKey: 'blog', locale: 'de') %}
 
 Navigation
 ----------
