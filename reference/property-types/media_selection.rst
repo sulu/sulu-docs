@@ -24,8 +24,8 @@ Parameters
     * - classifications
       - string
       - A comma separated list of media classifications to choose from, see
-        :ref:`media-classifications`. Uploading is not available in the
-        overlay while it is set, since a new file has no classification yet.
+        :ref:`media-classifications`. A file uploaded in the overlay has no
+        classification yet, set it in the media details.
     * - displayOptions
       - collection
       - A collection of booleans, which defines to which positions the assets
