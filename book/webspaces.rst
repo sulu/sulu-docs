@@ -245,17 +245,7 @@ as long as nothing is published:
         <a href="mailto:{{ settings.content.receiverEmail }}">Contact us</a>
     {% endif %}
 
-The function takes three optional arguments, ``properties``, ``webspaceKey`` and ``locale``. The last two default to
-the webspace and localization of the current request. Without ``properties`` all values are in ``content``. With
-``properties``, a map of a name in the result to the name of the property in the form, the values are top level keys of
-the result:
-
-.. code-block:: twig
-
-    {% set settings = sulu_webspace_settings_load({'mail': 'receiverEmail'}) %}
-    {{ settings.mail }}
-
-    {% set settings = sulu_webspace_settings_load(webspaceKey: 'blog', locale: 'de') %}
+Its arguments are described in :doc:`../reference/twig-extensions/functions/sulu_webspace_settings_load`.
 
 Navigation
 ----------

@@ -36,6 +36,13 @@ SnippetBundle
 
     functions/sulu_snippet_load_by_area
 
+WebspaceBundle
+--------------
+
+.. toctree::
+
+    functions/sulu_webspace_settings_load
+
 MediaBundle
 -----------
 
