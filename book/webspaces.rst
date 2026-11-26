@@ -49,6 +49,8 @@ following paragraphs.
             <excluded-template>overview</excluded-template>
         </excluded-templates>
 
+        <webspace-settings-form>website_settings</webspace-settings-form>
+
         <navigation>
             <contexts>
                 <context key="main">
@@ -182,6 +184,68 @@ The ``excluded-templates`` node defines which of the templates (the ones
 described in :doc:`templates`) should be excluded in the template dropdown of
 the page form. The entire node is optional, since especially if you only have
 a single webspace this setting does not make a lot of sense.
+
+Webspace settings form (optional)
+---------------------------------
+
+Available since Sulu 3.1. The ``webspace-settings-form`` node adds a "Settings" tab to the webspace in the
+administration interface, for data which is not part of a page, e.g. the receiver of a contact form or links to social
+media. It contains the key of a form in the ``config/forms`` directory of your project (see :doc:`extend-admin`):
+
+.. code-block:: xml
+
+    <?xml version="1.0" ?>
+    <form xmlns="http://schemas.sulu.io/template/template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+    >
+        <key>website_settings</key>
+
+        <properties>
+            <property name="receiverEmail" type="email">
+                <meta>
+                    <title lang="en">Receiver email</title>
+                </meta>
+            </property>
+        </properties>
+    </form>
+
+The settings are provided by the ``SuluWebspaceBundle``, which has to be registered in ``config/bundles.php``:
+
+.. code-block:: php
+
+    Sulu\Webspace\Infrastructure\Symfony\HttpKernel\SuluWebspaceBundle::class => ['all' => true],
+
+Its admin API routes have to be imported in ``config/routes/sulu_admin.yaml``:
+
+.. code-block:: yaml
+
+    sulu_webspace_api:
+        resource: "@SuluWebspaceBundle/config/routing_admin_api.yaml"
+        prefix: /admin/api
+
+The settings are stored in the ``we_webspace_settings`` and ``we_webspace_setting_contents`` tables, which are created
+by the migration of the bundle:
+
+.. code-block:: bash
+
+    bin/console doctrine:migrations:migrate
+
+A webspace has exactly one set of settings, which are translated, saved as a draft and published like a page. Access is
+controlled by the permission ``sulu.webspaces.<webspace-key>.webspace-settings``, where ``live`` is needed to publish.
+
+The published settings of the current webspace and localization are available in Twig. The function returns ``null``
+as long as nothing is published:
+
+.. code-block:: twig
+
+    {% set settings = sulu_webspace_settings_load() %}
+
+    {% if settings %}
+        <a href="mailto:{{ settings.content.receiverEmail }}">Contact us</a>
+    {% endif %}
+
+Its arguments are described in :doc:`../reference/twig-extensions/functions/sulu_webspace_settings_load`.
 
 Navigation
 ----------
