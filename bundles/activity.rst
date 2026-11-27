@@ -16,6 +16,9 @@ The ActivityBundle allows for the following configuration:
         storage:
             adapter: 'doctrine' # can be set to null to not store activities
             persist_payload: false # include payload of event in stored activity
+        objects:
+            activity:
+                model: Sulu\Bundle\ActivityBundle\Domain\Model\Activity # override to use a custom activity entity
 
 Listen for an event
 -------------------
@@ -31,16 +34,16 @@ sends an email when a page with a specific template is created in the applicatio
 
     namespace App\EventSubscriber;
 
-    use Sulu\Bundle\PageBundle\Domain\Event\PageCreatedEvent;
+    use Sulu\Page\Domain\Event\PageCreatedEvent;
     use Symfony\Component\EventDispatcher\EventSubscriberInterface;
     use Symfony\Component\Mailer\MailerInterface;
     use Symfony\Component\Mime\Email;
 
     class SendPageCreatedMailSubscriber implements EventSubscriberInterface
     {
-        public function __construct(private MailerInterface $mailer) { }
+        public function __construct(private MailerInterface $mailer) {}
 
-        public static function getSubscribedEvents()
+        public static function getSubscribedEvents(): array
         {
             return [
                 PageCreatedEvent::class => 'sendPageCreatedMail',
@@ -49,7 +52,10 @@ sends an email when a page with a specific template is created in the applicatio
 
         public function sendPageCreatedMail(PageCreatedEvent $event): void
         {
-            if ('product' === $event->getPageDocument()->getStructureType()) {
+            $dimensionContent = $event->getPage()->getDimensionContents()
+                ->findFirst(fn($key, $dc) => $dc->getLocale() === $event->getResourceLocale());
+
+            if ('product' !== $dimensionContent?->getTemplateKey()) {
                 return;
             }
 
@@ -57,7 +63,7 @@ sends an email when a page with a specific template is created in the applicatio
                 ->from('from@example.com')
                 ->to('to@example.com')
                 ->subject('New product page created')
-                ->text('Page Title: ' . $event->getPageDocument()->getTitle());
+                ->text('Page Title: ' . $event->getResourceTitle());
 
             $this->mailer->send($email);
         }
@@ -76,14 +82,13 @@ bundle and could look like this:
 
     namespace App\Event;
 
-    use Sulu\Bundle\ActivityBundle\Domain\Event\DomainEvent;
     use App\Entity\Book;
+    use Sulu\Bundle\ActivityBundle\Domain\Event\DomainEvent;
 
     class BookCreatedEvent extends DomainEvent
     {
-        public function __construct(
-            private Book $book
-        ) {
+        public function __construct(private Book $book)
+        {
             parent::__construct();
         }
 
@@ -119,16 +124,16 @@ event. After implementing your event, you can dispatch it in your code using one
 
     use App\Event\BookCreatedEvent;
     use Doctrine\ORM\EntityManagerInterface;
-    use Sulu\Bundle\ActivityBundle\Application\Dispatcher\DomainEventDispatcherInterface;
     use Sulu\Bundle\ActivityBundle\Application\Collector\DomainEventCollectorInterface;
+    use Sulu\Bundle\ActivityBundle\Application\Dispatcher\DomainEventDispatcherInterface;
 
     class BookService
     {
-        private EntityManagerInterface $entityManager;
-
-        private DomainEventDispatcherInterface $domainEventDispatcher;
-
-        private DomainEventCollectorInterface $domainEventCollector;
+        public function __construct(
+            private EntityManagerInterface $entityManager,
+            private DomainEventDispatcherInterface $domainEventDispatcher,
+            private DomainEventCollectorInterface $domainEventCollector,
+        ) {}
 
         public function createBook(array $data): Book
         {
@@ -149,7 +154,7 @@ Configure description text for a custom activity
 
 Activity descriptions that are displayed in the administration interface are generated using
 `Symfony translations`_.
-Each activity is mapped to a translation key with the format `sulu_activity.description.%resourceKey%.%activityType%``.
+Each activity is mapped to a translation key with the format ``sulu_activity.description.%resourceKey%.%activityType%``.
 For example, the translation key for the activity shown above is ``sulu_activity.description.book.created``:
 
 .. code-block:: json
@@ -158,9 +163,34 @@ For example, the translation key for the activity shown above is ``sulu_activity
         "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\""
     }
 
-The translation text can include placeholders that are replaced with activity specific information. For example,
-``{resourceTitle}`` will be replaced with the title of the affected resource. Have a look at the implementation of the
-`ActivityController class`_ of the ActivityBundle to find all available placeholders.
+The translation text can include the following placeholders that are replaced with activity-specific information:
+
+- ``{userFullName}`` — full name of the user who triggered the activity (shown in bold)
+- ``{resourceTitle}`` — title of the affected resource
+- ``{resourceKey}`` — resource key of the affected resource
+- ``{resourceId}`` — ID of the affected resource
+- ``{resourceLocale}`` — locale of the affected resource
+- ``{resourceWebspaceKey}`` — webspace key of the affected resource
+
+Additional placeholders can be provided by overriding the ``getEventContext()`` method in your event class.
+Each key returned from ``getEventContext()`` becomes available as ``{context_key}`` in the translation string:
+
+.. code-block:: php
+
+    public function getEventContext(): array
+    {
+        return [
+            'bookIsbn' => $this->book->getIsbn(),
+        ];
+    }
+
+This makes ``{context_bookIsbn}`` available in the translation string:
+
+.. code-block:: json
+
+    {
+        "sulu_activity.description.book.created": "{userFullName} has created the Book \"{resourceTitle}\" (ISBN: {context_bookIsbn})"
+    }
 
 Configure permissions for custom activities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +198,7 @@ Configure permissions for custom activities
 Activities are visible for all users that are allowed to see the activity list in the administration interface
 per default. To restrict this, it is possible to return a :doc:`security context<../cookbook/securing-your-application>`
 from the ``getResourceSecurityContext`` method.
-An activity that returns a security context from the ``getResourceSecurityContext`` method  will only be visible for
+An activity that returns a security context from the ``getResourceSecurityContext`` method will only be visible for
 users with a ``view`` permission for the context:
 
 .. code-block:: php
@@ -187,15 +217,16 @@ users with a ``view`` permission for the context:
         }
     }
 
-Extending the Admin View with a Activity Table
+Extending the Admin View with an Activity Table
 ------------------------------------------------
 
-To extend the admin view by adding a activities table, follow these steps:
+To extend the admin view by adding an activities table, follow these steps:
 
-	1.	Inject the `ActivityViewBuilderFactoryInterface`: Inject this interface into your custom Admin class. This will allow you to utilize the necessary methods to create the activities view.
-	2.	Create the Activity List View: Use the `createActivityListViewBuilder` method to create the list view for the activities table.
+1. Inject ``ActivityViewBuilderFactoryInterface`` into your custom Admin class.
+2. Use the ``createActivityListViewBuilder`` method to create the list view for the activities table.
 
-Here’s an example implementation, demonstrating how to add the activities tab to your custom admin view, for further examples take a look at the SnippetAdmin class:
+Here is an example implementation demonstrating how to add the activities tab to your custom admin view.
+For further examples, take a look at the ``SnippetAdmin`` class:
 
 .. code-block:: php
 
@@ -205,22 +236,24 @@ Here’s an example implementation, demonstrating how to add the activities tab 
                 ->createActivityListViewBuilder(
                     $insightsResourceTabViewName . '.activity',
                     '/activities',
-                    CustomEntity::RESOURCE_KEY
+                    CustomEntity::RESOURCE_KEY,
+                    'id' // optional: router attribute used as the resourceId request parameter (default: 'id')
                 )
                 ->setParent($insightsResourceTabViewName)
         );
     }
 
-The `hasActivityListPermission` method ensures that the current user has permission to view the activities list.
-The `createActivityListViewBuilder` method is used to create the view. It takes three parameters:
+``createActivityListViewBuilder`` accepts four parameters:
 
-    - The name of the new view, usually appended with .activity to indicate it is an activity view.
-    - The URL path for the activities table.
-    - The resource key identifies the type of resource for the activities.
+- ``$name`` — name of the new view, usually appended with ``.activity``
+- ``$path`` — URL path for the activities table
+- ``$resourceKey`` — resource key identifying the type of resource for the activities
+- ``$resourceIdRouterAttribute`` — router attribute used as the ``resourceId`` request parameter (default: ``'id'``)
 
-The setParent method sets the parent view to integrate the activities table into the existing admin view.
+The ``hasActivityListPermission`` method ensures that the current user has permission to view the activities list.
+The ``setParent`` method integrates the activities table into the existing admin view.
 
 .. _Symfony event dispatcher: https://symfony.com/doc/current/event_dispatcher.html
 .. _DomainEvent class: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ActivityBundle/Domain/Event/DomainEvent.php
-.. _ActivityController class: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L377-L401
+.. _ActivityController class: https://github.com/sulu/sulu/blob/3.0/src/Sulu/Bundle/ActivityBundle/UserInterface/Controller/ActivityController.php#L371-L385
 .. _Symfony translations: https://symfony.com/doc/current/translation.html
