@@ -14,3 +14,4 @@ these tools.
     apache
     nginx
     built-in
+    franken-php
