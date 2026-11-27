@@ -4,7 +4,8 @@ Welcome to the Sulu Documentation!
 `Sulu`_ makes Content Management awesome.
 
 Here's the perfect place to get started and find everything you need to know to code with Sulu.
-We got :doc:`book/index`, :doc:`cookbook/index`, :doc:`reference/index`, :doc:`bundles/index` and :doc:`developer/index`.
+We got :doc:`book/index`, :doc:`cookbook/index`, :doc:`reference/index`, :doc:`bundles/index`, :doc:`developer/index`
+and the :doc:`workshop/index` (Sulu **workshop** walkthrough in English, aligned with the sulu-workshop project).
 
 Be sure to visit our `website`_. There's a lot of information about Sulu and how we do things.
 
@@ -21,6 +22,7 @@ What's in our documentation?
    reference/index
    bundles/index
    developer/index
+   workshop/index
    upgrades/index
 
 If you got any questions, feel free to `contact us`_. We are more than happy to help.
